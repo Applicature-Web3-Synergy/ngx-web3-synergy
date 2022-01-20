@@ -7,6 +7,11 @@
 node_modules
 
 .npmrc
+node_modules/
+projects/
+.angular
+
+
 
 # Include when developing application packages.
 pubspec.lock
