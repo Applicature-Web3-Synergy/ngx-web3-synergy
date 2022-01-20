@@ -1,0 +1,17 @@
+{
+  "name": "ngx-web3-components",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
+    "@angular/material": "^13.0.1",
+    "@metamask/jazzicon": "^1.6.1",
+    "@uiowa/digit-only": "^9.0.1",
+    "bignumber.js": "^9.0.1",
+    "bnc-onboard": "^1.35.4",
+    "web3": "^1.6.1"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
+}

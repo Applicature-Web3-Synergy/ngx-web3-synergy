@@ -1,0 +1,17 @@
+@import "../../styles/main";
+
+:host {
+  display: block;
+}
+
+.wcl-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px 24px;
+  background: getColor(grey, light);
+
+  > * {
+    margin-left: 12px;
+  }
+}

@@ -1,0 +1,73 @@
+<div class="transfer-token-container">
+  <h2>Example</h2>
+  <ng-template [ngIf]="!transferred && !isTransferring" [ngIfElse]="transferState">
+    <form [formGroup]="transferForm">
+      <div class="token-input">
+        <amount-field label="Amount"
+                      placeholder="Enter Amount"
+                      formControlName="amount"
+                      hint="Available: <span>{{tokenAmount}} {{tokenSymbol}}</span>"
+                      [suffix]="tokenSymbol"
+                      [max]="tokenAmount"
+                      [errors]="amountErrors"></amount-field>
+      </div>
+      <div class="address-input">
+        <label for="address-inp">Destination Address</label>
+        <input type="text"
+               id="address-inp"
+               placeholder="Enter Address"
+               formControlName="address">
+        <div class="error-message" *ngIf="transferForm.get('address').touched && transferForm.get('address').invalid">{{addressErrorMessage}}</div>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template #transferState>
+    <div class="transferring-state-holder">
+      <ng-template [ngIf]="isTransferring" [ngIfElse]="transferredState">
+        <mat-progress-spinner mode="indeterminate"
+                              diameter="60"
+                              strokeWidth="3">
+        </mat-progress-spinner>
+      </ng-template>
+      <ng-template #transferredState>
+        <div class="icon-holder">
+          <svg width="63" height="63" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.827.804a31 31 0 1 0 21.934 47.168 1.098 1.098 0 0 0-1.86-1.167A28.805 28.805 0 1 1 60.304 31.5a1.098 1.098 0 0 0 2.196 0A31 31 0 0 0 35.827.804Z" fill="currentColor" stroke="currentColor" stroke-linecap="round"/><path d="M62.196 35.827a31 31 0 1 0-47.168 21.934 1.098 1.098 0 0 0 1.167-1.86A28.804 28.804 0 1 1 31.5 60.304a1.098 1.098 0 0 0 0 2.196 31 31 0 0 0 30.696-26.673Z" fill="currentColor" stroke="currentColor" stroke-linecap="round"/><path d="m46.63 21.752-.353.353.352-.353a1.098 1.098 0 0 0-1.552 0L27.863 38.966l-9.931-10.143a1.098 1.098 0 1 0-1.57 1.537L27.07 41.294a1.098 1.098 0 0 0 1.561.008L46.63 23.305a1.098 1.098 0 0 0 0-1.553Z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="sub-title">Lorem ipsum dolor sit amet.</div>
+        <div class="result-value">{{transferForm.get('amount').value}} {{tokenSymbol}}</div>
+      </ng-template>
+    </div>
+    <div class="info-holder">
+      <div class="transfer-info" *ngIf="isTransferring">
+        <div class="info-title">Amount</div>
+        <div class="info-details">{{transferForm.get('amount').value}}</div>
+      </div>
+      <div class="transfer-info">
+        <div class="info-title">Destination Address</div>
+        <div class="info-details">
+          <a class="address-link"
+             [href]="addressLink"
+             target="_blank">{{transactionAddress | shortAddress}}</a>
+        </div>
+      </div>
+      <div class="transfer-info">
+        <div class="info-title">Transaction Hash</div>
+        <div class="info-details">
+          <a class="address-link"
+             [href]="transactionLink"
+             target="_blank">{{transactionHash | shortAddress}}</a>
+          <mat-progress-spinner *ngIf="isTransferring"
+                                mode="indeterminate"
+                                diameter="18"
+                                strokeWidth="1">
+          </mat-progress-spinner>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <action-button *ngIf="!isTransferring"
+                 [label]="transferred ? 'Home' : 'Send'"
+                 [fullWidth]="true"
+                 [height]="48"
+                 (onClick)="transferToken()"></action-button>
+</div>

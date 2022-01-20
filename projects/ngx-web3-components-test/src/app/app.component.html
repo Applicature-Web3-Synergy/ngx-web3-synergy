@@ -1,0 +1,218 @@
+<br>
+
+<header-bar>
+  <connect-wallet-button
+    [showBalance]="true"
+    [networkOptions]="networkOptions"
+    (connectWalletChange)="onConnectWalletChange($event)">
+  </connect-wallet-button>
+</header-bar>
+
+<br>
+
+<header-bar>
+  <connect-wallet-button
+    [showBalance]="true"
+    [showNetworkOptions]="true"
+    [networkOptions]="networkOptions"
+    (connectWalletChange)="onConnectWalletChange($event)">
+  </connect-wallet-button>
+</header-bar>
+
+<br>
+
+<header-bar>
+  <connect-wallet-button
+    [showBalance]="true"
+    [showNetworkOptions]="true"
+    [networkOptions]="networkOptions"
+    [accountOptions]="accountOptions"
+    (connectWalletChange)="onConnectWalletChange($event)"
+    (accountOptionChange)="onAccountOptionChange($event)"
+    accountName="Account Name"
+    appearance="icon">
+  </connect-wallet-button>
+</header-bar>
+
+<br>
+
+<action-button [color]="'red'" [label]="'1 failing'" [rightIcon]="'wcl-icon-fail'"></action-button>
+<br>
+<action-button [color]="'red'" [label]="'Width 100%'" [fullWidth]="true"></action-button>
+<br>
+<action-button [color]="'white'"
+               [label]="'Ethereum'"
+               [src]="'assets/svg/network/eth.svg'"
+               [rightIcon]="'wcl-icon-chevron-down'"></action-button>
+<br>
+<action-button [color]="'red'"
+               [label]="'Wrong Network'"
+               [leftIcon]="'wcl-icon-wrong'"
+               [rightIcon]="'wcl-icon-chevron-down'"></action-button>
+<br>
+<action-button [color]="'white'"
+               [label]="'Ethereum'"
+               [src]="'assets/svg/network/eth.svg'"
+               [rightIcon]="'wcl-icon-chevron-down'"
+               [borderRadius]="false"></action-button>
+<br>
+<action-button [color]="'white'"
+               [label]="'Ethereum'"
+               [src]="'assets/svg/network/eth.svg'"
+               [rightIcon]="'wcl-icon-chevron-down'"
+               [borderRadius]="false"
+               [transparent]="true"></action-button>
+<br>
+<action-button [color]="'white'"
+               [label]="'1 Pending'"
+               [pending]="true"></action-button>
+
+<hr>
+
+<network-dropdown [options]="networkOptions"
+                  (onChange)="onNetworkChange($event)">
+</network-dropdown>
+
+<hr>
+
+<avatar></avatar>
+<br>
+<avatar
+  [src]="'https://static.toiimg.com/thumb/msid-78377896,imgsize-134939,width-800,height-600,resizemode-75/78377896.jpg'"
+  [size]="48"></avatar>
+
+<hr>
+<account-balance></account-balance>
+<br>
+<br>
+<account-balance [icon]="'assets/svg/network/eth.svg'"></account-balance>
+<br>
+<br>
+<account-balance [showAddress]="true" color="translucent"></account-balance>
+<br>
+<br>
+<account-balance [showAddress]="true"
+                 color="blue"></account-balance>
+<hr>
+
+<action-button [label]="'Open Wrong Network Modal'"
+               (onClick)="onWrongNetworkModalDataClick()"></action-button>
+
+<hr>
+<alert color="red" icon="wcl-icon-fail" message="Alert message"></alert>
+<br>
+<alert color="blue" icon="wcl-icon-fail" message="Alert message"></alert>
+<br>
+<alert color="orange" icon="wcl-icon-fail" message="Alert message"></alert>
+<br>
+<alert color="green" icon="wcl-icon-fail" message="Alert message"></alert>
+<br>
+<alert color="grey" icon="wcl-icon-fail" message="Alert message"></alert>
+
+<hr>
+
+<action-button [color]="'orange'"
+               [label]="'Open Transfer Modal'"
+               (onClick)="showTransferModal()"></action-button>
+
+<hr>
+<div style="display: flex;flex-wrap: wrap;justify-content: space-between">
+  <recent-transactions-button></recent-transactions-button>
+
+  <action-button label="Clear transactions"
+                 color="orange"
+                 (onClick)="clearTransactions()"></action-button>
+
+  <action-button label="Save Pending Transaction"
+                 (onClick)="saveTransaction('pending')"></action-button>
+
+  <action-button label="Save Success Transaction"
+                 color="green"
+                 (onClick)="saveTransaction('success')"></action-button>
+
+  <action-button label="Save Fail Transaction"
+                 color="red"
+                 (onClick)="saveTransaction('fail')"></action-button>
+</div>
+
+<hr>
+<amount-field label="Field Label"
+              placeholder="Enter"
+              hint="This is a message"
+              suffix="USDT"
+              max="14.151617"
+              [errors]="['This is an error message']"></amount-field>
+<br>
+<amount-field label="Field Label"
+              placeholder="Enter"
+              hint="This is a message"
+              prefix="USDT"
+              max="14.151617"
+              [errors]="['This is an error message']"></amount-field>
+<br>
+<amount-field label="Field Label"
+              placeholder="Enter"
+              hint="This is a message"
+              suffix="USDT"></amount-field>
+<br>
+<amount-field label="Field Label"
+              placeholder="Enter"
+              hint="This is a message"
+              suffix="USDT"
+              max="14.151617"
+              [disabled]="true"
+              [errors]="['This is an error message']"></amount-field>
+<br>
+<amount-field label="Field Label"
+              placeholder="Enter"
+              hint="This is a message"
+              prefix="USDT"
+              max="14.151617"
+              [disabled]="true"
+              [errors]="['This is an error message']"></amount-field>
+<br>
+<amount-field label="Field Label"
+              placeholder="Enter"
+              hint="This is a message"
+              suffix="USDT"
+              [disabled]="true"></amount-field>
+<hr>
+<wcl-table [columns]="tableColumns" [data]="tableData" (loadMoreClick)="onLoadMoreClick()"></wcl-table>
+
+<ng-template #actionRef let-data="element">
+  {{ data.action }}
+</ng-template>
+
+<ng-template #tokenRef let-data="element">
+  <div class="tokens">
+    <account-balance *ngFor="let token of data.tokens"
+                     [icon]="token.icon"
+                     size="small"
+                     color="grey"></account-balance>
+  </div>
+</ng-template>
+
+<ng-template #timeRef let-data="element">
+  <a href="" class="link nowrap">{{ data.time }}</a>
+</ng-template>
+
+<hr>
+<lib-transfer-token></lib-transfer-token>
+<br>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+

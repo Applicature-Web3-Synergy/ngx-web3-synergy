@@ -1,0 +1,185 @@
+@import "../../styles/main";
+
+:host {
+  display: block;
+}
+
+.wcl-amount-field {
+  display: inline-flex;
+  flex-direction: column;
+
+  & &__label,
+  & &__hint {
+    color: getColor(grey, base);
+  }
+
+  & &__label {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+
+  & &__input {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  & &__hint,
+  & &__error {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  & &__hint {
+    margin-top: 8px;
+
+    &::ng-deep {
+      span {
+        font-weight: 700;
+        color: getColor(blue, base);
+      }
+    }
+  }
+
+  & &__error {
+    color: getColor(red, base);
+    margin-top: 8px;
+  }
+}
+
+.wcl-input {
+  background: $white;
+
+  $this: &;
+
+  &.disabled {
+    background: $grey-bg;
+    cursor: default;
+  }
+
+  &:not(.disabled) #{$this}__field:hover + #{$this}__max:not(.has-focus) {
+    border: 1px solid getColor(grey, hover);
+    border-left: 0;
+  }
+
+  & &__prefix,
+  & &__field,
+  & &__suffix {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+
+  &.has-error &__field,
+  &.has-error &__max {
+    border-color: getColor(red, base) !important;
+  }
+
+  & &__field {
+    padding: 0 12px;
+    border: 1px solid getColor(grey, light);
+    border-radius: 8px;
+    background-color: transparent;
+    outline: none;
+    font-weight: 500;
+    font-size: 14px;
+    color: $black;
+    caret-color: getColor(blue, light);
+    font-family: $font-family;
+
+    &:disabled {
+      color: getColor(grey, base);
+    }
+
+    &:enabled:hover {
+      border: 1px solid getColor(grey, hover);
+    }
+
+    &:enabled:focus {
+      border: 1px solid getColor(blue, dark);
+    }
+
+    &:enabled.has-prefix,
+    &:disabled.has-prefix {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &:enabled.has-suffix,
+    &:disabled.has-suffix,
+    &:enabled.has-max,
+    &:disabled.has-max {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:enabled.has-max,
+    &:disabled.has-max {
+      border-right: 0;
+    }
+
+    &::placeholder {
+      color: getColor(grey, hover);
+      font-family: $font-family;
+      font-size: 14px;
+    }
+  }
+
+  & &__max {
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    color: getColor(blue, base);
+    padding-right: 12px;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    border: 1px solid getColor(grey, light);
+    border-left: 0;
+
+    &:hover {
+      cursor: pointer;
+      color: getColor(blue, hover);
+    }
+
+    &.has-focus {
+      border: 1px solid getColor(blue, dark);
+      border-left: 0;
+    }
+
+    &.no-suffix {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+
+  & &__prefix,
+  & &__suffix {
+    background: $grey-bg;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 12px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: getColor(grey, base);
+    border: 1px solid getColor(grey, light);
+  }
+
+  & &__prefix {
+    border-right: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  & &__suffix {
+    border-left: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}

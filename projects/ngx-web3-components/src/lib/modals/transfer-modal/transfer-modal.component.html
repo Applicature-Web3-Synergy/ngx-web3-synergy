@@ -1,0 +1,70 @@
+<div class="wcl-transfer-modal">
+  <div class="wcl-transfer-modal__header">
+    <h1 class="wcl-transfer-modal__title">Transfer</h1>
+    <span mat-dialog-close class="wcl-transfer-modal__close wcl-icon-close"></span>
+  </div>
+  <div class="wcl-transfer-modal__content">
+    <form [formGroup]="transferForm">
+      <label for="input-price">Amount</label>
+      <div class="input-container">
+        <div class="input-holder">
+          <input formControlName="price"
+                 id="input-price"
+                 min="0"
+                 placeholder="Enter amount"
+                 type="number">
+          <div class="input-overlay"
+               [class.inactive]="transferForm.disabled">
+            <span class="input-max" (click)="setMaxAllowance()">MAX</span>
+          </div>
+        </div>
+        <div class="token-symbol">{{data.tokenInfo.symbol}}</div>
+      </div>
+    </form>
+    <div class="allowance-info">
+      Current allowance:
+      <ng-template [ngIf]="isAllowed()" [ngIfElse]="withoutAllowance">
+        <span (click)="setAllowedAmount()">{{allowanceValue.toLocaleString(undefined, {maximumFractionDigits: 2}) + ' ' + data.tokenInfo.symbol}}</span>
+      </ng-template>
+      <ng-template #withoutAllowance>
+        <strong>{{allowanceValue?.toLocaleString(undefined, {maximumFractionDigits: 2}) + ' ' + data.tokenInfo.symbol}}</strong>
+      </ng-template>
+    </div>
+    <div class="steps-holder">
+      <div class="step-count">
+        Step {{!approved ? '1' : '2'}} of 2
+      </div>
+      <ng-template [ngIf]="!approved" [ngIfElse]="approvedState">
+        <p>
+          Your allowance must be first increased.<br>
+          Please click Approve to increase your allowance.
+        </p>
+      </ng-template>
+      <ng-template #approvedState>
+        <p>
+          Now you can transfer funds.<br>
+          Please click Transfer.
+        </p>
+      </ng-template>
+      <div class="progress-container"><div class="progress-bar" [class.half-progress]="!approved"></div></div>
+    </div>
+  </div>
+  <action-button *ngIf="!approved && !isApproving"
+                 [label]="'Approve'"
+                 [fullWidth]="true"
+                 [height]="48"
+                 [disabled]="transferForm.invalid"
+                 (onClick)="approve()"></action-button>
+  <action-button *ngIf="!approved && isApproving"
+                 [label]="'Approving...'"
+                 [fullWidth]="true"
+                 [height]="48"
+                 [disabled]="true"
+                 [pending]="true"
+                 class="progress-state"></action-button>
+  <action-button *ngIf="approved && !isApproving"
+                 [label]="'Transfer'"
+                 [fullWidth]="true"
+                 [height]="48"
+                 (onClick)="transferTokens()"></action-button>
+</div>

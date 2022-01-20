@@ -1,0 +1,43 @@
+<div class="wcl-amount-field">
+  <div *ngIf="label"
+       class="wcl-amount-field__label">{{ label }}</div>
+
+  <div [style.height.px]="height"
+       [class.disabled]="disabled"
+       [class.has-error]="errors?.length > 0"
+       class="wcl-amount-field__input wcl-input">
+    <span *ngIf="prefix" class="wcl-input__prefix">{{ prefix }}</span>
+
+    <input #inputElement
+           [class.has-prefix]="prefix"
+           [class.has-suffix]="suffix"
+           [class.has-max]="max"
+           [placeholder]="placeholder"
+           [readonly]="readonly"
+           [disabled]="disabled || readonly"
+           [ngModel]="value"
+           (ngModelChange)="onChange($event)"
+           (focus)="focus = true"
+           (blur)="focus = false"
+           [max]="max"
+           [decimalSeparator]="'.'"
+           [allowNegatives]="false"
+           [decimal]="decimal"
+           digitOnly
+           type="text"
+           class="wcl-input__field">
+
+    <span *ngIf="max"
+          [class.has-focus]="focus"
+          [class.no-suffix]="!suffix"
+          (click)="onMaxClick()"
+          class="wcl-input__max">MAX</span>
+
+    <span *ngIf="suffix" class="wcl-input__suffix">{{ suffix }}</span>
+  </div>
+
+  <div *ngIf="hintTemplate" class="wcl-amount-field__hint" [innerHTML]="hintTemplate"></div>
+
+  <div *ngFor="let error of errors"
+       class="wcl-amount-field__error">{{ errors }}</div>
+</div>

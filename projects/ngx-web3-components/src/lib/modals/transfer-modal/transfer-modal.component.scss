@@ -1,0 +1,214 @@
+@import "../../styles/main";
+
+:host {
+  display: block;
+  max-width: 420px;
+}
+
+.wcl-transfer-modal {
+  padding: 20px;
+
+  & &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  & &__title {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: $black;
+    margin: 0;
+  }
+
+  & &__close {
+    cursor: pointer;
+  }
+
+  & &__content {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: getColor(grey, base);
+    margin-bottom: 16px;
+
+    form {
+      width: 100%;
+
+      label {
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .input-container {
+        display: flex;
+        padding: 8px 0;
+
+        .input-holder {
+          flex-grow: 1;
+          display: flex;
+          position: relative;
+
+          input {
+            flex-grow: 1;
+            font-family: $font-family;
+            font-size: 14px;
+            width: 100%;
+            background-color: $white;
+            border: 1px solid getColor(grey, light);
+            border-radius: 8px 0 0 8px;
+            color: $black;
+            line-height: 46px;
+            padding: 0 30px 0 12px;
+            outline: none;
+            caret-color: getColor(blue, light);
+
+            &:focus, &:focus-visible {
+              border: 1px solid getColor(blue, base);
+            }
+
+            &[disabled] {
+              background-color: $grey-bg;
+              color: getColor(gray, base);
+            }
+
+            &::placeholder {
+              color: getColor(grey, hover);
+              font-family: $font-family;
+              font-size: 14px;
+            }
+          }
+
+          .input-overlay {
+            position: absolute;
+            height: calc(100% - 2px);
+            top: 1px;
+            right: 1px;
+            background-color: $white;
+            display: flex;
+            align-items: center;
+            padding: 0 12px 0 6px;
+            z-index: 2;
+
+            span.input-max {
+              color: getColor(blue, base);
+              cursor: pointer;
+              font-size: 13px;
+              font-weight: 700;
+              line-height: 16px;
+              text-transform: uppercase;
+
+              &:hover {
+                color: getColor(blue, hover);
+              }
+            }
+
+            &.inactive {
+              display: none;
+              opacity: 0;
+              z-index: -1;
+              background-color: $grey-bg;
+
+              span.input-max {
+                color: getColor(gray, base);
+                pointer-events: none;
+              }
+            }
+          }
+
+          &:hover {
+            input:not(:focus, :focus-visible, [disabled]) {
+              border: 1px solid getColor(grey, hover);
+            }
+          }
+        }
+
+        .token-symbol {
+          display: flex;
+          align-items: center;
+          padding: 0 12px;
+          border: 1px solid getColor(grey, light);
+          border-radius: 0 8px 8px 0;
+          border-left: none;
+          background-color: $grey-bg;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .allowance-info {
+      font-size: 12px;
+      line-height: 16px;
+
+      span {
+        color: getColor(blue, base);
+        font-weight: 700;
+
+        &:hover {
+          color: getColor(blue, hover);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .steps-holder {
+      margin-top: 16px;
+      background-color: $grey-bg;
+      padding: 16px;
+      border-radius: 8px;
+
+      .step-count {
+        color: $black;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      p {
+        color: getColor(grey, darkest);
+        margin: 4px 0 12px;
+      }
+
+      .progress-container {
+        position: relative;
+        width: 100%;
+        height: 8px;
+        overflow: hidden;
+        border-radius: 4px;
+
+        .progress-bar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          border-radius: 4px;
+          background: getColor(blue, base);
+
+          &.half-progress {
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  action-button.progress-state {
+    &::ng-deep {
+      button.wcl-button {
+        background-color: getColor(blue, dark);
+
+        mat-progress-spinner.mat-progress-spinner {
+          order: -1;
+          margin: 0 12px 0 0;
+
+          circle {
+            stroke: $white !important;
+          }
+        }
+      }
+    }
+  }
+}

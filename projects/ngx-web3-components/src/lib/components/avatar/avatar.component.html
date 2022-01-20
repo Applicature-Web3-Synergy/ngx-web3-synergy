@@ -1,0 +1,9 @@
+<div [style.width.px]="size"
+     [style.height.px]="size"
+     class="wcl-avatar">
+  <img *ngIf="src else defaultView" [src]="src" alt="">
+
+  <ng-template #defaultView>
+    <span class="wcl-icon-user"></span>
+  </ng-template>
+</div>

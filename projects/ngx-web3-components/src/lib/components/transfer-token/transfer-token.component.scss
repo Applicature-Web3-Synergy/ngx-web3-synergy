@@ -1,0 +1,151 @@
+@import "../../styles/main";
+
+:host {
+  display: block;
+  max-width: 420px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+
+  .transfer-token-container {
+    background-color: $white;
+    border-radius: 8px;
+    padding: 20px;
+
+    h2 {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      color: $black;
+      margin: 0;
+      padding-bottom: 16px;
+    }
+
+    .token-input {
+      padding-bottom: 16px;
+
+      amount-field {
+        &::ng-deep {
+          .wcl-amount-field {
+            display: flex;
+
+            input.wcl-input__field {
+              flex-grow: 1;
+            }
+          }
+        }
+      }
+    }
+
+    .address-input {
+      padding-bottom: 20px;
+
+      label {
+        display: inline-block;
+        color: getColor(grey, base);
+        font-weight: 700;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+
+      input {
+        display: block;
+        background-color: $white;
+        border-radius: 8px;
+        border: 1px solid getColor(grey, light);
+        width: 100%;
+        line-height: 46px;
+        padding: 0 12px;
+        font-family: $font-family;
+        font-weight: 500;
+        color: $black;
+        outline: none;
+        caret-color: getColor(blue, light);
+
+        &::placeholder {
+          color: getColor(grey, hover);
+          font-family: $font-family;
+          font-size: 14px;
+        }
+
+        &:focus, &:focus-visible {
+          border: 1px solid getColor(blue, base);
+        }
+
+        &.ng-invalid.ng-touched {
+          border-color: getColor(red, base) !important;
+        }
+
+        &:-webkit-autofill {
+          background-color: $white !important;
+        }
+      }
+
+      .error-message {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        color: getColor(red, base);
+        margin-top: 8px;
+      }
+    }
+
+    .transferring-state-holder {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-bottom: 12px;
+
+      .icon-holder {
+        color: getColor(green, base);
+      }
+
+      .sub-title {
+        color: getColor(grey, dark);
+        padding: 16px 0 20px;
+      }
+
+      .result-value {
+        color: $black;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+      }
+    }
+
+    .info-holder {
+      padding-bottom: 20px;
+
+      .transfer-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 8px;
+
+        .info-title {
+          color: getColor(grey, dark);
+        }
+
+        .info-details {
+          display: flex;
+          align-items: center;
+          max-width: 50%;
+          overflow: hidden;
+
+          a {
+            color: getColor(blue, base);
+            text-decoration: none;
+
+            &:hover {
+              color: getColor(blue, hover);
+            }
+          }
+
+          mat-progress-spinner {
+            margin-left: 6px;
+          }
+        }
+      }
+    }
+  }
+}

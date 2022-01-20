@@ -1,0 +1,77 @@
+@import "../../styles/main";
+
+:host {
+  display: block;
+  min-width: 372px;
+  max-width: 372px;
+}
+
+.wcl-recent-transactions {
+  display: flex;
+  flex-direction: column;
+
+  & &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    > h1 {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 1;
+      color: $black;
+      margin: 0;
+    }
+
+    > .wcl-icon-close {
+      cursor: pointer;
+    }
+  }
+
+  & &__list {
+    display: flex;
+    flex-direction: column;
+    max-height: 392px;
+    overflow-y: auto;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      > a {
+        color: getColor(blue, base);
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &.fail {
+          color: getColor(red, base);
+        }
+      }
+
+      > .wcl-icon-check:before {
+        color: getColor(green, base);
+      }
+    }
+  }
+
+  & &__empty {
+    color: getColor(grey, base);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    margin: 20px 0;
+  }
+}

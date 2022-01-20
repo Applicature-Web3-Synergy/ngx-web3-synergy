@@ -1,0 +1,115 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+$font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+@import "./projects/ngx-web3-components/src/lib/styles/variables";
+@import "./projects/ngx-web3-components/src/lib/styles/functions";
+@import "./projects/ngx-web3-components/src/lib/styles/icons";
+@import "./projects/ngx-web3-components/src/lib/styles/onboard-modal";
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+$ui-typography: mat.define-typography-config(
+  $font-family: $font-family,
+);
+
+@include mat.core($ui-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$mat-primary: mat.define-palette(mat.$indigo-palette);
+$mat-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$mat-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$mat-theme: mat.define-light-theme((
+  color: (
+    primary: $mat-primary,
+    accent: $mat-accent,
+    warn: $mat-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($mat-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder {
+  color: getColor(grey, hover);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  position: relative;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: $font-family;
+  background: #F3F5FB;
+  padding: 0 100px;
+}
+
+.custom-mat-dialog .mat-dialog-container {
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.no-indents .mat-dialog-container {
+  padding: 0;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: getColor(blue, base);
+}
+
+a.link {
+  color: getColor(blue, base);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.tokens {
+  display: inline-flex;
+
+  > account-balance {
+    margin-right: 8px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

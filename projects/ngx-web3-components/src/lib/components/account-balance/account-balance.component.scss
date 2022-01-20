@@ -1,0 +1,84 @@
+@import "../../styles/main";
+
+:host {
+  display: inline-block;
+}
+
+.wcl-account-balance {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 8px;
+  padding: 0 12px;
+  overflow: hidden;
+
+  $this: &;
+
+  > img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+
+  & &__balance,
+  & &__address {
+    font-size: 16px;
+    font-weight: 500;
+    color: $black;
+  }
+
+  & &__address {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background: $white;
+    padding: 0 12px;
+    margin-left: 12px;
+  }
+
+  &--blue {
+    background: getColor(blue, base);
+
+    #{$this}__balance {
+      color: $white;
+    }
+  }
+
+  &--white {
+    background: $white;
+  }
+
+  &--grey {
+    background: $grey-bg;
+  }
+
+  &--translucent {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+
+  &--with-account {
+    padding-right: 0;
+  }
+
+  &--small {
+    height: 28px;
+    border-radius: 4px;
+    padding: 4px 8px;
+
+    > img {
+      width: 20px;
+      height: 20px;
+    }
+
+    #{$this}__balance,
+    #{$this}__address {
+      font-size: 14px;
+    }
+  }
+}
