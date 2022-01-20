@@ -7,8 +7,8 @@ pipelines:
         script:
         - npm install
         - npm run build
-        - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        - ln -sf ~/.npmrc .
+        #- echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
+        #- ln -sf ~/.npmrc .
         - cd dist/ngx-web3-components
         - npm pack .
         - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
