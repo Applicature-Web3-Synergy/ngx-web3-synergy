@@ -9,6 +9,7 @@ pipelines:
         - npm run build
         - cd dist/ngx-web3-components
         - npm pack .
+        - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
         - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
         - npm publish --access public
         caches:
