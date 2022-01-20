@@ -5,9 +5,9 @@ pipelines:
     - step:
         name: Code linting
         script:
-        - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
+        - npm set //https://$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
         #- echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        #- ln -sf ~/.npmrc .
+        - ln -sf ~/.npmrc .
         - npm install
         - npm run build
         - cd dist/ngx-web3-components
