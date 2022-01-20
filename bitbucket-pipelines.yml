@@ -11,6 +11,7 @@ pipelines:
         - npm pack .
         - echo "_auth = $NPM_AUTH_TOKEN" > ~/.npmrc
         - echo "email = $NPM_EMAIL" >> ~/.npmrc
+        - npm adduser
         - npm publish --access public
         caches:
           - node
