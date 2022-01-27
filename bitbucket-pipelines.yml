@@ -1,16 +1,30 @@
 image: node:16
 
 pipelines:
-  default:
-    - step:
-        name: Code linting
-        script:
-        - npm install
-        - npm run build
-        # - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
-        - cd dist/ngx-web3-components
-        - npm pack .
-        - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
-        - npm publish --access public
-        caches:
-          - node
+  # default:
+  #   - step:
+  #       name: Code linting
+  #       script:
+  #       - npm install
+  #       - npm run build
+  #       - cd dist/ngx-web3-components
+  #       - npm pack .
+  #       - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
+  #       - npm publish --access public
+  #       caches:
+  #         - node
+
+  branches:
+    master:
+        - step:
+            name: Publish NPM packet
+            trigger: manual
+            script:
+            - npm install
+            - npm run build
+            - cd dist/ngx-web3-components
+            - npm pack .
+            - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
+            - npm publish --access public
+            caches:
+              - node
