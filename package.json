@@ -12,7 +12,7 @@
     "build-storybook": "npm run docs:json && build-storybook",
     "chromatic": "npx chromatic --project-token=5b6a62e96a23 --auto-accept-changes"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~13.0.0",
     "@angular/cdk": "^13.0.1",

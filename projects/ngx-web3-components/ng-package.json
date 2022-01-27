@@ -4,6 +4,16 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
+  "allowedNonPeerDependencies": [
+    "@angular/common",
+    "@angular/core",
+    "@angular/material",
+    "@metamask/jazzicon",
+    "@uiowa/digit-only",
+    "bignumber.js",
+    "bnc-onboard",
+    "web3"
+  ],
   "assets": [
     "./src/lib/styles/**/*.*"
   ]
