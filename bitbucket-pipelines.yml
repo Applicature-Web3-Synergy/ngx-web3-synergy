@@ -18,7 +18,7 @@ pipelines:
     master:
         - step:
             name: Publish NPM packet
-            trigger: manual
+            # trigger: manual
             script:
             - npm install
             - npm run build
