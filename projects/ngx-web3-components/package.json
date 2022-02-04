@@ -1,12 +1,14 @@
 {
   "name": "@applicature/components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "peerDependencies": {
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",
     "@angular/material": "^13.0.1",
     "@metamask/jazzicon": "^2.0.0",
-    "@uiowa/digit-only": "^9.0.1",
+    "@uiowa/digit-only": "^3.2.0",
+    "@uniswap/sdk-core": "^3.0.1",
+    "@ethersproject/address": "^5.5.0",
     "bignumber.js": "^9.0.1",
     "bnc-onboard": "^1.35.4",
     "web3": "^1.6.1"
@@ -17,7 +19,9 @@
     "@angular/core": "^13.0.0",
     "@angular/material": "^13.0.1",
     "@metamask/jazzicon": "^2.0.0",
-    "@uiowa/digit-only": "^9.0.1",
+    "@uiowa/digit-only": "^3.2.0",
+    "@uniswap/sdk-core": "^3.0.1",
+    "@ethersproject/address": "^5.5.0",
     "bignumber.js": "^9.0.1",
     "bnc-onboard": "^1.35.4",
     "web3": "^1.6.1"
