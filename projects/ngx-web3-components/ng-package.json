@@ -10,6 +10,8 @@
     "@angular/material",
     "@metamask/jazzicon",
     "@uiowa/digit-only",
+    "@uniswap/sdk-core",
+    "@ethersproject/address",
     "bignumber.js",
     "bnc-onboard",
     "web3"
