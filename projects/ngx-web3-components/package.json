@@ -1,11 +1,11 @@
 {
   "name": "@applicature/components",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "peerDependencies": {
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",
     "@angular/material": "^13.0.1",
-    "@metamask/jazzicon": "^1.6.1",
+    "@metamask/jazzicon": "^2.0.0",
     "@uiowa/digit-only": "^9.0.1",
     "bignumber.js": "^9.0.1",
     "bnc-onboard": "^1.35.4",
@@ -16,7 +16,7 @@
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",
     "@angular/material": "^13.0.1",
-    "@metamask/jazzicon": "^1.6.1",
+    "@metamask/jazzicon": "^2.0.0",
     "@uiowa/digit-only": "^9.0.1",
     "bignumber.js": "^9.0.1",
     "bnc-onboard": "^1.35.4",
