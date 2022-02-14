@@ -40,6 +40,9 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   public showTransactions: boolean = false;
 
   @Input()
+  public showNetworkOptions: boolean = false;
+
+  @Input()
   public networkOptions!: NetworkOption[];
 
   @Input()

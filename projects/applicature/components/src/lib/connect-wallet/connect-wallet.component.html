@@ -59,7 +59,8 @@
 </div>
 
 <ng-template #networkOptionsRef>
-  <applicature-network-dropdown [networkOptions]="networkOptions"
+  <applicature-network-dropdown *ngIf="showNetworkOptions"
+                                [networkOptions]="networkOptions"
                                 class="connect-wallet__networks">
   </applicature-network-dropdown>
 </ng-template>
