@@ -7,7 +7,7 @@ pipelines:
   #       script:
   #       - npm install
   #       - npm run build
-  #       - cd dist/ngx-web3-components
+  #       - cd dist/applicature
   #       - npm pack .
   #       - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
   #       - npm publish --access public
@@ -23,11 +23,11 @@ pipelines:
               - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
               - npm install
               - npm run build
-              - cd dist/ngx-web3-components/styles
+              - cd dist/applicature/styles
               - npm pack .
               - npm publish --access public
               - cd -
-              - cd dist/ngx-web3-components/components
+              - cd dist/applicature/components
               - npm pack .
               - npm publish --access public
             caches:
