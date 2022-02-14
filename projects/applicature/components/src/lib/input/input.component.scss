@@ -1,0 +1,151 @@
+@import "../../../../styles/src/lib/scss/variables";
+@import "../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: inline-flex;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  font-family: $applicature-font-family;
+
+  $this: &;
+
+
+  & &__label {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+
+  & &__hint,
+  & &__error {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  & &__label,
+  & &__hint {
+    color: getColor(grey, base);
+  }
+
+  & &__hint {
+    margin-top: 8px;
+  }
+
+  & &__error {
+    margin-top: 4px;
+    color: getColor(red, base);
+  }
+
+  & &__wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  & &__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 12px;
+    border: 1px solid getColor(grey, light);
+    border-radius: 8px;
+
+    &--disabled {
+      cursor: default;
+      background: $grey-bg;
+      pointer-events: none;
+    }
+
+    &--prefix {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &--suffix {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &--error {
+      border: 1px solid getColor(red, base);
+
+      #{$this}__max {
+        color: getColor(red, base);
+      }
+    }
+
+    &--focus:not(&--error) {
+      border: 1px solid getColor(blue, base);
+    }
+
+    &:not(&--disabled):not(&--error):not(&--focus):hover {
+      border: 1px solid getColor(grey, hover);
+    }
+  }
+
+  & &__field {
+    height: 100%;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    font-family: $applicature-font-family;
+    outline: none;
+    min-width: 180px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $black;
+
+    &::placeholder {
+      color: getColor(grey, hover);
+      font-family: $applicature-font-family;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  & &__prefix,
+  & &__suffix {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    background: $grey-bg;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: getColor(grey, base);
+    height: 100%;
+    border: 1px solid getColor(grey, light);
+  }
+
+  & &__prefix {
+    border-right: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  & &__suffix {
+    border-left: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  & &__max {
+    display: inline-block;
+    margin-left: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    color: getColor(blue, base);
+
+    &:hover {
+      cursor: pointer;
+      color: getColor(blue, hover);
+    }
+  }
+}

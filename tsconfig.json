@@ -10,6 +10,20 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "target": "es2017",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "paths": {
       "crypto": [
         "./node_modules/crypto-browserify"
@@ -29,35 +43,20 @@
       "os": [
         "./node_modules/os-browserify"
       ],
-      "ngx-web3-components": [
-        "dist/ngx-web3-components/ngx-web3-components",
-        "dist/ngx-web3-components"
+      "@applicature/components": [
+        "dist/applicature/components/applicature-components",
+        "dist/applicature/components"
+      ],
+      "@applicature/styles": [
+        "dist/applicature/styles/applicature-styles",
+        "dist/applicature/styles"
       ]
-    },
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "skipLibCheck": true,
-    "noImplicitAny": false,
-    "strictNullChecks": false,
-    "target": "es2017",
-    "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  },
-  "exclude": [
-    "projects/**/*.spec.ts",
-    "projects/**/*.stories.*"
-  ]
+  }
 }

@@ -1,0 +1,26 @@
+@import "../../../../styles/src/lib/scss/variables";
+@import "../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: inline-block;
+  height: 20px;
+}
+
+.icon {
+  display: inline-block;
+
+  & &__img {
+    width: 20px;
+    height: 20px;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & &__font {
+    font-size: 20px;
+  }
+}

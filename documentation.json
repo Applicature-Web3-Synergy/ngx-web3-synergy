@@ -1,0 +1,753 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "ColorProperties",
+            "id": "interface-ColorProperties-5d4340b891227277a6d43d6f0ad2612baa602ffe8c9b9b31ea3332b4256efe01ab0662391c18fddca17750e50f2b1d4c59c93e57ea0e2e2f8cc0371e8c75f0c9",
+            "file": "projects/applicature/styles/src/lib/colors.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface ColorProperties {\r\n  base: string;\r\n  hover: string;\r\n  light: string;\r\n  dark: string;\r\n  text: string;\r\n  border: string;\r\n  borderHover: string;\r\n  borderFocus: string;\r\n}\r\n\r\nexport const APPLICATURE_COLORS: { [key: string]: ColorProperties } = {\r\n  blue: {\r\n    base: '#4678F0',\r\n    hover: '#608BF2',\r\n    light: '#8CABF6',\r\n    dark: '#3F67C7',\r\n    text: '#FFFFFF',\r\n    border: '#4678F0',\r\n    borderHover: '#608BF2',\r\n    borderFocus: '#3F67C7',\r\n  },\r\n  red: {\r\n    base: '#E84142',\r\n    hover: '#EA5C5E',\r\n    light: '#F0898B',\r\n    dark: '#C03B3C',\r\n    text: '#FFFFFF',\r\n    border: '#E84142',\r\n    borderHover: '#EA5C5E',\r\n    borderFocus: '#C03B3C',\r\n  },\r\n  green: {\r\n    base: '#37CA34',\r\n    hover: '#6BD66B',\r\n    light: '#94E194',\r\n    dark: '#33A830',\r\n    text: '#FFFFFF',\r\n    border: '#37CA34',\r\n    borderHover: '#6BD66B',\r\n    borderFocus: '#33A830',\r\n  },\r\n  orange: {\r\n    base: '#F09643',\r\n    hover: '#F2A45B',\r\n    light: '#F6BE8A',\r\n    dark: '#C77F3C',\r\n    text: '#FFFFFF',\r\n    border: '#F09643',\r\n    borderHover: '#F2A45B',\r\n    borderFocus: '#C77F3C',\r\n  },\r\n  grey: {\r\n    base: '#6D87AC',\r\n    hover: '#BBC7D9',\r\n    light: '#DDE3EC',\r\n    dark: '#5F7492',\r\n    text: '#FFFFFF',\r\n    border: '#6D87AC',\r\n    borderHover: '#BBC7D9',\r\n    borderFocus: '#5F7492',\r\n  },\r\n  white: {\r\n    base: '#FFFFFF',\r\n    hover: '#FFFFFF',\r\n    light: '#FFFFFF',\r\n    dark: '#FFFFFF',\r\n    text: '#222222',\r\n    border: '#FFFFFF',\r\n    borderHover: '#DDE3EC',\r\n    borderFocus: '#608BF2',\r\n  },\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "base",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "border",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "borderFocus",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "borderHover",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "dark",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "hover",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "light",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "text",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        }
+    ],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AlertComponent",
+            "id": "component-AlertComponent-c291393594319e3766b37e8cd350d75719966b19834fc6bf9b3f7db89642b7528a4839d7945ab973de09f82566499d78834ce5b55b002fba7860c6c35f7bcb95",
+            "file": "projects/applicature/components/src/lib/alert/alert.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "applicature-alert",
+            "styleUrls": [
+                "./alert.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./alert.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "'red'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "ApplicatureAlertColor",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "iconPosition",
+                    "defaultValue": "'left'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "ApplicatureAlertIconPosition",
+                    "decorators": []
+                },
+                {
+                    "name": "text",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_alert",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLDivElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 28,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'alert', {static: true}"
+                        }
+                    ],
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';\nimport { APPLICATURE_COLORS, ColorProperties } from '@applicature/styles';\n\nexport type  ApplicatureAlertColor = 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';\n\nexport type  ApplicatureAlertIconPosition = 'left' | 'right';\n\n@Component({\n  selector: 'applicature-alert',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class AlertComponent implements OnInit, OnChanges {\n  @Input()\n  public text!: string;\n\n  @Input()\n  public icon!: string;\n\n  @Input()\n  public iconPosition: ApplicatureAlertIconPosition = 'left';\n\n  @Input()\n  public color: ApplicatureAlertColor = 'red';\n\n  @ViewChild('alert', { static: true })\n  private _alert!: ElementRef<HTMLDivElement>;\n\n  constructor(\n  ) {\n  }\n\n  public ngOnInit(): void {\n    this.ngOnChanges();\n  }\n\n  public ngOnChanges(): void {\n    const { base, text } = APPLICATURE_COLORS[this.color] as ColorProperties;\n    const style = this._alert.nativeElement.style;\n\n    style.setProperty(`--applicature-alert-text`, text);\n    style.setProperty(`--applicature-alert-background`, base);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../../styles/src/lib/scss/variables\";\r\n@import \"../../../../styles/src/lib/scss/functions\";\r\n\r\n:host {\r\n  display: block;\r\n}\r\n\r\n.alert {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-weight: 500;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  padding: 10px;\r\n  color: var(--applicature-alert-text);\r\n  font-family: $applicature-font-family;\r\n  background: var(--applicature-alert-background);\r\n}\r\n",
+                    "styleUrl": "./alert.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 28
+            },
+            "implements": [
+                "OnInit",
+                "OnChanges"
+            ],
+            "templateData": "<div class=\"alert\" #alert>\n  {{ text }}\n</div>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AlertModule",
+            "id": "module-AlertModule-441e45aaff0b7c3d295a7c1a697d063cd66811918d4e0fe68740f6542161348fca65429e5a58b77282ce7f2e26971d99663096435ef5da727bf7ec46428f2a8f",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/applicature/components/src/lib/alert/alert.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { AlertComponent } from './alert.component';\n\n@NgModule({\n  declarations: [\n    AlertComponent,\n  ],\n  imports: [\n    CommonModule,\n  ]\n})\nexport class AlertModule {\n}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AlertComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "APPLICATURE_COLORS",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/styles/src/lib/colors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type",
+                "defaultValue": "{\r\n  blue: {\r\n    base: '#4678F0',\r\n    hover: '#608BF2',\r\n    light: '#8CABF6',\r\n    dark: '#3F67C7',\r\n    text: '#FFFFFF',\r\n    border: '#4678F0',\r\n    borderHover: '#608BF2',\r\n    borderFocus: '#3F67C7',\r\n  },\r\n  red: {\r\n    base: '#E84142',\r\n    hover: '#EA5C5E',\r\n    light: '#F0898B',\r\n    dark: '#C03B3C',\r\n    text: '#FFFFFF',\r\n    border: '#E84142',\r\n    borderHover: '#EA5C5E',\r\n    borderFocus: '#C03B3C',\r\n  },\r\n  green: {\r\n    base: '#37CA34',\r\n    hover: '#6BD66B',\r\n    light: '#94E194',\r\n    dark: '#33A830',\r\n    text: '#FFFFFF',\r\n    border: '#37CA34',\r\n    borderHover: '#6BD66B',\r\n    borderFocus: '#33A830',\r\n  },\r\n  orange: {\r\n    base: '#F09643',\r\n    hover: '#F2A45B',\r\n    light: '#F6BE8A',\r\n    dark: '#C77F3C',\r\n    text: '#FFFFFF',\r\n    border: '#F09643',\r\n    borderHover: '#F2A45B',\r\n    borderFocus: '#C77F3C',\r\n  },\r\n  grey: {\r\n    base: '#6D87AC',\r\n    hover: '#BBC7D9',\r\n    light: '#DDE3EC',\r\n    dark: '#5F7492',\r\n    text: '#FFFFFF',\r\n    border: '#6D87AC',\r\n    borderHover: '#BBC7D9',\r\n    borderFocus: '#5F7492',\r\n  },\r\n  white: {\r\n    base: '#FFFFFF',\r\n    hover: '#FFFFFF',\r\n    light: '#FFFFFF',\r\n    dark: '#FFFFFF',\r\n    text: '#222222',\r\n    border: '#FFFFFF',\r\n    borderHover: '#DDE3EC',\r\n    borderFocus: '#608BF2',\r\n  },\r\n}"
+            },
+            {
+                "name": "Blue",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/styles/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Green",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Grey",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Orange",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Red",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/styles/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<AlertComponent>",
+                "defaultValue": "(args: AlertComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "White",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "ApplicatureAlertColor",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"blue\" | \"red\" | \"green\" | \"orange\" | \"grey\" | \"white\"",
+                "file": "projects/applicature/components/src/lib/alert/alert.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "ApplicatureAlertIconPosition",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"left\" | \"right\"",
+                "file": "projects/applicature/components/src/lib/alert/alert.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/applicature/styles/src/lib/colors.ts": [
+                {
+                    "name": "APPLICATURE_COLORS",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/styles/src/lib/colors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "defaultValue": "{\r\n  blue: {\r\n    base: '#4678F0',\r\n    hover: '#608BF2',\r\n    light: '#8CABF6',\r\n    dark: '#3F67C7',\r\n    text: '#FFFFFF',\r\n    border: '#4678F0',\r\n    borderHover: '#608BF2',\r\n    borderFocus: '#3F67C7',\r\n  },\r\n  red: {\r\n    base: '#E84142',\r\n    hover: '#EA5C5E',\r\n    light: '#F0898B',\r\n    dark: '#C03B3C',\r\n    text: '#FFFFFF',\r\n    border: '#E84142',\r\n    borderHover: '#EA5C5E',\r\n    borderFocus: '#C03B3C',\r\n  },\r\n  green: {\r\n    base: '#37CA34',\r\n    hover: '#6BD66B',\r\n    light: '#94E194',\r\n    dark: '#33A830',\r\n    text: '#FFFFFF',\r\n    border: '#37CA34',\r\n    borderHover: '#6BD66B',\r\n    borderFocus: '#33A830',\r\n  },\r\n  orange: {\r\n    base: '#F09643',\r\n    hover: '#F2A45B',\r\n    light: '#F6BE8A',\r\n    dark: '#C77F3C',\r\n    text: '#FFFFFF',\r\n    border: '#F09643',\r\n    borderHover: '#F2A45B',\r\n    borderFocus: '#C77F3C',\r\n  },\r\n  grey: {\r\n    base: '#6D87AC',\r\n    hover: '#BBC7D9',\r\n    light: '#DDE3EC',\r\n    dark: '#5F7492',\r\n    text: '#FFFFFF',\r\n    border: '#6D87AC',\r\n    borderHover: '#BBC7D9',\r\n    borderFocus: '#5F7492',\r\n  },\r\n  white: {\r\n    base: '#FFFFFF',\r\n    hover: '#FFFFFF',\r\n    light: '#FFFFFF',\r\n    dark: '#FFFFFF',\r\n    text: '#222222',\r\n    border: '#FFFFFF',\r\n    borderHover: '#DDE3EC',\r\n    borderFocus: '#608BF2',\r\n  },\r\n}"
+                }
+            ],
+            "projects/applicature/components/src/lib/alert/alert.stories.ts": [
+                {
+                    "name": "Blue",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Green",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Grey",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Orange",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Red",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<AlertComponent>",
+                    "defaultValue": "(args: AlertComponent) => ({\r\n  props: args,\r\n})"
+                },
+                {
+                    "name": "White",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "projects/applicature/components/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/components/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "projects/applicature/styles/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/styles/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/applicature/styles/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "projects/applicature/components/src/lib/alert/alert.component.ts": [
+                {
+                    "name": "ApplicatureAlertColor",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"blue\" | \"red\" | \"green\" | \"orange\" | \"grey\" | \"white\"",
+                    "file": "projects/applicature/components/src/lib/alert/alert.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                },
+                {
+                    "name": "ApplicatureAlertIconPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"left\" | \"right\"",
+                    "file": "projects/applicature/components/src/lib/alert/alert.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AlertComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Blue",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Green",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Grey",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Orange",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Red",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/lib/alert/alert.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "White",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/components/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/styles/src/lib/colors.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ColorProperties",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/styles/src/lib/colors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "APPLICATURE_COLORS",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/styles/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/applicature/styles/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

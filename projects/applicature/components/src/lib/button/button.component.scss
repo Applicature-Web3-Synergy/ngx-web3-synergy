@@ -1,0 +1,84 @@
+@import "../../../../styles/src/lib/scss/variables";
+@import "../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: block;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 14px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  font-family: $applicature-font-family;
+  color: var(--applicature-button-text);
+  border: 2px solid var(--applicature-button-border);
+  border-radius: var(--applicature-button-radius);
+  background: var(--applicature-button-base);
+
+  $this: &;
+
+  &:hover {
+    background: var(--applicature-button-hover);
+    border: 2px solid var(--applicature-button-borderHover);
+  }
+
+  &:active:focus {
+    background: var(--applicature-button-dark);
+    border: 2px solid var(--applicature-button-borderFocus);
+  }
+
+  &#{$this}--disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  &#{$this}--icon {
+    padding: 10px 12px;
+  }
+
+  &#{$this}--adaptive {
+    width: 100%;
+  }
+
+  &#{$this}--transparent {
+    border: 2px solid transparent;
+    background: transparent;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid var(--applicature-button-borderHover);
+    }
+
+    &:active:focus {
+      background: transparent;
+      border: 2px solid var(--applicature-button-borderFocus);
+    }
+  }
+
+  & &__icon {
+  }
+
+  &:not(&#{$this}--icon) &__left-icon {
+    margin-right: 8px;
+  }
+
+  &:not(&#{$this}--icon) &__right-icon {
+    margin-left: 8px;
+  }
+
+  & mat-progress-spinner {
+    margin-left: 8px;
+  }
+}
+
+::ng-deep .mat-progress-spinner circle,
+::ng-deep .mat-spinner circle {
+  stroke: getColor(blue, base);
+}

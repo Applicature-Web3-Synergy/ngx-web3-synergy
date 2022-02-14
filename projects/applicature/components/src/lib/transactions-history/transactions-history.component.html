@@ -1,0 +1,20 @@
+<applicature-button *ngIf="!(hasFailedTx || hasPendingTx)"
+                    (onClick)="onTransactionsClick()"
+                    appearance="icon"
+                    leftIcon="wcl-icon-recent"
+                    color="white">
+</applicature-button>
+
+<applicature-button [label]="txCount + ' failing'"
+                    *ngIf="hasFailedTx && !hasPendingTx"
+                    (onClick)="onTransactionsClick()"
+                    rightIcon="wcl-icon-fail"
+                    color="red">
+</applicature-button>
+
+<applicature-button *ngIf="hasPendingTx"
+                    [label]="txCount + ' pending'"
+                    [pending]="true"
+                    (onClick)="onTransactionsClick()"
+                    color="white">
+</applicature-button>

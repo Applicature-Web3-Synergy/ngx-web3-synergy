@@ -1,0 +1,12 @@
+<div [ngClass]="classNames">
+  <div class="balance__info">
+    <div class="balance__image">
+      <img src="assets/svg/network/eth.svg" alt="">
+    </div>
+    <span>{{ balance$ | async }} ETH</span>
+  </div>
+  <div #addressRef
+       class="balance__address">
+    <span>{{ address$ | async | shortAddress }}</span>
+  </div>
+</div>

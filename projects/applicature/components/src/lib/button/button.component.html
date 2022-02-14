@@ -1,0 +1,33 @@
+<button #buttonRef
+        [style.height.px]="height"
+        [disabled]="disabled"
+        (click)="onClick($event)"
+        [ngClass]="classNames">
+
+  <ng-container [ngSwitch]="appearance">
+    <ng-container *ngSwitchCase="'icon'">
+      <applicature-icon [icon]="leftIcon || rightIcon"
+                        [color]="color === 'white' ? '#6d87ac' : '#FFF'"
+                        class="button__icon"></applicature-icon>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <applicature-icon *ngIf="leftIcon"
+                        [icon]="leftIcon"
+                        [color]="color === 'white' ? '#6d87ac' : '#FFF'"
+                        class="button__left-icon"></applicature-icon>
+
+      <span class="button__label">{{ label }}</span>
+
+      <applicature-icon *ngIf="!pending && rightIcon"
+                        [icon]="rightIcon"
+                        [color]="color === 'white' ? '#6d87ac' : '#FFF'"
+                        class="button__right-icon"></applicature-icon>
+
+      <mat-progress-spinner *ngIf="pending"
+                            mode="indeterminate"
+                            diameter="20">
+      </mat-progress-spinner>
+    </ng-container>
+  </ng-container>
+</button>

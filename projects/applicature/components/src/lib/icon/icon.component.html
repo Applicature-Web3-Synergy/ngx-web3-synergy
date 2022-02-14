@@ -1,0 +1,9 @@
+<div class="icon">
+  <div class="icon__img">
+    <img *ngIf="isImage else iconRef" [src]="icon" alt="">
+  </div>
+
+  <ng-template #iconRef>
+    <span [style.color]="color" class="icon__font {{ icon }}"></span>
+  </ng-template>
+</div>

@@ -1,0 +1,80 @@
+@import "../../../../../styles/src/lib/scss/variables";
+@import "../../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: block;
+  min-width: 372px;
+  max-width: 372px;
+}
+
+.transfer {
+  display: flex;
+  flex-direction: column;
+  font-family: $applicature-font-family;
+
+  & &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    > h1 {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 1;
+      color: $black;
+      margin: 0;
+    }
+
+    > .wcl-icon-close {
+      cursor: pointer;
+    }
+  }
+
+  & &__input {
+    margin-bottom: 16px;
+  }
+
+  & &__info {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: $black;
+    margin: 0;
+
+    &:last-of-type {
+      margin-bottom: 16px;
+    }
+  }
+
+  & &__progress {
+    background: $grey-bg;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    color: $black;
+  }
+
+  & &__steps {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  ::ng-deep mat-progress-bar.mat-progress-bar {
+    height: 8px;
+    border-radius: 30px;
+
+    .mat-progress-bar-buffer {
+      background-color: #DDE3EC;
+    }
+
+    .mat-progress-bar-background {
+      fill: rgba(255, 255, 255, 0);
+    }
+
+    .mat-progress-bar-fill::after {
+      background: getColor(blue, base);
+    }
+  }
+}

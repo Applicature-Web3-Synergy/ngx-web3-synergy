@@ -20,11 +20,15 @@ pipelines:
             name: Publish NPM packet
             # trigger: manual
             script:
-            - npm install
-            - npm run build
-            - cd dist/ngx-web3-components
-            - npm pack .
-            - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
-            - npm publish --access public
+              - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
+              - npm install
+              - npm run build
+              - cd dist/ngx-web3-components/styles
+              - npm pack .
+              - npm publish --access public
+              - cd -
+              - cd dist/ngx-web3-components/components
+              - npm pack .
+              - npm publish --access public
             caches:
               - node

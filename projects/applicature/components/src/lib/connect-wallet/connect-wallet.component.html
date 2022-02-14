@@ -1,0 +1,65 @@
+<div class="connect-wallet">
+  <ng-container *ngIf="isConnected else connectWallet">
+    <ng-container [ngSwitch]="appearance">
+      <ng-container *ngSwitchCase="'button'">
+        <ng-container *ngTemplateOutlet="networkOptionsRef"></ng-container>
+
+        <div class="connect-wallet__container"
+             [class.connect-wallet__container--translucent]="!(hasPendingTx || hasFailedTx) && showBalance">
+          <span *ngIf="!(hasPendingTx || hasFailedTx) && showBalance"
+                class="connect-wallet__balance">{{ balance$ | async }} ETH</span>
+
+          <applicature-button (onClick)="onAccountButtonClick($event)"
+                              [disabled]="disabled"
+                              [label]="hasPendingTx ? txCount + ' pending' : hasFailedTx ? txCount + ' failing' : (accountAddress | shortAddress)"
+                              [identicon]="!(hasPendingTx || hasFailedTx) ? identicon : null"
+                              [pending]="hasPendingTx"
+                              [rightIcon]="!hasPendingTx && hasFailedTx ? 'wcl-icon-fail' : ''"
+                              [color]="hasFailedTx ? 'red' : 'white'">
+          </applicature-button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'icon'">
+        <applicature-account-balance appearance="transparent"
+                                     class="connect-wallet__account-balance">
+        </applicature-account-balance>
+
+        <applicature-transactions-history *ngIf="showTransactions"
+                                          class="connect-wallet__transactions">
+        </applicature-transactions-history>
+
+        <ng-container *ngTemplateOutlet="networkOptionsRef"></ng-container>
+
+        <div class="connect-wallet__container">
+          <applicature-account-button [account]="account"
+                                      [options]="accountOptions">
+          </applicature-account-button>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchDefault>
+        <applicature-button (onClick)="onDisconnectWalletClick($event)"
+                            [disabled]="disabled"
+                            color="red"
+                            label="Disconnect Wallet">
+        </applicature-button>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+
+  <ng-template #connectWallet>
+    <applicature-button (onClick)="onConnectWalletClick($event)"
+                        [disabled]="disabled"
+                        leftIcon="wcl-icon-wallet"
+                        label="Connect Wallet">
+    </applicature-button>
+  </ng-template>
+</div>
+
+<ng-template #networkOptionsRef>
+  <applicature-network-dropdown [networkOptions]="networkOptions"
+                                class="connect-wallet__networks">
+  </applicature-network-dropdown>
+</ng-template>

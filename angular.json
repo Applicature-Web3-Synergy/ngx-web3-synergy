@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-web3-components": {
+    "@applicature/components": {
       "projectType": "library",
       "schematics": {
         "@schematics/angular:component": {
@@ -14,21 +14,21 @@
           "strict": true
         }
       },
-      "root": "projects/ngx-web3-components",
-      "sourceRoot": "projects/ngx-web3-components/src",
-      "prefix": "lib",
+      "root": "projects/applicature/components",
+      "sourceRoot": "projects/applicature/components/src",
+      "prefix": "applicature",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ngx-web3-components/ng-package.json"
+            "project": "projects/applicature/components/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-web3-components/tsconfig.lib.prod.json"
+              "tsConfig": "projects/applicature/components/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ngx-web3-components/tsconfig.lib.json"
+              "tsConfig": "projects/applicature/components/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -36,14 +36,45 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-web3-components/src/test.ts",
-            "tsConfig": "projects/ngx-web3-components/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-web3-components/karma.conf.js"
+            "main": "projects/applicature/components/src/test.ts",
+            "tsConfig": "projects/applicature/components/tsconfig.spec.json",
+            "karmaConfig": "projects/applicature/components/karma.conf.js"
           }
         }
       }
     },
-    "ngx-web3-components-test": {
+    "@applicature/styles": {
+      "projectType": "library",
+      "root": "projects/applicature/styles",
+      "sourceRoot": "projects/applicature/styles/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/applicature/styles/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/applicature/styles/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/applicature/styles/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/applicature/styles/src/test.ts",
+            "tsConfig": "projects/applicature/styles/tsconfig.spec.json",
+            "karmaConfig": "projects/applicature/styles/karma.conf.js"
+          }
+        }
+      }
+    },
+    "demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -53,25 +84,72 @@
           "strict": true
         }
       },
-      "root": "projects/ngx-web3-components-test",
-      "sourceRoot": "projects/ngx-web3-components-test/src",
+      "root": "projects/demo",
+      "sourceRoot": "projects/demo/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-web3-components-test",
-            "index": "projects/ngx-web3-components-test/src/index.html",
-            "main": "projects/ngx-web3-components-test/src/main.ts",
-            "polyfills": "projects/ngx-web3-components-test/src/polyfills.ts",
-            "tsConfig": "projects/ngx-web3-components-test/tsconfig.app.json",
+            "allowedCommonJsDependencies": [
+              "@babel/runtime/helpers/slicedToArray",
+              "@cvbb/eth-keyring",
+              "@ensdomains/address-encoder",
+              "@ensdomains/ensjs",
+              "@ethereumjs/common",
+              "@ethereumjs/tx",
+              "@gnosis.pm/safe-apps-provider",
+              "@gnosis.pm/safe-apps-sdk",
+              "@ledgerhq/devices/lib/hid-framing",
+              "@metamask/jazzicon",
+              "@metamask/obs-store",
+              "@shapeshiftoss/hdwallet-core",
+              "@shapeshiftoss/hdwallet-keepkey-webusb",
+              "@walletconnect/encoding",
+              "@walletconnect/environment",
+              "@walletconnect/qrcode-modal",
+              "@walletconnect/socket-transport",
+              "@walletconnect/web3-provider",
+              "@walletconnect/window-metadata",
+              "authereum",
+              "crypto",
+              "eth-lattice-keyring",
+              "eth-provider",
+              "eth-rpc-errors",
+              "eth-sig-util",
+              "ethereumjs-common",
+              "ethereumjs-tx",
+              "ethereumjs-util",
+              "ethereumjs-util",
+              "gridplus-sdk",
+              "pump",
+              "query-string",
+              "rtcpeerconnection-shim",
+              "sturdy-websocket",
+              "trezor-connect",
+              "tweetnacl",
+              "walletlink",
+              "web3",
+              "web3-provider-engine",
+              "web3-provider-engine/subproviders/cache",
+              "web3-provider-engine/subproviders/filters",
+              "web3-provider-engine/subproviders/fixture",
+              "web3-provider-engine/subproviders/hooked-wallet",
+              "web3-provider-engine/subproviders/nonce-tracker",
+              "web3-provider-engine/subproviders/subscriptions"
+            ],
+            "outputPath": "dist/demo",
+            "index": "projects/demo/src/index.html",
+            "main": "projects/demo/src/main.ts",
+            "polyfills": "projects/demo/src/polyfills.ts",
+            "tsConfig": "projects/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/ngx-web3-components-test/src/favicon.ico",
-              "projects/ngx-web3-components-test/src/assets"
+              "projects/demo/src/favicon.ico",
+              "projects/demo/src/assets"
             ],
             "styles": [
-              "projects/ngx-web3-components-test/src/styles.scss"
+              "projects/demo/src/styles.scss"
             ],
             "scripts": []
           },
@@ -80,19 +158,19 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1mb",
-                  "maximumError": "10mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "10kb",
-                  "maximumError": "30kb"
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
               ],
               "fileReplacements": [
                 {
-                  "replace": "projects/ngx-web3-components-test/src/environments/environment.ts",
-                  "with": "projects/ngx-web3-components-test/src/environments/environment.prod.ts"
+                  "replace": "projects/demo/src/environments/environment.ts",
+                  "with": "projects/demo/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -112,10 +190,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-web3-components-test:build:production"
+              "browserTarget": "demo:build:production"
             },
             "development": {
-              "browserTarget": "ngx-web3-components-test:build:development"
+              "browserTarget": "demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -123,23 +201,23 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-web3-components-test:build"
+            "browserTarget": "demo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-web3-components-test/src/test.ts",
-            "polyfills": "projects/ngx-web3-components-test/src/polyfills.ts",
-            "tsConfig": "projects/ngx-web3-components-test/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-web3-components-test/karma.conf.js",
+            "main": "projects/demo/src/test.ts",
+            "polyfills": "projects/demo/src/polyfills.ts",
+            "tsConfig": "projects/demo/tsconfig.spec.json",
+            "karmaConfig": "projects/demo/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/ngx-web3-components-test/src/favicon.ico",
-              "projects/ngx-web3-components-test/src/assets"
+              "projects/demo/src/favicon.ico",
+              "projects/demo/src/assets"
             ],
             "styles": [
-              "projects/ngx-web3-components-test/src/styles.scss"
+              "projects/demo/src/styles.scss"
             ],
             "scripts": []
           }
@@ -147,5 +225,5 @@
       }
     }
   },
-  "defaultProject": "ngx-web3-components"
+  "defaultProject": "@applicature/components"
 }

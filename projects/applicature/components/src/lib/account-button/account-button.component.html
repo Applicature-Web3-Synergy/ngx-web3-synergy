@@ -1,0 +1,51 @@
+<applicature-avatar cdkOverlayOrigin
+                    #networkOptionsTrigger="cdkOverlayOrigin"
+                    [src]="account?.image"
+                    [size]="size"
+                    (click)="isOptionsOpen=!isOptionsOpen">
+</applicature-avatar>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOffsetY]="12"
+  [cdkConnectedOverlayOrigin]="networkOptionsTrigger"
+  [cdkConnectedOverlayOpen]="isOptionsOpen">
+  <ul class="options">
+    <li class="options__header">Connected with Metamask</li>
+    <li class="options__header">
+      <div class="user-info">
+        <applicature-avatar [src]="account?.image"
+                            [size]="48"
+                            class="user-info__avatar">
+        </applicature-avatar>
+
+        <div class="user-info__name">
+          <h1>{{ account?.name || (accountAddress | shortAddress) }}</h1>
+          <span *ngIf="account?.name">{{ accountAddress | shortAddress }}</span>
+        </div>
+
+        <span [cdkCopyToClipboard]="accountAddress"
+              class="user-info__copy wcl-icon-copy"></span>
+      </div>
+    </li>
+    <li *ngFor="let option of options"
+        (click)="onOptionClick(option)"
+        [class.options__item--disabled]="option.disabled"
+        class="options__item">
+      <span class="options__name">{{ option.name }}</span>
+    </li>
+    <li class="options__footer">
+      <applicature-button [adaptive]="true"
+                          (onClick)="onChangeWalletProviderClick()"
+                          label="Change wallet provider"
+                          class="options__button">
+      </applicature-button>
+      <applicature-button [adaptive]="true"
+                          (onClick)="onDisconnectClick()"
+                          label="Disconnect"
+                          color="red"
+                          class="options__button">
+      </applicature-button>
+    </li>
+  </ul>
+</ng-template>

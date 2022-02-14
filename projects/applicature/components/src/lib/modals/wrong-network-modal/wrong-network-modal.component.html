@@ -1,0 +1,23 @@
+<div class="wrong-network">
+  <span (click)="onCloseClick()"
+        class="wrong-network__close wcl-icon-close"></span>
+
+  <span class="wrong-network__fail wcl-icon-fail"></span>
+
+  <h1 class="wrong-network__header">{{ data.header }}</h1>
+
+  <div class="wrong-network__message">{{ data.message }}</div>
+
+  <ng-container [ngSwitch]="data.appearance">
+    <ng-container *ngSwitchCase="'switch'">
+      <applicature-button [label]="data.switchLabel"
+                          (onClick)="onSwitchNetworkClick()"></applicature-button>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'disconnect'">
+      <applicature-button label="Disconnect"
+                          color="red"
+                          (onClick)="onDisconnectClick()"></applicature-button>
+    </ng-container>
+  </ng-container>
+</div>

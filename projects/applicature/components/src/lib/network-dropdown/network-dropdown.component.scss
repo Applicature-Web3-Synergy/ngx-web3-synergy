@@ -1,0 +1,71 @@
+@import "../../../../styles/src/lib/scss/variables";
+@import "../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: inline-block;
+}
+
+.network-options {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: $applicature-font-family;
+  min-width: 180px;
+  padding: 8px 0;
+  background: $white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(56, 64, 75, 0.1);
+  list-style-type: none;
+
+  $this: &;
+
+  & &__header {
+    display: inline-block;
+    padding: 0 12px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: getColor(grey, base);
+  }
+
+  & &__item {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 8px 12px;
+
+    &:hover {
+      cursor: pointer;
+      background: $grey-bg;
+    }
+
+    &--disabled {
+      cursor: default;
+      opacity: .5;
+      pointer-events: none;
+    }
+  }
+
+  & &__img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & &__name {
+    display: inline-block;
+    margin-right: auto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: $black;
+  }
+}

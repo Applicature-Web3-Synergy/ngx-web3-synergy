@@ -1,0 +1,18 @@
+@import "../../../../styles/src/lib/scss/variables";
+@import "../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: inline-block;
+}
+
+.avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  background: getColor(grey, hover);
+
+  & &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}

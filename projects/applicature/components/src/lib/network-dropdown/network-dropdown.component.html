@@ -1,0 +1,30 @@
+<applicature-button cdkOverlayOrigin
+                    #networkOptionsTrigger="cdkOverlayOrigin"
+                    [label]="isWrongNetwork ? 'Wrong Network' : currentNetwork?.name"
+                    [color]="isWrongNetwork ? 'red' : 'white'"
+                    [leftIcon]="isWrongNetwork ? 'wcl-icon-wrong' : currentNetwork?.icon"
+                    [rightIcon]="isOptionsOpen ? 'wcl-icon-chevron-up' : 'wcl-icon-chevron-down'"
+                    (onClick)="isOptionsOpen=!isOptionsOpen">
+</applicature-button>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOffsetY]="12"
+  [cdkConnectedOverlayOrigin]="networkOptionsTrigger"
+  [cdkConnectedOverlayOpen]="isOptionsOpen">
+  <ul class="network-options">
+    <li class="network-options__header">Select a Network</li>
+    <li *ngFor="let option of networkOptions"
+        (click)="onNetworkOptionClick(option)"
+        [class.network-options__item--disabled]="option.disabled"
+        class="network-options__item">
+      <div class="network-options__img">
+        <img [src]="option.icon" [alt]="option.name">
+      </div>
+
+      <span class="network-options__name">{{ option.name }}</span>
+
+      <i [class.wcl-icon-active]="option.isActive"></i>
+    </li>
+  </ul>
+</ng-template>

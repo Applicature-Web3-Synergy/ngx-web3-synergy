@@ -1,0 +1,157 @@
+@import "variables";
+@import "functions";
+
+%block-visibility {
+  display: none;
+  visibility: hidden;
+}
+
+.bn-onboard-custom {
+  z-index: 9999;
+
+  $this: &;
+
+  // The full page modal container.
+  &.bn-onboard-modal {
+    font-family: $applicature-font-family;
+  }
+
+  // The container for the modal content.
+  &.bn-onboard-modal-content {
+    min-width: 420px;
+    padding: 20px;
+
+    #{$this}.bn-onboard-select-info-container {
+      @extend %block-visibility;
+    }
+  }
+
+  // The header of the modal
+  &.bn-onboard-modal-content-header {
+    margin-bottom: 16px;
+
+    #{$this}.bn-onboard-modal-content-header-icon {
+      @extend %block-visibility;
+    }
+  }
+
+  // The heading within the header.
+  &.bn-onboard-modal-content-header-heading {
+    margin-left: 0;
+    font-size: 20px;
+    color: $black;
+  }
+
+  // The wallet select modal description.
+  &.bn-onboard-select-description {
+    @extend %block-visibility;
+  }
+
+  // The unordered list of wallets.
+  & &.bn-onboard-modal-select-wallets {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+
+    > li {
+      width: 100%;
+      padding: 0;
+      margin: 0 0 8px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    > div[class*="svelte-"] {
+      @extend %block-visibility;
+    }
+  }
+
+  // The wallet button.
+  &.bn-onboard-icon-button {
+    width: 100%;
+    height: 56px;
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: 1px solid getColor(grey, light);
+    margin: 0;
+
+    &:hover,
+    &.bn-onboard-selected-wallet {
+      box-shadow: unset;
+      background: getColor(grey, light);
+    }
+
+    > span {
+      margin-left: 16px;
+    }
+
+    > span > i {
+      font-size: 0;
+      font-style: normal;
+      text-decoration: none;
+
+      &:before {
+        content: "\e901";
+        font-size: 24px;
+        font-family: 'wcl-icons';
+        color: getColor(green, base);
+      }
+    }
+
+    > div[class*="svelte-"] {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  // Selected wallet modal content.
+  .bn-onboard-modal-selected-wallet {
+  }
+
+  // All modal buttons
+  &.bn-onboard-prepare-button,
+  &.bn-onboard-prepare-button.cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: getColor(blue, text);
+    background: getColor(blue, base);
+    border: 2px solid getColor(blue, border);
+    outline: none;
+    font-family: $applicature-font-family;
+
+    &:hover {
+      background: getColor(blue, hover);
+      border: 2px solid getColor(blue, borderHover);
+    }
+
+    &:focus {
+      background: getColor(blue, dark);
+      border: 2px solid getColor(blue, borderFocus);
+    }
+  }
+
+  &.bn-onboard-prepare-description {
+    font-size: 14px;
+    color: $black;
+  }
+
+  &.bn-onboard-prepare-error {
+    margin-bottom: 24px;
+    font-size: 14px;
+    color: getColor(red, base);
+    padding: 12px 16px;
+  }
+
+  &.bn-onboard-modal-content-close {
+    width: 24px;
+    height: 24px;
+  }
+}

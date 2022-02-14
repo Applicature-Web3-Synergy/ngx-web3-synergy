@@ -1,0 +1,124 @@
+<div style="padding: 50px 100px 100px;">
+  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
+    <applicature-connect-wallet [showBalance]="true"
+                                [networkOptions]="networkOptions">
+    </applicature-connect-wallet>
+  </div>
+  <br>
+  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
+    <applicature-connect-wallet [showBalance]="true"
+                                [showTransactions]="true"
+                                [networkOptions]="networkOptions"
+                                [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
+                                [accountOptions]="accountOptions"
+                                appearance="icon">
+    </applicature-connect-wallet>
+  </div>
+  <br>
+  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
+    <applicature-button (onClick)="onOpenTransferModalClick()"
+                        label="Open Transfer Modal"></applicature-button>
+    <br>
+  </div>
+  <br>
+  <br>
+
+  <div style="background: #fff;padding: 50px;">
+    <applicature-input label="Field Label"
+                       suffix="USDT"
+                       hint="This is a message"
+                       placeholder="Enter"
+                       [max]="100">
+    </applicature-input>
+    <br>
+    <br>
+    <applicature-input label="Field Label"
+                       suffix="USDT"
+                       hint="This is a message"
+                       placeholder="Enter"
+                       [max]="100"
+                       [errors]="['This is an error message']">
+    </applicature-input>
+    <br>
+    <br>
+    <applicature-input label="Field Label"
+                       suffix="USDT"
+                       hint="This is a message"
+                       placeholder="Enter"
+                       [max]="100"
+                       [disabled]="true">
+    </applicature-input>
+  </div>
+  <br>
+  <br>
+
+  <applicature-alert text="Alert text goes here" color="red" icon="wcl-icon-fail"
+                     iconPosition="left"></applicature-alert>
+  <br>
+
+  <applicature-alert text="Alert text goes here" color="green" icon="wcl-icon-fail"
+                     iconPosition="right"></applicature-alert>
+  <br>
+
+  <applicature-alert text="Alert text goes here" color="blue" icon="wcl-icon-fail"
+                     iconPosition="left"></applicature-alert>
+  <br>
+
+  <applicature-alert text="Alert text goes here" color="orange" icon="wcl-icon-fail"
+                     iconPosition="right"></applicature-alert>
+  <br>
+
+  <applicature-alert text="Alert text goes here" color="grey" icon="wcl-icon-fail"
+                     iconPosition="left"></applicature-alert>
+  <br>
+
+  <applicature-alert text="Alert text goes here" color="white" icon="wcl-icon-fail"
+                     iconPosition="right"></applicature-alert>
+  <br>
+
+  <applicature-avatar src="assets/images/default-avatar.png"></applicature-avatar>
+  <br>
+
+  <applicature-avatar src="assets/images/default-avatar.png" [size]="48"></applicature-avatar>
+  <br>
+
+  <applicature-button label="Button" [disabled]="true"></applicature-button>
+  <br>
+
+  <applicature-button label="Button"></applicature-button>
+  <br>
+
+  <applicature-button label="Button" leftIcon="wcl-icon-star"></applicature-button>
+  <br>
+
+  <applicature-button label="Button" rightIcon="wcl-icon-chevron-down"></applicature-button>
+  <br>
+
+  <applicature-button label="Button" leftIcon="wcl-icon-star" rightIcon="wcl-icon-chevron-down"></applicature-button>
+  <br>
+
+  <applicature-button appearance="icon" leftIcon="wcl-icon-recent" color="white"></applicature-button>
+  <br>
+
+  <applicature-button label="Ethereum" leftIcon="wcl-icon-star" rightIcon="wcl-icon-chevron-down"
+                      color="white"></applicature-button>
+  <br>
+
+  <applicature-button label="0x643...5456" [identicon]="identicon" color="white"></applicature-button>
+  <br>
+
+  <applicature-button label="Ethereum" leftIcon="wcl-icon-star" [borderRadius]="0" color="white"></applicature-button>
+  <br>
+
+  <applicature-button label="Ethereum" leftIcon="wcl-icon-star" [borderRadius]="0" [transparent]="true"
+                      color="white"></applicature-button>
+  <br>
+
+  <applicature-button label="1 pending" color="white" [pending]="true"></applicature-button>
+  <br>
+
+  <applicature-button label="Ethereum" [adaptive]="true"></applicature-button>
+  <br>
+  <br>
+
+</div>
