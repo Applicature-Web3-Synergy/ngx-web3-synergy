@@ -80,7 +80,7 @@ export class WalletConnectService {
         return await this._onboard.walletSelect(previouslySelectedWallet);
       }
 
-      return resolve();
+      return await this._initWeb3(resolve);
     });
   }
 
@@ -122,7 +122,7 @@ export class WalletConnectService {
         console.log('address: ', address);
         this._accountsChanged$.next(address ? [address] : []);
 
-        await this._initWeb3(selectedWallet, resolve);
+        await this._initWeb3(resolve, selectedWallet);
       },
       network: (networkId: number) => {
         console.log('networkId: ', networkId);
@@ -134,7 +134,7 @@ export class WalletConnectService {
         console.log('wallet: ', wallet);
         selectedWallet = wallet;
 
-        await this._initWeb3(selectedWallet, resolve);
+        await this._initWeb3(resolve, selectedWallet);
       },
       balance: (balance: string) => {
         console.log('balance: ', balance);
@@ -143,17 +143,16 @@ export class WalletConnectService {
     };
   }
 
-  private async _initWeb3(selectedWallet: Wallet, resolve: () => void): Promise<void> {
-    const provider = Object.assign({}, selectedWallet.provider);
-    const accountAddress = provider?.selectedAddress;
+  private async _initWeb3(resolve: () => void, selectedWallet?: Wallet): Promise<void> {
+    const provider = Object.assign({}, selectedWallet?.provider || {});
 
-    if (!accountAddress || !selectedWallet?.name || this.web3) {
-      return;
+    if (!provider?.selectedAddress || !selectedWallet?.name) {
+      this._web3 = new Web3();
+    } else {
+      localStorage.setItem(APPLICATURE_CONNECTED_WALLET_NAME, selectedWallet.name);
+
+      this._web3 = new Web3(selectedWallet.provider);
     }
-
-    this._web3 = new Web3(selectedWallet.provider);
-
-    localStorage.setItem(APPLICATURE_CONNECTED_WALLET_NAME, selectedWallet.name);
 
     this._handleEthEvents();
 
@@ -189,6 +188,6 @@ export class WalletConnectService {
   ): Promise<T> {
     const eth = (window as any).ethereum as Ethereum;
 
-    return eth.request({ method, params});
+    return eth.request({ method, params });
   }
 }
