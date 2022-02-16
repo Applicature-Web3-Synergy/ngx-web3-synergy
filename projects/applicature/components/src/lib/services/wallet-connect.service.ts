@@ -98,9 +98,7 @@ export class WalletConnectService {
     return !!state.address;
   }
 
-  public disconnectWallet(): void {
-    this._web3 = undefined;
-
+  public async disconnectWallet(): Promise<void> {
     this._onboard.walletReset();
 
     localStorage.removeItem(APPLICATURE_CONNECTED_WALLET_NAME);

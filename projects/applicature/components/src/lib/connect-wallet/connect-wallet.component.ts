@@ -6,6 +6,8 @@ import {
   ChangeDetectorRef,
   OnDestroy,
   ElementRef,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, Subscription } from 'rxjs';
@@ -50,6 +52,12 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
 
   @Input()
   public accountOptions!: AccountOption[];
+
+  @Output('onConnect')
+  public onConnectWalletEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  @Output('onDisconnect')
+  public onDisconnectWalletEmitter: EventEmitter<any> = new EventEmitter<any>();
 
   public accountAddress: string;
   public identicon: HTMLDivElement;
@@ -140,19 +148,23 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onConnectWalletClick(event?: any): void {
+  public async onConnectWalletClick(event?: any): Promise<void> {
     if (this.disabled) {
       return;
     }
 
-    this._walletConnectService.connectWallet();
+    const isConnected = await this._walletConnectService.connectWallet();
+
+    this.onConnectWalletEmitter.emit(isConnected);
   }
 
-  public onDisconnectWalletClick(event?: any): void {
+  public async onDisconnectWalletClick(event?: any): Promise<void> {
     if (this.disabled) {
       return;
     }
 
-    this._walletConnectService.disconnectWallet();
+    await this._walletConnectService.disconnectWallet();
+
+    this.onDisconnectWalletEmitter.emit();
   }
 }
