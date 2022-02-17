@@ -1,24 +1,112 @@
-# Components
+## Components
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.0.
+`npm i @applicature/styles @applicature/components`
 
-## Code scaffolding
+- styles.scss
 
-Run `ng generate component component-name --project components` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project components`.
-> Note: Don't forget to add `--project components` or else it will be added to the default project in your `angular.json` file. 
+<pre><code>@import "~node_modules/@applicature/styles/src/lib/scss/styles";</code></pre>
 
-## Build
+- polyfills.ts
 
-Run `ng build components` to build the project. The build artifacts will be stored in the `dist/` directory.
+<pre><code>
+import { Ethereum } from '@applicature/components';
+import { Buffer } from 'buffer';
+import process from 'process';  // Included with Angular CLI.
+import Web3 from 'web3';
 
-## Publishing
+declare global {
+  interface Window {
+    ethereum: Ethereum;
+    global: any;
+    web3: Web3;
+  }
+}
 
-After building your library with `ng build components`, go to the dist folder `cd dist/components` and run `npm publish`.
+window.process = process;
+window.global = window;
+window.global.Buffer = global.Buffer || Buffer;
+</code></pre>
 
-## Running unit tests
+- app.module.ts
 
-Run `ng test components` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<pre><code>
+const wallets: Array<WalletModule | WalletInitOptions> = [
+  {
+    walletName: 'metamask',
+    preferred: true,
+  },
+  {
+    walletName: 'walletConnect',
+    infuraKey: 'INFURA_KEY',
+    preferred: true,
+  },
+];
 
-## Further help
+const networks = {
+  kovanTestnet: 42,
+}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+export function initWalletServiceFactory(
+  walletConnectService: WalletConnectService,
+): () => Promise<void> {
+  return () => walletConnectService.initialize({
+    networkId: networks.kovanTestnet,
+    walletSelect: { wallets },
+  });
+}
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    WalletConnectModule.forRoot(),
+  ],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initWalletServiceFactory,
+      deps: [WalletConnectService],
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+</code>
+</pre>
+
+BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default. This is no longer the case
+for Angular 13+. Verify if you need this module and configure a polyfill for it.
+
+`npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify`
+
+- tsconfig.app.json
+
+<pre>
+<code>
+"paths": {
+  "crypto": [
+    "./node_modules/crypto-browserify"
+  ],
+  "stream": [
+    "./node_modules/stream-browserify"
+  ],
+  "assert": [
+    "./node_modules/assert"
+  ],
+  "http": [
+    "./node_modules/stream-http"
+  ],
+  "https": [
+    "./node_modules/https-browserify"
+  ],
+  "os": [
+    "./node_modules/os-browserify"
+  ]
+}
+</code></pre>
