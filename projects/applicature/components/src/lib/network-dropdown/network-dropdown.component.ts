@@ -8,7 +8,8 @@ import {
   OnInit,
   SimpleChanges
 } from '@angular/core';
-import { filter, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 import { Ethereum, NetworkOption } from '../interfaces';
 

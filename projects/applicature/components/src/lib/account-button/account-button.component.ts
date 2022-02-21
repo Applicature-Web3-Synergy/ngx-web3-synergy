@@ -91,7 +91,7 @@ export class AccountButtonComponent implements OnInit {
   public onChangeWalletProviderClick(): void {
     this._closeOptions();
 
-    this._walletConnectService.connectWallet()
+    this._walletConnectService.connectWallet(true)
       .subscribe();
   }
 

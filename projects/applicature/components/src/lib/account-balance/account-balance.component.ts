@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { generateJazzicon, normalizeBalance } from '../helpers';
 import { WalletConnectService } from '../services';
 

@@ -1,7 +1,7 @@
 # Applicature Univarsal Components
 This library can help you to develop Blockchain projects easily.
 <br>
-This library supports an Angular 13 version.
+For now, this library supports only Angular 13 version. We will add support lower versions int the future
 
 ## Instaling library
 `npm i @applicature/styles @applicature/components`
@@ -109,9 +109,6 @@ Solution:
             ],
             "os": [
               "./node_modules/os-browserify"
-            ],
-            "@angular/*": [
-              "./node_modules/@angular/*"
             ]
           }
         }
@@ -137,20 +134,6 @@ This is no longer the case. Verify if you need this module and configure a polyf
       }
     }
     </code></pre>
-  
- - Other: `tsconfig.app.json`
-    <pre><code>
-    {
-      ...,
-      compilerOptions: {
-      path: {
-        ...,
-        "@angular/*": [
-          "./node_modules/@angular/*"
-        ]
-      }
-    }
-    </code></pre>
 
 ## How to use
  - app.module.ts
@@ -163,7 +146,7 @@ const wallets: Array<WalletModule | WalletInitOptions> = [
   },
   {
     walletName: 'walletConnect',
-    infuraKey: 'INFURA_KEY',
+    infuraKey: `${YOUR_INFURA_KEY}`,
     preferred: true,
   },
 ];
@@ -205,3 +188,70 @@ export function initWalletServiceFactory(
 export class AppModule { }
 </code>
 </pre>
+
+## WARNINGS
+You might need to add `allowedCommonJsDependencies` to `angular.json` file:
+<pre><code>
+{
+  ...,
+  "projects": {
+    ...,
+    "YOUR_PROJECT_NAME": {
+        ...,
+      "architect": {
+        "build": {
+          ...,
+          "options": {
+            ...,
+            "allowedCommonJsDependencies": [
+              "@metamask/jazzicon",
+              "web3",
+              "tweetnacl",
+              "ethereumjs-util",
+              "ethereumjs-common",
+              "rtcpeerconnection-shim",
+              "gridplus-sdk",
+              "buffer",
+              "sturdy-websocket",
+              "walletlink",
+              "@walletconnect/web3-provider",
+              "trezor-connect",
+              "@ensdomains/ensjs",
+              "eth-sig-util",
+              "ethereumjs-tx",
+              "eth-lattice-keyring",
+              "@ethereumjs/tx",
+              "@ethereumjs/common",
+              "@shapeshiftoss/hdwallet-keepkey-webusb",
+              "@shapeshiftoss/hdwallet-core",
+              "@gnosis.pm/safe-apps-sdk",
+              "@gnosis.pm/safe-apps-provider",
+              "eth-provider",
+              "@cvbb/eth-keyring",
+              "authereum",
+              "web3-provider-engine/subproviders/subscription",
+              "web3-provider-engine/subproviders/nonce-tracker",
+              "web3-provider-engine/subproviders/hooked-wallet",
+              "web3-provider-engine/subproviders/fixture",
+              "web3-provider-engine/subproviders/filters",
+              "web3-provider-engine/subproviders/cache",
+              "web3-provider-engine",
+              "@walletconnect/qrcode-modal",
+              "query-string",
+              "@walletconnect/environment",
+              "@walletconnect/socket-transport",
+              "@walletconnect/window-metadata",
+              "pump",
+              "eth-rpc-errors",
+              "@metamask/obs-store",
+              "@ledgerhq/devices/lib/hid-framing",
+              "@ensdomains/address-encoder",
+              "@babel/runtime/helpers/slicedToArray"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
