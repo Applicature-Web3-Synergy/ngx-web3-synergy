@@ -1,12 +1,21 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { generateJazzicon, WalletConnectService, NetworkOption, AccountOption, TransferModalComponent, TransferModalData } from '@applicature/components';
+import {
+  generateJazzicon,
+  WalletConnectService,
+  NetworkOption,
+  AccountOption,
+  TransferModalComponent,
+  TransferModalData,
+  DialogService
+} from '@applicature/components';
+import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   public identicon!: HTMLDivElement;
@@ -15,46 +24,56 @@ export class AppComponent implements OnInit {
       icon: 'assets/svg/network/eth.svg',
       name: 'Ethereum',
       chainId: '0x1',
-      isActive: false,
+      isActive: false
     },
     {
       icon: 'assets/svg/network/eth.svg',
       name: 'Kovan',
       chainId: '0x2a',
-      isActive: false,
+      isActive: false
     },
     {
       icon: 'assets/svg/network/bsc.svg',
       name: 'BSC',
       chainId: '0x38',
-      isActive: false,
+      isActive: false
     },
     {
       icon: 'assets/svg/network/polygon.svg',
       name: 'Polygon',
       chainId: '0x89',
-      isActive: false,
+      isActive: false
     },
     {
       icon: 'assets/svg/network/avax.svg',
       name: 'Avalanche',
       chainId: '0xa86a',
-      isActive: false,
-    },
+      isActive: false
+    }
   ];
   public accountOptions: AccountOption[] = [
     { name: 'My Account', id: 1 },
     { name: 'Some menu Item', id: 2 },
-    { name: 'Some menu Item', id: 3 },
+    { name: 'Some menu Item', id: 3 }
   ];
 
   constructor(
     private _matDialog: MatDialog,
     private _walletConnectService: WalletConnectService,
+    private _dialogService: DialogService
   ) {
+
   }
 
   public ngOnInit(): void {
+    const ref = this._dialogService.open<DialogTestComponent>(DialogTestComponent, {
+      data: { message: 'I am a dynamic component!' }
+    });
+
+    ref.afterClosed.subscribe(result => {
+      console.log('Dialog closed', result);
+    });
+
     this.identicon = generateJazzicon('0x6FF69D870c84a9D7F6c12095313F18F883A77f1D');
 
     this._walletConnectService.accountsChanged$
@@ -99,7 +118,7 @@ export class AppComponent implements OnInit {
       },
       confirm: () => {
         return Promise.resolve();
-      },
+      }
     };
 
     config.panelClass = 'applicature-mat-dialog';

@@ -8,40 +8,43 @@ import {
   ButtonModule,
   InputModule,
   WalletConnectModule,
-  WalletConnectService
+  WalletConnectService,
+  DialogModule
 } from '@applicature/components';
 import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces';
 
 import { AppComponent } from './app.component';
+import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
 
 const wallets: Array<WalletModule | WalletInitOptions> = [
   {
     walletName: 'metamask',
-    preferred: true,
+    preferred: true
   },
   {
     walletName: 'walletConnect',
     infuraKey: 'INFURA_KEY',
-    preferred: true,
-  },
+    preferred: true
+  }
 ];
 
 const networks = {
-  kovanTestnet: 42,
-}
+  kovanTestnet: 42
+};
 
 export function initWalletServiceFactory(
-  walletConnectService: WalletConnectService,
+  walletConnectService: WalletConnectService
 ): () => Promise<void> {
   return () => walletConnectService.initialize({
     networkId: networks.kovanTestnet,
-    walletSelect: { wallets },
+    walletSelect: { wallets }
   });
 }
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogTestComponent
   ],
   imports: [
     BrowserModule,
@@ -51,15 +54,19 @@ export function initWalletServiceFactory(
     AvatarModule,
     ButtonModule,
     InputModule,
-    WalletConnectModule.forRoot(),
+    DialogModule,
+    WalletConnectModule.forRoot()
   ],
   providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: initWalletServiceFactory,
       deps: [WalletConnectService],
-      multi: true,
-    },
+      multi: true
+    }
+  ],
+  entryComponents: [
+    DialogTestComponent
   ],
   bootstrap: [AppComponent]
 })

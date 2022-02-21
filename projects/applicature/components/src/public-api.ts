@@ -33,6 +33,8 @@ export * from './lib/account-button/account-button.module';
 export * from './lib/transactions-history/transactions-history.component';
 export * from './lib/transactions-history/transactions-history.module';
 
+export * from './lib/dialog';
+
 export * from './lib/modals/account-modal/account-modal.component';
 export * from './lib/modals/transactions-history-modal/transactions-history-modal.component';
 export * from './lib/modals/transfer-modal/transfer-modal.component';
