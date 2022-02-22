@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import {
   AccountOption,
   DIALOG_POSITIONS,
@@ -62,7 +61,6 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
-    private _matDialog: MatDialog,
     private _walletConnectService: WalletConnectService,
     private _dialogService: DialogService
   ) {

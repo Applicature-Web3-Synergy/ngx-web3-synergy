@@ -1,22 +1,22 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
-  Input,
   ChangeDetectorRef,
-  OnDestroy,
+  Component,
   ElementRef,
-  Output,
   EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, Subscription } from 'rxjs';
-import { AccountData, AccountOption } from '../account-button/account-button.component';
-import { TransactionStatus } from '../enums';
 
+import { AccountData, AccountOption } from '../account-button/account-button.component';
+import { DialogService } from '../dialog';
+import { TransactionStatus } from '../enums';
 import { generateJazzicon, normalizeBalance } from '../helpers';
 import { NetworkOption } from '../interfaces';
-import { AccountModalComponent } from '../modals/account-modal/account-modal.component';
+import { AccountModalComponent, AccountModalData } from '../modals';
 import { TransactionService } from '../services/transaction.service';
 import { WalletConnectService } from '../services/wallet-connect.service';
 
@@ -70,7 +70,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _matDialog: MatDialog,
+    private _dialogService: DialogService,
     private _cdr: ChangeDetectorRef,
     private _elementRef: ElementRef<HTMLElement>,
     private _transactionService: TransactionService,
@@ -125,30 +125,32 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
     }
   }
 
-  public onAccountButtonClick(event: any): void {
+  public onAccountButtonClick(): void {
     if (this.disabled) {
       return;
     }
 
-    const modal = this._matDialog.open(AccountModalComponent, {
-      data: {
-        header: 'Account',
-        change: () => {
-          modal.close();
+    const data: AccountModalData = {
+      header: 'Account',
+      change: () => {
+        modal.close();
 
-          this.onConnectWalletClick();
-        },
-        disconnect: () => {
-          this.onDisconnectWalletClick();
-
-          modal.close();
-        },
+        this.onConnectWalletClick();
       },
-      panelClass: 'applicature-mat-dialog',
+      disconnect: () => {
+        this.onDisconnectWalletClick();
+
+        modal.close();
+      },
+    };
+
+    const modal = this._dialogService.open<AccountModalComponent, AccountModalData>(AccountModalComponent, {
+      data,
+      dialogClass: 'applicature-dialog',
     });
   }
 
-  public async onConnectWalletClick(event?: any): Promise<void> {
+  public async onConnectWalletClick(): Promise<void> {
     if (this.disabled) {
       return;
     }
@@ -158,7 +160,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
     this.onConnectWalletEmitter.emit(isConnected);
   }
 
-  public async onDisconnectWalletClick(event?: any): Promise<void> {
+  public async onDisconnectWalletClick(): Promise<void> {
     if (this.disabled) {
       return;
     }
