@@ -1,37 +1,33 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject, OnDestroy,
-} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
+
+import { DialogConfig, DialogRef } from '../../dialog';
 import { EtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../services/transaction.service';
+import { RecentTransactionsModalData } from './interfaces';
 
-export interface RecentTransactionsModalData {
-  header: string;
-}
 
 @Component({
   selector: 'applicature-transactions-history-modal',
   templateUrl: './transactions-history-modal.component.html',
   styleUrls: ['./transactions-history-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionsHistoryModalComponent implements OnDestroy {
   public transactions$: Observable<EtherscanTransactionLocalStorage[]>;
+  public data: RecentTransactionsModalData;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: RecentTransactionsModalData,
-    private _transactionService: TransactionService,
-    private _matDialogRef: MatDialogRef<TransactionsHistoryModalComponent, void>
+    private _config: DialogConfig<RecentTransactionsModalData>,
+    private _dialogRef: DialogRef,
+    private _transactionService: TransactionService
   ) {
+    this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;
   }
 
   public onCloseClick(): void {
-    this._matDialogRef.close();
+    this._dialogRef.close();
   }
 
   public ngOnDestroy(): void {
