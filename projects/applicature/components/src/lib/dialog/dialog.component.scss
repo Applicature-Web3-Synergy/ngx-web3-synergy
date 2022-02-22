@@ -1,3 +1,5 @@
+@import "../../../../styles/src/lib/scss/functions";
+
 .dialog-container {
   position: fixed;
   top: 0;
@@ -18,7 +20,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, 0.32);
   transform: translate(-50%, -50%);
 }
 
@@ -26,16 +28,18 @@
   width: auto;
   height: auto;
   min-width: 320px;
-  min-height: 480px;
+  min-height: 200px;
   max-width: 90vw;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: getColor(white, base);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 12px;
 
   &.top {
     top: 15px;
@@ -88,8 +92,7 @@
   }
 }
 
-
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .dialog {
     width: 100% !important;
     height: 100vh !important;

@@ -7,10 +7,12 @@ import { DialogConfig, DialogRef } from '@applicature/components';
   styleUrls: ['./dialog-test.component.scss']
 })
 export class DialogTestComponent  {
-  constructor(public config: DialogConfig, public dialogRef: DialogRef) {}
+  constructor(public config: DialogConfig, private _dialogRef: DialogRef) {
+    console.log('config1111: ', this.config);
+  }
 
   onClose() {
-    this.dialogRef.close('some value')
+    this._dialogRef.close('some value')
   }
 
 }

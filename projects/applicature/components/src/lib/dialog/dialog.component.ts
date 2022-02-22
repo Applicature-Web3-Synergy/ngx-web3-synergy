@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -5,6 +6,7 @@ import {
   Component,
   ComponentFactoryResolver,
   ComponentRef,
+  Inject,
   OnDestroy,
   Type,
   ViewChild
@@ -42,8 +44,10 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   constructor(private _componentFactoryResolver: ComponentFactoryResolver,
               private _cdr: ChangeDetectorRef,
               private _config: DialogConfig,
-              private _dialogRef: DialogRef) {
+              private _dialogRef: DialogRef,
+              @Inject(DOCUMENT) private document: Document) {
     this.mapConfig(this._config);
+    this.document.body.classList.add('block-scroll');
   }
 
   ngAfterViewInit(): void {
@@ -52,6 +56,8 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.document.body.classList.remove('block-scroll');
+
     if (this.componentRef) {
       this.componentRef.destroy();
     }

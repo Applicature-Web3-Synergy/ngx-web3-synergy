@@ -35,11 +35,7 @@ export * from './lib/transactions-history/transactions-history.module';
 
 export * from './lib/dialog';
 
-export * from './lib/modals/account-modal/account-modal.component';
-export * from './lib/modals/transactions-history-modal/transactions-history-modal.component';
-export * from './lib/modals/transfer-modal/transfer-modal.component';
-export * from './lib/modals/wrong-network-modal/wrong-network-modal.component';
-export * from './lib/modals/modals.module';
+export * from './lib/modals';
 
 export * from './lib/table/table.component';
 export * from './lib/table/table.module';

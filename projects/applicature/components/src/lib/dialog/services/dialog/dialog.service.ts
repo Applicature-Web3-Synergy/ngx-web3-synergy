@@ -1,9 +1,10 @@
+import { DOCUMENT } from '@angular/common';
 import {
   ApplicationRef,
   ComponentFactory,
   ComponentFactoryResolver,
   ComponentRef,
-  EmbeddedViewRef,
+  EmbeddedViewRef, Inject,
   Injectable,
   Injector,
   Type
@@ -22,7 +23,8 @@ export class DialogService {
   constructor(
     private _componentFactoryResolver: ComponentFactoryResolver,
     private _appRef: ApplicationRef,
-    private _injector: Injector
+    private _injector: Injector,
+    @Inject(DOCUMENT) private document: Document
   ) {
   }
 
@@ -46,12 +48,13 @@ export class DialogService {
     this._appRef.attachView(componentRef.hostView);
 
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
-    document.body.appendChild(domElem);
+    this.document.body.appendChild(domElem);
 
     this._dialogComponentRef = componentRef;
 
     const dialogOnCloseSubscription = this._dialogComponentRef.instance.onClose
       .subscribe(() => {
+        debugger
         this.removeDialogComponentFromBody();
         dialogOnCloseSubscription.unsubscribe();
       });

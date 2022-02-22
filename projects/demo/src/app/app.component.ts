@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+
 import {
-  generateJazzicon,
-  WalletConnectService,
-  NetworkOption,
   AccountOption,
+  DIALOG_POSITIONS,
+  DialogService,
+  generateJazzicon,
+  NetworkOption,
   TransferModalComponent,
   TransferModalData,
-  DialogService,
-  DIALOG_POSITIONS
+  WalletConnectService
 } from '@applicature/components';
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
 
@@ -67,30 +68,6 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    const ref = this._dialogService.open<DialogTestComponent, {message: string}>(DialogTestComponent, {
-      data: { message: 'I am a dynamic component!' },
-      // width: '400px',
-      // height: '500px',
-      // minWidth: '320px',
-      // minHeight: '320px',
-      // maxWidth: '600px',
-      // maxHeight: '700px',
-      // position: DIALOG_POSITIONS.TOP_RIGHT,
-      // dialogClass: "dialog-class-test",
-      // panel: {
-      //   panelClass: "panel-class-test"
-      // },
-      // overlay: {
-      //   hasOverlay: true,
-      //   closeByClick: true,
-      //   overlayClass: ["test-overlay-class1", "test-overlay-class2"]
-      // }
-    });
-
-    ref.afterClosed.subscribe(result => {
-      console.log('Dialog closed', result);
-    });
-
     this.identicon = generateJazzicon('0x6FF69D870c84a9D7F6c12095313F18F883A77f1D');
 
     this._walletConnectService.accountsChanged$
@@ -119,10 +96,34 @@ export class AppComponent implements OnInit {
       });
   }
 
-  public onOpenTransferModalClick(): void {
-    const config = new MatDialogConfig<TransferModalData>();
+  public onOpenTestCustomModal(): void {
+    const ref = this._dialogService.open<DialogTestComponent, { message: string }>(DialogTestComponent, {
+      data: { message: 'I am a dynamic component!' },
+      width: '400px',
+      height: '500px',
+      minWidth: '320px',
+      minHeight: '320px',
+      maxWidth: '600px',
+      maxHeight: '700px',
+      position: DIALOG_POSITIONS.TOP_RIGHT,
+      dialogClass: 'dialog-class-test',
+      panel: {
+        panelClass: 'panel-class-test'
+      },
+      overlay: {
+        hasOverlay: false,
+        closeByClick: true,
+        overlayClass: ['test-overlay-class1', 'test-overlay-class2']
+      }
+    });
 
-    config.data = {
+    ref.afterClosed.subscribe(result => {
+      console.log('Dialog closed', result);
+    });
+  }
+
+  public onOpenTransferModalClick(): void {
+    const data: TransferModalData = {
       header: 'Transfer',
       symbol: 'USDT',
       allowance: '1000000000000000000',
@@ -138,8 +139,13 @@ export class AppComponent implements OnInit {
       }
     };
 
-    config.panelClass = 'applicature-mat-dialog';
+    const ref = this._dialogService.open<TransferModalComponent, TransferModalData>(TransferModalComponent, {
+      data,
+      dialogClass: 'applicature-dialog',
+    });
 
-    this._matDialog.open(TransferModalComponent, config);
+    ref.afterClosed.subscribe(result => {
+      console.log('Transfer Dialog closed: ', result);
+    });
   }
 }
