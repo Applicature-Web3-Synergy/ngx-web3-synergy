@@ -52,6 +52,7 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.loadChildComponent(this.childComponentType);
+    this._dialogRef.open();
     this._cdr.detectChanges();
   }
 
@@ -123,7 +124,7 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
 
   public onOverlayClicked(): void {
     if (this.hasOverlay && (this._config?.overlay?.closeByClick)) {
-      this._dialogRef.close(undefined);
+      this._dialogRef.close();
     }
   }
 

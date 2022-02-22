@@ -28,11 +28,11 @@ export class DialogService {
   ) {
   }
 
-  private appendDialogComponentToBody<T = any>(config: DialogConfig): DialogRef {
+  private appendDialogComponentToBody<T = any, R = any>(config: DialogConfig): DialogRef<R> {
     const map = new WeakMap();
     map.set(DialogConfig, config);
 
-    const dialogRef = new DialogRef();
+    const dialogRef = new DialogRef<R>();
     map.set(DialogRef, dialogRef);
 
     const afterClosedSub = dialogRef.afterClosed
@@ -67,8 +67,8 @@ export class DialogService {
     this._dialogComponentRef.destroy();
   }
 
-  public open<T = any, D = any>(componentType: Type<T>, config: DialogConfig<D>): DialogRef {
-    const dialogRef: DialogRef = this.appendDialogComponentToBody<T>(config);
+  public open<T = any, D = any, R = any>(componentType: Type<T>, config: DialogConfig<D>): DialogRef<Type<R>> {
+    const dialogRef: DialogRef<Type<R>> = this.appendDialogComponentToBody<Type<T>, Type<R>>(config);
 
     this._dialogComponentRef.instance.childComponentType = componentType;
 

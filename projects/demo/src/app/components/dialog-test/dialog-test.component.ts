@@ -7,8 +7,8 @@ import { DialogConfig, DialogRef } from '@applicature/components';
   styleUrls: ['./dialog-test.component.scss']
 })
 export class DialogTestComponent  {
-  constructor(public config: DialogConfig, private _dialogRef: DialogRef) {
-    console.log('config1111: ', this.config);
+  constructor(public config: DialogConfig, private _dialogRef: DialogRef<string>) {
+
   }
 
   onClose() {

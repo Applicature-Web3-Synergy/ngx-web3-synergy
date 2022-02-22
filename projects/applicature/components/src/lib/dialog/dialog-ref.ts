@@ -1,10 +1,17 @@
 import { Observable, Subject } from 'rxjs';
 
-export class DialogRef {
-  private readonly _afterClosed = new Subject<any>();
-  public afterClosed: Observable<any> = this._afterClosed.asObservable();
+export class DialogRef<R = any> {
+  private readonly _afterClosed = new Subject<R>();
+  private readonly _afterOpened = new Subject<null>();
 
-  close<T=any>(result?: T): void {
+  public afterClosed: Observable<any> = this._afterClosed.asObservable();
+  public afterOpened: Observable<null> = this._afterOpened.asObservable();
+
+  close(result?: R): void {
     this._afterClosed.next(result);
+  }
+
+  open(): void {
+    this._afterOpened.next(null);
   }
 }

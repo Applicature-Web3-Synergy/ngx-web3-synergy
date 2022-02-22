@@ -16,7 +16,9 @@ export class DialogInjector implements Injector {
   get<T>(token: any, notFoundValue?: any, flags?: any): T {
     const value = this._additionalTokens.get(token);
 
-    if (value) return value;
+    if (value) {
+      return value;
+    }
 
     return this._parentInjector.get<T>(token, notFoundValue);
   }

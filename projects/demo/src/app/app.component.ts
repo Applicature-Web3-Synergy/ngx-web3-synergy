@@ -97,7 +97,7 @@ export class AppComponent implements OnInit {
   }
 
   public onOpenTestCustomModal(): void {
-    const ref = this._dialogService.open<DialogTestComponent, { message: string }>(DialogTestComponent, {
+    const ref = this._dialogService.open<DialogTestComponent, { message: string }, number>(DialogTestComponent, {
       data: { message: 'I am a dynamic component!' },
       width: '400px',
       height: '500px',
@@ -119,6 +119,10 @@ export class AppComponent implements OnInit {
 
     ref.afterClosed.subscribe(result => {
       console.log('Dialog closed', result);
+    });
+
+    ref.afterOpened.subscribe(result => {
+      console.log('Dialog opened', result);
     });
   }
 
