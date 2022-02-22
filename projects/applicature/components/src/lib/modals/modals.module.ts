@@ -11,9 +11,9 @@ import { InputModule } from '../input/input.module';
 
 import { PipesModule } from '../pipes';
 import { AccountModalComponent } from './account-modal/account-modal.component';
-import { TransactionsHistoryModalComponent } from './transactions-history-modal/transactions-history-modal.component';
-import { TransferModalComponent } from './transfer-modal/transfer-modal.component';
-import { WrongNetworkModalComponent } from './wrong-network-modal/wrong-network-modal.component';
+import { TransactionsHistoryModalComponent } from './transactions-history-modal';
+import { TransferModalComponent } from './transfer-modal';
+import { WrongNetworkModalComponent } from './wrong-network-modal';
 
 const components = [
   AccountModalComponent,

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
 import {
   AccountOption,
   DIALOG_POSITIONS,
@@ -9,7 +8,10 @@ import {
   NetworkOption,
   TransferModalComponent,
   TransferModalData,
-  WalletConnectService
+  WalletConnectService,
+  WrongNetworkModalComponent,
+  WrongNetworkModalData,
+  WRONG_NETWORK_APPEARANCE
 } from '@applicature/components';
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
 
@@ -141,6 +143,27 @@ export class AppComponent implements OnInit {
 
     const ref = this._dialogService.open<TransferModalComponent, TransferModalData>(TransferModalComponent, {
       data,
+      dialogClass: 'applicature-dialog',
+    });
+
+    ref.afterClosed.subscribe(result => {
+      console.log('Transfer Dialog closed: ', result);
+    });
+  }
+
+  public onOpenWrongNetworkModalClick(): void {
+    const data: WrongNetworkModalData = {
+      header: 'WRONG NETWORK',
+      message: 'Looks like you connected to unsupported network. Change network to Mainnet.',
+      chainId: '156',
+      switchLabel: 'Swith label',
+      appearance: WRONG_NETWORK_APPEARANCE.SWITCH
+    };
+
+    const ref = this._dialogService.open<WrongNetworkModalComponent, WrongNetworkModalData>(WrongNetworkModalComponent, {
+      data,
+      width: '100%',
+      maxWidth: "420px",
       dialogClass: 'applicature-dialog',
     });
 
