@@ -1,5 +1,20 @@
-<div class="overlay" (click)="onOverlayClicked($event)">
-  <div class="dialog" (click)="onDialogClicked($event)">
-    <ng-template applicatureInsertion> </ng-template>
+<div class="dialog-container"
+     applicatureCustomizeDialog
+     [config]="panelConfig"
+>
+  <div class="overlay"
+       *ngIf="hasOverlay"
+       applicatureCustomizeDialog
+       [config]="overlayConfig"
+       (click)="onOverlayClicked()"
+  >
+  </div>
+
+  <div class="dialog"
+       applicatureCustomizeDialog
+       [config]="dialogConfig"
+  >
+    <ng-template applicatureInsertion></ng-template>
   </div>
 </div>
+

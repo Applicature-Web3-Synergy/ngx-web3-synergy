@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { DialogComponent } from './dialog.component';
 import { DialogService } from './services';
-import { InsertionDirective } from './directives';
+import { CustomizeDialogDirective,  InsertionDirective } from './directives';
 
 @NgModule({
   declarations: [
     DialogComponent,
-    InsertionDirective
+    InsertionDirective,
+    CustomizeDialogDirective
   ],
   entryComponents: [
     DialogComponent

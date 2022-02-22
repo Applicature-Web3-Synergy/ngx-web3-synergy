@@ -5,6 +5,10 @@ import { Directive, ViewContainerRef } from '@angular/core';
   selector: '[applicatureInsertion]'
 })
 export class InsertionDirective {
-  constructor(public viewContainerRef: ViewContainerRef) {
+  get viewContainerRef(): ViewContainerRef {
+    return this._viewContainerRef;
+  }
+
+  constructor(public _viewContainerRef: ViewContainerRef) {
   }
 }

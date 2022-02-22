@@ -11,7 +11,10 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
+import { DialogConfig } from './dialog-config';
+import { DialogRef } from './dialog-ref';
 import { InsertionDirective } from './directives';
+import { CustomizeDialogConfig } from './interfaces/index';
 
 
 @Component({
@@ -26,15 +29,26 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   public componentRef: ComponentRef<any>;
   public childComponentType: Type<any>;
   public onClose = this._onClose.asObservable();
+  public panelConfig: CustomizeDialogConfig;
+  public overlayConfig: CustomizeDialogConfig;
+  public dialogConfig: CustomizeDialogConfig = {};
 
   @ViewChild(InsertionDirective) insertionPoint: InsertionDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef) {
+  public get hasOverlay(): boolean {
+    return (this._config?.overlay?.hasOverlay ?? null) === null ? true : this._config.overlay.hasOverlay;
+  }
+
+  constructor(private _componentFactoryResolver: ComponentFactoryResolver,
+              private _cdr: ChangeDetectorRef,
+              private _config: DialogConfig,
+              private _dialogRef: DialogRef) {
+    this.mapConfig(this._config);
   }
 
   ngAfterViewInit(): void {
     this.loadChildComponent(this.childComponentType);
-    this.cd.detectChanges();
+    this._cdr.detectChanges();
   }
 
   ngOnDestroy(): void {
@@ -43,16 +57,72 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  onOverlayClicked(evt: MouseEvent): void {
-    // close the dialog
+  private mapConfig(config: DialogConfig): void {
+    if (!config) {
+      return;
+    }
+
+    const { panel, overlay, width, height, minWidth, minHeight, maxWidth, maxHeight, position, dialogClass } = config;
+
+    if (panel?.panelClass) {
+      this.panelConfig = {
+        classes: panel.panelClass
+      };
+    }
+
+    if (overlay?.hasOverlay && overlay?.overlayClass.length) {
+      this.overlayConfig = {
+        classes: overlay.overlayClass
+      };
+    }
+
+    if (width) {
+      this.dialogConfig.width = config.width;
+    }
+
+    if (height) {
+      this.dialogConfig.height = config.height;
+    }
+
+    if (minWidth) {
+      this.dialogConfig.minWidth = config.minWidth;
+    }
+
+    if (minHeight) {
+      this.dialogConfig.minHeight = config.minHeight;
+    }
+
+    if (maxWidth) {
+      this.dialogConfig.maxWidth = config.maxWidth;
+    }
+
+    if (maxHeight) {
+      this.dialogConfig.maxHeight = config.maxHeight;
+    }
+
+    if (position) {
+      this.dialogConfig.position = config.position;
+    }
+
+    if (dialogClass) {
+      this.dialogConfig.classes = config.dialogClass;
+    }
+
+    if (!Object.keys(this.dialogConfig).length) {
+      this.dialogConfig = null;
+    }
+
+    this._cdr.markForCheck();
   }
 
-  onDialogClicked(evt: MouseEvent): void {
-    evt.stopPropagation();
+  public onOverlayClicked(): void {
+    if (this.hasOverlay && (this._config?.overlay?.closeByClick)) {
+      this._dialogRef.close(undefined);
+    }
   }
 
-  loadChildComponent(componentType: Type<any>): void {
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentType);
+  public loadChildComponent(componentType: Type<any>): void {
+    let componentFactory = this._componentFactoryResolver.resolveComponentFactory(componentType);
 
     let viewContainerRef = this.insertionPoint.viewContainerRef;
     viewContainerRef.clear();

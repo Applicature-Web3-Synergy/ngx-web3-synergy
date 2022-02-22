@@ -17,12 +17,12 @@ import { DialogRef } from '../../dialog-ref';
 
 @Injectable()
 export class DialogService {
-  private dialogComponentRef: ComponentRef<DialogComponent>;
+  private _dialogComponentRef: ComponentRef<DialogComponent>;
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver,
-    private appRef: ApplicationRef,
-    private injector: Injector
+    private _componentFactoryResolver: ComponentFactoryResolver,
+    private _appRef: ApplicationRef,
+    private _injector: Injector
   ) {
   }
 
@@ -39,17 +39,18 @@ export class DialogService {
         afterClosedSub.unsubscribe();
       });
 
-    const componentFactory: ComponentFactory<DialogComponent> = this.componentFactoryResolver.resolveComponentFactory<DialogComponent>(DialogComponent);
-    const componentRef: ComponentRef<DialogComponent> = componentFactory.create(new DialogInjector(this.injector, map));
+    const componentFactory: ComponentFactory<DialogComponent> =
+      this._componentFactoryResolver.resolveComponentFactory<DialogComponent>(DialogComponent);
+    const componentRef: ComponentRef<DialogComponent> = componentFactory.create(new DialogInjector(this._injector, map));
 
-    this.appRef.attachView(componentRef.hostView);
+    this._appRef.attachView(componentRef.hostView);
 
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
 
-    this.dialogComponentRef = componentRef;
+    this._dialogComponentRef = componentRef;
 
-    const dialogOnCloseSubscription = this.dialogComponentRef.instance.onClose
+    const dialogOnCloseSubscription = this._dialogComponentRef.instance.onClose
       .subscribe(() => {
         this.removeDialogComponentFromBody();
         dialogOnCloseSubscription.unsubscribe();
@@ -59,14 +60,14 @@ export class DialogService {
   }
 
   private removeDialogComponentFromBody(): void {
-    this.appRef.detachView(this.dialogComponentRef.hostView);
-    this.dialogComponentRef.destroy();
+    this._appRef.detachView(this._dialogComponentRef.hostView);
+    this._dialogComponentRef.destroy();
   }
 
-  public open<T = any>(componentType: Type<T>, config: DialogConfig): DialogRef {
+  public open<T = any, D = any>(componentType: Type<T>, config: DialogConfig<D>): DialogRef {
     const dialogRef: DialogRef = this.appendDialogComponentToBody<T>(config);
 
-    this.dialogComponentRef.instance.childComponentType = componentType;
+    this._dialogComponentRef.instance.childComponentType = componentType;
 
     return dialogRef;
   }
