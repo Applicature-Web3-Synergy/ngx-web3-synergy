@@ -49,3 +49,5 @@ export * from './lib/helpers/index';
 export * from './lib/applicature-ripple';
 
 export * from './lib/applicature-spinner';
+
+export * from './lib/applicature-progress-bar';

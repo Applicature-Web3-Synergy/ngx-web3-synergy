@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { ApplicatureProgressBarModule } from '../applicature-progress-bar';
 import { ApplicatureRippleModule } from '../applicature-ripple';
 import { ApplicatureSpinnerModule } from '../applicature-spinner';
 import { ButtonModule } from '../button/button.module';
@@ -36,9 +35,9 @@ const components = [
     ClipboardModule,
     ButtonModule,
     InputModule,
-    MatProgressBarModule,
     ApplicatureRippleModule,
-    ApplicatureSpinnerModule
+    ApplicatureSpinnerModule,
+    ApplicatureProgressBarModule
   ]
 })
 export class ModalsModule {
