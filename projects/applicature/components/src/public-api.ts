@@ -45,3 +45,5 @@ export * from './lib/enums/index';
 export * from './lib/interfaces/index';
 
 export * from './lib/helpers/index';
+
+export * from './lib/applicature-ripple';
