@@ -24,10 +24,12 @@
                         [color]="color === 'white' ? '#6d87ac' : '#FFF'"
                         class="button__right-icon"></applicature-icon>
 
-      <mat-progress-spinner *ngIf="pending"
-                            mode="indeterminate"
-                            diameter="20">
-      </mat-progress-spinner>
+      <applicature-spinner *ngIf="pending"
+                           [diameter]="20"
+                           [width]="2"
+      >
+      </applicature-spinner>
+
     </ng-container>
   </ng-container>
 </button>

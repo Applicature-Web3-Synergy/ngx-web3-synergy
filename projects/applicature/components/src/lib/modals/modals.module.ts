@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { ApplicatureRippleModule } from '../applicature-ripple/index';
+import { ApplicatureRippleModule } from '../applicature-ripple';
+import { ApplicatureSpinnerModule } from '../applicature-spinner';
 import { ButtonModule } from '../button/button.module';
 import { InputModule } from '../input/input.module';
 import { PipesModule } from '../pipes';
@@ -31,14 +31,14 @@ const components = [
   ],
   imports: [
     CommonModule,
-    MatProgressSpinnerModule,
     ReactiveFormsModule,
     PipesModule,
     ClipboardModule,
     ButtonModule,
     InputModule,
     MatProgressBarModule,
-    ApplicatureRippleModule
+    ApplicatureRippleModule,
+    ApplicatureSpinnerModule
   ]
 })
 export class ModalsModule {
