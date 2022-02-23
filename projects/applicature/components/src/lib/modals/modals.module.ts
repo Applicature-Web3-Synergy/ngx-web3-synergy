@@ -1,13 +1,14 @@
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatRippleModule } from '@angular/material/core';
+
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { ApplicatureRippleModule } from '../applicature-ripple/index';
 import { ButtonModule } from '../button/button.module';
 import { InputModule } from '../input/input.module';
-
 import { PipesModule } from '../pipes';
 import { AccountModalComponent } from './account-modal';
 import { TransactionsHistoryModalComponent } from './transactions-history-modal';
@@ -18,26 +19,26 @@ const components = [
   AccountModalComponent,
   TransactionsHistoryModalComponent,
   TransferModalComponent,
-  WrongNetworkModalComponent,
+  WrongNetworkModalComponent
 ];
 
 @NgModule({
   declarations: [
-    ...components,
+    ...components
   ],
   exports: [
-    ...components,
+    ...components
   ],
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     PipesModule,
-    MatRippleModule,
     ClipboardModule,
     ButtonModule,
     InputModule,
     MatProgressBarModule,
+    ApplicatureRippleModule
   ]
 })
 export class ModalsModule {

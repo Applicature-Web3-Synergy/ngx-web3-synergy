@@ -10,12 +10,20 @@
     <div class="info__header">
       <span>Connected with Metamask</span>
       <button (click)="onChangeClick()"
-              matRipple
-              class="info__header__change">Change</button>
+              applicatureRipple
+              class="info__header__change"
+      >
+        Change
+      </button>
+
       <button (click)="onDisconnectClick()"
-              matRipple
-              class="info__header__disconnect">Disconnect</button>
+              applicatureRipple
+              class="info__header__disconnect"
+      >
+        Disconnect
+      </button>
     </div>
+
     <div #infoMain class="info__main">
       <span>{{ accountAddress | shortAddress }}</span>
     </div>
