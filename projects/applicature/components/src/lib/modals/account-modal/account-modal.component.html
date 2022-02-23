@@ -55,10 +55,11 @@
 
           <span *ngSwitchCase="'success'" class="wcl-icon-check"></span>
 
-          <mat-progress-spinner *ngSwitchCase="'pending'"
-                                mode="indeterminate"
-                                diameter="18">
-          </mat-progress-spinner>
+          <applicature-spinner *ngSwitchCase="'pending'"
+                               [diameter]="18"
+                               [width]="2"
+          >
+          </applicature-spinner>
         </ng-container>
       </div>
     </div>

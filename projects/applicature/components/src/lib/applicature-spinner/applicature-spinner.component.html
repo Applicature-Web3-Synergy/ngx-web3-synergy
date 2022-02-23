@@ -1,0 +1,3 @@
+<div class="lds-ring" [ngStyle]="{ width: diameter + 'px', height: diameter + 'px' }">
+  <div *ngFor="let item of parts" [ngStyle]="{ 'border-width': width + 'px', 'border-top-color': color }"></div>
+</div>
