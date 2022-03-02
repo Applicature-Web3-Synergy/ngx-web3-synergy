@@ -8,7 +8,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 })
 export class IconComponent {
   @Input()
-  public color: string = '#FFF';
+  public color?: string;
 
   @Input()
   public set icon(value: string) {

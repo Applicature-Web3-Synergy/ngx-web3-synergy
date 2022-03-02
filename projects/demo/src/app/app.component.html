@@ -1,5 +1,17 @@
 <div style="padding: 50px 100px 100px;">
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
+    <applicature-table [tableHeaders]="tableHeaders"
+                       [data]="tableData"
+                       [isLoadMore]="isLoadMore"
+                       customClass="table-custom-class"
+                       (loadMore)="loadMoreTable()"
+                       (sort)="tableSort($event)"
+    >
+    </applicature-table>
+  </div>
+  <br>
+
+  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
     <applicature-connect-wallet [showBalance]="true"
                                 [networkOptions]="networkOptions">
     </applicature-connect-wallet>

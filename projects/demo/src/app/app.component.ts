@@ -10,14 +10,19 @@ import {
   WalletConnectService,
   WrongNetworkModalComponent,
   WrongNetworkModalData,
-  WRONG_NETWORK_APPEARANCE
+  WRONG_NETWORK_APPEARANCE,
+  ApplicatureTableHeaderItem,
+  ApplicatureTableRow,
+  Sort,
+  SORT_DIRECTION
 } from '@applicature/components';
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: [ './app.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
@@ -55,10 +60,91 @@ export class AppComponent implements OnInit {
     }
   ];
   public accountOptions: AccountOption[] = [
-    { name: 'My Account', id: 1 },
-    { name: 'Some menu Item', id: 2 },
-    { name: 'Some menu Item', id: 3 }
+    {name: 'My Account', id: 1},
+    {name: 'Some menu Item', id: 2},
+    {name: 'Some menu Item', id: 3}
   ];
+
+  public tableHeaders: ApplicatureTableHeaderItem[] = [
+    {
+      position: 1,
+      rowKey: 'action',
+      value: 'Action',
+    },
+    {
+      position: 2,
+      rowKey: 'tokens',
+      value: 'Tokens',
+    },
+    {
+      position: 3,
+      rowKey: 'value',
+      value: 'Value',
+    },
+    {
+      position: 4,
+      rowKey: 'time',
+      value: 'Time',
+      sort: {
+        sortBy: 'time',
+        sortDirection: SORT_DIRECTION.DESC
+      }
+    }
+  ];
+  public tableData: ApplicatureTableRow[] = [
+    {
+      action: {
+        value: 'Withdraw',
+        icon: 'assets/svg/icons/plus-green.svg'
+      },
+      tokens: [
+        {
+          value: '1.240123',
+          icon: 'assets/svg/network/eth.svg',
+          withBg: true
+        },
+        {
+          value: '5.2k',
+          icon: 'assets/svg/coin/usdt.svg',
+          withBg: true
+        }
+      ],
+      value: {
+        value: '$10.4k',
+      },
+      time: {
+        value: 'about 6 hours ago ↗',
+        link: 'https://www.google.com/'
+      }
+    },
+    {
+      action: {
+        value: 'Withdraw',
+        icon: 'assets/svg/icons/minus-red.svg'
+      },
+      tokens: [
+        {
+          value: '1.240123',
+          icon: 'assets/svg/network/eth.svg',
+          withBg: true
+        },
+        {
+          value: '5.2k',
+          icon: 'assets/svg/coin/usdt.svg',
+          withBg: true
+        }
+      ],
+      value: {
+        value: '$10.4k',
+      },
+      time: {
+        value: 'about 6 hours ago ↗',
+        link: 'https://www.google.com/'
+      }
+    }
+  ];
+
+  public isLoadMore: boolean = true;
 
   constructor(
     private _walletConnectService: WalletConnectService,
@@ -98,7 +184,7 @@ export class AppComponent implements OnInit {
 
   public onOpenTestCustomModal(): void {
     const ref = this._dialogService.open<DialogTestComponent, { message: string }, number>(DialogTestComponent, {
-      data: { message: 'I am a dynamic component!' },
+      data: {message: 'I am a dynamic component!'},
       width: '400px',
       height: '500px',
       minWidth: '320px',
@@ -113,7 +199,7 @@ export class AppComponent implements OnInit {
       overlay: {
         hasOverlay: false,
         closeByClick: true,
-        overlayClass: ['test-overlay-class1', 'test-overlay-class2']
+        overlayClass: [ 'test-overlay-class1', 'test-overlay-class2' ]
       }
     });
 
@@ -172,5 +258,57 @@ export class AppComponent implements OnInit {
     ref.afterClosed.subscribe(result => {
       console.log('Transfer Dialog closed: ', result);
     });
+  }
+
+  loadMoreTable(): void {
+    console.log('LOAD MORE TABLE EVENT');
+    this.isLoadMore = false;
+    this.tableData = [
+      ...this.tableData,
+      {
+        action: {
+          value: 'Withdraw33',
+          icon: 'assets/svg/icons/minus-red.svg'
+        },
+        tokens: [
+          {
+            value: '53.2k',
+            icon: 'assets/svg/coin/usdt.svg',
+            withBg: true
+          }
+        ],
+        value: {
+          value: '$103.4k',
+        },
+        time: {
+          value: 'about 36 hours ago ↗',
+          link: 'https://www.google.com/'
+        }
+      },
+      {
+        action: {
+          value: 'Withdraw1',
+          icon: 'assets/svg/icons/plus-green.svg'
+        },
+        tokens: [
+          {
+            value: '11.240123',
+            icon: 'assets/svg/network/eth.svg',
+            withBg: true
+          }
+        ],
+        value: {
+          value: '$1.4k',
+        },
+        time: {
+          value: 'about 16 hours ago ↗',
+          link: 'https://www.google.com/'
+        }
+      }
+    ]
+  }
+
+  tableSort(sort: Sort) {
+    console.log('TABLE SORT ACTION: ', sort);
   }
 }
