@@ -9,7 +9,8 @@ import {
   InputModule,
   WalletConnectModule,
   WalletConnectService,
-  DialogModule
+  DialogModule,
+  ApplicatureTableModule
 } from '@applicature/components';
 import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces';
 
@@ -55,6 +56,7 @@ export function initWalletServiceFactory(
     ButtonModule,
     InputModule,
     DialogModule,
+    ApplicatureTableModule,
     WalletConnectModule.forRoot()
   ],
   providers: [

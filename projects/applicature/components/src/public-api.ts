@@ -51,3 +51,9 @@ export * from './lib/applicature-ripple';
 export * from './lib/applicature-spinner';
 
 export * from './lib/applicature-progress-bar';
+
+export * from './lib/applicature-table';
+
+export * from './lib/types';
+
+export * from './lib/applicature-directives';

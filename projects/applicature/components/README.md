@@ -6,6 +6,18 @@
 
 <pre><code>@import "~node_modules/@applicature/styles/src/lib/scss/styles";</code></pre>
 
+- tsconfig.json
+
+<pre><code>
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    ...
+  },
+  ...
+}
+</code></pre>
+
 - polyfills.ts
 
 <pre><code>
@@ -110,3 +122,6 @@ for Angular 13+. Verify if you need this module and configure a polyfill for it.
   ]
 }
 </code></pre>
+
+- Other:
+  - Install <strong>process</strong> if it needs `npm i process` 

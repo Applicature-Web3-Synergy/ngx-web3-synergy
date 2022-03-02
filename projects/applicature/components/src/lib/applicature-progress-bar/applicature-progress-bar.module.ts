@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApplicatureProgressBarComponent } from './applicature-progress-bar.component';
 
+import { ApplicatureProgressBarComponent } from './applicature-progress-bar.component';
 
 
 @NgModule({
