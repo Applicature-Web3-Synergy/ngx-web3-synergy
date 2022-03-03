@@ -5,7 +5,6 @@ import {
   generateJazzicon,
   NetworkOption,
   WalletConnectService,
-  ApplicaturePosition,
   APPLICATURE_POSITIONS,
   ApplicatureDropdownConfig
 } from '@applicature/components';
@@ -18,7 +17,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-  public testMenu = false;
   public identicon!: HTMLDivElement;
   public networkOptions: NetworkOption[] = [
     {

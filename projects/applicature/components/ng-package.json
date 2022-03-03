@@ -5,11 +5,9 @@
     "entryFile": "src/public-api.ts"
   },
   "allowedNonPeerDependencies": [
-    "@angular/cdk",
     "@angular/common",
     "@angular/core",
     "@angular/forms",
-    "@angular/material",
     "@ethersproject/address",
     "@metamask/jazzicon",
     "@uiowa/digit-only",
