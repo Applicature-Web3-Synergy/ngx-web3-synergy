@@ -2,19 +2,19 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { DialogConfig, DialogRef } from '../../dialog';
 import { normalizeBalance, toBN } from '../../helpers';
 import { TransactionService } from '../../services/transaction.service';
 import { WalletConnectService } from '../../services/wallet-connect.service';
 import { TRANSFER_STEPS } from './enums';
 import { TransferModalData } from './interfaces';
 import { TransactionStep } from './types';
+import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
 
 
 @Component({
   selector: 'applicature-transfer-modal',
   templateUrl: './transfer-modal.component.html',
-  styleUrls: ['./transfer-modal.component.scss'],
+  styleUrls: [ './transfer-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransferModalComponent implements OnInit, OnDestroy {
@@ -31,8 +31,8 @@ export class TransferModalComponent implements OnInit, OnDestroy {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _config: DialogConfig<TransferModalData>,
-    private _dialogRef: DialogRef,
+    private _config: ApplicatureDialogConfig<TransferModalData>,
+    private _dialogRef: ApplicatureDialogRef,
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: WalletConnectService,
     private _transactionService: TransactionService,

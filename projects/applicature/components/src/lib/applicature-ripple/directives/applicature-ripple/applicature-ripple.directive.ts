@@ -9,7 +9,7 @@ export class ApplicatureRippleDirective {
 
   private readonly rippleClass = 'applicature-ripple';
 
-  @HostListener('mousedown', ['$event']) onMousedown(e) {
+  @HostListener('mousedown', [ '$event' ]) onMousedown(e) {
     e.preventDefault();
     e.stopPropagation();
     this.createRipple(e);
@@ -29,10 +29,14 @@ export class ApplicatureRippleDirective {
   }
 
   private createRipple(event): void {
-    const rippleIndex = [...this._elementRef.nativeElement.childNodes].findIndex(node => node.className === this.rippleClass);
+    const rippleIndex = [ ...this._elementRef.nativeElement.childNodes ]
+      .findIndex(node => node.className === this.rippleClass);
 
     if (rippleIndex !== -1) {
-      this._renderer2.removeChild(this._elementRef.nativeElement, this._elementRef.nativeElement.childNodes[rippleIndex]);
+      this._renderer2.removeChild(
+        this._elementRef.nativeElement,
+        this._elementRef.nativeElement.childNodes[rippleIndex]
+      );
     }
 
     const button = this._elementRef.nativeElement;

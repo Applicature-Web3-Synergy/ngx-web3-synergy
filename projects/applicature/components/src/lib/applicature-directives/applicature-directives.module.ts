@@ -15,4 +15,5 @@ import { CustomClassDirective } from './custom-class/custom-class.directive';
     CommonModule
   ]
 })
-export class ApplicatureDirectivesModule { }
+export class ApplicatureDirectivesModule {
+}

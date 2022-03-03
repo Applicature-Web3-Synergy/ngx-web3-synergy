@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { DialogService } from '../dialog';
 import { TransactionStatus } from '../enums';
 import { RecentTransactionsModalData, TransactionsHistoryModalComponent } from '../modals';
 import { TransactionService } from '../services/transaction.service';
+import { ApplicatureDialogService } from '../applicature-dialog';
 
 @Component({
   selector: 'applicature-transactions-history',
   templateUrl: './transactions-history.component.html',
-  styleUrls: ['./transactions-history.component.scss'],
+  styleUrls: [ './transactions-history.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionsHistoryComponent implements OnInit {
@@ -23,7 +23,7 @@ export class TransactionsHistoryComponent implements OnInit {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _dialogService: DialogService,
+    private _dialogService: ApplicatureDialogService,
     private _cdr: ChangeDetectorRef,
     private _transactionService: TransactionService
   ) {

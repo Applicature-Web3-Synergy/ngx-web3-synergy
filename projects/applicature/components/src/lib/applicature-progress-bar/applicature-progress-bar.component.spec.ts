@@ -10,7 +10,7 @@ describe('ApplicatureProgressBarComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ApplicatureProgressBarComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

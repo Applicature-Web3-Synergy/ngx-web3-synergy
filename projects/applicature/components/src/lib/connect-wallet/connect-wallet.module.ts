@@ -8,6 +8,7 @@ import { NetworkDropdownModule } from '../network-dropdown/network-dropdown.modu
 import { PipesModule } from '../pipes';
 import { TransactionsHistoryModule } from '../transactions-history/transactions-history.module';
 import { ConnectWalletComponent } from './connect-wallet.component';
+import { ApplicatureDialogModule } from '../applicature-dialog';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ConnectWalletComponent } from './connect-wallet.component';
     AccountButtonModule,
     AccountBalanceModule,
     TransactionsHistoryModule,
+    ApplicatureDialogModule
   ],
 })
 export class ConnectWalletModule {

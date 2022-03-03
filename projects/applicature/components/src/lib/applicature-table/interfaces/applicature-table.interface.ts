@@ -1,11 +1,11 @@
-import { Sort } from '../../interfaces/sort.interface';
+import { ApplicatureSort } from '../../interfaces';
 
 export interface ApplicatureTableHeaderItem {
   position: number; // column position 1, 2, 3, ...
   rowKey: string;
   value: string;
   icon?: string;
-  sort?: Sort;
+  sort?: ApplicatureSort;
   sortBy?: string;
 }
 

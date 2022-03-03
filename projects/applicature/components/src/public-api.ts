@@ -33,8 +33,6 @@ export * from './lib/account-button/account-button.module';
 export * from './lib/transactions-history/transactions-history.component';
 export * from './lib/transactions-history/transactions-history.module';
 
-export * from './lib/dialog';
-
 export * from './lib/modals';
 
 export * from './lib/table/table.component';
@@ -45,6 +43,8 @@ export * from './lib/enums/index';
 export * from './lib/interfaces/index';
 
 export * from './lib/helpers/index';
+
+export * from './lib/applicature-dialog';
 
 export * from './lib/applicature-ripple';
 

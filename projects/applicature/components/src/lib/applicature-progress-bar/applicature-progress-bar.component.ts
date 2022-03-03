@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 @Component({
   selector: 'applicature-progress-bar',
   templateUrl: './applicature-progress-bar.component.html',
-  styleUrls: ['./applicature-progress-bar.component.scss'],
+  styleUrls: [ './applicature-progress-bar.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ApplicatureProgressBarComponent implements OnInit {

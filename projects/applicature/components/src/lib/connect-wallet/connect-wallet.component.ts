@@ -12,13 +12,13 @@ import {
 import { map, Observable, Subscription } from 'rxjs';
 
 import { AccountData, AccountOption } from '../account-button/account-button.component';
-import { DialogService } from '../dialog';
 import { TransactionStatus } from '../enums';
 import { generateJazzicon, normalizeBalance } from '../helpers';
 import { NetworkOption } from '../interfaces';
 import { AccountModalComponent, AccountModalData } from '../modals';
 import { TransactionService } from '../services/transaction.service';
 import { WalletConnectService } from '../services/wallet-connect.service';
+import { ApplicatureDialogService } from '../applicature-dialog';
 
 export type AppearanceType = 'default' | 'icon' | 'button';
 
@@ -70,7 +70,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _dialogService: DialogService,
+    private _dialogService: ApplicatureDialogService,
     private _cdr: ChangeDetectorRef,
     private _elementRef: ElementRef<HTMLElement>,
     private _transactionService: TransactionService,

@@ -1,0 +1,124 @@
+@import "../../../../styles/src/lib/scss/functions";
+
+.applicature-dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.applicature-dialog-overlay,
+.applicature-dialog {
+  z-index: 9999;
+}
+
+.applicature-dialog-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: rgba(0, 0, 0, 0.32);
+  transform: translate(-50%, -50%);
+}
+
+.applicature-dialog {
+  width: auto;
+  height: auto;
+  min-width: 320px;
+  min-height: 100px;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: getColor(white, base);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  &.top {
+    top: 15px;
+    transform: translate(-50%, 0);
+  }
+
+  &.bottom {
+    top: unset;
+    bottom: 15px;
+    transform: translate(-50%, 0);
+  }
+
+  &.left {
+    left: 15px;
+    transform: translate(0, -50%);
+  }
+
+  &.right {
+    left: unset;
+    right: 15px;
+    transform: translate(0, -50%);
+  }
+
+  &.top-left {
+    left: 15px;
+    top: 15px;
+    transform: translate(0, 0);
+  }
+
+  &.top-right {
+    left: unset;
+    right: 15px;
+    top: 15px;
+    transform: translate(0, 0);
+  }
+
+  &.bottom-left {
+    left: 15px;
+    top: unset;
+    bottom: 15px;
+    transform: translate(0, 0);
+  }
+
+  &.bottom-right {
+    left: unset;
+    right: 15px;
+    top: unset;
+    bottom: 15px;
+    transform: translate(0, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .applicature-dialog {
+    width: 100% !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translate(0, 0);
+
+    &.top,
+    &.bottom,
+    &.left,
+    &.right,
+    &.top-left,
+    &.top-right,
+    &.bottom-left,
+    &.bottom-right {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translate(0, 0);
+    }
+  }
+}
