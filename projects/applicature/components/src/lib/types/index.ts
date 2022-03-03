@@ -1,1 +1,1 @@
-export * from "./sort-direction.type";
+export * from "./applicature-sort-direction.type";

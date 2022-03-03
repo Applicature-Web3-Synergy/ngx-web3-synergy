@@ -1,17 +1,5 @@
 <div style="padding: 50px 100px 100px;">
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-table [tableHeaders]="tableHeaders"
-                       [data]="tableData"
-                       [isLoadMore]="isLoadMore"
-                       customClass="table-custom-class"
-                       (loadMore)="loadMoreTable()"
-                       (sort)="tableSort($event)"
-    >
-    </applicature-table>
-  </div>
-  <br>
-
-  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
     <applicature-connect-wallet [showBalance]="true"
                                 [networkOptions]="networkOptions">
     </applicature-connect-wallet>
@@ -28,28 +16,11 @@
   </div>
   <br>
 
-  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-      <applicature-button (onClick)="onOpenTestCustomModal()"
-                          label="Open Test Custom Modal"></applicature-button>
-      <br>
-    </div>
-    <br>
-  </div>
+  <section id="dialogs">
+    <h2 class="section-title">Applicature Dialogs</h2>
+    <app-example-dialogs></app-example-dialogs>
+  </section>
   <br>
-
-  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-button (onClick)="onOpenTransferModalClick()"
-                        label="Open Transfer Modal"></applicature-button>
-    <br>
-  </div>
-  <br>
-
-  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-button (onClick)="onOpenWrongNetworkModalClick()"
-                        label="Open Wrong Network Modal"></applicature-button>
-    <br>
-  </div>
   <br>
 
   <div style="background: #fff;padding: 50px;">
@@ -149,5 +120,11 @@
   <applicature-button label="Ethereum" [adaptive]="true"></applicature-button>
   <br>
   <br>
+
+  <section id="table">
+    <h2 class="section-title">Applicature Table</h2>
+
+    <app-example-table></app-example-table>
+  </section>
 
 </div>

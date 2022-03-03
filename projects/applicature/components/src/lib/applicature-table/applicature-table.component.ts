@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
 import { ApplicatureTableHeaderItem, ApplicatureTableRow } from './interfaces';
-import { Sort } from '../interfaces';
-import { SORT_DIRECTION } from '../enums';
+import { ApplicatureSort } from '../interfaces';
+import { APPLICATURE_SORT_DIRECTION } from '../enums';
 
 
 @Component({
@@ -21,21 +21,23 @@ export class ApplicatureTableComponent {
   @Input() isLoadMore: boolean = false;
   @Input() customClass: string | string[];
   @Output() loadMore: EventEmitter<void> = new EventEmitter<void>();
-  @Output() sort: EventEmitter<Sort> = new EventEmitter<Sort>();
+  @Output() sort: EventEmitter<ApplicatureSort> = new EventEmitter<ApplicatureSort>();
 
   public headers: ApplicatureTableHeaderItem[] = [];
-  public SORT_DIRECTION = SORT_DIRECTION;
+  public SORT_DIRECTION = APPLICATURE_SORT_DIRECTION;
 
   public onLoadMore(): void {
     this.loadMore.emit();
   }
 
-  public sortBy(sort: Sort, columnIndex: number): void {
+  public sortBy(sort: ApplicatureSort, columnIndex: number): void {
     if (!sort || !this.headers[columnIndex]?.sort) {
       return;
     }
 
-    sort.sortDirection = sort.sortDirection === SORT_DIRECTION.ASC ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC;
+    sort.sortDirection = sort.sortDirection === APPLICATURE_SORT_DIRECTION.ASC
+      ? APPLICATURE_SORT_DIRECTION.DESC
+      : APPLICATURE_SORT_DIRECTION.ASC;
     this.headers[columnIndex].sort.sortDirection = sort.sortDirection;
 
     this.sort.emit(sort);

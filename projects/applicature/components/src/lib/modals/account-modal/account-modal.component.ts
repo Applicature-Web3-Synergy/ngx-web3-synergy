@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { filter, map, Observable, Subscription } from 'rxjs';
 
-import { DialogConfig, DialogRef } from '../../dialog';
 import { generateJazzicon } from '../../helpers';
 import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../../helpers/network';
 import { Ethereum, EtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../services/transaction.service';
 import { WalletConnectService } from '../../services/wallet-connect.service';
 import { AccountModalData } from './interfaces';
+import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
 
 
 @Component({
@@ -28,8 +28,8 @@ export class AccountModalComponent implements OnInit, OnDestroy {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _config: DialogConfig<AccountModalData>,
-    private _dialogRef: DialogRef,
+    private _config: ApplicatureDialogConfig<AccountModalData>,
+    private _dialogRef: ApplicatureDialogRef,
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: WalletConnectService,
     private _transactionService: TransactionService

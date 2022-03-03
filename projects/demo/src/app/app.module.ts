@@ -8,14 +8,13 @@ import {
   ButtonModule,
   InputModule,
   WalletConnectModule,
-  WalletConnectService,
-  DialogModule,
-  ApplicatureTableModule
+  WalletConnectService
 } from '@applicature/components';
 import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces';
 
 import { AppComponent } from './app.component';
-import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
+import { ExampleDialogsModule } from './examples/example-dialogs/example-dialogs.module';
+import { ExampleTableModule } from './examples/example-table/example-table.module';
 
 const wallets: Array<WalletModule | WalletInitOptions> = [
   {
@@ -44,8 +43,7 @@ export function initWalletServiceFactory(
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DialogTestComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +53,9 @@ export function initWalletServiceFactory(
     AvatarModule,
     ButtonModule,
     InputModule,
-    DialogModule,
-    ApplicatureTableModule,
-    WalletConnectModule.forRoot()
+    WalletConnectModule.forRoot(),
+    ExampleDialogsModule,
+    ExampleTableModule
   ],
   providers: [
     {
@@ -66,9 +64,6 @@ export function initWalletServiceFactory(
       deps: [WalletConnectService],
       multi: true
     }
-  ],
-  entryComponents: [
-    DialogTestComponent
   ],
   bootstrap: [AppComponent]
 })

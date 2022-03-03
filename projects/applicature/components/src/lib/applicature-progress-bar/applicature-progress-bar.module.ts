@@ -15,4 +15,5 @@ import { ApplicatureProgressBarComponent } from './applicature-progress-bar.comp
     CommonModule
   ]
 })
-export class ApplicatureProgressBarModule { }
+export class ApplicatureProgressBarModule {
+}

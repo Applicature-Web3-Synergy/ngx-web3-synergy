@@ -10,7 +10,7 @@ describe('ApplicatureSpinnerComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ApplicatureSpinnerComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
