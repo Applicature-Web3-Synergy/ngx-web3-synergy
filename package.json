@@ -35,6 +35,7 @@
     "@uniswap/sdk-core": "^3.0.1",
     "bignumber.js": "^9.0.2",
     "bnc-onboard": "^1.37.0",
+    "ngx-clipboard": "^15.0.1",
     "rxjs": "^7.5.4",
     "tslib": "^2.3.0",
     "web3": "^1.7.0",
