@@ -6,6 +6,7 @@ import { AvatarModule } from '../avatar/avatar.module';
 import { ButtonModule } from '../button/button.module';
 import { PipesModule } from '../pipes';
 import { AccountButtonComponent } from './account-button.component';
+import { ApplicatureCopyToClipboardModule } from '../applicature-copy-to-clipboard';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AccountButtonComponent } from './account-button.component';
     PipesModule,
     ClipboardModule,
     ButtonModule,
+    ApplicatureCopyToClipboardModule,
   ]
 })
 export class AccountButtonModule {

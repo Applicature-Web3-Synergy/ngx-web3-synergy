@@ -28,7 +28,8 @@
       <span>{{ accountAddress | shortAddress }}</span>
     </div>
     <div class="info__footer">
-      <span [cdkCopyToClipboard]="accountAddress"
+      <span ngxClipboard
+            [cbContent]="accountAddress"
             class="info__footer__item"><i class="wcl-icon-copy"></i><span>Copy Address</span></span>
       <a class="info__footer__item" [href]="etherscanAddress$ | async"
          target="_blank"><i class="wcl-icon-external-link"></i><span>View on Explorer</span></a>

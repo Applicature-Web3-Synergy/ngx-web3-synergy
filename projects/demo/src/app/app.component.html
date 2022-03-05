@@ -16,6 +16,16 @@
   </div>
   <br>
 
+  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
+    <applicature-connect-wallet [showBalance]="true"
+                                [showTransactions]="true"
+                                [networkOptions]="networkOptions"
+                                [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
+                                [accountOptions]="accountOptions"
+                                appearance="button">
+    </applicature-connect-wallet>
+  </div>
+
   <section id="dialogs">
     <h2 class="section-title">Applicature Dialogs</h2>
     <app-example-dialogs></app-example-dialogs>
@@ -126,5 +136,16 @@
 
     <app-example-table></app-example-table>
   </section>
+
+  <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
+    <applicature-connect-wallet [showBalance]="true"
+                                [showTransactions]="true"
+                                [networkOptions]="networkOptions"
+                                [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
+                                [accountOptions]="accountOptions"
+                                appearance="icon">
+    </applicature-connect-wallet>
+  </div>
+  <br>
 
 </div>

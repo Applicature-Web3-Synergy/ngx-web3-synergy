@@ -24,8 +24,10 @@
           <span *ngIf="account?.name">{{ accountAddress | shortAddress }}</span>
         </div>
 
-        <span [cdkCopyToClipboard]="accountAddress"
-              class="user-info__copy wcl-icon-copy"></span>
+        <applicature-copy-to-clipboard [value]="accountAddress"
+                                       class="user-info__copy"
+        >
+        </applicature-copy-to-clipboard>
       </div>
     </li>
     <li *ngFor="let option of options"

@@ -1,7 +1,8 @@
-import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { ClipboardModule } from 'ngx-clipboard';
 
 import { ApplicatureProgressBarModule } from '../applicature-progress-bar';
 import { ApplicatureRippleModule } from '../applicature-ripple';
@@ -32,12 +33,12 @@ const components = [
     CommonModule,
     ReactiveFormsModule,
     PipesModule,
-    ClipboardModule,
     ButtonModule,
     InputModule,
     ApplicatureRippleModule,
     ApplicatureSpinnerModule,
-    ApplicatureProgressBarModule
+    ApplicatureProgressBarModule,
+    ClipboardModule
   ]
 })
 export class ModalsModule {

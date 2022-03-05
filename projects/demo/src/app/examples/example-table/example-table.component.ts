@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   ApplicatureTableHeaderItem,
   ApplicatureTableRow,
-  Sort,
-  SORT_DIRECTION
+  ApplicatureSort,
+  APPLICATURE_SORT_DIRECTION
 } from '@applicature/components';
 
 const TableData: ApplicatureTableRow[] = [
@@ -129,7 +129,7 @@ export class ExampleTableComponent {
       value: 'Time',
       sort: {
         sortBy: 'time',
-        sortDirection: SORT_DIRECTION.DESC
+        sortDirection: APPLICATURE_SORT_DIRECTION.DESC
       }
     }
   ];
@@ -153,7 +153,7 @@ export class ExampleTableComponent {
     ]
   }
 
-  tableSort(sort: Sort): void {
+  tableSort(sort: ApplicatureSort): void {
     console.log('TABLE SORT ACTION: ', sort);
 
     this.tableData = this.tableData.reverse();

@@ -35,9 +35,6 @@ export * from './lib/transactions-history/transactions-history.module';
 
 export * from './lib/modals';
 
-export * from './lib/table/table.component';
-export * from './lib/table/table.module';
-
 export * from './lib/enums/index';
 
 export * from './lib/interfaces/index';

@@ -15,6 +15,7 @@
     "bignumber.js": "^9.0.2",
     "bnc-onboard": "^1.37.0",
     "web3": "^1.7.0",
-    "web3-utils": "^1.6.1"
+    "web3-utils": "^1.6.1",
+    "ngx-clipboard": "^15.0.1"
   }
 }

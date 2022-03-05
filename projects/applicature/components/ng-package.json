@@ -17,6 +17,7 @@
     "bignumber.js",
     "bnc-onboard",
     "web3",
-    "web3-utils"
+    "web3-utils",
+    "ngx-clipboard"
   ]
 }
