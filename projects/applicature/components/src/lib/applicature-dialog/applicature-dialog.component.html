@@ -2,13 +2,11 @@
      applicatureCustomizeDialog
      [config]="panelConfig"
 >
-  <div class="applicature-dialog-overlay"
-       *ngIf="hasOverlay"
-       applicatureCustomizeDialog
-       [config]="overlayConfig"
-       (click)="onOverlayClicked()"
+  <applicature-overlay *ngIf="hasOverlay"
+                       [customize]="overlayConfig"
+                       (overlayClicked)="onOverlayClicked()"
   >
-  </div>
+  </applicature-overlay>
 
   <div class="applicature-dialog"
        applicatureCustomizeDialog

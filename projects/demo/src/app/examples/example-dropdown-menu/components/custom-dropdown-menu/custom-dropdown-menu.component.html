@@ -1,0 +1,33 @@
+<applicature-button (onShowHide)="showCustomDropdownMenu($event)"
+                    label="Custom Dropdown Menu"
+                    applicatureTrigger
+                    #customMenuTrigger="applicatureTrigger"
+>
+</applicature-button>
+
+<applicature-dropdown-menu *ngIf="isOpenedCustomDropdownMenu"
+                           [config]="customDropdownConfig"
+                           [trigger]="customMenuTrigger"
+>
+  <div class="custom-dropdown-container">
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 1</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 2</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 3</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 4</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 5</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 6</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 7</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 8</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 9</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 10</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 11</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 12</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 13</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 14</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 15</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 16</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 17</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 18</div>
+    <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 19</div>
+  </div>
+</applicature-dropdown-menu>

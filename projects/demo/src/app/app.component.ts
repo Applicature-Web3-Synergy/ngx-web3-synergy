@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
-import { AccountOption, generateJazzicon, NetworkOption, WalletConnectService } from '@applicature/components';
+import {
+  AccountOption,
+  generateJazzicon,
+  NetworkOption,
+  WalletConnectService,
+  ApplicaturePosition,
+  APPLICATURE_POSITIONS,
+  ApplicatureDropdownConfig
+} from '@applicature/components';
 
 
 @Component({
@@ -10,6 +18,7 @@ import { AccountOption, generateJazzicon, NetworkOption, WalletConnectService } 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
+  public testMenu = false;
   public identicon!: HTMLDivElement;
   public networkOptions: NetworkOption[] = [
     {
@@ -43,10 +52,30 @@ export class AppComponent implements OnInit {
       isActive: false
     }
   ];
+  networkDropdownConfig: ApplicatureDropdownConfig = {
+    overlay: {
+      transparent: true
+    },
+    position: {
+      vertical: APPLICATURE_POSITIONS.BELOW,
+      horizontal: APPLICATURE_POSITIONS.AFTER
+    }
+  }
+
+  accountDropdownConfig: ApplicatureDropdownConfig = {
+    overlay: {
+      transparent: true
+    },
+    position: {
+      vertical: APPLICATURE_POSITIONS.BELOW,
+      horizontal: APPLICATURE_POSITIONS.BEFORE
+    }
+  }
+
   public accountOptions: AccountOption[] = [
-    {name: 'My Account', id: 1},
-    {name: 'Some menu Item', id: 2},
-    {name: 'Some menu Item', id: 3}
+    { name: 'My Account', id: 1 },
+    { name: 'Some menu Item', id: 2 },
+    { name: 'Some menu Item', id: 3 }
   ];
 
   constructor(

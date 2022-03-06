@@ -1,27 +1,40 @@
 import {
-  Component,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  Component,
   ElementRef,
   Input,
-  HostListener,
-  SimpleChanges,
   OnChanges,
   OnInit,
+  SimpleChanges
 } from '@angular/core';
 import { filter, Subscription } from 'rxjs';
+
 import { Ethereum, NetworkOption } from '../interfaces';
 import { WalletConnectService } from '../services/wallet-connect.service';
+import { APPLICATURE_POSITIONS } from '../enums';
+import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
+
 
 @Component({
   selector: 'applicature-network-dropdown',
   templateUrl: './network-dropdown.component.html',
-  styleUrls: ['./network-dropdown.component.scss'],
+  styleUrls: [ './network-dropdown.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NetworkDropdownComponent implements OnInit, OnChanges {
   @Input()
   public networkOptions!: NetworkOption[];
+
+  @Input() networkDropdownConfig: ApplicatureDropdownConfig = {
+    overlay: {
+      transparent: true
+    },
+    position: {
+      vertical: APPLICATURE_POSITIONS.BELOW,
+      horizontal: APPLICATURE_POSITIONS.AFTER
+    }
+  }
 
   public isWrongNetwork: boolean = false;
   public isOptionsOpen: boolean = false;
@@ -62,21 +75,18 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
     this.currentNetwork = (this.networkOptions || []).find(n => n.isActive);
   }
 
+  public setOpened(opened: boolean): void {
+    this.isOptionsOpen = opened;
+  }
+
   public async onNetworkOptionClick(option: NetworkOption): Promise<void> {
+    this.setOpened(false);
+
     try {
       await this._walletConnectService.switchEthereumChain(option.chainId);
     } catch (error) {
-
+      console.error(error);
     }
   }
 
-  @HostListener('document:click', ['$event.target'])
-  public clickOutside(target: any): void {
-    const element = this._elementRef.nativeElement;
-
-    if (this.isOptionsOpen && !element.contains(target)) {
-      this.isOptionsOpen = false;
-      this._cdr.markForCheck();
-    }
-  }
 }

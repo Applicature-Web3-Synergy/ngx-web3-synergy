@@ -5,19 +5,20 @@ import {
   Component,
   ComponentFactoryResolver,
   ComponentRef,
-  Inject,
   OnDestroy,
   Type,
   ViewChild
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { DOCUMENT } from '@angular/common';
-
 import { ApplicatureDialogConfig } from './applicature-dialog-config';
 import { ApplicatureDialogRef } from './applicature-dialog-ref';
 import { ApplicatureInsertionDirective } from './directives';
 import { ApplicatureCustomizeDialogConfig } from './interfaces';
+import { ApplicatureOverlayCustomizationConfig } from '../applicature-overlay';
+import {
+  ApplicatureBlockScrollHelperService
+} from '../helpers/applicature-block-scroll-helper/applicature-block-scroll-helper.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class ApplicatureDialogComponent implements AfterViewInit, OnDestroy {
   public childComponentType: Type<any>;
   public onClose = this._onClose.asObservable();
   public panelConfig: ApplicatureCustomizeDialogConfig;
-  public overlayConfig: ApplicatureCustomizeDialogConfig;
+  public overlayConfig: ApplicatureOverlayCustomizationConfig;
   public dialogConfig: ApplicatureCustomizeDialogConfig = {};
 
   @ViewChild(ApplicatureInsertionDirective) insertionPoint: ApplicatureInsertionDirective;
@@ -46,9 +47,9 @@ export class ApplicatureDialogComponent implements AfterViewInit, OnDestroy {
               private _cdr: ChangeDetectorRef,
               private _config: ApplicatureDialogConfig,
               private _dialogRef: ApplicatureDialogRef,
-              @Inject(DOCUMENT) private document: Document) {
+              private _blockScroll: ApplicatureBlockScrollHelperService) {
     this.mapConfig(this._config);
-    this.document.body.classList.add('block-scroll');
+    this._blockScroll.lockScroll();
   }
 
   ngAfterViewInit(): void {
@@ -58,7 +59,7 @@ export class ApplicatureDialogComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.document.body.classList.remove('block-scroll');
+    this._blockScroll.unLockScroll();
 
     if (this.componentRef) {
       this.componentRef.destroy();
@@ -78,9 +79,10 @@ export class ApplicatureDialogComponent implements AfterViewInit, OnDestroy {
       };
     }
 
-    if (overlay?.hasOverlay && overlay?.overlayClass.length) {
+    if (overlay?.hasOverlay && (overlay?.overlayClass.length || overlay?.transparent)) {
       this.overlayConfig = {
-        classes: overlay.overlayClass
+        overlayClass: overlay.overlayClass,
+        transparent: overlay.transparent
       };
     }
 

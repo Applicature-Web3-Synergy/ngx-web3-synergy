@@ -12,13 +12,14 @@ import {
 import { map, Observable, Subscription } from 'rxjs';
 
 import { AccountData, AccountOption } from '../account-button/account-button.component';
-import { TransactionStatus } from '../enums';
+import { APPLICATURE_POSITIONS, TransactionStatus } from '../enums';
 import { generateJazzicon, normalizeBalance } from '../helpers';
 import { NetworkOption } from '../interfaces';
 import { AccountModalComponent, AccountModalData } from '../modals';
 import { TransactionService } from '../services/transaction.service';
 import { WalletConnectService } from '../services/wallet-connect.service';
 import { ApplicatureDialogService } from '../applicature-dialog';
+import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
 
 export type AppearanceType = 'default' | 'icon' | 'button';
 
@@ -52,6 +53,26 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
 
   @Input()
   public accountOptions!: AccountOption[];
+
+  @Input() networkDropdownConfig?: ApplicatureDropdownConfig = {
+    overlay: {
+      transparent: true
+    },
+    position:  {
+      vertical: APPLICATURE_POSITIONS.BELOW,
+      horizontal: APPLICATURE_POSITIONS.AFTER
+    }
+  }
+
+  @Input() accountDropdownConfig: ApplicatureDropdownConfig = {
+    overlay: {
+      transparent: true
+    },
+    position: {
+      vertical: APPLICATURE_POSITIONS.BELOW,
+      horizontal: APPLICATURE_POSITIONS.BEFORE
+    }
+  }
 
   @Output('onConnect')
   public onConnectWalletEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();

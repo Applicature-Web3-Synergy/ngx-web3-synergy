@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ApplicatureDialogComponent } from './applicature-dialog.component';
 import { ApplicatureCustomizeDialogDirective, ApplicatureInsertionDirective } from './directives';
 import { ApplicatureDialogService } from './services';
+import { ApplicatureOverlayModule } from '../applicature-overlay';
+import { ApplicatureBlockScrollHelperService } from '../helpers';
 
 
 @NgModule({
@@ -16,10 +18,12 @@ import { ApplicatureDialogService } from './services';
     ApplicatureDialogComponent
   ],
   providers: [
-    ApplicatureDialogService
+    ApplicatureDialogService,
+    ApplicatureBlockScrollHelperService
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ApplicatureOverlayModule
   ]
 })
 export class ApplicatureDialogModule {

@@ -41,9 +41,10 @@ export class ExampleDialogsComponent {
           panelClass: 'panel-class-test'
         },
         overlay: {
-          hasOverlay: false,
+          hasOverlay: true,
           closeByClick: true,
-          overlayClass: [ 'test-overlay-class1', 'test-overlay-class2' ]
+          overlayClass: [ 'test-overlay-class1', 'test-overlay-class2' ],
+          transparent: true
         }
       });
 
