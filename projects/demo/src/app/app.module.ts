@@ -8,13 +8,15 @@ import {
   ButtonModule,
   InputModule,
   WalletConnectModule,
-  WalletConnectService
+  WalletConnectService,
+  ApplicatureDropdownMenuModule
 } from '@applicature/components';
 import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces';
 
 import { AppComponent } from './app.component';
 import { ExampleDialogsModule } from './examples/example-dialogs/example-dialogs.module';
 import { ExampleTableModule } from './examples/example-table/example-table.module';
+import { ExampleDropdownMenuModule } from './examples/example-dropdown-menu/example-dropdown-menu.module';
 
 const wallets: Array<WalletModule | WalletInitOptions> = [
   {
@@ -55,7 +57,9 @@ export function initWalletServiceFactory(
     InputModule,
     WalletConnectModule.forRoot(),
     ExampleDialogsModule,
-    ExampleTableModule
+    ExampleTableModule,
+    ApplicatureDropdownMenuModule,
+    ExampleDropdownMenuModule
   ],
   providers: [
     {

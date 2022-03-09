@@ -39,7 +39,7 @@ export * from './lib/enums/index';
 
 export * from './lib/interfaces/index';
 
-export * from './lib/helpers/index';
+export * from './lib/helpers';
 
 export * from './lib/applicature-dialog';
 
@@ -53,4 +53,8 @@ export * from './lib/applicature-table';
 
 export * from './lib/types';
 
-export * from './lib/applicature-directives';
+export * from './lib/directives';
+
+export * from './lib/applicature-dropdown-menu';
+
+export * from './lib/applicature-overlay';

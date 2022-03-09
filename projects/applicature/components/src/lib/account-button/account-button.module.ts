@@ -7,6 +7,8 @@ import { ButtonModule } from '../button/button.module';
 import { PipesModule } from '../pipes';
 import { AccountButtonComponent } from './account-button.component';
 import { ApplicatureCopyToClipboardModule } from '../applicature-copy-to-clipboard';
+import { ApplicatureDirectivesModule } from '../directives';
+import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ApplicatureCopyToClipboardModule } from '../applicature-copy-to-clipboa
     ClipboardModule,
     ButtonModule,
     ApplicatureCopyToClipboardModule,
+    ApplicatureDirectivesModule,
+    ApplicatureDropdownMenuModule,
   ]
 })
 export class AccountButtonModule {

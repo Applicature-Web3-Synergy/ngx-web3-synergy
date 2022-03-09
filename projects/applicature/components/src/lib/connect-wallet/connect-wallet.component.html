@@ -33,7 +33,9 @@
 
         <div class="connect-wallet__container">
           <applicature-account-button [account]="account"
-                                      [options]="accountOptions">
+                                      [options]="accountOptions"
+                                      [accountDropdownConfig]="accountDropdownConfig"
+          >
           </applicature-account-button>
         </div>
       </ng-container>
@@ -61,6 +63,7 @@
 <ng-template #networkOptionsRef>
   <applicature-network-dropdown *ngIf="showNetworkOptions"
                                 [networkOptions]="networkOptions"
+                                [networkDropdownConfig]="networkDropdownConfig"
                                 class="connect-wallet__networks">
   </applicature-network-dropdown>
 </ng-template>

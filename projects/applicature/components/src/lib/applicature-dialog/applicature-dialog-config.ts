@@ -1,4 +1,5 @@
 import { ApplicatureDialogPosition } from './types';
+import { ApplicatureCustomizeDialogOverlayConfigInterface } from './interfaces';
 
 export class ApplicatureDialogConfig<D = any> {
   data?: D;
@@ -13,9 +14,5 @@ export class ApplicatureDialogConfig<D = any> {
   panel?: {
     panelClass: string | string[];
   };
-  overlay?: {
-    hasOverlay?: boolean;
-    closeByClick?: boolean;
-    overlayClass?: string | string[];
-  };
+  overlay?: ApplicatureCustomizeDialogOverlayConfigInterface;
 }

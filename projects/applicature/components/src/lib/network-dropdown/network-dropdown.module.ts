@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from '../button/button.module';
 import { PipesModule } from '../pipes';
 import { NetworkDropdownComponent } from './network-dropdown.component';
+import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
+import { ApplicatureDirectivesModule } from '../directives';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { NetworkDropdownComponent } from './network-dropdown.component';
     OverlayModule,
     ButtonModule,
     PipesModule,
+    ApplicatureDropdownMenuModule,
+    ApplicatureDirectivesModule,
   ]
 })
 export class NetworkDropdownModule {

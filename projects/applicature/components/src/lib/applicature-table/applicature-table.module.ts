@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { IconModule } from '../icon/icon.module';
 import { ApplicatureTableComponent } from './applicature-table.component';
-import { ApplicatureDirectivesModule } from '../applicature-directives';
+import { ApplicatureDirectivesModule } from '../directives';
 
 
 @NgModule({

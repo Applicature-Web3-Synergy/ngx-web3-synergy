@@ -1,15 +1,18 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
-  Input,
   ChangeDetectorRef,
+  Component,
   ElementRef,
-  Output,
-  EventEmitter
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { WalletConnectService } from '../services/wallet-connect.service';
+import { APPLICATURE_POSITIONS } from '../enums';
+import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
 
 export interface AccountData {
   image?: string;
@@ -25,7 +28,7 @@ export interface AccountOption {
 @Component({
   selector: 'applicature-account-button',
   templateUrl: './account-button.component.html',
-  styleUrls: ['./account-button.component.scss'],
+  styleUrls: [ './account-button.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountButtonComponent implements OnInit {
@@ -37,6 +40,16 @@ export class AccountButtonComponent implements OnInit {
 
   @Input()
   public size: number = 40;
+
+  @Input() accountDropdownConfig: ApplicatureDropdownConfig = {
+    overlay: {
+      transparent: true
+    },
+    position: {
+      vertical: APPLICATURE_POSITIONS.BELOW,
+      horizontal: APPLICATURE_POSITIONS.BEFORE
+    }
+  }
 
   @Output('optionClick')
   public optionEmitter: EventEmitter<AccountOption> = new EventEmitter<AccountOption>();
@@ -64,6 +77,10 @@ export class AccountButtonComponent implements OnInit {
     );
   }
 
+  public setOpened(opened: boolean): void {
+    this.isOptionsOpen = opened;
+  }
+
   public onOptionClick(option: AccountOption): void {
     this._closeOptions();
 
@@ -83,7 +100,7 @@ export class AccountButtonComponent implements OnInit {
   }
 
   private _closeOptions() {
-    this.isOptionsOpen = false;
+    this.setOpened(false);
     this._cdr.markForCheck();
   }
 }
