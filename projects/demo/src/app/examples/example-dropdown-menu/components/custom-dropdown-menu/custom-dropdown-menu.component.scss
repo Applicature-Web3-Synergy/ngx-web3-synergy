@@ -1,0 +1,16 @@
+@import './projects/applicature/styles/src/lib/scss/styles';
+
+.custom-dropdown-container {
+  padding: 0
+}
+
+.custom-dropdown-item {
+  margin: 0;
+  padding: 15px 10px;
+  cursor: pointer;
+  @include transition(background-color, 0.3s);
+
+  &:hover {
+    background-color: #F3F5FB;
+  }
+}

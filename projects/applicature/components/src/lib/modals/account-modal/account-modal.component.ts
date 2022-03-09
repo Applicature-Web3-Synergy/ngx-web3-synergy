@@ -1,47 +1,40 @@
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
-  Component, ElementRef,
-  Inject, OnDestroy, OnInit, ViewChild,
-} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { filter, map, Observable, Subscription } from 'rxjs';
+
 import { generateJazzicon } from '../../helpers';
 import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../../helpers/network';
 import { Ethereum, EtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../services/transaction.service';
 import { WalletConnectService } from '../../services/wallet-connect.service';
+import { AccountModalData } from './interfaces';
+import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
 
-export interface AccountModalData {
-  header: string;
-  change: () => void;
-  disconnect: () => void;
-}
 
 @Component({
   selector: 'applicature-account-modal',
   templateUrl: './account-modal.component.html',
   styleUrls: ['./account-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountModalComponent implements OnInit, OnDestroy {
   @ViewChild('infoMain', { static: true })
   public infoMain!: ElementRef;
-
   public identicon: HTMLDivElement;
   public accountAddress: string;
   public etherscanAddress$: Observable<string>;
   public transactions$: Observable<EtherscanTransactionLocalStorage[]>;
+  public data: AccountModalData;
 
   private _sub: Subscription = new Subscription();
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: AccountModalData,
+    private _config: ApplicatureDialogConfig<AccountModalData>,
+    private _dialogRef: ApplicatureDialogRef,
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: WalletConnectService,
-    private _transactionService: TransactionService,
-    private _matDialogRef: MatDialogRef<AccountModalComponent, void>
+    private _transactionService: TransactionService
   ) {
+    this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;
 
     this.etherscanAddress$ = this._walletConnectService.networkChanged$
@@ -52,7 +45,7 @@ export class AccountModalComponent implements OnInit, OnDestroy {
           const subdomain = chainId === MAINNET_CHAIN_ID ? '' : `${CHAIN_ID_TO_TYPE_MAP[chainId]}.`;
 
           return `https://${subdomain}etherscan.io/address/${selectedAddress}`;
-        }),
+        })
       );
   }
 
@@ -62,7 +55,7 @@ export class AccountModalComponent implements OnInit, OnDestroy {
     this._sub.add(
       this._walletConnectService.accountsChanged$
         .pipe(
-          filter((accounts) => accounts?.length > 0),
+          filter((accounts) => accounts?.length > 0)
         )
         .subscribe(([accountAddress]) => {
           this.accountAddress = accountAddress;
@@ -75,10 +68,10 @@ export class AccountModalComponent implements OnInit, OnDestroy {
 
           identicon = generateJazzicon(this.accountAddress);
 
-          element.insertBefore(identicon, element.firstChild)
+          element.insertBefore(identicon, element.firstChild);
 
           this._cdr.markForCheck();
-        }),
+        })
     );
   }
 
@@ -89,7 +82,7 @@ export class AccountModalComponent implements OnInit, OnDestroy {
   }
 
   public onCloseClick(): void {
-    this._matDialogRef.close();
+    this._dialogRef.close();
   }
 
   public onClearTransactionsClick(): void {

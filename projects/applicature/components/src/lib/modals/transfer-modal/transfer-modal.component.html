@@ -30,7 +30,7 @@
       <p class="transfer__info">Please click Transfer.</p>
     </ng-template>
 
-    <mat-progress-bar mode="determinate" [value]="50 * currentStep"></mat-progress-bar>
+    <applicature-progress-bar [progress]="50 * currentStep"></applicature-progress-bar>
   </div>
 
   <ng-container *ngIf="currentStep === 1 else transferButton">

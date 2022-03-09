@@ -1,18 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+
 import { TransactionStatus } from '../enums';
-import {
-  RecentTransactionsModalData,
-  TransactionsHistoryModalComponent
-} from '../modals/transactions-history-modal/transactions-history-modal.component';
+import { RecentTransactionsModalData, TransactionsHistoryModalComponent } from '../modals';
 import { TransactionService } from '../services/transaction.service';
+import { ApplicatureDialogService } from '../applicature-dialog';
 
 @Component({
   selector: 'applicature-transactions-history',
   templateUrl: './transactions-history.component.html',
-  styleUrls: ['./transactions-history.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: [ './transactions-history.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionsHistoryComponent implements OnInit {
   @Input()
@@ -25,9 +23,9 @@ export class TransactionsHistoryComponent implements OnInit {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _matDialog: MatDialog,
+    private _dialogService: ApplicatureDialogService,
     private _cdr: ChangeDetectorRef,
-    private _transactionService: TransactionService,
+    private _transactionService: TransactionService
   ) {
   }
 
@@ -50,7 +48,7 @@ export class TransactionsHistoryComponent implements OnInit {
           }
 
           this._cdr.markForCheck();
-        }),
+        })
     );
   }
 
@@ -59,14 +57,13 @@ export class TransactionsHistoryComponent implements OnInit {
       return;
     }
 
-    const config = new MatDialogConfig<RecentTransactionsModalData>();
-
-    config.data = {
-      header: 'Recent transactions',
+    const config = {
+      data: {
+        header: 'Recent transactions'
+      },
+      dialogClass: 'applicature-dialog'
     };
 
-    config.panelClass = 'applicature-mat-dialog';
-
-    this._matDialog.open(TransactionsHistoryModalComponent, config)
+    this._dialogService.open<TransactionsHistoryModalComponent, RecentTransactionsModalData>(TransactionsHistoryModalComponent, config);
   }
 }

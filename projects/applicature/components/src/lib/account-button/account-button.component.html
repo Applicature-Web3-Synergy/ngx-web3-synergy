@@ -1,15 +1,15 @@
-<applicature-avatar cdkOverlayOrigin
-                    #networkOptionsTrigger="cdkOverlayOrigin"
+<applicature-avatar applicatureTrigger
+                    #networkOptionsTrigger="applicatureTrigger"
                     [src]="account?.image"
                     [size]="size"
-                    (click)="isOptionsOpen=!isOptionsOpen">
+                    (onShowHide)="setOpened($event)"
+>
 </applicature-avatar>
 
-<ng-template
-  cdkConnectedOverlay
-  [cdkConnectedOverlayOffsetY]="12"
-  [cdkConnectedOverlayOrigin]="networkOptionsTrigger"
-  [cdkConnectedOverlayOpen]="isOptionsOpen">
+<applicature-dropdown-menu *ngIf="isOptionsOpen"
+                           [config]="accountDropdownConfig"
+                           [trigger]="networkOptionsTrigger"
+>
   <ul class="options">
     <li class="options__header">Connected with Metamask</li>
     <li class="options__header">
@@ -24,8 +24,10 @@
           <span *ngIf="account?.name">{{ accountAddress | shortAddress }}</span>
         </div>
 
-        <span [cdkCopyToClipboard]="accountAddress"
-              class="user-info__copy wcl-icon-copy"></span>
+        <applicature-copy-to-clipboard [value]="accountAddress"
+                                       class="user-info__copy"
+        >
+        </applicature-copy-to-clipboard>
       </div>
     </li>
     <li *ngFor="let option of options"
@@ -48,4 +50,4 @@
       </applicature-button>
     </li>
   </ul>
-</ng-template>
+</applicature-dropdown-menu>

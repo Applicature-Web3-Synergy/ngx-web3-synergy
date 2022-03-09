@@ -1,0 +1,17 @@
+<div class="applicature-dialog-container"
+     applicatureCustomizeDialog
+     [config]="panelConfig"
+>
+  <applicature-overlay *ngIf="hasOverlay"
+                       [customize]="overlayConfig"
+                       (overlayClicked)="onOverlayClicked()"
+  >
+  </applicature-overlay>
+
+  <div class="applicature-dialog"
+       applicatureCustomizeDialog
+       [config]="dialogConfig"
+  >
+    <ng-template applicatureInsertion></ng-template>
+  </div>
+</div>

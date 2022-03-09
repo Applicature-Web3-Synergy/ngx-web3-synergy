@@ -10,17 +10,26 @@
     <div class="info__header">
       <span>Connected with Metamask</span>
       <button (click)="onChangeClick()"
-              matRipple
-              class="info__header__change">Change</button>
+              applicatureRipple
+              class="info__header__change"
+      >
+        Change
+      </button>
+
       <button (click)="onDisconnectClick()"
-              matRipple
-              class="info__header__disconnect">Disconnect</button>
+              applicatureRipple
+              class="info__header__disconnect"
+      >
+        Disconnect
+      </button>
     </div>
+
     <div #infoMain class="info__main">
       <span>{{ accountAddress | shortAddress }}</span>
     </div>
     <div class="info__footer">
-      <span [cdkCopyToClipboard]="accountAddress"
+      <span ngxClipboard
+            [cbContent]="accountAddress"
             class="info__footer__item"><i class="wcl-icon-copy"></i><span>Copy Address</span></span>
       <a class="info__footer__item" [href]="etherscanAddress$ | async"
          target="_blank"><i class="wcl-icon-external-link"></i><span>View on Explorer</span></a>
@@ -47,10 +56,11 @@
 
           <span *ngSwitchCase="'success'" class="wcl-icon-check"></span>
 
-          <mat-progress-spinner *ngSwitchCase="'pending'"
-                                mode="indeterminate"
-                                diameter="18">
-          </mat-progress-spinner>
+          <applicature-spinner *ngSwitchCase="'pending'"
+                               [diameter]="18"
+                               [width]="2"
+          >
+          </applicature-spinner>
         </ng-container>
       </div>
     </div>

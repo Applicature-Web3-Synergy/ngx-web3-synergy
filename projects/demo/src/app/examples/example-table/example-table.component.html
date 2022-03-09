@@ -1,0 +1,8 @@
+<applicature-table [tableHeaders]="tableHeaders"
+                   [data]="tableData"
+                   [isLoadMore]="isLoadMore"
+                   customClass="table-custom-class"
+                   (loadMore)="loadMoreTable()"
+                   (sort)="tableSort($event)"
+>
+</applicature-table>

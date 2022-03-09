@@ -33,17 +33,28 @@ export * from './lib/account-button/account-button.module';
 export * from './lib/transactions-history/transactions-history.component';
 export * from './lib/transactions-history/transactions-history.module';
 
-export * from './lib/modals/account-modal/account-modal.component';
-export * from './lib/modals/transactions-history-modal/transactions-history-modal.component';
-export * from './lib/modals/transfer-modal/transfer-modal.component';
-export * from './lib/modals/wrong-network-modal/wrong-network-modal.component';
-export * from './lib/modals/modals.module';
-
-export * from './lib/table/table.component';
-export * from './lib/table/table.module';
+export * from './lib/modals';
 
 export * from './lib/enums/index';
 
 export * from './lib/interfaces/index';
 
-export * from './lib/helpers/index';
+export * from './lib/helpers';
+
+export * from './lib/applicature-dialog';
+
+export * from './lib/applicature-ripple';
+
+export * from './lib/applicature-spinner';
+
+export * from './lib/applicature-progress-bar';
+
+export * from './lib/applicature-table';
+
+export * from './lib/types';
+
+export * from './lib/directives';
+
+export * from './lib/applicature-dropdown-menu';
+
+export * from './lib/applicature-overlay';

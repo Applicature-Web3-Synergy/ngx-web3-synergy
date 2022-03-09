@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from '../button/button.module';
 import { TransactionsHistoryComponent } from './transactions-history.component';
+import { ApplicatureDialogModule } from '../applicature-dialog';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { TransactionsHistoryComponent } from './transactions-history.component';
   imports: [
     CommonModule,
     ButtonModule,
+    ApplicatureDialogModule
   ]
 })
 export class TransactionsHistoryModule {

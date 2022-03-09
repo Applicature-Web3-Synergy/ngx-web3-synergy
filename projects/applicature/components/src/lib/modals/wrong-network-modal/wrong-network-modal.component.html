@@ -1,6 +1,5 @@
 <div class="wrong-network">
-  <span (click)="onCloseClick()"
-        class="wrong-network__close wcl-icon-close"></span>
+  <span (click)="onCloseClick()" class="wrong-network__close wcl-icon-close"></span>
 
   <span class="wrong-network__fail wcl-icon-fail"></span>
 
@@ -11,13 +10,21 @@
   <ng-container [ngSwitch]="data.appearance">
     <ng-container *ngSwitchCase="'switch'">
       <applicature-button [label]="data.switchLabel"
-                          (onClick)="onSwitchNetworkClick()"></applicature-button>
+                          (onClick)="onSwitchNetworkClick()"
+                          [adaptive]="true"
+                          class="wrong-network__action switch-network-btn"
+      >
+      </applicature-button>
     </ng-container>
 
     <ng-container *ngSwitchCase="'disconnect'">
       <applicature-button label="Disconnect"
                           color="red"
-                          (onClick)="onDisconnectClick()"></applicature-button>
+                          class="wrong-network__action disconnect-btn"
+                          [adaptive]="true"
+                          (onClick)="onDisconnectClick()"
+      >
+      </applicature-button>
     </ng-container>
   </ng-container>
 </div>

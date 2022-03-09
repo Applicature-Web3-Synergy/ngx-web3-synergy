@@ -57,15 +57,17 @@ $applicature-colors: (
     border: #6D87AC,
     borderHover: #BBC7D9,
     borderFocus: #5F7492,
+    background: #F3F5FB
   ),
   white: (
     base: #FFFFFF,
-    hover: #FFFFFF,
+    hover: #F9FAFD,
     light: #FFFFFF,
     dark: #FFFFFF,
     text: #222222,
     border: #FFFFFF,
     borderHover: #DDE3EC,
     borderFocus: #608BF2,
+    boxShadow: rgba(56, 64, 75, 0.1)
   ),
 );

@@ -1,0 +1,16 @@
+<div class="text-wrapper"><p>{{config.data.message}}</p></div>
+
+<div class="actions">
+  <applicature-button (onClick)="onClose('cancel')"
+                      label="Cancel"
+                      color="red"
+                      [adaptive]="true"
+  >
+  </applicature-button>
+
+  <applicature-button (onClick)="onClose('ok')"
+                      label="Ok"
+                      [adaptive]="true"
+  >
+  </applicature-button>
+</div>
