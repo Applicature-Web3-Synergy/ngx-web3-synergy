@@ -1,44 +1,6 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
 $font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 
 @import './projects/applicature/styles/src/lib/scss/styles';
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-$ui-typography: mat.define-typography-config(
-  $font-family: $font-family,
-);
-
-@include mat.core($ui-typography);
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$mat-primary: mat.define-palette(mat.$indigo-palette);
-$mat-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$mat-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$mat-theme: mat.define-light-theme((
-  color: (
-    primary: $mat-primary,
-    accent: $mat-accent,
-    warn: $mat-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($mat-theme);
 
 *, *:after, *:before {
   box-sizing: border-box;
@@ -62,13 +24,6 @@ body {
 }
 
 .applicature-dialog {
-  padding: 20px;
-  border-radius: 12px;
-}
-
-
-// TODO REMOVE
-.applicature-mat-dialog .mat-dialog-container {
   padding: 20px;
   border-radius: 12px;
 }

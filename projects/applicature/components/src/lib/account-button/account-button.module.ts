@@ -1,5 +1,3 @@
-import { ClipboardModule } from '@angular/cdk/clipboard';
-import { OverlayModule } from '@angular/cdk/overlay';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AvatarModule } from '../avatar/avatar.module';
@@ -20,9 +18,7 @@ import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
   imports: [
     CommonModule,
     AvatarModule,
-    OverlayModule,
     PipesModule,
-    ClipboardModule,
     ButtonModule,
     ApplicatureCopyToClipboardModule,
     ApplicatureDirectivesModule,
