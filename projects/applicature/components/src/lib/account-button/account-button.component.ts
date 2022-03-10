@@ -88,12 +88,6 @@ export class AccountButtonComponent implements OnInit {
     this.optionEmitter.emit(option);
   }
 
-  // public async onChangeWalletProviderClick(): Promise<void> {
-  //   this._closeOptions();
-  //
-  //   await this._walletConnectService.connectWallet();
-  // }
-
   public onChangeWalletProviderClick(): void {
     this._closeOptions();
 

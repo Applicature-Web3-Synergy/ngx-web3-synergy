@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, from, map, Observable, of, Subject, tap } from 'rxjs';
+import { BehaviorSubject, catchError, from, map, Observable, of, Subject, Subscriber, tap } from 'rxjs';
 
 import Web3 from 'web3';
 import Onboard from 'bnc-onboard';
@@ -76,12 +76,14 @@ export class WalletConnectService {
   constructor() {
   }
 
-  public async initialize(config: Omit<Initialization, 'subscriptions' | 'darkMode' | 'hideBranding'>): Promise<void> {
+  public initialize(config: Omit<Initialization, 'subscriptions' | 'darkMode' | 'hideBranding'>): Observable<void> {
     if (this._onboard) {
-      return;
+      console.error('bnc-onboard is not initialized');
+
+      return of(null);
     }
 
-    return new Promise(async (resolve, reject) => {
+    return new Observable<void>((observer: Subscriber<void>) => {
       this._onboard = Onboard({
         ...config,
         walletSelect: {
@@ -89,17 +91,24 @@ export class WalletConnectService {
           heading: 'Connect a wallet',
           description: '',
         },
-        subscriptions: this._getSubscriptions(resolve),
+        subscriptions: this._getSubscriptions<void>(observer),
         hideBranding: true,
       });
 
       const previouslySelectedWallet = localStorage.getItem(APPLICATURE_CONNECTED_WALLET_NAME);
 
       if (previouslySelectedWallet !== null) {
-        return await this._onboard.walletSelect(previouslySelectedWallet);
+        this._onboard.walletSelect(previouslySelectedWallet)
+          .then(() => {
+            observer.next();
+            observer.complete();
+          })
+          .catch(error => observer.error(error));
+
+        return;
       }
 
-      return await this._initWeb3(resolve);
+      this._initWeb3(observer);
     });
   }
 
@@ -109,6 +118,10 @@ export class WalletConnectService {
         .pipe(
           tap(() => new Error('initialize method must be called'))
         );
+    }
+
+    if (this.connectionState.connected) {
+      return of(this.connectionState);
     }
 
     return from(this._onboard.walletSelect())
@@ -142,49 +155,50 @@ export class WalletConnectService {
       );
   }
 
-  private _getSubscriptions(resolve: () => void): Subscriptions {
+  private _getSubscriptions<T = any>(observer: Subscriber<T>): Subscriptions {
     let selectedWallet: Wallet;
 
     return {
-      address: async (address: string) => {
-        console.log('address: ', address);
+      address: (address: string): void => {
         this._accountsChanged$.next(address ? [ address ] : []);
 
-        await this._initWeb3(resolve, selectedWallet);
+        this._initWeb3<T>(observer, selectedWallet);
       },
-      network: (networkId: number) => {
-        console.log('networkId: ', networkId);
+      network: (networkId: number): void => {
         this._onboard.config({ networkId });
 
         this._networkChanged$.next(networkId);
       },
-      wallet: async (wallet: Wallet) => {
-        console.log('wallet: ', wallet);
+      wallet: (wallet: Wallet): void => {
         selectedWallet = wallet;
 
-        await this._initWeb3(resolve, selectedWallet);
+        this._initWeb3<T>(observer, selectedWallet);
       },
-      balance: (balance: string) => {
-        console.log('balance: ', balance);
+      balance: (balance: string): void => {
         this._balanceChanged$.next(balance);
       },
     };
   }
 
-  private async _initWeb3(resolve: () => void, selectedWallet?: Wallet): Promise<void> {
-    const provider = Object.assign({}, selectedWallet?.provider || {});
+  private _initWeb3<T = any>(observer: Subscriber<T>, selectedWallet?: Wallet): void {
+    try {
+      const provider = Object.assign({}, selectedWallet?.provider || {});
 
-    if (!provider?.selectedAddress || !selectedWallet?.name) {
-      this._web3 = new Web3();
-    } else {
-      localStorage.setItem(APPLICATURE_CONNECTED_WALLET_NAME, selectedWallet.name);
+      if (!provider?.selectedAddress || !selectedWallet?.name) {
+        this._web3 = new Web3();
+      } else {
+        localStorage.setItem(APPLICATURE_CONNECTED_WALLET_NAME, selectedWallet.name);
 
-      this._web3 = new Web3(selectedWallet.provider);
+        this._web3 = new Web3(selectedWallet.provider);
+      }
+
+      this._handleEthEvents();
+
+      observer.next();
+      observer.complete();
+    } catch (e) {
+      observer.error(e);
     }
-
-    this._handleEthEvents();
-
-    resolve();
   }
 
   private _handleEthEvents(): void {

@@ -9,6 +9,7 @@ import {
   ApplicatureDropdownConfig
 } from '@applicature/components';
 import { debounceTime, from } from 'rxjs';
+import { ConnectionState } from '../../../applicature/components/src/lib/services';
 
 
 @Component({
@@ -120,10 +121,10 @@ export class AppComponent implements OnInit {
     console.log('onConnect: ', evt);
   }
 
-  public testConnect(): void {
+  public customBtnConnect(): void {
     this._walletConnectService.connectWallet()
-      .subscribe((res) => {
-        console.log('lalalal: ', res);
+      .subscribe((connectionstate: ConnectionState) => {
+        console.log('Custom connect connectionState: ', connectionstate);
       })
   }
 }
