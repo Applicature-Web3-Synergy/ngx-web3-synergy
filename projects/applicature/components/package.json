@@ -3,11 +3,9 @@
   "version": "0.0.16",
   "dependencies": {
     "tslib": "^2.3.0",
-    "@angular/cdk": "^13.1.2",
     "@angular/common": "^13.1.0",
     "@angular/core": "^13.1.0",
     "@angular/forms": "~13.1.0",
-    "@angular/material": "^13.1.2",
     "@ethersproject/address": "^5.5.0",
     "@metamask/jazzicon": "^2.0.0",
     "@uiowa/digit-only": "^3.2.0",
@@ -15,6 +13,7 @@
     "bignumber.js": "^9.0.2",
     "bnc-onboard": "^1.37.0",
     "web3": "^1.7.0",
-    "web3-utils": "^1.6.1"
+    "web3-utils": "^1.6.1",
+    "ngx-clipboard": "^15.0.1"
   }
 }

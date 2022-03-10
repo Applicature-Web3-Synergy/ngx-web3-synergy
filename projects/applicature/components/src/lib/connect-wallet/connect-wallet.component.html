@@ -9,7 +9,7 @@
           <span *ngIf="!(hasPendingTx || hasFailedTx) && showBalance"
                 class="connect-wallet__balance">{{ balance$ | async }} ETH</span>
 
-          <applicature-button (onClick)="onAccountButtonClick($event)"
+          <applicature-button (onClick)="onAccountButtonClick()"
                               [disabled]="disabled"
                               [label]="hasPendingTx ? txCount + ' pending' : hasFailedTx ? txCount + ' failing' : (accountAddress | shortAddress)"
                               [identicon]="!(hasPendingTx || hasFailedTx) ? identicon : null"
@@ -33,13 +33,15 @@
 
         <div class="connect-wallet__container">
           <applicature-account-button [account]="account"
-                                      [options]="accountOptions">
+                                      [options]="accountOptions"
+                                      [accountDropdownConfig]="accountDropdownConfig"
+          >
           </applicature-account-button>
         </div>
       </ng-container>
 
       <ng-container *ngSwitchDefault>
-        <applicature-button (onClick)="onDisconnectWalletClick($event)"
+        <applicature-button (onClick)="onDisconnectWalletClick()"
                             [disabled]="disabled"
                             color="red"
                             label="Disconnect Wallet">
@@ -50,7 +52,7 @@
 
 
   <ng-template #connectWallet>
-    <applicature-button (onClick)="onConnectWalletClick($event)"
+    <applicature-button (onClick)="onConnectWalletClick()"
                         [disabled]="disabled"
                         leftIcon="wcl-icon-wallet"
                         label="Connect Wallet">
@@ -61,6 +63,7 @@
 <ng-template #networkOptionsRef>
   <applicature-network-dropdown *ngIf="showNetworkOptions"
                                 [networkOptions]="networkOptions"
+                                [networkDropdownConfig]="networkDropdownConfig"
                                 class="connect-wallet__networks">
   </applicature-network-dropdown>
 </ng-template>

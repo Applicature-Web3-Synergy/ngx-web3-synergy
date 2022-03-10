@@ -1,21 +1,22 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgModule } from '@angular/core';
+
+import { ApplicatureSpinnerModule } from '../applicature-spinner';
 import { IconModule } from '../icon/icon.module';
 import { ButtonComponent } from './button.component';
 
 @NgModule({
   declarations: [
-    ButtonComponent,
+    ButtonComponent
   ],
   exports: [
-    ButtonComponent,
+    ButtonComponent
   ],
-    imports: [
-        CommonModule,
-        MatProgressSpinnerModule,
-        IconModule,
-    ]
+  imports: [
+    CommonModule,
+    IconModule,
+    ApplicatureSpinnerModule
+  ]
 })
 export class ButtonModule {
 }

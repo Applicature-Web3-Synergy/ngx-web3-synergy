@@ -1,37 +1,29 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject,
-} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { WalletConnectService } from '../../services/wallet-connect.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-export interface WrongNetworkModalData {
-  header: string;
-  message: string;
-  chainId: string;
-  switchLabel: string;
-  appearance: 'disconnect' | 'switch' | 'none';
-}
+import { WalletConnectService } from '../../services/wallet-connect.service';
+import { WrongNetworkModalData } from './interfaces';
+import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
+
 
 @Component({
   selector: 'applicature-wrong-network-modal',
   templateUrl: './wrong-network-modal.component.html',
-  styleUrls: ['./wrong-network-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: [ './wrong-network-modal.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WrongNetworkModalComponent {
+  public data: WrongNetworkModalData;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: WrongNetworkModalData,
-    private _walletConnectService: WalletConnectService,
-    private _matDialogRef: MatDialogRef<WrongNetworkModalComponent, boolean>
+    private _config: ApplicatureDialogConfig<WrongNetworkModalData>,
+    private _dialogRef: ApplicatureDialogRef,
+    private _walletConnectService: WalletConnectService
   ) {
+    this.data = this._config.data;
   }
 
   public onCloseClick(value: boolean = false): void {
-    this._matDialogRef.close(value);
+    this._dialogRef.close(value);
   }
 
   public onSwitchNetworkClick(): void {

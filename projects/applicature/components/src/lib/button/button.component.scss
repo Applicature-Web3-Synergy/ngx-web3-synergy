@@ -2,7 +2,7 @@
 @import "../../../../styles/src/lib/scss/functions";
 
 :host {
-  display: block;
+  display: inline-flex;
 }
 
 .button {
@@ -62,9 +62,6 @@
     }
   }
 
-  & &__icon {
-  }
-
   &:not(&#{$this}--icon) &__left-icon {
     margin-right: 8px;
   }
@@ -73,12 +70,7 @@
     margin-left: 8px;
   }
 
-  & mat-progress-spinner {
+  & applicature-spinner {
     margin-left: 8px;
   }
-}
-
-::ng-deep .mat-progress-spinner circle,
-::ng-deep .mat-spinner circle {
-  stroke: getColor(blue, base);
 }

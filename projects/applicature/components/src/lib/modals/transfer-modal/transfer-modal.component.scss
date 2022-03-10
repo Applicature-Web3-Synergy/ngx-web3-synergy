@@ -60,21 +60,4 @@
     font-size: 16px;
     line-height: 24px;
   }
-
-  ::ng-deep mat-progress-bar.mat-progress-bar {
-    height: 8px;
-    border-radius: 30px;
-
-    .mat-progress-bar-buffer {
-      background-color: #DDE3EC;
-    }
-
-    .mat-progress-bar-background {
-      fill: rgba(255, 255, 255, 0);
-    }
-
-    .mat-progress-bar-fill::after {
-      background: getColor(blue, base);
-    }
-  }
 }

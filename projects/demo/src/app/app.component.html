@@ -1,7 +1,10 @@
 <div style="padding: 50px 100px 100px;">
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
     <applicature-connect-wallet [showBalance]="true"
-                                [networkOptions]="networkOptions">
+                                [showNetworkOptions]="true"
+                                [networkOptions]="networkOptions"
+                                [networkDropdownConfig]="networkDropdownConfig"
+    >
     </applicature-connect-wallet>
   </div>
   <br>
@@ -11,15 +14,26 @@
                                 [networkOptions]="networkOptions"
                                 [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
                                 [accountOptions]="accountOptions"
+                                [accountDropdownConfig]="accountDropdownConfig"
                                 appearance="icon">
     </applicature-connect-wallet>
   </div>
   <br>
+
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-button (onClick)="onOpenTransferModalClick()"
-                        label="Open Transfer Modal"></applicature-button>
-    <br>
+    <applicature-connect-wallet [showBalance]="true"
+                                [showTransactions]="true"
+                                [networkOptions]="networkOptions"
+                                [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
+                                [accountOptions]="accountOptions"
+                                appearance="button">
+    </applicature-connect-wallet>
   </div>
+
+  <section id="dialogs">
+    <h2 class="section-title">Applicature Dialogs</h2>
+    <app-example-dialogs></app-example-dialogs>
+  </section>
   <br>
   <br>
 
@@ -120,5 +134,24 @@
   <applicature-button label="Ethereum" [adaptive]="true"></applicature-button>
   <br>
   <br>
+
+  <section id="table">
+    <h2 class="section-title">Applicature Table</h2>
+
+    <div class="example-card">
+      <app-example-table></app-example-table>
+    </div>
+  </section>
+
+  <br>
+  <br>
+
+  <section id="dropdown-menu">
+    <h2 class="section-title">Applicature Dropdown Menu</h2>
+
+    <div class="example-card">
+      <app-custom-dropdown-menu></app-custom-dropdown-menu>
+    </div>
+  </section>
 
 </div>
