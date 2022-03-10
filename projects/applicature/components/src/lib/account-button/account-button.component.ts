@@ -10,9 +10,10 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { WalletConnectService } from '../services/wallet-connect.service';
+
 import { APPLICATURE_POSITIONS } from '../enums';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
+import { WalletConnectService } from '../services';
 
 export interface AccountData {
   image?: string;
@@ -87,16 +88,24 @@ export class AccountButtonComponent implements OnInit {
     this.optionEmitter.emit(option);
   }
 
-  public async onChangeWalletProviderClick(): Promise<void> {
+  // public async onChangeWalletProviderClick(): Promise<void> {
+  //   this._closeOptions();
+  //
+  //   await this._walletConnectService.connectWallet();
+  // }
+
+  public onChangeWalletProviderClick(): void {
     this._closeOptions();
 
-    await this._walletConnectService.connectWallet();
+    this._walletConnectService.connectWallet()
+      .subscribe();
   }
 
   public onDisconnectClick(): void {
     this._closeOptions();
 
-    this._walletConnectService.disconnectWallet();
+    this._walletConnectService.disconnectWallet()
+      .subscribe();
   }
 
   private _closeOptions() {

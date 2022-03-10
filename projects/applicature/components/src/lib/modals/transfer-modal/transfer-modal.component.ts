@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { normalizeBalance, toBN } from '../../helpers';
 import { TransactionService } from '../../services/transaction.service';
-import { WalletConnectService } from '../../services/wallet-connect.service';
+import { WalletConnectService } from '../../services';
 import { TRANSFER_STEPS } from './enums';
 import { TransferModalData } from './interfaces';
 import { TransactionStep } from './types';

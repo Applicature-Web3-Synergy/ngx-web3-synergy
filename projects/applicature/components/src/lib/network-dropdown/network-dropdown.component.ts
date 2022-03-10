@@ -11,9 +11,10 @@ import {
 import { filter, Subscription } from 'rxjs';
 
 import { Ethereum, NetworkOption } from '../interfaces';
-import { WalletConnectService } from '../services/wallet-connect.service';
+
 import { APPLICATURE_POSITIONS } from '../enums';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
+import { WalletConnectService } from '../services';
 
 
 @Component({
@@ -79,14 +80,17 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
     this.isOptionsOpen = opened;
   }
 
-  public async onNetworkOptionClick(option: NetworkOption): Promise<void> {
+  public onNetworkOptionClick(option: NetworkOption): void {
     this.setOpened(false);
 
-    try {
-      await this._walletConnectService.switchEthereumChain(option.chainId);
-    } catch (error) {
-      console.error(error);
+    if (!option?.chainId) {
+      console.error(`Cant find selected network`);
+
+      return;
     }
+
+    this._walletConnectService.switchEthereumChain(option.chainId)
+      .subscribe();
   }
 
 }

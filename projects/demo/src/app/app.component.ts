@@ -8,6 +8,7 @@ import {
   APPLICATURE_POSITIONS,
   ApplicatureDropdownConfig
 } from '@applicature/components';
+import { debounceTime, from } from 'rxjs';
 
 
 @Component({
@@ -111,4 +112,18 @@ export class AppComponent implements OnInit {
       });
   }
 
+  public onDisconnect(evt): void {
+    console.log('onDisconnect: ', evt);
+  }
+
+  public onConnect(evt): void {
+    console.log('onConnect: ', evt);
+  }
+
+  public testConnect(): void {
+    this._walletConnectService.connectWallet()
+      .subscribe((res) => {
+        console.log('lalalal: ', res);
+      })
+  }
 }

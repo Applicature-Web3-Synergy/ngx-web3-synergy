@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { WalletConnectService } from '../../services/wallet-connect.service';
+import { WalletConnectService } from '../../services';
 import { WrongNetworkModalData } from './interfaces';
 import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
 
@@ -31,7 +31,8 @@ export class WrongNetworkModalComponent {
   }
 
   public onDisconnectClick(): void {
-    this._walletConnectService.disconnectWallet();
+    this._walletConnectService.disconnectWallet()
+      .subscribe();
 
     this.onCloseClick(false);
   }
