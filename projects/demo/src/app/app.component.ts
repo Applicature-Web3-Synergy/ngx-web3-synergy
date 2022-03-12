@@ -8,6 +8,8 @@ import {
   APPLICATURE_POSITIONS,
   ApplicatureDropdownConfig
 } from '@applicature/components';
+import { debounceTime, from } from 'rxjs';
+import { ConnectionState } from '../../../applicature/components/src/lib/services';
 
 
 @Component({
@@ -111,4 +113,18 @@ export class AppComponent implements OnInit {
       });
   }
 
+  public onDisconnect(evt): void {
+    console.log('onDisconnect: ', evt);
+  }
+
+  public onConnect(evt): void {
+    console.log('onConnect: ', evt);
+  }
+
+  public customBtnConnect(): void {
+    this._walletConnectService.connectWallet()
+      .subscribe((connectionstate: ConnectionState) => {
+        console.log('Custom connect connectionState: ', connectionstate);
+      })
+  }
 }

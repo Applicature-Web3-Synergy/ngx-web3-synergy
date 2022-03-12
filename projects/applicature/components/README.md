@@ -59,11 +59,11 @@ const networks = {
 }
 
 export function initWalletServiceFactory(
-  walletConnectService: WalletConnectService,
-): () => Promise<void> {
+  walletConnectService: WalletConnectService
+): () => Observable<void> {
   return () => walletConnectService.initialize({
     networkId: networks.kovanTestnet,
-    walletSelect: { wallets },
+    walletSelect: { wallets }
   });
 }
 
@@ -101,25 +101,35 @@ for Angular 13+. Verify if you need this module and configure a polyfill for it.
 
 <pre>
 <code>
-"paths": {
-  "crypto": [
-    "./node_modules/crypto-browserify"
-  ],
-  "stream": [
-    "./node_modules/stream-browserify"
-  ],
-  "assert": [
-    "./node_modules/assert"
-  ],
-  "http": [
-    "./node_modules/stream-http"
-  ],
-  "https": [
-    "./node_modules/https-browserify"
-  ],
-  "os": [
-    "./node_modules/os-browserify"
-  ]
+{
+  ...,
+  compilerOptions: {
+    ...,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "crypto": [
+        "./node_modules/crypto-browserify"
+      ],
+      "stream": [
+        "./node_modules/stream-browserify"
+      ],
+      "assert": [
+        "./node_modules/assert"
+      ],
+      "http": [
+        "./node_modules/stream-http"
+      ],
+      "https": [
+        "./node_modules/https-browserify"
+      ],
+      "os": [
+        "./node_modules/os-browserify"
+      ],
+      "@angular/*": [
+        "./node_modules/@angular/*"
+      ]
+    }
+  }
 }
 </code></pre>
 

@@ -5,9 +5,10 @@ import { generateJazzicon } from '../../helpers';
 import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../../helpers/network';
 import { Ethereum, EtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../services/transaction.service';
-import { WalletConnectService } from '../../services/wallet-connect.service';
+
 import { AccountModalData } from './interfaces';
 import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
+import { WalletConnectService } from '../../services';
 
 
 @Component({

@@ -1,9 +1,13 @@
 <div style="padding: 50px 100px 100px;">
+  <button type="button" (click)="customBtnConnect()">Custom Connect</button>
+
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
     <applicature-connect-wallet [showBalance]="true"
                                 [showNetworkOptions]="true"
                                 [networkOptions]="networkOptions"
                                 [networkDropdownConfig]="networkDropdownConfig"
+                                (onConnect)="onConnect($event)"
+                                (onDisconnect)="onDisconnect($event)"
     >
     </applicature-connect-wallet>
   </div>

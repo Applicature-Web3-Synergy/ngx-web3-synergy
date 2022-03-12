@@ -17,7 +17,7 @@ import { generateJazzicon, normalizeBalance } from '../helpers';
 import { NetworkOption } from '../interfaces';
 import { AccountModalComponent, AccountModalData } from '../modals';
 import { TransactionService } from '../services/transaction.service';
-import { WalletConnectService } from '../services/wallet-connect.service';
+import { ConnectionState, WalletConnectService } from '../services';
 import { ApplicatureDialogService } from '../applicature-dialog';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
 
@@ -26,7 +26,7 @@ export type AppearanceType = 'default' | 'icon' | 'button';
 @Component({
   selector: 'applicature-connect-wallet',
   templateUrl: './connect-wallet.component.html',
-  styleUrls: ['./connect-wallet.component.scss'],
+  styleUrls: [ './connect-wallet.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConnectWalletComponent implements OnInit, OnDestroy {
@@ -58,7 +58,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
     overlay: {
       transparent: true
     },
-    position:  {
+    position: {
       vertical: APPLICATURE_POSITIONS.BELOW,
       horizontal: APPLICATURE_POSITIONS.AFTER
     }
@@ -75,7 +75,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   }
 
   @Output('onConnect')
-  public onConnectWalletEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public onConnectWalletEmitter: EventEmitter<ConnectionState> = new EventEmitter<ConnectionState>();
 
   @Output('onDisconnect')
   public onDisconnectWalletEmitter: EventEmitter<any> = new EventEmitter<any>();
@@ -171,23 +171,26 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
     });
   }
 
-  public async onConnectWalletClick(): Promise<void> {
+  public onConnectWalletClick(): void {
     if (this.disabled) {
       return;
     }
 
-    const isConnected = await this._walletConnectService.connectWallet();
-
-    this.onConnectWalletEmitter.emit(isConnected);
+    this._walletConnectService.connectWallet()
+      .subscribe((connectionState: ConnectionState) => {
+        this.onConnectWalletEmitter.emit(connectionState);
+      })
   }
 
-  public async onDisconnectWalletClick(): Promise<void> {
+  public onDisconnectWalletClick(): void {
     if (this.disabled) {
       return;
     }
 
-    await this._walletConnectService.disconnectWallet();
-
-    this.onDisconnectWalletEmitter.emit();
+    this._walletConnectService.disconnectWallet()
+      .subscribe(() => {
+        this.onDisconnectWalletEmitter.emit();
+      });
   }
+
 }

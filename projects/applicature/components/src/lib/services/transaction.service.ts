@@ -4,7 +4,8 @@ import { BehaviorSubject, map, Observable, Subscription, timer } from 'rxjs';
 import { TransactionStatus } from '../enums';
 import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../helpers/network';
 import { Ethereum, EtherscanTransactionLocalStorage, EtherscanTransactionResponse } from '../interfaces';
-import { WalletConnectService } from './wallet-connect.service';
+import { WalletConnectService } from './wallet-connect';
+
 
 const APPLICATURE_ETHERSCAN_TRANSACTIONS = 'APPLICATURE_ETHERSCAN_TRANSACTIONS';
 const APPLICATURE_ETHERSCAN_INTERVAL = 10000;

@@ -1,19 +1,38 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, catchError, from, map, Observable, of, Subject, Subscriber, tap } from 'rxjs';
 
+import Web3 from 'web3';
 import Onboard from 'bnc-onboard';
 import { API, Initialization, Subscriptions, Wallet } from 'bnc-onboard/dist/src/interfaces';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import Web3 from 'web3';
 
-import { EthEvents, EthMethods } from '../enums';
-import { Ethereum, EthChainParams, ProviderMessage, ProviderRpcError, ConnectInfo } from '../interfaces';
+import { EthEvents, EthMethods } from '../../enums';
+import { ConnectInfo, EthChainParams, Ethereum, ProviderMessage, ProviderRpcError } from '../../interfaces';
+import { ConnectionState } from './interfaces';
 
 const APPLICATURE_CONNECTED_WALLET_NAME = 'APPLICATURE_CONNECTED_WALLET_NAME';
+
 
 @Injectable()
 export class WalletConnectService {
   public get web3(): Web3 {
     return this._web3;
+  }
+
+  public get onboard(): API {
+    return this._onboard;
+  };
+
+  public get connectionState(): ConnectionState {
+    if (!this._onboard) {
+      return { connected: false };
+    }
+
+    const state = this._onboard.getState();
+
+    return {
+      connected: !!state.address,
+      state
+    }
   }
 
   public get accountsChanged$(): Observable<string[]> {
@@ -57,12 +76,14 @@ export class WalletConnectService {
   constructor() {
   }
 
-  public async initialize(config: Omit<Initialization, 'subscriptions' | 'darkMode' | 'hideBranding'>): Promise<void> {
+  public initialize(config: Omit<Initialization, 'subscriptions' | 'darkMode' | 'hideBranding'>): Observable<void> {
     if (this._onboard) {
-      return;
+      console.error('bnc-onboard is not initialized');
+
+      return of(null);
     }
 
-    return new Promise(async (resolve, reject) => {
+    return new Observable<void>((observer: Subscriber<void>) => {
       this._onboard = Onboard({
         ...config,
         walletSelect: {
@@ -70,94 +91,117 @@ export class WalletConnectService {
           heading: 'Connect a wallet',
           description: '',
         },
-        subscriptions: this._getSubscriptions(resolve),
+        subscriptions: this._getSubscriptions<void>(observer),
         hideBranding: true,
       });
 
       const previouslySelectedWallet = localStorage.getItem(APPLICATURE_CONNECTED_WALLET_NAME);
 
       if (previouslySelectedWallet !== null) {
-        return await this._onboard.walletSelect(previouslySelectedWallet);
+        this._onboard.walletSelect(previouslySelectedWallet)
+          .then(() => {
+            observer.next();
+            observer.complete();
+          })
+          .catch(error => observer.error(error));
+
+        return;
       }
 
-      return await this._initWeb3(resolve);
+      this._initWeb3(observer);
     });
   }
 
-  public async connectWallet(): Promise<boolean> {
+  public connectWallet(): Observable<ConnectionState> {
     if (!this._onboard) {
-      throw new Error('initialize method must be called');
+      return of({ connected: false })
+        .pipe(
+          tap(() => new Error('initialize method must be called'))
+        );
     }
 
-    if (await this._onboard.walletSelect()) {
-      return await this._onboard.walletCheck();
+    if (this.connectionState.connected) {
+      return of(this.connectionState);
     }
 
-    const state = this._onboard.getState();
-
-    return !!state.address;
+    return from(this._onboard.walletSelect())
+      .pipe(
+        map(() => this.connectionState)
+      );
   }
 
-  public async disconnectWallet(): Promise<void> {
-    this._onboard.walletReset();
-
-    localStorage.removeItem(APPLICATURE_CONNECTED_WALLET_NAME);
+  public disconnectWallet(): Observable<void> {
+    return of(this._onboard ? this._onboard.walletReset() : null)
+      .pipe(
+        tap(() => {
+          localStorage.removeItem(APPLICATURE_CONNECTED_WALLET_NAME);
+        })
+      )
   }
 
-  public async switchEthereumChain(chainId: string): Promise<void> {
-    await this._request(EthMethods.SwitchEthereumChain, [{ chainId }]);
+  public switchEthereumChain(chainId: string): Observable<boolean> {
+    return this._request<void>(EthMethods.SwitchEthereumChain, [ { chainId } ])
+      .pipe(
+        map(() => true),
+        catchError(() => of(false))
+      );
   }
 
-  public async addEthereumChain(params: Partial<EthChainParams>): Promise<void> {
-    await this._request(EthMethods.AddEthereumChain, [params]);
+  public addEthereumChain(params: Partial<EthChainParams>): Observable<boolean> {
+    return this._request<void>(EthMethods.AddEthereumChain, [ params ])
+      .pipe(
+        map(() => true),
+        catchError(() => of(false))
+      );
   }
 
-  private _getSubscriptions(resolve: () => void): Subscriptions {
+  private _getSubscriptions<T = any>(observer: Subscriber<T>): Subscriptions {
     let selectedWallet: Wallet;
 
     return {
-      address: async (address: string) => {
-        console.log('address: ', address);
-        this._accountsChanged$.next(address ? [address] : []);
+      address: (address: string): void => {
+        this._accountsChanged$.next(address ? [ address ] : []);
 
-        await this._initWeb3(resolve, selectedWallet);
+        this._initWeb3<T>(observer, selectedWallet);
       },
-      network: (networkId: number) => {
-        console.log('networkId: ', networkId);
+      network: (networkId: number): void => {
         this._onboard.config({ networkId });
 
         this._networkChanged$.next(networkId);
       },
-      wallet: async (wallet: Wallet) => {
-        console.log('wallet: ', wallet);
+      wallet: (wallet: Wallet): void => {
         selectedWallet = wallet;
 
-        await this._initWeb3(resolve, selectedWallet);
+        this._initWeb3<T>(observer, selectedWallet);
       },
-      balance: (balance: string) => {
-        console.log('balance: ', balance);
+      balance: (balance: string): void => {
         this._balanceChanged$.next(balance);
       },
     };
   }
 
-  private async _initWeb3(resolve: () => void, selectedWallet?: Wallet): Promise<void> {
-    const provider = Object.assign({}, selectedWallet?.provider || {});
+  private _initWeb3<T = any>(observer: Subscriber<T>, selectedWallet?: Wallet): void {
+    try {
+      const provider = Object.assign({}, selectedWallet?.provider || {});
 
-    if (!provider?.selectedAddress || !selectedWallet?.name) {
-      this._web3 = new Web3();
-    } else {
-      localStorage.setItem(APPLICATURE_CONNECTED_WALLET_NAME, selectedWallet.name);
+      if (!provider?.selectedAddress || !selectedWallet?.name) {
+        this._web3 = new Web3();
+      } else {
+        localStorage.setItem(APPLICATURE_CONNECTED_WALLET_NAME, selectedWallet.name);
 
-      this._web3 = new Web3(selectedWallet.provider);
+        this._web3 = new Web3(selectedWallet.provider);
+      }
+
+      this._handleEthEvents();
+
+      observer.next();
+      observer.complete();
+    } catch (e) {
+      observer.error(e);
     }
-
-    this._handleEthEvents();
-
-    resolve();
   }
 
-  private _handleEthEvents() {
+  private _handleEthEvents(): void {
     const eth = (window as any).ethereum as Ethereum;
 
     eth.on(EthEvents.ChainChanged, (chainId: string) => {
@@ -183,9 +227,9 @@ export class WalletConnectService {
   private _request<T = any>(
     method: EthMethods,
     params?: unknown[] | Record<string, unknown>,
-  ): Promise<T> {
+  ): Observable<T> {
     const eth = (window as any).ethereum as Ethereum;
 
-    return eth.request({ method, params });
+    return from(eth.request({ method, params }));
   }
 }

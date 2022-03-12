@@ -17,7 +17,7 @@ export * from './lib/input/input.component';
 export * from './lib/input/input.module';
 
 export * from './lib/services/transaction.service';
-export * from './lib/services/wallet-connect.service';
+export * from './lib/services';
 
 export * from './lib/wallet-connect.module';
 

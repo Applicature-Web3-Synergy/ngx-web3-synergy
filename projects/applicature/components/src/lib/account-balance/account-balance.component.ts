@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { generateJazzicon, normalizeBalance } from '../helpers';
-import { WalletConnectService } from '../services/wallet-connect.service';
+import { WalletConnectService } from '../services';
 
 export type ApplicatureBalanceAppearance = 'transparent' | 'translucent' | 'blue';
 
