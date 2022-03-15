@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, Subscription, timer } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, timer } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { TransactionStatus } from '../enums';
 import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../helpers/network';
 import { Ethereum, EtherscanTransactionLocalStorage, EtherscanTransactionResponse } from '../interfaces';

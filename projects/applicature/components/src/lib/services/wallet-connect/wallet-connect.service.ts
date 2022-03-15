@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, from, map, Observable, of, Subject, Subscriber, tap } from 'rxjs';
+import { BehaviorSubject, catchError, from, map, Observable, of, Subject, Subscriber, switchMap, tap } from 'rxjs';
 
 import Web3 from 'web3';
 import Onboard from 'bnc-onboard';
@@ -112,7 +112,7 @@ export class WalletConnectService {
     });
   }
 
-  public connectWallet(): Observable<ConnectionState> {
+  public connectWallet(isDisconnect: boolean = false): Observable<ConnectionState> {
     if (!this._onboard) {
       return of({ connected: false })
         .pipe(
@@ -120,12 +120,19 @@ export class WalletConnectService {
         );
     }
 
+    let connection$: Observable<void> = of(null);
+
     if (this.connectionState.connected) {
-      return of(this.connectionState);
+      if (!isDisconnect) {
+        return of(this.connectionState);
+      }
+
+      connection$ = this.disconnectWallet()
     }
 
-    return from(this._onboard.walletSelect())
+    return connection$
       .pipe(
+        switchMap(() => from(this._onboard.walletSelect())),
         map(() => this.connectionState)
       );
   }

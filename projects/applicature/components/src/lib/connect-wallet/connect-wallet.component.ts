@@ -9,7 +9,9 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import { map, Observable, Subscription } from 'rxjs';
+
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { AccountData, AccountOption } from '../account-button/account-button.component';
 import { APPLICATURE_POSITIONS, TransactionStatus } from '../enums';
@@ -156,7 +158,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
       change: () => {
         modal.close();
 
-        this.onConnectWalletClick();
+        this.onConnectWalletClick(true);
       },
       disconnect: () => {
         this.onDisconnectWalletClick();
@@ -171,12 +173,12 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
     });
   }
 
-  public onConnectWalletClick(): void {
+  public onConnectWalletClick(isDisconnect: boolean = false): void {
     if (this.disabled) {
       return;
     }
 
-    this._walletConnectService.connectWallet()
+    this._walletConnectService.connectWallet(isDisconnect)
       .subscribe((connectionState: ConnectionState) => {
         this.onConnectWalletEmitter.emit(connectionState);
       })

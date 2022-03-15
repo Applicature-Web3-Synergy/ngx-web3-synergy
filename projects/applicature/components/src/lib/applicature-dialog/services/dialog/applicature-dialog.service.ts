@@ -55,7 +55,6 @@ export class ApplicatureDialogService {
 
     const dialogOnCloseSubscription = this._dialogComponentRef.instance.onClose
       .subscribe(() => {
-        debugger
         this.removeDialogComponentFromBody();
         dialogOnCloseSubscription.unsubscribe();
       });
