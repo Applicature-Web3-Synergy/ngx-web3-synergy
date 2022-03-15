@@ -78,7 +78,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   public onConnectWalletEmitter: EventEmitter<ConnectionState> = new EventEmitter<ConnectionState>();
 
   @Output('onDisconnect')
-  public onDisconnectWalletEmitter: EventEmitter<any> = new EventEmitter<any>();
+  public onDisconnectWalletEmitter: EventEmitter<void> = new EventEmitter<void>();
 
   public accountAddress: string;
   public identicon: HTMLDivElement;
