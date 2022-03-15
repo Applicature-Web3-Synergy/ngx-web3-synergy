@@ -1,24 +1,44 @@
-## Components
+# Applicature Univarsal Components
+This library can help you to develop Blockchain projects easily.
+<br>
+This library supports an Angular 13 version.
 
+## Instaling library
 `npm i @applicature/styles @applicature/components`
 
-- styles.scss
+## How to make it works
 
+### styles.scss
 <pre><code>@import "~node_modules/@applicature/styles/src/lib/scss/styles";</code></pre>
-
-- tsconfig.json
-
+or
+<br>
+<br>
+Add `node_modules/@applicature/styles/src/lib/scss/styles to` to `angular.json` file, path `projects.YOUR_PROJECT_NAME.architect.build.options.styles`:
 <pre><code>
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    ...
-  },
-  ...
+  ...,
+  "projects": {
+    ...,
+    "YOUR_PROJECT_NAME": {
+        ...,
+      "architect": {
+        "build": {
+          ...,
+          "options": {
+            ...,
+            "styles": [
+              ...,
+              "node_modules/@applicature/styles/src/lib/scss/styles.scss"
+            ],
+          }
+        }
+      }
+    }
+  }
 }
 </code></pre>
 
-- polyfills.ts
+### polyfills.ts
 
 <pre><code>
 import { Ethereum } from '@applicature/components';
@@ -39,7 +59,101 @@ window.global = window;
 window.global.Buffer = global.Buffer || Buffer;
 </code></pre>
 
-- app.module.ts
+  - Install <strong>process</strong> if it needs `npm i process`
+    - add next option to `tsconfig.json`:
+
+      <pre><code>
+      {
+        ...,
+        "compilerOptions": {
+          "allowSyntheticDefaultImports": true,
+          ...
+        }
+      }
+      </code></pre>
+
+
+### Fixing Build errors
+
+ - `BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default. This is no longer the case
+for Angular 13+. Verify if you need this module and configure a polyfill for it.`
+<br>
+<br>
+Solution:
+   - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify`
+<br>
+<br>
+   - tsconfig.app.json
+
+      <pre>
+      <code>
+      {
+        ...,
+        compilerOptions: {
+          ...,
+          "paths": {
+            "crypto": [
+              "./node_modules/crypto-browserify"
+            ],
+            "stream": [
+              "./node_modules/stream-browserify"
+            ],
+            "assert": [
+              "./node_modules/assert"
+            ],
+            "http": [
+              "./node_modules/stream-http"
+            ],
+            "https": [
+              "./node_modules/https-browserify"
+            ],
+            "os": [
+              "./node_modules/os-browserify"
+            ],
+            "@angular/*": [
+              "./node_modules/@angular/*"
+            ]
+          }
+        }
+      }
+      </code></pre>
+  
+ - `BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default.
+This is no longer the case. Verify if you need this module and configure a polyfill for it.`
+    <br>
+    <br>
+    Solution: `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify` or add to the `package.json` next code:<br>
+    <pre><code>
+    {
+      ...,
+      "dependencies": {...},
+      "devDependencies": {...},
+      "browser": {
+        "http": false,
+        "https": false,
+        "os": false,
+        "crypto": false,
+        "stream": false
+      }
+    }
+    </code></pre>
+  
+ - Other: `tsconfig.app.json`
+    <pre><code>
+    {
+      ...,
+      compilerOptions: {
+      path: {
+        ...,
+        "@angular/*": [
+          "./node_modules/@angular/*"
+        ]
+      }
+    }
+    </code></pre>
+
+## How to use
+ - app.module.ts
 
 <pre><code>
 const wallets: Array<WalletModule | WalletInitOptions> = [
@@ -91,47 +205,3 @@ export function initWalletServiceFactory(
 export class AppModule { }
 </code>
 </pre>
-
-BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default. This is no longer the case
-for Angular 13+. Verify if you need this module and configure a polyfill for it.
-
-`npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify`
-
-- tsconfig.app.json
-
-<pre>
-<code>
-{
-  ...,
-  compilerOptions: {
-    ...,
-    "allowSyntheticDefaultImports": true,
-    "paths": {
-      "crypto": [
-        "./node_modules/crypto-browserify"
-      ],
-      "stream": [
-        "./node_modules/stream-browserify"
-      ],
-      "assert": [
-        "./node_modules/assert"
-      ],
-      "http": [
-        "./node_modules/stream-http"
-      ],
-      "https": [
-        "./node_modules/https-browserify"
-      ],
-      "os": [
-        "./node_modules/os-browserify"
-      ],
-      "@angular/*": [
-        "./node_modules/@angular/*"
-      ]
-    }
-  }
-}
-</code></pre>
-
-- Other:
-  - Install <strong>process</strong> if it needs `npm i process` 
