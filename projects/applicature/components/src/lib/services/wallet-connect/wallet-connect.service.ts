@@ -78,7 +78,7 @@ export class WalletConnectService {
 
   public initialize(config: Omit<Initialization, 'subscriptions' | 'darkMode' | 'hideBranding'>): Observable<void> {
     if (this._onboard) {
-      console.error('bnc-onboard is not initialized');
+      console.error('bnc-onboard already initialized');
 
       return of(null);
     }
@@ -210,6 +210,10 @@ export class WalletConnectService {
 
   private _handleEthEvents(): void {
     const eth = (window as any).ethereum as Ethereum;
+
+    if (!eth) {
+      return;
+    }
 
     eth.on(EthEvents.ChainChanged, (chainId: string) => {
       // It's recommended to reload the page on chain changes, unless you have good reason not to.

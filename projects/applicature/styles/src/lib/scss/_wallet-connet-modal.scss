@@ -110,6 +110,13 @@
   .bn-onboard-modal-selected-wallet {
   }
 
+  // The wallet select footer
+  .bn-onboard-modal-selected-wallet-footer {
+    a {
+      text-decoration: none;
+    }
+  }
+
   // All modal buttons
   &.bn-onboard-prepare-button,
   &.bn-onboard-prepare-button.cta {
