@@ -5,7 +5,7 @@ import Web3 from 'web3';
 import Onboard from 'bnc-onboard';
 import { API, Initialization, Subscriptions, Wallet } from 'bnc-onboard/dist/src/interfaces';
 
-import { EthEvents, EthMethods } from '../../enums';
+import { EthEvents, EthMethods, AUC_METAMASK_CODES } from '../../enums';
 import { AucEthChainParams, ConnectInfo, Ethereum, ProviderMessage, ProviderRpcError } from '../../interfaces';
 import { ConnectionState } from './interfaces';
 import { aucGetChainParams } from '../../helpers';
@@ -64,6 +64,15 @@ export class WalletConnectService {
     return this._balanceChanged$.asObservable();
   }
 
+  /**
+   * cantFindAddingNetwork$ emits when adding new network and config doesn't exist.
+   * You can subscribe on it and show some message to user.
+   */
+
+  public get cantFindAddingNetwork$(): Observable<void> {
+    return this._cantFindAddingNetwork$.asObservable();
+  }
+
   private _onboard: API;
   private _web3: Web3;
   private _accountsChanged$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
@@ -71,6 +80,7 @@ export class WalletConnectService {
   private _networkChanged$: BehaviorSubject<number | null> = new BehaviorSubject<number | null>(null);
   private _balanceChanged$: BehaviorSubject<string | null> = new BehaviorSubject<string>(null);
   private _connectChanged$: Subject<ConnectInfo> = new Subject<ConnectInfo>();
+  private _cantFindAddingNetwork$: Subject<void> = new Subject<void>();
   private _disconnectChanged$: Subject<ProviderRpcError> = new Subject<ProviderRpcError>();
   private _messageChanged$: Subject<ProviderMessage> = new Subject<ProviderMessage>();
 
@@ -169,7 +179,13 @@ export class WalletConnectService {
     return this._request<void>(EthMethods.SwitchEthereumChain, [ { chainId } ])
       .pipe(
         map(() => true),
-        catchError(() => this.addEthereumChain(chainParams ?? aucGetChainParams(chainId)))
+        catchError(err => {
+          if (err?.code === AUC_METAMASK_CODES.UNRECOGNIZED_CHAIN_ID) {
+            return this.addEthereumChain(chainParams ?? aucGetChainParams(chainId))
+          }
+
+          return of(false);
+        })
       );
   }
 
@@ -184,6 +200,7 @@ export class WalletConnectService {
 
   public addEthereumChain(chainParams: Partial<AucEthChainParams>): Observable<boolean> {
     if (!chainParams) {
+      this._cantFindAddingNetwork$.next();
       return of(false);
     }
 

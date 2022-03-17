@@ -8,6 +8,7 @@ import { TransactionService } from './services/transaction.service';
 import { WalletConnectService } from './services';
 import { TransactionsHistoryModule } from './transactions-history/transactions-history.module';
 
+
 const modules = [
   ConnectWalletModule,
   NetworkDropdownModule,
@@ -17,10 +18,10 @@ const modules = [
 ];
 
 @NgModule({
-  imports:[
+  imports: [
     ...modules,
   ],
-  exports:[
+  exports: [
     ...modules,
   ],
 })
@@ -36,8 +37,8 @@ export class WalletConnectModule {
       ngModule: WalletConnectModule,
       providers: [
         TransactionService,
-        WalletConnectService,
-      ],
+        WalletConnectService
+      ]
     };
   }
 }

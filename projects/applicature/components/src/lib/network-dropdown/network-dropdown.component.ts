@@ -8,14 +8,16 @@ import {
   OnInit,
   SimpleChanges
 } from '@angular/core';
-import { catchError, Subscription, switchMap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { Ethereum, AucNetworkOption } from '../interfaces';
+import { AucNetworkOption, Ethereum } from '../interfaces';
 
 import { APPLICATURE_POSITIONS } from '../enums';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
 import { WalletConnectService } from '../services';
+import { ApplicatureDialogService } from '../applicature-dialog';
+import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no-network-config';
 
 
 @Component({
@@ -48,8 +50,8 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: WalletConnectService,
     private _elementRef: ElementRef<HTMLElement>,
-  ) {
-  }
+    private _dialogService: ApplicatureDialogService
+  ) {}
 
   public ngOnInit(): void {
     this._sub.add(
@@ -69,8 +71,33 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
           this.ngOnChanges();
 
           this._cdr.markForCheck();
-        }),
+        })
     );
+
+    this._sub.add(
+      this._walletConnectService.cantFindAddingNetwork$
+        .subscribe(() => {
+          this._dialogService.open<AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI>(
+            AucNoNetworkConfigComponent,
+            {
+              data: {
+                title: `Metamask can't find this network.`,
+                text: `Please add it by yourself.`
+              },
+              width: '100%',
+              maxWidth: '420px',
+              dialogClass: 'auc-no-network-config-dialog',
+              overlay: {
+                closeByClick: true,
+                overlayClass: 'auc-no-network-config-dialog-overlay',
+              },
+              panel: {
+                panelClass: 'auc-no-network-config-dialog-panel'
+              },
+            }
+          );
+        })
+    )
   }
 
   public ngOnChanges(changes?: SimpleChanges): void {
@@ -90,8 +117,10 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
       return;
     }
 
-    this._walletConnectService.switchEthereumChain(option.chainId, option.chainParams)
-      .subscribe();
+    this._sub.add(
+      this._walletConnectService.switchEthereumChain(option.chainId, option.chainParams)
+        .subscribe()
+    )
   }
 
 }
