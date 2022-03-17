@@ -34,16 +34,16 @@
   </div>
 
   <ng-container *ngIf="currentStep === 1 else transferButton">
-    <applicature-button [label]="data.approveButton"
+    <auc-button [label]="data.approveButton"
                         [adaptive]="true"
                         [height]="48"
-                        (onClick)="onApproveClick()"></applicature-button>
+                        (onClick)="onApproveClick()"></auc-button>
   </ng-container>
 
   <ng-template #transferButton>
-    <applicature-button [label]="data.confirmButton"
+    <auc-button [label]="data.confirmButton"
                         [adaptive]="true"
                         [height]="48"
-                        (onClick)="onConfirmClick()"></applicature-button>
+                        (onClick)="onConfirmClick()"></auc-button>
   </ng-template>
 </div>

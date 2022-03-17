@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 
 import {
   AccountOption,
@@ -6,8 +6,12 @@ import {
   AucNetworkOption,
   WalletConnectService,
   APPLICATURE_POSITIONS,
-  ApplicatureDropdownConfig
+  ApplicatureDropdownConfig,
+  AUC_BUTTON_APPEARANCE,
+  AUC_IDENTICON_POSITION
 } from '@applicature/components';
+import { AS_COLOR_GROUP } from '@applicature/styles';
+
 import { ConnectionState } from '../../../applicature/components/src/lib/services';
 import { AUC_CHAIN_ID } from '../../../applicature/components/src/lib/enums';
 import { aucGetChainParams } from '../../../applicature/components/src/lib/helpers';
@@ -21,6 +25,9 @@ import { aucGetChainParams } from '../../../applicature/components/src/lib/helpe
 })
 export class AppComponent implements OnInit {
   public identicon!: HTMLDivElement;
+  public COLORS = AS_COLOR_GROUP;
+  public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
+  public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
   public networkOptions: AucNetworkOption[] = [
     {
       icon: 'assets/svg/network/eth.svg',
@@ -85,9 +92,9 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
-    private _walletConnectService: WalletConnectService
+    private _walletConnectService: WalletConnectService,
+    private _cdr: ChangeDetectorRef
   ) {
-
   }
 
   public ngOnInit(): void {

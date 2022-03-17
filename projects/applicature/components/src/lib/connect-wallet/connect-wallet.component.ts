@@ -22,6 +22,7 @@ import { TransactionService } from '../services/transaction.service';
 import { ConnectionState, WalletConnectService } from '../services';
 import { ApplicatureDialogService } from '../applicature-dialog';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
+import { AS_COLOR_GROUP } from '@applicature/styles';
 
 export type AppearanceType = 'default' | 'icon' | 'button';
 
@@ -89,6 +90,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   public hasPendingTx: boolean = false;
   public txCount: number = 0;
   public balance$: Observable<string | null>;
+  public COLORS = AS_COLOR_GROUP;
 
   private _sub: Subscription = new Subscription();
 

@@ -1,11 +1,11 @@
-<applicature-button applicatureTrigger
+<auc-button applicatureTrigger
                     #networkOptionsTrigger="applicatureTrigger"
                     [label]="isWrongNetwork ? 'Wrong Network' : currentNetwork?.name"
-                    [color]="isWrongNetwork ? 'red' : 'white'"
+                    [color]="isWrongNetwork ? COLORS.RED : COLORS.WHITE"
                     [leftIcon]="isWrongNetwork ? 'wcl-icon-wrong' : currentNetwork?.icon"
                     [rightIcon]="isOptionsOpen ? 'wcl-icon-chevron-up' : 'wcl-icon-chevron-down'"
                     (onShowHide)="setOpened($event)">
-</applicature-button>
+</auc-button>
 
 <applicature-dropdown-menu *ngIf="isOptionsOpen"
                            [config]="networkDropdownConfig"

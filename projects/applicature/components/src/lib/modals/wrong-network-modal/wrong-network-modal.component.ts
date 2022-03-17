@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
+
 import { WalletConnectService } from '../../services';
 import { WrongNetworkModalData } from './interfaces';
 import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
@@ -13,6 +15,7 @@ import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature
 })
 export class WrongNetworkModalComponent {
   public data: WrongNetworkModalData;
+  public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
   constructor(
     private _config: ApplicatureDialogConfig<WrongNetworkModalData>,

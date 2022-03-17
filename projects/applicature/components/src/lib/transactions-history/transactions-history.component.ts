@@ -1,10 +1,14 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { AS_COLOR_GROUP } from '@applicature/styles';
+
 import { TransactionStatus } from '../enums';
 import { RecentTransactionsModalData, TransactionsHistoryModalComponent } from '../modals';
 import { TransactionService } from '../services/transaction.service';
 import { ApplicatureDialogService } from '../applicature-dialog';
+import { AUC_BUTTON_APPEARANCE } from '../renamed/button';
+
 
 @Component({
   selector: 'applicature-transactions-history',
@@ -19,6 +23,8 @@ export class TransactionsHistoryComponent implements OnInit {
   public hasFailedTx: boolean = false;
   public hasPendingTx: boolean = false;
   public txCount: number = 0;
+  public COLORS = AS_COLOR_GROUP;
+  public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
 
   private _sub: Subscription = new Subscription();
 

@@ -9,14 +9,14 @@
           <span *ngIf="!(hasPendingTx || hasFailedTx) && showBalance"
                 class="connect-wallet__balance">{{ balance$ | async }} ETH</span>
 
-          <applicature-button (onClick)="onAccountButtonClick()"
+          <auc-button (onClick)="onAccountButtonClick()"
                               [disabled]="disabled"
                               [label]="hasPendingTx ? txCount + ' pending' : hasFailedTx ? txCount + ' failing' : (accountAddress | shortAddress)"
                               [identicon]="!(hasPendingTx || hasFailedTx) ? identicon : null"
                               [pending]="hasPendingTx"
                               [rightIcon]="!hasPendingTx && hasFailedTx ? 'wcl-icon-fail' : ''"
-                              [color]="hasFailedTx ? 'red' : 'white'">
-          </applicature-button>
+                              [color]="hasFailedTx ? COLORS.RED : COLORS.WHITE">
+          </auc-button>
         </div>
       </ng-container>
 
@@ -41,22 +41,22 @@
       </ng-container>
 
       <ng-container *ngSwitchDefault>
-        <applicature-button (onClick)="onDisconnectWalletClick()"
+        <auc-button (onClick)="onDisconnectWalletClick()"
                             [disabled]="disabled"
-                            color="red"
+                            [color]="COLORS.RED"
                             label="Disconnect Wallet">
-        </applicature-button>
+        </auc-button>
       </ng-container>
     </ng-container>
   </ng-container>
 
 
   <ng-template #connectWallet>
-    <applicature-button (onClick)="onConnectWalletClick()"
+    <auc-button (onClick)="onConnectWalletClick()"
                         [disabled]="disabled"
                         leftIcon="wcl-icon-wallet"
                         label="Connect Wallet">
-    </applicature-button>
+    </auc-button>
   </ng-template>
 </div>
 

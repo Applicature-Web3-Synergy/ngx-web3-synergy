@@ -7,7 +7,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { ApplicatureProgressBarModule } from '../applicature-progress-bar';
 import { ApplicatureRippleModule } from '../applicature-ripple';
 import { ApplicatureSpinnerModule } from '../applicature-spinner';
-import { ButtonModule } from '../button/button.module';
+import { AucButtonModule } from '../renamed/button';
 import { InputModule } from '../input/input.module';
 import { PipesModule } from '../pipes';
 import { AccountModalComponent } from './account-modal';
@@ -33,7 +33,7 @@ const components = [
     CommonModule,
     ReactiveFormsModule,
     PipesModule,
-    ButtonModule,
+    AucButtonModule,
     InputModule,
     ApplicatureRippleModule,
     ApplicatureSpinnerModule,

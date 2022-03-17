@@ -1,11 +1,14 @@
 <button #buttonRef
+        [aucIdenticon]="identicon"
+        [position]="identiconPosition"
+        [type]="type"
         [style.height.px]="height"
         [disabled]="disabled"
+        [ngClass]="classNames"
         (click)="onClick($event)"
-        [ngClass]="classNames">
-
+>
   <ng-container [ngSwitch]="appearance">
-    <ng-container *ngSwitchCase="'icon'">
+    <ng-container *ngSwitchCase="BUTTON_APPEARANCE.ICON">
       <applicature-icon [icon]="leftIcon || rightIcon"
                         [color]="color === 'white' ? '#6d87ac' : '#FFF'"
                         class="button__icon"></applicature-icon>

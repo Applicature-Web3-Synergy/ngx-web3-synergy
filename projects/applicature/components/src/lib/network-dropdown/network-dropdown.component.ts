@@ -11,8 +11,10 @@ import {
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { AucNetworkOption, Ethereum } from '../interfaces';
+import { AS_COLOR_GROUP } from '@applicature/styles';
 
+
+import { AucNetworkOption, Ethereum } from '../interfaces';
 import { APPLICATURE_POSITIONS } from '../enums';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
 import { WalletConnectService } from '../services';
@@ -43,6 +45,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
   public isWrongNetwork: boolean = false;
   public isOptionsOpen: boolean = false;
   public currentNetwork!: AucNetworkOption;
+  public COLORS = AS_COLOR_GROUP;
 
   private _sub: Subscription = new Subscription();
 

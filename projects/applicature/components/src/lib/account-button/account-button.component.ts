@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 import { APPLICATURE_POSITIONS } from '../enums';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
 import { WalletConnectService } from '../services';
+import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 export interface AccountData {
   image?: string;
@@ -57,6 +58,7 @@ export class AccountButtonComponent implements OnInit {
 
   public isOptionsOpen: boolean = false;
   public accountAddress!: string;
+  public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
   private _sub: Subscription = new Subscription();
 

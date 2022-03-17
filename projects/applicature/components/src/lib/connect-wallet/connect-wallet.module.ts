@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AccountBalanceModule } from '../account-balance/account-balance.module';
 import { AccountButtonModule } from '../account-button/account-button.module';
-import { ButtonModule } from '../button/button.module';
-import { NetworkDropdownModule } from '../network-dropdown/network-dropdown.module';
+import { AucButtonModule } from '../renamed/button';
+import { NetworkDropdownModule } from '../network-dropdown';
 import { PipesModule } from '../pipes';
 import { TransactionsHistoryModule } from '../transactions-history/transactions-history.module';
 import { ConnectWalletComponent } from './connect-wallet.component';
@@ -19,7 +19,7 @@ import { ApplicatureDialogModule } from '../applicature-dialog';
   ],
   imports: [
     CommonModule,
-    ButtonModule,
+    AucButtonModule,
     PipesModule,
     NetworkDropdownModule,
     AccountButtonModule,

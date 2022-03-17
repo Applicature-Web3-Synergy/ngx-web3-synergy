@@ -1,3 +1,19 @@
+export enum AS_COLOR_GROUP {
+  BLUE = 'blue',
+  GREEN = 'green',
+  GREY = 'grey',
+  ORANGE = 'orange',
+  RED = 'red',
+  WHITE = 'white'
+}
+
+export type AsColorGroup = AS_COLOR_GROUP.BLUE
+  | AS_COLOR_GROUP.GREEN
+  | AS_COLOR_GROUP.GREY
+  | AS_COLOR_GROUP.ORANGE
+  | AS_COLOR_GROUP.RED
+  | AS_COLOR_GROUP.WHITE;
+
 export interface ColorProperties {
   base: string;
   hover: string;
@@ -10,7 +26,7 @@ export interface ColorProperties {
 }
 
 export const APPLICATURE_COLORS: { [key: string]: ColorProperties } = {
-  blue: {
+  [AS_COLOR_GROUP.BLUE]: {
     base: '#4678F0',
     hover: '#608BF2',
     light: '#8CABF6',
@@ -20,7 +36,7 @@ export const APPLICATURE_COLORS: { [key: string]: ColorProperties } = {
     borderHover: '#608BF2',
     borderFocus: '#3F67C7',
   },
-  red: {
+  [AS_COLOR_GROUP.RED]: {
     base: '#E84142',
     hover: '#EA5C5E',
     light: '#F0898B',
@@ -30,7 +46,7 @@ export const APPLICATURE_COLORS: { [key: string]: ColorProperties } = {
     borderHover: '#EA5C5E',
     borderFocus: '#C03B3C',
   },
-  green: {
+  [AS_COLOR_GROUP.GREEN]: {
     base: '#37CA34',
     hover: '#6BD66B',
     light: '#94E194',
@@ -40,7 +56,7 @@ export const APPLICATURE_COLORS: { [key: string]: ColorProperties } = {
     borderHover: '#6BD66B',
     borderFocus: '#33A830',
   },
-  orange: {
+  [AS_COLOR_GROUP.ORANGE]: {
     base: '#F09643',
     hover: '#F2A45B',
     light: '#F6BE8A',
@@ -50,7 +66,7 @@ export const APPLICATURE_COLORS: { [key: string]: ColorProperties } = {
     borderHover: '#F2A45B',
     borderFocus: '#C77F3C',
   },
-  grey: {
+  [AS_COLOR_GROUP.GREY]: {
     base: '#6D87AC',
     hover: '#BBC7D9',
     light: '#DDE3EC',
@@ -60,7 +76,7 @@ export const APPLICATURE_COLORS: { [key: string]: ColorProperties } = {
     borderHover: '#BBC7D9',
     borderFocus: '#5F7492',
   },
-  white: {
+  [AS_COLOR_GROUP.WHITE]: {
     base: '#FFFFFF',
     hover: '#FFFFFF',
     light: '#FFFFFF',

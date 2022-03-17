@@ -10,7 +10,7 @@ import {
   AlertModule,
   ApplicatureDropdownMenuModule,
   AvatarModule,
-  ButtonModule,
+  AucButtonModule,
   InputModule,
   WalletConnectModule,
   WalletConnectService
@@ -56,7 +56,7 @@ export function initWalletServiceFactory(
     HttpClientModule,
     AlertModule,
     AvatarModule,
-    ButtonModule,
+    AucButtonModule,
     InputModule,
     WalletConnectModule.forRoot(),
     ExampleDialogsModule,

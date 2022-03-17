@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AvatarModule } from '../avatar/avatar.module';
-import { ButtonModule } from '../button/button.module';
+import { AucButtonModule } from '../renamed/button';
 import { PipesModule } from '../pipes';
 import { AccountButtonComponent } from './account-button.component';
 import { ApplicatureCopyToClipboardModule } from '../applicature-copy-to-clipboard';
@@ -19,7 +19,7 @@ import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
     CommonModule,
     AvatarModule,
     PipesModule,
-    ButtonModule,
+    AucButtonModule,
     ApplicatureCopyToClipboardModule,
     ApplicatureDirectivesModule,
     ApplicatureDropdownMenuModule,

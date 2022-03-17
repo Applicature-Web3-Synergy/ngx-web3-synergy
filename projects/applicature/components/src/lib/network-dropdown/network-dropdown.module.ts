@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ButtonModule } from '../button/button.module';
+import { AucButtonModule } from '../renamed/button';
 import { PipesModule } from '../pipes';
 import { NetworkDropdownComponent } from './network-dropdown.component';
 import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
@@ -19,7 +19,7 @@ import { AucNoNetworkConfigComponent } from './no-network-config/no-network-conf
   ],
   imports: [
     CommonModule,
-    ButtonModule,
+    AucButtonModule,
     PipesModule,
     ApplicatureDropdownMenuModule,
     ApplicatureDirectivesModule,

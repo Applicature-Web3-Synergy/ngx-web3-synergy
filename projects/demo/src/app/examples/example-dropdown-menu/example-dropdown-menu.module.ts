@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ButtonModule, ApplicatureDropdownMenuModule, ApplicatureDirectivesModule } from '@applicature/components';
+import { AucButtonModule, ApplicatureDropdownMenuModule, ApplicatureDirectivesModule } from '@applicature/components';
 
 import { CustomDropdownMenuComponent } from './components';
 
@@ -15,7 +15,7 @@ import { CustomDropdownMenuComponent } from './components';
   ],
   imports: [
     CommonModule,
-    ButtonModule,
+    AucButtonModule,
     ApplicatureDropdownMenuModule,
     ApplicatureDirectivesModule
   ]

@@ -37,17 +37,17 @@
       <span class="options__name">{{ option.name }}</span>
     </li>
     <li class="options__footer">
-      <applicature-button [adaptive]="true"
+      <auc-button [adaptive]="true"
                           (onClick)="onChangeWalletProviderClick()"
                           label="Change wallet provider"
                           class="options__button">
-      </applicature-button>
-      <applicature-button [adaptive]="true"
+      </auc-button>
+      <auc-button [adaptive]="true"
                           (onClick)="onDisconnectClick()"
+                          [color]="disconnectBtnColor"
                           label="Disconnect"
-                          color="red"
                           class="options__button">
-      </applicature-button>
+      </auc-button>
     </li>
   </ul>
 </applicature-dropdown-menu>

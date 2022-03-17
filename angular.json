@@ -16,7 +16,7 @@
       },
       "root": "projects/applicature/components",
       "sourceRoot": "projects/applicature/components/src",
-      "prefix": "applicature",
+      "prefix": "auc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
