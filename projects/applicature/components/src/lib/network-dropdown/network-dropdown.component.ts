@@ -8,10 +8,10 @@ import {
   OnInit,
   SimpleChanges
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { catchError, Subscription, switchMap } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { Ethereum, NetworkOption } from '../interfaces';
+import { Ethereum, AucNetworkOption } from '../interfaces';
 
 import { APPLICATURE_POSITIONS } from '../enums';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
@@ -26,7 +26,7 @@ import { WalletConnectService } from '../services';
 })
 export class NetworkDropdownComponent implements OnInit, OnChanges {
   @Input()
-  public networkOptions!: NetworkOption[];
+  public networkOptions!: AucNetworkOption[];
 
   @Input() networkDropdownConfig: ApplicatureDropdownConfig = {
     overlay: {
@@ -40,7 +40,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
 
   public isWrongNetwork: boolean = false;
   public isOptionsOpen: boolean = false;
-  public currentNetwork!: NetworkOption;
+  public currentNetwork!: AucNetworkOption;
 
   private _sub: Subscription = new Subscription();
 
@@ -81,7 +81,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
     this.isOptionsOpen = opened;
   }
 
-  public onNetworkOptionClick(option: NetworkOption): void {
+  public onNetworkOptionClick(option: AucNetworkOption): void {
     this.setOpened(false);
 
     if (!option?.chainId) {
@@ -90,7 +90,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
       return;
     }
 
-    this._walletConnectService.switchEthereumChain(option.chainId)
+    this._walletConnectService.switchEthereumChain(option.chainId, option.chainParams)
       .subscribe();
   }
 

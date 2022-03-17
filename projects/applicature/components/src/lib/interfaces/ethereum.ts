@@ -1,6 +1,6 @@
 import { EthEvents, EthMethods } from '../enums';
 
-export interface EthChainParams {
+export interface AucEthChainParams {
   chainId: string; // A 0x-prefixed hexadecimal string
   chainName: string;
   nativeCurrency: {

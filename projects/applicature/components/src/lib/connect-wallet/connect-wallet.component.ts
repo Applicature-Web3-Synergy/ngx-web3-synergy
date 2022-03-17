@@ -16,7 +16,7 @@ import { map } from 'rxjs/operators';
 import { AccountData, AccountOption } from '../account-button/account-button.component';
 import { APPLICATURE_POSITIONS, TransactionStatus } from '../enums';
 import { generateJazzicon, normalizeBalance } from '../helpers';
-import { NetworkOption } from '../interfaces';
+import { AucNetworkOption } from '../interfaces';
 import { AccountModalComponent, AccountModalData } from '../modals';
 import { TransactionService } from '../services/transaction.service';
 import { ConnectionState, WalletConnectService } from '../services';
@@ -48,7 +48,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   public showNetworkOptions: boolean = false;
 
   @Input()
-  public networkOptions!: NetworkOption[];
+  public networkOptions!: AucNetworkOption[];
 
   @Input()
   public account!: AccountData;

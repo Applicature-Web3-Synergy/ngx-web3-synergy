@@ -3,13 +3,14 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import {
   AccountOption,
   generateJazzicon,
-  NetworkOption,
+  AucNetworkOption,
   WalletConnectService,
   APPLICATURE_POSITIONS,
   ApplicatureDropdownConfig
 } from '@applicature/components';
-import { debounceTime, from } from 'rxjs';
 import { ConnectionState } from '../../../applicature/components/src/lib/services';
+import { AUC_CHAIN_ID } from '../../../applicature/components/src/lib/enums';
+import { aucGetChainParams } from '../../../applicature/components/src/lib/helpers';
 
 
 @Component({
@@ -20,38 +21,43 @@ import { ConnectionState } from '../../../applicature/components/src/lib/service
 })
 export class AppComponent implements OnInit {
   public identicon!: HTMLDivElement;
-  public networkOptions: NetworkOption[] = [
+  public networkOptions: AucNetworkOption[] = [
     {
       icon: 'assets/svg/network/eth.svg',
       name: 'Ethereum',
-      chainId: '0x1',
+      chainId: AUC_CHAIN_ID.RINKEBY_TESTNET,
       isActive: false
     },
     {
       icon: 'assets/svg/network/eth.svg',
       name: 'Kovan',
-      chainId: '0x2a',
+      chainId: AUC_CHAIN_ID.KOVAN_TESTNET,
       isActive: false
     },
     {
       icon: 'assets/svg/network/bsc.svg',
       name: 'BSC',
-      chainId: '0x38',
+      chainId: AUC_CHAIN_ID.BSC_TESTNET,
       isActive: false
     },
     {
       icon: 'assets/svg/network/polygon.svg',
       name: 'Polygon',
-      chainId: '0x89',
+      chainId: AUC_CHAIN_ID.POLYGON_TESTNET,
       isActive: false
     },
     {
       icon: 'assets/svg/network/avax.svg',
       name: 'Avalanche',
-      chainId: '0xa86a',
-      isActive: false
-    }
+      chainId: AUC_CHAIN_ID.AVALANCH_TESTNET,
+      isActive: false,
+      chainParams: {
+        ...(aucGetChainParams(AUC_CHAIN_ID.AVALANCH_TESTNET)),
+        chainName: 'Avalanche TestNet'
+      }
+    },
   ];
+
   networkDropdownConfig: ApplicatureDropdownConfig = {
     overlay: {
       transparent: true
