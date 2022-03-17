@@ -6,7 +6,7 @@ export function isTxHash(address: string): boolean {
 }
 
 export function shortTxHash(address: string): string {
-  return [address.slice(0, 5), address.slice(-4)].join('...')
+  return [ address.slice(0, 5), address.slice(-4) ].join('...')
 }
 
 export function isAddress(value: string): string | false {

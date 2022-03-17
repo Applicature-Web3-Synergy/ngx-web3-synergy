@@ -11,11 +11,13 @@ import {
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { Ethereum, NetworkOption } from '../interfaces';
+import { AucNetworkOption, Ethereum } from '../interfaces';
 
 import { APPLICATURE_POSITIONS } from '../enums';
 import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
 import { WalletConnectService } from '../services';
+import { ApplicatureDialogService } from '../applicature-dialog';
+import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no-network-config';
 
 
 @Component({
@@ -26,7 +28,7 @@ import { WalletConnectService } from '../services';
 })
 export class NetworkDropdownComponent implements OnInit, OnChanges {
   @Input()
-  public networkOptions!: NetworkOption[];
+  public networkOptions!: AucNetworkOption[];
 
   @Input() networkDropdownConfig: ApplicatureDropdownConfig = {
     overlay: {
@@ -40,7 +42,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
 
   public isWrongNetwork: boolean = false;
   public isOptionsOpen: boolean = false;
-  public currentNetwork!: NetworkOption;
+  public currentNetwork!: AucNetworkOption;
 
   private _sub: Subscription = new Subscription();
 
@@ -48,8 +50,8 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: WalletConnectService,
     private _elementRef: ElementRef<HTMLElement>,
-  ) {
-  }
+    private _dialogService: ApplicatureDialogService
+  ) {}
 
   public ngOnInit(): void {
     this._sub.add(
@@ -69,8 +71,33 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
           this.ngOnChanges();
 
           this._cdr.markForCheck();
-        }),
+        })
     );
+
+    this._sub.add(
+      this._walletConnectService.cantFindAddingNetwork$
+        .subscribe(() => {
+          this._dialogService.open<AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI>(
+            AucNoNetworkConfigComponent,
+            {
+              data: {
+                title: `Metamask can't find this network.`,
+                text: `Please add it by yourself.`
+              },
+              width: '100%',
+              maxWidth: '420px',
+              dialogClass: 'auc-no-network-config-dialog',
+              overlay: {
+                closeByClick: true,
+                overlayClass: 'auc-no-network-config-dialog-overlay',
+              },
+              panel: {
+                panelClass: 'auc-no-network-config-dialog-panel'
+              },
+            }
+          );
+        })
+    )
   }
 
   public ngOnChanges(changes?: SimpleChanges): void {
@@ -81,7 +108,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
     this.isOptionsOpen = opened;
   }
 
-  public onNetworkOptionClick(option: NetworkOption): void {
+  public onNetworkOptionClick(option: AucNetworkOption): void {
     this.setOpened(false);
 
     if (!option?.chainId) {
@@ -90,8 +117,10 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
       return;
     }
 
-    this._walletConnectService.switchEthereumChain(option.chainId)
-      .subscribe();
+    this._sub.add(
+      this._walletConnectService.switchEthereumChain(option.chainId, option.chainParams)
+        .subscribe()
+    )
   }
 
 }

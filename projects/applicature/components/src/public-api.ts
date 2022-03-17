@@ -10,8 +10,7 @@ export * from './lib/button/button.module';
 export * from './lib/connect-wallet/connect-wallet.component';
 export * from './lib/connect-wallet/connect-wallet.module';
 
-export * from './lib/network-dropdown/network-dropdown.component';
-export * from './lib/network-dropdown/network-dropdown.module';
+export * from './lib/network-dropdown';
 
 export * from './lib/input/input.component';
 export * from './lib/input/input.module';
@@ -58,3 +57,5 @@ export * from './lib/directives';
 export * from './lib/applicature-dropdown-menu';
 
 export * from './lib/applicature-overlay';
+
+export * from './lib/constants';

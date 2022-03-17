@@ -5,9 +5,10 @@ import Web3 from 'web3';
 import Onboard from 'bnc-onboard';
 import { API, Initialization, Subscriptions, Wallet } from 'bnc-onboard/dist/src/interfaces';
 
-import { EthEvents, EthMethods } from '../../enums';
-import { ConnectInfo, EthChainParams, Ethereum, ProviderMessage, ProviderRpcError } from '../../interfaces';
+import { EthEvents, EthMethods, AUC_METAMASK_CODES } from '../../enums';
+import { AucEthChainParams, ConnectInfo, Ethereum, ProviderMessage, ProviderRpcError } from '../../interfaces';
 import { ConnectionState } from './interfaces';
+import { aucGetChainParams } from '../../helpers';
 
 const APPLICATURE_CONNECTED_WALLET_NAME = 'APPLICATURE_CONNECTED_WALLET_NAME';
 
@@ -63,6 +64,15 @@ export class WalletConnectService {
     return this._balanceChanged$.asObservable();
   }
 
+  /**
+   * cantFindAddingNetwork$ emits when adding new network and config doesn't exist.
+   * You can subscribe on it and show some message to user.
+   */
+
+  public get cantFindAddingNetwork$(): Observable<void> {
+    return this._cantFindAddingNetwork$.asObservable();
+  }
+
   private _onboard: API;
   private _web3: Web3;
   private _accountsChanged$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
@@ -70,6 +80,7 @@ export class WalletConnectService {
   private _networkChanged$: BehaviorSubject<number | null> = new BehaviorSubject<number | null>(null);
   private _balanceChanged$: BehaviorSubject<string | null> = new BehaviorSubject<string>(null);
   private _connectChanged$: Subject<ConnectInfo> = new Subject<ConnectInfo>();
+  private _cantFindAddingNetwork$: Subject<void> = new Subject<void>();
   private _disconnectChanged$: Subject<ProviderRpcError> = new Subject<ProviderRpcError>();
   private _messageChanged$: Subject<ProviderMessage> = new Subject<ProviderMessage>();
 
@@ -146,16 +157,54 @@ export class WalletConnectService {
       )
   }
 
-  public switchEthereumChain(chainId: string): Observable<boolean> {
+  /**
+   *
+   * This method is used for switching Metamask network by {@link chainId}.
+   * If Metamask doesn't have this {@link chainId} it can be added by parameter {@link chainParams}.
+   *
+   * @param chainId - 0x-prefixed hexadecimal string.
+   * If you don't have chainId, you can use helper {@link aucConvertChainIdToHex} to generate it.
+   *
+   * @param chainParams - An optional parameter.
+   * Uses for adding new network to Metamask if it doesn't include network by {@link chainId}.
+   * This Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}.
+   * You can use your own specific params.
+   */
+
+  public switchEthereumChain(chainId: string, chainParams?: AucEthChainParams): Observable<boolean> {
+    if (!chainId) {
+      return of(false);
+    }
+
     return this._request<void>(EthMethods.SwitchEthereumChain, [ { chainId } ])
       .pipe(
         map(() => true),
-        catchError(() => of(false))
+        catchError(err => {
+          if (err?.code === AUC_METAMASK_CODES.UNRECOGNIZED_CHAIN_ID) {
+            return this.addEthereumChain(chainParams ?? aucGetChainParams(chainId))
+          }
+
+          return of(false);
+        })
       );
   }
 
-  public addEthereumChain(params: Partial<EthChainParams>): Observable<boolean> {
-    return this._request<void>(EthMethods.AddEthereumChain, [ params ])
+  /**
+   *
+   * This method is used for adding new network to Metamask by {@link chainParams}.
+   *
+   * @param chainParams - Uses for adding new network to Metamask.
+   * This Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}.
+   * You can get it uses methood {@link aucGetChainParams}
+   */
+
+  public addEthereumChain(chainParams: Partial<AucEthChainParams>): Observable<boolean> {
+    if (!chainParams) {
+      this._cantFindAddingNetwork$.next();
+      return of(false);
+    }
+
+    return this._request<void>(EthMethods.AddEthereumChain, [ chainParams ])
       .pipe(
         map(() => true),
         catchError(() => of(false))
@@ -216,8 +265,11 @@ export class WalletConnectService {
     }
 
     eth.on(EthEvents.ChainChanged, (chainId: string) => {
-      // It's recommended to reload the page on chain changes, unless you have good reason not to.
-      // window.location.reload()
+      /**
+       *
+       *  It's recommended to reload the page on chain changes, unless you have good reason not to.
+       *  You can use window.location.reload()
+       */
 
       this._chainChanged$.next(chainId);
     });
