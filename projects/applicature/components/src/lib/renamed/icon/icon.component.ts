@@ -4,12 +4,12 @@ import { AucWlcIcon } from './types';
 
 
 @Component({
-  selector: 'applicature-icon',
+  selector: 'auc-icon',
   templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
+  styleUrls: [ './icon.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IconComponent {
+export class AucIconComponent {
   /**
    * @link color sets css style color;
    * This is an optional parameter.

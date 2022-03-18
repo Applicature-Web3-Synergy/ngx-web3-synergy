@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { ApplicatureCopyToClipboardComponent } from './applicature-copy-to-clipboard.component';
-import { IconModule } from '../icon/icon.module';
+import { AucIconModule } from '../renamed/icon';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { IconModule } from '../icon/icon.module';
   ],
   imports: [
     CommonModule,
-    IconModule,
+    AucIconModule,
     ClipboardModule
   ]
 })
