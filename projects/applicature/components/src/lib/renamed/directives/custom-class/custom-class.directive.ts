@@ -7,7 +7,8 @@ import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
 })
 export class AucCustomClassDirective {
   /**
-   * @link aucCustomClass Sets class / list of classes to the elements.
+   * {@link aucCustomClass} - It's an `@Input()` parameter.
+   * Sets class / list of classes to the elements.
    */
   @Input()
   public aucCustomClass: string | string[];

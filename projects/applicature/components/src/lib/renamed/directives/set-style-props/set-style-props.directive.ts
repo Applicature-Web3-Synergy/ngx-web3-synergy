@@ -9,7 +9,8 @@ import { AucSetStyleProp } from './interfaces';
 })
 export class AucSetStylePropsDirective implements OnChanges {
   /**
-   * @link aucSetStyleProps Used for setting style properties to the element.
+   * {@link aucSetStyleProps} - It's an `@Input()` parameter.
+   * Used for setting style properties to the element.
    * You can use set properties in your scss.
    * Ex: aucSetStyleProps = {name: '--text-color: 'red'}.
    * In your scss file you can use it: color: var(--text-color);

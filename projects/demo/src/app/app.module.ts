@@ -9,7 +9,7 @@ import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces
 import {
   AucAlertModule,
   ApplicatureDropdownMenuModule,
-  AvatarModule,
+  AucAvatarModule,
   AucButtonModule,
   InputModule,
   WalletConnectModule,
@@ -55,7 +55,7 @@ export function initWalletServiceFactory(
     BrowserAnimationsModule,
     HttpClientModule,
     AucAlertModule,
-    AvatarModule,
+    AucAvatarModule,
     AucButtonModule,
     InputModule,
     WalletConnectModule.forRoot(),

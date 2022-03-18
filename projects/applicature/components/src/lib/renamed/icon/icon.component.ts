@@ -11,13 +11,15 @@ import { AucWlcIcon } from './types';
 })
 export class AucIconComponent {
   /**
-   * @link color sets css style color;
+   * {@link color} - It's an `@Input()` parameter.
+   * Sets css style color;
    * This is an optional parameter.
    */
   @Input()
   public color?: string;
 
   /**
+   * {@link icon} - It's an `@Input()` parameter.
    * @param value type uses enum {@link AUC_WLC_ICON} or string;
    * If you want to use custom icon you need to provide url to the image as a string value.
    */
