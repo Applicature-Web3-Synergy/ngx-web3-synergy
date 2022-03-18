@@ -9,29 +9,29 @@
 >
   <ng-container [ngSwitch]="appearance">
     <ng-container *ngSwitchCase="BUTTON_APPEARANCE.ICON">
-      <applicature-icon [icon]="leftIcon || rightIcon"
+      <auc-icon [icon]="leftIcon || rightIcon"
                         [color]="iconColor"
                         class="auc-button-icon"
       >
-      </applicature-icon>
+      </auc-icon>
     </ng-container>
 
     <ng-container *ngSwitchDefault>
-      <applicature-icon *ngIf="leftIcon"
+      <auc-icon *ngIf="leftIcon"
                         [icon]="leftIcon"
                         [color]="iconColor"
                         class="auc-button-left-icon"
       >
-      </applicature-icon>
+      </auc-icon>
 
       <span class="auc-button-label">{{ label }}</span>
 
-      <applicature-icon *ngIf="!pending && rightIcon"
+      <auc-icon *ngIf="!pending && rightIcon"
                         [icon]="rightIcon"
                         [color]="iconColor"
                         class="auc-button-right-icon"
       >
-      </applicature-icon>
+      </auc-icon>
 
       <applicature-spinner *ngIf="pending"
                            [diameter]="20"

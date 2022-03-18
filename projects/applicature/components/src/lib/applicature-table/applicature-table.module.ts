@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { IconModule } from '../icon/icon.module';
+import { AucIconModule } from '../renamed/icon';
 import { ApplicatureTableComponent } from './applicature-table.component';
 import { AucDirectivesModule } from '../renamed/directives';
 
@@ -15,7 +15,7 @@ import { AucDirectivesModule } from '../renamed/directives';
   ],
   imports: [
     CommonModule,
-    IconModule,
+    AucIconModule,
     AucDirectivesModule
   ]
 })

@@ -11,8 +11,8 @@
               <div *ngIf="header.sort"
                    class="applicature-table-sort"
               >
-                <applicature-icon
-                  [icon]="header.sort.sortDirection === SORT_DIRECTION.DESC? 'wcl-icon-arrow-down' : 'wcl-icon-arrow-up'"></applicature-icon>
+                <auc-icon
+                  [icon]="header.sort.sortDirection === SORT_DIRECTION.DESC? 'wcl-icon-arrow-down' : 'wcl-icon-arrow-up'"></auc-icon>
               </div>
             </div>
           </th>
@@ -48,12 +48,12 @@
        *ngIf="isLoadMore"
        (click)="onLoadMore()">
     <span class="applicature-table-load-more-text">Load more</span>
-    <applicature-icon icon="wcl-icon-chevron-down"></applicature-icon>
+    <auc-icon icon="wcl-icon-chevron-down"></auc-icon>
   </div>
 
   <ng-template #cellValueRef let-item>
     <div class="applicature-table-cell-value" [class.with-bg]="item.withBg">
-      <applicature-icon *ngIf="item.icon as icon" [icon]="icon"></applicature-icon>
+      <auc-icon *ngIf="item.icon as icon" [icon]="icon"></auc-icon>
       {{item.value}}
     </div>
   </ng-template>

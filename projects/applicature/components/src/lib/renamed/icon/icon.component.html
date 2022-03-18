@@ -1,0 +1,7 @@
+<div class="auc-icon-container" [style.color]="color ?? 'inherit'">
+  <img class="auc-icon-img" *ngIf="isImage else iconRef" [src]="icon" alt="">
+
+  <ng-template #iconRef>
+    <span class="auc-icon-font {{ icon }}"></span>
+  </ng-template>
+</div>
