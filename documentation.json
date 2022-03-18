@@ -95,8 +95,8 @@
     "directives": [],
     "components": [
         {
-            "name": "AlertComponent",
-            "id": "component-AlertComponent-c291393594319e3766b37e8cd350d75719966b19834fc6bf9b3f7db89642b7528a4839d7945ab973de09f82566499d78834ce5b55b002fba7860c6c35f7bcb95",
+            "name": "AucAlertComponent",
+            "id": "component-AucAlertComponent-c291393594319e3766b37e8cd350d75719966b19834fc6bf9b3f7db89642b7528a4839d7945ab973de09f82566499d78834ce5b55b002fba7860c6c35f7bcb95",
             "file": "projects/applicature/components/src/lib/alert/alert.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -104,7 +104,7 @@
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "applicature-alert",
+            "selector": "auc-alert",
             "styleUrls": [
                 "./alert.component.scss"
             ],
@@ -205,11 +205,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';\nimport { AsColors, AsColorProperties } from '@applicature/styles';\n\nexport type  ApplicatureAlertColor = 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';\n\nexport type  ApplicatureAlertIconPosition = 'left' | 'right';\n\n@Component({\n  selector: 'applicature-alert',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class AlertComponent implements OnInit, OnChanges {\n  @Input()\n  public text!: string;\n\n  @Input()\n  public icon!: string;\n\n  @Input()\n  public iconPosition: ApplicatureAlertIconPosition = 'left';\n\n  @Input()\n  public color: ApplicatureAlertColor = 'red';\n\n  @ViewChild('alert', { static: true })\n  private _alert!: ElementRef<HTMLDivElement>;\n\n  constructor(\n  ) {\n  }\n\n  public ngOnInit(): void {\n    this.ngOnChanges();\n  }\n\n  public ngOnChanges(): void {\n    const { base, text } = AsColors[this.color] as AsColorProperties;\n    const style = this._alert.nativeElement.style;\n\n    style.setProperty(`--applicature-alert-text`, text);\n    style.setProperty(`--applicature-alert-background`, base);\n  }\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';\nimport { AsColors, AsColorProperties } from '@applicature/styles';\n\nexport type  ApplicatureAlertColor = 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';\n\nexport type  ApplicatureAlertIconPosition = 'left' | 'right';\n\n@Component({\n  selector: 'auc-alert',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class AucAlertComponent implements OnInit, OnChanges {\n  @Input()\n  public text!: string;\n\n  @Input()\n  public icon!: string;\n\n  @Input()\n  public iconPosition: ApplicatureAlertIconPosition = 'left';\n\n  @Input()\n  public color: ApplicatureAlertColor = 'red';\n\n  @ViewChild('alert', { static: true })\n  private _alert!: ElementRef<HTMLDivElement>;\n\n  constructor(\n  ) {\n  }\n\n  public ngOnInit(): void {\n    this.ngOnChanges();\n  }\n\n  public ngOnChanges(): void {\n    const { base, text } = AsColors[this.color] as AsColorProperties;\n    const style = this._alert.nativeElement.style;\n\n    style.setProperty(`--applicature-alert-text`, text);\n    style.setProperty(`--applicature-alert-background`, base);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../../styles/src/lib/scss/variables\";\r\n@import \"../../../../styles/src/lib/scss/functions\";\r\n\r\n:host {\r\n  display: block;\r\n}\r\n\r\n.alert {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-weight: 500;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  padding: 10px;\r\n  color: var(--applicature-alert-text);\r\n  font-family: $applicature-font-family;\r\n  background: var(--applicature-alert-background);\r\n}\r\n",
+                    "data": "@import \"../../../../styles/src/lib/scss/variables\";\r\n@import \"../../../../styles/src/lib/scss/functions\";\r\n\r\n:host {\r\n  display: block;\r\n}\r\n\r\n.alert {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-weight: 500;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  padding: 10px;\r\n  color: var(--auc-alert-text);\r\n  font-family: $applicature-font-family;\r\n  background: var(--auc-alert-background);\r\n}\r\n",
                     "styleUrl": "./alert.component.scss"
                 }
             ],
@@ -231,14 +231,14 @@
     ],
     "modules": [
         {
-            "name": "AlertModule",
-            "id": "module-AlertModule-441e45aaff0b7c3d295a7c1a697d063cd66811918d4e0fe68740f6542161348fca65429e5a58b77282ce7f2e26971d99663096435ef5da727bf7ec46428f2a8f",
+            "name": "AucAlertModule",
+            "id": "module-AucAlertModule-441e45aaff0b7c3d295a7c1a697d063cd66811918d4e0fe68740f6542161348fca65429e5a58b77282ce7f2e26971d99663096435ef5da727bf7ec46428f2a8f",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/applicature/components/src/lib/alert/alert.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { AlertComponent } from './alert.component';\n\n@NgModule({\n  declarations: [\n    AlertComponent,\n  ],\n  imports: [\n    CommonModule,\n  ]\n})\nexport class AlertModule {\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { AucAlertComponent } from './alert.component';\n\n@NgModule({\n  declarations: [\n    AucAlertComponent,\n  ],\n  imports: [\n    CommonModule,\n  ]\n})\nexport class AucAlertModule {\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -248,7 +248,7 @@
                     "type": "declarations",
                     "elements": [
                         {
-                            "name": "AlertComponent"
+                            "name": "AucAlertComponent"
                         }
                     ]
                 },
@@ -388,8 +388,8 @@
                 "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<AlertComponent>",
-                "defaultValue": "(args: AlertComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<AucAlertComponent>",
+                "defaultValue": "(args: AucAlertComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "White",
@@ -509,8 +509,8 @@
                     "file": "projects/applicature/components/src/lib/alert/alert.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story<AlertComponent>",
-                    "defaultValue": "(args: AlertComponent) => ({\r\n  props: args,\r\n})"
+                    "type": "Story<AucAlertComponent>",
+                    "defaultValue": "(args: AucAlertComponent) => ({\r\n  props: args,\r\n})"
                 },
                 {
                     "name": "White",
@@ -604,7 +604,7 @@
                 "filePath": "projects/applicature/components/src/lib/alert/alert.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "AlertComponent",
+                "name": "AucAlertComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/9",
                 "status": "low"

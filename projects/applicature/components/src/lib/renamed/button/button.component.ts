@@ -78,10 +78,7 @@ export class AucButtonComponent implements OnInit, OnChanges {
    * If you want to use custom icon you need to provide url to the image as a string value.
    * It's an optional parameter.
    */
-  /**
-   * @param value type uses enum {@link AUC_WLC_ICON} or string;
-   * @param value as string should use the url to the image.
-   */
+
   @Input()
   public leftIcon: string;
 
