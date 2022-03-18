@@ -8,13 +8,13 @@ import {
   APPLICATURE_POSITIONS,
   ApplicatureDropdownConfig,
   AUC_BUTTON_APPEARANCE,
-  AUC_IDENTICON_POSITION
+  AUC_IDENTICON_POSITION,
+  ConnectionState,
+  AUC_CHAIN_ID,
+  aucGetChainParams,
+  AUC_ALERT_POSITION
 } from '@applicature/components';
 import { AS_COLOR_GROUP } from '@applicature/styles';
-
-import { ConnectionState } from '../../../applicature/components/src/lib/services';
-import { AUC_CHAIN_ID } from '../../../applicature/components/src/lib/enums';
-import { aucGetChainParams } from '../../../applicature/components/src/lib/helpers';
 
 
 @Component({
@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   public COLORS = AS_COLOR_GROUP;
   public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
   public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
+  public ALERT_POSITION = AUC_ALERT_POSITION;
   public networkOptions: AucNetworkOption[] = [
     {
       icon: 'assets/svg/network/eth.svg',

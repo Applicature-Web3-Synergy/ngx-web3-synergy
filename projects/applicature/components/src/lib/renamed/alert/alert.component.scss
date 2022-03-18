@@ -1,0 +1,43 @@
+@import "../../../../../styles/src/lib/scss/variables";
+@import "../../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: block;
+}
+
+.auc-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: var(--auc-alert-background);
+}
+
+.auc-alert-icon-right {
+  flex-direction: row-reverse;
+}
+
+.auc-alert-white {
+  .auc-alert-icon:before {
+    color: getColor(grey, base);
+  }
+}
+
+.auc-alert-icon {
+  margin: 0 8px;
+  display: inline-block;
+  font-size: 20px;
+
+  &:before {
+    color: var(--auc-alert-text);
+  }
+}
+
+.auc-alert-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: $applicature-font-family;
+  color: var(--auc-alert-text);
+}
+
