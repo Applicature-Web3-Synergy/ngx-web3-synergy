@@ -2,17 +2,21 @@ import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
 
 
 @Directive({
-  selector: '[applicatureCustomClass]',
-  exportAs: 'applicatureCustomClass'
+  selector: '[aucCustomClass]',
+  exportAs: 'aucCustomClass'
 })
-export class ApplicatureCustomClassDirective {
-  @Input() applicatureCustomClass: string | string[];
+export class AucCustomClassDirective {
+  /**
+   * @link aucCustomClass Sets class / list of classes to the elements.
+   */
+  @Input()
+  public aucCustomClass: string | string[];
 
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
   }
 
   ngOnInit(): void {
-    this.setClasses([].concat(this.applicatureCustomClass ?? []));
+    this.setClasses([].concat(this.aucCustomClass ?? []));
   }
 
   public setClasses(classes: string[]): void {

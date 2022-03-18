@@ -14,7 +14,8 @@ export class AucSetStylePropsDirective implements OnChanges {
    * Ex: aucSetStyleProps = {name: '--text-color: 'red'}.
    * In your scss file you can use it: color: var(--text-color);
    */
-  @Input() aucSetStyleProps!: AucSetStyleProp | AucSetStyleProp[];
+  @Input()
+  public aucSetStyleProps!: AucSetStyleProp | AucSetStyleProp[];
 
   constructor(private _elementRef: ElementRef) {
   }
@@ -33,7 +34,7 @@ export class AucSetStylePropsDirective implements OnChanges {
         return
       }
 
-      this._elementRef.nativeElement.style.setProperty(item.name, item.value)
+      this._elementRef.nativeElement.style.setProperty(item.name, item.value);
     });
   }
 

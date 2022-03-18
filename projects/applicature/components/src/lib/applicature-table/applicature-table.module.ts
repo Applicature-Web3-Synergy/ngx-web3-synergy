@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { IconModule } from '../icon/icon.module';
 import { ApplicatureTableComponent } from './applicature-table.component';
-import { ApplicatureDirectivesModule } from '../directives';
+import { AucDirectivesModule } from '../renamed/directives';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ApplicatureDirectivesModule } from '../directives';
   imports: [
     CommonModule,
     IconModule,
-    ApplicatureDirectivesModule
+    AucDirectivesModule
   ]
 })
 export class ApplicatureTableModule {

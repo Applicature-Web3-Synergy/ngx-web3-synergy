@@ -9,21 +9,21 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { ApplicatureBlockScrollHelperService } from '../../helpers';
+import { AucBlockScrollHelperService } from '../../../helpers';
 
 
 @Directive({
-  selector: '[applicatureContentBody]',
-  exportAs: 'applicatureContentBody',
-  providers: [ ApplicatureBlockScrollHelperService ]
+  selector: '[aucContentBody]',
+  exportAs: 'aucContentBody',
+  providers: [ AucBlockScrollHelperService ]
 })
-export class ApplicatureContentBodyDirective implements AfterViewInit, OnDestroy {
+export class AucContentBodyDirective implements AfterViewInit, OnDestroy {
   private _embeddedViewRef: EmbeddedViewRef<any>;
 
   constructor(private _templateRef: TemplateRef<any>,
               private _viewContainerRef: ViewContainerRef,
               @Inject(DOCUMENT) private _document: Document,
-              private _blockScrollHelperService: ApplicatureBlockScrollHelperService) {
+              private _blockScrollHelperService: AucBlockScrollHelperService) {
   }
 
   ngAfterViewInit(): void {
@@ -36,7 +36,7 @@ export class ApplicatureContentBodyDirective implements AfterViewInit, OnDestroy
   }
 
   public destroy(): void {
-    this._blockScrollHelperService.unLockScroll();
+    this._blockScrollHelperService.unlockScroll();
     this._embeddedViewRef.destroy();
   }
 

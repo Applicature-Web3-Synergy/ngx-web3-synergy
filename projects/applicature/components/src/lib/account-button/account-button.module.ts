@@ -5,7 +5,7 @@ import { AucButtonModule } from '../renamed/button';
 import { PipesModule } from '../pipes';
 import { AccountButtonComponent } from './account-button.component';
 import { ApplicatureCopyToClipboardModule } from '../applicature-copy-to-clipboard';
-import { ApplicatureDirectivesModule } from '../directives';
+import { AucDirectivesModule } from '../renamed/directives';
 import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
     PipesModule,
     AucButtonModule,
     ApplicatureCopyToClipboardModule,
-    ApplicatureDirectivesModule,
+    AucDirectivesModule,
     ApplicatureDropdownMenuModule,
   ]
 })

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ApplicatureOverlayComponent } from './applicature-overlay.component';
-import { ApplicatureDirectivesModule } from '../directives';
+import { AucDirectivesModule } from '../renamed/directives';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { ApplicatureDirectivesModule } from '../directives';
   ],
   imports: [
     CommonModule,
-    ApplicatureDirectivesModule
+    AucDirectivesModule
   ]
 })
 export class ApplicatureOverlayModule {

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { AsColors, AsColorProperties } from '@applicature/styles';
-import { AucSetStyleProp } from '../directives';
+import { AucSetStyleProp } from '../renamed/directives';
 
 export type  ApplicatureAlertColor = 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';
 

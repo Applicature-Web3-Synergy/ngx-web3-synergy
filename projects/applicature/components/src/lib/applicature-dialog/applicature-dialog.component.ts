@@ -16,9 +16,7 @@ import { ApplicatureDialogRef } from './applicature-dialog-ref';
 import { ApplicatureInsertionDirective } from './directives';
 import { ApplicatureCustomizeDialogConfig } from './interfaces';
 import { ApplicatureOverlayCustomizationConfig } from '../applicature-overlay';
-import {
-  ApplicatureBlockScrollHelperService
-} from '../helpers/applicature-block-scroll-helper/applicature-block-scroll-helper.service';
+import { AucBlockScrollHelperService } from '../helpers';
 
 
 @Component({
@@ -47,7 +45,7 @@ export class ApplicatureDialogComponent implements AfterViewInit, OnDestroy {
               private _cdr: ChangeDetectorRef,
               private _config: ApplicatureDialogConfig,
               private _dialogRef: ApplicatureDialogRef,
-              private _blockScroll: ApplicatureBlockScrollHelperService) {
+              private _blockScroll: AucBlockScrollHelperService) {
     this.mapConfig(this._config);
     this._blockScroll.lockScroll();
   }
@@ -59,7 +57,7 @@ export class ApplicatureDialogComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._blockScroll.unLockScroll();
+    this._blockScroll.unlockScroll();
 
     if (this.componentRef) {
       this.componentRef.destroy();

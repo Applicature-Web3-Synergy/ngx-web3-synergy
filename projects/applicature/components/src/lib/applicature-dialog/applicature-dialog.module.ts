@@ -5,7 +5,7 @@ import { ApplicatureDialogComponent } from './applicature-dialog.component';
 import { ApplicatureCustomizeDialogDirective, ApplicatureInsertionDirective } from './directives';
 import { ApplicatureDialogService } from './services';
 import { ApplicatureOverlayModule } from '../applicature-overlay';
-import { ApplicatureBlockScrollHelperService } from '../helpers';
+import { AucBlockScrollHelperService } from '../helpers';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { ApplicatureBlockScrollHelperService } from '../helpers';
   ],
   providers: [
     ApplicatureDialogService,
-    ApplicatureBlockScrollHelperService
+    AucBlockScrollHelperService
   ],
   imports: [
     CommonModule,

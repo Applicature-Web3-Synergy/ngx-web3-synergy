@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ApplicatuteDropdownMenuDirective } from './directives';
 import { ApplicatureDropdownMenuComponent } from './applicature-dropdown-menu.component';
 import { ApplicatureOverlayModule } from '../applicature-overlay';
-import { ApplicatureDirectivesModule } from '../directives';
+import { AucDirectivesModule } from '../renamed/directives';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { ApplicatureDirectivesModule } from '../directives';
   imports: [
     CommonModule,
     ApplicatureOverlayModule,
-    ApplicatureDirectivesModule
+    AucDirectivesModule
   ]
 })
 export class ApplicatureDropdownMenuModule { }

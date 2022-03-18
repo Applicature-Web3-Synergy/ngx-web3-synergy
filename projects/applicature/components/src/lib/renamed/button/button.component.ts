@@ -4,7 +4,7 @@ import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@appl
 
 import { AucButtonAppearance } from './types';
 import { AUC_BUTTON_APPEARANCE } from './enums';
-import { AUC_IDENTICON_POSITION, AucIdenticonPosition, AucSetStyleProp } from '../../directives';
+import { AUC_IDENTICON_POSITION, AucIdenticonPosition, AucSetStyleProp } from '../directives';
 
 
 @Component({
