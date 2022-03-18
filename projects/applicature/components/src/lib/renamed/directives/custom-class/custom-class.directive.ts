@@ -9,7 +9,8 @@ export class AucCustomClassDirective {
   /**
    * @link aucCustomClass Sets class / list of classes to the elements.
    */
-  @Input() public aucCustomClass: string | string[];
+  @Input()
+  public aucCustomClass: string | string[];
 
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
   }

@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 
 import {
-  ApplicatureContentBodyDirective,
+  AucContentBodyDirective,
   AucTriggerDirective
 } from '../renamed/directives';
 import { APPLICATURE_POSITIONS } from '../enums';
@@ -27,7 +27,7 @@ import { ApplicatureDropdownConfig, ApplicatureDropdownPositionStyles } from './
 export class ApplicatureDropdownMenuComponent implements AfterViewInit, OnDestroy {
   @Input() config?: ApplicatureDropdownConfig;
   @Input() trigger!: AucTriggerDirective;
-  @ViewChild(ApplicatureContentBodyDirective) contentBody: ApplicatureContentBodyDirective;
+  @ViewChild(AucContentBodyDirective) contentBody: AucContentBodyDirective;
   @ViewChild('dropdown', { read: ElementRef }) dropdownRef: ElementRef;
 
   public positionStyles: ApplicatureDropdownPositionStyles = null;

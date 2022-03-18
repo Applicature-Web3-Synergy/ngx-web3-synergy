@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ApplicatureContentBodyDirective } from './applicature-content-body/applicature-content-body.directive';
-
+import { AucContentBodyDirective } from './content-body';
+import { AucCustomClassDirective } from './custom-class';
 import { AucIdenticonDirective } from './identicon';
 import { AucSetStylePropsDirective } from './set-style-props';
 import { AucTriggerDirective } from './trigger';
-import { AucCustomClassDirective } from './custom-class';
+
 
 const directives = [
+  AucContentBodyDirective,
+  AucCustomClassDirective,
   AucIdenticonDirective,
   AucSetStylePropsDirective,
-  AucTriggerDirective,
-  AucCustomClassDirective,
-  ApplicatureContentBodyDirective
+  AucTriggerDirective
 ];
 
 @NgModule({

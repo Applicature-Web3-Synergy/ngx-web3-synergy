@@ -34,7 +34,7 @@ export class AucSetStylePropsDirective implements OnChanges {
         return
       }
 
-      this._elementRef.nativeElement.style.setProperty(item.name, item.value)
+      this._elementRef.nativeElement.style.setProperty(item.name, item.value);
     });
   }
 
