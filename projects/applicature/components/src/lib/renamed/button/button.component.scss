@@ -59,15 +59,19 @@
     }
   }
 
-  &:not(.auc-button-icon) &__left-icon {
-    margin-right: 8px;
+  applicature-icon {
+    &:not(.auc-button-icon) {
+      &.auc-button-left-icon {
+        margin-right: 8px;
+      }
+
+      &.auc-button-right-icon {
+        margin-left: 8px;
+      }
+    }
   }
 
-  &:not(.auc-button-icon) &__right-icon {
-    margin-left: 8px;
-  }
-
-  auc-spinner {
+  .auc-button-spinner {
     margin-left: 8px;
   }
 }

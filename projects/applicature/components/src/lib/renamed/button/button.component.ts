@@ -1,26 +1,16 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input,
-  ViewChild,
-  ElementRef,
-  Output,
-  EventEmitter,
-  OnChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, } from '@angular/core';
 
-import { APPLICATURE_COLORS, AS_COLOR_GROUP, AsColorGroup, ColorProperties } from '@applicature/styles';
+import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
 import { AucButtonAppearance } from './types';
 import { AUC_BUTTON_APPEARANCE } from './enums';
-import { AUC_IDENTICON_POSITION, AucIdenticonPosition } from '../../directives';
+import { AUC_IDENTICON_POSITION, AucIdenticonPosition, AucSetStyleProp } from '../../directives';
 
 
 @Component({
   selector: 'auc-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  styleUrls: [ './button.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AucButtonComponent implements OnInit, OnChanges {
@@ -140,7 +130,14 @@ export class AucButtonComponent implements OnInit, OnChanges {
   @Output('onClick')
   public onClickEmitter: EventEmitter<any> = new EventEmitter<any>();
 
+  public styleProperties: AucSetStyleProp[] = [];
   public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
+
+  get iconColor(): string {
+    return this.color === AS_COLOR_GROUP.WHITE
+      ? AsColors[AS_COLOR_GROUP.GREY].base
+      : AsColors[AS_COLOR_GROUP.WHITE].base
+  }
 
   public get classNames(): { [el: string]: boolean } {
     return {
@@ -153,22 +150,28 @@ export class AucButtonComponent implements OnInit, OnChanges {
     };
   }
 
-  @ViewChild('buttonRef', { static: true })
-  private _buttonRef!: ElementRef<HTMLButtonElement>;
-
   public ngOnInit(): void {
     this.ngOnChanges();
   }
 
   public ngOnChanges(): void {
-    const colorProperties = APPLICATURE_COLORS[this.color || AS_COLOR_GROUP.BLUE] as ColorProperties;
-    const style = this._buttonRef.nativeElement.style;
+    const colorProperties: AsColorProperties = AsColors[this.color || AS_COLOR_GROUP.BLUE];
 
-    Object.keys(colorProperties).forEach((prop) => {
-      style.setProperty(`--auc-button-${prop}`, (colorProperties as any)[prop]);
-    });
+    const colorProps: AucSetStyleProp[] = Object.keys(colorProperties || {})
+      .map((prop: string) => {
+        return {
+          name: `--auc-button-${prop}`,
+          value: colorProperties[prop]
+        }
+      });
 
-    style.setProperty(`--auc-button-radius`, `${this.borderRadius}px`);
+    this.styleProperties = [
+      {
+        name: '--auc-button-radius',
+        value: `${this.borderRadius}px`
+      },
+      ...(colorProps || [])
+    ];
   }
 
   public onClick(event: any): void {

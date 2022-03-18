@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { APPLICATURE_COLORS } from '@applicature/styles';
+import { AsColors } from '@applicature/styles';
 
 @Component({
   selector: 'applicature-spinner',
@@ -11,7 +11,7 @@ import { APPLICATURE_COLORS } from '@applicature/styles';
 export class ApplicatureSpinnerComponent {
   @Input() diameter?: number = 40;
   @Input() width?: number = 4;
-  @Input() color?: string = APPLICATURE_COLORS['blue'].border;
+  @Input() color?: string = AsColors['blue'].border;
 
   public parts = Array.from({length: 4}, () => undefined);
 }

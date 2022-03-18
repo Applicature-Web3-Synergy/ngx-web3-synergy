@@ -5,6 +5,8 @@ import { ApplicatureContentBodyDirective } from './applicature-content-body/appl
 import { ApplicatureTriggerDirective } from './applicature-trigger/applicature-trigger.directive';
 import { ApplicatureCustomClassDirective } from './applicature-custom-class/applicature-custom-class.directive';
 import { AucIdenticonDirective } from './identicon';
+import { AucSetStylePropsDirective } from './set-style-props';
+
 
 
 @NgModule({
@@ -13,12 +15,14 @@ import { AucIdenticonDirective } from './identicon';
     ApplicatureTriggerDirective,
     ApplicatureCustomClassDirective,
     AucIdenticonDirective,
+    AucSetStylePropsDirective
   ],
   exports: [
     ApplicatureContentBodyDirective,
     ApplicatureTriggerDirective,
     ApplicatureCustomClassDirective,
-    AucIdenticonDirective
+    AucIdenticonDirective,
+    AucSetStylePropsDirective
   ],
   imports: [
     CommonModule
