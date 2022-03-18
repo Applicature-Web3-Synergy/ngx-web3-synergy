@@ -10,14 +10,16 @@ import { AucCustomClassDirective } from '../custom-class';
 })
 export class AucTriggerDirective {
   /**
-   * @link triggerClass You can customize element when opened status.
+   * {@link triggerClass} - It's an `@Input()` parameter.
+   * You can customize element when opened status.
    * This is an optional parameter. By default, used auc-trigger-opened.
    */
   @Input()
   public triggerClass?: string = 'auc-trigger-opened';
 
   /**
-   * @link onShowHide Emits show/hide state.
+   * {@link onShowHide} - It's an `@Output()` parameter.
+   * Emits show/hide state.
    * If opened - true.
    * If closed - false.
    */

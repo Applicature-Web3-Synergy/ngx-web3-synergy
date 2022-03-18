@@ -1,11 +1,15 @@
 :host {
-  display: inline-block;
   color: inherit;
+  display: flex;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
 }
 
 .auc-icon-container {
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +22,6 @@
 }
 
 .auc-icon-font {
-  font-size: 20px;
   line-height: 0;
   color: inherit;
 }

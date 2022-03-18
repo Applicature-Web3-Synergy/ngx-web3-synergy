@@ -10,16 +10,18 @@ import { AUC_IDENTICON_POSITION } from './enums';
 })
 export class AucIdenticonDirective implements OnChanges {
   /**
-   * {@link aucIdenticon} Shows identicon if provided.
+   * {@link aucIdenticon} - It's an `@Input()` parameter.
+   * Shows identicon if provided.
    * It's an optional parameter.
    */
   @Input()
   public aucIdenticon: HTMLDivElement;
 
   /**
-   * {@link position} Controls identicon position.
+   * {@link position} - It's an `@Input()` parameter.
+   * Controls identicon position.
    * It's an optional parameter. The default value is right;
-   * You can use enum ${@link AUC_IDENTICON_POSITION}
+   * You can use enum {@link AUC_IDENTICON_POSITION}
    */
   @Input()
   public position: AucIdenticonPosition = AUC_IDENTICON_POSITION.RIGHT;

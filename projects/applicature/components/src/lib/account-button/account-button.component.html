@@ -1,10 +1,10 @@
-<applicature-avatar aucTrigger
+<auc-avatar aucTrigger
                     #networkOptionsTrigger="aucTrigger"
                     [src]="account?.image"
                     [size]="size"
                     (onShowHide)="setOpened($event)"
 >
-</applicature-avatar>
+</auc-avatar>
 
 <applicature-dropdown-menu *ngIf="isOptionsOpen"
                            [config]="accountDropdownConfig"
@@ -14,10 +14,10 @@
     <li class="options__header">Connected with Metamask</li>
     <li class="options__header">
       <div class="user-info">
-        <applicature-avatar [src]="account?.image"
+        <auc-avatar [src]="account?.image"
                             [size]="48"
                             class="user-info__avatar">
-        </applicature-avatar>
+        </auc-avatar>
 
         <div class="user-info__name">
           <h1>{{ account?.name || (accountAddress | shortAddress) }}</h1>
