@@ -1,7 +1,7 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { ApplicatureCustomClassDirective } from '../applicature-custom-class/applicature-custom-class.directive';
+import { AucCustomClassDirective } from '../custom-class';
 
 
 @Directive({
@@ -13,16 +13,18 @@ export class AucTriggerDirective {
    * @link triggerClass You can customize element when opened status.
    * This is an optional parameter. By default, used auc-trigger-opened.
    */
-  @Input() triggerClass?: string = 'auc-trigger-opened';
+  @Input()
+  public triggerClass?: string = 'auc-trigger-opened';
 
   /**
    * @link onShowHide Emits show/hide state.
    * If opened - true.
    * If closed - false.
    */
-  @Output() onShowHide: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  public onShowHide: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  private _customClass: ApplicatureCustomClassDirective;
+  private _customClass: AucCustomClassDirective;
   private _isOpened: boolean = false;
 
   public opened$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this._isOpened);
@@ -49,7 +51,7 @@ export class AucTriggerDirective {
   }
 
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
-    this._customClass = new ApplicatureCustomClassDirective(this._renderer2, this._elementRef);
+    this._customClass = new AucCustomClassDirective(this._renderer2, this._elementRef);
   }
 
   public showHide(isOpen?: boolean): void {
