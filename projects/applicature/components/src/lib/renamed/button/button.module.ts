@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { ApplicatureSpinnerModule } from '../../applicature-spinner';
 import { IconModule } from '../../icon';
 import { AucButtonComponent } from './button.component';
-import { ApplicatureDirectivesModule } from '../../directives';
+import { AucDirectivesModule } from '../directives';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { ApplicatureDirectivesModule } from '../../directives';
   imports: [
     CommonModule,
     IconModule,
-    ApplicatureDirectivesModule,
+    AucDirectivesModule,
     ApplicatureSpinnerModule
   ]
 })

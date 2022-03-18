@@ -52,8 +52,6 @@ export * from './lib/applicature-table';
 
 export * from './lib/types';
 
-export * from './lib/directives';
-
 export * from './lib/applicature-dropdown-menu';
 
 export * from './lib/applicature-overlay';

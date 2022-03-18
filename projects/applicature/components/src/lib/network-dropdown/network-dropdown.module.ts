@@ -5,7 +5,7 @@ import { AucButtonModule } from '../renamed/button';
 import { PipesModule } from '../pipes';
 import { NetworkDropdownComponent } from './network-dropdown.component';
 import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
-import { ApplicatureDirectivesModule } from '../directives';
+import { AucDirectivesModule } from '../renamed/directives';
 import { AucNoNetworkConfigComponent } from './no-network-config/no-network-config.component';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { AucNoNetworkConfigComponent } from './no-network-config/no-network-conf
     AucButtonModule,
     PipesModule,
     ApplicatureDropdownMenuModule,
-    ApplicatureDirectivesModule,
+    AucDirectivesModule,
   ]
 })
 export class NetworkDropdownModule {

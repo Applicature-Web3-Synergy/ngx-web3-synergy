@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AlertComponent } from './alert.component';
-import { ApplicatureDirectivesModule } from '../directives';
+import { AucDirectivesModule } from '../renamed/directives';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { ApplicatureDirectivesModule } from '../directives';
   ],
   imports: [
     CommonModule,
-    ApplicatureDirectivesModule,
+    AucDirectivesModule,
   ]
 })
 export class AlertModule {
