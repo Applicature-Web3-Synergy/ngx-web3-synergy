@@ -14,7 +14,7 @@ export type AsColorGroup = AS_COLOR_GROUP.BLUE
   | AS_COLOR_GROUP.RED
   | AS_COLOR_GROUP.WHITE;
 
-export interface ColorProperties {
+export interface AsColorProperties {
   base: string;
   hover: string;
   light: string;
@@ -25,7 +25,7 @@ export interface ColorProperties {
   borderFocus: string;
 }
 
-export const APPLICATURE_COLORS: { [key: string]: ColorProperties } = {
+export const AsColors: { [key: string]: AsColorProperties } = {
   [AS_COLOR_GROUP.BLUE]: {
     base: '#4678F0',
     hover: '#608BF2',

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { APPLICATURE_COLORS, ColorProperties } from '@applicature/styles';
+import { AsColors, AsColorProperties } from '@applicature/styles';
+import { AucSetStyleProp } from '../directives';
 
 export type  ApplicatureAlertColor = 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';
 
@@ -24,6 +25,7 @@ export class AlertComponent implements OnInit, OnChanges {
   @Input()
   public color: ApplicatureAlertColor = 'red';
 
+  public styleProperties: AucSetStyleProp[] = [];
   public get classNames(): { [el: string]: boolean } {
     return {
       ['alert']: true,
@@ -40,10 +42,17 @@ export class AlertComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(): void {
-    const { base, text } = APPLICATURE_COLORS[this.color] as ColorProperties;
-    const style = this._alertRef.nativeElement.style;
+    const { base, text } = AsColors[this.color] as AsColorProperties;
 
-    style.setProperty(`--applicature-alert-text`, text);
-    style.setProperty(`--applicature-alert-background`, base);
+    this.styleProperties = [
+      {
+        name: '--applicature-alert-text',
+        value: text
+      },
+      {
+        name: '--applicature-alert-background',
+        value: base
+      },
+    ];
   }
 }
