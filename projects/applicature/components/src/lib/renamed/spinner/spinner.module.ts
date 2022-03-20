@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ApplicatureSpinnerComponent } from './applicature-spinner.component';
+import { AucSpinnerComponent } from './spinner.component';
 
 
 @NgModule({
   declarations: [
-    ApplicatureSpinnerComponent
+    AucSpinnerComponent
   ],
   exports: [
-    ApplicatureSpinnerComponent
+    AucSpinnerComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class ApplicatureSpinnerModule {
+export class AucSpinnerModule {
 }

@@ -36,8 +36,6 @@ export * from './lib/applicature-dialog';
 
 export * from './lib/applicature-ripple';
 
-export * from './lib/applicature-spinner';
-
 export * from './lib/applicature-progress-bar';
 
 export * from './lib/applicature-table';
