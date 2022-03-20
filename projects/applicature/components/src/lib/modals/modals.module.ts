@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { AucProgressBarModule } from '../renamed/progress-bar';
-import { ApplicatureRippleModule } from '../applicature-ripple';
+import { AucRippleModule } from '../renamed/ripple';
 import { AucSpinnerModule } from '../renamed/spinner';
 import { AucButtonModule } from '../renamed/button';
 import { InputModule } from '../input/input.module';
@@ -35,7 +35,7 @@ const components = [
     PipesModule,
     AucButtonModule,
     InputModule,
-    ApplicatureRippleModule,
+    AucRippleModule,
     AucSpinnerModule,
     AucProgressBarModule,
     ClipboardModule

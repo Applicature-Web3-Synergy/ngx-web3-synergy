@@ -1,8 +1,8 @@
-.applicature-ripple {
+.auc-ripple {
   position: absolute;
   border-radius: 50%;
   transform: scale(0);
-  animation: ripple 500ms linear;
+  animation: auc-ripple 500ms linear;
   background-color: rgba(0, 0, 0, 0.1);
 
   &.white {
@@ -10,7 +10,7 @@
   }
 }
 
-@keyframes ripple {
+@keyframes auc-ripple {
   to {
     transform: scale(3);
     opacity: 0;

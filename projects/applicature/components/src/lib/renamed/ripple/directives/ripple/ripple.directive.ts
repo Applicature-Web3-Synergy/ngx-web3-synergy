@@ -2,12 +2,18 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
 
 
 @Directive({
-  selector: '[applicatureRipple]'
+  selector: '[aucRipple]',
+  exportAs: 'aucRipple'
 })
-export class ApplicatureRippleDirective {
+export class AucRippleDirective {
+  /**
+   * {@link customClass} - It's an `@Input()` parameter.
+   * Sets custom class to the ripple element.
+   * This is an optional parameter.
+   */
   @Input() customClass?: string;
 
-  private readonly rippleClass = 'applicature-ripple';
+  private readonly rippleClass = 'auc-ripple';
 
   @HostListener('mousedown', [ '$event' ]) onMousedown(e) {
     e.preventDefault();
