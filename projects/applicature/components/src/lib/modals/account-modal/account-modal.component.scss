@@ -10,7 +10,7 @@
 .account {
   display: flex;
   flex-direction: column;
-  font-family: $applicature-font-family;
+  font-family: $as-font-family;
 
   & &__header {
     display: flex;
@@ -142,7 +142,7 @@
 
       &__change,
       &__disconnect {
-        font-family: $applicature-font-family;
+        font-family: $as-font-family;
         font-size: 13px;
         font-weight: 500;
         padding: 4px 8px;

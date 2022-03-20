@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ApplicatureTableModule } from '@applicature/components';
+import { AucTableModule } from '@applicature/components';
 
 import { ExampleTableComponent } from './example-table.component';
 
@@ -15,7 +15,7 @@ import { ExampleTableComponent } from './example-table.component';
   ],
   imports: [
     CommonModule,
-    ApplicatureTableModule
+    AucTableModule
   ]
 })
 export class ExampleTableModule { }

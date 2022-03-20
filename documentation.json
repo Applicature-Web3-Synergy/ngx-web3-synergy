@@ -209,7 +209,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../../styles/src/lib/scss/variables\";\r\n@import \"../../../../styles/src/lib/scss/functions\";\r\n\r\n:host {\r\n  display: block;\r\n}\r\n\r\n.alert {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-weight: 500;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  padding: 10px;\r\n  color: var(--auc-alert-text);\r\n  font-family: $applicature-font-family;\r\n  background: var(--auc-alert-background);\r\n}\r\n",
+                    "data": "@import \"../../../../styles/src/lib/scss/variables\";\r\n@import \"../../../../styles/src/lib/scss/functions\";\r\n\r\n:host {\r\n  display: block;\r\n}\r\n\r\n.alert {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  font-weight: 500;\r\n  font-size: 14px;\r\n  line-height: 20px;\r\n  padding: 10px;\r\n  color: var(--auc-alert-text);\r\n  font-family: $$as-font-family;\r\n  background: var(--auc-alert-background);\r\n}\r\n",
                     "styleUrl": "./alert.component.scss"
                 }
             ],

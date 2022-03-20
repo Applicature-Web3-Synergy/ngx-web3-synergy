@@ -8,3 +8,4 @@ export * from './overlay';
 export * from './progress-bar';
 export * from './ripple';
 export * from './spinner';
+export * from './table';

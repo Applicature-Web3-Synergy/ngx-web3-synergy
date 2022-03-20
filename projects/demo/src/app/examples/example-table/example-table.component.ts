@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  ApplicatureTableHeaderItem,
-  ApplicatureTableRow,
-  ApplicatureSort,
-  APPLICATURE_SORT_DIRECTION
+  AucTableHeaderItem,
+  AucTableRow,
+  AucSort,
+  AUC_SORT_DIRECTION
 } from '@applicature/components';
 
-const TableData: ApplicatureTableRow[] = [
+const TableData: AucTableRow[] = [
   {
     action: {
       value: 'Withdraw',
@@ -107,7 +107,7 @@ const TableData: ApplicatureTableRow[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleTableComponent {
-  public tableHeaders: ApplicatureTableHeaderItem[] = [
+  public tableHeaders: AucTableHeaderItem[] = [
     {
       position: 1,
       rowKey: 'action',
@@ -129,11 +129,11 @@ export class ExampleTableComponent {
       value: 'Time',
       sort: {
         sortBy: 'time',
-        sortDirection: APPLICATURE_SORT_DIRECTION.DESC
+        sortDirection: AUC_SORT_DIRECTION.DESC
       }
     }
   ];
-  public tableData: ApplicatureTableRow[] = [...TableData];
+  public tableData: AucTableRow[] = [...TableData];
 
   public isLoadMore: boolean = true;
 
@@ -153,7 +153,7 @@ export class ExampleTableComponent {
     ]
   }
 
-  tableSort(sort: ApplicatureSort): void {
+  tableSort(sort: AucSort): void {
     console.log('TABLE SORT ACTION: ', sort);
 
     this.tableData = this.tableData.reverse();

@@ -1,15 +1,15 @@
-<div class="applicature-table-component" [aucCustomClass]="customClass">
-  <div class="applicature-table-container">
-    <table class="applicature-table">
+<div class="auc-table-component" [aucCustomClass]="customClass">
+  <div class="auc-table-container">
+    <table class="auc-table">
       <thead>
       <tr>
         <ng-container *ngFor="let header of headers; let i = index">
           <th>
-            <div class="applicature-table-cell" [class.sortable]="header.sort" (click)="sortBy(header.sort, i)">
+            <div class="auc-table-cell" [class.sortable]="header.sort" (click)="sortBy(header.sort, i)">
               <div>{{header.value}}</div>
 
               <div *ngIf="header.sort"
-                   class="applicature-table-sort"
+                   class="auc-table-sort"
               >
                 <auc-icon
                   [icon]="header.sort.sortDirection === SORT_DIRECTION.DESC? 'wcl-icon-arrow-down' : 'wcl-icon-arrow-up'"></auc-icon>
@@ -23,11 +23,11 @@
       <tbody>
       <tr *ngFor="let row of data; let i = index">
         <td *ngFor="let header of headers">
-          <div class="applicature-table-cell">
+          <div class="auc-table-cell">
             <ng-container *ngFor="let item of [].concat(row[header.rowKey])">
               <a *ngIf="item.link; else other"
                  [href]="item.link"
-                 class="applicature-table-link"
+                 class="auc-table-link"
                  target="_blank"
               >
                 <ng-container *ngTemplateOutlet="cellValueRef; context: {$implicit: item}"></ng-container>
@@ -44,15 +44,15 @@
     </table>
   </div>
 
-  <div class="applicature-table-load-more"
+  <div class="auc-table-load-more"
        *ngIf="isLoadMore"
        (click)="onLoadMore()">
-    <span class="applicature-table-load-more-text">Load more</span>
+    <span class="auc-table-load-more-text">Load more</span>
     <auc-icon icon="wcl-icon-chevron-down"></auc-icon>
   </div>
 
   <ng-template #cellValueRef let-item>
-    <div class="applicature-table-cell-value" [class.with-bg]="item.withBg">
+    <div class="auc-table-cell-value" [class.with-bg]="item.withBg">
       <auc-icon *ngIf="item.icon as icon" [icon]="icon"></auc-icon>
       {{item.value}}
     </div>
