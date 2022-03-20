@@ -4,7 +4,7 @@ import { AucAvatarModule } from '../renamed/avatar';
 import { AucButtonModule } from '../renamed/button';
 import { PipesModule } from '../pipes';
 import { AccountButtonComponent } from './account-button.component';
-import { ApplicatureCopyToClipboardModule } from '../applicature-copy-to-clipboard';
+import { AucCopyToClipboardModule } from '../renamed/copy-to-clipboard';
 import { AucDirectivesModule } from '../renamed/directives';
 import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
 
@@ -20,7 +20,7 @@ import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
     AucAvatarModule,
     PipesModule,
     AucButtonModule,
-    ApplicatureCopyToClipboardModule,
+    AucCopyToClipboardModule,
     AucDirectivesModule,
     ApplicatureDropdownMenuModule,
   ]
