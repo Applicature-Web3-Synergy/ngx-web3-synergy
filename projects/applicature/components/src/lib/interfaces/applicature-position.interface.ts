@@ -1,6 +1,6 @@
-import { ApplicatureHorizontalPosition, ApplicatureVerticalPosition } from '../types';
+import { AucHorizontalPosition, AucVerticalPosition } from '../types';
 
-export interface ApplicaturePosition {
-  vertical?: ApplicatureVerticalPosition,
-  horizontal?: ApplicatureHorizontalPosition
+export interface AucPosition {
+  vertical?: AucVerticalPosition,
+  horizontal?: AucHorizontalPosition
 }

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces';
 import {
   AucAlertModule,
-  ApplicatureDropdownMenuModule,
+  AucDropdownMenuModule,
   AucAvatarModule,
   AucButtonModule,
   InputModule,
@@ -61,7 +61,7 @@ export function initWalletServiceFactory(
     WalletConnectModule.forRoot(),
     ExampleDialogsModule,
     ExampleTableModule,
-    ApplicatureDropdownMenuModule,
+    AucDropdownMenuModule,
     ExampleDropdownMenuModule
   ],
   providers: [

@@ -15,8 +15,8 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 
 
 import { AucNetworkOption, Ethereum } from '../interfaces';
-import { APPLICATURE_POSITIONS } from '../enums';
-import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
+import { AUC_POSITIONS } from '../enums';
+import { AucDropdownConfig } from '../renamed/dropdown-menu';
 import { WalletConnectService } from '../services';
 import { ApplicatureDialogService } from '../applicature-dialog';
 import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no-network-config';
@@ -32,13 +32,13 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
   @Input()
   public networkOptions!: AucNetworkOption[];
 
-  @Input() networkDropdownConfig: ApplicatureDropdownConfig = {
+  @Input() networkDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.BELOW,
-      horizontal: APPLICATURE_POSITIONS.AFTER
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.AFTER
     }
   }
 

@@ -14,14 +14,14 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { AccountData, AccountOption } from '../account-button/account-button.component';
-import { APPLICATURE_POSITIONS, TransactionStatus } from '../enums';
+import { AUC_POSITIONS, TransactionStatus } from '../enums';
 import { generateJazzicon, normalizeBalance } from '../helpers';
 import { AucNetworkOption } from '../interfaces';
 import { AccountModalComponent, AccountModalData } from '../modals';
 import { TransactionService } from '../services/transaction.service';
 import { ConnectionState, WalletConnectService } from '../services';
 import { ApplicatureDialogService } from '../applicature-dialog';
-import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
+import { AucDropdownConfig } from '../renamed/dropdown-menu';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 export type AppearanceType = 'default' | 'icon' | 'button';
@@ -57,23 +57,23 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   @Input()
   public accountOptions!: AccountOption[];
 
-  @Input() networkDropdownConfig?: ApplicatureDropdownConfig = {
+  @Input() networkDropdownConfig?: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.BELOW,
-      horizontal: APPLICATURE_POSITIONS.AFTER
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.AFTER
     }
   }
 
-  @Input() accountDropdownConfig: ApplicatureDropdownConfig = {
+  @Input() accountDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.BELOW,
-      horizontal: APPLICATURE_POSITIONS.BEFORE
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.BEFORE
     }
   }
 

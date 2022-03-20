@@ -1,12 +1,12 @@
 <ng-template [ngIf]="trigger?.opened$ | async">
   <ng-template #contentBody aucContentBody>
-    <div class="applicature-dropdown-menu-container">
+    <div class="auc-dropdown-menu-container">
       <auc-overlay [customize]="config?.overlay"
                            (overlayClicked)="close()"
       >
       </auc-overlay>
 
-      <div class="applicature-dropdown-menu"
+      <div class="auc-dropdown-menu"
            #dropdown
            [aucCustomClass]="config?.class"
            [ngStyle]="positionStyles"
@@ -17,8 +17,8 @@
               'above-before': !isBelow && !isAfter
            }"
       >
-        <div class="applicature-dropdown-menu-content-container">
-          <div class="applicature-dropdown-menu-content">
+        <div class="auc-dropdown-menu-content-container">
+          <div class="auc-dropdown-menu-content">
             <ng-content></ng-content>
           </div>
         </div>

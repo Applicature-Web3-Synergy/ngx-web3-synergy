@@ -11,8 +11,8 @@ import {
 import { Subscription } from 'rxjs';
 
 
-import { APPLICATURE_POSITIONS } from '../enums';
-import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
+import { AUC_POSITIONS } from '../enums';
+import { AucDropdownConfig } from '../renamed/dropdown-menu';
 import { WalletConnectService } from '../services';
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
@@ -43,13 +43,13 @@ export class AccountButtonComponent implements OnInit {
   @Input()
   public size: number = 40;
 
-  @Input() accountDropdownConfig: ApplicatureDropdownConfig = {
+  @Input() accountDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.BELOW,
-      horizontal: APPLICATURE_POSITIONS.BEFORE
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.BEFORE
     }
   }
 

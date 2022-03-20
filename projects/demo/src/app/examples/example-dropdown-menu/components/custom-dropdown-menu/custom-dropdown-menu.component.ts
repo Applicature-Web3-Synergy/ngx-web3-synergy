@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import {
-  ApplicatureDropdownConfig,
-  APPLICATURE_POSITIONS
+  AucDropdownConfig,
+  AUC_POSITIONS
 } from '@applicature/components';
 
 
@@ -15,14 +15,14 @@ import {
 export class CustomDropdownMenuComponent {
   public isOpenedCustomDropdownMenu = false;
 
-  public customDropdownConfig: ApplicatureDropdownConfig = {
+  public customDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true,
       overlayClass: 'app-custom-dropdown-overlay'
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.ABOVE,
-      horizontal: APPLICATURE_POSITIONS.AFTER
+      vertical: AUC_POSITIONS.ABOVE,
+      horizontal: AUC_POSITIONS.AFTER
     },
     class: 'custom-dropdown-menu'
   }

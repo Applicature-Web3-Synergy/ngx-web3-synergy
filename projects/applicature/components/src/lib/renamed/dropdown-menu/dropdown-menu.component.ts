@@ -13,24 +13,24 @@ import {
 import {
   AucContentBodyDirective,
   AucTriggerDirective
-} from '../renamed/directives';
-import { APPLICATURE_POSITIONS } from '../enums';
-import { ApplicatureDropdownConfig, ApplicatureDropdownPositionStyles } from './interfaces';
+} from '../directives';
+import { AUC_POSITIONS } from '../../enums';
+import { AucDropdownConfig, AucDropdownPositionStyles } from './interfaces';
 
 
 @Component({
-  selector: 'applicature-dropdown-menu',
-  templateUrl: './applicature-dropdown-menu.component.html',
-  styleUrls: [ './applicature-dropdown-menu.component.scss' ],
+  selector: 'auc-dropdown-menu',
+  templateUrl: './dropdown-menu.component.html',
+  styleUrls: [ './dropdown-menu.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ApplicatureDropdownMenuComponent implements AfterViewInit, OnDestroy {
-  @Input() config?: ApplicatureDropdownConfig;
+export class AucDropdownMenuComponent implements AfterViewInit, OnDestroy {
+  @Input() config?: AucDropdownConfig;
   @Input() trigger!: AucTriggerDirective;
   @ViewChild(AucContentBodyDirective) contentBody: AucContentBodyDirective;
   @ViewChild('dropdown', { read: ElementRef }) dropdownRef: ElementRef;
 
-  public positionStyles: ApplicatureDropdownPositionStyles = null;
+  public positionStyles: AucDropdownPositionStyles = null;
   public isBelow: boolean;
   public isAfter: boolean;
 
@@ -64,8 +64,8 @@ export class ApplicatureDropdownMenuComponent implements AfterViewInit, OnDestro
     } = this.dropdownRef?.nativeElement?.getBoundingClientRect() ?? {};
     const { top, left, bottom, right } = triggerRect;
     const { vertical, horizontal } = this.config?.position ?? {};
-    let isBelow: boolean = (vertical ?? APPLICATURE_POSITIONS.BELOW) === APPLICATURE_POSITIONS.BELOW;
-    let isAfter: boolean = (horizontal ?? APPLICATURE_POSITIONS.AFTER) === APPLICATURE_POSITIONS.AFTER;
+    let isBelow: boolean = (vertical ?? AUC_POSITIONS.BELOW) === AUC_POSITIONS.BELOW;
+    let isAfter: boolean = (horizontal ?? AUC_POSITIONS.AFTER) === AUC_POSITIONS.AFTER;
     let maxHeight: number = 0;
     let maxWidth: number = 0;
 
@@ -111,7 +111,7 @@ export class ApplicatureDropdownMenuComponent implements AfterViewInit, OnDestro
       ? left
       : right - (!maxWidth || dropdownWidth > maxWidth ? dropdownWidth : maxWidth);
 
-    const styles: ApplicatureDropdownPositionStyles = {
+    const styles: AucDropdownPositionStyles = {
       top: `${topPosition <= 0 ? 0 : topPosition}px`,
       left: `${leftPosition <= 0 ? 0 : leftPosition}px`
     }

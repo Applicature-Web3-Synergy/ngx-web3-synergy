@@ -5,8 +5,8 @@ import {
   generateJazzicon,
   AucNetworkOption,
   WalletConnectService,
-  APPLICATURE_POSITIONS,
-  ApplicatureDropdownConfig,
+  AUC_POSITIONS,
+  AucDropdownConfig,
   AUC_BUTTON_APPEARANCE,
   AUC_IDENTICON_POSITION,
   ConnectionState,
@@ -66,23 +66,23 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  networkDropdownConfig: ApplicatureDropdownConfig = {
+  networkDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.BELOW,
-      horizontal: APPLICATURE_POSITIONS.AFTER
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.AFTER
     }
   }
 
-  accountDropdownConfig: ApplicatureDropdownConfig = {
+  accountDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.BELOW,
-      horizontal: APPLICATURE_POSITIONS.BEFORE
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.BEFORE
     }
   }
 

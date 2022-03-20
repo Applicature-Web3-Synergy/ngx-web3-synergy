@@ -1,5 +1,5 @@
-import { APPLICATURE_POSITIONS } from '../enums';
+import { AUC_POSITIONS } from '../enums';
 
-export type ApplicatureVerticalPosition = APPLICATURE_POSITIONS.ABOVE | APPLICATURE_POSITIONS.BELOW;
+export type AucVerticalPosition = AUC_POSITIONS.ABOVE | AUC_POSITIONS.BELOW;
 
-export type ApplicatureHorizontalPosition = APPLICATURE_POSITIONS.BEFORE | APPLICATURE_POSITIONS.AFTER;
+export type AucHorizontalPosition = AUC_POSITIONS.BEFORE | AUC_POSITIONS.AFTER;

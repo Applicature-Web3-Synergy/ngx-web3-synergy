@@ -1,12 +1,12 @@
-import { AfterViewInit, Directive, Inject, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Directive, Inject, TemplateRef, ViewContainerRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 
 @Directive({
-  selector: '[applicatureDropdownMenu]',
-  exportAs: 'applicatureDropdownMenu'
+  selector: '[aucDropdownMenu]',
+  exportAs: 'aucDropdownMenu'
 })
-export class ApplicatuteDropdownMenuDirective implements AfterViewInit {
+export class AucDropdownMenuDirective implements AfterViewInit {
 
   constructor(private _templateRef: TemplateRef<any>,
               private _viewContainerRef: ViewContainerRef,

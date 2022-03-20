@@ -7,7 +7,7 @@
             (onShowHide)="setOpened($event)">
 </auc-button>
 
-<applicature-dropdown-menu *ngIf="isOptionsOpen"
+<auc-dropdown-menu *ngIf="isOptionsOpen"
                            [config]="networkDropdownConfig"
                            [trigger]="networkOptionsTrigger"
 >
@@ -26,4 +26,4 @@
       <i [class.wcl-icon-active]="option.isActive"></i>
     </li>
   </ul>
-</applicature-dropdown-menu>
+</auc-dropdown-menu>
