@@ -1,6 +1,6 @@
-@import "../../../../styles/src/lib/scss/functions";
+@import "../../../../../styles/src/lib/scss/functions";
 
-.applicature-progress-bar-container {
+.auc-progress-bar-container {
   height: 8px;
   width: 100%;
   border-radius: 4px;
@@ -11,7 +11,7 @@
   align-items: flex-start;
 }
 
-.applicature-progress-bar {
+.auc-progress-bar {
   width: 0;
   height: 100%;
   transition: all 0.25s;
