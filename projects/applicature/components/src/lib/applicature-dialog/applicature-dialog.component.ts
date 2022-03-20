@@ -15,7 +15,7 @@ import { ApplicatureDialogConfig } from './applicature-dialog-config';
 import { ApplicatureDialogRef } from './applicature-dialog-ref';
 import { ApplicatureInsertionDirective } from './directives';
 import { ApplicatureCustomizeDialogConfig } from './interfaces';
-import { ApplicatureOverlayCustomizationConfig } from '../applicature-overlay';
+import { AucOverlayCustomizationConfig } from '../renamed/overlay';
 import { AucBlockScrollHelperService } from '../helpers';
 
 
@@ -32,7 +32,7 @@ export class ApplicatureDialogComponent implements AfterViewInit, OnDestroy {
   public childComponentType: Type<any>;
   public onClose = this._onClose.asObservable();
   public panelConfig: ApplicatureCustomizeDialogConfig;
-  public overlayConfig: ApplicatureOverlayCustomizationConfig;
+  public overlayConfig: AucOverlayCustomizationConfig;
   public dialogConfig: ApplicatureCustomizeDialogConfig = {};
 
   @ViewChild(ApplicatureInsertionDirective) insertionPoint: ApplicatureInsertionDirective;

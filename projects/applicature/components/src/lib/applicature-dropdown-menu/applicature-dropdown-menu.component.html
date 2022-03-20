@@ -1,10 +1,10 @@
 <ng-template [ngIf]="trigger?.opened$ | async">
   <ng-template #contentBody aucContentBody>
     <div class="applicature-dropdown-menu-container">
-      <applicature-overlay [customize]="config?.overlay"
+      <auc-overlay [customize]="config?.overlay"
                            (overlayClicked)="close()"
       >
-      </applicature-overlay>
+      </auc-overlay>
 
       <div class="applicature-dropdown-menu"
            #dropdown
