@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AucButtonModule } from '../renamed/button';
 import { PipesModule } from '../pipes';
 import { NetworkDropdownComponent } from './network-dropdown.component';
-import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
+import { AucDropdownMenuModule } from '../renamed/dropdown-menu';
 import { AucDirectivesModule } from '../renamed/directives';
 import { AucNoNetworkConfigComponent } from './no-network-config/no-network-config.component';
 
@@ -21,7 +21,7 @@ import { AucNoNetworkConfigComponent } from './no-network-config/no-network-conf
     CommonModule,
     AucButtonModule,
     PipesModule,
-    ApplicatureDropdownMenuModule,
+    AucDropdownMenuModule,
     AucDirectivesModule,
   ]
 })

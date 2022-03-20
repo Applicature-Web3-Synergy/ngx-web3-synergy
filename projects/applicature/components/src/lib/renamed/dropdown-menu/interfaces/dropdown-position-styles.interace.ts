@@ -1,4 +1,4 @@
-export interface ApplicatureDropdownPositionStyles {
+export interface AucDropdownPositionStyles {
   top: string;
   left: string;
   maxWidth?: string;

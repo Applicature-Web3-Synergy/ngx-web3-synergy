@@ -36,6 +36,4 @@ export * from './lib/applicature-dialog';
 
 export * from './lib/types';
 
-export * from './lib/applicature-dropdown-menu';
-
 export * from './lib/constants';

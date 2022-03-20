@@ -1,4 +1,4 @@
-@import "../../../../styles/src/lib/scss/functions";
+@import "../../../../../styles/src/lib/scss/functions";
 
 :host {
   display: block;
@@ -6,11 +6,11 @@
 }
 
 auc-overlay,
-.applicature-dropdown-menu {
+.auc-dropdown-menu {
   z-index: 9999;
 }
 
-.applicature-dropdown-menu {
+.auc-dropdown-menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@ auc-overlay,
   }
 }
 
-.applicature-dropdown-menu-content-container {
+.auc-dropdown-menu-content-container {
   background-color: getColor(white, base);
   box-shadow: 0 0 10px getColor(white, boxShadow);
   border-radius: 8px;
@@ -41,7 +41,7 @@ auc-overlay,
   height: auto;
 }
 
-.applicature-dropdown-menu-content {
+.auc-dropdown-menu-content {
   width: 100%;
   height: 100%;
   overflow: hidden;
