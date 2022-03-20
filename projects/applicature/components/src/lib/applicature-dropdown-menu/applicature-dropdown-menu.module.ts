@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ApplicatuteDropdownMenuDirective } from './directives';
 import { ApplicatureDropdownMenuComponent } from './applicature-dropdown-menu.component';
-import { ApplicatureOverlayModule } from '../applicature-overlay';
+import { AucOverlayModule } from '../renamed/overlay';
 import { AucDirectivesModule } from '../renamed/directives';
 
 
@@ -18,7 +18,7 @@ import { AucDirectivesModule } from '../renamed/directives';
   ],
   imports: [
     CommonModule,
-    ApplicatureOverlayModule,
+    AucOverlayModule,
     AucDirectivesModule
   ]
 })

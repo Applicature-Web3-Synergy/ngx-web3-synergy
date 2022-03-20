@@ -8,5 +8,10 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AucCopyToClipboardComponent {
+  /**
+   * {@link value} - It's an `@Input()` parameter.
+   * The value which will be copied after click on copy btn.
+   * This is required parameter.
+   */
   @Input() value!: string;
 }

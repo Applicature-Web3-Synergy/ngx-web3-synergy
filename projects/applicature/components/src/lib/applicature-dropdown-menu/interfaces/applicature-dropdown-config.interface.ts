@@ -1,8 +1,8 @@
-import { ApplicatureOverlayCustomizationConfig } from '../../applicature-overlay';
+import { AucOverlayCustomizationConfig } from '../../renamed/overlay';
 import { ApplicaturePosition } from '../../interfaces';
 
 export interface ApplicatureDropdownConfig {
-  overlay?: ApplicatureOverlayCustomizationConfig;
+  overlay?: AucOverlayCustomizationConfig;
   position?: ApplicaturePosition;
   class?: string | string[];
   minWidth?: number;

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ApplicatureDialogComponent } from './applicature-dialog.component';
 import { ApplicatureCustomizeDialogDirective, ApplicatureInsertionDirective } from './directives';
 import { ApplicatureDialogService } from './services';
-import { ApplicatureOverlayModule } from '../applicature-overlay';
+import { AucOverlayModule } from '../renamed/overlay';
 import { AucBlockScrollHelperService } from '../helpers';
 
 
@@ -23,7 +23,7 @@ import { AucBlockScrollHelperService } from '../helpers';
   ],
   imports: [
     CommonModule,
-    ApplicatureOverlayModule
+    AucOverlayModule
   ]
 })
 export class ApplicatureDialogModule {
