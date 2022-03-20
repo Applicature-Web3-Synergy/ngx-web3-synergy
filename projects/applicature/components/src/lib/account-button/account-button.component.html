@@ -1,8 +1,8 @@
 <auc-avatar aucTrigger
-                    #networkOptionsTrigger="aucTrigger"
-                    [src]="account?.image"
-                    [size]="size"
-                    (onShowHide)="setOpened($event)"
+            #networkOptionsTrigger="aucTrigger"
+            [src]="account?.image"
+            [size]="size"
+            (onShowHide)="setOpened($event)"
 >
 </auc-avatar>
 
@@ -15,8 +15,8 @@
     <li class="options__header">
       <div class="user-info">
         <auc-avatar [src]="account?.image"
-                            [size]="48"
-                            class="user-info__avatar">
+                    [size]="48"
+                    class="user-info__avatar">
         </auc-avatar>
 
         <div class="user-info__name">
@@ -24,10 +24,10 @@
           <span *ngIf="account?.name">{{ accountAddress | shortAddress }}</span>
         </div>
 
-        <applicature-copy-to-clipboard [value]="accountAddress"
-                                       class="user-info__copy"
+        <auc-copy-to-clipboard [value]="accountAddress"
+                               class="user-info__copy"
         >
-        </applicature-copy-to-clipboard>
+        </auc-copy-to-clipboard>
       </div>
     </li>
     <li *ngFor="let option of options"
@@ -38,15 +38,15 @@
     </li>
     <li class="options__footer">
       <auc-button [adaptive]="true"
-                          (onClick)="onChangeWalletProviderClick()"
-                          label="Change wallet provider"
-                          class="options__button">
+                  (onClick)="onChangeWalletProviderClick()"
+                  label="Change wallet provider"
+                  class="options__button">
       </auc-button>
       <auc-button [adaptive]="true"
-                          (onClick)="onDisconnectClick()"
-                          [color]="disconnectBtnColor"
-                          label="Disconnect"
-                          class="options__button">
+                  (onClick)="onDisconnectClick()"
+                  [color]="disconnectBtnColor"
+                  label="Disconnect"
+                  class="options__button">
       </auc-button>
     </li>
   </ul>
