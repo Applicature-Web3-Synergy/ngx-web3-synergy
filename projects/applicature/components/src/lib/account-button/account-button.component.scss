@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  font-family: $applicature-font-family;
+  font-family: $as-font-family;
   min-width: 250px;
   padding: 8px 0;
   background: $white;
@@ -78,7 +78,7 @@
 .user-info {
   display: flex;
   align-items: center;
-  font-family: $applicature-font-family;
+  font-family: $as-font-family;
 
   &__name {
     display: flex;

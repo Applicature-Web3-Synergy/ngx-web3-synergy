@@ -1,2 +1,2 @@
 export * from "./applicature-positions.type";
-export * from "./applicature-sort-direction.type";
+export * from "./sort-direction.type";

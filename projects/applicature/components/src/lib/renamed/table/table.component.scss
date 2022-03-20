@@ -1,10 +1,10 @@
-@import "../../../../styles/src/lib/scss/functions";
-@import "../../../../styles/src/lib/scss/mixins";
+@import "../../../../../styles/src/lib/scss/functions";
+@import "../../../../../styles/src/lib/scss/mixins";
 
 :host {
   display: block;
   width: 100%;
-  font-family: $applicature-font-family;
+  font-family: $as-font-family;
   font-style: normal;
   font-size: 14px;
   line-height: 20px;
@@ -13,13 +13,13 @@
   overflow: hidden;
 }
 
-.applicature-table-container {
+.auc-table-container {
   width: 100%;
   overflow: hidden;
   overflow-x: auto;
 }
 
-.applicature-table {
+.auc-table {
   width: 100%;
   border: none;
   border-spacing: 0;
@@ -56,7 +56,7 @@
   }
 }
 
-.applicature-table-cell {
+.auc-table-cell {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -75,13 +75,13 @@
     margin-left: 8px;
   }
 
-  & > .applicature-table-sort {
+  & > .auc-table-sort {
     margin-left: 4px;
     line-height: 0;
   }
 }
 
-.applicature-table-cell-value {
+.auc-table-cell-value {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -97,7 +97,7 @@
   }
 }
 
-.applicature-table-link {
+.auc-table-link {
   color: getColor(blue, base);
   text-decoration: none;
 
@@ -106,7 +106,7 @@
   }
 }
 
-.applicature-table-load-more {
+.auc-table-load-more {
   border-top: 1px solid getColor(grey, light);
   padding: 14px 20px;
   color: getColor(grey, base);
@@ -123,6 +123,6 @@
   }
 }
 
-.applicature-table-load-more-text {
+.auc-table-load-more-text {
   padding-right: 8px;
 }
