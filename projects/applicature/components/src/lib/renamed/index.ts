@@ -6,4 +6,5 @@ export * from './directives';
 export * from './icon';
 export * from './overlay';
 export * from './progress-bar';
+export * from './ripple';
 export * from './spinner';

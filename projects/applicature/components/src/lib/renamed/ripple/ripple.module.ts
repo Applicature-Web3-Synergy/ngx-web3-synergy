@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { ApplicatureRippleDirective } from './directives';
+import { AucRippleDirective } from './directives';
 
 
 @NgModule({
   declarations: [
-    ApplicatureRippleDirective
+    AucRippleDirective
   ],
   exports: [
-    ApplicatureRippleDirective
+    AucRippleDirective
   ],
   imports: [
     CommonModule
   ]
 })
-export class ApplicatureRippleModule {
+export class AucRippleModule {
 }

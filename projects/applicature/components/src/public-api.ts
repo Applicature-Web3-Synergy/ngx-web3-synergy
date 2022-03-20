@@ -34,8 +34,6 @@ export * from './lib/helpers';
 
 export * from './lib/applicature-dialog';
 
-export * from './lib/applicature-ripple';
-
 export * from './lib/applicature-table';
 
 export * from './lib/types';
