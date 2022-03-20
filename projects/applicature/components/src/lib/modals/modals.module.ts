@@ -6,7 +6,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 
 import { ApplicatureProgressBarModule } from '../applicature-progress-bar';
 import { ApplicatureRippleModule } from '../applicature-ripple';
-import { ApplicatureSpinnerModule } from '../applicature-spinner';
+import { AucSpinnerModule } from '../renamed/spinner';
 import { AucButtonModule } from '../renamed/button';
 import { InputModule } from '../input/input.module';
 import { PipesModule } from '../pipes';
@@ -36,7 +36,7 @@ const components = [
     AucButtonModule,
     InputModule,
     ApplicatureRippleModule,
-    ApplicatureSpinnerModule,
+    AucSpinnerModule,
     ApplicatureProgressBarModule,
     ClipboardModule
   ]
