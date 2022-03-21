@@ -22,8 +22,8 @@
         </auc-avatar>
 
         <div class="auc-account-button-user-info-name">
-          <h1>{{ account?.name || (accountAddress | shortAddress) }}</h1>
-          <span *ngIf="account?.name">{{ accountAddress | shortAddress }}</span>
+          <h1>{{ account?.name || (accountAddress | aucShortAddress) }}</h1>
+          <span *ngIf="account?.name">{{ accountAddress | aucShortAddress }}</span>
         </div>
 
         <auc-copy-to-clipboard [value]="accountAddress"

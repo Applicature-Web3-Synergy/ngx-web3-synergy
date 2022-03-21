@@ -11,7 +11,7 @@
 
           <auc-button (onClick)="onAccountButtonClick()"
                       [disabled]="disabled"
-                      [label]="hasPendingTx ? txCount + ' pending' : hasFailedTx ? txCount + ' failing' : (accountAddress | shortAddress)"
+                      [label]="hasPendingTx ? txCount + ' pending' : hasFailedTx ? txCount + ' failing' : (accountAddress | aucShortAddress)"
                       [identicon]="!(hasPendingTx || hasFailedTx) ? identicon : null"
                       [pending]="hasPendingTx"
                       [rightIcon]="!hasPendingTx && hasFailedTx ? 'wcl-icon-fail' : ''"
