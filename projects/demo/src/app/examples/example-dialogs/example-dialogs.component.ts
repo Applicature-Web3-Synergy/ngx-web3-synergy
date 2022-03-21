@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import {
   AUC_DIALOG_POSITIONS,
-  TransferModalComponent,
-  TransferModalData,
+  AucTransferModalComponent,
+  AucTransferModalData,
   WRONG_NETWORK_APPEARANCE,
-  WrongNetworkModalComponent,
-  WrongNetworkModalData,
+  AucWrongNetworkModalComponent,
+  AucWrongNetworkModalData,
   AucDialogService
 } from '@applicature/components';
 
@@ -58,7 +58,7 @@ export class ExampleDialogsComponent {
   }
 
   public onOpenTransferModalClick(): void {
-    const data: TransferModalData = {
+    const data: AucTransferModalData = {
       header: 'Transfer',
       symbol: 'USDT',
       allowance: '1000000000000000000',
@@ -74,7 +74,7 @@ export class ExampleDialogsComponent {
       }
     };
 
-    const ref = this._dialogService.open<TransferModalComponent, TransferModalData>(TransferModalComponent, {
+    const ref = this._dialogService.open<AucTransferModalComponent, AucTransferModalData>(AucTransferModalComponent, {
       data,
       dialogClass: 'transfer-dialog',
     });
@@ -85,7 +85,7 @@ export class ExampleDialogsComponent {
   }
 
   public onOpenWrongNetworkModalClick(): void {
-    const data: WrongNetworkModalData = {
+    const data: AucWrongNetworkModalData = {
       header: 'WRONG NETWORK',
       message: 'Looks like you connected to unsupported network. Change network to Mainnet.',
       chainId: '156',
@@ -93,8 +93,8 @@ export class ExampleDialogsComponent {
       appearance: WRONG_NETWORK_APPEARANCE.SWITCH
     };
 
-    const ref = this._dialogService.open<WrongNetworkModalComponent, WrongNetworkModalData>(
-      WrongNetworkModalComponent,
+    const ref = this._dialogService.open<AucWrongNetworkModalComponent, AucWrongNetworkModalData>(
+      AucWrongNetworkModalComponent,
       {
         data,
         width: '100%',

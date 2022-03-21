@@ -24,8 +24,6 @@ export * from './lib/account-button/account-button.module';
 export * from './lib/transactions-history/transactions-history.component';
 export * from './lib/transactions-history/transactions-history.module';
 
-export * from './lib/modals';
-
 export * from './lib/enums/index';
 
 export * from './lib/interfaces/index';
