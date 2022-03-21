@@ -11,6 +11,7 @@ export * from './input';
 export * from './modals';
 export * from './network-dropdown';
 export * from './overlay';
+export * from './pipes';
 export * from './progress-bar';
 export * from './ripple';
 export * from './spinner';

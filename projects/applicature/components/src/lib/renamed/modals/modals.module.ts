@@ -9,7 +9,7 @@ import { AucRippleModule } from '../ripple';
 import { AucSpinnerModule } from '../spinner';
 import { AucButtonModule } from '../button';
 import { AucInputModule } from '../input';
-import { PipesModule } from '../../pipes';
+import { AucPipesModule } from '../pipes';
 import { AucAccountModalComponent } from './account-modal';
 import { AucTransactionsHistoryModalComponent } from './transactions-history-modal';
 import { AucTransferModalComponent } from './transfer-modal';
@@ -33,7 +33,7 @@ const components = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    PipesModule,
+    AucPipesModule,
     AucButtonModule,
     AucInputModule,
     AucRippleModule,

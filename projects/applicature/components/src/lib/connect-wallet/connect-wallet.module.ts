@@ -5,7 +5,7 @@ import { AccountBalanceModule } from '../account-balance/account-balance.module'
 import { AuxAccountButtonModule } from '../renamed/account-button';
 import { AucButtonModule } from '../renamed/button';
 import { AucNetworkDropdownModule } from '../renamed/network-dropdown';
-import { PipesModule } from '../pipes';
+import { AucPipesModule } from '../renamed/pipes';
 import { TransactionsHistoryModule } from '../transactions-history/transactions-history.module';
 import { ConnectWalletComponent } from './connect-wallet.component';
 import { AucDialogModule } from '../renamed/dialog';
@@ -20,7 +20,7 @@ import { AucDialogModule } from '../renamed/dialog';
   imports: [
     CommonModule,
     AucButtonModule,
-    PipesModule,
+    AucPipesModule,
     AucNetworkDropdownModule,
     AuxAccountButtonModule,
     AccountBalanceModule,

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AucAvatarModule } from '../avatar';
 import { AucButtonModule } from '../button';
-import { PipesModule } from '../../pipes';
+import { AucPipesModule } from '../pipes';
 import { AucAccountButtonComponent } from './account-button.component';
 import { AucCopyToClipboardModule } from '../copy-to-clipboard';
 import { AucDirectivesModule } from '../directives';
@@ -20,7 +20,7 @@ import { AucDropdownMenuModule } from '../dropdown-menu';
   imports: [
     CommonModule,
     AucAvatarModule,
-    PipesModule,
+    AucPipesModule,
     AucButtonModule,
     AucCopyToClipboardModule,
     AucDirectivesModule,

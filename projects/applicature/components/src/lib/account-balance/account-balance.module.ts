@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PipesModule } from '../pipes';
+import { AucPipesModule } from '../renamed/pipes';
 import { AccountBalanceComponent } from './account-balance.component';
 
 
@@ -14,7 +14,7 @@ import { AccountBalanceComponent } from './account-balance.component';
   ],
   imports: [
     CommonModule,
-    PipesModule,
+    AucPipesModule,
   ]
 })
 export class AccountBalanceModule {

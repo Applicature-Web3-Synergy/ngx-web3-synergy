@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShortAddressPipe } from './short-address.pipe';
+
+import { AucShortAddressPipe } from './short-address.pipe';
 
 @NgModule({
   declarations: [
-    ShortAddressPipe,
+    AucShortAddressPipe,
   ],
   exports: [
-    ShortAddressPipe,
+    AucShortAddressPipe,
   ],
   imports: [
     CommonModule,
   ]
 })
-export class PipesModule {
+export class AucPipesModule {
 }
