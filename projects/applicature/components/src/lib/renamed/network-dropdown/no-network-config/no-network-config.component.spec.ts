@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NoNetworkConfigComponent } from './no-network-config.component';
+import { AucNoNetworkConfigComponent } from './no-network-config.component';
 
-describe('NoNetworkConfigComponent', () => {
-  let component: NoNetworkConfigComponent;
-  let fixture: ComponentFixture<NoNetworkConfigComponent>;
+describe('AucNoNetworkConfigComponent', () => {
+  let component: AucNoNetworkConfigComponent;
+  let fixture: ComponentFixture<AucNoNetworkConfigComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NoNetworkConfigComponent ]
+      declarations: [ AucNoNetworkConfigComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NoNetworkConfigComponent);
+    fixture = TestBed.createComponent(AucNoNetworkConfigComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -13,26 +13,46 @@ import { filter } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
-
-import { AucNetworkOption, Ethereum } from '../interfaces';
-import { AUC_POSITIONS } from '../enums';
-import { AucDropdownConfig } from '../renamed/dropdown-menu';
-import { WalletConnectService } from '../services';
-import { AucDialogService } from '../renamed/dialog';
+import { AucNetworkOption, Ethereum } from '../../interfaces';
+import { AUC_POSITIONS } from '../../enums';
+import { AucDropdownConfig } from '../dropdown-menu';
+import { WalletConnectService } from '../../services';
+import { AucDialogService } from '../dialog';
 import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no-network-config';
 
 
 @Component({
-  selector: 'applicature-network-dropdown',
+  selector: 'auc-network-dropdown',
   templateUrl: './network-dropdown.component.html',
   styleUrls: [ './network-dropdown.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NetworkDropdownComponent implements OnInit, OnChanges {
+export class AucNetworkDropdownComponent implements OnInit, OnChanges {
+  /**
+   * {@link networkOptions} - It's an `@Input()` parameter.
+   * List of the supported networks.
+   * This is required parameter.
+   */
   @Input()
   public networkOptions!: AucNetworkOption[];
 
-  @Input() networkDropdownConfig: AucDropdownConfig = {
+  /**
+   * {@link networkDropdownConfig} - It's an `@Input()` parameter.
+   * You can customize dropdown position and overlay.
+   * This is an optional parameter.
+   * The default value is
+   * {
+   *   overlay: {
+   *     transparent: true
+   *   },
+   *   position: {
+   *     vertical: AUC_POSITIONS.BELOW,
+   *     horizontal: AUC_POSITIONS.AFTER
+   *   }
+   * }
+   */
+  @Input()
+  public networkDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
@@ -70,6 +90,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
           });
 
           this.isWrongNetwork = !Boolean((this.networkOptions || []).find(n => n.chainId === chainId));
+          this.isOptionsOpen = false;
 
           this.ngOnChanges();
 
@@ -85,7 +106,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
             {
               data: {
                 title: `Metamask can't find this network.`,
-                text: `Please add it by yourself.`
+                text: `Please add this network by yourself.`
               },
               width: '100%',
               maxWidth: '420px',

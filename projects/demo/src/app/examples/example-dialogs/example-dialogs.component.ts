@@ -4,7 +4,7 @@ import {
   AUC_DIALOG_POSITIONS,
   AucTransferModalComponent,
   AucTransferModalData,
-  WRONG_NETWORK_APPEARANCE,
+  AUC_WRONG_NETWORK_APPEARANCE,
   AucWrongNetworkModalComponent,
   AucWrongNetworkModalData,
   AucDialogService
@@ -90,7 +90,7 @@ export class ExampleDialogsComponent {
       message: 'Looks like you connected to unsupported network. Change network to Mainnet.',
       chainId: '156',
       switchLabel: 'Swith label',
-      appearance: WRONG_NETWORK_APPEARANCE.SWITCH
+      appearance: AUC_WRONG_NETWORK_APPEARANCE.SWITCH
     };
 
     const ref = this._dialogService.open<AucWrongNetworkModalComponent, AucWrongNetworkModalData>(

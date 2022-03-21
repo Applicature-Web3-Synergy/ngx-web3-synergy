@@ -3,7 +3,7 @@ import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core
 import { AccountButtonModule } from './account-button/account-button.module';
 import { ConnectWalletModule } from './connect-wallet/connect-wallet.module';
 import { ModalsModule } from './renamed/modals';
-import { NetworkDropdownModule } from './network-dropdown/network-dropdown.module';
+import { AucNetworkDropdownModule } from './renamed/network-dropdown';
 import { TransactionService } from './services/transaction.service';
 import { WalletConnectService } from './services';
 import { TransactionsHistoryModule } from './transactions-history/transactions-history.module';
@@ -11,7 +11,7 @@ import { TransactionsHistoryModule } from './transactions-history/transactions-h
 
 const modules = [
   ConnectWalletModule,
-  NetworkDropdownModule,
+  AucNetworkDropdownModule,
   AccountButtonModule,
   TransactionsHistoryModule,
   ModalsModule,
