@@ -6,7 +6,7 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 import { TransactionStatus } from '../enums';
 import { RecentTransactionsModalData, TransactionsHistoryModalComponent } from '../modals';
 import { TransactionService } from '../services/transaction.service';
-import { ApplicatureDialogService } from '../applicature-dialog';
+import { AucDialogService } from '../renamed/dialog';
 import { AUC_BUTTON_APPEARANCE } from '../renamed/button';
 
 
@@ -29,7 +29,7 @@ export class TransactionsHistoryComponent implements OnInit {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _dialogService: ApplicatureDialogService,
+    private _dialogService: AucDialogService,
     private _cdr: ChangeDetectorRef,
     private _transactionService: TransactionService
   ) {
@@ -67,7 +67,7 @@ export class TransactionsHistoryComponent implements OnInit {
       data: {
         header: 'Recent transactions'
       },
-      dialogClass: 'applicature-dialog'
+      dialogClass: 'auc-recent-transactions-dialog'
     };
 
     this._dialogService.open<TransactionsHistoryModalComponent, RecentTransactionsModalData>(TransactionsHistoryModalComponent, config);

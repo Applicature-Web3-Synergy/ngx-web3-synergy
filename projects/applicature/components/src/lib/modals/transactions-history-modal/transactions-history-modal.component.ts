@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { EtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../services/transaction.service';
 import { RecentTransactionsModalData } from './interfaces';
-import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
+import { AucDialogConfig, AucDialogRef } from '../../renamed/dialog';
 
 
 @Component({
@@ -18,8 +18,8 @@ export class TransactionsHistoryModalComponent implements OnDestroy {
   public data: RecentTransactionsModalData;
 
   constructor(
-    private _config: ApplicatureDialogConfig<RecentTransactionsModalData>,
-    private _dialogRef: ApplicatureDialogRef,
+    private _config: AucDialogConfig<RecentTransactionsModalData>,
+    private _dialogRef: AucDialogRef,
     private _transactionService: TransactionService
   ) {
     this.data = this._config.data;

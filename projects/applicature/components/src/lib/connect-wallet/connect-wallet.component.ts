@@ -20,7 +20,7 @@ import { AucNetworkOption } from '../interfaces';
 import { AccountModalComponent, AccountModalData } from '../modals';
 import { TransactionService } from '../services/transaction.service';
 import { ConnectionState, WalletConnectService } from '../services';
-import { ApplicatureDialogService } from '../applicature-dialog';
+import { AucDialogService } from '../renamed/dialog';
 import { AucDropdownConfig } from '../renamed/dropdown-menu';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
@@ -95,7 +95,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _dialogService: ApplicatureDialogService,
+    private _dialogService: AucDialogService,
     private _cdr: ChangeDetectorRef,
     private _elementRef: ElementRef<HTMLElement>,
     private _transactionService: TransactionService,
@@ -171,7 +171,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
 
     const modal = this._dialogService.open<AccountModalComponent, AccountModalData>(AccountModalComponent, {
       data,
-      dialogClass: 'applicature-dialog',
+      dialogClass: 'auc-account-dialog',
     });
   }
 

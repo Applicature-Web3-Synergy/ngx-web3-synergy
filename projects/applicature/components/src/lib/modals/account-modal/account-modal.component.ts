@@ -16,7 +16,7 @@ import { Ethereum, EtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../services/transaction.service';
 
 import { AccountModalData } from './interfaces';
-import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
+import { AucDialogConfig, AucDialogRef } from '../../renamed/dialog';
 import { WalletConnectService } from '../../services';
 
 
@@ -38,8 +38,8 @@ export class AccountModalComponent implements OnInit, OnDestroy {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _config: ApplicatureDialogConfig<AccountModalData>,
-    private _dialogRef: ApplicatureDialogRef,
+    private _config: AucDialogConfig<AccountModalData>,
+    private _dialogRef: AucDialogRef,
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: WalletConnectService,
     private _transactionService: TransactionService

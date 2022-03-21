@@ -18,7 +18,7 @@ import { AucNetworkOption, Ethereum } from '../interfaces';
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../renamed/dropdown-menu';
 import { WalletConnectService } from '../services';
-import { ApplicatureDialogService } from '../applicature-dialog';
+import { AucDialogService } from '../renamed/dialog';
 import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no-network-config';
 
 
@@ -53,7 +53,7 @@ export class NetworkDropdownComponent implements OnInit, OnChanges {
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: WalletConnectService,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialogService: ApplicatureDialogService
+    private _dialogService: AucDialogService
   ) {}
 
   public ngOnInit(): void {

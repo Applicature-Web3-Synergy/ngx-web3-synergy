@@ -4,7 +4,7 @@ import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 import { WalletConnectService } from '../../services';
 import { WrongNetworkModalData } from './interfaces';
-import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
+import { AucDialogConfig, AucDialogRef } from '../../renamed/dialog';
 
 
 @Component({
@@ -18,8 +18,8 @@ export class WrongNetworkModalComponent {
   public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
   constructor(
-    private _config: ApplicatureDialogConfig<WrongNetworkModalData>,
-    private _dialogRef: ApplicatureDialogRef,
+    private _config: AucDialogConfig<WrongNetworkModalData>,
+    private _dialogRef: AucDialogRef,
     private _walletConnectService: WalletConnectService
   ) {
     this.data = this._config.data;
