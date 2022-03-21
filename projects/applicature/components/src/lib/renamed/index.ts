@@ -6,6 +6,7 @@ export * from './directives';
 export * from './dialog';
 export * from './dropdown-menu';
 export * from './icon';
+export * from './modals';
 export * from './overlay';
 export * from './progress-bar';
 export * from './ripple';

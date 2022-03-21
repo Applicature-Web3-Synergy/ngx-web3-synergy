@@ -17,7 +17,7 @@ import { AccountData, AccountOption } from '../account-button/account-button.com
 import { AUC_POSITIONS, TransactionStatus } from '../enums';
 import { generateJazzicon, normalizeBalance } from '../helpers';
 import { AucNetworkOption } from '../interfaces';
-import { AccountModalComponent, AccountModalData } from '../modals';
+import { AucAccountModalComponent, AucAccountModalData } from '../renamed/modals';
 import { TransactionService } from '../services/transaction.service';
 import { ConnectionState, WalletConnectService } from '../services';
 import { AucDialogService } from '../renamed/dialog';
@@ -155,7 +155,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const data: AccountModalData = {
+    const data: AucAccountModalData = {
       header: 'Account',
       change: () => {
         modal.close();
@@ -169,7 +169,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
       },
     };
 
-    const modal = this._dialogService.open<AccountModalComponent, AccountModalData>(AccountModalComponent, {
+    const modal = this._dialogService.open<AucAccountModalComponent, AucAccountModalData>(AucAccountModalComponent, {
       data,
       dialogClass: 'auc-account-dialog',
     });

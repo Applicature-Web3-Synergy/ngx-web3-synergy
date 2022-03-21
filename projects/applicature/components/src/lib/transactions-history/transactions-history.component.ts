@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 import { TransactionStatus } from '../enums';
-import { RecentTransactionsModalData, TransactionsHistoryModalComponent } from '../modals';
+import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } from '../renamed/modals';
 import { TransactionService } from '../services/transaction.service';
 import { AucDialogService } from '../renamed/dialog';
 import { AUC_BUTTON_APPEARANCE } from '../renamed/button';
@@ -70,6 +70,9 @@ export class TransactionsHistoryComponent implements OnInit {
       dialogClass: 'auc-recent-transactions-dialog'
     };
 
-    this._dialogService.open<TransactionsHistoryModalComponent, RecentTransactionsModalData>(TransactionsHistoryModalComponent, config);
+    this._dialogService.open<AucTransactionsHistoryModalComponent, AucRecentTransactionsModalData>(
+      AucTransactionsHistoryModalComponent,
+      config
+    );
   }
 }
