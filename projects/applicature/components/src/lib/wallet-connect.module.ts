@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
-import { AccountButtonModule } from './account-button/account-button.module';
+import { AuxAccountButtonModule } from './renamed/account-button';
 import { ConnectWalletModule } from './connect-wallet/connect-wallet.module';
 import { ModalsModule } from './renamed/modals';
 import { AucNetworkDropdownModule } from './renamed/network-dropdown';
@@ -12,7 +12,7 @@ import { TransactionsHistoryModule } from './transactions-history/transactions-h
 const modules = [
   ConnectWalletModule,
   AucNetworkDropdownModule,
-  AccountButtonModule,
+  AuxAccountButtonModule,
   TransactionsHistoryModule,
   ModalsModule,
 ];

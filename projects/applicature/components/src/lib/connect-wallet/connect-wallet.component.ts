@@ -13,7 +13,7 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AccountData, AccountOption } from '../account-button/account-button.component';
+import { AccountData, AccountOption } from '../renamed/account-button/account-button.component';
 import { AUC_POSITIONS, TransactionStatus } from '../enums';
 import { generateJazzicon, normalizeBalance } from '../helpers';
 import { AucNetworkOption } from '../interfaces';

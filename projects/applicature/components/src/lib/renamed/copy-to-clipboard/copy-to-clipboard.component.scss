@@ -7,7 +7,7 @@
   height: 32px;
   color: getColor(grey, hover);
   border-radius: 50%;
-  @include transition();
+  @include transition;
 
   .auc-copy-to-clipboard-button {
     width: 100%;

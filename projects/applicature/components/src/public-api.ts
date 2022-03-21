@@ -13,9 +13,6 @@ export * from './lib/wallet-connect.module';
 export * from './lib/pipes/short-address.pipe';
 export * from './lib/pipes/pipes.module';
 
-export * from './lib/account-button/account-button.component';
-export * from './lib/account-button/account-button.module';
-
 export * from './lib/transactions-history/transactions-history.component';
 export * from './lib/transactions-history/transactions-history.module';
 

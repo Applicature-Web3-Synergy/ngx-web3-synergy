@@ -1,5 +1,6 @@
 @import "../../../../../../styles/src/lib/scss/variables";
 @import "../../../../../../styles/src/lib/scss/functions";
+@import "../../../../../../styles/src/lib/scss/mixins";
 
 :host {
   display: block;
@@ -71,6 +72,7 @@
     padding: 4px 8px;
     border-radius: 8px;
     background-color: transparent;
+    @include transition;
 
     &:hover {
       cursor: pointer;
@@ -109,6 +111,7 @@
     font-size: 13px;
     font-weight: 500;
     margin-right: 16px;
+    @include transition;
 
     &:last-child {
       margin-right: 0;
@@ -158,6 +161,7 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 16px;
+    @include transition;
 
     &:hover {
       cursor: pointer;
@@ -182,6 +186,7 @@
     font-size: 14px;
     line-height: 20px;
     text-decoration: none;
+    @include transition;
 
     &:hover {
       text-decoration: underline;

@@ -20,7 +20,7 @@
   border: 2px solid var(--auc-button-border);
   border-radius: var(--auc-button-radius);
   background: var(--auc-button-base);
-  @include transition();
+  @include transition;
 
   &:hover {
     background: var(--auc-button-hover);
@@ -49,6 +49,7 @@
   &.auc-button-transparent {
     border: 2px solid transparent;
     background: transparent;
+    @include transition;
 
     &:hover {
       background: transparent;

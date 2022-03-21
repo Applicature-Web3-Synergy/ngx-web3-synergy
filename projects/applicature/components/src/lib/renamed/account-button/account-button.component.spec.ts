@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccountButtonComponent } from './account-button.component';
+import { AucAccountButtonComponent } from './account-button.component';
 
-describe('AccountButtonComponent', () => {
-  let component: AccountButtonComponent;
-  let fixture: ComponentFixture<AccountButtonComponent>;
+describe('AucAccountButtonComponent', () => {
+  let component: AucAccountButtonComponent;
+  let fixture: ComponentFixture<AucAccountButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AccountButtonComponent]
+      declarations: [AucAccountButtonComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccountButtonComponent);
+    fixture = TestBed.createComponent(AucAccountButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
