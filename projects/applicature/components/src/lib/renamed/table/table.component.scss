@@ -47,7 +47,7 @@
 
   tbody {
     tr {
-      @include transition();
+      @include transition;
 
       &:hover {
         background-color: getColor(grey, background);
@@ -64,7 +64,7 @@
   &.sortable {
     color: getColor(blue, base);
     cursor: pointer;
-    @include transition();
+    @include transition;
 
     &:hover {
       color: getColor(blue, hover);
@@ -100,6 +100,7 @@
 .auc-table-link {
   color: getColor(blue, base);
   text-decoration: none;
+  @include transition;
 
   &:hover {
     text-decoration: underline;
@@ -115,7 +116,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  @include transition();
+  @include transition;
 
   &:hover {
     background-color: getColor(white, hover);

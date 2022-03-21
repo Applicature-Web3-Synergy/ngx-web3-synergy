@@ -1,5 +1,6 @@
 @import "../../../../../../styles/src/lib/scss/variables";
 @import "../../../../../../styles/src/lib/scss/functions";
+@import "../../../../../../styles/src/lib/scss/mixins";
 
 :host {
   display: block;
@@ -50,6 +51,7 @@
     font-size: 14px;
     line-height: 20px;
     text-decoration: none;
+    @include transition;
 
     &:hover {
       text-decoration: underline;
