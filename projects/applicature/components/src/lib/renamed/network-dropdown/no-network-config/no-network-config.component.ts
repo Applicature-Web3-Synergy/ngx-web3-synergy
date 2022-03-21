@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AucNoNetworkConfigDialogDataI } from './interfaces';
-import { AucDialogConfig, AucDialogRef } from '../../renamed/dialog';
+import { AucDialogConfig, AucDialogRef } from '../../dialog';
 
 
 @Component({
-  selector: 'applicature-no-network-config',
+  selector: 'auc-no-network-config',
   templateUrl: './no-network-config.component.html',
   styleUrls: [ './no-network-config.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush

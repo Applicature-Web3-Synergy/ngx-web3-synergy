@@ -1,4 +1,5 @@
-<auc-button aucTrigger
+<auc-button class="auc-network-dropdown-btn"
+            aucTrigger
             #networkOptionsTrigger="aucTrigger"
             [label]="isWrongNetwork ? 'Wrong Network' : currentNetwork?.name"
             [color]="isWrongNetwork ? COLORS.RED : COLORS.WHITE"
@@ -11,17 +12,17 @@
                            [config]="networkDropdownConfig"
                            [trigger]="networkOptionsTrigger"
 >
-  <ul class="network-options">
-    <li class="network-options__header">Select a Network</li>
+  <ul class="auc-network-options">
+    <li class="auc-network-options-header">Select a Network</li>
     <li *ngFor="let option of networkOptions"
         (click)="onNetworkOptionClick(option)"
-        [class.network-options__item--disabled]="option.disabled"
-        class="network-options__item">
-      <div class="network-options__img">
+        [class.auc-network-options__item--disabled]="option.disabled"
+        class="auc-network-options-item">
+      <div class="auc-network-options-img">
         <img [src]="option.icon" [alt]="option.name">
       </div>
 
-      <span class="network-options__name">{{ option.name }}</span>
+      <span class="auc-network-options-name">{{ option.name }}</span>
 
       <i [class.wcl-icon-active]="option.isActive"></i>
     </li>

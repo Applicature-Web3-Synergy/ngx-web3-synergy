@@ -5,8 +5,6 @@ export * from './lib/renamed';
 export * from './lib/connect-wallet/connect-wallet.component';
 export * from './lib/connect-wallet/connect-wallet.module';
 
-export * from './lib/network-dropdown';
-
 export * from './lib/input/input.component';
 export * from './lib/input/input.module';
 
