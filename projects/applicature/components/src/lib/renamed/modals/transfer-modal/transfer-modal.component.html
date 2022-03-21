@@ -10,7 +10,7 @@
     </button>
   </div>
 
-  <applicature-input [max]="data.max"
+  <auc-input [max]="data.max"
                      [suffix]="data.symbol"
                      [hint]="'Current allowance: ' + currentAllowance + ' ' + data.symbol"
                      [adaptive]="true"
@@ -19,7 +19,7 @@
                      label="Amount"
                      placeholder="Enter amount"
                      class="auc-transfer-input">
-  </applicature-input>
+  </auc-input>
 
   <div class="auc-transfer-progress">
     <h3 class="auc-transfer-steps">Step {{ currentStep }} of 2</h3>

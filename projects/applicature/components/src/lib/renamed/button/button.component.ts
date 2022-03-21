@@ -17,10 +17,9 @@ export class AucButtonComponent implements OnInit, OnChanges {
   /**
    * {@link label} - It's an `@Input()` parameter.
    * Text for the button label.
-   * It's required parameter.
    */
   @Input()
-  public label!: string;
+  public label: string;
 
   /**
    * {@link borderRadius} - It's an `@Input()` parameter.

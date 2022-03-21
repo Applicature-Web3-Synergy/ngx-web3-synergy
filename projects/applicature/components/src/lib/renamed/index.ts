@@ -6,6 +6,7 @@ export * from './directives';
 export * from './dialog';
 export * from './dropdown-menu';
 export * from './icon';
+export * from './input';
 export * from './modals';
 export * from './network-dropdown';
 export * from './overlay';
