@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AucNoNetworkConfigDialogDataI } from './interfaces';
-import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
+import { AucDialogConfig, AucDialogRef } from '../../renamed/dialog';
 
 
 @Component({
@@ -12,8 +12,8 @@ import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature
 })
 export class AucNoNetworkConfigComponent {
 
-  constructor(public config: ApplicatureDialogConfig<AucNoNetworkConfigDialogDataI>,
-              private _dialogRef: ApplicatureDialogRef) {
+  constructor(public config: AucDialogConfig<AucNoNetworkConfigDialogDataI>,
+              private _dialogRef: AucDialogRef) {
   }
 
   onClose(): void {

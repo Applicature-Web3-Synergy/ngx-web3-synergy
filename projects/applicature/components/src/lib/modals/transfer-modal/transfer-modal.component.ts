@@ -8,7 +8,7 @@ import { WalletConnectService } from '../../services';
 import { TRANSFER_STEPS } from './enums';
 import { TransferModalData } from './interfaces';
 import { TransactionStep } from './types';
-import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
+import { AucDialogConfig, AucDialogRef } from '../../renamed/dialog';
 
 
 @Component({
@@ -31,8 +31,8 @@ export class TransferModalComponent implements OnInit, OnDestroy {
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _config: ApplicatureDialogConfig<TransferModalData>,
-    private _dialogRef: ApplicatureDialogRef,
+    private _config: AucDialogConfig<TransferModalData>,
+    private _dialogRef: AucDialogRef,
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: WalletConnectService,
     private _transactionService: TransactionService,

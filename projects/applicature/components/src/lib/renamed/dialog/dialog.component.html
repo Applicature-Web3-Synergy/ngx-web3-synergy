@@ -1,0 +1,17 @@
+<div class="auc-dialog-container"
+     aucCustomizeDialog
+     [config]="panelConfig"
+>
+  <auc-overlay *ngIf="hasOverlay"
+               [customize]="overlayConfig"
+               (overlayClicked)="onOverlayClicked()"
+  >
+  </auc-overlay>
+
+  <div class="auc-dialog"
+       aucCustomizeDialog
+       [config]="dialogConfig"
+  >
+    <ng-template aucInsertion></ng-template>
+  </div>
+</div>

@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import {
-  APPLICATURE_DIALOG_POSITIONS,
+  AUC_DIALOG_POSITIONS,
   TransferModalComponent,
   TransferModalData,
   WRONG_NETWORK_APPEARANCE,
   WrongNetworkModalComponent,
   WrongNetworkModalData,
-  ApplicatureDialogService
+  AucDialogService
 } from '@applicature/components';
 
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
@@ -21,7 +21,7 @@ import { DialogTestComponent } from './components/dialog-test/dialog-test.compon
 })
 export class ExampleDialogsComponent {
 
-  constructor(private _dialogService: ApplicatureDialogService) {
+  constructor(private _dialogService: AucDialogService) {
   }
 
   public showCustomModal(): void {
@@ -35,7 +35,7 @@ export class ExampleDialogsComponent {
         minHeight: '320px',
         maxWidth: '600px',
         maxHeight: '700px',
-        position: APPLICATURE_DIALOG_POSITIONS.TOP_RIGHT,
+        position: AUC_DIALOG_POSITIONS.TOP_RIGHT,
         dialogClass: 'dialog-class-test',
         panel: {
           panelClass: 'panel-class-test'
@@ -76,7 +76,7 @@ export class ExampleDialogsComponent {
 
     const ref = this._dialogService.open<TransferModalComponent, TransferModalData>(TransferModalComponent, {
       data,
-      dialogClass: 'applicature-dialog',
+      dialogClass: 'transfer-dialog',
     });
 
     ref.afterClosed.subscribe(result => {
@@ -99,7 +99,7 @@ export class ExampleDialogsComponent {
         data,
         width: '100%',
         maxWidth: "420px",
-        dialogClass: 'applicature-dialog',
+        dialogClass: 'wrong-network-dialog',
       }
     );
 
