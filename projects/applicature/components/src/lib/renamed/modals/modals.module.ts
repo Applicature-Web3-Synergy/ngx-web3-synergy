@@ -8,7 +8,7 @@ import { AucProgressBarModule } from '../progress-bar';
 import { AucRippleModule } from '../ripple';
 import { AucSpinnerModule } from '../spinner';
 import { AucButtonModule } from '../button';
-import { InputModule } from '../../input/input.module';
+import { AucInputModule } from '../input';
 import { PipesModule } from '../../pipes';
 import { AucAccountModalComponent } from './account-modal';
 import { AucTransactionsHistoryModalComponent } from './transactions-history-modal';
@@ -35,7 +35,7 @@ const components = [
     ReactiveFormsModule,
     PipesModule,
     AucButtonModule,
-    InputModule,
+    AucInputModule,
     AucRippleModule,
     AucSpinnerModule,
     AucProgressBarModule,

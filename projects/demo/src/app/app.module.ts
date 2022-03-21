@@ -11,7 +11,7 @@ import {
   AucDropdownMenuModule,
   AucAvatarModule,
   AucButtonModule,
-  InputModule,
+  AucInputModule,
   WalletConnectModule,
   WalletConnectService
 } from '@applicature/components';
@@ -57,7 +57,7 @@ export function initWalletServiceFactory(
     AucAlertModule,
     AucAvatarModule,
     AucButtonModule,
-    InputModule,
+    AucInputModule,
     WalletConnectModule.forRoot(),
     ExampleDialogsModule,
     ExampleTableModule,
