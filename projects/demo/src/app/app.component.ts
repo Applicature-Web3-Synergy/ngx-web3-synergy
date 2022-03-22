@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 
 import {
-  AccountOption,
+  AucAccountOption,
   generateJazzicon,
   AucNetworkOption,
   WalletConnectService,
@@ -86,7 +86,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  public accountOptions: AccountOption[] = [
+  public accountOptions: AucAccountOption[] = [
     { name: 'My Account', id: 1 },
     { name: 'Some menu Item', id: 2 },
     { name: 'Some menu Item', id: 3 }
