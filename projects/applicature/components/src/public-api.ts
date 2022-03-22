@@ -10,9 +10,6 @@ export * from './lib/services';
 
 export * from './lib/wallet-connect.module';
 
-export * from './lib/transactions-history/transactions-history.component';
-export * from './lib/transactions-history/transactions-history.module';
-
 export * from './lib/enums/index';
 
 export * from './lib/interfaces/index';

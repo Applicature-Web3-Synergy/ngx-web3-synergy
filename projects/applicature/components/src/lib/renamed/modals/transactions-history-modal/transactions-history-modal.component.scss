@@ -14,20 +14,6 @@
   font-family: $as-font-family;
 }
 
-.auc-transactions-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 16px;
-
-  > h1 {
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 1;
-    color: $black;
-    margin: 0;
-  }
-}
-
 .auc-transactions-list {
   display: flex;
   flex-direction: column;

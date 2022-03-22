@@ -3,20 +3,25 @@ import { Subscription } from 'rxjs';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
-import { TransactionStatus } from '../enums';
-import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } from '../renamed/modals';
-import { TransactionService } from '../services/transaction.service';
-import { AucDialogService } from '../renamed/dialog';
-import { AUC_BUTTON_APPEARANCE } from '../renamed/button';
+import { TransactionStatus } from '../../enums';
+import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } from '../modals';
+import { AucDialogService } from '../dialog';
+import { AUC_BUTTON_APPEARANCE } from '../button';
+import { TransactionService } from '../../services/transaction.service';
 
 
 @Component({
-  selector: 'applicature-transactions-history',
+  selector: 'auc-transactions-history',
   templateUrl: './transactions-history.component.html',
   styleUrls: [ './transactions-history.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TransactionsHistoryComponent implements OnInit {
+export class AucTransactionsHistoryComponent implements OnInit {
+  /**
+   * {@link disabled} - It's an `@Input()` parameter.
+   * Whether the button is disabled.
+   * This is an optional parameter. The default value is false.
+   */
   @Input()
   public disabled: boolean = false;
 

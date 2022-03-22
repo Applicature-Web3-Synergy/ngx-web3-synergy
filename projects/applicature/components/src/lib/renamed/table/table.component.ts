@@ -45,9 +45,10 @@ export class AucTableComponent {
 
   /**
    * {@link loadMore} - It's an `@Output()` parameter.
-   * Emits when load more button clicked.
+   * Emits when load more button was clicked.
    */
   @Output() loadMore: EventEmitter<void> = new EventEmitter<void>();
+
   /**
    * {@link sort} - It's an `@Output()` parameter.
    * Emits when sort was clicked.

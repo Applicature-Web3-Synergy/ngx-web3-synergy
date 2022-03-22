@@ -16,3 +16,4 @@ export * from './progress-bar';
 export * from './ripple';
 export * from './spinner';
 export * from './table';
+export * from './transactions-history';

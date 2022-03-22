@@ -27,5 +27,5 @@ import { AucDropdownMenuModule } from '../dropdown-menu';
     AucDropdownMenuModule,
   ]
 })
-export class AuxAccountButtonModule {
+export class AucAccountButtonModule {
 }
