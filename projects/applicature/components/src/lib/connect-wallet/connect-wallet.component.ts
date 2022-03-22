@@ -13,7 +13,7 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AccountData, AccountOption } from '../renamed/account-button/account-button.component';
+import { AucAccountData, AucAccountOption } from '../renamed/account-button';
 import { AUC_POSITIONS, TransactionStatus } from '../enums';
 import { generateJazzicon, normalizeBalance } from '../helpers';
 import { AucNetworkOption } from '../interfaces';
@@ -52,10 +52,10 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   public networkOptions!: AucNetworkOption[];
 
   @Input()
-  public account!: AccountData;
+  public account!: AucAccountData;
 
   @Input()
-  public accountOptions!: AccountOption[];
+  public accountOptions!: AucAccountOption[];
 
   @Input() networkDropdownConfig?: AucDropdownConfig = {
     overlay: {

@@ -22,9 +22,36 @@ body {
   font-size: 14px;
 }
 
+// Dialog styles
+.auc-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+  min-height: 24px;
+  padding-right: 30px;
+
+  > h1 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1;
+    color: $black;
+    margin: 0;
+  }
+
+  .auc-close-btn {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
 .auc-close-btn {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -51,3 +78,5 @@ body {
     color: getColor(grey, dark);
   }
 }
+
+// End Dialog styles

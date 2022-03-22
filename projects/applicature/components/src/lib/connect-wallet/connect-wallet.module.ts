@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AccountBalanceModule } from '../account-balance/account-balance.module';
-import { AuxAccountButtonModule } from '../renamed/account-button';
+import { AucAccountButtonModule } from '../renamed/account-button';
 import { AucButtonModule } from '../renamed/button';
 import { AucNetworkDropdownModule } from '../renamed/network-dropdown';
 import { AucPipesModule } from '../renamed/pipes';
-import { TransactionsHistoryModule } from '../transactions-history/transactions-history.module';
+import { AucTransactionsHistoryModule } from '../renamed/transactions-history';
 import { ConnectWalletComponent } from './connect-wallet.component';
 import { AucDialogModule } from '../renamed/dialog';
 
@@ -22,9 +22,9 @@ import { AucDialogModule } from '../renamed/dialog';
     AucButtonModule,
     AucPipesModule,
     AucNetworkDropdownModule,
-    AuxAccountButtonModule,
+    AucAccountButtonModule,
     AccountBalanceModule,
-    TransactionsHistoryModule,
+    AucTransactionsHistoryModule,
     AucDialogModule
   ],
 })
