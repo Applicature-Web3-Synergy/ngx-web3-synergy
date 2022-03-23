@@ -13,6 +13,7 @@
   <div class="auc-account-info auc-info">
     <div class="auc-info-header">
       <span>Connected with Metamask</span>
+
       <button (click)="onChangeClick()"
               aucRipple
               class="auc-info-header-change"
@@ -28,14 +29,14 @@
       </button>
     </div>
 
-    <div #infoMain class="auc-info-main">
+    <div class="auc-info-main" [aucIdenticon]="identicon">
       <span>{{ accountAddress | aucShortAddress }}</span>
     </div>
     <div class="auc-info-footer">
       <span ngxClipboard
             [cbContent]="accountAddress"
             class="auc-info-footer-item"><i class="wcl-icon-copy"></i><span>Copy Address</span></span>
-      <a class="auc-info-footer-item" [href]="etherscanAddress$ | async"
+      <a class="auc-info-footer-item" *ngIf="(etherscanAddress$ | async) as ethAddress" [href]="ethAddress"
          target="_blank"><i class="wcl-icon-external-link"></i><span>View on Explorer</span></a>
     </div>
   </div>

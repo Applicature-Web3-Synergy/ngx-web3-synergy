@@ -114,8 +114,6 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
         map((balance: string) => normalizeBalance(balance) ?? '0')
       );
 
-    // this.currentNetwork$ = this._walletConnectService.selectedNetwork$;
-
     this._walletConnectService.selectedNetwork$
       .subscribe((network: AucNetworkOption) => {
         this.activeNetwork = network;

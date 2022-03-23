@@ -8,38 +8,36 @@
   </section>
 
 
-
-
   <button type="button" (click)="customBtnConnect()">Custom Connect</button>
 
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-connect-wallet [showBalance]="true"
-                                [showNetworkOptions]="true"
-                                [networkDropdownConfig]="networkDropdownConfig"
-                                (onConnect)="onConnect($event)"
-                                (onDisconnect)="onDisconnect($event)"
+    <auc-connect-wallet [showBalance]="true"
+                        [showNetworkOptions]="true"
+                        [networkDropdownConfig]="networkDropdownConfig"
+                        (onConnect)="onConnect($event)"
+                        (onDisconnect)="onDisconnect($event)"
     >
-    </applicature-connect-wallet>
+    </auc-connect-wallet>
   </div>
   <br>
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-connect-wallet [showBalance]="true"
-                                [showTransactions]="true"
-                                [account]="{ name: 'Account Name'}"
-                                [accountOptions]="accountOptions"
-                                [accountDropdownConfig]="accountDropdownConfig"
-                                appearance="icon">
-    </applicature-connect-wallet>
+    <auc-connect-wallet [showBalance]="true"
+                        [showTransactions]="true"
+                        [account]="{ name: 'Account Name'}"
+                        [accountOptions]="accountOptions"
+                        [accountDropdownConfig]="accountDropdownConfig"
+                        [appearance]="CONNECT_WALLET_APPEARANCE.ICON">
+    </auc-connect-wallet>
   </div>
   <br>
 
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-connect-wallet [showBalance]="true"
-                                [showTransactions]="true"
-                                [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
-                                [accountOptions]="accountOptions"
-                                appearance="button">
-    </applicature-connect-wallet>
+    <auc-connect-wallet [showBalance]="true"
+                        [showTransactions]="true"
+                        [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
+                        [accountOptions]="accountOptions"
+                        [appearance]="CONNECT_WALLET_APPEARANCE.BUTTON">
+    </auc-connect-wallet>
   </div>
 
   <section id="dialogs">
@@ -51,28 +49,28 @@
 
   <div style="background: #fff;padding: 50px;">
     <auc-input label="Field Label"
-                       suffix="USDT"
-                       hint="This is a message"
-                       placeholder="Enter"
-                       [max]="100">
+               suffix="USDT"
+               hint="This is a message"
+               placeholder="Enter"
+               [max]="100">
     </auc-input>
     <br>
     <br>
     <auc-input label="Field Label"
-                       suffix="USDT"
-                       hint="This is a message"
-                       placeholder="Enter"
-                       [max]="100"
-                       [errors]="['This is an error message']">
+               suffix="USDT"
+               hint="This is a message"
+               placeholder="Enter"
+               [max]="100"
+               [errors]="['This is an error message']">
     </auc-input>
     <br>
     <br>
     <auc-input label="Field Label"
-                       suffix="USDT"
-                       hint="This is a message"
-                       placeholder="Enter"
-                       [max]="100"
-                       [disabled]="true">
+               suffix="USDT"
+               hint="This is a message"
+               placeholder="Enter"
+               [max]="100"
+               [disabled]="true">
     </auc-input>
   </div>
   <br>
