@@ -13,27 +13,28 @@ import { Subscription } from 'rxjs';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
-import { AucAccountData, AucAccountOption } from '../renamed/account-button';
-import { AUC_POSITIONS, TransactionStatus } from '../enums';
-import { generateJazzicon } from '../helpers';
-import { AucAccountModalComponent, AucAccountModalData } from '../renamed/modals';
-import { TransactionService } from '../services/transaction.service';
-import { ConnectionState, WalletConnectService } from '../services';
-import { AucDialogService } from '../renamed/dialog';
-import { AucDropdownConfig } from '../renamed/dropdown-menu';
-import { AUC_BALANCE_APPEARANCE } from '../renamed/account-balance';
+import { AucAccountData, AucAccountOption } from '../account-button';
+import { AUC_POSITIONS, TransactionStatus } from '../../enums';
+import { generateJazzicon } from '../../helpers';
+import { AucAccountModalComponent, AucAccountModalData } from '../modals';
+import { TransactionService } from '../../services/transaction.service';
+import { ConnectionState, WalletConnectService } from '../../services';
+import { AucDialogService } from '../dialog';
+import { AucDropdownConfig } from '../dropdown-menu';
+import { AUC_BALANCE_APPEARANCE } from '../account-balance';
+import { ConnectWalletAppearance } from './types';
+import { AUC_CONNECT_WALLET_APPEARANCE } from './enums';
 
-export type AppearanceType = 'default' | 'icon' | 'button';
 
 @Component({
-  selector: 'applicature-connect-wallet',
+  selector: 'auc-connect-wallet',
   templateUrl: './connect-wallet.component.html',
   styleUrls: [ './connect-wallet.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConnectWalletComponent implements OnInit, OnDestroy {
+export class AucConnectWalletComponent implements OnInit, OnDestroy {
   @Input()
-  public appearance: AppearanceType = 'button';
+  public appearance: ConnectWalletAppearance = AUC_CONNECT_WALLET_APPEARANCE.BUTTON;
 
   @Input()
   public disabled: boolean = false;

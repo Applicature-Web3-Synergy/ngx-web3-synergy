@@ -2,9 +2,6 @@ export * from './lib/renamed';
 
 //---------
 
-export * from './lib/connect-wallet/connect-wallet.component';
-export * from './lib/connect-wallet/connect-wallet.module';
-
 export * from './lib/services/transaction.service';
 export * from './lib/services';
 

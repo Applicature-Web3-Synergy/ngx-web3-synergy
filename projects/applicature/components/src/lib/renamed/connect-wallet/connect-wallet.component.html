@@ -1,10 +1,10 @@
-<div class="connect-wallet">
+<div class="auc-connect-wallet">
   <ng-container *ngIf="isConnected else connectWallet">
     <ng-container [ngSwitch]="appearance">
       <ng-container *ngSwitchCase="'button'">
         <ng-container *ngTemplateOutlet="networkOptionsRef"></ng-container>
 
-        <div class="connect-wallet__container">
+        <div class="auc-connect-wallet-container">
           <auc-button *ngIf="(hasPendingTx || hasFailedTx) else acBallanceWithAddress"
                       (onClick)="onAccountButtonClick()"
                       [disabled]="disabled"
@@ -31,16 +31,16 @@
 
       <ng-container *ngSwitchCase="'icon'">
         <auc-account-balance [appearance]="BALANCE_APPEARANCE.TRANSPARENT"
-                             class="connect-wallet__account-balance">
+                             class="auc-connect-wallet-account-balance">
         </auc-account-balance>
 
         <auc-transactions-history *ngIf="showTransactions"
-                                  class="connect-wallet__transactions">
+                                  class="auc-connect-wallet-transactions">
         </auc-transactions-history>
 
         <ng-container *ngTemplateOutlet="networkOptionsRef"></ng-container>
 
-        <div class="connect-wallet__container">
+        <div class="auc-connect-wallet-container">
           <auc-account-button [account]="account"
                               [options]="accountOptions"
                               [accountDropdownConfig]="accountDropdownConfig"
@@ -53,7 +53,9 @@
         <auc-button (onClick)="onDisconnectWalletClick()"
                     [disabled]="disabled"
                     [color]="COLORS.RED"
-                    label="Disconnect Wallet">
+                    label="Disconnect Wallet"
+                    class="auc-connect-wallet-disconnect-btn"
+        >
         </auc-button>
       </ng-container>
     </ng-container>
@@ -64,7 +66,9 @@
     <auc-button (onClick)="onConnectWalletClick()"
                 [disabled]="disabled"
                 leftIcon="wcl-icon-wallet"
-                label="Connect Wallet">
+                label="Connect Wallet"
+                class="auc-connect-wallet-btn"
+    >
     </auc-button>
   </ng-template>
 </div>
@@ -72,6 +76,7 @@
 <ng-template #networkOptionsRef>
   <auc-network-dropdown *ngIf="showNetworkOptions"
                         [networkDropdownConfig]="networkDropdownConfig"
-                        class="connect-wallet__networks">
+                        class="auc-connect-wallet-networks"
+  >
   </auc-network-dropdown>
 </ng-template>

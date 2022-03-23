@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import {
   AUC_ALERT_POSITION,
   AUC_BUTTON_APPEARANCE,
+  AUC_CONNECT_WALLET_APPEARANCE,
   AUC_IDENTICON_POSITION,
   AUC_POSITIONS,
   AucAccountOption,
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit {
   public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
   public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
   public ALERT_POSITION = AUC_ALERT_POSITION;
+  public CONNECT_WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
   networkDropdownConfig: AucDropdownConfig = {
     overlay: {
