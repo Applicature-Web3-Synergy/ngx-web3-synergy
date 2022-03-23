@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 import { AucAccountData, AucAccountOption } from '../account-button';
-import { AUC_POSITIONS, TransactionStatus } from '../../enums';
+import { AUC_POSITIONS, AUC_TRANSACTION_STATUS } from '../enums';
 import { AUC_VALUE_TYPES, aucCheckValueType, generateJazzicon } from '../../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
 import { TransactionService } from '../../services/transaction.service';
@@ -193,14 +193,14 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
       this._transactionService.transactionsChanged$
         .subscribe((transactions) => {
           this.txCount = transactions.filter((tx) => {
-            return tx.status === TransactionStatus.Fail && !tx.viewed;
+            return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
           }).length;
 
           this.hasFailedTx = this.txCount > 0;
 
           if (!this.hasFailedTx) {
             this.txCount = transactions.filter((tx) => {
-              return tx.status === TransactionStatus.Pending;
+              return tx.status === AUC_TRANSACTION_STATUS.PENDING;
             }).length;
 
             this.hasPendingTx = this.txCount > 0;

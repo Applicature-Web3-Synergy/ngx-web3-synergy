@@ -1,4 +1,4 @@
-import { TransactionStatus } from '../enums';
+import { AUC_TRANSACTION_STATUS } from '../renamed/enums';
 
 export interface EtherscanTransactionResponse {
   status: '0' | '1'; // Note: status: 0 = Fail, 1 = Pass. Will return null/empty value for pre-byzantium fork
@@ -31,7 +31,7 @@ export interface EtherscanTransaction {
 export interface EtherscanTransactionLocalStorage {
   name: string,
   hash: string;
-  status: TransactionStatus;
+  status: AUC_TRANSACTION_STATUS;
   etherscanUrl: string
   viewed: boolean
 }

@@ -14,7 +14,7 @@ import {
   AucContentBodyDirective,
   AucTriggerDirective
 } from '../directives';
-import { AUC_POSITIONS } from '../../enums';
+import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig, AucDropdownPositionStyles } from './interfaces';
 
 

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { TransactionStatus } from '../enums';
+import { AUC_TRANSACTION_STATUS } from '../renamed/enums';
 import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../helpers/network';
 import { Ethereum, EtherscanTransactionLocalStorage, EtherscanTransactionResponse } from '../interfaces';
 import { WalletConnectService } from './wallet-connect';
@@ -45,7 +45,10 @@ export class TransactionService {
     }
   }
 
-  public saveTransaction(name: string, hash: string, status: TransactionStatus = TransactionStatus.Pending): void {
+  public saveTransaction(name: string,
+                         hash: string,
+                         status: AUC_TRANSACTION_STATUS = AUC_TRANSACTION_STATUS.PENDING
+  ): void {
     this._removeFromTransactions(hash);
 
     this._transactions = [
@@ -121,7 +124,7 @@ export class TransactionService {
         const transactionReceipt = await eth.getTransactionReceipt(tx.hash);
 
         if (transactionReceipt) {
-          tx.status = Boolean(transactionReceipt.status) ? TransactionStatus.Success : TransactionStatus.Fail;
+          tx.status = Boolean(transactionReceipt.status) ? AUC_TRANSACTION_STATUS.SUCCESS : AUC_TRANSACTION_STATUS.FAIL;
         } else if (!(await eth.getTransaction(tx.hash))) {
           this._removeFromTransactions(tx.hash);
         }

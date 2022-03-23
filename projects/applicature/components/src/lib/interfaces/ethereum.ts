@@ -1,4 +1,4 @@
-import { EthEvents, EthMethods } from '../enums';
+import { AUC_ETH_EVENTS, AUC_ETH_METHODS } from '../renamed/enums';
 
 export interface AucEthChainParams {
   chainId: string; // A 0x-prefixed hexadecimal string
@@ -29,7 +29,7 @@ export interface ProviderRpcError extends Error {
 }
 
 export interface RequestArguments {
-  method: EthMethods | string;
+  method: AUC_ETH_METHODS | string;
   params?: unknown[] | Record<string, unknown>;
 }
 
@@ -44,15 +44,15 @@ export interface Ethereum {
 
   isConnected(): boolean;
 
-  on(eventName: EthEvents.AccountsChanged, handler: (accounts: string[]) => void): void;
+  on(eventName: AUC_ETH_EVENTS.ACCOUNT_CHANGED, handler: (accounts: string[]) => void): void;
 
-  on(eventName: EthEvents.ChainChanged, handler: (chainId: string) => void): void;
+  on(eventName: AUC_ETH_EVENTS.CHAIN_CHANGED, handler: (chainId: string) => void): void;
 
-  on(eventName: EthEvents.Connect, handler: (connectInfo: ConnectInfo) => void): void;
+  on(eventName: AUC_ETH_EVENTS.CONNECT, handler: (connectInfo: ConnectInfo) => void): void;
 
-  on(eventName: EthEvents.Disconnect, handler: (error: ProviderRpcError) => void): void;
+  on(eventName: AUC_ETH_EVENTS.DISCONNECT, handler: (error: ProviderRpcError) => void): void;
 
-  on(eventName: EthEvents.Message, handler: (message: ProviderMessage) => void): void;
+  on(eventName: AUC_ETH_EVENTS.MESSAGE, handler: (message: ProviderMessage) => void): void;
 
   request<T = any>(args: RequestArguments): Promise<T>;
 }

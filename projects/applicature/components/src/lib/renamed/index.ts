@@ -8,6 +8,7 @@ export * from './copy-to-clipboard';
 export * from './directives';
 export * from './dialog';
 export * from './dropdown-menu';
+export * from './enums';
 export * from './icon';
 export * from './input';
 export * from './modals';

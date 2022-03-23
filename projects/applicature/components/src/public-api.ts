@@ -7,8 +7,6 @@ export * from './lib/services';
 
 export * from './lib/wallet-connect.module';
 
-export * from './lib/enums/index';
-
 export * from './lib/interfaces/index';
 
 export * from './lib/helpers';

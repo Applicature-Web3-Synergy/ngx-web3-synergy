@@ -1,4 +1,4 @@
-import { AUC_CHAIN_ID } from '../enums';
+import { AUC_CHAIN_ID } from '../renamed/enums';
 
 export const AucRpcUrls: { [key: string]: string[] } = {
   [AUC_CHAIN_ID.ARBITRUM_MAINNET]: [ 'https://arb1.arbitrum.io/rpc' ],

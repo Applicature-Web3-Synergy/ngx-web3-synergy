@@ -5,7 +5,7 @@ import Web3 from 'web3';
 import Onboard from 'bnc-onboard';
 import { API, Initialization, Subscriptions, Wallet } from 'bnc-onboard/dist/src/interfaces';
 
-import { EthEvents, EthMethods, AUC_METAMASK_CODES } from '../../enums';
+import { AUC_ETH_EVENTS, AUC_ETH_METHODS, AUC_METAMASK_CODES } from '../../renamed/enums';
 import {
   AucEthChainParams,
   AucNetworkOption,
@@ -265,7 +265,7 @@ export class WalletConnectService {
       return of(false);
     }
 
-    return this._request<void>(EthMethods.SwitchEthereumChain, [ { chainId } ])
+    return this._request<void>(AUC_ETH_METHODS.SWITCH_ETHEREUM_CHAIN, [ { chainId } ])
       .pipe(
         map(() => true),
         catchError(err => {
@@ -292,7 +292,7 @@ export class WalletConnectService {
       return of(false);
     }
 
-    return this._request<void>(EthMethods.AddEthereumChain, [ chainParams ])
+    return this._request<void>(AUC_ETH_METHODS.ADD_ETHEREUM_CHAIN, [ chainParams ])
       .pipe(
         map(() => true),
         catchError(() => of(false))
@@ -353,7 +353,7 @@ export class WalletConnectService {
       return;
     }
 
-    eth.on(EthEvents.ChainChanged, (chainId: string) => {
+    eth.on(AUC_ETH_EVENTS.CHAIN_CHANGED, (chainId: string) => {
       /**
        *
        *  It's recommended to reload the page on chain changes, unless you have good reason not to.
@@ -362,21 +362,21 @@ export class WalletConnectService {
       this.chainId = chainId;
     });
 
-    eth.on(EthEvents.Connect, (connectInfo: ConnectInfo) => {
+    eth.on(AUC_ETH_EVENTS.CONNECT, (connectInfo: ConnectInfo) => {
       this._connectChanged$.next(connectInfo);
     });
 
-    eth.on(EthEvents.Disconnect, (error: ProviderRpcError) => {
+    eth.on(AUC_ETH_EVENTS.DISCONNECT, (error: ProviderRpcError) => {
       this._disconnectChanged$.next(error);
     });
 
-    eth.on(EthEvents.Message, (message: ProviderMessage) => {
+    eth.on(AUC_ETH_EVENTS.MESSAGE, (message: ProviderMessage) => {
       this._messageChanged$.next(message);
     });
   }
 
   private _request<T = any>(
-    method: EthMethods,
+    method: AUC_ETH_METHODS,
     params?: unknown[] | Record<string, unknown>,
   ): Observable<T> {
     const eth = (window as any).ethereum as Ethereum;

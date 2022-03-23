@@ -1,5 +1,5 @@
 import { AucNativeCurrency } from '../interfaces';
-import { AUC_CHAIN_ID } from '../enums';
+import { AUC_CHAIN_ID } from '../renamed/enums';
 
 export const AucNativeCurrencies: { [key: string]: AucNativeCurrency } = {
   [AUC_CHAIN_ID.ARBITRUM_MAINNET]: {

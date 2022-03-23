@@ -1,4 +1,4 @@
-import { AUC_CHAIN_ID } from '../enums';
+import { AUC_CHAIN_ID } from '../renamed/enums';
 
 export const AucChainName: { [key: string]: string } = {
   [AUC_CHAIN_ID.ARBITRUM_MAINNET]: 'Arbitrum Mainnet',

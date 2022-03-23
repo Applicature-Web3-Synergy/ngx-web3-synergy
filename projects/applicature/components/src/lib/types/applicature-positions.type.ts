@@ -1,4 +1,4 @@
-import { AUC_POSITIONS } from '../enums';
+import { AUC_POSITIONS } from '../renamed/enums';
 
 export type AucVerticalPosition = AUC_POSITIONS.ABOVE | AUC_POSITIONS.BELOW;
 
