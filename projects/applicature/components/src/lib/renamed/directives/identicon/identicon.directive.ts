@@ -47,15 +47,19 @@ export class AucIdenticonDirective implements OnChanges {
     this.identicon = this.aucIdenticon.cloneNode(true) as HTMLDivElement;
     this._renderer2.addClass(this.identicon, 'auc-identicon');
 
-    if (this.position === AUC_IDENTICON_POSITION.RIGHT) {
-      this._renderer2.setStyle(this.identicon, 'margin-left', '8px');
-      this._renderer2.appendChild(this._elementRef.nativeElement, this.identicon);
+    if (!this.position) {
+      this.position = AUC_IDENTICON_POSITION.RIGHT;
+    }
+
+    if (this.position !== AUC_IDENTICON_POSITION.RIGHT) {
+      this._renderer2.setStyle(this.identicon, 'margin-right', '8px');
+      this._renderer2.insertBefore(this._elementRef.nativeElement, this.identicon, this._elementRef.nativeElement.firstChild);
 
       return;
     }
 
-    this._renderer2.setStyle(this.identicon, 'margin-right', '8px');
-    this._renderer2.insertBefore(this._elementRef.nativeElement, this.identicon, this._elementRef.nativeElement.firstChild);
+    this._renderer2.setStyle(this.identicon, 'margin-left', '8px');
+    this._renderer2.appendChild(this._elementRef.nativeElement, this.identicon);
   }
 
 }

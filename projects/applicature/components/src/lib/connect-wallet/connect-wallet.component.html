@@ -4,29 +4,38 @@
       <ng-container *ngSwitchCase="'button'">
         <ng-container *ngTemplateOutlet="networkOptionsRef"></ng-container>
 
-        <div class="connect-wallet__container"
-             [class.connect-wallet__container--translucent]="!(hasPendingTx || hasFailedTx) && showBalance">
-          <span *ngIf="!(hasPendingTx || hasFailedTx) && showBalance"
-                class="connect-wallet__balance">{{ balance$ | async }} ETH</span>
-
-          <auc-button (onClick)="onAccountButtonClick()"
+        <div class="connect-wallet__container">
+          <auc-button *ngIf="(hasPendingTx || hasFailedTx) else acBallanceWithAddress"
+                      (onClick)="onAccountButtonClick()"
                       [disabled]="disabled"
-                      [label]="hasPendingTx ? txCount + ' pending' : hasFailedTx ? txCount + ' failing' : (accountAddress | aucShortAddress)"
-                      [identicon]="!(hasPendingTx || hasFailedTx) ? identicon : null"
+                      [label]="txCount + (hasPendingTx ? ' pending':  ' failing')"
                       [pending]="hasPendingTx"
                       [rightIcon]="!hasPendingTx && hasFailedTx ? 'wcl-icon-fail' : ''"
                       [color]="hasFailedTx ? COLORS.RED : COLORS.WHITE">
           </auc-button>
+
+          <ng-template #acBallanceWithAddress>
+            <auc-account-balance
+              [appearance]="BALANCE_APPEARANCE.TRANSLUCENT"
+              [showAddress]="true"
+              [addressConfig]="{
+                                  showIdenticon: true,
+                                  color: COLORS.WHITE
+                                }"
+              (onAddressClick)="onAccountButtonClick()"
+            >
+            </auc-account-balance>
+          </ng-template>
         </div>
       </ng-container>
 
       <ng-container *ngSwitchCase="'icon'">
-        <applicature-account-balance appearance="transparent"
-                                     class="connect-wallet__account-balance">
-        </applicature-account-balance>
+        <auc-account-balance [appearance]="BALANCE_APPEARANCE.TRANSPARENT"
+                             class="connect-wallet__account-balance">
+        </auc-account-balance>
 
         <auc-transactions-history *ngIf="showTransactions"
-                                          class="connect-wallet__transactions">
+                                  class="connect-wallet__transactions">
         </auc-transactions-history>
 
         <ng-container *ngTemplateOutlet="networkOptionsRef"></ng-container>
@@ -62,7 +71,6 @@
 
 <ng-template #networkOptionsRef>
   <auc-network-dropdown *ngIf="showNetworkOptions"
-                        [networkOptions]="networkOptions"
                         [networkDropdownConfig]="networkDropdownConfig"
                         class="connect-wallet__networks">
   </auc-network-dropdown>

@@ -1,18 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 import {
-  AucAccountOption,
-  generateJazzicon,
-  AucNetworkOption,
-  WalletConnectService,
-  AUC_POSITIONS,
-  AucDropdownConfig,
+  AUC_ALERT_POSITION,
   AUC_BUTTON_APPEARANCE,
   AUC_IDENTICON_POSITION,
+  AUC_POSITIONS,
+  AucAccountOption,
+  AucDropdownConfig,
   ConnectionState,
-  AUC_CHAIN_ID,
-  aucGetChainParams,
-  AUC_ALERT_POSITION
+  generateJazzicon,
+  WalletConnectService
 } from '@applicature/components';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
@@ -29,42 +26,6 @@ export class AppComponent implements OnInit {
   public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
   public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
   public ALERT_POSITION = AUC_ALERT_POSITION;
-  public networkOptions: AucNetworkOption[] = [
-    {
-      icon: 'assets/svg/network/eth.svg',
-      name: 'Ethereum',
-      chainId: AUC_CHAIN_ID.RINKEBY_TESTNET,
-      isActive: false
-    },
-    {
-      icon: 'assets/svg/network/eth.svg',
-      name: 'Kovan',
-      chainId: AUC_CHAIN_ID.KOVAN_TESTNET,
-      isActive: false
-    },
-    {
-      icon: 'assets/svg/network/bsc.svg',
-      name: 'BSC',
-      chainId: AUC_CHAIN_ID.BSC_TESTNET,
-      isActive: false
-    },
-    {
-      icon: 'assets/svg/network/polygon.svg',
-      name: 'Polygon',
-      chainId: AUC_CHAIN_ID.POLYGON_TESTNET,
-      isActive: false
-    },
-    {
-      icon: 'assets/svg/network/avax.svg',
-      name: 'Avalanche',
-      chainId: AUC_CHAIN_ID.AVALANCH_TESTNET,
-      isActive: false,
-      chainParams: {
-        ...(aucGetChainParams(AUC_CHAIN_ID.AVALANCH_TESTNET)),
-        chainName: 'Avalanche TestNet'
-      }
-    },
-  ];
 
   networkDropdownConfig: AucDropdownConfig = {
     overlay: {
