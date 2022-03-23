@@ -25,34 +25,34 @@ import { AucAccountData, AucAccountOption } from './interfaces';
 })
 export class AucAccountButtonComponent implements OnInit {
   /**
-   * {@link account} - It's an `@Input()` parameter.
-   * User account related information.
+   * {@link account} - It's an `@Input()` parameter. <br>
+   * User account related information. <br>
    * Required parameter.
    */
   @Input()
   public account!: AucAccountData;
 
   /**
-   * {@link options} - It's an `@Input()` parameter.
-   * List of options in popover
+   * {@link options} - It's an `@Input()` parameter. <br>
+   * List of options in popover. <br>
    * It's an optional parameter.
    */
   @Input()
   public options: AucAccountOption[] = [];
 
   /**
-   * {@link size} - It's an `@Input()` parameter.
-   * Sets size of the avatar.
+   * {@link size} - It's an `@Input()` parameter. <br>
+   * Sets size of the avatar. <br>
    * It's an optional parameter. The default value is 40.
    */
   @Input()
   public size: number = 40;
 
   /**
-   * {@link accountDropdownConfig} - It's an `@Input()` parameter.
-   * You can customize dropdown position and overlay.
-   * This is an optional parameter.
-   * The default value is:
+   * {@link accountDropdownConfig} - It's an `@Input()` parameter. <br>
+   * You can customize dropdown position and overlay. <br>
+   * This is an optional parameter. <br>
+   * The default value is: <br>
    * {
    *   overlay: {
    *     transparent: true
@@ -74,7 +74,7 @@ export class AucAccountButtonComponent implements OnInit {
   }
 
   /**
-   * {@link optionEmitter} - It's an `@Output()` parameter.
+   * {@link optionEmitter} - It's an `@Output()` parameter. <br>
    * Emits selected option from the list.
    */
   @Output('optionClick')

@@ -33,37 +33,78 @@ import { AUC_CONNECT_WALLET_APPEARANCE } from './enums';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AucConnectWalletComponent implements OnInit, OnDestroy {
+  /**
+   * {@link appearance} - It's an `@Input()` parameter. <br>
+   * Allows to control appearance components. Default is the button.
+   * It's an optional parameter. The default value is {@link AUC_CONNECT_WALLET_APPEARANCE.BUTTON}. <br>
+   * You can use enum {@link AUC_CONNECT_WALLET_APPEARANCE}.
+   */
   @Input()
   public appearance: ConnectWalletAppearance = AUC_CONNECT_WALLET_APPEARANCE.BUTTON;
 
+  /**
+   * {@link disabled} - It's an `@Input()` parameter. <br>
+   * Whether the button is disabled. <br>
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public disabled: boolean = false;
 
+  /**
+   * {@link showBalance} - It's an `@Input()` parameter. <br>
+   * Show/hide account balance. <br>
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public showBalance: boolean = false;
 
+  /**
+   * {@link showTransactions} - It's an `@Input()` parameter. <br>
+   * Show/hide Recent transactions button <br>
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public showTransactions: boolean = false;
 
+  /**
+   * {@link showNetworkOptions} - It's an `@Input()` parameter. <br>
+   * Show/hide network options <br>
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public showNetworkOptions: boolean = false;
 
+  /**
+   * {@link account} - It's an `@Input()` parameter. <br>
+   * User account related information. Needs for {@link AucAccountButtonComponent}. <br>
+   * This is required parameter when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   */
   @Input()
-  public account!: AucAccountData;
+  public account: AucAccountData;
 
+  /**
+   * {@link accountOptions} - It's an `@Input()` parameter. <br>
+   * List of options in popover. Needs for {@link AucAccountButtonComponent}. <br>
+   * This is an optional parameter, uses only with appearance {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   */
   @Input()
-  public accountOptions!: AucAccountOption[];
+  public accountOptions?: AucAccountOption[];
 
-  @Input() networkDropdownConfig?: AucDropdownConfig = {
-    overlay: {
-      transparent: true
-    },
-    position: {
-      vertical: AUC_POSITIONS.BELOW,
-      horizontal: AUC_POSITIONS.AFTER
-    }
-  }
-
+  /**
+   * {@link accountDropdownConfig} - It's an `@Input()` parameter. <br>
+   * You can customize dropdown position and overlay. <br>
+   * This is an optional parameter. <br>
+   * The default value is: <br>
+   * {
+   *   overlay: {
+   *     transparent: true
+   *   },
+   *   position: {
+   *     vertical: AUC_POSITIONS.BELOW,
+   *     horizontal: AUC_POSITIONS.BEFORE
+   *   }
+   * }
+   */
   @Input() accountDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
@@ -74,11 +115,44 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     }
   }
 
-  @Output('onConnect')
-  public onConnectWalletEmitter: EventEmitter<ConnectionState> = new EventEmitter<ConnectionState>();
+  /**
+   * {@link networkDropdownConfig} - It's an `@Input()` parameter. <br>
+   * You can customize dropdown position and overlay. <br>
+   * This is an optional parameter. <br>
+   * The default value is: <br>
+   * {
+   *   overlay: {
+   *     transparent: true
+   *   },
+   *   position: {
+   *     vertical: AUC_POSITIONS.BELOW,
+   *     horizontal: AUC_POSITIONS.AFTER
+   *   }
+   * }
+   */
+  @Input() networkDropdownConfig?: AucDropdownConfig = {
+    overlay: {
+      transparent: true
+    },
+    position: {
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.AFTER
+    }
+  }
 
-  @Output('onDisconnect')
-  public onDisconnectWalletEmitter: EventEmitter<void> = new EventEmitter<void>();
+  /**
+   * {@link onConnect} - It's an `@Output()` parameter. <br>
+   * Emits an action when wallet was connected.
+   */
+  @Output()
+  public onConnect: EventEmitter<ConnectionState> = new EventEmitter<ConnectionState>();
+
+  /**
+   * {@link onDisconnect} - It's an `@Output()` parameter. <br>
+   * Emits an action when wallet was disconnected.
+   */
+  @Output()
+  public onDisconnect: EventEmitter<void> = new EventEmitter<void>();
 
   public accountAddress: string;
   public identicon: HTMLDivElement;
@@ -88,6 +162,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
   public txCount: number = 0;
   public COLORS = AS_COLOR_GROUP;
   public BALANCE_APPEARANCE = AUC_BALANCE_APPEARANCE;
+  public CONNECT_WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
   private _sub: Subscription = new Subscription();
 
@@ -174,7 +249,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
 
     this._walletConnectService.connectWallet(isDisconnect)
       .subscribe((connectionState: ConnectionState) => {
-        this.onConnectWalletEmitter.emit(connectionState);
+        this.onConnect.emit(connectionState);
       })
   }
 
@@ -185,7 +260,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
 
     this._walletConnectService.disconnectWallet()
       .subscribe(() => {
-        this.onDisconnectWalletEmitter.emit();
+        this.onDisconnect.emit();
       });
   }
 

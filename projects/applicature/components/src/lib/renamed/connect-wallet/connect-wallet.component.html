@@ -1,7 +1,7 @@
 <div class="auc-connect-wallet">
   <ng-container *ngIf="isConnected else connectWallet">
     <ng-container [ngSwitch]="appearance">
-      <ng-container *ngSwitchCase="'button'">
+      <ng-container *ngSwitchCase="CONNECT_WALLET_APPEARANCE.BUTTON">
         <ng-container *ngTemplateOutlet="networkOptionsRef"></ng-container>
 
         <div class="auc-connect-wallet-container">
@@ -29,7 +29,7 @@
         </div>
       </ng-container>
 
-      <ng-container *ngSwitchCase="'icon'">
+      <ng-container *ngSwitchCase="CONNECT_WALLET_APPEARANCE.ICON">
         <auc-account-balance [appearance]="BALANCE_APPEARANCE.TRANSPARENT"
                              class="auc-connect-wallet-account-balance">
         </auc-account-balance>
