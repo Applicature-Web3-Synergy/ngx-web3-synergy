@@ -1,19 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
-import { AucNetworkOption, Ethereum } from '../../interfaces';
+import { AucNetworkOption } from '../../interfaces';
 import { AUC_POSITIONS } from '../../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { WalletConnectService } from '../../services';
@@ -27,15 +17,7 @@ import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no
   styleUrls: [ './network-dropdown.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucNetworkDropdownComponent implements OnInit, OnChanges {
-  /**
-   * {@link networkOptions} - It's an `@Input()` parameter.
-   * List of the supported networks.
-   * This is required parameter.
-   */
-  @Input()
-  public networkOptions!: AucNetworkOption[];
-
+export class AucNetworkDropdownComponent implements OnInit {
   /**
    * {@link networkDropdownConfig} - It's an `@Input()` parameter.
    * You can customize dropdown position and overlay.
@@ -62,6 +44,13 @@ export class AucNetworkDropdownComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * List of the supported networks. Gets from this._walletConnectService.supportedNetworks
+   */
+  public get networkOptions(): AucNetworkOption[] {
+    return this._walletConnectService.supportedNetworks;
+  };
+
   public isWrongNetwork: boolean = false;
   public isOptionsOpen: boolean = false;
   public currentNetwork!: AucNetworkOption;
@@ -78,21 +67,11 @@ export class AucNetworkDropdownComponent implements OnInit, OnChanges {
 
   public ngOnInit(): void {
     this._sub.add(
-      this._walletConnectService.networkChanged$
-        .pipe(
-          filter((networkId) => Number.isSafeInteger(networkId)),
-        )
-        .subscribe(() => {
-          const { chainId } = (window as any).ethereum as Ethereum;
-
-          this.networkOptions = (this.networkOptions || []).map((network) => {
-            return { ...network, isActive: network.chainId === chainId };
-          });
-
-          this.isWrongNetwork = !Boolean((this.networkOptions || []).find(n => n.chainId === chainId));
+      this._walletConnectService.selectedNetwork$
+        .subscribe((network: AucNetworkOption) => {
+          this.currentNetwork = network;
+          this.isWrongNetwork = !this.currentNetwork;
           this.isOptionsOpen = false;
-
-          this.ngOnChanges();
 
           this._cdr.markForCheck();
         })
@@ -122,10 +101,6 @@ export class AucNetworkDropdownComponent implements OnInit, OnChanges {
           );
         })
     )
-  }
-
-  public ngOnChanges(changes?: SimpleChanges): void {
-    this.currentNetwork = (this.networkOptions || []).find(n => n.isActive);
   }
 
   public setOpened(opened: boolean): void {

@@ -9,20 +9,19 @@ import {
   OnInit,
   Output
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { AS_COLOR_GROUP } from '@applicature/styles';
 
 import { AucAccountData, AucAccountOption } from '../renamed/account-button';
 import { AUC_POSITIONS, TransactionStatus } from '../enums';
-import { generateJazzicon, normalizeBalance } from '../helpers';
-import { AucNetworkOption } from '../interfaces';
+import { generateJazzicon } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../renamed/modals';
 import { TransactionService } from '../services/transaction.service';
 import { ConnectionState, WalletConnectService } from '../services';
 import { AucDialogService } from '../renamed/dialog';
 import { AucDropdownConfig } from '../renamed/dropdown-menu';
-import { AS_COLOR_GROUP } from '@applicature/styles';
+import { AUC_BALANCE_APPEARANCE } from '../renamed/account-balance';
 
 export type AppearanceType = 'default' | 'icon' | 'button';
 
@@ -47,9 +46,6 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
 
   @Input()
   public showNetworkOptions: boolean = false;
-
-  @Input()
-  public networkOptions!: AucNetworkOption[];
 
   @Input()
   public account!: AucAccountData;
@@ -89,8 +85,8 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   public hasFailedTx: boolean = false;
   public hasPendingTx: boolean = false;
   public txCount: number = 0;
-  public balance$: Observable<string | null>;
   public COLORS = AS_COLOR_GROUP;
+  public BALANCE_APPEARANCE = AUC_BALANCE_APPEARANCE;
 
   private _sub: Subscription = new Subscription();
 
@@ -117,11 +113,6 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.balance$ = this._walletConnectService.balanceChanged$
-      .pipe(
-        map((balance) => normalizeBalance(balance))
-      );
-
     this._sub.add(
       this._transactionService.transactionsChanged$
         .subscribe((transactions) => {

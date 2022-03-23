@@ -6,9 +6,16 @@ import Onboard from 'bnc-onboard';
 import { API, Initialization, Subscriptions, Wallet } from 'bnc-onboard/dist/src/interfaces';
 
 import { EthEvents, EthMethods, AUC_METAMASK_CODES } from '../../enums';
-import { AucEthChainParams, ConnectInfo, Ethereum, ProviderMessage, ProviderRpcError } from '../../interfaces';
+import {
+  AucEthChainParams,
+  AucNetworkOption,
+  ConnectInfo,
+  Ethereum,
+  ProviderMessage,
+  ProviderRpcError
+} from '../../interfaces';
 import { ConnectionState } from './interfaces';
-import { aucGetChainParams } from '../../helpers';
+import { aucConvertChainIdToHex, aucGetChainParams } from '../../helpers';
 
 const APPLICATURE_CONNECTED_WALLET_NAME = 'APPLICATURE_CONNECTED_WALLET_NAME';
 
@@ -65,12 +72,81 @@ export class WalletConnectService {
   }
 
   /**
-   * cantFindAddingNetwork$ emits when adding new network and config doesn't exist.
+   * {@link selectedNetwork$} It's getter.
+   * Emits when selected network.
+   * You can subscribe on it.
+   */
+  public get selectedNetwork$(): Observable<AucNetworkOption> {
+    return this._selectedNetwork$.asObservable();
+  }
+
+  /**
+   * {@link supportedNetworks} It's getter.
+   * Supported networks list.
+   */
+  public get supportedNetworks(): AucNetworkOption[] {
+    if (!this._supportedNetworks || !this._supportedNetworks.length)  {
+      console.error(`You don't have any supported networks. Pls set it when initialize library`);
+    }
+
+    return this._supportedNetworks ?? [];
+  }
+
+  /**
+   * {@link supportedNetworks} It's setter.
+   * Sets supported networks list.
+   * You can set it in initialize method or set it later;
+   */
+  public set supportedNetworks(options: AucNetworkOption[]) {
+    this._supportedNetworks = options ?? [];
+    this.selectedNetwork = this._chainChanged$.value;
+  }
+
+  /**
+   * {@link cantFindAddingNetwork$} It's getter.
+   * Emits when adding new network and config doesn't exist.
    * You can subscribe on it and show some message to user.
    */
-
   public get cantFindAddingNetwork$(): Observable<void> {
     return this._cantFindAddingNetwork$.asObservable();
+  }
+
+  /**
+   * {@link chainId} Sets selected chainId and selected network.
+   * @param chainId - 0x-prefixed hexadecimal string.
+   */
+  private set chainId(chainId: string) {
+    this._chainChanged$.next(chainId);
+    this.selectedNetwork = chainId;
+  }
+
+  /**
+   * {@link selectedNetwork} Sets selected network by chainId
+   * @param chainId - 0x-prefixed hexadecimal string.
+   */
+  private set selectedNetwork(chainId: string) {
+    if (!chainId) {
+      this._selectedNetwork$.next(null);
+    }
+
+    let isSameSelected: boolean = false;
+
+    this._supportedNetworks = this.supportedNetworks
+      .map((option: AucNetworkOption) => {
+        if (option.isActive && option.chainId === chainId) {
+          isSameSelected = true;
+        }
+
+        return { ...option, isActive: option.chainId === chainId };
+      });
+
+    if (isSameSelected) {
+      return;
+    }
+
+    const active = this.supportedNetworks.find((option: AucNetworkOption) => option.isActive);
+
+    this._selectedNetwork$.next(active);
   }
 
   private _onboard: API;
@@ -83,15 +159,30 @@ export class WalletConnectService {
   private _cantFindAddingNetwork$: Subject<void> = new Subject<void>();
   private _disconnectChanged$: Subject<ProviderRpcError> = new Subject<ProviderRpcError>();
   private _messageChanged$: Subject<ProviderMessage> = new Subject<ProviderMessage>();
+  private _selectedNetwork$: Subject<AucNetworkOption> = new BehaviorSubject<AucNetworkOption>(null);
+  private _supportedNetworks: AucNetworkOption[];
 
   constructor() {
   }
 
-  public initialize(config: Omit<Initialization, 'subscriptions' | 'darkMode' | 'hideBranding'>): Observable<void> {
+  /**
+   *
+   * @param config - Initialization Config for wallet connection.
+   * @param supportedNetworks - List of the supported networks.
+   */
+  public initialize(config: Omit<Initialization, 'subscriptions' | 'darkMode' | 'hideBranding'>,
+                    supportedNetworks: AucNetworkOption[]
+  ): Observable<void> {
     if (this._onboard) {
       console.error('bnc-onboard already initialized');
 
       return of(null);
+    }
+
+    if (supportedNetworks && Array.isArray(supportedNetworks)) {
+      this.supportedNetworks = supportedNetworks;
+    } else {
+      console.error('Invalid supported Networks. Please set supportedNetworks as AucNetworkOption[]');
     }
 
     return new Observable<void>((observer: Subscriber<void>) => {
@@ -158,7 +249,6 @@ export class WalletConnectService {
   }
 
   /**
-   *
    * This method is used for switching Metamask network by {@link chainId}.
    * If Metamask doesn't have this {@link chainId} it can be added by parameter {@link chainParams}.
    *
@@ -170,7 +260,6 @@ export class WalletConnectService {
    * This Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}.
    * You can use your own specific params.
    */
-
   public switchEthereumChain(chainId: string, chainParams?: AucEthChainParams): Observable<boolean> {
     if (!chainId) {
       return of(false);
@@ -197,7 +286,6 @@ export class WalletConnectService {
    * This Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}.
    * You can get it uses methood {@link aucGetChainParams}
    */
-
   public addEthereumChain(chainParams: Partial<AucEthChainParams>): Observable<boolean> {
     if (!chainParams) {
       this._cantFindAddingNetwork$.next();
@@ -223,6 +311,7 @@ export class WalletConnectService {
       network: (networkId: number): void => {
         this._onboard.config({ networkId });
 
+        this.chainId = aucConvertChainIdToHex(networkId)
         this._networkChanged$.next(networkId);
       },
       wallet: (wallet: Wallet): void => {
@@ -270,8 +359,7 @@ export class WalletConnectService {
        *  It's recommended to reload the page on chain changes, unless you have good reason not to.
        *  You can use window.location.reload()
        */
-
-      this._chainChanged$.next(chainId);
+      this.chainId = chainId;
     });
 
     eth.on(EthEvents.Connect, (connectInfo: ConnectInfo) => {

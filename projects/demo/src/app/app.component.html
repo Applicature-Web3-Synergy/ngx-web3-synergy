@@ -1,10 +1,20 @@
 <div style="padding: 50px 100px 100px;">
+  <section class="account-balance">
+    <h2 class="section-title">Account Balance</h2>
+
+    <div class="example-card">
+      <app-example-account-balance></app-example-account-balance>
+    </div>
+  </section>
+
+
+
+
   <button type="button" (click)="customBtnConnect()">Custom Connect</button>
 
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
     <applicature-connect-wallet [showBalance]="true"
                                 [showNetworkOptions]="true"
-                                [networkOptions]="networkOptions"
                                 [networkDropdownConfig]="networkDropdownConfig"
                                 (onConnect)="onConnect($event)"
                                 (onDisconnect)="onDisconnect($event)"
@@ -15,7 +25,6 @@
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
     <applicature-connect-wallet [showBalance]="true"
                                 [showTransactions]="true"
-                                [networkOptions]="networkOptions"
                                 [account]="{ name: 'Account Name'}"
                                 [accountOptions]="accountOptions"
                                 [accountDropdownConfig]="accountDropdownConfig"
@@ -27,7 +36,6 @@
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
     <applicature-connect-wallet [showBalance]="true"
                                 [showTransactions]="true"
-                                [networkOptions]="networkOptions"
                                 [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
                                 [accountOptions]="accountOptions"
                                 appearance="button">

@@ -1,3 +1,4 @@
+export * from './account-balance';
 export * from './account-button';
 export * from './alert';
 export * from './avatar';

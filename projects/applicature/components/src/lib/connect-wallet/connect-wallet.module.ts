@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AccountBalanceModule } from '../account-balance/account-balance.module';
+import { AucAccountBalanceModule } from '../renamed/account-balance';
 import { AucAccountButtonModule } from '../renamed/account-button';
 import { AucButtonModule } from '../renamed/button';
 import { AucNetworkDropdownModule } from '../renamed/network-dropdown';
@@ -23,7 +23,7 @@ import { AucDialogModule } from '../renamed/dialog';
     AucPipesModule,
     AucNetworkDropdownModule,
     AucAccountButtonModule,
-    AccountBalanceModule,
+    AucAccountBalanceModule,
     AucTransactionsHistoryModule,
     AucDialogModule
   ],
