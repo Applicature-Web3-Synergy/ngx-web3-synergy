@@ -1,4 +1,4 @@
-import { AucHorizontalPosition, AucVerticalPosition } from '../types';
+import { AucHorizontalPosition, AucVerticalPosition } from '../renamed/types';
 
 export interface AucPosition {
   vertical?: AucVerticalPosition,

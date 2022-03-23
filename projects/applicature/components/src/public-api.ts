@@ -11,6 +11,4 @@ export * from './lib/interfaces/index';
 
 export * from './lib/helpers';
 
-export * from './lib/types';
-
 export * from './lib/constants';
