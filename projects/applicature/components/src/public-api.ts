@@ -9,4 +9,3 @@ export * from './lib/wallet-connect.module';
 
 export * from './lib/helpers';
 
-export * from './lib/constants';

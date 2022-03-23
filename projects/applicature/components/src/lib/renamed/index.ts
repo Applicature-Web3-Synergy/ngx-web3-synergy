@@ -4,6 +4,7 @@ export * from './alert';
 export * from './avatar';
 export * from './button';
 export * from './connect-wallet';
+export * from './constants';
 export * from './copy-to-clipboard';
 export * from './directives';
 export * from './dialog';
