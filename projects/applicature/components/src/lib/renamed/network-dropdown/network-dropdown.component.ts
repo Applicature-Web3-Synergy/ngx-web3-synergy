@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
-import { AucNetworkOption } from '../../interfaces';
-import { AUC_POSITIONS } from '../../enums';
+import { AucNetworkOption } from '../interfaces';
+import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { WalletConnectService } from '../../services';
 import { AucDialogService } from '../dialog';

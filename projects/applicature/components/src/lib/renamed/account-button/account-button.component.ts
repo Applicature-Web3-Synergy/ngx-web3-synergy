@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { AUC_POSITIONS } from '../../enums';
+import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { WalletConnectService } from '../../services';
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';

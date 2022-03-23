@@ -21,7 +21,7 @@ import { ExampleDialogsModule } from './examples/example-dialogs/example-dialogs
 import { ExampleTableModule } from './examples/example-table/example-table.module';
 import { ExampleDropdownMenuModule } from './examples/example-dropdown-menu/example-dropdown-menu.module';
 import { ExampleAccountBalanceModule } from './examples/example-account-balance/example-account-balance.module';
-import { AucNativeCurrencies } from '../../../applicature/components/src/lib/constants';
+import { AucNativeCurrencies } from '../../../applicature/components/src/lib/renamed/constants';
 
 const wallets: Array<WalletModule | WalletInitOptions> = [
   {

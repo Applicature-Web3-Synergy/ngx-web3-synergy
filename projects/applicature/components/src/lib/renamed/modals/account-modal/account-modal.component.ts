@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 import { AUC_VALUE_TYPES, aucCheckValueType, generateJazzicon } from '../../../helpers';
-import { AucNetworkOption, EtherscanTransactionLocalStorage } from '../../../interfaces';
+import { AucNetworkOption, AucEtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../../services/transaction.service';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
@@ -20,7 +20,7 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
   public identicon: HTMLDivElement;
   public accountAddress: string;
   public etherscanAddress$: Observable<string>;
-  public transactions$: Observable<EtherscanTransactionLocalStorage[]>;
+  public transactions$: Observable<AucEtherscanTransactionLocalStorage[]>;
   public data: AucAccountModalData;
 
   private _sub: Subscription = new Subscription();

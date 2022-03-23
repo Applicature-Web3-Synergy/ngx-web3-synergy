@@ -1,4 +1,4 @@
-import { AucSort } from '../../../interfaces';
+import { AucSort } from '../../interfaces';
 
 export interface AucTableHeaderItem {
   position: number; // column position 1, 2, 3, ...

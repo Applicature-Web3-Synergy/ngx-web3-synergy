@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
-import { TransactionStatus } from '../../enums';
+import { AUC_TRANSACTION_STATUS } from '../enums';
 import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } from '../modals';
 import { AucDialogService } from '../dialog';
 import { AUC_BUTTON_APPEARANCE } from '../button';
@@ -45,14 +45,14 @@ export class AucTransactionsHistoryComponent implements OnInit {
       this._transactionService.transactionsChanged$
         .subscribe((transactions) => {
           this.txCount = transactions.filter((tx) => {
-            return tx.status === TransactionStatus.Fail && !tx.viewed;
+            return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
           }).length;
 
           this.hasFailedTx = this.txCount > 0;
 
           if (!this.hasFailedTx) {
             this.txCount = transactions.filter((tx) => {
-              return tx.status === TransactionStatus.Pending;
+              return tx.status === AUC_TRANSACTION_STATUS.PENDING;
             }).length;
 
             this.hasPendingTx = this.txCount > 0;

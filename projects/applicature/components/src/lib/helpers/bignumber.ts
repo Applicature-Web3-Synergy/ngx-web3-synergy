@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js';
 import Web3 from 'web3';
 import { Unit } from 'web3-utils';
 
-import { Ethereum } from '../interfaces';
+import { AucEthereum } from '../renamed/interfaces';
 import { CHAIN_ID_TO_NETWORK_ID_MAP } from './network';
 
 export function fromWei(value: BigNumber.Value, unit: Unit = 'ether'): string {
@@ -45,7 +45,7 @@ export function normalizeBN(value: BigNumber.Value, decimals: number = 2): BigNu
 }
 
 export function normalizeBalance(value: BigNumber.Value, digits: number = 3): string {
-  const { chainId } = (window as any).ethereum as Ethereum;
+  const { chainId } = (window as any).ethereum as AucEthereum;
   const networkId = CHAIN_ID_TO_NETWORK_ID_MAP[chainId]
 
   if (!networkId || value === null || value === undefined) {
