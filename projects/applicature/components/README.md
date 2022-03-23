@@ -155,26 +155,22 @@ const networks = {
   kovanTestnet: 42,
 }
 
+// Set suppoerted networks list.
 const supportedNetworks: AucNetworkOption[] = [
   {
     icon: 'assets/svg/network/eth.svg',
     name: 'Ethereum',
     chainId: AUC_CHAIN_ID.RINKEBY_TESTNET,
     symbol: AucNativeCurrencies[AUC_CHAIN_ID.RINKEBY_TESTNET].name,
-    isActive: false
-  },
-  {
-    icon: 'assets/svg/network/eth.svg',
-    name: 'Kovan',
-    chainId: AUC_CHAIN_ID.KOVAN_TESTNET,
-    symbol: AucNativeCurrencies[AUC_CHAIN_ID.KOVAN_TESTNET].name,
+    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
     isActive: false
   },
   {
     icon: 'assets/svg/network/bsc.svg',
     name: 'BSC',
     chainId: AUC_CHAIN_ID.BSC_TESTNET,
-    symbol: AucNativeCurrencies[AUC_CHAIN_ID.BSC_TESTNET].name,
+    symbol: 'BNB',
+    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.BSC_TESTNET][0],
     isActive: false,
     chainParams: { // Custom Chain params
       chainId: '0x61',
@@ -193,14 +189,15 @@ const supportedNetworks: AucNetworkOption[] = [
     name: 'Avalanche',
     chainId: AUC_CHAIN_ID.AVALANCH_TESTNET,
     isActive: false,
-    symbol: 'AVAX',
+    symbol: AucNativeCurrencies[AUC_CHAIN_ID.AVALANCH_TESTNET].name,
+    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.AVALANCH_TESTNET][0],
     chainParams: { // modify existing Chain params
       ...(aucGetChainParams(AUC_CHAIN_ID.AVALANCH_TESTNET)),
       chainName: 'Avalanche TestNet'
     }
-  },
+  }
 ];
-
+ 
 export function initWalletServiceFactory(
   walletConnectService: WalletConnectService
 ): () => Observable<void> {

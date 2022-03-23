@@ -1,22 +1,13 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { generateJazzicon } from '../../../helpers';
-import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../../../helpers/network';
-import { Ethereum, EtherscanTransactionLocalStorage } from '../../../interfaces';
+import { AUC_VALUE_TYPES, aucCheckValueType, generateJazzicon } from '../../../helpers';
+import { AucNetworkOption, EtherscanTransactionLocalStorage } from '../../../interfaces';
 import { TransactionService } from '../../../services/transaction.service';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { WalletConnectService } from '../../../services';
+import { ConnectionState, WalletConnectService } from '../../../services';
 
 
 @Component({
@@ -26,8 +17,6 @@ import { WalletConnectService } from '../../../services';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AucAccountModalComponent implements OnInit, OnDestroy {
-  @ViewChild('infoMain', { static: true })
-  public infoMain!: ElementRef;
   public identicon: HTMLDivElement;
   public accountAddress: string;
   public etherscanAddress$: Observable<string>;
@@ -46,22 +35,21 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
     this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;
 
-    this.etherscanAddress$ = this._walletConnectService.networkChanged$
+    this.etherscanAddress$ = this._walletConnectService.selectedNetwork$
       .pipe(
-        filter((networkId) => Number.isSafeInteger(networkId)),
-        map(() => {
-          const { chainId, selectedAddress } = (window as any).ethereum as Ethereum;
-          const subdomain = chainId === MAINNET_CHAIN_ID ? '' : `${CHAIN_ID_TO_TYPE_MAP[chainId]}.`;
+        map((network: AucNetworkOption) => {
+          const connectionInfo: ConnectionState = this._walletConnectService.connectionState;
 
-          // Todo rework it
-          return `https://${subdomain}etherscan.io/address/${selectedAddress}`;
+          if (!network || !network.blockExplorerUrl || !connectionInfo?.state?.address) {
+            return null;
+          }
+
+          return `${network.blockExplorerUrl}/address/${connectionInfo.state.address}`
         })
       );
   }
 
   public ngOnInit(): void {
-    let identicon: HTMLDivElement;
-
     this._sub.add(
       this._walletConnectService.accountsChanged$
         .pipe(
@@ -69,16 +57,7 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
         )
         .subscribe(([ accountAddress ]) => {
           this.accountAddress = accountAddress;
-
-          const element = this.infoMain.nativeElement as HTMLDivElement;
-
-          if (identicon && element.contains(identicon)) {
-            element.removeChild(identicon);
-          }
-
-          identicon = generateJazzicon(this.accountAddress);
-
-          element.insertBefore(identicon, element.firstChild);
+          this.identicon = generateJazzicon(this.accountAddress);
 
           this._cdr.markForCheck();
         })
@@ -100,13 +79,13 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
   }
 
   public onChangeClick(): void {
-    if (typeof this.data.change === 'function') {
+    if (aucCheckValueType(this.data.change, AUC_VALUE_TYPES.FUNCTION)) {
       this.data.change();
     }
   }
 
   public onDisconnectClick(): void {
-    if (typeof this.data.disconnect === 'function') {
+    if (aucCheckValueType(this.data.disconnect, AUC_VALUE_TYPES.FUNCTION)) {
       this.data.disconnect();
     }
   }

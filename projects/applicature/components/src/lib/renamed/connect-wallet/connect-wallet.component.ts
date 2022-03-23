@@ -15,7 +15,7 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 
 import { AucAccountData, AucAccountOption } from '../account-button';
 import { AUC_POSITIONS, TransactionStatus } from '../../enums';
-import { generateJazzicon } from '../../helpers';
+import { AUC_VALUE_TYPES, aucCheckValueType, generateJazzicon } from '../../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
 import { TransactionService } from '../../services/transaction.service';
 import { ConnectionState, WalletConnectService } from '../../services';
@@ -212,7 +212,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    if (typeof this._sub.unsubscribe === 'function') {
+    if (aucCheckValueType(this._sub.unsubscribe, AUC_VALUE_TYPES.FUNCTION)) {
       this._sub.unsubscribe();
     }
   }
