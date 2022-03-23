@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
 import { AucTableHeaderItem, AucTableRow } from './interfaces';
-import { AucSort } from '../../interfaces';
+import { AucSort } from '../interfaces';
 import { AUC_SORT_DIRECTION } from '../enums';
 
 

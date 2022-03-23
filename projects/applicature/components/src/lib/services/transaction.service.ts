@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { AUC_TRANSACTION_STATUS } from '../renamed/enums';
 import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../helpers/network';
-import { Ethereum, EtherscanTransactionLocalStorage, EtherscanTransactionResponse } from '../interfaces';
+import { AucEthereum, AucEtherscanTransactionLocalStorage, AucEtherscanTransactionResponse } from '../renamed/interfaces';
 import { WalletConnectService } from './wallet-connect';
 
 
@@ -15,10 +15,10 @@ const APPLICATURE_ETHERSCAN_INTERVAL = 10000;
 @Injectable()
 export class TransactionService {
   private _transactionsChanged$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  private _transactions: EtherscanTransactionLocalStorage[] = [];
+  private _transactions: AucEtherscanTransactionLocalStorage[] = [];
   private _dispose: Subscription;
 
-  public get transactionsChanged$(): Observable<EtherscanTransactionLocalStorage[]> {
+  public get transactionsChanged$(): Observable<AucEtherscanTransactionLocalStorage[]> {
     return this._transactionsChanged$.asObservable();
   }
 
@@ -62,7 +62,7 @@ export class TransactionService {
       ...this._transactions,
     ];
 
-    const { chainId } = (window as any).ethereum as Ethereum;
+    const { chainId } = (window as any).ethereum as AucEthereum;
 
     this._transactions.forEach((tx) => {
       tx.etherscanUrl = `https://${CHAIN_ID_TO_TYPE_MAP[chainId]}.etherscan.io/tx/${tx.hash}`;
@@ -88,7 +88,7 @@ export class TransactionService {
     this._refreshTransactions();
   }
 
-  public getRemoteTransactions(address: string, chainId: string): Observable<EtherscanTransactionResponse> {
+  public getRemoteTransactions(address: string, chainId: string): Observable<AucEtherscanTransactionResponse> {
     const etherscanSubdomain = chainId === MAINNET_CHAIN_ID ? 'api' : `api-${CHAIN_ID_TO_TYPE_MAP[chainId]}`;
     const etherscanUrl = `https://${etherscanSubdomain}.etherscan.io`;
 
@@ -102,7 +102,7 @@ export class TransactionService {
     params = params.set('page', 1);
     params = params.set('offset', 100);
 
-    return this._http.get<EtherscanTransactionResponse>(`${etherscanUrl}/api`, { params })
+    return this._http.get<AucEtherscanTransactionResponse>(`${etherscanUrl}/api`, { params })
       .pipe(
         map((data) => {
           if (data.result && Array.isArray(data.result)) {
@@ -137,7 +137,7 @@ export class TransactionService {
   }
 
   private _getLocalStorageKey(): string {
-    const { chainId, selectedAddress } = (window as any).ethereum as Ethereum;
+    const { chainId, selectedAddress } = (window as any).ethereum as AucEthereum;
 
     return `${APPLICATURE_ETHERSCAN_TRANSACTIONS}[${selectedAddress}, ${chainId}]`.toUpperCase();
   }

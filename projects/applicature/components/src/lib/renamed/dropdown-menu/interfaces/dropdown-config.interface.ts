@@ -1,5 +1,5 @@
 import { AucOverlayCustomizationConfig } from '../../overlay';
-import { AucPosition } from '../../../interfaces';
+import { AucPosition } from '../../interfaces';
 
 export interface AucDropdownConfig {
   overlay?: AucOverlayCustomizationConfig;

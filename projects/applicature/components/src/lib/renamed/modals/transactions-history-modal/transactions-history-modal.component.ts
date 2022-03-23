@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { EtherscanTransactionLocalStorage } from '../../../interfaces';
+import { AucEtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../../services/transaction.service';
 import { AucRecentTransactionsModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
@@ -14,7 +14,7 @@ import { AucDialogConfig, AucDialogRef } from '../../dialog';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AucTransactionsHistoryModalComponent implements OnDestroy {
-  public transactions$: Observable<EtherscanTransactionLocalStorage[]>;
+  public transactions$: Observable<AucEtherscanTransactionLocalStorage[]>;
   public data: AucRecentTransactionsModalData;
 
   constructor(

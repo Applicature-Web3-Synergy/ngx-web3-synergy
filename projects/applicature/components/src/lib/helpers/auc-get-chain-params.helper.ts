@@ -1,4 +1,4 @@
-import { AucEthChainParams } from '../interfaces';
+import { AucEthChainParams } from '../renamed/interfaces';
 import { AucBlockExplorerUrls, AucChainName, AucNativeCurrencies, AucRpcUrls } from '../constants';
 
 

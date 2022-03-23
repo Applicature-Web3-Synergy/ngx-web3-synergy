@@ -1,4 +1,4 @@
-import { AUC_ETH_EVENTS, AUC_ETH_METHODS } from '../renamed/enums';
+import { AUC_ETH_EVENTS, AUC_ETH_METHODS } from '../enums';
 
 export interface AucEthChainParams {
   chainId: string; // A 0x-prefixed hexadecimal string
@@ -13,27 +13,27 @@ export interface AucEthChainParams {
   iconUrls?: string[]; // Currently ignored.
 }
 
-export interface ConnectInfo {
+export interface AucConnectInfo {
   chainId: string;
 }
 
-export interface ProviderMessage {
+export interface AucProviderMessage {
   data: unknown;
   type: string;
 }
 
-export interface ProviderRpcError extends Error {
+export interface AucProviderRpcError extends Error {
   code: number;
   data?: unknown;
   message: string;
 }
 
-export interface RequestArguments {
+export interface AucRequestArguments {
   method: AUC_ETH_METHODS | string;
   params?: unknown[] | Record<string, unknown>;
 }
 
-export interface Ethereum {
+export interface AucEthereum {
   isMetaMask: boolean;
 
   selectedAddress: string;
@@ -48,11 +48,11 @@ export interface Ethereum {
 
   on(eventName: AUC_ETH_EVENTS.CHAIN_CHANGED, handler: (chainId: string) => void): void;
 
-  on(eventName: AUC_ETH_EVENTS.CONNECT, handler: (connectInfo: ConnectInfo) => void): void;
+  on(eventName: AUC_ETH_EVENTS.CONNECT, handler: (connectInfo: AucConnectInfo) => void): void;
 
-  on(eventName: AUC_ETH_EVENTS.DISCONNECT, handler: (error: ProviderRpcError) => void): void;
+  on(eventName: AUC_ETH_EVENTS.DISCONNECT, handler: (error: AucProviderRpcError) => void): void;
 
-  on(eventName: AUC_ETH_EVENTS.MESSAGE, handler: (message: ProviderMessage) => void): void;
+  on(eventName: AUC_ETH_EVENTS.MESSAGE, handler: (message: AucProviderMessage) => void): void;
 
-  request<T = any>(args: RequestArguments): Promise<T>;
+  request<T = any>(args: AucRequestArguments): Promise<T>;
 }

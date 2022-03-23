@@ -9,11 +9,11 @@ import { AUC_ETH_EVENTS, AUC_ETH_METHODS, AUC_METAMASK_CODES } from '../../renam
 import {
   AucEthChainParams,
   AucNetworkOption,
-  ConnectInfo,
-  Ethereum,
-  ProviderMessage,
-  ProviderRpcError
-} from '../../interfaces';
+  AucConnectInfo,
+  AucEthereum,
+  AucProviderMessage,
+  AucProviderRpcError
+} from '../../renamed/interfaces';
 import { ConnectionState } from './interfaces';
 import { aucConvertChainIdToHex, aucGetChainParams } from '../../helpers';
 
@@ -51,15 +51,15 @@ export class WalletConnectService {
     return this._chainChanged$.asObservable();
   }
 
-  public get connectChanged$(): Observable<ConnectInfo> {
+  public get connectChanged$(): Observable<AucConnectInfo> {
     return this._connectChanged$.asObservable();
   }
 
-  public get disconnectChanged$(): Observable<ProviderRpcError> {
+  public get disconnectChanged$(): Observable<AucProviderRpcError> {
     return this._disconnectChanged$.asObservable();
   }
 
-  public get messageChanged$(): Observable<ProviderMessage> {
+  public get messageChanged$(): Observable<AucProviderMessage> {
     return this._messageChanged$.asObservable();
   }
 
@@ -155,10 +155,10 @@ export class WalletConnectService {
   private _chainChanged$: BehaviorSubject<string | null> = new BehaviorSubject<string>(null);
   private _networkChanged$: BehaviorSubject<number | null> = new BehaviorSubject<number | null>(null);
   private _balanceChanged$: BehaviorSubject<string | null> = new BehaviorSubject<string>(null);
-  private _connectChanged$: Subject<ConnectInfo> = new Subject<ConnectInfo>();
+  private _connectChanged$: Subject<AucConnectInfo> = new Subject<AucConnectInfo>();
   private _cantFindAddingNetwork$: Subject<void> = new Subject<void>();
-  private _disconnectChanged$: Subject<ProviderRpcError> = new Subject<ProviderRpcError>();
-  private _messageChanged$: Subject<ProviderMessage> = new Subject<ProviderMessage>();
+  private _disconnectChanged$: Subject<AucProviderRpcError> = new Subject<AucProviderRpcError>();
+  private _messageChanged$: Subject<AucProviderMessage> = new Subject<AucProviderMessage>();
   private _selectedNetwork$: Subject<AucNetworkOption> = new BehaviorSubject<AucNetworkOption>(null);
   private _supportedNetworks: AucNetworkOption[];
 
@@ -347,7 +347,7 @@ export class WalletConnectService {
   }
 
   private _handleEthEvents(): void {
-    const eth = (window as any).ethereum as Ethereum;
+    const eth = (window as any).ethereum as AucEthereum;
 
     if (!eth) {
       return;
@@ -362,15 +362,15 @@ export class WalletConnectService {
       this.chainId = chainId;
     });
 
-    eth.on(AUC_ETH_EVENTS.CONNECT, (connectInfo: ConnectInfo) => {
+    eth.on(AUC_ETH_EVENTS.CONNECT, (connectInfo: AucConnectInfo) => {
       this._connectChanged$.next(connectInfo);
     });
 
-    eth.on(AUC_ETH_EVENTS.DISCONNECT, (error: ProviderRpcError) => {
+    eth.on(AUC_ETH_EVENTS.DISCONNECT, (error: AucProviderRpcError) => {
       this._disconnectChanged$.next(error);
     });
 
-    eth.on(AUC_ETH_EVENTS.MESSAGE, (message: ProviderMessage) => {
+    eth.on(AUC_ETH_EVENTS.MESSAGE, (message: AucProviderMessage) => {
       this._messageChanged$.next(message);
     });
   }
@@ -379,7 +379,7 @@ export class WalletConnectService {
     method: AUC_ETH_METHODS,
     params?: unknown[] | Record<string, unknown>,
   ): Observable<T> {
-    const eth = (window as any).ethereum as Ethereum;
+    const eth = (window as any).ethereum as AucEthereum;
 
     return from(eth.request({ method, params }));
   }

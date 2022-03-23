@@ -1,4 +1,4 @@
-import { AucNativeCurrency } from '../interfaces';
+import { AucNativeCurrency } from '../renamed/interfaces';
 import { AUC_CHAIN_ID } from '../renamed/enums';
 
 export const AucNativeCurrencies: { [key: string]: AucNativeCurrency } = {

@@ -19,7 +19,7 @@ import { generateJazzicon, normalizeBalance } from '../../helpers';
 import { WalletConnectService } from '../../services';
 import { AucBalanceAppearance } from './types';
 import { AUC_BALANCE_APPEARANCE } from './enums';
-import { AucNetworkOption } from '../../interfaces';
+import { AucNetworkOption } from '../interfaces';
 import { AucSetStyleProp } from '../directives';
 import { AucAccountBalanceAddressConfig } from './interfaces';
 

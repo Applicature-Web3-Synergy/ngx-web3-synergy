@@ -11,6 +11,7 @@ export * from './dropdown-menu';
 export * from './enums';
 export * from './icon';
 export * from './input';
+export * from './interfaces';
 export * from './modals';
 export * from './network-dropdown';
 export * from './overlay';
