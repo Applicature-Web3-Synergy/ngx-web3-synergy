@@ -46,8 +46,8 @@
     margin-right: auto;
   }
 
-  .auc-info-change,
-  .auc-info-disconnect {
+  .auc-info-header-change,
+  .auc-info-header-disconnect {
     font-family: $as-font-family;
     font-size: 13px;
     font-weight: 500;
@@ -61,13 +61,13 @@
     }
   }
 
-  .auc-info-change {
+  .auc-info-header-change {
     margin-right: 8px;
     color: getColor(blue, base);
     border: 1px solid getColor(blue, base);
   }
 
-  .auc-info-disconnect {
+  .auc-info-header-disconnect {
     color: getColor(red, base);
     border: 1px solid getColor(red, base);
   }
@@ -85,7 +85,7 @@
 }
 
 .auc-info-footer {
-  .auc-info-item {
+  .auc-info-footer-item {
     display: flex;
     align-items: center;
     text-decoration: none;
