@@ -9,7 +9,7 @@ import {
   AucAccountOption,
   AucDropdownConfig,
   ConnectionState,
-  generateJazzicon,
+  aucGenerateJazzicon,
   WalletConnectService
 } from '@applicature/components';
 import { AS_COLOR_GROUP } from '@applicature/styles';
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.identicon = generateJazzicon('0x6FF69D870c84a9D7F6c12095313F18F883A77f1D');
+    this.identicon = aucGenerateJazzicon('0x6FF69D870c84a9D7F6c12095313F18F883A77f1D');
 
     this._walletConnectService.accountsChanged$
       .subscribe((data) => {

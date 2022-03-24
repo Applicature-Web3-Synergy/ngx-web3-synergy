@@ -47,9 +47,9 @@ export const CHAIN_ID_TO_TYPE_MAP = Object.entries(NETWORK_TYPE_TO_ID_MAP)
     return chainIdToTypeMap;
   }, {});
 
-export const CHAIN_ID_TO_NETWORK_ID_MAP = Object.values(NETWORK_TYPE_TO_ID_MAP)
-  .reduce((chainIdToNetworkIdMap: any, { chainId, networkId }) => {
-    chainIdToNetworkIdMap[chainId] = networkId;
-
-    return chainIdToNetworkIdMap;
-  }, {});
+// export const CHAIN_ID_TO_NETWORK_ID_MAP = Object.values(NETWORK_TYPE_TO_ID_MAP)
+//   .reduce((chainIdToNetworkIdMap: any, { chainId, networkId }) => {
+//     chainIdToNetworkIdMap[chainId] = networkId;
+//
+//     return chainIdToNetworkIdMap;
+//   }, {});

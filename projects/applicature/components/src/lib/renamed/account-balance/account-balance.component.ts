@@ -15,7 +15,7 @@ import { map } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
-import { generateJazzicon, normalizeBalance } from '../../helpers';
+import { aucGenerateJazzicon, aucNormalizeBalance } from '../helpers';
 import { WalletConnectService } from '../../services';
 import { AucBalanceAppearance } from './types';
 import { AUC_BALANCE_APPEARANCE } from './enums';
@@ -111,7 +111,11 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
   ) {
     this.balance$ = this._walletConnectService.balanceChanged$
       .pipe(
-        map((balance: string) => normalizeBalance(balance) ?? '0')
+        map((balance: string) => {
+          const connectionState = this._walletConnectService.connectionState;
+
+          return aucNormalizeBalance(connectionState?.state?.network, balance) ?? '0'
+        })
       );
 
     this._walletConnectService.selectedNetwork$
@@ -129,7 +133,7 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
           const account = (accounts ?? [])[0] || null;
 
           if (account && this.showAddress && this.addressConfig?.showIdenticon) {
-            this.identicon = generateJazzicon(account);
+            this.identicon = aucGenerateJazzicon(account);
           }
 
           return account;

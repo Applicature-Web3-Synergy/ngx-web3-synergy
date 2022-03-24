@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, Subscription, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { AUC_TRANSACTION_STATUS } from '../renamed/enums';
-import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../helpers/network';
+import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../renamed/helpers/network';
 import { AucEthereum, AucEtherscanTransactionLocalStorage, AucEtherscanTransactionResponse } from '../renamed/interfaces';
 import { WalletConnectService } from './wallet-connect';
 

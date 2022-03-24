@@ -16,7 +16,7 @@ import { AucDialogRef } from './dialog-ref';
 import { AucInsertionDirective } from './directives';
 import { AucCustomizeDialogConfig } from './interfaces';
 import { AucOverlayCustomizationConfig } from '../overlay';
-import { AucBlockScrollHelperService } from '../../helpers';
+import { AucBlockScrollHelperService } from '../helpers';
 
 
 @Component({

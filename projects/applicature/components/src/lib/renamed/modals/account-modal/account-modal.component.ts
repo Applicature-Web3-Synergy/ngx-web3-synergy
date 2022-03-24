@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { AUC_VALUE_TYPES, aucCheckValueType, generateJazzicon } from '../../../helpers';
+import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../../helpers';
 import { AucNetworkOption, AucEtherscanTransactionLocalStorage } from '../../interfaces';
 import { TransactionService } from '../../../services/transaction.service';
 import { AucAccountModalData } from './interfaces';
@@ -57,7 +57,7 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
         )
         .subscribe(([ accountAddress ]) => {
           this.accountAddress = accountAddress;
-          this.identicon = generateJazzicon(this.accountAddress);
+          this.identicon = aucGenerateJazzicon(this.accountAddress);
 
           this._cdr.markForCheck();
         })

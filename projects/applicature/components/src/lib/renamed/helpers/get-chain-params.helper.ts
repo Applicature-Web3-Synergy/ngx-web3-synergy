@@ -1,10 +1,9 @@
-import { AucEthChainParams } from '../renamed/interfaces';
-import { AucBlockExplorerUrls, AucChainName, AucNativeCurrencies, AucRpcUrls } from '../renamed/constants';
+import { AucEthChainParams } from '../interfaces';
+import { AucBlockExplorerUrls, AucChainName, AucNativeCurrencies, AucRpcUrls } from '../constants';
 
 
 /**
  * This method is uses for generating network config which is uses for adding new network to the Metamask.
- *
  * @param chainId - 0x-prefixed hexadecimal string;
  */
 

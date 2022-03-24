@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { normalizeBalance, toBN } from '../../../helpers';
+import { aucNormalizeBalance, aucToBN } from '../../helpers';
 import { TransactionService } from '../../../services/transaction.service';
 import { WalletConnectService } from '../../../services';
 import { AUC_TRANSFER_STEPS } from './enums';
@@ -41,11 +41,12 @@ export class AucTransferModalComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.currentAllowance = normalizeBalance(this.data.allowance);
+    const connectionState = this._walletConnectService.connectionState;
+    this.currentAllowance = aucNormalizeBalance(connectionState?.state?.network, this.data.allowance);
 
     this.amountControl.valueChanges
       .subscribe((value) => {
-        if (toBN(value).gt(0) && toBN(value).lte(this.currentAllowance)) {
+        if (aucToBN(value).gt(0) && aucToBN(value).lte(this.currentAllowance)) {
           this._currentStep = AUC_TRANSFER_STEPS.CONFIRM;
         } else {
           this._currentStep = AUC_TRANSFER_STEPS.APPROVE;

@@ -10,6 +10,7 @@ export * from './directives';
 export * from './dialog';
 export * from './dropdown-menu';
 export * from './enums';
+export * from './helpers';
 export * from './icon';
 export * from './input';
 export * from './interfaces';

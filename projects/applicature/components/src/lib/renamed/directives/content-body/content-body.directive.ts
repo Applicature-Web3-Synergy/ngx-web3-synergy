@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { AucBlockScrollHelperService } from '../../../helpers';
+import { AucBlockScrollHelperService } from '../../helpers';
 
 
 @Directive({

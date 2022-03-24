@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { toBN } from '../../helpers';
+import { aucToBN } from '../helpers';
 
 
 export const INPUT_FIELD_VALUE_ACCESSOR = {
@@ -161,7 +161,7 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   }
 
   public onChange(value: string): void {
-    this.value = String(toBN(value).gt(this.max) ? this.max : value);
+    this.value = String(aucToBN(value).gt(this.max) ? this.max : value);
 
     if (this.inputElement?.nativeElement) {
       const inputElement = this.inputElement.nativeElement;
