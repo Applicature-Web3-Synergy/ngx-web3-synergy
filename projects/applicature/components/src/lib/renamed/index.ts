@@ -25,3 +25,4 @@ export * from './spinner';
 export * from './table';
 export * from './transactions-history';
 export * from './types';
+export * from './wallet-connect.module';

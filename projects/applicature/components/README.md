@@ -216,7 +216,7 @@ export function initWalletServiceFactory(
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    WalletConnectModule.forRoot(),
+    AucConnectModule.forRoot(),
   ],
   providers: [
     {
