@@ -1,53 +1,53 @@
 import { CurrencyAmount, Ether } from '@uniswap/sdk-core';
 import BigNumber from 'bignumber.js';
-import Web3 from 'web3';
-import { Unit } from 'web3-utils';
 
-import { Ethereum } from '../interfaces';
-import { CHAIN_ID_TO_NETWORK_ID_MAP } from './network';
 
-export function fromWei(value: BigNumber.Value, unit: Unit = 'ether'): string {
-  if (value instanceof BigNumber) {
-    value = value.toString();
+export function aucFromWei(val: string, decimals: number = 18): string {
+  return aucToBN(val)
+    .times(aucToBN(10).pow(-decimals))
+    .toString();
+}
+
+export function aucToWei(val: BigNumber.Value, decimals: number = 18, toFixed?: number): string {
+  const bn = aucToBN(aucToBN(val).toFixed(decimals))
+    .times(aucToBN(10).pow(decimals));
+
+  if (toFixed || toFixed === 0) {
+    return bn.toFixed(0);
   }
 
-  return Web3.utils.fromWei(String(value || 0), unit);
+  return bn.toFixed();
 }
 
-export function toWei(value: BigNumber.Value, unit: Unit = 'ether'): string {
-  if (value instanceof BigNumber) {
-    value = value.toString();
+export function aucToBN(val: BigNumber.Value | null): BigNumber {
+  return new BigNumber(val || 0);
+}
+
+const aucBn10PowLookupMap: Map<number, BigNumber> = new Map<number, BigNumber>([]);
+
+export function aucPow10(decimals: number): BigNumber {
+  if (!aucBn10PowLookupMap.has(decimals)) {
+    aucBn10PowLookupMap.set(decimals, new BigNumber(10).pow(decimals));
   }
 
-  return Web3.utils.toWei(String(value || 0), unit);
+  return aucBn10PowLookupMap.get(decimals) as BigNumber;
 }
 
-export function toBN(amount: BigNumber.Value): BigNumber {
-  return new BigNumber(amount);
+export function aucNormalize(value: BigNumber.Value, decimals: number = 2): string {
+  return aucNormalizeBN(value, decimals).toString(10);
 }
 
-const bn10PowLookupMap: Map<number, BigNumber> = new Map<number, BigNumber>([]);
-
-export function pow10(decimals: number): BigNumber {
-  if (!bn10PowLookupMap.has(decimals)) {
-    bn10PowLookupMap.set(decimals, new BigNumber(10).pow(decimals));
-  }
-
-  return bn10PowLookupMap.get(decimals) as BigNumber;
+export function aucNormalizeBN(value: BigNumber.Value, decimals: number = 2): BigNumber {
+  return aucToBN(value).dividedBy(aucPow10(decimals));
 }
 
-export function normalize(value: BigNumber.Value, decimals: number = 2): string {
-  return normalizeBN(value, decimals).toString(10);
-}
-
-export function normalizeBN(value: BigNumber.Value, decimals: number = 2): BigNumber {
-  return toBN(value).dividedBy(pow10(decimals));
-}
-
-export function normalizeBalance(value: BigNumber.Value, digits: number = 3): string {
-  const { chainId } = (window as any).ethereum as Ethereum;
-  const networkId = CHAIN_ID_TO_NETWORK_ID_MAP[chainId]
-
+/**
+ *
+ * @param networkId - connected network id.
+ * @param value - converted value.
+ * @param digits - significant digits.
+ */
+export function aucNormalizeBalance(networkId: number, value: BigNumber.Value, digits: number = 3): string {
   if (!networkId || value === null || value === undefined) {
     return null;
   }

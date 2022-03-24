@@ -1,12 +1,20 @@
-<div [ngClass]="classNames">
-  <div class="balance__info">
-    <div class="balance__image">
-      <img src="assets/svg/network/eth.svg" alt="">
-    </div>
-    <span>{{ balance$ | async }} ETH</span>
+<div [ngClass]="classNames" [aucSetStyleProps]="styleProperties">
+  <div class="auc-balance-info" *ngIf="activeNetwork">
+    <auc-icon *ngIf="isCurrency && activeNetwork.icon"
+              class="auc-balance-currency"
+              [icon]="activeNetwork.icon"
+    >
+    </auc-icon>
+
+    <span>{{ balance$ | async }} {{ activeNetwork.symbol }}</span>
   </div>
-  <div #addressRef
-       class="balance__address">
-    <span>{{ address$ | async | shortAddress }}</span>
-  </div>
+
+  <auc-button *ngIf="showAddress"
+              (onClick)="onAccountButtonClick($event)"
+              [disabled]="addressConfig?.disabled"
+              [label]="(address$ | async | aucShortAddress)"
+              [identicon]="identicon"
+              [identiconPosition]="addressConfig?.identiconPosition"
+              [color]="addressConfig?.color ?? COLOR_GROUP.WHITE">
+  </auc-button>
 </div>

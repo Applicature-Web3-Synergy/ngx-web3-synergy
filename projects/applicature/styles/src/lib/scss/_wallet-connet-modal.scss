@@ -13,7 +13,7 @@
 
   // The full page modal container.
   &.bn-onboard-modal {
-    font-family: $applicature-font-family;
+    font-family: $as-font-family;
   }
 
   // The container for the modal content.
@@ -132,7 +132,7 @@
     background: getColor(blue, base);
     border: 2px solid getColor(blue, border);
     outline: none;
-    font-family: $applicature-font-family;
+    font-family: $as-font-family;
 
     &:hover {
       background: getColor(blue, hover);

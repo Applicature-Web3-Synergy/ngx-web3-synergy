@@ -1,4 +1,4 @@
-export enum APPLICATURE_POSITIONS {
+export enum AUC_POSITIONS {
   ABOVE = 'above',
   BELOW = 'below',
   BEFORE = 'before',

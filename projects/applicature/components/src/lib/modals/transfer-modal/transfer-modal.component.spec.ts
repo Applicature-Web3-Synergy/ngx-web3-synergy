@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TransferModalComponent } from './transfer-modal.component';
+import { AucTransferModalComponent } from './transfer-modal.component';
 
 
-describe('TransferModalComponent', () => {
-  let component: TransferModalComponent;
-  let fixture: ComponentFixture<TransferModalComponent>;
+describe('AucTransferModalComponent', () => {
+  let component: AucTransferModalComponent;
+  let fixture: ComponentFixture<AucTransferModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TransferModalComponent]
+      declarations: [AucTransferModalComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TransferModalComponent);
+    fixture = TestBed.createComponent(AucTransferModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

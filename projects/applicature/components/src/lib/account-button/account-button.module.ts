@@ -1,29 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AvatarModule } from '../avatar/avatar.module';
-import { ButtonModule } from '../button/button.module';
-import { PipesModule } from '../pipes';
-import { AccountButtonComponent } from './account-button.component';
-import { ApplicatureCopyToClipboardModule } from '../applicature-copy-to-clipboard';
-import { ApplicatureDirectivesModule } from '../directives';
-import { ApplicatureDropdownMenuModule } from '../applicature-dropdown-menu';
+
+import { AucAvatarModule } from '../avatar';
+import { AucButtonModule } from '../button';
+import { AucPipesModule } from '../pipes';
+import { AucAccountButtonComponent } from './account-button.component';
+import { AucCopyToClipboardModule } from '../copy-to-clipboard';
+import { AucDirectivesModule } from '../directives';
+import { AucDropdownMenuModule } from '../dropdown-menu';
+
 
 @NgModule({
   declarations: [
-    AccountButtonComponent,
+    AucAccountButtonComponent
   ],
   exports: [
-    AccountButtonComponent,
+    AucAccountButtonComponent
   ],
   imports: [
     CommonModule,
-    AvatarModule,
-    PipesModule,
-    ButtonModule,
-    ApplicatureCopyToClipboardModule,
-    ApplicatureDirectivesModule,
-    ApplicatureDropdownMenuModule,
+    AucAvatarModule,
+    AucPipesModule,
+    AucButtonModule,
+    AucCopyToClipboardModule,
+    AucDirectivesModule,
+    AucDropdownMenuModule,
   ]
 })
-export class AccountButtonModule {
+export class AucAccountButtonModule {
 }

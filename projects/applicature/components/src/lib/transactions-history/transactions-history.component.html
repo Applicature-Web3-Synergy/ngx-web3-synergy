@@ -1,20 +1,26 @@
-<applicature-button *ngIf="!(hasFailedTx || hasPendingTx)"
-                    (onClick)="onTransactionsClick()"
-                    appearance="icon"
-                    leftIcon="wcl-icon-recent"
-                    color="white">
-</applicature-button>
+<auc-button class="auc-transaction-history-btn"
+            *ngIf="!(hasFailedTx || hasPendingTx)"
+            [color]="COLORS.WHITE"
+            [appearance]="BTN_APPEARANCE.ICON"
+            leftIcon="wcl-icon-recent"
+            (onClick)="onTransactionsClick()"
+>
+</auc-button>
 
-<applicature-button [label]="txCount + ' failing'"
-                    *ngIf="hasFailedTx && !hasPendingTx"
-                    (onClick)="onTransactionsClick()"
-                    rightIcon="wcl-icon-fail"
-                    color="red">
-</applicature-button>
+<auc-button class="auc-transaction-history-btn"
+            *ngIf="hasFailedTx && !hasPendingTx"
+            [label]="txCount + ' failing'"
+            [color]="COLORS.RED"
+            rightIcon="wcl-icon-fail"
+            (onClick)="onTransactionsClick()"
+>
+</auc-button>
 
-<applicature-button *ngIf="hasPendingTx"
-                    [label]="txCount + ' pending'"
-                    [pending]="true"
-                    (onClick)="onTransactionsClick()"
-                    color="white">
-</applicature-button>
+<auc-button class="auc-transaction-history-btn"
+            *ngIf="hasPendingTx"
+            [label]="txCount + ' pending'"
+            [pending]="true"
+            [color]="COLORS.WHITE"
+            (onClick)="onTransactionsClick()"
+>
+</auc-button>

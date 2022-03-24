@@ -1,3 +1,3 @@
-import { TRANSFER_STEPS } from '../enums';
+import { AUC_TRANSFER_STEPS } from '../enums';
 
-export type TransactionStep = TRANSFER_STEPS.APPROVE | TRANSFER_STEPS.CONFIRM
+export type AucTransactionStep = AUC_TRANSFER_STEPS.APPROVE | AUC_TRANSFER_STEPS.CONFIRM

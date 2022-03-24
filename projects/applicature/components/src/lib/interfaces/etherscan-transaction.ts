@@ -1,12 +1,12 @@
-import { TransactionStatus } from '../enums';
+import { AUC_TRANSACTION_STATUS } from '../enums';
 
-export interface EtherscanTransactionResponse {
+export interface AucEtherscanTransactionResponse {
   status: '0' | '1'; // Note: status: 0 = Fail, 1 = Pass. Will return null/empty value for pre-byzantium fork
   message: string;
-  result: EtherscanTransaction[];
+  result: AucEtherscanTransaction[];
 }
 
-export interface EtherscanTransaction {
+export interface AucEtherscanTransaction {
   blockNumber: string;
   timeStamp: string;
   hash: string;
@@ -28,10 +28,10 @@ export interface EtherscanTransaction {
   etherscanUrl?: string;
 }
 
-export interface EtherscanTransactionLocalStorage {
+export interface AucEtherscanTransactionLocalStorage {
   name: string,
   hash: string;
-  status: TransactionStatus;
+  status: AUC_TRANSACTION_STATUS;
   etherscanUrl: string
   viewed: boolean
 }

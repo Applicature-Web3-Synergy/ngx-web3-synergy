@@ -1,4 +1,5 @@
-export enum EthMethods {
-  SwitchEthereumChain = 'wallet_switchEthereumChain',
-  AddEthereumChain = 'wallet_addEthereumChain',
+export enum AUC_ETH_METHODS {
+  SWITCH_ETHEREUM_CHAIN = 'wallet_switchEthereumChain',
+  ADD_ETHEREUM_CHAIN = 'wallet_addEthereumChain',
 }
+

@@ -1,37 +1,43 @@
 <div style="padding: 50px 100px 100px;">
+  <section class="account-balance">
+    <h2 class="section-title">Account Balance</h2>
+
+    <div class="example-card">
+      <app-example-account-balance></app-example-account-balance>
+    </div>
+  </section>
+
+
   <button type="button" (click)="customBtnConnect()">Custom Connect</button>
 
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-connect-wallet [showBalance]="true"
-                                [showNetworkOptions]="true"
-                                [networkOptions]="networkOptions"
-                                [networkDropdownConfig]="networkDropdownConfig"
-                                (onConnect)="onConnect($event)"
-                                (onDisconnect)="onDisconnect($event)"
+    <auc-connect-wallet [showBalance]="true"
+                        [showNetworkOptions]="true"
+                        [networkDropdownConfig]="networkDropdownConfig"
+                        (onConnect)="onConnect($event)"
+                        (onDisconnect)="onDisconnect($event)"
     >
-    </applicature-connect-wallet>
+    </auc-connect-wallet>
   </div>
   <br>
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-connect-wallet [showBalance]="true"
-                                [showTransactions]="true"
-                                [networkOptions]="networkOptions"
-                                [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
-                                [accountOptions]="accountOptions"
-                                [accountDropdownConfig]="accountDropdownConfig"
-                                appearance="icon">
-    </applicature-connect-wallet>
+    <auc-connect-wallet [showBalance]="true"
+                        [showTransactions]="true"
+                        [account]="{ name: 'Account Name'}"
+                        [accountOptions]="accountOptions"
+                        [accountDropdownConfig]="accountDropdownConfig"
+                        [appearance]="CONNECT_WALLET_APPEARANCE.ICON">
+    </auc-connect-wallet>
   </div>
   <br>
 
   <div style="display: flex;justify-content: flex-end; background: #DDE3EC;padding: 50px;">
-    <applicature-connect-wallet [showBalance]="true"
-                                [showTransactions]="true"
-                                [networkOptions]="networkOptions"
-                                [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
-                                [accountOptions]="accountOptions"
-                                appearance="button">
-    </applicature-connect-wallet>
+    <auc-connect-wallet [showBalance]="true"
+                        [showTransactions]="true"
+                        [account]="{ name: 'Account Name', image: 'assets/images/default-avatar.png' }"
+                        [accountOptions]="accountOptions"
+                        [appearance]="CONNECT_WALLET_APPEARANCE.BUTTON">
+    </auc-connect-wallet>
   </div>
 
   <section id="dialogs">
@@ -42,100 +48,145 @@
   <br>
 
   <div style="background: #fff;padding: 50px;">
-    <applicature-input label="Field Label"
-                       suffix="USDT"
-                       hint="This is a message"
-                       placeholder="Enter"
-                       [max]="100">
-    </applicature-input>
+    <auc-input label="Field Label"
+               suffix="USDT"
+               hint="This is a message"
+               placeholder="Enter"
+               [max]="100">
+    </auc-input>
     <br>
     <br>
-    <applicature-input label="Field Label"
-                       suffix="USDT"
-                       hint="This is a message"
-                       placeholder="Enter"
-                       [max]="100"
-                       [errors]="['This is an error message']">
-    </applicature-input>
+    <auc-input label="Field Label"
+               suffix="USDT"
+               hint="This is a message"
+               placeholder="Enter"
+               [max]="100"
+               [errors]="['This is an error message']">
+    </auc-input>
     <br>
     <br>
-    <applicature-input label="Field Label"
-                       suffix="USDT"
-                       hint="This is a message"
-                       placeholder="Enter"
-                       [max]="100"
-                       [disabled]="true">
-    </applicature-input>
+    <auc-input label="Field Label"
+               suffix="USDT"
+               hint="This is a message"
+               placeholder="Enter"
+               [max]="100"
+               [disabled]="true">
+    </auc-input>
   </div>
   <br>
   <br>
 
-  <applicature-alert text="Alert text goes here" color="red" icon="wcl-icon-fail"
-                     iconPosition="left"></applicature-alert>
+  <auc-alert text="Alert text goes here"
+             icon="wcl-icon-fail"
+             [color]="COLORS.RED"
+             [iconPosition]="ALERT_POSITION.LEFT"
+  >
+  </auc-alert>
+  <br>
   <br>
 
-  <applicature-alert text="Alert text goes here" color="green" icon="wcl-icon-fail"
-                     iconPosition="right"></applicature-alert>
+  <auc-alert text="Alert text goes here"
+             [color]="COLORS.GREEN"
+             icon="wcl-icon-fail"
+  >
+  </auc-alert>
+  <br>
   <br>
 
-  <applicature-alert text="Alert text goes here" color="blue" icon="wcl-icon-fail"
-                     iconPosition="left"></applicature-alert>
+  <auc-alert text="Alert text goes here"
+             icon="wcl-icon-fail"
+             [color]="COLORS.BLUE"
+             [iconPosition]="ALERT_POSITION.LEFT"
+  >
+  </auc-alert>
+  <br>
   <br>
 
-  <applicature-alert text="Alert text goes here" color="orange" icon="wcl-icon-fail"
-                     iconPosition="right"></applicature-alert>
+  <auc-alert text="Alert text goes here"
+             icon="wcl-icon-fail"
+             [color]="COLORS.ORANGE"
+             [iconPosition]="ALERT_POSITION.RIGHT"
+  >
+  </auc-alert>
+  <br>
   <br>
 
-  <applicature-alert text="Alert text goes here" color="grey" icon="wcl-icon-fail"
-                     iconPosition="left"></applicature-alert>
+  <auc-alert text="Alert text goes here"
+             icon="wcl-icon-fail"
+             [color]="COLORS.GREY"
+             [iconPosition]="ALERT_POSITION.LEFT"
+  >
+  </auc-alert>
+  <br>
   <br>
 
-  <applicature-alert text="Alert text goes here" color="white" icon="wcl-icon-fail"
-                     iconPosition="right"></applicature-alert>
+  <auc-alert text="Alert text goes here"
+             icon="wcl-icon-fail"
+             [color]="COLORS.WHITE"
+  >
+  </auc-alert>
+  <br>
   <br>
 
-  <applicature-avatar src="assets/images/default-avatar.png"></applicature-avatar>
+  <auc-avatar></auc-avatar>
+  <br>
   <br>
 
-  <applicature-avatar src="assets/images/default-avatar.png" [size]="48"></applicature-avatar>
+  <auc-avatar src="assets/images/avatar-1.png" [size]="48"></auc-avatar>
+  <br>
   <br>
 
-  <applicature-button label="Button" [disabled]="true"></applicature-button>
+  <auc-button label="Button" [disabled]="true"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="Button"></applicature-button>
+  <auc-button label="Button"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="Button" leftIcon="wcl-icon-star"></applicature-button>
+  <auc-button label="Button" leftIcon="wcl-icon-star"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="Button" rightIcon="wcl-icon-chevron-down"></applicature-button>
+  <auc-button label="Button" rightIcon="wcl-icon-chevron-down"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="Button" leftIcon="wcl-icon-star" rightIcon="wcl-icon-chevron-down"></applicature-button>
+  <auc-button label="Button" leftIcon="wcl-icon-star" rightIcon="wcl-icon-chevron-down"></auc-button>
+  <br>
   <br>
 
-  <applicature-button appearance="icon" leftIcon="wcl-icon-recent" color="white"></applicature-button>
+  <auc-button [appearance]="BTN_APPEARANCE.ICON" leftIcon="wcl-icon-recent" [color]="COLORS.WHITE"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="Ethereum" leftIcon="wcl-icon-star" rightIcon="wcl-icon-chevron-down"
-                      color="white"></applicature-button>
+  <auc-button label="Ethereum" leftIcon="wcl-icon-star" rightIcon="wcl-icon-chevron-down"
+              [color]="COLORS.WHITE"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="0x643...5456" [identicon]="identicon" color="white"></applicature-button>
+  <auc-button label="0x643...5456" [identicon]="identicon"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="Ethereum" leftIcon="wcl-icon-star" [borderRadius]="0" color="white"></applicature-button>
+  <auc-button label="0x643...5456" [identicon]="identicon" [identiconPosition]="IDENTICON_POSITION.LEFT"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="Ethereum" leftIcon="wcl-icon-star" [borderRadius]="0" [transparent]="true"
-                      color="white"></applicature-button>
+  <auc-button label="Ethereum" leftIcon="wcl-icon-star" [borderRadius]="0" [color]="COLORS.WHITE"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="1 pending" color="white" [pending]="true"></applicature-button>
+  <auc-button label="Ethereum" leftIcon="wcl-icon-star" [borderRadius]="0" [transparent]="true"
+              [color]="COLORS.WHITE"></auc-button>
+  <br>
   <br>
 
-  <applicature-button label="Ethereum" [adaptive]="true"></applicature-button>
+  <auc-button label="1 pending" [color]="COLORS.WHITE" [pending]="true"></auc-button>
+  <br>
+  <br>
+
+  <auc-button label="Ethereum" [adaptive]="true"></auc-button>
   <br>
   <br>
 

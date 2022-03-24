@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import {
-  APPLICATURE_DIALOG_POSITIONS,
-  TransferModalComponent,
-  TransferModalData,
-  WRONG_NETWORK_APPEARANCE,
-  WrongNetworkModalComponent,
-  WrongNetworkModalData,
-  ApplicatureDialogService
+  AUC_DIALOG_POSITIONS,
+  AucTransferModalComponent,
+  AucTransferModalData,
+  AUC_WRONG_NETWORK_APPEARANCE,
+  AucWrongNetworkModalComponent,
+  AucWrongNetworkModalData,
+  AucDialogService
 } from '@applicature/components';
 
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
@@ -21,7 +21,7 @@ import { DialogTestComponent } from './components/dialog-test/dialog-test.compon
 })
 export class ExampleDialogsComponent {
 
-  constructor(private _dialogService: ApplicatureDialogService) {
+  constructor(private _dialogService: AucDialogService) {
   }
 
   public showCustomModal(): void {
@@ -35,7 +35,7 @@ export class ExampleDialogsComponent {
         minHeight: '320px',
         maxWidth: '600px',
         maxHeight: '700px',
-        position: APPLICATURE_DIALOG_POSITIONS.TOP_RIGHT,
+        position: AUC_DIALOG_POSITIONS.TOP_RIGHT,
         dialogClass: 'dialog-class-test',
         panel: {
           panelClass: 'panel-class-test'
@@ -58,7 +58,7 @@ export class ExampleDialogsComponent {
   }
 
   public onOpenTransferModalClick(): void {
-    const data: TransferModalData = {
+    const data: AucTransferModalData = {
       header: 'Transfer',
       symbol: 'USDT',
       allowance: '1000000000000000000',
@@ -74,9 +74,9 @@ export class ExampleDialogsComponent {
       }
     };
 
-    const ref = this._dialogService.open<TransferModalComponent, TransferModalData>(TransferModalComponent, {
+    const ref = this._dialogService.open<AucTransferModalComponent, AucTransferModalData>(AucTransferModalComponent, {
       data,
-      dialogClass: 'applicature-dialog',
+      dialogClass: 'transfer-dialog',
     });
 
     ref.afterClosed.subscribe(result => {
@@ -85,21 +85,21 @@ export class ExampleDialogsComponent {
   }
 
   public onOpenWrongNetworkModalClick(): void {
-    const data: WrongNetworkModalData = {
+    const data: AucWrongNetworkModalData = {
       header: 'WRONG NETWORK',
       message: 'Looks like you connected to unsupported network. Change network to Mainnet.',
       chainId: '156',
       switchLabel: 'Swith label',
-      appearance: WRONG_NETWORK_APPEARANCE.SWITCH
+      appearance: AUC_WRONG_NETWORK_APPEARANCE.SWITCH
     };
 
-    const ref = this._dialogService.open<WrongNetworkModalComponent, WrongNetworkModalData>(
-      WrongNetworkModalComponent,
+    const ref = this._dialogService.open<AucWrongNetworkModalComponent, AucWrongNetworkModalData>(
+      AucWrongNetworkModalComponent,
       {
         data,
         width: '100%',
         maxWidth: "420px",
-        dialogClass: 'applicature-dialog',
+        dialogClass: 'wrong-network-dialog',
       }
     );
 

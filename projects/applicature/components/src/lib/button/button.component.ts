@@ -1,108 +1,187 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input,
-  ViewChild,
-  ElementRef,
-  Output,
-  EventEmitter,
-  OnChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, } from '@angular/core';
 
-import { APPLICATURE_COLORS, ColorProperties } from '@applicature/styles';
+import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
-export type  ApplicatureButtonColor = 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';
+import { AucButtonAppearance } from './types';
+import { AUC_BUTTON_APPEARANCE } from './enums';
+import { AUC_IDENTICON_POSITION, AucIdenticonPosition, AucSetStyleProp } from '../directives';
 
-export type  ApplicatureButtonAppearance = 'stroked' | 'flat' | 'icon';
 
 @Component({
-  selector: 'applicature-button',
+  selector: 'auc-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  styleUrls: [ './button.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent implements OnInit, OnChanges {
+export class AucButtonComponent implements OnInit, OnChanges {
+  /**
+   * {@link label} - It's an `@Input()` parameter.
+   * Text for the button label.
+   */
   @Input()
-  public height: number = 40;
+  public label: string;
 
-  @Input()
-  public disabled: boolean = false;
-
-  @Input()
-  public leftIcon!: string;
-
-  @Input()
-  public rightIcon!: string;
-
-  @Input()
-  public color: ApplicatureButtonColor = 'blue';
-
-  @Input()
-  public appearance: ApplicatureButtonAppearance = 'flat';
-
+  /**
+   * {@link borderRadius} - It's an `@Input()` parameter.
+   * Sets borderRadius of the button.
+   * It's an optional parameter. The default value is 8.
+   */
   @Input()
   public borderRadius: number = 8;
 
+  /**
+   * {@link color} - It's an `@Input()` parameter.
+   * Sets theme of the button.
+   * It's an optional parameter. The default value is blue.
+   * You can use enum {@link AS_COLOR_GROUP}.
+   */
   @Input()
-  public transparent: boolean = false;
+  public color: AsColorGroup = AS_COLOR_GROUP.BLUE;
 
+  /**
+   * {@link disabled} - It's an `@Input()` parameter.
+   * Whether the button is disabled.
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
-  public pending: boolean = false;
+  public disabled: boolean = false;
 
+  /**
+   * {@link adaptive} - It's an `@Input()` parameter.
+   * Whether the button is full width.
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public adaptive: boolean = false;
 
+  /**
+   * {@link height} - It's an `@Input()` parameter.
+   * Sets height of the button.
+   * It's an optional parameter. The default value is 40.
+   */
   @Input()
-  public label!: string;
+  public height: number = 40;
+
+  /**
+   * {@link identicon} - It's an `@Input()` parameter.
+   * Shows identicon if provided.
+   * It's an optional parameter.
+   */
+  @Input()
+  public identicon: HTMLDivElement;
+
+  /**
+   * {@link identiconPosition} - It's an `@Input()` parameter.
+   * Controls identicon position.
+   * It's an optional parameter. The default value is right;
+   * You can use enum ${@link AUC_IDENTICON_POSITION}
+   */
+  @Input()
+  public identiconPosition: AucIdenticonPosition = AUC_IDENTICON_POSITION.RIGHT;
+
+  /**
+   * {@link leftIcon} - It's an `@Input()` parameter.
+   * Shows left icon if provided.
+   * You can use supported icons from enum {@link AUC_WLC_ICON} or string;
+   * If you want to use custom icon you need to provide url to the image as a string value.
+   * It's an optional parameter.
+   */
 
   @Input()
-  public identicon!: HTMLDivElement;
+  public leftIcon: string;
 
+  /**
+   * {@link rightIcon} - It's an `@Input()` parameter.
+   * Shows right icon if provided.
+   * You can use supported icons from enum {@link AUC_WLC_ICON} or string;
+   * If you want to use custom icon you need to provide url to the image as a string value.
+   * It's an optional parameter.
+   */
+  @Input()
+  public rightIcon: string;
+
+  /**
+   * {@link appearance} - It's an `@Input()` parameter.
+   * It's an optional parameter. The default value is flat.
+   * You can use enum {@link AUC_BUTTON_APPEARANCE}.
+   */
+  @Input()
+  public appearance: AucButtonAppearance = AUC_BUTTON_APPEARANCE.FLAT;
+
+  /**
+   * {@link transparent} - It's an `@Input()` parameter.
+   * Whether the button is transparent.
+   * It's an optional parameter. The default value is false.
+   */
+  @Input()
+  public transparent: boolean = false;
+
+  /**
+   * {@link pending} - It's an `@Input()` parameter.
+   * Whether the button shows spinner.
+   * It's an optional parameter. The default value is false.
+   */
+  @Input()
+  public pending: boolean = false;
+
+  /**
+   * {@link type} - It's an `@Input()` parameter.
+   * Standard HTMLButtonElement type {@link HTMLButtonElement.type}: 'button' | 'reset' | 'submit'.
+   * It's an optional parameter. The default value is button.
+   */
+  @Input()
+  public type: 'button' | 'reset' | 'submit' = 'button';
+
+  /**
+   * {@link onClickEmitter} - It's an `@Output()` parameter.
+   * Emits an action when button was clicked.
+   * Emitted value is native click value.
+   */
   @Output('onClick')
   public onClickEmitter: EventEmitter<any> = new EventEmitter<any>();
 
-  public get classNames(): { [el: string]: boolean } {
-    return {
-      ['button']: true,
-      [`button--white`]: this.color === 'white',
-      ['button--disabled']: this.disabled,
-      ['button--adaptive']: this.adaptive,
-      ['button--transparent']: this.transparent,
-      [`button--${this.appearance}`]: true,
-    };
+  public styleProperties: AucSetStyleProp[] = [];
+  public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
+
+  get iconColor(): string {
+    return this.color === AS_COLOR_GROUP.WHITE
+      ? AsColors[AS_COLOR_GROUP.GREY].base
+      : AsColors[AS_COLOR_GROUP.WHITE].base
   }
 
-  @ViewChild('buttonRef', { static: true })
-  private _buttonRef!: ElementRef<HTMLButtonElement>;
+  public get classNames(): { [el: string]: boolean } {
+    return {
+      ['auc-button']: true,
+      [`auc-button-white`]: this.color === AS_COLOR_GROUP.WHITE,
+      ['auc-button-disabled']: this.disabled,
+      ['auc-button-adaptive']: this.adaptive,
+      ['auc-button-transparent']: this.transparent,
+      [`auc-button-${this.appearance}`]: true,
+    };
+  }
 
   public ngOnInit(): void {
     this.ngOnChanges();
   }
 
   public ngOnChanges(): void {
-    const colorProperties = APPLICATURE_COLORS[this.color || 'blue'] as ColorProperties;
-    const style = this._buttonRef.nativeElement.style;
+    const colorProperties: AsColorProperties = AsColors[this.color || AS_COLOR_GROUP.BLUE];
 
-    Object.keys(colorProperties).forEach((prop) => {
-      style.setProperty(`--applicature-button-${prop}`, (colorProperties as any)[prop]);
-    });
+    const colorProps: AucSetStyleProp[] = Object.keys(colorProperties || {})
+      .map((prop: string) => {
+        return {
+          name: `--auc-button-${prop}`,
+          value: colorProperties[prop]
+        }
+      });
 
-    style.setProperty(`--applicature-button-radius`, `${this.borderRadius}px`);
-
-    const element = this._buttonRef?.nativeElement as HTMLButtonElement;
-
-    if (this.identicon && element) {
-      const previousIdenticon = element.querySelector(':scope > div');
-
-      if (previousIdenticon) {
-        element.removeChild(previousIdenticon);
-      }
-
-      this.identicon.style.marginLeft = '8px';
-
-      element.appendChild(this.identicon);
-    }
+    this.styleProperties = [
+      {
+        name: '--auc-button-radius',
+        value: `${this.borderRadius}px`
+      },
+      ...(colorProps || [])
+    ];
   }
 
   public onClick(event: any): void {

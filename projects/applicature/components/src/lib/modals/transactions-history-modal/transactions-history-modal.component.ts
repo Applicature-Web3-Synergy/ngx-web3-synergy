@@ -1,26 +1,26 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { EtherscanTransactionLocalStorage } from '../../interfaces';
-import { TransactionService } from '../../services/transaction.service';
-import { RecentTransactionsModalData } from './interfaces';
-import { ApplicatureDialogConfig, ApplicatureDialogRef } from '../../applicature-dialog';
+import { AucEtherscanTransactionLocalStorage } from '../../interfaces';
+import { AucTransactionService } from '../../services';
+import { AucRecentTransactionsModalData } from './interfaces';
+import { AucDialogConfig, AucDialogRef } from '../../dialog';
 
 
 @Component({
-  selector: 'applicature-transactions-history-modal',
+  selector: 'auc-transactions-history-modal',
   templateUrl: './transactions-history-modal.component.html',
   styleUrls: [ './transactions-history-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TransactionsHistoryModalComponent implements OnDestroy {
-  public transactions$: Observable<EtherscanTransactionLocalStorage[]>;
-  public data: RecentTransactionsModalData;
+export class AucTransactionsHistoryModalComponent implements OnDestroy {
+  public transactions$: Observable<AucEtherscanTransactionLocalStorage[]>;
+  public data: AucRecentTransactionsModalData;
 
   constructor(
-    private _config: ApplicatureDialogConfig<RecentTransactionsModalData>,
-    private _dialogRef: ApplicatureDialogRef,
-    private _transactionService: TransactionService
+    private _config: AucDialogConfig<AucRecentTransactionsModalData>,
+    private _dialogRef: AucDialogRef,
+    private _transactionService: AucTransactionService
   ) {
     this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;

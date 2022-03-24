@@ -4,22 +4,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
-import { ApplicatureProgressBarModule } from '../applicature-progress-bar';
-import { ApplicatureRippleModule } from '../applicature-ripple';
-import { ApplicatureSpinnerModule } from '../applicature-spinner';
-import { ButtonModule } from '../button/button.module';
-import { InputModule } from '../input/input.module';
-import { PipesModule } from '../pipes';
-import { AccountModalComponent } from './account-modal';
-import { TransactionsHistoryModalComponent } from './transactions-history-modal';
-import { TransferModalComponent } from './transfer-modal';
-import { WrongNetworkModalComponent } from './wrong-network-modal';
+import { AucProgressBarModule } from '../progress-bar';
+import { AucRippleModule } from '../ripple';
+import { AucSpinnerModule } from '../spinner';
+import { AucButtonModule } from '../button';
+import { AucInputModule } from '../input';
+import { AucPipesModule } from '../pipes';
+import { AucAccountModalComponent } from './account-modal';
+import { AucTransactionsHistoryModalComponent } from './transactions-history-modal';
+import { AucTransferModalComponent } from './transfer-modal';
+import { AucWrongNetworkModalComponent } from './wrong-network-modal';
+import { AucIconModule } from '../icon';
+import { AucDirectivesModule } from '../directives';
 
 const components = [
-  AccountModalComponent,
-  TransactionsHistoryModalComponent,
-  TransferModalComponent,
-  WrongNetworkModalComponent
+  AucAccountModalComponent,
+  AucTransactionsHistoryModalComponent,
+  AucTransferModalComponent,
+  AucWrongNetworkModalComponent
 ];
 
 @NgModule({
@@ -32,13 +34,15 @@ const components = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    PipesModule,
-    ButtonModule,
-    InputModule,
-    ApplicatureRippleModule,
-    ApplicatureSpinnerModule,
-    ApplicatureProgressBarModule,
-    ClipboardModule
+    AucPipesModule,
+    AucButtonModule,
+    AucInputModule,
+    AucRippleModule,
+    AucSpinnerModule,
+    AucProgressBarModule,
+    ClipboardModule,
+    AucIconModule,
+    AucDirectivesModule
   ]
 })
 export class ModalsModule {

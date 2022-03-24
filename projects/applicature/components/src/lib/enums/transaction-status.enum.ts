@@ -1,5 +1,5 @@
-export enum TransactionStatus {
-  Fail = 'fail',
-  Success = 'success',
-  Pending = 'pending',
+export enum AUC_TRANSACTION_STATUS {
+  FAIL = 'fail',
+  SUCCESS = 'success',
+  PENDING = 'pending'
 }

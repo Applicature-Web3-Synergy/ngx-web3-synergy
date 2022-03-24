@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { ApplicatureDialogConfig, ApplicatureDialogRef } from '@applicature/components';
+import { AucDialogConfig, AucDialogRef } from '@applicature/components';
+import { AS_COLOR_GROUP } from '@applicature/styles';
 
 
 @Component({
@@ -10,7 +11,9 @@ import { ApplicatureDialogConfig, ApplicatureDialogRef } from '@applicature/comp
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogTestComponent {
-  constructor(public config: ApplicatureDialogConfig, private _dialogRef: ApplicatureDialogRef<string>) {
+  public COLORS = AS_COLOR_GROUP;
+
+  constructor(public config: AucDialogConfig, private _dialogRef: AucDialogRef<string>) {
   }
 
   onClose(val: any): void {

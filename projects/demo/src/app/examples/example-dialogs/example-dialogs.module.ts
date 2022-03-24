@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ButtonModule } from '@applicature/components';
+import { AucButtonModule, AucDialogModule } from '@applicature/components';
 
 import { ExampleDialogsComponent } from './example-dialogs.component';
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
-import { ApplicatureDialogModule } from '../../../../../applicature/components/src/lib/applicature-dialog';
 
 
 @NgModule({
@@ -18,8 +17,8 @@ import { ApplicatureDialogModule } from '../../../../../applicature/components/s
   ],
   imports: [
     CommonModule,
-    ApplicatureDialogModule,
-    ButtonModule
+    AucDialogModule,
+    AucButtonModule
   ],
   entryComponents: [
     DialogTestComponent

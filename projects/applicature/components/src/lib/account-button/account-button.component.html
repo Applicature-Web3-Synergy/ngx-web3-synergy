@@ -1,53 +1,57 @@
-<applicature-avatar applicatureTrigger
-                    #networkOptionsTrigger="applicatureTrigger"
-                    [src]="account?.image"
-                    [size]="size"
-                    (onShowHide)="setOpened($event)"
+<auc-avatar class="auc-account-button"
+            aucTrigger
+            #networkOptionsTrigger="aucTrigger"
+            [src]="account?.image"
+            [size]="size"
+            (onShowHide)="setOpened($event)"
 >
-</applicature-avatar>
+</auc-avatar>
 
-<applicature-dropdown-menu *ngIf="isOptionsOpen"
-                           [config]="accountDropdownConfig"
-                           [trigger]="networkOptionsTrigger"
+<auc-dropdown-menu *ngIf="isOptionsOpen"
+                   [config]="accountDropdownConfig"
+                   [trigger]="networkOptionsTrigger"
 >
-  <ul class="options">
-    <li class="options__header">Connected with Metamask</li>
-    <li class="options__header">
-      <div class="user-info">
-        <applicature-avatar [src]="account?.image"
-                            [size]="48"
-                            class="user-info__avatar">
-        </applicature-avatar>
+  <ul class="auc-account-button-options">
+    <li class="auc-account-button-header">Connected with Metamask</li>
 
-        <div class="user-info__name">
-          <h1>{{ account?.name || (accountAddress | shortAddress) }}</h1>
-          <span *ngIf="account?.name">{{ accountAddress | shortAddress }}</span>
+    <li class="auc-account-button-header">
+      <div class="auc-account-button-user-info">
+        <auc-avatar [src]="account?.image"
+                    [size]="48"
+                    class="auc-account-button-user-info-avatar">
+        </auc-avatar>
+
+        <div class="auc-account-button-user-info-name">
+          <h1>{{ account?.name || (accountAddress | aucShortAddress) }}</h1>
+          <span *ngIf="account?.name">{{ accountAddress | aucShortAddress }}</span>
         </div>
 
-        <applicature-copy-to-clipboard [value]="accountAddress"
-                                       class="user-info__copy"
+        <auc-copy-to-clipboard [value]="accountAddress"
+                               class="auc-account-button-user-info-copy"
         >
-        </applicature-copy-to-clipboard>
+        </auc-copy-to-clipboard>
       </div>
     </li>
+
     <li *ngFor="let option of options"
         (click)="onOptionClick(option)"
-        [class.options__item--disabled]="option.disabled"
-        class="options__item">
-      <span class="options__name">{{ option.name }}</span>
+        [class.auc-options-item-disabled]="option.disabled"
+        class="auc-account-button-options-item">
+      <span class="auc-account-button-options-name">{{ option.name }}</span>
     </li>
-    <li class="options__footer">
-      <applicature-button [adaptive]="true"
-                          (onClick)="onChangeWalletProviderClick()"
-                          label="Change wallet provider"
-                          class="options__button">
-      </applicature-button>
-      <applicature-button [adaptive]="true"
-                          (onClick)="onDisconnectClick()"
-                          label="Disconnect"
-                          color="red"
-                          class="options__button">
-      </applicature-button>
+
+    <li class="auc-account-button-options-footer">
+      <auc-button [adaptive]="true"
+                  (onClick)="onChangeWalletProviderClick()"
+                  label="Change wallet provider"
+                  class="auc-account-button-options-button">
+      </auc-button>
+      <auc-button [adaptive]="true"
+                  (onClick)="onDisconnectClick()"
+                  [color]="disconnectBtnColor"
+                  label="Disconnect"
+                  class="auc-account-button-options-button">
+      </auc-button>
     </li>
   </ul>
-</applicature-dropdown-menu>
+</auc-dropdown-menu>

@@ -1,16 +1,20 @@
-<div class="transactions">
-  <div class="transactions__header">
+<div class="auc-transactions">
+  <div class="auc-dialog-header">
     <h1>{{ data.header }}</h1>
 
-    <span (click)="onCloseClick()"
-          class="wcl-icon-close"></span>
+    <button type="button" class="auc-close-btn">
+      <auc-icon icon="wcl-icon-close"
+                (click)="onCloseClick()"
+      >
+      </auc-icon>
+    </button>
   </div>
 
   <ng-container *ngIf="(transactions$ | async) as transactions">
     <div *ngIf="transactions?.length > 0 else emptyView"
-         class="transactions__list">
+         class="auc-transactions-list">
       <div *ngFor="let transaction of transactions"
-           class="transactions__list__item">
+           class="auc-transactions-list-item">
         <a [href]="transaction.etherscanUrl"
            [class.fail]="transaction.status==='fail'"
            target="_blank"
@@ -22,17 +26,17 @@
 
           <span *ngSwitchCase="'success'" class="wcl-icon-check"></span>
 
-          <applicature-spinner *ngSwitchCase="'pending'"
+          <auc-spinner *ngSwitchCase="'pending'"
                                [diameter]="18"
                                [width]="2"
           >
-          </applicature-spinner>
+          </auc-spinner>
         </ng-container>
       </div>
     </div>
   </ng-container>
 
   <ng-template #emptyView>
-    <div class="transactions__empty">Your transactions will appear here</div>
+    <div class="auc-transaction-empty">Your transactions will appear here</div>
   </ng-template>
 </div>

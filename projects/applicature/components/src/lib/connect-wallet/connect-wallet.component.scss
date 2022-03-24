@@ -1,37 +1,24 @@
 @import "../../../../styles/src/lib/scss/variables";
-@import "../../../../styles/src/lib/scss/functions";
 
 :host {
   display: inline-block;
 }
 
-.connect-wallet {
+.auc-connect-wallet {
   display: flex;
   align-items: center;
-  font-family: $applicature-font-family;
+  font-family: $as-font-family;
+}
 
-  & &__container {
-    border-radius: 8px;
-    display: inline-flex;
-    align-items: center;
+.auc-connect-wallet-container {
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+}
 
-    &--translucent {
-      background: rgba(255, 255, 255, 0.5);
-    }
-  }
-
-  & &__balance {
-    display: inline-block;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 0 12px;
-    color: $black;
-  }
-
-  & &__networks,
-  & &__container,
-  & &__transactions,
-  & &__account-balance {
-    margin-right: 12px;
-  }
+.auc-connect-wallet-account-balance,
+.auc-connect-wallet-transactions,
+.auc-connect-wallet-container,
+.auc-connect-wallet-networks {
+  margin-right: 12px;
 }

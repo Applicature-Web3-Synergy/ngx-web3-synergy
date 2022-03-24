@@ -1,29 +1,27 @@
-@import "../../../../styles/src/lib/scss/variables";
-@import "../../../../styles/src/lib/scss/functions";
-
 :host {
-  display: inline-block;
-  height: 20px;
   color: inherit;
+  display: flex;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
 }
 
-.icon {
-  display: inline-block;
+.auc-icon-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auc-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.auc-icon-font {
+  line-height: 0;
   color: inherit;
-
-  & &__img {
-    width: 20px;
-    height: 20px;
-
-    > img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  & &__font {
-    font-size: 20px;
-    color: inherit;
-  }
 }

@@ -9,78 +9,149 @@ import {
   OnInit,
   Output
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { AS_COLOR_GROUP } from '@applicature/styles';
 
-import { AccountData, AccountOption } from '../account-button/account-button.component';
-import { APPLICATURE_POSITIONS, TransactionStatus } from '../enums';
-import { generateJazzicon, normalizeBalance } from '../helpers';
-import { AucNetworkOption } from '../interfaces';
-import { AccountModalComponent, AccountModalData } from '../modals';
-import { TransactionService } from '../services/transaction.service';
-import { ConnectionState, WalletConnectService } from '../services';
-import { ApplicatureDialogService } from '../applicature-dialog';
-import { ApplicatureDropdownConfig } from '../applicature-dropdown-menu';
+import { AucAccountData, AucAccountOption } from '../account-button';
+import { AUC_POSITIONS, AUC_TRANSACTION_STATUS } from '../enums';
+import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../helpers';
+import { AucAccountModalComponent, AucAccountModalData } from '../modals';
+import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '../services';
+import { AucDialogService } from '../dialog';
+import { AucDropdownConfig } from '../dropdown-menu';
+import { AUC_BALANCE_APPEARANCE } from '../account-balance';
+import { ConnectWalletAppearance } from './types';
+import { AUC_CONNECT_WALLET_APPEARANCE } from './enums';
 
-export type AppearanceType = 'default' | 'icon' | 'button';
 
 @Component({
-  selector: 'applicature-connect-wallet',
+  selector: 'auc-connect-wallet',
   templateUrl: './connect-wallet.component.html',
   styleUrls: [ './connect-wallet.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConnectWalletComponent implements OnInit, OnDestroy {
+export class AucConnectWalletComponent implements OnInit, OnDestroy {
+  /**
+   * {@link appearance} - It's an `@Input()` parameter. <br>
+   * Allows to control appearance components. Default is the button.
+   * It's an optional parameter. The default value is {@link AUC_CONNECT_WALLET_APPEARANCE.BUTTON}. <br>
+   * You can use enum {@link AUC_CONNECT_WALLET_APPEARANCE}.
+   */
   @Input()
-  public appearance: AppearanceType = 'button';
+  public appearance: ConnectWalletAppearance = AUC_CONNECT_WALLET_APPEARANCE.BUTTON;
 
+  /**
+   * {@link disabled} - It's an `@Input()` parameter. <br>
+   * Whether the button is disabled. <br>
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public disabled: boolean = false;
 
+  /**
+   * {@link showBalance} - It's an `@Input()` parameter. <br>
+   * Show/hide account balance. <br>
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public showBalance: boolean = false;
 
+  /**
+   * {@link showTransactions} - It's an `@Input()` parameter. <br>
+   * Show/hide Recent transactions button <br>
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public showTransactions: boolean = false;
 
+  /**
+   * {@link showNetworkOptions} - It's an `@Input()` parameter. <br>
+   * Show/hide network options <br>
+   * It's an optional parameter. The default value is false.
+   */
   @Input()
   public showNetworkOptions: boolean = false;
 
+  /**
+   * {@link account} - It's an `@Input()` parameter. <br>
+   * User account related information. Needs for {@link AucAccountButtonComponent}. <br>
+   * This is required parameter when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   */
   @Input()
-  public networkOptions!: AucNetworkOption[];
+  public account: AucAccountData;
 
+  /**
+   * {@link accountOptions} - It's an `@Input()` parameter. <br>
+   * List of options in popover. Needs for {@link AucAccountButtonComponent}. <br>
+   * This is an optional parameter, uses only with appearance {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   */
   @Input()
-  public account!: AccountData;
+  public accountOptions?: AucAccountOption[];
 
-  @Input()
-  public accountOptions!: AccountOption[];
-
-  @Input() networkDropdownConfig?: ApplicatureDropdownConfig = {
+  /**
+   * {@link accountDropdownConfig} - It's an `@Input()` parameter. <br>
+   * You can customize dropdown position and overlay. <br>
+   * This is an optional parameter. <br>
+   * The default value is: <br>
+   * {
+   *   overlay: {
+   *     transparent: true
+   *   },
+   *   position: {
+   *     vertical: AUC_POSITIONS.BELOW,
+   *     horizontal: AUC_POSITIONS.BEFORE
+   *   }
+   * }
+   */
+  @Input() accountDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.BELOW,
-      horizontal: APPLICATURE_POSITIONS.AFTER
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.BEFORE
     }
   }
 
-  @Input() accountDropdownConfig: ApplicatureDropdownConfig = {
+  /**
+   * {@link networkDropdownConfig} - It's an `@Input()` parameter. <br>
+   * You can customize dropdown position and overlay. <br>
+   * This is an optional parameter. <br>
+   * The default value is: <br>
+   * {
+   *   overlay: {
+   *     transparent: true
+   *   },
+   *   position: {
+   *     vertical: AUC_POSITIONS.BELOW,
+   *     horizontal: AUC_POSITIONS.AFTER
+   *   }
+   * }
+   */
+  @Input() networkDropdownConfig?: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: APPLICATURE_POSITIONS.BELOW,
-      horizontal: APPLICATURE_POSITIONS.BEFORE
+      vertical: AUC_POSITIONS.BELOW,
+      horizontal: AUC_POSITIONS.AFTER
     }
   }
 
-  @Output('onConnect')
-  public onConnectWalletEmitter: EventEmitter<ConnectionState> = new EventEmitter<ConnectionState>();
+  /**
+   * {@link onConnect} - It's an `@Output()` parameter. <br>
+   * Emits an action when wallet was connected.
+   */
+  @Output()
+  public onConnect: EventEmitter<AucConnectionState> = new EventEmitter<AucConnectionState>();
 
-  @Output('onDisconnect')
-  public onDisconnectWalletEmitter: EventEmitter<void> = new EventEmitter<void>();
+  /**
+   * {@link onDisconnect} - It's an `@Output()` parameter. <br>
+   * Emits an action when wallet was disconnected.
+   */
+  @Output()
+  public onDisconnect: EventEmitter<void> = new EventEmitter<void>();
 
   public accountAddress: string;
   public identicon: HTMLDivElement;
@@ -88,16 +159,18 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   public hasFailedTx: boolean = false;
   public hasPendingTx: boolean = false;
   public txCount: number = 0;
-  public balance$: Observable<string | null>;
+  public COLORS = AS_COLOR_GROUP;
+  public BALANCE_APPEARANCE = AUC_BALANCE_APPEARANCE;
+  public CONNECT_WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
   private _sub: Subscription = new Subscription();
 
   constructor(
-    private _dialogService: ApplicatureDialogService,
+    private _dialogService: AucDialogService,
     private _cdr: ChangeDetectorRef,
     private _elementRef: ElementRef<HTMLElement>,
-    private _transactionService: TransactionService,
-    private _walletConnectService: WalletConnectService,
+    private _transactionService: AucTransactionService,
+    private _walletConnectService: AucWalletConnectService,
   ) {
     this._sub.add(
       this._walletConnectService.accountsChanged$
@@ -106,7 +179,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
           this.isConnected = Boolean(this.accountAddress);
 
           if (this.isConnected) {
-            this.identicon = generateJazzicon(this.accountAddress);
+            this.identicon = aucGenerateJazzicon(this.accountAddress);
           }
 
           this._cdr.markForCheck();
@@ -115,23 +188,18 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.balance$ = this._walletConnectService.balanceChanged$
-      .pipe(
-        map((balance) => normalizeBalance(balance))
-      );
-
     this._sub.add(
       this._transactionService.transactionsChanged$
         .subscribe((transactions) => {
           this.txCount = transactions.filter((tx) => {
-            return tx.status === TransactionStatus.Fail && !tx.viewed;
+            return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
           }).length;
 
           this.hasFailedTx = this.txCount > 0;
 
           if (!this.hasFailedTx) {
             this.txCount = transactions.filter((tx) => {
-              return tx.status === TransactionStatus.Pending;
+              return tx.status === AUC_TRANSACTION_STATUS.PENDING;
             }).length;
 
             this.hasPendingTx = this.txCount > 0;
@@ -143,7 +211,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    if (typeof this._sub.unsubscribe === 'function') {
+    if (aucCheckValueType(this._sub.unsubscribe, AUC_VALUE_TYPES.FUNCTION)) {
       this._sub.unsubscribe();
     }
   }
@@ -153,7 +221,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const data: AccountModalData = {
+    const data: AucAccountModalData = {
       header: 'Account',
       change: () => {
         modal.close();
@@ -167,9 +235,9 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
       },
     };
 
-    const modal = this._dialogService.open<AccountModalComponent, AccountModalData>(AccountModalComponent, {
+    const modal = this._dialogService.open<AucAccountModalComponent, AucAccountModalData>(AucAccountModalComponent, {
       data,
-      dialogClass: 'applicature-dialog',
+      dialogClass: 'auc-account-dialog',
     });
   }
 
@@ -179,8 +247,8 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
     }
 
     this._walletConnectService.connectWallet(isDisconnect)
-      .subscribe((connectionState: ConnectionState) => {
-        this.onConnectWalletEmitter.emit(connectionState);
+      .subscribe((connectionState: AucConnectionState) => {
+        this.onConnect.emit(connectionState);
       })
   }
 
@@ -191,7 +259,7 @@ export class ConnectWalletComponent implements OnInit, OnDestroy {
 
     this._walletConnectService.disconnectWallet()
       .subscribe(() => {
-        this.onDisconnectWalletEmitter.emit();
+        this.onDisconnect.emit();
       });
   }
 

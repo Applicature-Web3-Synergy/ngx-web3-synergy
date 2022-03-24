@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AvatarComponent } from './avatar.component';
+
+import { AucAvatarComponent } from './avatar.component';
+import { AucIconModule } from '../icon';
+import { AucDirectivesModule } from '../directives';
+
 
 @NgModule({
   declarations: [
-    AvatarComponent,
+    AucAvatarComponent,
   ],
   exports: [
-    AvatarComponent,
+    AucAvatarComponent,
   ],
   imports: [
     CommonModule,
+    AucIconModule,
+    AucDirectivesModule,
   ]
 })
-export class AvatarModule {
+export class AucAvatarModule {
 }

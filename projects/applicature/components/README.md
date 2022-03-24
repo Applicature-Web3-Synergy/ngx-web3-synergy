@@ -155,13 +155,56 @@ const networks = {
   kovanTestnet: 42,
 }
 
+// Set suppoerted networks list.
+const supportedNetworks: AucNetworkOption[] = [
+  {
+    icon: 'assets/svg/network/eth.svg',
+    name: 'Ethereum',
+    chainId: AUC_CHAIN_ID.RINKEBY_TESTNET,
+    symbol: AucNativeCurrencies[AUC_CHAIN_ID.RINKEBY_TESTNET].name,
+    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
+    isActive: false
+  },
+  {
+    icon: 'assets/svg/network/bsc.svg',
+    name: 'BSC',
+    chainId: AUC_CHAIN_ID.BSC_TESTNET,
+    symbol: 'BNB',
+    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.BSC_TESTNET][0],
+    isActive: false,
+    chainParams: { // Custom Chain params
+      chainId: '0x61',
+      chainName: 'Binance Smart Chain Testnet',
+      nativeCurrency: {
+        name: 'BNB',
+        symbol: 'bnb',
+        decimals: 18
+      },
+      rpcUrls: [ 'https://data-seed-prebsc-1-s1.binance.org:8545' ],
+      blockExplorerUrls: [ 'https://testnet.bscscan.com' ]
+    }
+  },
+  {
+    icon: 'assets/svg/network/avax.svg',
+    name: 'Avalanche',
+    chainId: AUC_CHAIN_ID.AVALANCH_TESTNET,
+    isActive: false,
+    symbol: AucNativeCurrencies[AUC_CHAIN_ID.AVALANCH_TESTNET].name,
+    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.AVALANCH_TESTNET][0],
+    chainParams: { // modify existing Chain params
+      ...(aucGetChainParams(AUC_CHAIN_ID.AVALANCH_TESTNET)),
+      chainName: 'Avalanche TestNet'
+    }
+  }
+];
+ 
 export function initWalletServiceFactory(
-  walletConnectService: WalletConnectService
+  walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
     networkId: networks.kovanTestnet,
     walletSelect: { wallets }
-  });
+  }, supportedNetworks);
 }
 
 @NgModule({
@@ -173,13 +216,13 @@ export function initWalletServiceFactory(
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    WalletConnectModule.forRoot(),
+    AucConnectModule.forRoot(),
   ],
   providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: initWalletServiceFactory,
-      deps: [WalletConnectService],
+      deps: [AucWalletConnectService],
       multi: true,
     },
   ],

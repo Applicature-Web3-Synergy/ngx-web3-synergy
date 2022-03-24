@@ -1,30 +1,42 @@
-<div class="wrong-network">
-  <span (click)="onCloseClick()" class="wrong-network__close wcl-icon-close"></span>
+<div class="auc-wrong-network">
+  <div class="auc-dialog-header auc-wrong-network-header">
+    <button type="button" class="auc-close-btn">
+      <auc-icon icon="wcl-icon-close"
+                (click)="onCloseClick()"
+      >
+      </auc-icon>
+    </button>
+  </div>
 
-  <span class="wrong-network__fail wcl-icon-fail"></span>
 
-  <h1 class="wrong-network__header">{{ data.header }}</h1>
+  <auc-icon icon="wcl-icon-fail"
+            class="auc-wrong-network-fail"
+            (click)="onCloseClick()"
+  >
+  </auc-icon>
 
-  <div class="wrong-network__message">{{ data.message }}</div>
+  <h1 class="auc-wrong-network-title">{{ data.header }}</h1>
+
+  <div class="auc-wrong-network-message">{{ data.message }}</div>
 
   <ng-container [ngSwitch]="data.appearance">
     <ng-container *ngSwitchCase="'switch'">
-      <applicature-button [label]="data.switchLabel"
+      <auc-button [label]="data.switchLabel"
                           (onClick)="onSwitchNetworkClick()"
                           [adaptive]="true"
-                          class="wrong-network__action switch-network-btn"
+                          class="auc-wrong-network-action auc-switch-network-btn"
       >
-      </applicature-button>
+      </auc-button>
     </ng-container>
 
     <ng-container *ngSwitchCase="'disconnect'">
-      <applicature-button label="Disconnect"
-                          color="red"
-                          class="wrong-network__action disconnect-btn"
+      <auc-button label="Disconnect"
+                          [color]="disconnectBtnColor"
                           [adaptive]="true"
                           (onClick)="onDisconnectClick()"
+                          class="auc-wrong-network-action auc-disconnect-btn"
       >
-      </applicature-button>
+      </auc-button>
     </ng-container>
   </ng-container>
 </div>

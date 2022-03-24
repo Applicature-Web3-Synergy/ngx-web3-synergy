@@ -1,16 +1,16 @@
 <div class="text-wrapper"><p>{{config.data.message}}</p></div>
 
 <div class="actions">
-  <applicature-button (onClick)="onClose('cancel')"
+  <auc-button (onClick)="onClose('cancel')"
                       label="Cancel"
-                      color="red"
+                      [color]="COLORS.RED"
                       [adaptive]="true"
   >
-  </applicature-button>
+  </auc-button>
 
-  <applicature-button (onClick)="onClose('ok')"
+  <auc-button (onClick)="onClose('ok')"
                       label="Ok"
                       [adaptive]="true"
   >
-  </applicature-button>
+  </auc-button>
 </div>

@@ -1,9 +1,9 @@
-import { WrongNetworkAppearance } from '../types';
+import { AucWrongNetworkAppearance } from '../types';
 
-export interface WrongNetworkModalData {
+export interface AucWrongNetworkModalData {
   header: string;
   message: string;
   chainId: string;
   switchLabel: string;
-  appearance: WrongNetworkAppearance;
+  appearance: AucWrongNetworkAppearance;
 }

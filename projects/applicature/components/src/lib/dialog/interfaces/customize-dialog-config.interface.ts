@@ -1,0 +1,13 @@
+import { AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS } from '../enums';
+import { AucDialogPosition } from '../types';
+
+export interface AucCustomizeDialogConfig {
+  [AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.WIDTH]?: string;
+  [AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.HEIGHT]?: string;
+  [AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.MIN_WIDTH]?: string;
+  [AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.MIN_HEIGHT]?: string;
+  [AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.MAX_WIDTH]?: string;
+  [AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.MAX_HEIGHT]?: string;
+  [AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.CLASSES]?: string | string[];
+  [AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.POSITION]?: AucDialogPosition;
+}

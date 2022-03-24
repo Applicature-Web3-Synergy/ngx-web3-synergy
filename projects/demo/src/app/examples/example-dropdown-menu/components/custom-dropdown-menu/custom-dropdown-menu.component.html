@@ -1,11 +1,11 @@
-<applicature-button (onShowHide)="showCustomDropdownMenu($event)"
+<auc-button (onShowHide)="showCustomDropdownMenu($event)"
                     label="Custom Dropdown Menu"
-                    applicatureTrigger
-                    #customMenuTrigger="applicatureTrigger"
+                    aucTrigger
+                    #customMenuTrigger="aucTrigger"
 >
-</applicature-button>
+</auc-button>
 
-<applicature-dropdown-menu *ngIf="isOpenedCustomDropdownMenu"
+<auc-dropdown-menu *ngIf="isOpenedCustomDropdownMenu"
                            [config]="customDropdownConfig"
                            [trigger]="customMenuTrigger"
 >
@@ -30,4 +30,4 @@
     <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 18</div>
     <div class="custom-dropdown-item" (click)="showCustomDropdownMenu(false)">Dropdown item 19</div>
   </div>
-</applicature-dropdown-menu>
+</auc-dropdown-menu>
