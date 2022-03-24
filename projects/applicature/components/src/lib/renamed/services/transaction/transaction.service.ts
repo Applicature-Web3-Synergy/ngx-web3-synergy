@@ -3,21 +3,21 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AUC_TRANSACTION_STATUS } from '../renamed/enums';
-import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../renamed/helpers/network';
+import { AUC_TRANSACTION_STATUS } from '../../enums';
+import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../../helpers';
 import {
   AucEthereum,
   AucEtherscanTransactionLocalStorage,
   AucEtherscanTransactionResponse
-} from '../renamed/interfaces';
-import { AucWalletConnectService } from './wallet-connect';
+} from '../../interfaces';
+import { AucWalletConnectService } from '../wallet-connect';
 
 
-const APPLICATURE_ETHERSCAN_TRANSACTIONS = 'APPLICATURE_ETHERSCAN_TRANSACTIONS';
-const APPLICATURE_ETHERSCAN_INTERVAL = 10000;
+const AUC_ETHERSCAN_TRANSACTIONS = 'AUC_ETHERSCAN_TRANSACTIONS';
+const AUC_ETHERSCAN_INTERVAL = 10000;
 
 @Injectable()
-export class TransactionService {
+export class AucTransactionService {
   private _transactionsChanged$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   private _transactions: AucEtherscanTransactionLocalStorage[] = [];
   private _dispose: Subscription;
@@ -28,7 +28,7 @@ export class TransactionService {
 
   constructor(
     private _http: HttpClient,
-    private _walletConnectService: AucWalletConnectService,
+    private _walletConnectService: AucWalletConnectService
   ) {
   }
 
@@ -39,7 +39,7 @@ export class TransactionService {
 
     this._refreshTransactions();
 
-    this._dispose = timer(0, APPLICATURE_ETHERSCAN_INTERVAL)
+    this._dispose = timer(0, AUC_ETHERSCAN_INTERVAL)
       .subscribe(() => this._pingTransactionsStatus());
   }
 
@@ -92,6 +92,9 @@ export class TransactionService {
     this._refreshTransactions();
   }
 
+  /**
+   * @deprecated - Deprecated method, will be removed soon;
+   */
   public getRemoteTransactions(address: string, chainId: string): Observable<AucEtherscanTransactionResponse> {
     const etherscanSubdomain = chainId === MAINNET_CHAIN_ID ? 'api' : `api-${CHAIN_ID_TO_TYPE_MAP[chainId]}`;
     const etherscanUrl = `https://${etherscanSubdomain}.etherscan.io`;
@@ -143,7 +146,7 @@ export class TransactionService {
   private _getLocalStorageKey(): string {
     const { chainId, selectedAddress } = (window as any).ethereum as AucEthereum;
 
-    return `${APPLICATURE_ETHERSCAN_TRANSACTIONS}[${selectedAddress}, ${chainId}]`.toUpperCase();
+    return `${AUC_ETHERSCAN_TRANSACTIONS}[${selectedAddress}, ${chainId}]`.toUpperCase();
   }
 
   private _refreshTransactions(): void {

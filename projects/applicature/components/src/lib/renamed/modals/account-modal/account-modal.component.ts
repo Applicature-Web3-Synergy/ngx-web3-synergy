@@ -4,10 +4,9 @@ import { filter, map } from 'rxjs/operators';
 
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../../helpers';
 import { AucNetworkOption, AucEtherscanTransactionLocalStorage } from '../../interfaces';
-import { TransactionService } from '../../../services/transaction.service';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { AucConnectionState, AucWalletConnectService } from '../../../services';
+import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '../../services';
 
 
 @Component({
@@ -30,7 +29,7 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
     private _dialogRef: AucDialogRef,
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: AucWalletConnectService,
-    private _transactionService: TransactionService
+    private _transactionService: AucTransactionService
   ) {
     this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;

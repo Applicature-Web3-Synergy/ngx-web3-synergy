@@ -3,8 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { aucNormalizeBalance, aucToBN } from '../../helpers';
-import { TransactionService } from '../../../services/transaction.service';
-import { AucConnectionState, AucWalletConnectService } from '../../../services';
+import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '../../services';
 import { AUC_TRANSFER_STEPS } from './enums';
 import { AucTransferModalData } from './interfaces';
 import { AucTransactionStep } from './types';
@@ -35,7 +34,7 @@ export class AucTransferModalComponent implements OnInit, OnDestroy {
     private _dialogRef: AucDialogRef,
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: AucWalletConnectService,
-    private _transactionService: TransactionService,
+    private _transactionService: AucTransactionService,
   ) {
     this.data = this._config.data;
   }

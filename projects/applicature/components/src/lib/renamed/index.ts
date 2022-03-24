@@ -20,6 +20,7 @@ export * from './overlay';
 export * from './pipes';
 export * from './progress-bar';
 export * from './ripple';
+export * from './services';
 export * from './spinner';
 export * from './table';
 export * from './transactions-history';

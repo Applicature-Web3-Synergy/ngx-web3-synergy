@@ -7,7 +7,7 @@ import { AUC_TRANSACTION_STATUS } from '../enums';
 import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } from '../modals';
 import { AucDialogService } from '../dialog';
 import { AUC_BUTTON_APPEARANCE } from '../button';
-import { TransactionService } from '../../services/transaction.service';
+import { AucTransactionService } from '../services';
 
 
 @Component({
@@ -36,7 +36,7 @@ export class AucTransactionsHistoryComponent implements OnInit {
   constructor(
     private _dialogService: AucDialogService,
     private _cdr: ChangeDetectorRef,
-    private _transactionService: TransactionService
+    private _transactionService: AucTransactionService
   ) {
   }
 

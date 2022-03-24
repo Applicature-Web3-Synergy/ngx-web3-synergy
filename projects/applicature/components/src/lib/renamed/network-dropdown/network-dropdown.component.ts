@@ -6,7 +6,7 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 import { AucNetworkOption } from '../interfaces';
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
-import { AucWalletConnectService } from '../../services';
+import { AucWalletConnectService } from '../services';
 import { AucDialogService } from '../dialog';
 import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no-network-config';
 

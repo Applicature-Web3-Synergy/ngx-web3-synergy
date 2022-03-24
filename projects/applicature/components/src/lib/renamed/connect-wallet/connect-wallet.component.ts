@@ -17,8 +17,7 @@ import { AucAccountData, AucAccountOption } from '../account-button';
 import { AUC_POSITIONS, AUC_TRANSACTION_STATUS } from '../enums';
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
-import { TransactionService } from '../../services/transaction.service';
-import { AucConnectionState, AucWalletConnectService } from '../../services';
+import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '../services';
 import { AucDialogService } from '../dialog';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { AUC_BALANCE_APPEARANCE } from '../account-balance';
@@ -170,7 +169,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     private _dialogService: AucDialogService,
     private _cdr: ChangeDetectorRef,
     private _elementRef: ElementRef<HTMLElement>,
-    private _transactionService: TransactionService,
+    private _transactionService: AucTransactionService,
     private _walletConnectService: AucWalletConnectService,
   ) {
     this._sub.add(

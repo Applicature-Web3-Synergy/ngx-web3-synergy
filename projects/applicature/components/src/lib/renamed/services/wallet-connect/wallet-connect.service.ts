@@ -5,7 +5,7 @@ import Web3 from 'web3';
 import Onboard from 'bnc-onboard';
 import { API, Initialization, Subscriptions, Wallet } from 'bnc-onboard/dist/src/interfaces';
 
-import { AUC_ETH_EVENTS, AUC_ETH_METHODS, AUC_METAMASK_CODES } from '../../renamed/enums';
+import { AUC_ETH_EVENTS, AUC_ETH_METHODS, AUC_METAMASK_CODES } from '../../enums';
 import {
   AucEthChainParams,
   AucNetworkOption,
@@ -13,11 +13,11 @@ import {
   AucEthereum,
   AucProviderMessage,
   AucProviderRpcError
-} from '../../renamed/interfaces';
+} from '../../interfaces';
 import { AucConnectionState } from './interfaces';
-import { aucConvertChainIdToHex, aucGetChainParams } from '../../renamed/helpers';
+import { aucConvertChainIdToHex, aucGetChainParams } from '../../helpers';
 
-const APPLICATURE_CONNECTED_WALLET_NAME = 'APPLICATURE_CONNECTED_WALLET_NAME';
+const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
 
 @Injectable()
@@ -244,7 +244,7 @@ export class AucWalletConnectService {
         hideBranding: true,
       });
 
-      const previouslySelectedWallet = localStorage.getItem(APPLICATURE_CONNECTED_WALLET_NAME);
+      const previouslySelectedWallet = localStorage.getItem(AUC_CONNECTED_WALLET_NAME);
 
       if (previouslySelectedWallet !== null) {
         this._onboard.walletSelect(previouslySelectedWallet)
@@ -290,7 +290,7 @@ export class AucWalletConnectService {
     return of(this._onboard ? this._onboard.walletReset() : null)
       .pipe(
         tap(() => {
-          localStorage.removeItem(APPLICATURE_CONNECTED_WALLET_NAME);
+          localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
         })
       )
   }
@@ -379,7 +379,7 @@ export class AucWalletConnectService {
       if (!provider?.selectedAddress || !selectedWallet?.name) {
         this._web3 = new Web3();
       } else {
-        localStorage.setItem(APPLICATURE_CONNECTED_WALLET_NAME, selectedWallet.name);
+        localStorage.setItem(AUC_CONNECTED_WALLET_NAME, selectedWallet.name);
 
         this._web3 = new Web3(selectedWallet.provider);
       }

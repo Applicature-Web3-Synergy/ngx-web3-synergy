@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
-import { AucWalletConnectService } from '../../../services';
+import { AucWalletConnectService } from '../../services';
 import { AucWrongNetworkModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
 

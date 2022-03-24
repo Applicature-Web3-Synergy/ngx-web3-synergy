@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
-import { AucWalletConnectService } from '../../services';
+import { AucWalletConnectService } from '../services';
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 import { AucAccountData, AucAccountOption } from './interfaces';
 
