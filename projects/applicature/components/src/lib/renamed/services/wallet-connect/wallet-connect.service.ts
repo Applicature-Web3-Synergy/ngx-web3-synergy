@@ -214,6 +214,8 @@ export class AucWalletConnectService {
   }
 
   /**
+   * This library uses {@link Onboard} for initialization wallet connection.
+   * More information about config {@link https://www.npmjs.com/package/bnc-onboard}.
    * @param config - Initialization Config for wallet connection.
    * @param supportedNetworks - List of the supported networks.
    */

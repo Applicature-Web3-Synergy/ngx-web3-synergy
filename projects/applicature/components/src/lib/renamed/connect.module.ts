@@ -1,22 +1,13 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-
-import { AucAccountButtonModule } from './account-button';
-import { AucConnectWalletModule } from './connect-wallet';
-import { ModalsModule } from './modals';
-import { AucNetworkDropdownModule } from './network-dropdown';
-import { AucWalletConnectService, AucTransactionService } from './services';
-import { AucTransactionsHistoryModule } from './transactions-history';
 import { HttpClientModule } from '@angular/common/http';
+
+import { AucWalletConnectService, AucTransactionService } from './services';
 
 
 const modules = [
-  HttpClientModule,
-  AucConnectWalletModule,
-  AucNetworkDropdownModule,
-  AucAccountButtonModule,
-  AucTransactionsHistoryModule,
-  ModalsModule
+  HttpClientModule
 ];
+
 
 @NgModule({
   imports: [

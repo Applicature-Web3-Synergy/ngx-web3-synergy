@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable } from 'rxjs';
 
-
 import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces';
 import {
   AucAlertModule,
@@ -17,7 +16,9 @@ import {
   AucNetworkOption,
   AUC_CHAIN_ID,
   aucGetChainParams,
-  AucBlockExplorerUrls
+  AucBlockExplorerUrls,
+  AucConnectWalletModule,
+  AucNativeCurrencies
 } from '@applicature/components';
 
 import { AppComponent } from './app.component';
@@ -25,7 +26,6 @@ import { ExampleDialogsModule } from './examples/example-dialogs/example-dialogs
 import { ExampleTableModule } from './examples/example-table/example-table.module';
 import { ExampleDropdownMenuModule } from './examples/example-dropdown-menu/example-dropdown-menu.module';
 import { ExampleAccountBalanceModule } from './examples/example-account-balance/example-account-balance.module';
-import { AucNativeCurrencies } from '../../../applicature/components/src/lib/renamed/constants';
 
 const wallets: Array<WalletModule | WalletInitOptions> = [
   {
@@ -111,7 +111,8 @@ export function initWalletServiceFactory(
     ExampleTableModule,
     AucDropdownMenuModule,
     ExampleDropdownMenuModule,
-    ExampleAccountBalanceModule
+    ExampleAccountBalanceModule,
+    AucConnectWalletModule
   ],
   providers: [
     {
