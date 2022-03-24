@@ -1,0 +1,61 @@
+@import "../../../../../styles/src/lib/scss/variables";
+@import "../../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.auc-wrong-network {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  font-family: $as-font-family;
+}
+
+.auc-wrong-network-header {
+  justify-content: flex-end;
+}
+
+.auc-wrong-network-fail {
+  margin-top: 23px;
+  font-size: 77px;
+  line-height: 61px;
+  color: getColor(red, base);
+}
+
+.auc-wrong-network-title {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1;
+  color: $black;
+  margin: 26px 0 0;
+}
+
+.auc-wrong-network-message {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: getColor(grey, base);
+  padding: 0 24px;
+  margin-top: 8px
+}
+
+.auc-wrong-network-fail,
+.auc-wrong-network-title{
+  align-self: center;
+}
+
+.auc-wrong-network-action {
+  margin-top: 16px;
+  align-self: center;
+
+  &.auc-switch-network-btn {
+    min-width: 170px;
+  }
+
+  &.auc-disconnect-btn {
+    min-width: 119px;
+  }
+}

@@ -1,0 +1,80 @@
+@import "../../../../styles/src/lib/scss/variables";
+@import "../../../../styles/src/lib/scss/mixins";
+
+:host {
+  display: inline-flex;
+}
+
+.auc-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 14px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  font-family: $as-font-family;
+  color: var(--auc-button-text);
+  border: 2px solid var(--auc-button-border);
+  border-radius: var(--auc-button-radius);
+  background: var(--auc-button-base);
+  @include transition;
+
+  &:hover {
+    background: var(--auc-button-hover);
+    border: 2px solid var(--auc-button-borderHover);
+  }
+
+  &:active:focus {
+    background: var(--auc-button-dark);
+    border: 2px solid var(--auc-button-borderFocus);
+  }
+
+  &.auc-button-disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  &.auc-button-icon {
+    padding: 10px 12px;
+  }
+
+  &.auc-button-adaptive {
+    width: 100%;
+  }
+
+  &.auc-button-transparent {
+    border: 2px solid transparent;
+    background: transparent;
+    @include transition;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid var(--auc-button-borderHover);
+    }
+
+    &:active:focus {
+      background: transparent;
+      border: 2px solid var(--auc-button-borderFocus);
+    }
+  }
+
+  auc-icon {
+    &:not(.auc-button-icon) {
+      &.auc-button-left-icon {
+        margin-right: 8px;
+      }
+
+      &.auc-button-right-icon {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .auc-button-spinner {
+    margin-left: 8px;
+  }
+}
