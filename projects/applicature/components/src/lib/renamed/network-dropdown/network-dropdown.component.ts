@@ -6,7 +6,7 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 import { AucNetworkOption } from '../interfaces';
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
-import { WalletConnectService } from '../../services';
+import { AucWalletConnectService } from '../../services';
 import { AucDialogService } from '../dialog';
 import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no-network-config';
 
@@ -60,7 +60,7 @@ export class AucNetworkDropdownComponent implements OnInit {
 
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: WalletConnectService,
+    private _walletConnectService: AucWalletConnectService,
     private _elementRef: ElementRef<HTMLElement>,
     private _dialogService: AucDialogService
   ) {}

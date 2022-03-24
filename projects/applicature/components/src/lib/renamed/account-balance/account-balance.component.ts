@@ -16,7 +16,7 @@ import { map } from 'rxjs/operators';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
 import { aucGenerateJazzicon, aucNormalizeBalance } from '../helpers';
-import { WalletConnectService } from '../../services';
+import { AucConnectionState, AucWalletConnectService } from '../../services';
 import { AucBalanceAppearance } from './types';
 import { AUC_BALANCE_APPEARANCE } from './enums';
 import { AucNetworkOption } from '../interfaces';
@@ -107,12 +107,12 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
 
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: WalletConnectService,
+    private _walletConnectService: AucWalletConnectService,
   ) {
     this.balance$ = this._walletConnectService.balanceChanged$
       .pipe(
         map((balance: string) => {
-          const connectionState = this._walletConnectService.connectionState;
+          const connectionState: AucConnectionState = this._walletConnectService.connectionState;
 
           return aucNormalizeBalance(connectionState?.state?.network, balance) ?? '0'
         })

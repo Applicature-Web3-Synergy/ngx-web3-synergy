@@ -7,7 +7,7 @@ import { AucNetworkOption, AucEtherscanTransactionLocalStorage } from '../../int
 import { TransactionService } from '../../../services/transaction.service';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { ConnectionState, WalletConnectService } from '../../../services';
+import { AucConnectionState, AucWalletConnectService } from '../../../services';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
     private _config: AucDialogConfig<AucAccountModalData>,
     private _dialogRef: AucDialogRef,
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: WalletConnectService,
+    private _walletConnectService: AucWalletConnectService,
     private _transactionService: TransactionService
   ) {
     this.data = this._config.data;
@@ -38,7 +38,7 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
     this.etherscanAddress$ = this._walletConnectService.selectedNetwork$
       .pipe(
         map((network: AucNetworkOption) => {
-          const connectionInfo: ConnectionState = this._walletConnectService.connectionState;
+          const connectionInfo: AucConnectionState = this._walletConnectService.connectionState;
 
           if (!network || !network.blockExplorerUrl || !connectionInfo?.state?.address) {
             return null;

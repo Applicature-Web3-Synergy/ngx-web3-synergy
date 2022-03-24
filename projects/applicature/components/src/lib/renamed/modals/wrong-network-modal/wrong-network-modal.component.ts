@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
-import { WalletConnectService } from '../../../services';
+import { AucWalletConnectService } from '../../../services';
 import { AucWrongNetworkModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
 
@@ -20,7 +20,7 @@ export class AucWrongNetworkModalComponent {
   constructor(
     private _config: AucDialogConfig<AucWrongNetworkModalData>,
     private _dialogRef: AucDialogRef,
-    private _walletConnectService: WalletConnectService
+    private _walletConnectService: AucWalletConnectService
   ) {
     this.data = this._config.data;
   }

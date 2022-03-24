@@ -18,7 +18,7 @@ import { AUC_POSITIONS, AUC_TRANSACTION_STATUS } from '../enums';
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
 import { TransactionService } from '../../services/transaction.service';
-import { ConnectionState, WalletConnectService } from '../../services';
+import { AucConnectionState, AucWalletConnectService } from '../../services';
 import { AucDialogService } from '../dialog';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { AUC_BALANCE_APPEARANCE } from '../account-balance';
@@ -145,7 +145,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
    * Emits an action when wallet was connected.
    */
   @Output()
-  public onConnect: EventEmitter<ConnectionState> = new EventEmitter<ConnectionState>();
+  public onConnect: EventEmitter<AucConnectionState> = new EventEmitter<AucConnectionState>();
 
   /**
    * {@link onDisconnect} - It's an `@Output()` parameter. <br>
@@ -171,7 +171,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     private _cdr: ChangeDetectorRef,
     private _elementRef: ElementRef<HTMLElement>,
     private _transactionService: TransactionService,
-    private _walletConnectService: WalletConnectService,
+    private _walletConnectService: AucWalletConnectService,
   ) {
     this._sub.add(
       this._walletConnectService.accountsChanged$
@@ -248,7 +248,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     }
 
     this._walletConnectService.connectWallet(isDisconnect)
-      .subscribe((connectionState: ConnectionState) => {
+      .subscribe((connectionState: AucConnectionState) => {
         this.onConnect.emit(connectionState);
       })
   }

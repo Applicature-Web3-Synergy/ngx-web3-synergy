@@ -8,9 +8,9 @@ import {
   AUC_POSITIONS,
   AucAccountOption,
   AucDropdownConfig,
-  ConnectionState,
+  AucConnectionState,
   aucGenerateJazzicon,
-  WalletConnectService
+  AucWalletConnectService
 } from '@applicature/components';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
-    private _walletConnectService: WalletConnectService,
+    private _walletConnectService: AucWalletConnectService,
     private _cdr: ChangeDetectorRef
   ) {
   }
@@ -100,7 +100,7 @@ export class AppComponent implements OnInit {
 
   public customBtnConnect(): void {
     this._walletConnectService.connectWallet()
-      .subscribe((connectionstate: ConnectionState) => {
+      .subscribe((connectionstate: AucConnectionState) => {
         console.log('Custom connect connectionState: ', connectionstate);
       })
   }

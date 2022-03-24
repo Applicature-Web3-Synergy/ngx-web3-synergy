@@ -13,7 +13,11 @@ import {
   AucButtonModule,
   AucInputModule,
   WalletConnectModule,
-  WalletConnectService, AucNetworkOption, AUC_CHAIN_ID, aucGetChainParams, AucBlockExplorerUrls
+  AucWalletConnectService,
+  AucNetworkOption,
+  AUC_CHAIN_ID,
+  aucGetChainParams,
+  AucBlockExplorerUrls
 } from '@applicature/components';
 
 import { AppComponent } from './app.component';
@@ -82,7 +86,7 @@ const supportedNetworks: AucNetworkOption[] = [
 ];
 
 export function initWalletServiceFactory(
-  walletConnectService: WalletConnectService
+  walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
     networkId: networks.kovanTestnet,
@@ -113,7 +117,7 @@ export function initWalletServiceFactory(
     {
       provide: APP_INITIALIZER,
       useFactory: initWalletServiceFactory,
-      deps: [ WalletConnectService ],
+      deps: [ AucWalletConnectService ],
       multi: true
     }
   ],

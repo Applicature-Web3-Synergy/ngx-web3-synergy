@@ -5,8 +5,12 @@ import { map } from 'rxjs/operators';
 
 import { AUC_TRANSACTION_STATUS } from '../renamed/enums';
 import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../renamed/helpers/network';
-import { AucEthereum, AucEtherscanTransactionLocalStorage, AucEtherscanTransactionResponse } from '../renamed/interfaces';
-import { WalletConnectService } from './wallet-connect';
+import {
+  AucEthereum,
+  AucEtherscanTransactionLocalStorage,
+  AucEtherscanTransactionResponse
+} from '../renamed/interfaces';
+import { AucWalletConnectService } from './wallet-connect';
 
 
 const APPLICATURE_ETHERSCAN_TRANSACTIONS = 'APPLICATURE_ETHERSCAN_TRANSACTIONS';
@@ -24,7 +28,7 @@ export class TransactionService {
 
   constructor(
     private _http: HttpClient,
-    private _walletConnectService: WalletConnectService,
+    private _walletConnectService: AucWalletConnectService,
   ) {
   }
 
