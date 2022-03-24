@@ -16,7 +16,7 @@ import { map } from 'rxjs/operators';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
 import { aucGenerateJazzicon, aucNormalizeBalance } from '../helpers';
-import { AucConnectionState, AucWalletConnectService } from '../../services';
+import { AucConnectionState, AucWalletConnectService } from '../services';
 import { AucBalanceAppearance } from './types';
 import { AUC_BALANCE_APPEARANCE } from './enums';
 import { AucNetworkOption } from '../interfaces';

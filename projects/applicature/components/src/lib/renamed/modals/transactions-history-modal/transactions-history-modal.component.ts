@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AucEtherscanTransactionLocalStorage } from '../../interfaces';
-import { TransactionService } from '../../../services/transaction.service';
+import { AucTransactionService } from '../../services';
 import { AucRecentTransactionsModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
 
@@ -20,7 +20,7 @@ export class AucTransactionsHistoryModalComponent implements OnDestroy {
   constructor(
     private _config: AucDialogConfig<AucRecentTransactionsModalData>,
     private _dialogRef: AucDialogRef,
-    private _transactionService: TransactionService
+    private _transactionService: AucTransactionService
   ) {
     this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;

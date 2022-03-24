@@ -4,8 +4,7 @@ import { AucAccountButtonModule } from './renamed/account-button';
 import { AucConnectWalletModule } from './renamed/connect-wallet';
 import { ModalsModule } from './renamed/modals';
 import { AucNetworkDropdownModule } from './renamed/network-dropdown';
-import { TransactionService } from './services/transaction.service';
-import { AucWalletConnectService } from './services';
+import { AucWalletConnectService, AucTransactionService } from './renamed/services';
 import { AucTransactionsHistoryModule } from './renamed/transactions-history';
 
 
@@ -36,7 +35,7 @@ export class WalletConnectModule {
     return {
       ngModule: WalletConnectModule,
       providers: [
-        TransactionService,
+        AucTransactionService,
         AucWalletConnectService
       ]
     };
