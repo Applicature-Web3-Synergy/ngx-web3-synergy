@@ -1,0 +1,25 @@
+@import "../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: inline-block;
+}
+
+.auc-avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  background: getColor(grey, hover);
+
+  .auc-avatar-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  .auc-avatar-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: var(--auc-avatar-icon-size);
+  }
+}

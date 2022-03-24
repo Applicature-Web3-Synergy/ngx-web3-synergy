@@ -1,0 +1,131 @@
+@import "../../../../styles/src/lib/scss/variables";
+@import "../../../../styles/src/lib/scss/mixins";
+@import "../../../../styles/src/lib/scss/functions";
+
+:host {
+  display: inline-block;
+}
+
+.auc-account-button {
+  cursor: pointer;
+}
+
+.auc-account-button-options {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: $as-font-family;
+  min-width: 250px;
+  padding: 8px 0;
+  background: getColor(white, base);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(56, 64, 75, 0.1);
+  list-style-type: none;
+}
+
+.auc-account-button-header {
+  display: inline-block;
+  padding: 0 12px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: getColor(grey, base);
+}
+
+.auc-account-button-user-info {
+  display: flex;
+  align-items: center;
+  font-family: $as-font-family;
+}
+
+.auc-account-button-user-info-avatar {
+  margin-right: 12px;
+}
+
+.auc-account-button-user-info-name {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+
+  > h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: $black;
+  }
+
+  > span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: getColor(grey, base);
+  }
+}
+
+.auc-account-button-user-info-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  @include transition;
+
+  &:hover {
+    background: getColor(grey, background);
+
+    &:before {
+      color: getColor(grey, base);
+    }
+  }
+
+  &:before {
+    font-size: 18px;
+    color: getColor(grey, hover);
+  }
+}
+
+.auc-account-button-options-item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 8px 12px;
+  @include transition;
+
+  &:hover {
+    cursor: pointer;
+    background: getColor(grey, background);
+  }
+
+  &.auc-options-item-disabled {
+    cursor: default;
+    opacity: .5;
+    pointer-events: none;
+  }
+}
+
+.auc-account-button-options-name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: $black;
+}
+
+.auc-account-button-options-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+}
+
+.auc-account-button-options-button {
+  margin-bottom: 8px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
