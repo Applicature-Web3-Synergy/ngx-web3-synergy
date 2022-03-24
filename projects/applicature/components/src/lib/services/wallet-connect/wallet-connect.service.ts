@@ -15,7 +15,7 @@ import {
   AucProviderRpcError
 } from '../../renamed/interfaces';
 import { ConnectionState } from './interfaces';
-import { aucConvertChainIdToHex, aucGetChainParams } from '../../helpers';
+import { aucConvertChainIdToHex, aucGetChainParams } from '../../renamed/helpers';
 
 const APPLICATURE_CONNECTED_WALLET_NAME = 'APPLICATURE_CONNECTED_WALLET_NAME';
 

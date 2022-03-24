@@ -15,7 +15,7 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 
 import { AucAccountData, AucAccountOption } from '../account-button';
 import { AUC_POSITIONS, AUC_TRANSACTION_STATUS } from '../enums';
-import { AUC_VALUE_TYPES, aucCheckValueType, generateJazzicon } from '../../helpers';
+import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
 import { TransactionService } from '../../services/transaction.service';
 import { ConnectionState, WalletConnectService } from '../../services';
@@ -180,7 +180,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
           this.isConnected = Boolean(this.accountAddress);
 
           if (this.isConnected) {
-            this.identicon = generateJazzicon(this.accountAddress);
+            this.identicon = aucGenerateJazzicon(this.accountAddress);
           }
 
           this._cdr.markForCheck();

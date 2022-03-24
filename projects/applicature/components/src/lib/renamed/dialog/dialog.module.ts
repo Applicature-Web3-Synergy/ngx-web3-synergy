@@ -5,7 +5,7 @@ import { AucDialogComponent } from './dialog.component';
 import { AucCustomizeDialogDirective, AucInsertionDirective } from './directives';
 import { AucDialogService } from './services';
 import { AucOverlayModule } from '../overlay';
-import { AucBlockScrollHelperService } from '../../helpers';
+import { AucBlockScrollHelperService } from '../helpers';
 
 
 @NgModule({

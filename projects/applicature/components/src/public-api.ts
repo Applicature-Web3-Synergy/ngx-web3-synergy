@@ -7,5 +7,3 @@ export * from './lib/services';
 
 export * from './lib/wallet-connect.module';
 
-export * from './lib/helpers';
-
