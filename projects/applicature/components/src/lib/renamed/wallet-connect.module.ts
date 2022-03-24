@@ -6,9 +6,11 @@ import { ModalsModule } from './modals';
 import { AucNetworkDropdownModule } from './network-dropdown';
 import { AucWalletConnectService, AucTransactionService } from './services';
 import { AucTransactionsHistoryModule } from './transactions-history';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const modules = [
+  HttpClientModule,
   AucConnectWalletModule,
   AucNetworkDropdownModule,
   AucAccountButtonModule,
