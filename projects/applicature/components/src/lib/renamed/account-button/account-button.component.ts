@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
-import { WalletConnectService } from '../../services';
+import { AucWalletConnectService } from '../../services';
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 import { AucAccountData, AucAccountOption } from './interfaces';
 
@@ -88,7 +88,7 @@ export class AucAccountButtonComponent implements OnInit {
 
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: WalletConnectService,
+    private _walletConnectService: AucWalletConnectService,
     private _elementRef: ElementRef<HTMLElement>,
   ) {
   }

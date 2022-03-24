@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { aucNormalizeBalance, aucToBN } from '../../helpers';
 import { TransactionService } from '../../../services/transaction.service';
-import { WalletConnectService } from '../../../services';
+import { AucConnectionState, AucWalletConnectService } from '../../../services';
 import { AUC_TRANSFER_STEPS } from './enums';
 import { AucTransferModalData } from './interfaces';
 import { AucTransactionStep } from './types';
@@ -34,14 +34,14 @@ export class AucTransferModalComponent implements OnInit, OnDestroy {
     private _config: AucDialogConfig<AucTransferModalData>,
     private _dialogRef: AucDialogRef,
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: WalletConnectService,
+    private _walletConnectService: AucWalletConnectService,
     private _transactionService: TransactionService,
   ) {
     this.data = this._config.data;
   }
 
   public ngOnInit(): void {
-    const connectionState = this._walletConnectService.connectionState;
+    const connectionState: AucConnectionState = this._walletConnectService.connectionState;
     this.currentAllowance = aucNormalizeBalance(connectionState?.state?.network, this.data.allowance);
 
     this.amountControl.valueChanges

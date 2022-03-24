@@ -14,23 +14,36 @@ import {
   AucProviderMessage,
   AucProviderRpcError
 } from '../../renamed/interfaces';
-import { ConnectionState } from './interfaces';
+import { AucConnectionState } from './interfaces';
 import { aucConvertChainIdToHex, aucGetChainParams } from '../../renamed/helpers';
 
 const APPLICATURE_CONNECTED_WALLET_NAME = 'APPLICATURE_CONNECTED_WALLET_NAME';
 
 
 @Injectable()
-export class WalletConnectService {
+export class AucWalletConnectService {
+  /**
+   * {@link web3} It's getter.
+   * @returns current {@link Web3} instance.
+   */
   public get web3(): Web3 {
     return this._web3;
   }
 
+  /**
+   * {@link onboard} It's getter. <br>
+   * This library uses {@link Onboard} for connecting wallet.
+   * @returns current {@link Onboard} instance.
+   */
   public get onboard(): API {
     return this._onboard;
   };
 
-  public get connectionState(): ConnectionState {
+  /**
+   * {@link connectionState} It's getter.
+   * @returns current connection state.
+   */
+  public get connectionState(): AucConnectionState {
     if (!this._onboard) {
       return { connected: false };
     }
@@ -43,37 +56,72 @@ export class WalletConnectService {
     }
   }
 
+  /**
+   * {@link accountsChanged$} It's getter. <br>
+   * Emits when account was changed. <br>
+   * You can subscribe on it.
+   */
   public get accountsChanged$(): Observable<string[]> {
     return this._accountsChanged$.asObservable();
   }
 
+  /**
+   * {@link chainChanged$} It's getter. <br>
+   * Emits when chain was changed. <br>
+   * You can subscribe on it.
+   */
   public get chainChanged$(): Observable<string | null> {
     return this._chainChanged$.asObservable();
   }
 
+  /**
+   * {@link connectChanged$} It's getter. <br>
+   * Emits when connect event. Emits from Metamask {@link AUC_ETH_EVENTS.CONNECT} event. <br>
+   * You can subscribe on it.
+   */
   public get connectChanged$(): Observable<AucConnectInfo> {
     return this._connectChanged$.asObservable();
   }
 
+  /**
+   * {@link disconnectChanged$} It's getter. <br>
+   * Emits when disconnect event. Emits from Metamask {@link AUC_ETH_EVENTS.DISCONNECT} event. <br>
+   * You can subscribe on it.
+   */
   public get disconnectChanged$(): Observable<AucProviderRpcError> {
     return this._disconnectChanged$.asObservable();
   }
 
+  /**
+   * {@link messageChanged$} It's getter. <br>
+   * Emits when message events. Emits from Metamask {@link AUC_ETH_EVENTS.MESSAGE} event. <br>
+   * You can subscribe on it.
+   */
   public get messageChanged$(): Observable<AucProviderMessage> {
     return this._messageChanged$.asObservable();
   }
 
+  /**
+   * {@link networkChanged$} It's getter. <br>
+   * Emits when network was changed. <br>
+   * You can subscribe on it.
+   */
   public get networkChanged$(): Observable<number | null> {
     return this._networkChanged$.asObservable();
   }
 
+  /**
+   * {@link balanceChanged$} It's getter. <br>
+   * Emits when balance was changed. <br>
+   * You can subscribe on it.
+   */
   public get balanceChanged$(): Observable<string | null> {
     return this._balanceChanged$.asObservable();
   }
 
   /**
-   * {@link selectedNetwork$} It's getter.
-   * Emits when selected network.
+   * {@link selectedNetwork$} It's getter. <br>
+   * Emits when selected network. <br>
    * You can subscribe on it.
    */
   public get selectedNetwork$(): Observable<AucNetworkOption> {
@@ -81,8 +129,8 @@ export class WalletConnectService {
   }
 
   /**
-   * {@link supportedNetworks} It's getter.
-   * Supported networks list.
+   * {@link supportedNetworks} It's getter. <br>
+   * @returns Supported networks list.
    */
   public get supportedNetworks(): AucNetworkOption[] {
     if (!this._supportedNetworks || !this._supportedNetworks.length)  {
@@ -93,8 +141,8 @@ export class WalletConnectService {
   }
 
   /**
-   * {@link supportedNetworks} It's setter.
-   * Sets supported networks list.
+   * {@link supportedNetworks} It's setter. <br>
+   * Sets supported networks list. <br>
    * You can set it in initialize method or set it later;
    */
   public set supportedNetworks(options: AucNetworkOption[]) {
@@ -103,8 +151,8 @@ export class WalletConnectService {
   }
 
   /**
-   * {@link cantFindAddingNetwork$} It's getter.
-   * Emits when adding new network and config doesn't exist.
+   * {@link cantFindAddingNetwork$} It's getter. <br>
+   * Emits when adding new network and config doesn't exist. <br>
    * You can subscribe on it and show some message to user.
    */
   public get cantFindAddingNetwork$(): Observable<void> {
@@ -112,7 +160,7 @@ export class WalletConnectService {
   }
 
   /**
-   * {@link chainId} Sets selected chainId and selected network.
+   * {@link chainId} - Sets selected chainId and selected network.
    * @param chainId - 0x-prefixed hexadecimal string.
    */
   private set chainId(chainId: string) {
@@ -121,7 +169,7 @@ export class WalletConnectService {
   }
 
   /**
-   * {@link selectedNetwork} Sets selected network by chainId
+   * {@link selectedNetwork} Sets selected network by chainId.
    * @param chainId - 0x-prefixed hexadecimal string.
    */
   private set selectedNetwork(chainId: string) {
@@ -166,7 +214,6 @@ export class WalletConnectService {
   }
 
   /**
-   *
    * @param config - Initialization Config for wallet connection.
    * @param supportedNetworks - List of the supported networks.
    */
@@ -214,7 +261,7 @@ export class WalletConnectService {
     });
   }
 
-  public connectWallet(isDisconnect: boolean = false): Observable<ConnectionState> {
+  public connectWallet(isDisconnect: boolean = false): Observable<AucConnectionState> {
     if (!this._onboard) {
       return of({ connected: false })
         .pipe(
@@ -249,15 +296,15 @@ export class WalletConnectService {
   }
 
   /**
-   * This method is used for switching Metamask network by {@link chainId}.
-   * If Metamask doesn't have this {@link chainId} it can be added by parameter {@link chainParams}.
+   * This method is used for switching Metamask network by {@link chainId}. <br>
+   * If Metamask doesn't have this {@link chainId} it can be added by parameter {@link chainParams}. <br>
    *
-   * @param chainId - 0x-prefixed hexadecimal string.
+   * @param chainId - 0x-prefixed hexadecimal string. <br>
    * If you don't have chainId, you can use helper {@link aucConvertChainIdToHex} to generate it.
    *
-   * @param chainParams - An optional parameter.
-   * Uses for adding new network to Metamask if it doesn't include network by {@link chainId}.
-   * This Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}.
+   * @param chainParams - An optional parameter. <br>
+   * Uses for adding new network to Metamask if it doesn't include network by {@link chainId}. <br>
+   * This Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}. <br>
    * You can use your own specific params.
    */
   public switchEthereumChain(chainId: string, chainParams?: AucEthChainParams): Observable<boolean> {
@@ -355,8 +402,7 @@ export class WalletConnectService {
 
     eth.on(AUC_ETH_EVENTS.CHAIN_CHANGED, (chainId: string) => {
       /**
-       *
-       *  It's recommended to reload the page on chain changes, unless you have good reason not to.
+       *  It's recommended to reload the page on chain changes, unless you have good reason not to. <br>
        *  You can use window.location.reload()
        */
       this.chainId = chainId;
