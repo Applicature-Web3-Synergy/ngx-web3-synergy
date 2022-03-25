@@ -1,5 +1,7 @@
-<div #alertRef [ngClass]="classNames">
-  <span *ngIf="icon" class="alert__icon {{ icon }}"></span>
+<div [ngClass]="classNames"
+     [aucSetStyleProps]="styleProperties"
+>
+  <span *ngIf="icon" class="auc-alert-icon {{ icon }}"></span>
 
-  <span class="alert__text">{{ text }}</span>
+  <span class="auc-alert-text">{{ text }}</span>
 </div>

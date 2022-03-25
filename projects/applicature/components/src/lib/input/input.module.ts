@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { InputComponent } from './input.component';
+
 import { DigitOnlyModule } from '@uiowa/digit-only';
+
+import { AucInputComponent } from './input.component';
+
 
 @NgModule({
   declarations: [
-    InputComponent,
+    AucInputComponent,
   ],
   exports: [
-    InputComponent,
+    AucInputComponent,
   ],
   imports: [
     CommonModule,
@@ -17,5 +20,5 @@ import { DigitOnlyModule } from '@uiowa/digit-only';
     DigitOnlyModule,
   ]
 })
-export class InputModule {
+export class AucInputModule {
 }

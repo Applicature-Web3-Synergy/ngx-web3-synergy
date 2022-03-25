@@ -3,51 +3,59 @@
 
 :host {
   display: block;
+  width: 100%;
 }
 
-:host {
-  display: block;
-  max-width: 372px;
-}
-
-.wrong-network {
+.auc-wrong-network {
   display: flex;
   flex-direction: column;
-  padding-bottom: 36px;
-  font-family: $applicature-font-family;
+  padding-bottom: 40px;
+  font-family: $as-font-family;
+}
 
-  & &__close {
-    cursor: pointer;
-    align-self: flex-end;
+.auc-wrong-network-header {
+  justify-content: flex-end;
+}
+
+.auc-wrong-network-fail {
+  margin-top: 23px;
+  font-size: 77px;
+  line-height: 61px;
+  color: getColor(red, base);
+}
+
+.auc-wrong-network-title {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1;
+  color: $black;
+  margin: 26px 0 0;
+}
+
+.auc-wrong-network-message {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: getColor(grey, base);
+  padding: 0 24px;
+  margin-top: 8px
+}
+
+.auc-wrong-network-fail,
+.auc-wrong-network-title{
+  align-self: center;
+}
+
+.auc-wrong-network-action {
+  margin-top: 16px;
+  align-self: center;
+
+  &.auc-switch-network-btn {
+    min-width: 170px;
   }
 
-  & &__fail {
-    margin-top: 16px;
-    font-size: 72px;
-  }
-
-  & &__header {
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 1;
-    color: $black;
-    margin-top: 22px;
-    margin-bottom: 8px;
-  }
-
-  & &__message {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: getColor(grey, base);
-    padding: 0 24px;
-    margin-bottom: 16px;
-  }
-
-  & &__fail,
-  & &__header,
-  > action-button {
-    align-self: center;
+  &.auc-disconnect-btn {
+    min-width: 119px;
   }
 }

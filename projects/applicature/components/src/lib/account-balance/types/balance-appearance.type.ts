@@ -1,0 +1,3 @@
+import { AUC_BALANCE_APPEARANCE } from '../enums';
+
+export type AucBalanceAppearance = AUC_BALANCE_APPEARANCE.TRANSPARENT | AUC_BALANCE_APPEARANCE.TRANSLUCENT;

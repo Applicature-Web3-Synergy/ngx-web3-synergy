@@ -1,41 +1,55 @@
-<div class="account">
-  <div class="account__header">
+<div class="auc-account">
+  <div class="auc-dialog-header">
     <h1>{{ data.header }}</h1>
 
-    <span (click)="onCloseClick()"
-          class="wcl-icon-close"></span>
+    <button type="button" class="auc-close-btn">
+      <auc-icon icon="wcl-icon-close"
+                (click)="onCloseClick()"
+      >
+      </auc-icon>
+    </button>
   </div>
 
-  <div class="account__info info">
-    <div class="info__header">
+  <div class="auc-account-info auc-info">
+    <div class="auc-info-header">
       <span>Connected with Metamask</span>
+
       <button (click)="onChangeClick()"
-              matRipple
-              class="info__header__change">Change</button>
+              aucRipple
+              class="auc-info-header-change"
+      >
+        Change
+      </button>
+
       <button (click)="onDisconnectClick()"
-              matRipple
-              class="info__header__disconnect">Disconnect</button>
+              aucRipple
+              class="auc-info-header-disconnect"
+      >
+        Disconnect
+      </button>
     </div>
-    <div #infoMain class="info__main">
-      <span>{{ accountAddress | shortAddress }}</span>
+
+    <div class="auc-info-main" [aucIdenticon]="identicon">
+      <span>{{ accountAddress | aucShortAddress }}</span>
     </div>
-    <div class="info__footer">
-      <span [cdkCopyToClipboard]="accountAddress"
-            class="info__footer__item"><i class="wcl-icon-copy"></i><span>Copy Address</span></span>
-      <a class="info__footer__item" [href]="etherscanAddress$ | async"
+    <div class="auc-info-footer">
+      <span ngxClipboard
+            [cbContent]="accountAddress"
+            class="auc-info-footer-item"><i class="wcl-icon-copy"></i><span>Copy Address</span></span>
+      <a class="auc-info-footer-item" *ngIf="(etherscanAddress$ | async) as ethAddress" [href]="ethAddress"
          target="_blank"><i class="wcl-icon-external-link"></i><span>View on Explorer</span></a>
     </div>
   </div>
 
   <ng-container *ngIf="(transactions$ | async) as transactions">
     <div *ngIf="transactions?.length > 0 else emptyView"
-         class="account__list">
-      <div class="account__list__header">
+         class="auc-account-list">
+      <div class="auc-account-list-header">
         <h1>Recent transactions</h1>
         <span (click)="onClearTransactionsClick()">(clear all)</span>
       </div>
       <div *ngFor="let transaction of transactions"
-           class="account__list__item">
+           class="auc-account-list-item">
         <a [href]="transaction.etherscanUrl"
            [class.fail]="transaction.status==='fail'"
            target="_blank"
@@ -47,16 +61,17 @@
 
           <span *ngSwitchCase="'success'" class="wcl-icon-check"></span>
 
-          <mat-progress-spinner *ngSwitchCase="'pending'"
-                                mode="indeterminate"
-                                diameter="18">
-          </mat-progress-spinner>
+          <auc-spinner *ngSwitchCase="'pending'"
+                       [diameter]="18"
+                       [width]="2"
+          >
+          </auc-spinner>
         </ng-container>
       </div>
     </div>
   </ng-container>
 
   <ng-template #emptyView>
-    <div class="account__empty">Your transactions will appear here...</div>
+    <div class="auc-account-list-empty">Your transactions will appear here...</div>
   </ng-template>
 </div>

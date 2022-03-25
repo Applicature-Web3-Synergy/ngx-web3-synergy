@@ -1,37 +1,33 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject, OnDestroy,
-} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EtherscanTransactionLocalStorage } from '../../interfaces';
-import { TransactionService } from '../../services/transaction.service';
 
-export interface RecentTransactionsModalData {
-  header: string;
-}
+import { AucEtherscanTransactionLocalStorage } from '../../interfaces';
+import { AucTransactionService } from '../../services';
+import { AucRecentTransactionsModalData } from './interfaces';
+import { AucDialogConfig, AucDialogRef } from '../../dialog';
+
 
 @Component({
-  selector: 'applicature-transactions-history-modal',
+  selector: 'auc-transactions-history-modal',
   templateUrl: './transactions-history-modal.component.html',
-  styleUrls: ['./transactions-history-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: [ './transactions-history-modal.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TransactionsHistoryModalComponent implements OnDestroy {
-  public transactions$: Observable<EtherscanTransactionLocalStorage[]>;
+export class AucTransactionsHistoryModalComponent implements OnDestroy {
+  public transactions$: Observable<AucEtherscanTransactionLocalStorage[]>;
+  public data: AucRecentTransactionsModalData;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: RecentTransactionsModalData,
-    private _transactionService: TransactionService,
-    private _matDialogRef: MatDialogRef<TransactionsHistoryModalComponent, void>
+    private _config: AucDialogConfig<AucRecentTransactionsModalData>,
+    private _dialogRef: AucDialogRef,
+    private _transactionService: AucTransactionService
   ) {
+    this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;
   }
 
   public onCloseClick(): void {
-    this._matDialogRef.close();
+    this._dialogRef.close();
   }
 
   public ngOnDestroy(): void {

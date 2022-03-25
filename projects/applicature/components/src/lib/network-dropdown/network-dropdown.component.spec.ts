@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NetworkDropdownComponent } from './network-dropdown.component';
+import { AucNetworkDropdownComponent } from './network-dropdown.component';
 
-describe('NetworkDropdownComponent', () => {
-  let component: NetworkDropdownComponent;
-  let fixture: ComponentFixture<NetworkDropdownComponent>;
+describe('AucNetworkDropdownComponent', () => {
+  let component: AucNetworkDropdownComponent;
+  let fixture: ComponentFixture<AucNetworkDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NetworkDropdownComponent ]
+      declarations: [ AucNetworkDropdownComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NetworkDropdownComponent);
+    fixture = TestBed.createComponent(AucNetworkDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

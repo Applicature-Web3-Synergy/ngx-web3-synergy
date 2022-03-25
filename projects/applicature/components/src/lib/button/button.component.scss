@@ -1,11 +1,11 @@
 @import "../../../../styles/src/lib/scss/variables";
-@import "../../../../styles/src/lib/scss/functions";
+@import "../../../../styles/src/lib/scss/mixins";
 
 :host {
-  display: block;
+  display: inline-flex;
 }
 
-.button {
+.auc-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,70 +15,66 @@
   position: relative;
   cursor: pointer;
   outline: none;
-  font-family: $applicature-font-family;
-  color: var(--applicature-button-text);
-  border: 2px solid var(--applicature-button-border);
-  border-radius: var(--applicature-button-radius);
-  background: var(--applicature-button-base);
-
-  $this: &;
+  font-family: $as-font-family;
+  color: var(--auc-button-text);
+  border: 2px solid var(--auc-button-border);
+  border-radius: var(--auc-button-radius);
+  background: var(--auc-button-base);
+  @include transition;
 
   &:hover {
-    background: var(--applicature-button-hover);
-    border: 2px solid var(--applicature-button-borderHover);
+    background: var(--auc-button-hover);
+    border: 2px solid var(--auc-button-borderHover);
   }
 
   &:active:focus {
-    background: var(--applicature-button-dark);
-    border: 2px solid var(--applicature-button-borderFocus);
+    background: var(--auc-button-dark);
+    border: 2px solid var(--auc-button-borderFocus);
   }
 
-  &#{$this}--disabled {
+  &.auc-button-disabled {
     cursor: default;
     pointer-events: none;
     opacity: 0.7;
   }
 
-  &#{$this}--icon {
+  &.auc-button-icon {
     padding: 10px 12px;
   }
 
-  &#{$this}--adaptive {
+  &.auc-button-adaptive {
     width: 100%;
   }
 
-  &#{$this}--transparent {
+  &.auc-button-transparent {
     border: 2px solid transparent;
     background: transparent;
+    @include transition;
 
     &:hover {
       background: transparent;
-      border: 2px solid var(--applicature-button-borderHover);
+      border: 2px solid var(--auc-button-borderHover);
     }
 
     &:active:focus {
       background: transparent;
-      border: 2px solid var(--applicature-button-borderFocus);
+      border: 2px solid var(--auc-button-borderFocus);
     }
   }
 
-  & &__icon {
+  auc-icon {
+    &:not(.auc-button-icon) {
+      &.auc-button-left-icon {
+        margin-right: 8px;
+      }
+
+      &.auc-button-right-icon {
+        margin-left: 8px;
+      }
+    }
   }
 
-  &:not(&#{$this}--icon) &__left-icon {
-    margin-right: 8px;
-  }
-
-  &:not(&#{$this}--icon) &__right-icon {
+  .auc-button-spinner {
     margin-left: 8px;
   }
-
-  & mat-progress-spinner {
-    margin-left: 8px;
-  }
-}
-
-::ng-deep .mat-progress-spinner circle,
-::ng-deep .mat-spinner circle {
-  stroke: getColor(blue, base);
 }

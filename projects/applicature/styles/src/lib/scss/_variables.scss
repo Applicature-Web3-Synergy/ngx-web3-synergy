@@ -4,9 +4,9 @@ $red-bg: #FCE7E8;
 $grey-bg: #F3F5FB;
 $table-hover-bg: #F9FAFD;
 
-$applicature-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$as-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
-$applicature-colors: (
+$as-colors: (
   blue: (
     base: #4678F0,
     hover: #608BF2,
@@ -57,15 +57,17 @@ $applicature-colors: (
     border: #6D87AC,
     borderHover: #BBC7D9,
     borderFocus: #5F7492,
+    background: #F3F5FB
   ),
   white: (
     base: #FFFFFF,
-    hover: #FFFFFF,
+    hover: #F9FAFD,
     light: #FFFFFF,
     dark: #FFFFFF,
     text: #222222,
     border: #FFFFFF,
     borderHover: #DDE3EC,
     borderFocus: #608BF2,
+    boxShadow: rgba(56, 64, 75, 0.1)
   ),
 );

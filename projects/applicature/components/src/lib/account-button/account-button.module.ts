@@ -1,27 +1,31 @@
-import { ClipboardModule } from '@angular/cdk/clipboard';
-import { OverlayModule } from '@angular/cdk/overlay';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AvatarModule } from '../avatar/avatar.module';
-import { ButtonModule } from '../button/button.module';
-import { PipesModule } from '../pipes';
-import { AccountButtonComponent } from './account-button.component';
+
+import { AucAvatarModule } from '../avatar';
+import { AucButtonModule } from '../button';
+import { AucPipesModule } from '../pipes';
+import { AucAccountButtonComponent } from './account-button.component';
+import { AucCopyToClipboardModule } from '../copy-to-clipboard';
+import { AucDirectivesModule } from '../directives';
+import { AucDropdownMenuModule } from '../dropdown-menu';
+
 
 @NgModule({
   declarations: [
-    AccountButtonComponent,
+    AucAccountButtonComponent
   ],
   exports: [
-    AccountButtonComponent,
+    AucAccountButtonComponent
   ],
   imports: [
     CommonModule,
-    AvatarModule,
-    OverlayModule,
-    PipesModule,
-    ClipboardModule,
-    ButtonModule,
+    AucAvatarModule,
+    AucPipesModule,
+    AucButtonModule,
+    AucCopyToClipboardModule,
+    AucDirectivesModule,
+    AucDropdownMenuModule,
   ]
 })
-export class AccountButtonModule {
+export class AucAccountButtonModule {
 }

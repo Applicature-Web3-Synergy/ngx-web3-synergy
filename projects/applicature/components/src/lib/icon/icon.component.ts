@@ -1,17 +1,30 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
+import { AucWlcIcon } from './types';
+
+
 @Component({
-  selector: 'applicature-icon',
+  selector: 'auc-icon',
   templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss'],
+  styleUrls: [ './icon.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IconComponent {
+export class AucIconComponent {
+  /**
+   * {@link color} - It's an `@Input()` parameter.
+   * Sets css style color;
+   * This is an optional parameter.
+   */
   @Input()
-  public color: string = '#FFF';
+  public color?: string;
 
+  /**
+   * {@link icon} - It's an `@Input()` parameter.
+   * @param value type uses enum {@link AUC_WLC_ICON} or string;
+   * If you want to use custom icon you need to provide url to the image as a string value.
+   */
   @Input()
-  public set icon(value: string) {
+  public set icon(value: AucWlcIcon) {
     this.isImage = (/.+\..+$/i).test(value);
 
     this._icon = value;

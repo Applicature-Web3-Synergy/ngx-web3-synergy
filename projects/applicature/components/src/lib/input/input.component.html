@@ -1,9 +1,9 @@
-<div class="input">
-  <span *ngIf="label" class="input__label">{{ label }}</span>
+<div class="auc-input">
+  <span *ngIf="label" class="auc-input-label">{{ label }}</span>
 
   <div [style.height.px]="height"
-       class="input__wrapper">
-    <div *ngIf="prefix" class="input__prefix">{{ prefix }}</div>
+       class="auc-input-wrapper">
+    <div *ngIf="prefix" class="auc-input-prefix">{{ prefix }}</div>
 
     <div [ngClass]="classNames">
       <input #inputElement
@@ -19,19 +19,19 @@
              [decimal]="decimal"
              digitOnly
              type="text"
-             class="input__field">
+             class="auc-input-field">
 
       <span *ngIf="max"
             (click)="onMaxClick()"
-            class="input__max">MAX</span>
+            class="auc-input-max">MAX</span>
     </div>
 
-    <div *ngIf="suffix" class="input__suffix">{{ suffix }}</div>
+    <div *ngIf="suffix" class="auc-input-suffix">{{ suffix }}</div>
   </div>
 
   <div *ngIf="hint"
-       class="input__hint">{{ hint }}</div>
+       class="auc-input-hint">{{ hint }}</div>
 
   <div *ngFor="let error of errors"
-       class="input__error">{{ errors }}</div>
+       class="auc-input-error">{{ errors }}</div>
 </div>

@@ -1,62 +1,78 @@
-import {
-  ChangeDetectionStrategy,
-  Component, EventEmitter,
-  Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef,
-} from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
-export interface TableColumn {
-  columnDef: string;
-  headerCellDef: string;
-  templateRef?: TemplateRef<any>;
-}
+import { AucTableHeaderItem, AucTableRow } from './interfaces';
+import { AucSort } from '../interfaces';
+import { AUC_SORT_DIRECTION } from '../enums';
+
 
 @Component({
-  selector: 'applicature-table',
+  selector: 'auc-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: [ './table.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent implements OnInit, OnChanges {
-  public dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
-  public displayedColumns: string[];
+export class AucTableComponent {
+  /**
+   * {@link tableHeaders} - It's an `@Input()` parameter.
+   * Sets table headers.
+   * This is required parameter.
+   */
+  @Input() set tableHeaders(headers: AucTableHeaderItem[]) {
+    this.headers = headers.sort((a: AucTableHeaderItem, b: AucTableHeaderItem) =>
+      a.position - b.position);
+  };
 
-  @Input()
-  public data: any[];
+  /**
+   * {@link data} - It's an `@Input()` parameter.
+   * Sets table data.
+   * This is required parameter.
+   */
+  @Input() data: AucTableRow[] = [];
 
-  @Input()
-  public set columns(values: TableColumn[]) {
-    if (values && values.length > 0) {
-      this.displayedColumns = values.map(v => v.columnDef);
+  /**
+   * {@link isLoadMore} - It's an `@Input()` parameter.
+   * If true the Load more button will be visible.
+   * This is an optional parameter. The default value is false
+   */
+  @Input() isLoadMore: boolean = false;
+
+  /**
+   * {@link customize} - It's an `@Input()` parameter.
+   * Sets custom class to the table container.
+   * This is an optional parameter.
+   */
+  @Input() customClass?: string | string[];
+
+  /**
+   * {@link loadMore} - It's an `@Output()` parameter.
+   * Emits when load more button was clicked.
+   */
+  @Output() loadMore: EventEmitter<void> = new EventEmitter<void>();
+
+  /**
+   * {@link sort} - It's an `@Output()` parameter.
+   * Emits when sort was clicked.
+   */
+  @Output() sort: EventEmitter<AucSort> = new EventEmitter<AucSort>();
+
+  public headers: AucTableHeaderItem[] = [];
+  public SORT_DIRECTION = AUC_SORT_DIRECTION;
+
+  public onLoadMore(): void {
+    this.loadMore.emit();
+  }
+
+  public sortBy(sort: AucSort, columnIndex: number): void {
+    if (!sort || !this.headers[columnIndex]?.sort) {
+      return;
     }
 
-    this._columns = values;
+    sort.sortDirection = sort.sortDirection === AUC_SORT_DIRECTION.ASC
+      ? AUC_SORT_DIRECTION.DESC
+      : AUC_SORT_DIRECTION.ASC;
+    this.headers[columnIndex].sort.sortDirection = sort.sortDirection;
+
+    this.sort.emit(sort);
   }
 
-  @Output('loadMoreClick')
-  public loadMoreEmitter: EventEmitter<void> = new EventEmitter<void>();
-
-  public get columns(): TableColumn[] {
-    return this._columns;
-  }
-
-  public get isLastItem(): (index: number, element: any) => boolean {
-    return (index, element: any) => {
-      return Boolean(index === this.dataSource.data.length - 1);
-    };
-  }
-
-  private _columns: TableColumn[];
-
-  public ngOnInit(): void {
-    this.ngOnChanges();
-  }
-
-  public ngOnChanges(changes?: SimpleChanges): void {
-    this.dataSource.data = this.data;
-  }
-
-  public onLoadMoreClick(): void {
-    this.loadMoreEmitter.emit();
-  }
 }

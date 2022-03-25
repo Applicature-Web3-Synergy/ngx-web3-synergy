@@ -1,12 +1,16 @@
-<div class="transfer">
-  <div class="transfer__header">
+<div class="auc-transfer">
+  <div class="auc-dialog-header">
     <h1>{{ data.header }}</h1>
 
-    <span (click)="onCloseClick()"
-          class="wcl-icon-close"></span>
+    <button type="button" class="auc-close-btn">
+      <auc-icon icon="wcl-icon-close"
+                (click)="onCloseClick()"
+      >
+      </auc-icon>
+    </button>
   </div>
 
-  <applicature-input [max]="data.max"
+  <auc-input [max]="data.max"
                      [suffix]="data.symbol"
                      [hint]="'Current allowance: ' + currentAllowance + ' ' + data.symbol"
                      [adaptive]="true"
@@ -14,36 +18,36 @@
                      [formControl]="amountControl"
                      label="Amount"
                      placeholder="Enter amount"
-                     class="transfer__input">
-  </applicature-input>
+                     class="auc-transfer-input">
+  </auc-input>
 
-  <div class="transfer__progress">
-    <h3 class="transfer__steps">Step {{ currentStep }} of 2</h3>
+  <div class="auc-transfer-progress">
+    <h3 class="auc-transfer-steps">Step {{ currentStep }} of 2</h3>
 
     <ng-container *ngIf="currentStep === 1 else secondView">
-      <p class="transfer__info">Your allowance must be first increased.</p>
-      <p class="transfer__info">Please click Approve to increase your allowance.</p>
+      <p class="auc-transfer-info">Your allowance must be first increased.</p>
+      <p class="auc-transfer-info">Please click Approve to increase your allowance.</p>
     </ng-container>
 
     <ng-template #secondView>
-      <p class="transfer__info">Now you can transfer funds.</p>
-      <p class="transfer__info">Please click Transfer.</p>
+      <p class="auc-transfer-info">Now you can transfer funds.</p>
+      <p class="auc-transfer-info">Please click Transfer.</p>
     </ng-template>
 
-    <mat-progress-bar mode="determinate" [value]="50 * currentStep"></mat-progress-bar>
+    <auc-progress-bar [progress]="50 * currentStep"></auc-progress-bar>
   </div>
 
   <ng-container *ngIf="currentStep === 1 else transferButton">
-    <applicature-button [label]="data.approveButton"
+    <auc-button [label]="data.approveButton"
                         [adaptive]="true"
                         [height]="48"
-                        (onClick)="onApproveClick()"></applicature-button>
+                        (onClick)="onApproveClick()"></auc-button>
   </ng-container>
 
   <ng-template #transferButton>
-    <applicature-button [label]="data.confirmButton"
+    <auc-button [label]="data.confirmButton"
                         [adaptive]="true"
                         [height]="48"
-                        (onClick)="onConfirmClick()"></applicature-button>
+                        (onClick)="onConfirmClick()"></auc-button>
   </ng-template>
 </div>

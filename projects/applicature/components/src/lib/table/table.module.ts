@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
 
-import { TableComponent } from './table.component';
+import { AucIconModule } from '../icon';
+import { AucTableComponent } from './table.component';
+import { AucDirectivesModule } from '../directives';
+
 
 @NgModule({
   declarations: [
-    TableComponent
+    AucTableComponent
   ],
   exports: [
-    TableComponent
+    AucTableComponent
   ],
   imports: [
     CommonModule,
-    MatTableModule,
-  ],
+    AucIconModule,
+    AucDirectivesModule
+  ]
 })
-export class TableModule {
+export class AucTableModule {
 }

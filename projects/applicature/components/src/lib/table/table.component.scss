@@ -1,61 +1,129 @@
-@import "../../../../styles/src/lib/scss/variables";
 @import "../../../../styles/src/lib/scss/functions";
+@import "../../../../styles/src/lib/scss/mixins";
 
 :host {
   display: block;
+  width: 100%;
+  font-family: $as-font-family;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 8px;
+  background-color: getColor(white, base);
+  overflow: hidden;
 }
 
-.table {
+.auc-table-container {
   width: 100%;
-  background: $white;
-  border-radius: 8px;
   overflow: hidden;
+  overflow-x: auto;
+}
 
-  & &__header th {
-    font-weight: 700;
-    font-size: 14px;
-    color: getColor(grey, base);
-    font-family: $applicature-font-family;
-    border-bottom: 1px solid getColor(grey, light);
-  }
+.auc-table {
+  width: 100%;
+  border: none;
+  border-spacing: 0;
+  border-collapse: collapse;
+  overflow-x: auto;
 
-  & &__row:hover {
-    background: $table-hover-bg;
-  }
-
-  & &__row td {
-    height: 56px;
-    font-weight: 500;
-    font-size: 14px;
-    color: $black;
-    font-family: $applicature-font-family;
-    border-bottom: 0;
-  }
-
-  & &__footer td {
-    border-bottom: 0;
-    color: getColor(grey, base);
-    border-top: 1px solid getColor(grey, light);
-
-    .wcl-icon-chevron-down:before {
-      font-size: 22px;
-      color: getColor(grey, base);
+  tr {
+    & > th,
+    & > td {
+      text-align: left;
     }
 
-    &:hover {
-      cursor: pointer;
-      color: $black;
-      background: $table-hover-bg;
+    & > th {
+      padding: 18px 20px;
+      font-weight: bold;
+      color: getColor(grey, base);
+      border-bottom: 1px solid getColor(grey, light);
+    }
 
-      .wcl-icon-chevron-down:before {
-        color: $black;
+    & > td {
+      padding: 14px 20px;
+      font-weight: 500;
+    }
+  }
+
+  tbody {
+    tr {
+      @include transition;
+
+      &:hover {
+        background-color: getColor(grey, background);
       }
     }
+  }
+}
 
-    > div {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.auc-table-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &.sortable {
+    color: getColor(blue, base);
+    cursor: pointer;
+    @include transition;
+
+    &:hover {
+      color: getColor(blue, hover);
     }
   }
+
+  & > *:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  & > .auc-table-sort {
+    margin-left: 4px;
+    line-height: 0;
+  }
+}
+
+.auc-table-cell-value {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &.with-bg {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: getColor(grey, background);
+  }
+
+  auc-icon {
+    margin-right: 8px;
+  }
+}
+
+.auc-table-link {
+  color: getColor(blue, base);
+  text-decoration: none;
+  @include transition;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.auc-table-load-more {
+  border-top: 1px solid getColor(grey, light);
+  padding: 14px 20px;
+  color: getColor(grey, base);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    background-color: getColor(white, hover);
+    color: getColor(white, text);
+  }
+}
+
+.auc-table-load-more-text {
+  padding-right: 8px;
 }

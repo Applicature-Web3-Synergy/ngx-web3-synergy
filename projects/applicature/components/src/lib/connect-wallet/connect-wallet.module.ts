@@ -1,30 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AccountBalanceModule } from '../account-balance/account-balance.module';
-import { AccountButtonModule } from '../account-button/account-button.module';
-import { ButtonModule } from '../button/button.module';
-import { NetworkDropdownModule } from '../network-dropdown/network-dropdown.module';
-import { PipesModule } from '../pipes';
-import { TransactionsHistoryModule } from '../transactions-history/transactions-history.module';
-import { ConnectWalletComponent } from './connect-wallet.component';
+import { AucAccountBalanceModule } from '../account-balance';
+import { AucAccountButtonModule } from '../account-button';
+import { AucButtonModule } from '../button';
+import { AucNetworkDropdownModule } from '../network-dropdown';
+import { AucPipesModule } from '../pipes';
+import { AucTransactionsHistoryModule } from '../transactions-history';
+import { AucConnectWalletComponent } from './connect-wallet.component';
+import { AucDialogModule } from '../dialog';
 
 @NgModule({
   declarations: [
-    ConnectWalletComponent,
+    AucConnectWalletComponent
   ],
   exports: [
-    ConnectWalletComponent,
+    AucConnectWalletComponent
   ],
   imports: [
     CommonModule,
-    ButtonModule,
-    PipesModule,
-    NetworkDropdownModule,
-    AccountButtonModule,
-    AccountBalanceModule,
-    TransactionsHistoryModule,
+    AucButtonModule,
+    AucPipesModule,
+    AucNetworkDropdownModule,
+    AucAccountButtonModule,
+    AucAccountBalanceModule,
+    AucTransactionsHistoryModule,
+    AucDialogModule
   ],
 })
-export class ConnectWalletModule {
+export class AucConnectWalletModule {
 }

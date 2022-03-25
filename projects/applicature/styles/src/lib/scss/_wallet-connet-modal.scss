@@ -7,13 +7,13 @@
 }
 
 .bn-onboard-custom {
-  z-index: 9999;
+  z-index: 100500;
 
   $this: &;
 
   // The full page modal container.
   &.bn-onboard-modal {
-    font-family: $applicature-font-family;
+    font-family: $as-font-family;
   }
 
   // The container for the modal content.
@@ -110,6 +110,13 @@
   .bn-onboard-modal-selected-wallet {
   }
 
+  // The wallet select footer
+  .bn-onboard-modal-selected-wallet-footer {
+    a {
+      text-decoration: none;
+    }
+  }
+
   // All modal buttons
   &.bn-onboard-prepare-button,
   &.bn-onboard-prepare-button.cta {
@@ -125,7 +132,7 @@
     background: getColor(blue, base);
     border: 2px solid getColor(blue, border);
     outline: none;
-    font-family: $applicature-font-family;
+    font-family: $as-font-family;
 
     &:hover {
       background: getColor(blue, hover);

@@ -5,11 +5,10 @@
     "entryFile": "src/public-api.ts"
   },
   "allowedNonPeerDependencies": [
-    "@angular/cdk",
     "@angular/common",
     "@angular/core",
     "@angular/forms",
-    "@angular/material",
+    "@applicature/styles",
     "@ethersproject/address",
     "@metamask/jazzicon",
     "@uiowa/digit-only",
@@ -17,6 +16,7 @@
     "bignumber.js",
     "bnc-onboard",
     "web3",
-    "web3-utils"
+    "web3-utils",
+    "ngx-clipboard"
   ]
 }

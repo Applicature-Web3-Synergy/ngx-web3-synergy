@@ -1,46 +1,49 @@
-import { ClipboardModule } from '@angular/cdk/clipboard';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatRippleModule } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ButtonModule } from '../button/button.module';
-import { InputModule } from '../input/input.module';
 
-import { PipesModule } from '../pipes';
-import { AccountModalComponent } from './account-modal/account-modal.component';
-import { TransactionsHistoryModalComponent } from './transactions-history-modal/transactions-history-modal.component';
-import { TransferModalComponent } from './transfer-modal/transfer-modal.component';
-import { WrongNetworkModalComponent } from './wrong-network-modal/wrong-network-modal.component';
+import { ClipboardModule } from 'ngx-clipboard';
+
+import { AucProgressBarModule } from '../progress-bar';
+import { AucRippleModule } from '../ripple';
+import { AucSpinnerModule } from '../spinner';
+import { AucButtonModule } from '../button';
+import { AucInputModule } from '../input';
+import { AucPipesModule } from '../pipes';
+import { AucAccountModalComponent } from './account-modal';
+import { AucTransactionsHistoryModalComponent } from './transactions-history-modal';
+import { AucTransferModalComponent } from './transfer-modal';
+import { AucWrongNetworkModalComponent } from './wrong-network-modal';
+import { AucIconModule } from '../icon';
+import { AucDirectivesModule } from '../directives';
 
 const components = [
-  AccountModalComponent,
-  TransactionsHistoryModalComponent,
-  TransferModalComponent,
-  WrongNetworkModalComponent,
+  AucAccountModalComponent,
+  AucTransactionsHistoryModalComponent,
+  AucTransferModalComponent,
+  AucWrongNetworkModalComponent
 ];
 
 @NgModule({
   declarations: [
-    ...components,
+    ...components
   ],
   exports: [
-    ...components,
+    ...components
   ],
   imports: [
     CommonModule,
-    MatDialogModule,
-    MatProgressSpinnerModule,
     ReactiveFormsModule,
-    PipesModule,
-    MatRippleModule,
+    AucPipesModule,
+    AucButtonModule,
+    AucInputModule,
+    AucRippleModule,
+    AucSpinnerModule,
+    AucProgressBarModule,
     ClipboardModule,
-    ButtonModule,
-    InputModule,
-    MatProgressBarModule,
-  ],
+    AucIconModule,
+    AucDirectivesModule
+  ]
 })
 export class ModalsModule {
 }

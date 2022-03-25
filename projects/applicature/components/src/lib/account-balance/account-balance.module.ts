@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PipesModule } from '../pipes';
-import { AccountBalanceComponent } from './account-balance.component';
+
+import { AucPipesModule } from '../pipes';
+import { AucAccountBalanceComponent } from './account-balance.component';
+import { AucIconModule } from '../icon';
+import { AucButtonModule } from '../button';
+import { AucDirectivesModule } from '../directives';
 
 
 @NgModule({
   declarations: [
-    AccountBalanceComponent,
+    AucAccountBalanceComponent,
   ],
   exports: [
-    AccountBalanceComponent,
+    AucAccountBalanceComponent,
   ],
   imports: [
     CommonModule,
-    PipesModule,
+    AucPipesModule,
+    AucIconModule,
+    AucButtonModule,
+    AucDirectivesModule,
   ]
 })
-export class AccountBalanceModule {
+export class AucAccountBalanceModule {
 }

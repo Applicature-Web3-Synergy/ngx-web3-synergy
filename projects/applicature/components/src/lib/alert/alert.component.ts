@@ -1,49 +1,80 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { APPLICATURE_COLORS, ColorProperties } from '@applicature/styles';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
+import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
-export type  ApplicatureAlertColor = 'blue' | 'red' | 'green' | 'orange' | 'grey' | 'white';
+import { AucSetStyleProp } from '../directives';
+import { AucAlertPosition } from './types';
+import { AUC_ALERT_POSITION } from './enums';
 
-export type  ApplicatureAlertIconPosition = 'left' | 'right';
 
 @Component({
-  selector: 'applicature-alert',
+  selector: 'auc-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss'],
+  styleUrls: [ './alert.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AlertComponent implements OnInit, OnChanges {
+export class AucAlertComponent implements OnInit, OnChanges {
+  /**
+   * {@link text} - It's an `@Input()` parameter.
+   * The message to show in the alert.
+   * This is required parameter.
+   */
   @Input()
   public text!: string;
 
+  /**
+   * {@link icon}  It's an `Input()` parameter.
+   * This sets the alert icon otherwise it’ll be hidden.
+   * You can use supported icons from enum {@link AUC_WLC_ICON} or string.
+   * If you want to use custom icon you need to provide url to the image as a string value.
+   * It's an optional parameter.
+   * This is required parameter.
+   */
   @Input()
   public icon!: string;
 
+  /**
+   * {@link iconPosition} - It's an `@Input()` parameter.
+   * Controls icon position.
+   * It's an optional parameter. The default value is right.
+   * You can use enum {@link AUC_ALERT_POSITION}
+   */
   @Input()
-  public iconPosition: ApplicatureAlertIconPosition = 'left';
+  public iconPosition: AucAlertPosition = AUC_ALERT_POSITION.LEFT;
 
+  /**
+   * {@link color} - It's an `@Input()` parameter.
+   * Theme color palette for the alert. This sets the alert background color.
+   * It's an optional parameter. The default value is red.
+   */
   @Input()
-  public color: ApplicatureAlertColor = 'red';
+  public color: AsColorGroup = AS_COLOR_GROUP.RED;
+
+  public styleProperties: AucSetStyleProp[] = [];
 
   public get classNames(): { [el: string]: boolean } {
     return {
-      ['alert']: true,
-      [`alert--white`]: this.color === 'white',
-      [`alert--icon-${this.iconPosition}`]: true,
+      ['auc-alert']: true,
+      [`auc-alert-white`]: this.color === 'white',
+      [`auc-alert-icon-${this.iconPosition}`]: true,
     };
   }
-
-  @ViewChild('alertRef', { static: true })
-  private _alertRef!: ElementRef<HTMLDivElement>;
 
   public ngOnInit(): void {
     this.ngOnChanges();
   }
 
   public ngOnChanges(): void {
-    const { base, text } = APPLICATURE_COLORS[this.color] as ColorProperties;
-    const style = this._alertRef.nativeElement.style;
+    const { base, text } = AsColors[this.color] as AsColorProperties;
 
-    style.setProperty(`--applicature-alert-text`, text);
-    style.setProperty(`--applicature-alert-background`, base);
+    this.styleProperties = [
+      {
+        name: '--auc-alert-text',
+        value: text
+      },
+      {
+        name: '--auc-alert-background',
+        value: base
+      }
+    ];
   }
 }

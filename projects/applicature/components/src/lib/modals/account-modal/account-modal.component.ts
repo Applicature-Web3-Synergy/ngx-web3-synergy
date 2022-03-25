@@ -1,84 +1,65 @@
-import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
-  Component, ElementRef,
-  Inject, OnDestroy, OnInit, ViewChild,
-} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { filter, map, Observable, Subscription } from 'rxjs';
-import { generateJazzicon } from '../../helpers';
-import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../../helpers/network';
-import { Ethereum, EtherscanTransactionLocalStorage } from '../../interfaces';
-import { TransactionService } from '../../services/transaction.service';
-import { WalletConnectService } from '../../services/wallet-connect.service';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
-export interface AccountModalData {
-  header: string;
-  change: () => void;
-  disconnect: () => void;
-}
+import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../../helpers';
+import { AucNetworkOption, AucEtherscanTransactionLocalStorage } from '../../interfaces';
+import { AucAccountModalData } from './interfaces';
+import { AucDialogConfig, AucDialogRef } from '../../dialog';
+import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '../../services';
+
 
 @Component({
-  selector: 'applicature-account-modal',
+  selector: 'auc-account-modal',
   templateUrl: './account-modal.component.html',
-  styleUrls: ['./account-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: [ './account-modal.component.scss' ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccountModalComponent implements OnInit, OnDestroy {
-  @ViewChild('infoMain', { static: true })
-  public infoMain!: ElementRef;
-
+export class AucAccountModalComponent implements OnInit, OnDestroy {
   public identicon: HTMLDivElement;
   public accountAddress: string;
   public etherscanAddress$: Observable<string>;
-  public transactions$: Observable<EtherscanTransactionLocalStorage[]>;
+  public transactions$: Observable<AucEtherscanTransactionLocalStorage[]>;
+  public data: AucAccountModalData;
 
   private _sub: Subscription = new Subscription();
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: AccountModalData,
+    private _config: AucDialogConfig<AucAccountModalData>,
+    private _dialogRef: AucDialogRef,
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: WalletConnectService,
-    private _transactionService: TransactionService,
-    private _matDialogRef: MatDialogRef<AccountModalComponent, void>
+    private _walletConnectService: AucWalletConnectService,
+    private _transactionService: AucTransactionService
   ) {
+    this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;
 
-    this.etherscanAddress$ = this._walletConnectService.networkChanged$
+    this.etherscanAddress$ = this._walletConnectService.selectedNetwork$
       .pipe(
-        filter((networkId) => Number.isSafeInteger(networkId)),
-        map(() => {
-          const { chainId, selectedAddress } = (window as any).ethereum as Ethereum;
-          const subdomain = chainId === MAINNET_CHAIN_ID ? '' : `${CHAIN_ID_TO_TYPE_MAP[chainId]}.`;
+        map((network: AucNetworkOption) => {
+          const connectionInfo: AucConnectionState = this._walletConnectService.connectionState;
 
-          return `https://${subdomain}etherscan.io/address/${selectedAddress}`;
-        }),
+          if (!network || !network.blockExplorerUrl || !connectionInfo?.state?.address) {
+            return null;
+          }
+
+          return `${network.blockExplorerUrl}/address/${connectionInfo.state.address}`
+        })
       );
   }
 
   public ngOnInit(): void {
-    let identicon: HTMLDivElement;
-
     this._sub.add(
       this._walletConnectService.accountsChanged$
         .pipe(
-          filter((accounts) => accounts?.length > 0),
+          filter((accounts) => accounts?.length > 0)
         )
-        .subscribe(([accountAddress]) => {
+        .subscribe(([ accountAddress ]) => {
           this.accountAddress = accountAddress;
-
-          const element = this.infoMain.nativeElement as HTMLDivElement;
-
-          if (identicon && element.contains(identicon)) {
-            element.removeChild(identicon);
-          }
-
-          identicon = generateJazzicon(this.accountAddress);
-
-          element.insertBefore(identicon, element.firstChild)
+          this.identicon = aucGenerateJazzicon(this.accountAddress);
 
           this._cdr.markForCheck();
-        }),
+        })
     );
   }
 
@@ -89,7 +70,7 @@ export class AccountModalComponent implements OnInit, OnDestroy {
   }
 
   public onCloseClick(): void {
-    this._matDialogRef.close();
+    this._dialogRef.close();
   }
 
   public onClearTransactionsClick(): void {
@@ -97,13 +78,13 @@ export class AccountModalComponent implements OnInit, OnDestroy {
   }
 
   public onChangeClick(): void {
-    if (typeof this.data.change === 'function') {
+    if (aucCheckValueType(this.data.change, AUC_VALUE_TYPES.FUNCTION)) {
       this.data.change();
     }
   }
 
   public onDisconnectClick(): void {
-    if (typeof this.data.disconnect === 'function') {
+    if (aucCheckValueType(this.data.disconnect, AUC_VALUE_TYPES.FUNCTION)) {
       this.data.disconnect();
     }
   }

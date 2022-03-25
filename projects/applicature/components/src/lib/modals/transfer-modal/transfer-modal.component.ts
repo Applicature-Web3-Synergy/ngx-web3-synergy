@@ -1,73 +1,54 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Inject,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import BigNumber from 'bignumber.js';
-import { startWith, Subscription } from 'rxjs';
-import { fromWei, normalize, normalizeBalance, normalizeBN, toBN } from '../../helpers';
-import { TransactionService } from '../../services/transaction.service';
-import { WalletConnectService } from '../../services/wallet-connect.service';
+import { Subscription } from 'rxjs';
 
-export interface TransferModalData {
-  header: string;
-  symbol: string;
-  allowance: BigNumber.Value;
-  max: BigNumber.Value | any;
-  approve: () => Promise<void>;
-  confirm: () => Promise<void>;
-  approveButton: string;
-  approvingButton: string;
-  confirmButton: string;
-}
+import { aucNormalizeBalance, aucToBN } from '../../helpers';
+import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '../../services';
+import { AUC_TRANSFER_STEPS } from './enums';
+import { AucTransferModalData } from './interfaces';
+import { AucTransactionStep } from './types';
+import { AucDialogConfig, AucDialogRef } from '../../dialog';
 
-const enum Step {
-  Approve = 1,
-  Confirm = 2,
-}
 
 @Component({
-  selector: 'applicature-transfer-modal',
+  selector: 'auc-transfer-modal',
   templateUrl: './transfer-modal.component.html',
-  styleUrls: ['./transfer-modal.component.scss'],
+  styleUrls: [ './transfer-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransferModalComponent implements OnInit, OnDestroy {
+export class AucTransferModalComponent implements OnInit, OnDestroy {
   public amountControl: FormControl = new FormControl();
   public currentAllowance: string = '0';
+  public data: AucTransferModalData;
 
-  public get currentStep(): Step {
+  public get currentStep(): AucTransactionStep {
     return this._currentStep;
   }
 
-  private _currentStep: Step = Step.Approve;
+  private _currentStep: AucTransactionStep = AUC_TRANSFER_STEPS.APPROVE;
 
   private _sub: Subscription = new Subscription();
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public data: TransferModalData,
+    private _config: AucDialogConfig<AucTransferModalData>,
+    private _dialogRef: AucDialogRef,
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: WalletConnectService,
-    private _transactionService: TransactionService,
-    private _matDialogRef: MatDialogRef<TransferModalComponent, void>
+    private _walletConnectService: AucWalletConnectService,
+    private _transactionService: AucTransactionService,
   ) {
+    this.data = this._config.data;
   }
 
   public ngOnInit(): void {
-    this.currentAllowance = normalizeBalance(this.data.allowance);
+    const connectionState: AucConnectionState = this._walletConnectService.connectionState;
+    this.currentAllowance = aucNormalizeBalance(connectionState?.state?.network, this.data.allowance);
 
     this.amountControl.valueChanges
       .subscribe((value) => {
-        if (toBN(value).gt(0) && toBN(value).lte(this.currentAllowance)) {
-          this._currentStep = Step.Confirm;
+        if (aucToBN(value).gt(0) && aucToBN(value).lte(this.currentAllowance)) {
+          this._currentStep = AUC_TRANSFER_STEPS.CONFIRM;
         } else {
-          this._currentStep = Step.Approve;
+          this._currentStep = AUC_TRANSFER_STEPS.APPROVE;
         }
 
         this._cdr.markForCheck();
@@ -79,14 +60,14 @@ export class TransferModalComponent implements OnInit, OnDestroy {
   }
 
   public onCloseClick(): void {
-    this._matDialogRef.close();
+    this._dialogRef.close();
   }
 
   public onApproveClick(): void {
     this.data.approve().then(() => {
       this.currentAllowance = this.amountControl.value;
 
-      this._currentStep = Step.Confirm;
+      this._currentStep = AUC_TRANSFER_STEPS.CONFIRM;
 
       this._cdr.markForCheck();
     });
@@ -94,7 +75,7 @@ export class TransferModalComponent implements OnInit, OnDestroy {
 
   public onConfirmClick(): void {
     this.data.confirm().then(() => {
-      this._matDialogRef.close();
+      this._dialogRef.close();
     });
   }
 }

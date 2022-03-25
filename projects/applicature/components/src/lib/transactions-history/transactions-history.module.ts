@@ -1,19 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from '../button/button.module';
-import { TransactionsHistoryComponent } from './transactions-history.component';
+
+import { AucButtonModule } from '../button';
+import { AucDialogModule } from '../dialog';
+import { AucTransactionsHistoryComponent } from './transactions-history.component';
 
 @NgModule({
   declarations: [
-    TransactionsHistoryComponent,
+    AucTransactionsHistoryComponent,
   ],
   exports: [
-    TransactionsHistoryComponent,
+    AucTransactionsHistoryComponent,
   ],
   imports: [
     CommonModule,
-    ButtonModule,
+    AucButtonModule,
+    AucDialogModule
   ]
 })
-export class TransactionsHistoryModule {
+export class AucTransactionsHistoryModule {
 }

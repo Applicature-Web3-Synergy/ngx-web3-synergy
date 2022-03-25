@@ -1,5 +1,6 @@
 @import "../../../../../styles/src/lib/scss/variables";
 @import "../../../../../styles/src/lib/scss/functions";
+@import "../../../../../styles/src/lib/scss/mixins";
 
 :host {
   display: block;
@@ -7,73 +8,57 @@
   max-width: 372px;
 }
 
-.transactions {
+.auc-transactions {
   display: flex;
   flex-direction: column;
-  font-family: $applicature-font-family;
+  font-family: $as-font-family;
+}
 
-  & &__header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 16px;
+.auc-transactions-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 392px;
+  overflow-y: auto;
+}
 
-    > h1 {
-      font-weight: bold;
-      font-size: 20px;
-      line-height: 1;
-      color: $black;
-      margin: 0;
-    }
+.auc-transactions-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
 
-    > .wcl-icon-close {
-      cursor: pointer;
-    }
+  &:last-of-type {
+    margin-bottom: 0;
   }
 
-  & &__list {
-    display: flex;
-    flex-direction: column;
-    max-height: 392px;
-    overflow-y: auto;
-
-    &__item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-      > a {
-        color: getColor(blue, base);
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-
-        &.fail {
-          color: getColor(red, base);
-        }
-      }
-
-      > .wcl-icon-check:before {
-        color: getColor(green, base);
-      }
-    }
-  }
-
-  & &__empty {
-    color: getColor(grey, base);
+  > a {
+    color: getColor(blue, base);
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    text-align: center;
-    margin: 20px 0;
+    text-decoration: none;
+    @include transition;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.fail {
+      color: getColor(red, base);
+    }
+  }
+
+  > .wcl-icon-check:before {
+    color: getColor(green, base);
   }
 }
+
+.auc-transaction-empty {
+  color: getColor(grey, base);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  margin: 20px 0;
+}
+
