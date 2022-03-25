@@ -89,7 +89,7 @@ export class ExampleDialogsComponent {
       header: 'WRONG NETWORK',
       message: 'Looks like you connected to unsupported network. Change network to Mainnet.',
       chainId: '156',
-      switchLabel: 'Swith label',
+      switchLabel: 'Switch label',
       appearance: AUC_WRONG_NETWORK_APPEARANCE.SWITCH
     };
 
