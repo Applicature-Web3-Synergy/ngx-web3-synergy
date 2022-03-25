@@ -15,6 +15,7 @@ import {
   AucWalletConnectService,
   AucNetworkOption,
   AUC_CHAIN_ID,
+  AUC_CHAIN_ID_NUM,
   aucGetChainParams,
   AucBlockExplorerUrls,
   AucConnectWalletModule,
@@ -26,6 +27,7 @@ import { ExampleDialogsModule } from './examples/example-dialogs/example-dialogs
 import { ExampleTableModule } from './examples/example-table/example-table.module';
 import { ExampleDropdownMenuModule } from './examples/example-dropdown-menu/example-dropdown-menu.module';
 import { ExampleAccountBalanceModule } from './examples/example-account-balance/example-account-balance.module';
+import {  } from '../../../applicature/components/src/lib/enums';
 
 const wallets: Array<WalletModule | WalletInitOptions> = [
   {
@@ -40,7 +42,9 @@ const wallets: Array<WalletModule | WalletInitOptions> = [
 ];
 
 const networks = {
-  kovanTestnet: 42
+  eth: 1,
+  kovanTestnet: AUC_CHAIN_ID_NUM.KOVAN_TESTNET,
+  // ...
 };
 
 const supportedNetworks: AucNetworkOption[] = [
@@ -50,6 +54,14 @@ const supportedNetworks: AucNetworkOption[] = [
     chainId: AUC_CHAIN_ID.RINKEBY_TESTNET,
     symbol: AucNativeCurrencies[AUC_CHAIN_ID.RINKEBY_TESTNET].name,
     blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
+    isActive: false
+  },
+  {
+    icon: 'assets/svg/network/eth.svg',
+    name: 'Kovan',
+    chainId: AUC_CHAIN_ID.KOVAN_TESTNET,
+    symbol: AucNativeCurrencies[AUC_CHAIN_ID.KOVAN_TESTNET].name,
+    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.KOVAN_TESTNET][0],
     isActive: false
   },
   {
@@ -89,7 +101,7 @@ export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
-    networkId: networks.kovanTestnet,
+    networkId: networks.eth,
     walletSelect: { wallets }
   }, supportedNetworks);
 }

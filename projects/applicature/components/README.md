@@ -142,20 +142,21 @@ This is no longer the case. Verify if you need this module and configure a polyf
 const wallets: Array<WalletModule | WalletInitOptions> = [
   {
     walletName: 'metamask',
-    preferred: true,
+    preferred: true
   },
   {
     walletName: 'walletConnect',
-    infuraKey: `${YOUR_INFURA_KEY}`,
-    preferred: true,
-  },
+    infuraKey: 'INFURA_KEY',
+    preferred: true
+  }
 ];
 
 const networks = {
-  kovanTestnet: 42,
-}
+  eth: 1,
+  kovanTestnet: AUC_CHAIN_ID_NUM.KOVAN_TESTNET,
+  // ...
+};
 
-// Set suppoerted networks list.
 const supportedNetworks: AucNetworkOption[] = [
   {
     icon: 'assets/svg/network/eth.svg',
@@ -197,15 +198,16 @@ const supportedNetworks: AucNetworkOption[] = [
     }
   }
 ];
- 
+
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
-    networkId: networks.kovanTestnet,
+    networkId: networks.eth,
     walletSelect: { wallets }
   }, supportedNetworks);
 }
+
 
 @NgModule({
   declarations: [
@@ -216,15 +218,15 @@ export function initWalletServiceFactory(
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AucConnectModule.forRoot(),
+    AucConnectModule.forRoot()
   ],
   providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: initWalletServiceFactory,
-      deps: [AucWalletConnectService],
-      multi: true,
-    },
+      deps: [ AucWalletConnectService ],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
