@@ -25,13 +25,13 @@ export interface AucEtherscanTransaction {
   cumulativeGasUsed: string;
   gasUsed: string;
   confirmations: string;
-  etherscanUrl?: string;
+  explorerUrl?: string;
 }
 
 export interface AucEtherscanTransactionLocalStorage {
   name: string,
   hash: string;
   status: AUC_TRANSACTION_STATUS;
-  etherscanUrl: string
-  viewed: boolean
+  explorerUrl: string;
+  viewed: boolean;
 }

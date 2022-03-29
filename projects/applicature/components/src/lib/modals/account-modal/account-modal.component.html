@@ -50,7 +50,7 @@
       </div>
       <div *ngFor="let transaction of transactions"
            class="auc-account-list-item">
-        <a [href]="transaction.etherscanUrl"
+        <a [href]="transaction.explorerUrl"
            [class.fail]="transaction.status==='fail'"
            target="_blank"
            rel="noopener noreferrer">

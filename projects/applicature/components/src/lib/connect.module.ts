@@ -1,21 +1,13 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AucWalletConnectService, AucTransactionService } from './services';
-
-
-const modules = [
-  HttpClientModule
-];
+import { AucTransactionService, AucWalletConnectService } from './services';
 
 
 @NgModule({
   imports: [
-    ...modules,
-  ],
-  exports: [
-    ...modules,
-  ],
+    HttpClientModule
+  ]
 })
 export class AucConnectModule {
   constructor(@Optional() @SkipSelf() parentModule: AucConnectModule) {
@@ -28,8 +20,8 @@ export class AucConnectModule {
     return {
       ngModule: AucConnectModule,
       providers: [
-        AucTransactionService,
-        AucWalletConnectService
+        AucWalletConnectService,
+        AucTransactionService
       ]
     };
   }
