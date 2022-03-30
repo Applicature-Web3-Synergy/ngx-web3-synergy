@@ -34,6 +34,11 @@ auc-overlay,
   border-radius: 12px;
   overflow: hidden;
 
+  &.auc-account-dialog,
+  &.auc-recent-transactions-dialog {
+    padding: 0;
+  }
+
   &.top {
     top: 15px;
     transform: translate(-50%, 0);
@@ -88,6 +93,7 @@ auc-overlay,
 @media (max-width: 767px) {
   .auc-dialog {
     width: 100% !important;
+    min-width: 100% !important;
     height: 100vh !important;
     max-width: 100vw !important;
     max-height: 100vh !important;

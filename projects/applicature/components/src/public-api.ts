@@ -23,6 +23,6 @@ export * from './lib/ripple';
 export * from './lib/services';
 export * from './lib/spinner';
 export * from './lib/table';
-export * from './lib/transactions-history';
+export * from './lib/transactions';
 export * from './lib/types';
 export * from './lib/connect.module';

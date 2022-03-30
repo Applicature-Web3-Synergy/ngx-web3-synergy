@@ -1,3 +1,21 @@
 @mixin transition($prop: all, $time: 0.25s) {
   transition: $prop $time;
 }
+
+@mixin text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin text-overflow-few-lines($height, $numberOfLines) {
+  max-width: 100%;
+  max-height: $height;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: $numberOfLines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}

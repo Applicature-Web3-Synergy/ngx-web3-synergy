@@ -8,7 +8,7 @@ export const AucBlockExplorerUrls: { [key: string]: string[] } = {
   [AUC_CHAIN_ID.BSC_MAINNET]: [ 'https://bscscan.com' ],
   [AUC_CHAIN_ID.BSC_TESTNET]: [ 'https://testnet.bscscan.com' ],
   [AUC_CHAIN_ID.POLYGON_MAINNET]: [ 'https://explorer.matic.network' ],
-  [AUC_CHAIN_ID.POLYGON_TESTNET]: [ 'https://mumbai-explorer.matic.today' ],
+  [AUC_CHAIN_ID.POLYGON_TESTNET]: [ 'https://mumbai.polygonscan.com' ],
   [AUC_CHAIN_ID.ASTAR_MAINNET]: [ 'https://astar.subscan.io' ],
   [AUC_CHAIN_ID.ASTAR_TESTNET]: [ 'https://shibuya.subscan.io' ],
   [AUC_CHAIN_ID.SHIDEN_MAINNET]: [ 'https://shiden.subscan.io' ],

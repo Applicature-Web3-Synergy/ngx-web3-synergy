@@ -1,0 +1,42 @@
+@import "../../../../../../styles/src/lib/scss/variables";
+@import "../../../../../../styles/src/lib/scss/functions";
+@import "../../../../../../styles/src/lib/scss/mixins";
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.auc-transactions-history {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: $as-font-family;
+  padding: 20px 0;
+  height: 100%;
+  width: 100%;
+
+  & > *:not(.auc-dialog-header) {
+    width: 100%;
+  }
+}
+
+.auc-dialog-header {
+  margin-left: 20px;
+  margin-right: 20px;
+  width: calc(100% - 40px);
+}
+
+.auc-transactions-history-list {
+  display: block;
+  max-height: 392px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 767px) {
+  .auc-transactions-history-list {
+    max-height: calc(100vh - 84px);
+  }
+}
+

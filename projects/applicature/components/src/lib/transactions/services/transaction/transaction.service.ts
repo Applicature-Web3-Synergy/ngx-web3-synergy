@@ -3,16 +3,17 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subscription, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AUC_TRANSACTION_STATUS } from '../../enums';
+import { AUC_SORT_DIRECTION, AUC_TRANSACTION_STATUS } from '../../../enums';
 import {
-  AucEthereum, AucEtherscanTransaction,
+  AucEthereum,
+  AucEtherscanTransaction,
   AucEtherscanTransactionLocalStorage,
   AucEtherscanTransactionResponse
-} from '../../interfaces';
+} from '../../../interfaces';
 
-import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../constants';
-import { AucWalletConnectService } from '../wallet-connect';
-
+import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../../constants';
+import { AucSortDirection } from '../../../types';
+import { AucWalletConnectService } from '../../../services';
 
 
 const AUC_ETHERSCAN_TRANSACTIONS = 'AUC_ETHERSCAN_TRANSACTIONS';
@@ -33,6 +34,8 @@ export class AucTransactionService {
     private _http: HttpClient,
     private _walletConnectService: AucWalletConnectService
   ) {
+    this._transactions = JSON.parse(localStorage.getItem(this._getLocalStorageKey())) || [];
+    this._transactionsChanged$.next(this._transactions);
   }
 
   /**
@@ -102,7 +105,7 @@ export class AucTransactionService {
 
   public markAsViewed(): void {
     this._transactions = this._transactions
-      .map((tx) => ({ ...tx, viewed: true }));
+      .map((tx: AucEtherscanTransactionLocalStorage) => ({ ...tx, viewed: true }));
 
     this._refreshTransactions();
   }
@@ -114,13 +117,17 @@ export class AucTransactionService {
   }
 
   /**
+   * Method gor getting remote transactions from blockchain.
    * @param address - wallet address.
    * @param chainId - 0x-prefixed hexadecimal string.
+   * @param page - number of the page. Uses for pagination.
+   * @param offset - Uses for pagination.
    */
   public getRemoteTransactions(address: string,
                                chainId: string,
                                page: number = 1,
-                               offset: number = 100
+                               offset: number = 100,
+                               sortDirection: AucSortDirection = AUC_SORT_DIRECTION.ASC
   ): Observable<AucEtherscanTransactionResponse> {
     try {
       const apiUrl: string = AucTransactionService.getTransactionApiUrl(chainId);
@@ -135,7 +142,7 @@ export class AucTransactionService {
       params = params.set('address', address);
       params = params.set('startblock', 0);
       params = params.set('endblock', 99999999);
-      params = params.set('sort', 'desc');
+      params = params.set('sort', sortDirection);
       params = params.set('page', page);
       params = params.set('offset', offset);
 

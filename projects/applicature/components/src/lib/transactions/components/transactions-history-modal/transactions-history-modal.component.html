@@ -1,0 +1,18 @@
+<div class="auc-transactions-history">
+  <div class="auc-dialog-header">
+    <h1>{{ data.header }}</h1>
+
+    <button type="button" class="auc-close-btn">
+      <auc-icon icon="wcl-icon-close"
+                (click)="onCloseClick()"
+      >
+      </auc-icon>
+    </button>
+  </div>
+
+  <ng-container *ngIf="(transactions$ | async) as transactions">
+    <div class="auc-transactions-history-list">
+      <auc-transactions-list [transactions]="transactions"></auc-transactions-list>
+    </div>
+  </ng-container>
+</div>
