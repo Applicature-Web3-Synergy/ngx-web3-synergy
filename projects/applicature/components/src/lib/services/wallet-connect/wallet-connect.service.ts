@@ -16,6 +16,7 @@ import {
 } from '../../interfaces';
 import { AucConnectionState } from './interfaces';
 import { aucConvertChainIdToHex, aucGetChainParams } from '../../helpers';
+import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../constants';
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
@@ -133,7 +134,7 @@ export class AucWalletConnectService {
    * @returns Supported networks list.
    */
   public get supportedNetworks(): AucNetworkOption[] {
-    if (!this._supportedNetworks || !this._supportedNetworks.length)  {
+    if (!this._supportedNetworks || !this._supportedNetworks.length) {
       console.error(`You don't have any supported networks. Pls set it when initialize library`);
     }
 
@@ -147,6 +148,27 @@ export class AucWalletConnectService {
    */
   public set supportedNetworks(options: AucNetworkOption[]) {
     this._supportedNetworks = options ?? [];
+    this._supportedNetworks.forEach((item: AucNetworkOption) => {
+      if (!item.chainId) {
+        return;
+      }
+
+      if (item.blockExplorerApiUrl) {
+        AucBlockExplorerApiUrl[item.chainId] = item.blockExplorerApiUrl;
+      }
+
+      if (!item.blockExplorerUrl) {
+        return;
+      }
+
+      AucBlockExplorerUrls[item.chainId] = [
+        ...new Set([
+          item.blockExplorerUrl,
+          ...(AucBlockExplorerUrls[item.chainId] || [])
+        ])
+      ];
+    });
+
     this.selectedNetwork = this._chainChanged$.value;
   }
 

@@ -19,19 +19,19 @@ export interface AucEtherscanTransaction {
   gas: string;
   gasPrice: string;
   isError:  '0' | '1'; // Note: isError":"0" = Pass , isError":"1" = Error during Contract Execution
-  txreceipt_status: string;
+  txreceipt_status: string; // 0 - fail, 1 - success
   input: string;
   contractAddress: string;
   cumulativeGasUsed: string;
   gasUsed: string;
   confirmations: string;
-  etherscanUrl?: string;
+  explorerUrl?: string;
 }
 
 export interface AucEtherscanTransactionLocalStorage {
   name: string,
   hash: string;
   status: AUC_TRANSACTION_STATUS;
-  etherscanUrl: string
-  viewed: boolean
+  explorerUrl: string;
+  viewed: boolean;
 }

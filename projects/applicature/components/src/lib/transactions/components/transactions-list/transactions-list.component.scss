@@ -1,24 +1,11 @@
-@import "../../../../../styles/src/lib/scss/variables";
-@import "../../../../../styles/src/lib/scss/functions";
-@import "../../../../../styles/src/lib/scss/mixins";
-
-:host {
-  display: block;
-  min-width: 372px;
-  max-width: 372px;
-}
-
-.auc-transactions {
-  display: flex;
-  flex-direction: column;
-  font-family: $as-font-family;
-}
+@import "../../../../../../styles/src/lib/scss/functions";
+@import "../../../../../../styles/src/lib/scss/mixins";
 
 .auc-transactions-list {
   display: flex;
   flex-direction: column;
-  max-height: 392px;
-  overflow-y: auto;
+  width: 100%;
+  height: auto;
 }
 
 .auc-transactions-list-item {
@@ -31,13 +18,15 @@
     margin-bottom: 0;
   }
 
-  > a {
+  a {
     color: getColor(blue, base);
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     text-decoration: none;
+    max-width: calc(100% - 25px);
     @include transition;
+    @include text-overflow;
 
     &:hover {
       text-decoration: underline;
@@ -48,8 +37,18 @@
     }
   }
 
-  > .wcl-icon-check:before {
-    color: getColor(green, base);
+  .auc-transaction-status {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+
+    &.auc-transaction-status-fail {
+      color: getColor(red, base);
+    }
+
+    &.auc-transaction-status-success {
+      color: getColor(green, base);
+    }
   }
 }
 
@@ -59,6 +58,4 @@
   font-size: 14px;
   line-height: 20px;
   text-align: center;
-  margin: 20px 0;
 }
-

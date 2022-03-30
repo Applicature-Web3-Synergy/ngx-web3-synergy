@@ -6,7 +6,8 @@ import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../../h
 import { AucNetworkOption, AucEtherscanTransactionLocalStorage } from '../../interfaces';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '../../services';
+import { AucConnectionState, AucWalletConnectService } from '../../services';
+import { AucTransactionService } from '../../transactions';
 
 
 @Component({

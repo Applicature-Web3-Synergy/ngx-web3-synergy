@@ -1,20 +1,24 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription, timer } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subscription, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AUC_TRANSACTION_STATUS } from '../../enums';
-import { CHAIN_ID_TO_TYPE_MAP, MAINNET_CHAIN_ID } from '../../helpers';
+import { AUC_SORT_DIRECTION, AUC_TRANSACTION_STATUS } from '../../../enums';
 import {
   AucEthereum,
+  AucEtherscanTransaction,
   AucEtherscanTransactionLocalStorage,
   AucEtherscanTransactionResponse
-} from '../../interfaces';
-import { AucWalletConnectService } from '../wallet-connect';
+} from '../../../interfaces';
+
+import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../../constants';
+import { AucSortDirection } from '../../../types';
+import { AucWalletConnectService } from '../../../services';
 
 
 const AUC_ETHERSCAN_TRANSACTIONS = 'AUC_ETHERSCAN_TRANSACTIONS';
 const AUC_ETHERSCAN_INTERVAL = 10000;
+
 
 @Injectable()
 export class AucTransactionService {
@@ -30,6 +34,24 @@ export class AucTransactionService {
     private _http: HttpClient,
     private _walletConnectService: AucWalletConnectService
   ) {
+    this._transactions = JSON.parse(localStorage.getItem(this._getLocalStorageKey())) || [];
+    this._transactionsChanged$.next(this._transactions);
+  }
+
+  /**
+   * @param chainId - 0x-prefixed hexadecimal string.
+   * @returns API url buy chainId. <br>
+   * Supported networks {@link BlockExplorerApiUrl}`. <br>
+   * You can add your custom API url when init library {@link AucNetworkOption.blockExplorerApiUrl}.
+   */
+  static getTransactionApiUrl(chainId: string): string {
+    const url: string = AucBlockExplorerApiUrl[chainId];
+
+    if (!url) {
+      throw new Error(`Can't find transaction API url. Make sure that you add blockExplorerApiUrl when init library`);
+    }
+
+    return url;
   }
 
   public refreshTransactions(): void {
@@ -49,10 +71,12 @@ export class AucTransactionService {
     }
   }
 
-  public saveTransaction(name: string,
+  public saveTransaction(chainId: string,
+                         name: string,
                          hash: string,
                          status: AUC_TRANSACTION_STATUS = AUC_TRANSACTION_STATUS.PENDING
   ): void {
+
     this._removeFromTransactions(hash);
 
     this._transactions = [
@@ -61,16 +85,16 @@ export class AucTransactionService {
         hash,
         status,
         viewed: false,
-        etherscanUrl: undefined,
+        explorerUrl: undefined
       },
       ...this._transactions,
     ];
 
-    const { chainId } = (window as any).ethereum as AucEthereum;
-
-    this._transactions.forEach((tx) => {
-      tx.etherscanUrl = `https://${CHAIN_ID_TO_TYPE_MAP[chainId]}.etherscan.io/tx/${tx.hash}`;
-    });
+    if (chainId) {
+      this._transactions.forEach((tx) => {
+        tx.explorerUrl = `${AucBlockExplorerUrls[chainId]}/tx/${tx.hash}`;
+      });
+    }
 
     if (this._transactions.length === 100) {
       this._transactions = this._transactions.slice(0, 100);
@@ -81,7 +105,7 @@ export class AucTransactionService {
 
   public markAsViewed(): void {
     this._transactions = this._transactions
-      .map((tx) => ({ ...tx, viewed: true }));
+      .map((tx: AucEtherscanTransactionLocalStorage) => ({ ...tx, viewed: true }));
 
     this._refreshTransactions();
   }
@@ -93,34 +117,52 @@ export class AucTransactionService {
   }
 
   /**
-   * @deprecated - Deprecated method, will be removed soon;
+   * Method gor getting remote transactions from blockchain.
+   * @param address - wallet address.
+   * @param chainId - 0x-prefixed hexadecimal string.
+   * @param page - number of the page. Uses for pagination.
+   * @param offset - Uses for pagination.
    */
-  public getRemoteTransactions(address: string, chainId: string): Observable<AucEtherscanTransactionResponse> {
-    const etherscanSubdomain = chainId === MAINNET_CHAIN_ID ? 'api' : `api-${CHAIN_ID_TO_TYPE_MAP[chainId]}`;
-    const etherscanUrl = `https://${etherscanSubdomain}.etherscan.io`;
+  public getRemoteTransactions(address: string,
+                               chainId: string,
+                               page: number = 1,
+                               offset: number = 100,
+                               sortDirection: AucSortDirection = AUC_SORT_DIRECTION.ASC
+  ): Observable<AucEtherscanTransactionResponse> {
+    try {
+      const apiUrl: string = AucTransactionService.getTransactionApiUrl(chainId);
 
-    let params = new HttpParams();
-    params = params.set('module', 'account');
-    params = params.set('action', 'txlist');
-    params = params.set('address', address);
-    params = params.set('startblock', 0);
-    params = params.set('endblock', 99999999);
-    params = params.set('sort', 'desc');
-    params = params.set('page', 1);
-    params = params.set('offset', 100);
+      if (!apiUrl) {
+        return of(null);
+      }
 
-    return this._http.get<AucEtherscanTransactionResponse>(`${etherscanUrl}/api`, { params })
-      .pipe(
-        map((data) => {
-          if (data.result && Array.isArray(data.result)) {
-            data.result.forEach((tx) => {
-              tx.etherscanUrl = `https://${CHAIN_ID_TO_TYPE_MAP[chainId]}.etherscan.io/tx/${tx.hash}`;
-            });
-          }
+      let params: HttpParams = new HttpParams();
+      params = params.set('module', 'account');
+      params = params.set('action', 'txlist');
+      params = params.set('address', address);
+      params = params.set('startblock', 0);
+      params = params.set('endblock', 99999999);
+      params = params.set('sort', sortDirection);
+      params = params.set('page', page);
+      params = params.set('offset', offset);
 
-          return data;
-        })
-      );
+      return this._http.get<AucEtherscanTransactionResponse>(`${apiUrl}`, { params })
+        .pipe(
+          map((data: AucEtherscanTransactionResponse) => {
+            if (data.result && Array.isArray(data.result)) {
+              data.result.forEach((tx: AucEtherscanTransaction) => {
+                tx.explorerUrl = `${AucBlockExplorerUrls[chainId]}/tx/${tx.hash}`;
+              });
+            }
+
+            return data;
+          })
+        );
+    } catch (e) {
+      console.error(e);
+
+      return of(null);
+    }
   }
 
   private _pingTransactionsStatus(): void {

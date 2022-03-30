@@ -146,7 +146,7 @@ const wallets: Array<WalletModule | WalletInitOptions> = [
   },
   {
     walletName: 'walletConnect',
-    infuraKey: 'INFURA_KEY',
+    infuraKey: '${YOUR_INFURA_KEY}',
     preferred: true
   }
 ];
@@ -169,9 +169,10 @@ const supportedNetworks: AucNetworkOption[] = [
   {
     icon: 'assets/svg/network/bsc.svg',
     name: 'BSC',
-    chainId: AUC_CHAIN_ID.BSC_TESTNET,
+    chainId: '0x61',
     symbol: 'BNB',
-    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.BSC_TESTNET][0],
+    blockExplorerUrl: 'https://testnet.bscscan.com',
+    blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
     isActive: false,
     chainParams: { // Custom Chain params
       chainId: '0x61',
@@ -192,6 +193,7 @@ const supportedNetworks: AucNetworkOption[] = [
     isActive: false,
     symbol: AucNativeCurrencies[AUC_CHAIN_ID.AVALANCH_TESTNET].name,
     blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.AVALANCH_TESTNET][0],
+    blockExplorerApiUrl: AucBlockExplorerApiUrl[AUC_CHAIN_ID.AVALANCH_TESTNET],
     chainParams: { // modify existing Chain params
       ...(aucGetChainParams(AUC_CHAIN_ID.AVALANCH_TESTNET)),
       chainName: 'Avalanche TestNet'
