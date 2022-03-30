@@ -8,6 +8,7 @@ import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } 
 import { AucDialogService } from '../dialog';
 import { AUC_BUTTON_APPEARANCE } from '../button';
 import { AucTransactionService } from '../services';
+import { AucEtherscanTransactionLocalStorage } from '../interfaces';
 
 
 @Component({
@@ -43,15 +44,15 @@ export class AucTransactionsHistoryComponent implements OnInit {
   public ngOnInit(): void {
     this._sub.add(
       this._transactionService.transactionsChanged$
-        .subscribe((transactions) => {
-          this.txCount = transactions.filter((tx) => {
+        .subscribe((transactions: AucEtherscanTransactionLocalStorage[]) => {
+          this.txCount = transactions.filter((tx: AucEtherscanTransactionLocalStorage) => {
             return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
           }).length;
 
           this.hasFailedTx = this.txCount > 0;
 
           if (!this.hasFailedTx) {
-            this.txCount = transactions.filter((tx) => {
+            this.txCount = transactions.filter((tx: AucEtherscanTransactionLocalStorage) => {
               return tx.status === AUC_TRANSACTION_STATUS.PENDING;
             }).length;
 
@@ -72,7 +73,12 @@ export class AucTransactionsHistoryComponent implements OnInit {
       data: {
         header: 'Recent transactions'
       },
-      dialogClass: 'auc-recent-transactions-dialog'
+      dialogClass: 'auc-recent-transactions-dialog',
+      width: '100%',
+      maxWidth: '372px',
+      overlay: {
+        closeByClick: true
+      }
     };
 
     this._dialogService.open<AucTransactionsHistoryModalComponent, AucRecentTransactionsModalData>(

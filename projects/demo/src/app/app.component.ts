@@ -7,9 +7,10 @@ import {
   AUC_IDENTICON_POSITION,
   AUC_POSITIONS,
   AucAccountOption,
-  AucDropdownConfig,
   AucConnectionState,
+  AucDropdownConfig,
   aucGenerateJazzicon,
+  AucTransactionService,
   AucWalletConnectService
 } from '@applicature/components';
 import { AS_COLOR_GROUP } from '@applicature/styles';
@@ -56,6 +57,7 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
+    private _transactionService: AucTransactionService,
     private _walletConnectService: AucWalletConnectService,
     private _cdr: ChangeDetectorRef
   ) {

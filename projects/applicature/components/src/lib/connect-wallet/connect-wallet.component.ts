@@ -238,6 +238,11 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     const modal = this._dialogService.open<AucAccountModalComponent, AucAccountModalData>(AucAccountModalComponent, {
       data,
       dialogClass: 'auc-account-dialog',
+      width: '420px',
+      maxWidth: '420px',
+      overlay: {
+        closeByClick: true
+      }
     });
   }
 

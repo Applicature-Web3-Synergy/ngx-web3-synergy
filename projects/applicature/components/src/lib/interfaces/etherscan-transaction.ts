@@ -19,7 +19,7 @@ export interface AucEtherscanTransaction {
   gas: string;
   gasPrice: string;
   isError:  '0' | '1'; // Note: isError":"0" = Pass , isError":"1" = Error during Contract Execution
-  txreceipt_status: string;
+  txreceipt_status: string; // 0 - fail, 1 - success
   input: string;
   contractAddress: string;
   cumulativeGasUsed: string;

@@ -153,7 +153,9 @@ export class AucWalletConnectService {
         return;
       }
 
-      AucBlockExplorerApiUrl[item.chainId] = item.blockExplorerApiUrl;
+      if (item.blockExplorerApiUrl) {
+        AucBlockExplorerApiUrl[item.chainId] = item.blockExplorerApiUrl;
+      }
 
       if (!item.blockExplorerUrl) {
         return;
@@ -165,7 +167,6 @@ export class AucWalletConnectService {
           ...(AucBlockExplorerUrls[item.chainId] || [])
         ])
       ];
-
     });
 
     this.selectedNetwork = this._chainChanged$.value;

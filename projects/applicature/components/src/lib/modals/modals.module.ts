@@ -16,6 +16,7 @@ import { AucTransferModalComponent } from './transfer-modal';
 import { AucWrongNetworkModalComponent } from './wrong-network-modal';
 import { AucIconModule } from '../icon';
 import { AucDirectivesModule } from '../directives';
+import { AucTransactionsModule } from '../transactions';
 
 const components = [
   AucAccountModalComponent,
@@ -42,7 +43,8 @@ const components = [
     AucProgressBarModule,
     ClipboardModule,
     AucIconModule,
-    AucDirectivesModule
+    AucDirectivesModule,
+    AucTransactionsModule
   ]
 })
 export class ModalsModule {
