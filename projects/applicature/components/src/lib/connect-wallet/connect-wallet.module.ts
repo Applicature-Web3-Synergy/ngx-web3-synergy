@@ -6,9 +6,9 @@ import { AucAccountButtonModule } from '../account-button';
 import { AucButtonModule } from '../button';
 import { AucNetworkDropdownModule } from '../network-dropdown';
 import { AucPipesModule } from '../pipes';
-import { AucTransactionsHistoryModule } from '../transactions-history';
 import { AucConnectWalletComponent } from './connect-wallet.component';
 import { AucDialogModule } from '../dialog';
+import { AucTransactionsModule } from '../transactions';
 
 @NgModule({
   declarations: [
@@ -24,8 +24,8 @@ import { AucDialogModule } from '../dialog';
     AucNetworkDropdownModule,
     AucAccountButtonModule,
     AucAccountBalanceModule,
-    AucTransactionsHistoryModule,
-    AucDialogModule
+    AucDialogModule,
+    AucTransactionsModule
   ],
 })
 export class AucConnectWalletModule {

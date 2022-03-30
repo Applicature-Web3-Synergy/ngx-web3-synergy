@@ -11,7 +11,6 @@ import { AucButtonModule } from '../button';
 import { AucInputModule } from '../input';
 import { AucPipesModule } from '../pipes';
 import { AucAccountModalComponent } from './account-modal';
-import { AucTransactionsHistoryModalComponent } from './transactions-history-modal';
 import { AucTransferModalComponent } from './transfer-modal';
 import { AucWrongNetworkModalComponent } from './wrong-network-modal';
 import { AucIconModule } from '../icon';
@@ -20,7 +19,6 @@ import { AucTransactionsModule } from '../transactions';
 
 const components = [
   AucAccountModalComponent,
-  AucTransactionsHistoryModalComponent,
   AucTransferModalComponent,
   AucWrongNetworkModalComponent
 ];

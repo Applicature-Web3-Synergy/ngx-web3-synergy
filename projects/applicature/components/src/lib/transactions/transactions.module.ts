@@ -2,21 +2,31 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AucSpinnerModule } from '../spinner';
-import { AucTransactionsListComponent } from './components';
+import {
+  AucTransactionsHistoryComponent,
+  AucTransactionsHistoryModalComponent,
+  AucTransactionsListComponent
+} from './components';
 import { AucIconModule } from '../icon';
+import { AucButtonModule } from '../button';
 
 
 @NgModule({
   declarations: [
+    AucTransactionsHistoryComponent,
+    AucTransactionsHistoryModalComponent,
     AucTransactionsListComponent
   ],
   exports: [
+    AucTransactionsHistoryComponent,
+    AucTransactionsHistoryModalComponent,
     AucTransactionsListComponent
   ],
   imports: [
     CommonModule,
     AucSpinnerModule,
-    AucIconModule
+    AucIconModule,
+    AucButtonModule
   ]
 })
 export class AucTransactionsModule { }
