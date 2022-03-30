@@ -3,11 +3,12 @@ import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { aucNormalizeBalance, aucToBN } from '../../helpers';
-import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '../../services';
+import { AucConnectionState, AucWalletConnectService } from '../../services';
 import { AUC_TRANSFER_STEPS } from './enums';
 import { AucTransferModalData } from './interfaces';
 import { AucTransactionStep } from './types';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
+import { AucTransactionService } from '../../transactions';
 
 
 @Component({

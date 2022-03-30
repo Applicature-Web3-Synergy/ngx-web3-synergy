@@ -3,17 +3,17 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subscription, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AUC_SORT_DIRECTION, AUC_TRANSACTION_STATUS } from '../../enums';
+import { AUC_SORT_DIRECTION, AUC_TRANSACTION_STATUS } from '../../../enums';
 import {
-  AucEthereum, AucEtherscanTransaction,
+  AucEthereum,
+  AucEtherscanTransaction,
   AucEtherscanTransactionLocalStorage,
   AucEtherscanTransactionResponse
-} from '../../interfaces';
+} from '../../../interfaces';
 
-import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../constants';
-import { AucWalletConnectService } from '../wallet-connect';
-import { AucSortDirection } from '../../types';
-
+import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../../constants';
+import { AucSortDirection } from '../../../types';
+import { AucWalletConnectService } from '../../../services';
 
 
 const AUC_ETHERSCAN_TRANSACTIONS = 'AUC_ETHERSCAN_TRANSACTIONS';

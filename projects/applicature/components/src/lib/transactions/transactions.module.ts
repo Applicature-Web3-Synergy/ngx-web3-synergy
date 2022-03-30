@@ -9,6 +9,8 @@ import {
 } from './components';
 import { AucIconModule } from '../icon';
 import { AucButtonModule } from '../button';
+import { HttpClientModule } from '@angular/common/http';
+import { AucTransactionService } from './services';
 
 
 @NgModule({
@@ -22,8 +24,10 @@ import { AucButtonModule } from '../button';
     AucTransactionsHistoryModalComponent,
     AucTransactionsListComponent
   ],
+  providers: [AucTransactionService],
   imports: [
     CommonModule,
+    HttpClientModule,
     AucSpinnerModule,
     AucIconModule,
     AucButtonModule

@@ -6,9 +6,9 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 import { AUC_TRANSACTION_STATUS } from '../../../enums';
 import { AucDialogService } from '../../../dialog';
 import { AUC_BUTTON_APPEARANCE } from '../../../button';
-import { AucTransactionService } from '../../../services';
 import { AucEtherscanTransactionLocalStorage } from '../../../interfaces';
 import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } from '../transactions-history-modal';
+import { AucTransactionService } from '../../services';
 
 
 @Component({

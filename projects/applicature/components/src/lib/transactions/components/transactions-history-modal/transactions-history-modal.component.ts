@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AucEtherscanTransactionLocalStorage } from '../../../interfaces';
-import { AucTransactionService } from '../../../services';
 import { AucDialogConfig, AucDialogRef } from '../../../dialog';
 import { AucRecentTransactionsModalData } from './interfaces';
+import { AucTransactionService } from '../../services';
 
 
 @Component({
