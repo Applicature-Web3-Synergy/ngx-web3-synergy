@@ -1,0 +1,19 @@
+{
+  "entryPoints": [
+    "projects/applicature/components/src/public-api.ts"
+  ],
+  "out": "doc/typedoc",
+  "exclude": [
+    "projects/demo",
+    "projects/applicature/styles",
+    "**/**/*.module.ts",
+    "**/**/*.index.ts",
+    "**/**/*.spec.ts",
+    "**/**/*.d.ts"
+  ],
+  "json": "doc/doc.json",
+  "excludePrivate": true,
+  "includeVersion": true,
+  "readme": "projects/applicature/components/README.md",
+  "name": "Applicature NGX Universal Components."
+}

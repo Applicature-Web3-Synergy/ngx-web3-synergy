@@ -10,6 +10,7 @@
     "watch": "npm run watch-styles && npm run watch-components",
     "test": "ng test",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
+    "docs-typedoc": "rimraf doc && typedoc --options typedoc.json",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
     "build-components-package": "ng build @applicature/components && cd dist/applicature/components && npm pack",
@@ -76,6 +77,7 @@
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "style-loader": "^3.3.1",
+    "typedoc": "^0.22.13",
     "typescript": "~4.5.2"
   }
 }
