@@ -1,6 +1,4 @@
-@import "../../../../../../styles/src/lib/scss/variables";
-@import "../../../../../../styles/src/lib/scss/functions";
-@import "../../../../../../styles/src/lib/scss/mixins";
+@use "../../../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: block;
@@ -10,7 +8,7 @@
 .auc-transactions-history {
   display: flex;
   flex-wrap: wrap;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
   padding: 20px 0;
   height: 100%;
   width: 100%;

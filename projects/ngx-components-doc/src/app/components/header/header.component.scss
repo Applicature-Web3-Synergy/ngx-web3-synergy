@@ -1,0 +1,12 @@
+@use 'common' as c;
+
+.main-header-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: c.$header-height;
+  background: c.$header-bg;
+  color: c.$white-text-color;
+  padding: c.$main-vertical-padding c.$main-horizontal-padding;
+}

@@ -1,0 +1,25 @@
+@use 'as-common' as asc;
+@use 'common' as c;
+
+.main-navigation-container {
+  display: block;
+}
+
+.main-navigation-item {
+  display: flex;
+  align-items: center;
+  width: 100% ;
+  height: 48px;
+  padding: 10px 30px;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: transparent;
+  @include asc.transition;
+  color: c.$text-color;
+  text-decoration: none;
+
+  &.main-navigation-item-active,
+  &:hover {
+    background-color: c.$side-nav-active-bg;
+  }
+}

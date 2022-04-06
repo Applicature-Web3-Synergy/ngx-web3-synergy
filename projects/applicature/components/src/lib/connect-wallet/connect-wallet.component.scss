@@ -1,4 +1,4 @@
-@import "../../../../styles/src/lib/scss/variables";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: inline-block;
@@ -7,7 +7,7 @@
 .auc-connect-wallet {
   display: flex;
   align-items: center;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
 }
 
 .auc-connect-wallet-container {

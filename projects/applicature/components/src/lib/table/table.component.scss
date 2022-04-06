@@ -1,15 +1,14 @@
-@import "../../../../styles/src/lib/scss/functions";
-@import "../../../../styles/src/lib/scss/mixins";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: block;
   width: 100%;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
   font-style: normal;
   font-size: 14px;
   line-height: 20px;
   border-radius: 8px;
-  background-color: getColor(white, base);
+  background-color: c.getColor(white, base);
   overflow: hidden;
 }
 
@@ -35,8 +34,8 @@
     & > th {
       padding: 18px 20px;
       font-weight: bold;
-      color: getColor(grey, base);
-      border-bottom: 1px solid getColor(grey, light);
+      color: c.getColor(grey, base);
+      border-bottom: 1px solid c.getColor(grey, light);
     }
 
     & > td {
@@ -47,10 +46,10 @@
 
   tbody {
     tr {
-      @include transition;
+      @include c.transition;
 
       &:hover {
-        background-color: getColor(grey, background);
+        background-color: c.getColor(grey, background);
       }
     }
   }
@@ -62,12 +61,12 @@
   justify-content: flex-start;
 
   &.sortable {
-    color: getColor(blue, base);
+    color: c.getColor(blue, base);
     cursor: pointer;
-    @include transition;
+    @include c.transition;
 
     &:hover {
-      color: getColor(blue, hover);
+      color: c.getColor(blue, hover);
     }
   }
 
@@ -89,7 +88,7 @@
   &.with-bg {
     padding: 4px 8px;
     border-radius: 4px;
-    background-color: getColor(grey, background);
+    background-color: c.getColor(grey, background);
   }
 
   auc-icon {
@@ -98,9 +97,9 @@
 }
 
 .auc-table-link {
-  color: getColor(blue, base);
+  color: c.getColor(blue, base);
   text-decoration: none;
-  @include transition;
+  @include c.transition;
 
   &:hover {
     text-decoration: underline;
@@ -108,19 +107,19 @@
 }
 
 .auc-table-load-more {
-  border-top: 1px solid getColor(grey, light);
+  border-top: 1px solid c.getColor(grey, light);
   padding: 14px 20px;
-  color: getColor(grey, base);
+  color: c.getColor(grey, base);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  @include transition;
+  @include c.transition;
 
   &:hover {
-    background-color: getColor(white, hover);
-    color: getColor(white, text);
+    background-color: c.getColor(white, hover);
+    color: c.getColor(white, text);
   }
 }
 

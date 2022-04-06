@@ -1,10 +1,12 @@
+// This article helped with this solution https://medium.com/swlh/want-a-more-usable-angular-library-c6466ae5ef8c
+
 import { Injectable } from '@angular/core';
 
-import { map, Observable, ReplaySubject } from 'rxjs';
-import * as DocJson from '../../../../../../../../doc/doc.json';
-// import * as DocJson from '../../../../../assets/doc/doc.json';
+import { ReplaySubject } from 'rxjs';
 
-// import { DocFather } from "../sharedDataTypes";
+// @ts-ignore:disable-line
+import * as DocJson from '../../../../../../../../doc/doc.json';
+
 export type DocFather = any;
 
 @Injectable()
@@ -17,6 +19,45 @@ export class DocumentationParserService {
 
   constructor() {
     this.importFile();
+  }
+
+  /**
+   * Sorts DocFathers by decorator -> Input > Output > HostBinding > other > alphabetical.
+   *
+   * @param docFather1 - The first element to compare.
+   * @param docFather2 - The second element to be compared with.
+   * @param decorator  - The Decorator by which to sort in this iteration.
+   */
+  static sortByDecorator(
+    docFather1: DocFather,
+    docFather2: DocFather,
+    decorator: 'Input' | 'Output' | 'HostBinding' = 'Input'
+  ): number {
+    if (docFather1.decorators) {
+      // Element1 has decorators.
+      if (!docFather2.decorators) {
+        return -1;
+      }
+
+      const decoratorsElement1 = docFather1.decorators.map(dec => dec.name);
+      const decoratorsElement2 = docFather2.decorators.map(dec => dec.name);
+
+      if (decoratorsElement1.includes(decorator) && decoratorsElement2.includes(decorator)) {
+        return decoratorsElement1.indexOf(decorator) - decoratorsElement2.indexOf(decorator);
+      }
+
+      if (decoratorsElement1.includes(decorator)) {
+        return -1;
+      } else if (decoratorsElement2.includes(decorator)) {
+        return 1;
+      } else {
+        return DocumentationParserService.sortByDecorator(docFather1, docFather2, decorator === 'Input' ? 'Output' : 'HostBinding');
+      }
+    } else if (docFather2.decorators) {
+      return -DocumentationParserService.sortByDecorator(docFather2, docFather1);
+    } else {
+      return docFather1.name.localeCompare(docFather2.name);
+    }
   }
 
   public find(component: string): DocFather | undefined {
@@ -41,18 +82,22 @@ export class DocumentationParserService {
     if (!data?.children) {
       return;
     }
+
     const child = data.children.find(child => child.name === component);
+
     if (!child) {
       for (const child of data.children) {
         const newChild = this.walkThroughTree(child, component);
+
         if (newChild) {
           return newChild;
         }
       }
+
       return;
-    } else {
-      return child;
     }
+
+    return child;
   }
 
   /**
@@ -64,8 +109,7 @@ export class DocumentationParserService {
         this.docFather = DocJson;
       }
     } catch (e) {
-      console.warn(`To show the api -> run "yarn doc" and restart the server`);
+      console.warn(`To show the api -> run "npm run docs-typedoc" and restart the server`);
     }
-
   }
 }

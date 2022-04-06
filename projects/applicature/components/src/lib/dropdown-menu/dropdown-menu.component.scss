@@ -1,4 +1,4 @@
-@import "../../../../styles/src/lib/scss/functions";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: block;
@@ -34,8 +34,8 @@ auc-overlay,
 }
 
 .auc-dropdown-menu-content-container {
-  background-color: getColor(white, base);
-  box-shadow: 0 0 10px getColor(white, boxShadow);
+  background-color: c.getColor(white, base);
+  box-shadow: 0 0 10px c.getColor(white, boxShadow);
   border-radius: 8px;
   width: auto;
   height: auto;

@@ -1,5 +1,4 @@
-@import "variables";
-@import "functions";
+@use "as-common" as c;
 
 %block-visibility {
   display: none;
@@ -13,7 +12,7 @@
 
   // The full page modal container.
   &.bn-onboard-modal {
-    font-family: $as-font-family;
+    font-family: c.$as-font-family;
   }
 
   // The container for the modal content.
@@ -39,7 +38,7 @@
   &.bn-onboard-modal-content-header-heading {
     margin-left: 0;
     font-size: 20px;
-    color: $black;
+    color: c.$black;
   }
 
   // The wallet select modal description.
@@ -74,13 +73,13 @@
     height: 56px;
     padding: 8px 18px;
     border-radius: 8px;
-    border: 1px solid getColor(grey, light);
+    border: 1px solid c.getColor(grey, light);
     margin: 0;
 
     &:hover,
     &.bn-onboard-selected-wallet {
       box-shadow: unset;
-      background: getColor(grey, light);
+      background: c.getColor(grey, light);
     }
 
     > span {
@@ -96,7 +95,7 @@
         content: "\e901";
         font-size: 24px;
         font-family: 'wcl-icons';
-        color: getColor(green, base);
+        color: c.getColor(green, base);
       }
     }
 
@@ -128,32 +127,32 @@
     padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
-    color: getColor(blue, text);
-    background: getColor(blue, base);
-    border: 2px solid getColor(blue, border);
+    color: c.getColor(blue, text);
+    background: c.getColor(blue, base);
+    border: 2px solid c.getColor(blue, border);
     outline: none;
-    font-family: $as-font-family;
+    font-family: c.$as-font-family;
 
     &:hover {
-      background: getColor(blue, hover);
-      border: 2px solid getColor(blue, borderHover);
+      background: c.getColor(blue, hover);
+      border: 2px solid c.getColor(blue, borderHover);
     }
 
     &:focus {
-      background: getColor(blue, dark);
-      border: 2px solid getColor(blue, borderFocus);
+      background: c.getColor(blue, dark);
+      border: 2px solid c.getColor(blue, borderFocus);
     }
   }
 
   &.bn-onboard-prepare-description {
     font-size: 14px;
-    color: $black;
+    color: c.$black;
   }
 
   &.bn-onboard-prepare-error {
     margin-bottom: 24px;
     font-size: 14px;
-    color: getColor(red, base);
+    color: c.getColor(red, base);
     padding: 12px 16px;
   }
 

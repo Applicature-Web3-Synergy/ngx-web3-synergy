@@ -1,11 +1,8 @@
 // Plus imports for other components in your app.
-
-@import "variables";
-@import "functions";
-@import "icons";
-@import "wallet-connet-modal";
-@import "ripple";
-@import "mixins";
+@use "as-common" as c;
+@use "as-icons";
+@use "as-ripple";
+@use "as-wallet-connet-modal";
 
 * {
   box-sizing: border-box;
@@ -16,7 +13,7 @@
 }
 
 body {
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -36,10 +33,10 @@ body {
     font-weight: bold;
     font-size: 20px;
     line-height: 24px;
-    color: $black;
+    color: c.$black;
     margin: 0;
     width: 100%;
-    @include text-overflow;
+    @include c.text-overflow;
   }
 
   .auc-close-btn {
@@ -62,8 +59,8 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
-  color: getColor(grey, base);
-  @include transition;
+  color: c.getColor(grey, base);
+  @include c.transition;
 
   .auc-icon {
     color: inherit;
@@ -73,11 +70,11 @@ body {
   }
 
   &:hover {
-    color: getColor(grey, hover);
+    color: c.getColor(grey, hover);
   }
 
   &:active {
-    color: getColor(grey, dark);
+    color: c.getColor(grey, dark);
   }
 }
 

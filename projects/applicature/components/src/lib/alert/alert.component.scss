@@ -1,5 +1,4 @@
-@import "../../../../styles/src/lib/scss/variables";
-@import "../../../../styles/src/lib/scss/functions";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: block;
@@ -19,7 +18,7 @@
 
 .auc-alert-white {
   .auc-alert-icon:before {
-    color: getColor(grey, base);
+    color: c.getColor(grey, base);
   }
 }
 
@@ -37,7 +36,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
   color: var(--auc-alert-text);
 }
 

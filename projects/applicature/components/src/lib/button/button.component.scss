@@ -1,5 +1,4 @@
-@import "../../../../styles/src/lib/scss/variables";
-@import "../../../../styles/src/lib/scss/mixins";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: inline-flex;
@@ -15,12 +14,12 @@
   position: relative;
   cursor: pointer;
   outline: none;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
   color: var(--auc-button-text);
   border: 2px solid var(--auc-button-border);
   border-radius: var(--auc-button-radius);
   background: var(--auc-button-base);
-  @include transition;
+  @include c.transition;
 
   &:hover {
     background: var(--auc-button-hover);
@@ -49,7 +48,7 @@
   &.auc-button-transparent {
     border: 2px solid transparent;
     background: transparent;
-    @include transition;
+    @include c.transition;
 
     &:hover {
       background: transparent;

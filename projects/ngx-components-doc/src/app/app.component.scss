@@ -1,0 +1,40 @@
+@use 'common' as c;
+
+$sidenav-title-height: 60px;
+$sidenav-padding: 30px;
+
+.doc-sidenav-container {
+  position: absolute;
+  top: c.$header-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.doc-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+  border-right: 1px solid c.$border-color;
+  background-color: c.$side-nav-bg;
+}
+
+.doc-sidenav-title-container {
+  padding: 10px $sidenav-padding;
+  height: $sidenav-title-height;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: c.$card-bg;
+  border-bottom: 1px solid c.$border-color;
+}
+
+.doc-sidenav-title {
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.main-page-container {
+  padding: $sidenav-padding;
+}

@@ -4,8 +4,10 @@
   ],
   "out": "doc/typedoc",
   "exclude": [
+    "projects/applicature/styles/**/**.**",
     "projects/demo",
-    "projects/applicature/styles",
+    "projects/components-demo/**/**.**",
+    "projects/ngx-components-demo/**/**.**",
     "**/**/*.module.ts",
     "**/**/*.index.ts",
     "**/**/*.spec.ts",

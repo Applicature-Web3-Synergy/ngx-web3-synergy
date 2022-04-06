@@ -1,0 +1,21 @@
+@use 'common' as c;
+
+$card-padding: 20px;
+
+.doc-card {
+  background-color: c.$card-bg;
+  border-radius: c.$border-radius;
+}
+
+.doc-card-header,
+.doc-card-content {
+  padding: $card-padding;
+}
+
+.doc-card-header {
+  border-bottom: 1px solid c.$border-color;
+}
+
+.doc-card-title {
+  color: c.$title-gray;
+}

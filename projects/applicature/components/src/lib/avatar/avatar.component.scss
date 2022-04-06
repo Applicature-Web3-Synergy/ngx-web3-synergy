@@ -1,4 +1,4 @@
-@import "../../../../styles/src/lib/scss/functions";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: inline-block;
@@ -7,7 +7,7 @@
 .auc-avatar {
   border-radius: 50%;
   overflow: hidden;
-  background: getColor(grey, hover);
+  background: c.getColor(grey, hover);
 
   .auc-avatar-img {
     object-fit: cover;

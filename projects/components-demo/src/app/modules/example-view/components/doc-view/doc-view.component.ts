@@ -1,7 +1,7 @@
-import { Component, ChangeDetectionStrategy, Input, AfterContentInit, ChangeDetectorRef } from "@angular/core";
+// This article helped with this solution https://medium.com/swlh/want-a-more-usable-angular-library-c6466ae5ef8c
 
-// import { DocFather, DocFathers, DocGroupTitle } from "../sharedDataTypes";
-import { take } from "rxjs/operators";
+import { Component, ChangeDetectionStrategy, Input, AfterContentInit, ChangeDetectorRef } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { DocumentationParserService } from '../../services';
 
 type DocFather = any;
@@ -18,50 +18,11 @@ interface ComponentDoc {
   functions?: DocFathers;
 }
 
-/**
- * Sorts DocFathers by decorator -> Input > Output > HostBinding > other > alphabetical.
- *
- * @param docFather1 - The first element to compare.
- * @param docFather2 - The second element to be compared with.
- * @param decorator  - The Decorator by which to sort in this iteration.
- */
-function sortByDecorator(
-  docFather1: DocFather,
-  docFather2: DocFather,
-  decorator: "Input" | "Output" | "HostBinding" = "Input"
-): number {
-  if (docFather1.decorators) {
-    // Element1 has decorators.
-    if (!docFather2.decorators) {
-      return -1;
-    }
-
-    const decoratorsElement1 = docFather1.decorators.map(dec => dec.name);
-    const decoratorsElement2 = docFather2.decorators.map(dec => dec.name);
-
-    if (decoratorsElement1.includes(decorator) && decoratorsElement2.includes(decorator)) {
-      return decoratorsElement1.indexOf(decorator) - decoratorsElement2.indexOf(decorator);
-    }
-
-    if (decoratorsElement1.includes(decorator)) {
-      return -1;
-    } else if (decoratorsElement2.includes(decorator)) {
-      return 1;
-    } else {
-      return sortByDecorator(docFather1, docFather2, decorator === "Input" ? "Output" : "HostBinding");
-    }
-
-  } else if (docFather2.decorators) {
-    return -sortByDecorator(docFather2, docFather1);
-  } else {
-    return docFather1.name.localeCompare(docFather2.name);
-  }
-}
 
 @Component({
   selector: 'demo-doc-view',
   templateUrl: './doc-view.component.html',
-  styleUrls: ['./doc-view.component.scss'],
+  styleUrls: [ './doc-view.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DocViewComponent implements AfterContentInit {
@@ -96,19 +57,20 @@ export class DocViewComponent implements AfterContentInit {
           this.componentsDocs = [];
           this.components.forEach(component => {
             const docFather = this.documentationParserService.find(component);
+
             if (!docFather) {
               return;
             }
-            const componentDoc: ComponentDoc = {component, docFather};
-            componentDoc.constructors = this.arraySetup(componentDoc.docFather, "Constructors");
-            componentDoc.accessors = this.arraySetup(componentDoc.docFather, "Accessors");
-            componentDoc.methods = this.arraySetup(componentDoc.docFather, "Methods");
-            componentDoc.functions = this.arraySetup(componentDoc.docFather, "Functions");
-            componentDoc.properties = this.arraySetup(componentDoc.docFather, "Properties")
+            const componentDoc: ComponentDoc = { component, docFather };
+            componentDoc.constructors = this.arraySetup(componentDoc.docFather, 'Constructors');
+            componentDoc.accessors = this.arraySetup(componentDoc.docFather, 'Accessors');
+            componentDoc.methods = this.arraySetup(componentDoc.docFather, 'Methods');
+            componentDoc.functions = this.arraySetup(componentDoc.docFather, 'Functions');
+            componentDoc.properties = this.arraySetup(componentDoc.docFather, 'Properties')
               .filter(child =>
                 (child.flags.isProtected || child.flags.isPublic) && !child.flags.isConstructorProperty
               )
-              .sort(sortByDecorator);
+              .sort(DocumentationParserService.sortByDecorator);
             this.componentsDocs.push(componentDoc);
           });
           this.cd.markForCheck();
@@ -122,13 +84,13 @@ export class DocViewComponent implements AfterContentInit {
    * @param docFather - The DocFather to be searched for the accessor parameters
    */
   public getAccessorsParameters(docFather: DocFather): string {
-    for (const keyName of [ "bindingPropertyName", "hostPropertyName", "type.name", "type.types" ]) {
+    for (const keyName of [ 'bindingPropertyName', 'hostPropertyName', 'type.name', 'type.types' ]) {
       const keys = this.findKeys(docFather, keyName);
       if (keys.length > 0) {
         return keys[0];
       }
     }
-    return "";
+    return '';
   }
 
   /**
@@ -140,9 +102,9 @@ export class DocViewComponent implements AfterContentInit {
    */
   private findKeys(inspectedObject: any, keyName: string): string[] {
     const results = [];
-    if (typeof inspectedObject === "object") {
+    if (typeof inspectedObject === 'object') {
       if (inspectedObject.hasOwnProperty(keyName)) {
-        return [inspectedObject[keyName].toString()];
+        return [ inspectedObject[keyName].toString() ];
       } else {
         for (const key in inspectedObject) {
           if (inspectedObject[key]) {

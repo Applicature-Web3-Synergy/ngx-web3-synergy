@@ -1,0 +1,19 @@
+@use "colors" as c;
+
+$main-font: 'Inter', 'Helvetica Neue', sans-serif;
+$border-radius: 8px;
+$header-height: 80px;
+$main-horizontal-padding: 30px;
+$main-vertical-padding: 20px;
+
+// Colors
+$card-bg: #fff;
+$white-text-color: #fff;
+$text-color: map-get(c.$black, 2);
+$title-color: map-get(c.$black, 1);
+$title-gray: map-get(c.$gray, 4);
+$header-bg: map-get(c.$blue, 1);
+$side-nav-bg: #fff;
+$side-nav-active-bg: map-get(c.$gray, 2);
+$border-color: map-get(c.$gray, 2);
+$main-bg-color: map-get(c.$gray, 1);

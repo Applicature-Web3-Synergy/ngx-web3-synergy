@@ -1,5 +1,4 @@
-@import "../../../../../styles/src/lib/scss/variables";
-@import "../../../../../styles/src/lib/scss/functions";
+@use "../../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: block;
@@ -10,7 +9,7 @@
 .auc-transfer {
   display: flex;
   flex-direction: column;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
 }
 
 .auc-transfer-input {
@@ -18,11 +17,11 @@
 }
 
 .auc-transfer-progress {
-  background: getColor(grey, background);
+  background: c.getColor(grey, background);
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 24px;
-  color: $black;
+  color: c.$black;
 }
 
 .auc-transfer-steps {
@@ -36,7 +35,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: $black;
+  color: c.$black;
   margin: 0;
 
   &:last-of-type {

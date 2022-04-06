@@ -1,4 +1,4 @@
-@import "../../../../styles/src/lib/scss/functions";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: inline-flex;
@@ -21,7 +21,7 @@
     height: 100%;
     border-width: 4px;
     border-style: solid;
-    border-color: getColor(blue, base) transparent transparent transparent;
+    border-color: c.getColor(blue, base) transparent transparent transparent;
     border-radius: 50%;
     animation: auc-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
