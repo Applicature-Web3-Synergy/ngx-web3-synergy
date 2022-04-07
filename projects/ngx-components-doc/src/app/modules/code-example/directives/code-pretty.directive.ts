@@ -14,9 +14,11 @@ export class CodePrettyDirective implements AfterViewInit {
   constructor(private _renderer2: Renderer2,
               private _elementRef: ElementRef,
               @Inject(DOCUMENT) private document: Document
-  ) { }
+  ) {
+    this.window = this.document.defaultView as any;
+  }
 
   ngAfterViewInit(): void {
-    this.window.PR?.prettyPrint();
+    this.window?.PR?.prettyPrint();
   }
 }

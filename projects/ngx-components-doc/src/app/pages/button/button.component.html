@@ -1,15 +1,25 @@
-<div class="doc-card">
-  <div class="doc-card-header">
-    <h3 class="doc-card-title">Some title</h3>
-  </div>
-  <div class="doc-card-content">
-    <doc-component-viewer
-      exampleTitle="Just a Button Demo"
-      [code]="buttonDemo"
-      [testCode]="testCode"
-      [components]="['AucButtonComponent']"
-    >
-      <auc-button label="Button" (onClick)="onClick($event)"></auc-button>
-    </doc-component-viewer>
-  </div>
-</div>
+<!--<div class="doc-card">-->
+<!--  <div class="doc-card-header">-->
+<!--    <h3 class="doc-card-title">Some title</h3>-->
+<!--  </div>-->
+<!--  <div class="doc-card-content">-->
+<!--    <doc-component-viewer-->
+<!--      exampleTitle="Just a Button Demo"-->
+<!--      [code]="buttonDemo"-->
+<!--      [testCode]="testCode"-->
+<!--      [components]="['AucButtonComponent']"-->
+<!--    >-->
+<!--      <auc-button label="Button" (onClick)="onClick($event)"></auc-button>-->
+<!--    </doc-component-viewer>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<doc-component-viewer
+  exampleTitle="Just a Button Demo"
+  [code]="buttonDemo"
+  [testCode]="testCode"
+  [components]="['AucButtonComponent']"
+>
+  <auc-button label="Button" (onClick)="onClick($event)"></auc-button>
+</doc-component-viewer>

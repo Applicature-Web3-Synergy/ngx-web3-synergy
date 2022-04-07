@@ -1,0 +1,46 @@
+@use 'common' as c;
+
+$card-padding: 20px;
+
+// Mat Tab
+.mat-tab-header {
+  border-bottom: 1px solid c.$border-color;
+}
+
+.mat-ink-bar {
+  background-color: map-get(c.$gray, 4);
+}
+
+.mat-tab-label {
+  color: c.$title-color;
+  font-size: 16px;
+  font-weight: 500;
+
+  &.mat-tab-label-active {
+    color: c.$title-color;
+    font-weight: 700;
+    opacity: 1;
+  }
+}
+
+.mat-tab-group {
+  &.tabs-as-card {
+    background-color: c.$card-bg;
+    border-radius: c.$border-radius;
+  }
+
+  .mat-tab-header {
+    padding: 0 $card-padding;
+  }
+
+  .mat-tab-label {
+    height: 60px;
+    min-width: 100px;
+  }
+
+  .mat-tab-body-content {
+    padding: $card-padding;
+  }
+}
+
+// End Mat Tab
