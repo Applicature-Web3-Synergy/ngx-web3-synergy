@@ -363,6 +363,7 @@
               "projects/ngx-components-doc/src/assets"
             ],
             "styles": [
+              "node_modules/code-prettify/styles/desert.css",
               "projects/applicature/styles/src/lib/scss/as-styles.scss",
               "projects/ngx-components-doc/src/styles.scss"
             ],

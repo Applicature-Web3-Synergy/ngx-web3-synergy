@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ComponentViewerComponent } from './component-viewer.component';
 import { ApiContainerComponent } from './components/api-container/api-container.component';
+import { CodeExampleModule } from '../code-example/code-example.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ApiContainerComponent } from './components/api-container/api-container.
     ComponentViewerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CodeExampleModule
   ]
 })
 export class ComponentViewerModule {

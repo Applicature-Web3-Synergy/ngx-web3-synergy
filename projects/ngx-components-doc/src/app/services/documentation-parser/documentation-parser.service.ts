@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 
-// @ts-ignore:disable-line
-// import * as DocJson from '../../../../../../doc/doc.json';
 import { DocFather } from './interfaces';
 import { HttpClient } from '@angular/common/http';
-const DocJson = null;
+
 
 @Injectable({
   providedIn: 'root'

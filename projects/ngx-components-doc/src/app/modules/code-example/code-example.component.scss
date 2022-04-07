@@ -1,0 +1,17 @@
+@use 'common' as c;
+
+
+pre.prettyprint {
+  border: 1px solid c.$border-color;
+  border-radius: c.$border-radius;
+  overflow: auto;
+  padding: 15px;
+
+  &.white-theme {
+    background-color: c.$card-bg;
+  }
+
+  & > .pln {
+    display: none;
+  }
+}

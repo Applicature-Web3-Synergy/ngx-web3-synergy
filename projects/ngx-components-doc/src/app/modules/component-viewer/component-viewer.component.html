@@ -6,9 +6,10 @@
 
 <div class="code-wrapper">
   <h6>HTML</h6>
-  <pre class="prettyprint" [ngClass]="'lang-' + lang" [innerText]="code"></pre>
+  <doc-code-example [codeConfig]="{code: code, lang: lang}"></doc-code-example>
+
   <h6>TS</h6>
-  <pre class="prettyprint" [ngClass]="'lang-' + 'js'" [innerText]="testCode"></pre>
+  <doc-code-example [codeConfig]="{code: testCode, lang: 'js'}"></doc-code-example>
 </div>
 
 <doc-api-container *ngIf="components" [components]="components"></doc-api-container>

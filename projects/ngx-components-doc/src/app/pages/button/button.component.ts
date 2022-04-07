@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { html } from '../../../../../components-demo/src/app/modules/example-view/example-veiew.config';
 
 export const buttonDemo: TemplateStringsArray =
-  html`<auc-button label="Button"></auc-button>`
+  html`<auc-button label="Button"></auc-button>`;
 
 export const testCode: any = `import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
@@ -30,7 +30,7 @@ export class ButtonDemoComponent {
 @Component({
   selector: 'doc-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss'],
+  styleUrls: [ './button.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
