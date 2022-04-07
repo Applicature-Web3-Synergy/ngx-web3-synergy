@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  height: auto;
+}
+
+pre {
+  margin: 10px 0;
+  border: 1px solid #666;
+  border-radius: 4px;
+  overflow: auto;
+  padding: 8px;
+}
+
+.content-wrapper {
+  padding: 10px 0;
+}
+
+.tabGroup {
+  padding: 10px 0;
+}

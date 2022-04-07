@@ -1,4 +1,4 @@
-@import './projects/applicature/styles/src/lib/scss/styles';
+@use 'as-common' as c;
 
 .custom-dropdown-container {
   padding: 0
@@ -8,7 +8,7 @@
   margin: 0;
   padding: 15px 10px;
   cursor: pointer;
-  @include transition(background-color, 0.3s);
+  @include c.transition(background-color, 0.3s);
 
   &:hover {
     background-color: #F3F5FB;

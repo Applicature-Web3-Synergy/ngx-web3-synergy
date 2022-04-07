@@ -1,15 +1,15 @@
-// This article helped with this solution https://medium.com/swlh/want-a-more-usable-angular-library-c6466ae5ef8c
-
 import { Injectable } from '@angular/core';
-
-import { ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 
 // @ts-ignore:disable-line
-// import * as DocJson from '../../../../../../../../doc/doc.json';
+// import * as DocJson from '../../../../../../doc/doc.json';
+import { DocFather } from './interfaces';
+import { HttpClient } from '@angular/common/http';
 const DocJson = null;
-export type DocFather = any;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class DocumentationParserService {
   /** Emits a value as soon as the jsonDoc is loaded */
   public onDataLoaded$: ReplaySubject<DocFather> = new ReplaySubject(1);
@@ -17,8 +17,12 @@ export class DocumentationParserService {
   /** The currently loaded documentation docs json */
   private _docFather: DocFather | null = null;
 
-  constructor() {
-    this.importFile();
+  public set docFather(docFather: DocFather) {
+    this._docFather = docFather;
+    this.onDataLoaded$.next(this._docFather);
+  }
+
+  constructor(private http: HttpClient) {
   }
 
   /**
@@ -67,20 +71,15 @@ export class DocumentationParserService {
     return this.walkThroughTree(this._docFather, component);
   }
 
-  public set docFather(docFather: DocFather) {
-    this._docFather = docFather;
-    this.onDataLoaded$.next(this._docFather);
-  }
-
   /**
    * Recursively walks through the components-tree and searches for the part, where
    * the docFather's title is equals to the component argument.
    * @param data the docFather to walk through and search for the component.
    * @param component the component to be searched for in the docFather tree.
    */
-  private walkThroughTree(data: DocFather, component: string): DocFather | undefined {
+  private walkThroughTree(data: DocFather, component: string): DocFather {
     if (!data?.children) {
-      return;
+      return null;
     }
 
     const child = data.children.find(child => child.name === component);
@@ -94,7 +93,7 @@ export class DocumentationParserService {
         }
       }
 
-      return;
+      return null;
     }
 
     return child;
@@ -103,13 +102,15 @@ export class DocumentationParserService {
   /**
    * Imports the doc file with the httpClient (So that we can take action if the file is not available)
    */
-  private importFile(): void {
-    try {
-      if (DocJson) {
-        this.docFather = DocJson;
-      }
-    } catch (e) {
-      console.warn(`To show the api -> run "npm run docs-typedoc" and restart the server`);
-    }
+  public getDoc(): Observable<DocFather> {
+    return this.http.get<DocFather>('./assets/jsons/doc.json');
+    //
+    // try {
+    //   if (DocJson) {
+    //     this.docFather = DocJson as DocFather;
+    //   }
+    // } catch (e) {
+    //   console.warn(`To show the api -> run "npm run docs-typedoc" and restart the server`);
+    // }
   }
 }

@@ -152,7 +152,12 @@
             "styles": [
               "projects/demo/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/applicature/styles/src/lib/scss"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -367,7 +372,53 @@
                 "projects/ngx-components-doc/src/scss"
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "@metamask/jazzicon",
+              "web3",
+              "tweetnacl",
+              "ethereumjs-util",
+              "ethereumjs-common",
+              "rtcpeerconnection-shim",
+              "gridplus-sdk",
+              "buffer",
+              "sturdy-websocket",
+              "walletlink",
+              "@walletconnect/web3-provider",
+              "trezor-connect",
+              "@ensdomains/ensjs",
+              "eth-sig-util",
+              "ethereumjs-tx",
+              "eth-lattice-keyring",
+              "@ethereumjs/tx",
+              "@ethereumjs/common",
+              "@shapeshiftoss/hdwallet-keepkey-webusb",
+              "@shapeshiftoss/hdwallet-core",
+              "@gnosis.pm/safe-apps-sdk",
+              "@gnosis.pm/safe-apps-provider",
+              "eth-provider",
+              "@cvbb/eth-keyring",
+              "authereum",
+              "web3-provider-engine/subproviders/subscription",
+              "web3-provider-engine/subproviders/nonce-tracker",
+              "web3-provider-engine/subproviders/hooked-wallet",
+              "web3-provider-engine/subproviders/fixture",
+              "web3-provider-engine/subproviders/filters",
+              "web3-provider-engine/subproviders/cache",
+              "web3-provider-engine",
+              "@walletconnect/qrcode-modal",
+              "query-string",
+              "@walletconnect/environment",
+              "@walletconnect/socket-transport",
+              "@walletconnect/window-metadata",
+              "pump",
+              "eth-rpc-errors",
+              "@metamask/obs-store",
+              "@ledgerhq/devices/lib/hid-framing",
+              "@ensdomains/address-encoder",
+              "@babel/runtime/helpers/slicedToArray",
+              "create-hash"
+            ]
           },
           "configurations": {
             "production": {
