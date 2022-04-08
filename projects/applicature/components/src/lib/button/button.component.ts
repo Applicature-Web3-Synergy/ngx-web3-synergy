@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
@@ -145,14 +155,16 @@ export class AucButtonComponent implements OnInit, OnChanges {
 
   get iconColor(): string {
     return this.color === AS_COLOR_GROUP.WHITE
-      ? AsColors[AS_COLOR_GROUP.GREY].base
+      ? AsColors[AS_COLOR_GROUP.GRAY].base
       : AsColors[AS_COLOR_GROUP.WHITE].base
   }
+
+  constructor(private _elRef: ElementRef) {}
 
   public get classNames(): { [el: string]: boolean } {
     return {
       ['auc-button']: true,
-      [`auc-button-white`]: this.color === AS_COLOR_GROUP.WHITE,
+      [`auc-button-white`]: !this.transparent && this.color === AS_COLOR_GROUP.WHITE,
       ['auc-button-disabled']: this.disabled,
       ['auc-button-adaptive']: this.adaptive,
       ['auc-button-transparent']: this.transparent,
@@ -161,10 +173,30 @@ export class AucButtonComponent implements OnInit, OnChanges {
   }
 
   public ngOnInit(): void {
-    this.ngOnChanges();
+    this.setProperties();
   }
 
   public ngOnChanges(): void {
+    this.setProperties();
+  }
+
+  public onClick(event: any): void {
+    if (this.disabled) {
+      return;
+    }
+
+    this.onClickEmitter.emit(event);
+  }
+
+  private setProperties(): void {
+    if (this.adaptive) {
+      this._elRef.nativeElement.style.width = '100%';
+    }
+
+    if (this.transparent && this.color !== AS_COLOR_GROUP.WHITE) {
+      this.color = AS_COLOR_GROUP.WHITE;
+    }
+
     const colorProperties: AsColorProperties = AsColors[this.color || AS_COLOR_GROUP.BLUE];
 
     const colorProps: AucSetStyleProp[] = Object.keys(colorProperties || {})
@@ -182,13 +214,5 @@ export class AucButtonComponent implements OnInit, OnChanges {
       },
       ...(colorProps || [])
     ];
-  }
-
-  public onClick(event: any): void {
-    if (this.disabled) {
-      return;
-    }
-
-    this.onClickEmitter.emit(event);
   }
 }

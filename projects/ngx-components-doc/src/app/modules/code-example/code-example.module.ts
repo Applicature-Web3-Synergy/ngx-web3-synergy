@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CodeExampleComponent } from './code-example.component';
 import { CodePrettyDirective } from './directives';
+import { AucCopyToClipboardModule } from '@applicature/components';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CodePrettyDirective } from './directives';
     CodeExampleComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AucCopyToClipboardModule
   ]
 })
 export class CodeExampleModule {

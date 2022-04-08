@@ -19,3 +19,11 @@ $card-padding: 20px;
 .doc-card-title {
   color: c.$title-gray;
 }
+
+
+.doc-example-viewer-example-cards-list {
+  & > *:not(:last-child) {
+    display: block;
+    margin-bottom: 30px;
+  };
+}

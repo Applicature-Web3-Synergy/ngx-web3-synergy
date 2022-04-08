@@ -1,25 +1,26 @@
-<!--<div class="doc-card">-->
-<!--  <div class="doc-card-header">-->
-<!--    <h3 class="doc-card-title">Some title</h3>-->
-<!--  </div>-->
-<!--  <div class="doc-card-content">-->
-<!--    <doc-component-viewer-->
-<!--      exampleTitle="Just a Button Demo"-->
-<!--      [code]="buttonDemo"-->
-<!--      [testCode]="testCode"-->
-<!--      [components]="['AucButtonComponent']"-->
-<!--    >-->
-<!--      <auc-button label="Button" (onClick)="onClick($event)"></auc-button>-->
-<!--    </doc-component-viewer>-->
-<!--  </div>-->
-<!--</div>-->
-
-
 <doc-component-viewer
-  exampleTitle="Just a Button Demo"
-  [code]="buttonDemo"
-  [testCode]="testCode"
   [components]="['AucButtonComponent']"
 >
-  <auc-button label="Button" (onClick)="onClick($event)"></auc-button>
+  <div class="doc-example-viewer-example-cards-list">
+    <doc-example-card title="Basic buttons" [tabs]="basicButtonsTabs">
+      <doc-basic-buttons></doc-basic-buttons>
+    </doc-example-card>
+
+    <doc-example-card title="Icon buttons" [tabs]="iconButtonsTabs">
+      <doc-icon-buttons></doc-icon-buttons>
+    </doc-example-card>
+
+    <doc-example-card title="Button with icons" [tabs]="buttonsWithIconsTabs">
+      <doc-buttons-with-icon></doc-buttons-with-icon>
+    </doc-example-card>
+
+    <doc-example-card title="Button with identicon" [tabs]="buttonsWithIdenticonTabs">
+      <doc-buttons-with-identicon></doc-buttons-with-identicon>
+    </doc-example-card>
+
+    <doc-example-card title="Button with custom size" [tabs]="buttonsCustomSizeTabs">
+      <doc-buttons-custom-size></doc-buttons-custom-size>
+    </doc-example-card>
+
+  </div>
 </doc-component-viewer>

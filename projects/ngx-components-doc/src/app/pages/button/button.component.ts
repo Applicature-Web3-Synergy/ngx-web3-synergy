@@ -1,30 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { html } from '../../../../../components-demo/src/app/modules/example-view/example-veiew.config';
 
-export const buttonDemo: TemplateStringsArray =
-  html`<auc-button label="Button"></auc-button>`;
-
-export const testCode: any = `import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
-import { buttonDemo } from '../examples/btn-example';
-
-
-@Component({
-  selector: 'demo-button-demo',
-  templateUrl: './button-demo.component.html',
-  styleUrls: [ './button-demo.component.scss' ],
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class ButtonDemoComponent {
-  public buttonDemo: any = buttonDemo;
-  public testCode: any = testCode;
-
-  public onClick(evt): void {
-    console.log('Btn example clicked: ', evt);
-  }
-
-}
-`;
+import { ExampleCardTab } from '../../modules/example-card/interfaces';
+import { CODE_TYPES } from '../../modules/code-example/enums';
+import {
+  BasicButtonCodeHtml,
+  BasicButtonCodeTs,
+  ButtonsCustomSizeCodeHtml,
+  ButtonsCustomSizeCodeScss,
+  ButtonsCustomSizeCodeTs,
+  ButtonWithIconCodeHtm,
+  ButtonWithIconCodeTs,
+  ButtonWithIdenticonCodeHtml,
+  ButtonWithIdenticonCodeTs,
+  IconButtonCodeHtml,
+  IconButtonCodeTs
+} from './components';
 
 
 @Component({
@@ -34,10 +24,95 @@ export class ButtonDemoComponent {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
-  public buttonDemo: any = buttonDemo;
-  public testCode: any = testCode;
+  basicButtonsTabs: ExampleCardTab[] = [
+    {
+      title: 'HTML',
+      code: {
+        code: BasicButtonCodeHtml,
+        lang: CODE_TYPES.HTML
+      }
+    },
+    {
+      title: 'TS',
+      code: {
+        code: BasicButtonCodeTs,
+        lang: CODE_TYPES.JS
+      }
+    }
+  ];
 
-  public onClick(evt): void {
-    console.log('Btn example clicked: ', evt);
-  }
+  iconButtonsTabs: ExampleCardTab[] = [
+    {
+      title: 'HTML',
+      code: {
+        code: IconButtonCodeHtml,
+        lang: CODE_TYPES.HTML
+      }
+    },
+    {
+      title: 'TS',
+      code: {
+        code: IconButtonCodeTs,
+        lang: CODE_TYPES.JS
+      }
+    }
+  ];
+
+  buttonsWithIconsTabs: ExampleCardTab[] = [
+    {
+      title: 'HTML',
+      code: {
+        code: ButtonWithIconCodeHtm,
+        lang: CODE_TYPES.HTML
+      }
+    },
+    {
+      title: 'TS',
+      code: {
+        code: ButtonWithIconCodeTs,
+        lang: CODE_TYPES.JS
+      }
+    }
+  ];
+
+  buttonsWithIdenticonTabs: ExampleCardTab[] = [
+    {
+      title: 'HTML',
+      code: {
+        code: ButtonWithIdenticonCodeHtml,
+        lang: CODE_TYPES.HTML
+      }
+    },
+    {
+      title: 'TS',
+      code: {
+        code: ButtonWithIdenticonCodeTs,
+        lang: CODE_TYPES.JS
+      }
+    }
+  ];
+
+  buttonsCustomSizeTabs: ExampleCardTab[] = [
+    {
+      title: 'HTML',
+      code: {
+        code: ButtonsCustomSizeCodeHtml,
+        lang: CODE_TYPES.HTML
+      }
+    },
+    {
+      title: 'TS',
+      code: {
+        code: ButtonsCustomSizeCodeTs,
+        lang: CODE_TYPES.JS
+      }
+    },
+    {
+      title: 'Css',
+      code: {
+        code: ButtonsCustomSizeCodeScss,
+        lang: CODE_TYPES.CSS
+      }
+    }
+  ];
 }

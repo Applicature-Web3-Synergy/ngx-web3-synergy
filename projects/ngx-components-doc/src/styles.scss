@@ -2,3 +2,27 @@
 @use "fonts";
 @use "resset";
 @use "angular-material-customization";
+@use 'common' as c;
+
+.doc-grid-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: map-get(c.$gray, 5);
+  border-radius: c.$border-radius c.$border-radius 0 c.$border-radius;
+  padding: 10px;
+}
+
+.doc-grid-item {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.doc-grid-item-title {
+  margin: 0 0 15px;
+}

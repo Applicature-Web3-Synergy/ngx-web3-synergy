@@ -1,7 +1,7 @@
 export enum AS_COLOR_GROUP {
   BLUE = 'blue',
   GREEN = 'green',
-  GREY = 'grey',
+  GRAY = 'gray',
   ORANGE = 'orange',
   RED = 'red',
   WHITE = 'white'
@@ -9,7 +9,7 @@ export enum AS_COLOR_GROUP {
 
 export type AsColorGroup = AS_COLOR_GROUP.BLUE
   | AS_COLOR_GROUP.GREEN
-  | AS_COLOR_GROUP.GREY
+  | AS_COLOR_GROUP.GRAY
   | AS_COLOR_GROUP.ORANGE
   | AS_COLOR_GROUP.RED
   | AS_COLOR_GROUP.WHITE;
@@ -66,7 +66,7 @@ export const AsColors: { [key: string]: AsColorProperties } = {
     borderHover: '#F2A45B',
     borderFocus: '#C77F3C',
   },
-  [AS_COLOR_GROUP.GREY]: {
+  [AS_COLOR_GROUP.GRAY]: {
     base: '#6D87AC',
     hover: '#BBC7D9',
     light: '#DDE3EC',
