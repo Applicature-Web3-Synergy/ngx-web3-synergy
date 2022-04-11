@@ -7,7 +7,7 @@
     <div class="doc-example-box">
       <ng-content></ng-content>
 
-      <button class="doc-show-code-bth" (click)="toggleShow()">Show Code</button>
+      <button class="doc-show-code-bth" (click)="toggleShow()">{{showCode ? 'Hide' : 'Show'}} Code</button>
     </div>
 
     <mat-tab-group class="doc-example-card-tabs"

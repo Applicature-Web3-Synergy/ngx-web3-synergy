@@ -2,6 +2,7 @@
 @use "fonts";
 @use "resset";
 @use "angular-material-customization";
+@use "as-styles";
 @use 'common' as c;
 
 .doc-grid-container {
@@ -25,4 +26,11 @@
 
 .doc-grid-item-title {
   margin: 0 0 15px;
+}
+
+.doc-example-viewer-example-cards-list {
+  & > *:not(:last-child) {
+    display: block;
+    margin-bottom: 30px;
+  };
 }

@@ -1,0 +1,21 @@
+<doc-component-viewer
+  [components]="['AucConnectWalletComponent']"
+>
+  <div class="doc-example-viewer-example-cards-list">
+    <doc-example-card title="Basic" [tabs]="basicCWTabs">
+      <doc-basic-connect-wallet></doc-basic-connect-wallet>
+    </doc-example-card>
+
+    <doc-example-card title="As Icon" [tabs]="cwAsIconTabs">
+      <doc-connect-wallet-as-icon></doc-connect-wallet-as-icon>
+    </doc-example-card>
+
+    <doc-example-card title="With Networks List" [tabs]="cwWithNetworkTabs">
+      <doc-connect-wallet-with-network></doc-connect-wallet-with-network>
+    </doc-example-card>
+
+    <doc-example-card title="Custom connect" [tabs]="customCwTabs">
+      <doc-custom-connect-wallet></doc-custom-connect-wallet>
+    </doc-example-card>
+  </div>
+</doc-component-viewer>

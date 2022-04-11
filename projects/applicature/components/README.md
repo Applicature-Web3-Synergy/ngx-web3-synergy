@@ -147,7 +147,7 @@ const wallets: Array<WalletModule | WalletInitOptions> = [
   {
     walletName: 'walletConnect',
     infuraKey: '${YOUR_INFURA_KEY}',
-    preferred: true
+    preferred: false
   }
 ];
 
@@ -194,7 +194,7 @@ const supportedNetworks: AucNetworkOption[] = [
     symbol: AucNativeCurrencies[AUC_CHAIN_ID.AVALANCH_TESTNET].name,
     blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.AVALANCH_TESTNET][0],
     blockExplorerApiUrl: AucBlockExplorerApiUrl[AUC_CHAIN_ID.AVALANCH_TESTNET],
-    chainParams: { // modify existing Chain params
+    chainParams: { // modified existing Chain params
       ...(aucGetChainParams(AUC_CHAIN_ID.AVALANCH_TESTNET)),
       chainName: 'Avalanche TestNet'
     }

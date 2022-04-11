@@ -6,8 +6,12 @@ import { ROUTER_LINKS } from './enums';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: ROUTER_LINKS.BUTTON,
+    redirectTo: ROUTER_LINKS.CONNECT_WALLET,
     pathMatch: 'full'
+  },
+  {
+    path: ROUTER_LINKS.CONNECT_WALLET,
+    loadChildren: () => import('./pages/connect-wallet/connect-wallet.module').then(m => m.ConnectWalletModule)
   },
   {
     path: ROUTER_LINKS.BUTTON,
@@ -15,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ROUTER_LINKS.BUTTON,
+    redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
 ];
 

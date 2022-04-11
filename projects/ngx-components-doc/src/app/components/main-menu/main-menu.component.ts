@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ROUTER_LINKS } from '../../enums';
 import { MainMenuItem } from './interfaces';
+import { PageTitlesByUrl } from '../../constants';
 
 
 @Component({
@@ -14,8 +15,12 @@ import { MainMenuItem } from './interfaces';
 export class MainMenuComponent {
   public menuItems: MainMenuItem[] = [
     {
+      routerLink: ROUTER_LINKS.CONNECT_WALLET,
+      title: PageTitlesByUrl[ROUTER_LINKS.CONNECT_WALLET]
+    },
+    {
       routerLink: ROUTER_LINKS.BUTTON,
-      title: 'Button'
+      title: PageTitlesByUrl[ROUTER_LINKS.BUTTON]
     }
   ];
 

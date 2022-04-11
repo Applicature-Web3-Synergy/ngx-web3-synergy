@@ -23,6 +23,9 @@ import { ButtonsCustomSizeComponent } from './components/buttons-custom-size/but
     ButtonsWithIdenticonComponent,
     ButtonsCustomSizeComponent
   ],
+  exports: [
+    BasicButtonsComponent
+  ],
   imports: [
     CommonModule,
     ButtonRoutingModule,

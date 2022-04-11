@@ -8,8 +8,6 @@
     "copy-doc-json": "cp doc/doc.json projects/ngx-components-doc/src/assets/jsons/doc.json",
     "serve-doc": "npm run docs-typedoc && npm run copy-doc-json && ng serve ngx-components-doc",
     "build-doc": "npm run docs-typedoc && npm run copy-doc-json && ng build ngx-components-doc",
-    "serve-demo": "ng serve components-demo",
-    "build-demo": "ng build components-demo",
     "build": "ng build @applicature/styles && ng build @applicature/components",
     "watch-styles": "ng build @applicature/styles --watch --configuration development",
     "watch-components": "ng build @applicature/components --watch --configuration development",
