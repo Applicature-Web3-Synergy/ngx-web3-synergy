@@ -5,5 +5,6 @@ export enum ROUTER_LINKS {
   TRANSACTION_HISTORY = 'transaction-history',
   ALERT = 'alert',
   AVATAR = 'avatar',
-  BUTTON = 'button'
+  BUTTON = 'button',
+  TABLE = 'table'
 }

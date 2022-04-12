@@ -39,6 +39,10 @@ const routes: Routes = [
       .then(m => m.TransactionsHistoryModule)
   },
   {
+    path: ROUTER_LINKS.TABLE,
+    loadChildren: () => import('./pages/table/table.module').then(m => m.TableModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }

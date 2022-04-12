@@ -8,4 +8,5 @@ export const PageTitlesByUrl = {
   [ROUTER_LINKS.ALERT]: 'Alert',
   [ROUTER_LINKS.AVATAR]: 'Avatar',
   [ROUTER_LINKS.TRANSACTION_HISTORY]: 'Transaction History',
+  [ROUTER_LINKS.TABLE]: 'Table',
 }
