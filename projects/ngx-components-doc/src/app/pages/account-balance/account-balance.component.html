@@ -1,0 +1,21 @@
+<doc-component-viewer [components]="['AucAccountBalanceComponent']">
+  <div class="doc-example-viewer-example-cards-list">
+    <ng-container *ngIf="isConnected; else notConnected">
+      <doc-example-card title="Account balance" [tabs]="acBalanceTabs">
+        <doc-basic-account-balance></doc-basic-account-balance>
+      </doc-example-card>
+
+      <doc-example-card title="Customized" [tabs]="acBalanceCustomizeTabs">
+        <doc-customized-account-balance></doc-customized-account-balance>
+      </doc-example-card>
+    </ng-container>
+
+    <ng-template #notConnected>
+      <div class="doc-not-connected">
+        <p class="doc-not-connected-text">You need to connect wallet for this feature.</p>
+
+        <auc-connect-wallet></auc-connect-wallet>
+      </div>
+    </ng-template>
+  </div>
+</doc-component-viewer>

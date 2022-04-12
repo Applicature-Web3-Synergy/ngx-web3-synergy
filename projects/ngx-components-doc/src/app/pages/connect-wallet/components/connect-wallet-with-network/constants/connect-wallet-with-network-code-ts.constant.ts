@@ -12,7 +12,7 @@ import { AUC_CONNECT_WALLET_APPEARANCE, AucConnectionState } from '@applicature/
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConnectWalletWithNetworkComponent {
-  WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
+  public WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
   onConnect(evt: AucConnectionState): void {
     console.log('Connected Wallet: ', evt);

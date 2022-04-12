@@ -17,7 +17,6 @@ import { exampleEthAddress } from '../../../../constants';
 export class ButtonsWithIdenticonComponent {
   public COLORS = AS_COLOR_GROUP;
   public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
-
   public identicon: HTMLDivElement = aucGenerateJazzicon(exampleEthAddress);
 
   onClick(event: any): void {
