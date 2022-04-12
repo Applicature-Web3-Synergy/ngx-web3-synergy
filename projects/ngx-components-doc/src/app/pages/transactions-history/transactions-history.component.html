@@ -1,0 +1,13 @@
+<doc-component-viewer [components]="['AucAccountBalanceComponent']">
+  <div class="doc-example-viewer-example-cards-list">
+    <doc-need-wallet-connection>
+      <doc-example-card title="Basic" [tabs]="basicTransactionsTabs">
+        <doc-basic-transaction-history></doc-basic-transaction-history>
+      </doc-example-card>
+
+      <doc-example-card title="Custom" [tabs]="customTransactionTabs">
+        <doc-custom-transaction-history></doc-custom-transaction-history>
+      </doc-example-card>
+    </doc-need-wallet-connection>
+  </div>
+</doc-component-viewer>

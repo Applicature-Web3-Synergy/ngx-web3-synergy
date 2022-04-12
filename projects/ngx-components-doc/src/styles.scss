@@ -5,6 +5,11 @@
 @use "as-styles";
 @use 'common' as c;
 
+
+.full-width {
+  width: 100%;
+}
+
 .doc-grid-container {
   display: flex;
   align-items: flex-start;
@@ -28,9 +33,24 @@
   margin: 0 0 15px;
 }
 
-.doc-example-viewer-example-cards-list {
+.doc-example-viewer-example-cards-list,
+doc-need-wallet-connection {
   & > *:not(:last-child) {
     display: block;
     margin-bottom: 30px;
   };
+}
+
+.doc-custom-btn {
+  border: none;
+  background: map-get(c.$blue, 2);
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 18px;
+  height: 40px;
+  transition: background-color .25s;
+
+  &:hover {
+    background: rgba(map-get(c.$blue, 2), .9);
+  }
 }

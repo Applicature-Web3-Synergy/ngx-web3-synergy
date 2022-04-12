@@ -34,13 +34,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/avatar/avatar.module').then(m => m.AvatarModule)
   },
   {
+    path: ROUTER_LINKS.TRANSACTION_HISTORY,
+    loadChildren: () => import('./pages/transactions-history/transactions-history.module')
+      .then(m => m.TransactionsHistoryModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

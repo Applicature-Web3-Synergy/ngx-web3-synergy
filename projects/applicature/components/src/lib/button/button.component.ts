@@ -143,7 +143,7 @@ export class AucButtonComponent implements OnInit, OnChanges {
   public type: 'button' | 'reset' | 'submit' = 'button';
 
   /**
-   * {@link onClickEmitter} - It's an `@Output()` parameter.
+   * {@link onClick} - It's an `@Output()` parameter.
    * Emits an action when button was clicked.
    * Emitted value is native click value.
    */
