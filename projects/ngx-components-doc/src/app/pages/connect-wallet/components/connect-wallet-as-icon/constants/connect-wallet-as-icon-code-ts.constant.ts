@@ -18,15 +18,15 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConnectWalletAsIconComponent {
-  WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
+  public WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
-  accountOptions: AucAccountOption[] = [
+  public accountOptions: AucAccountOption[] = [
     { name: 'My Account', id: 1 },
     { name: 'Some menu Item', id: 2 },
     { name: 'Some other menu Item', id: 3 }
   ];
 
-  accountDropdownConfig: AucDropdownConfig = {
+  public accountDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: false
     },

@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/button/button.module').then(m => m.ButtonModule)
   },
   {
+    path: ROUTER_LINKS.ACCOUNT_BALANCE,
+    loadChildren: () => import('./pages/account-balance/account-balance.module').then(m => m.AccountBalanceModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }

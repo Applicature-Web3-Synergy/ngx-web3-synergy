@@ -13,7 +13,7 @@ import {
   CustomConnectWalletCodeScss,
   CustomConnectWalletCodeTs
 } from './components';
-import { AppModuleComponentsConnectionCodeConstant } from '../../constants';
+import { AppModuleComponentsConnectionCodeConstant, AppModuleTab } from '../../constants';
 
 
 @Component({
@@ -23,16 +23,8 @@ import { AppModuleComponentsConnectionCodeConstant } from '../../constants';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConnectWalletComponent {
-  private appModuleTab: ExampleCardTab = {
-    title: 'app.module.ts',
-    code: {
-      code: AppModuleComponentsConnectionCodeConstant,
-      lang: CODE_TYPES.JS
-    }
-  };
-
   basicCWTabs: ExampleCardTab[] = [
-    this.appModuleTab,
+    AppModuleTab,
     {
       title: 'HTML',
       code: {
@@ -50,7 +42,7 @@ export class ConnectWalletComponent {
   ];
 
   cwAsIconTabs: ExampleCardTab[] = [
-    this.appModuleTab,
+    AppModuleTab,
     {
       title: 'HTML',
       code: {
@@ -68,7 +60,7 @@ export class ConnectWalletComponent {
   ];
 
   cwWithNetworkTabs: ExampleCardTab[] = [
-    this.appModuleTab,
+    AppModuleTab,
     {
       title: 'HTML',
       code: {
@@ -86,7 +78,7 @@ export class ConnectWalletComponent {
   ];
 
   customCwTabs: ExampleCardTab[] = [
-    this.appModuleTab,
+    AppModuleTab,
     {
       title: 'HTML',
       code: {

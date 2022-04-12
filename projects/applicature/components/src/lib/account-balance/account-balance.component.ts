@@ -45,6 +45,7 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
    * Sets theme of the button. <br>
    * It's an optional parameter. The default value is white. <br>
    * You can use enum {@link AS_COLOR_GROUP}.
+   * If selected appearance transparent, color is ignored.
    */
   @Input()
   public color: AsColorGroup = AS_COLOR_GROUP.WHITE;
@@ -142,10 +143,6 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(): void {
-    if (this.appearance === AUC_BALANCE_APPEARANCE.TRANSPARENT) {
-      return;
-    }
-
     const colorProperties: AsColorProperties = AsColors[this.color || AS_COLOR_GROUP.WHITE];
 
     this.styleProperties = Object.keys(colorProperties || {})
