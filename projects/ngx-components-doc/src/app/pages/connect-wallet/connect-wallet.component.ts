@@ -13,7 +13,7 @@ import {
   CustomConnectWalletCodeScss,
   CustomConnectWalletCodeTs
 } from './components';
-import { AppModuleComponentsConnectionCodeConstant, AppModuleTab } from '../../constants';
+import { AppModuleTab } from '../../constants';
 
 
 @Component({

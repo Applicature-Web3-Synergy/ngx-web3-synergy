@@ -2447,7 +2447,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 108,
+							"line": 109,
 							"character": 2
 						}
 					],
@@ -2504,7 +2504,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 89,
+							"line": 90,
 							"character": 9
 						}
 					],
@@ -2528,7 +2528,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 87,
+							"line": 88,
 							"character": 9
 						}
 					],
@@ -2549,7 +2549,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 85,
+							"line": 86,
 							"character": 9
 						}
 					],
@@ -2593,7 +2593,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 75,
+							"line": 76,
 							"character": 9
 						}
 					],
@@ -2651,7 +2651,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 86,
+							"line": 87,
 							"character": 9
 						}
 					],
@@ -2677,7 +2677,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link color} - It's an `@Input()` parameter. <br>\nSets theme of the button. <br>\nIt's an optional parameter. The default value is white. <br>\nYou can use enum {@link AS_COLOR_GROUP}."
+						"shortText": "{@link color} - It's an `@Input()` parameter. <br>\nSets theme of the button. <br>\nIt's an optional parameter. The default value is white. <br>\nYou can use enum {@link AS_COLOR_GROUP}.\nIf selected appearance transparent, color is ignored."
 					},
 					"decorators": [
 						{
@@ -2694,7 +2694,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 50,
+							"line": 51,
 							"character": 9
 						}
 					],
@@ -2730,7 +2730,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 95,
+							"line": 96,
 							"character": 9
 						}
 					],
@@ -2768,7 +2768,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 59,
+							"line": 60,
 							"character": 9
 						}
 					],
@@ -2804,7 +2804,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 83,
+							"line": 84,
 							"character": 9
 						}
 					],
@@ -2848,7 +2848,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 67,
+							"line": 68,
 							"character": 9
 						}
 					],
@@ -2869,7 +2869,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 88,
+							"line": 89,
 							"character": 9
 						}
 					],
@@ -2894,7 +2894,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 100,
+							"line": 101,
 							"character": 13
 						}
 					],
@@ -2952,7 +2952,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 144,
+							"line": 145,
 							"character": 9
 						}
 					],
@@ -2989,7 +2989,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 129,
+							"line": 130,
 							"character": 9
 						}
 					],
@@ -3026,7 +3026,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 162,
+							"line": 159,
 							"character": 9
 						}
 					],

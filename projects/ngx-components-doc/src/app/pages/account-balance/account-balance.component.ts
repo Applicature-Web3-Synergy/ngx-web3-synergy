@@ -1,7 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { takeUntil } from 'rxjs';
-
-import { AucWalletConnectService, BaseSubscriber } from '@applicature/components';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ExampleCardTab } from '../../modules/example-card/interfaces';
 import { CODE_TYPES } from '../../modules/code-example/enums';
@@ -20,7 +17,7 @@ import { AppModuleTab } from '../../constants';
   styleUrls: [ './account-balance.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccountBalanceComponent extends BaseSubscriber implements OnInit {
+export class AccountBalanceComponent {
   acBalanceTabs: ExampleCardTab[] = [
     AppModuleTab,
     {
@@ -56,21 +53,5 @@ export class AccountBalanceComponent extends BaseSubscriber implements OnInit {
       }
     }
   ];
-
-  get isConnected(): boolean {
-    return this.walletConnectService.connectionState.connected;
-  }
-
-  constructor(private cdr: ChangeDetectorRef, private walletConnectService: AucWalletConnectService) {
-    super();
-  }
-
-  ngOnInit() {
-    this.walletConnectService.accountsChanged$
-      .pipe(takeUntil(this.notifier))
-      .subscribe((res) => {
-        this.cdr.markForCheck();
-      });
-  }
 
 }

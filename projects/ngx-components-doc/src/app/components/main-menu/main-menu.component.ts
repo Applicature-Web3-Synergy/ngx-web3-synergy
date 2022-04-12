@@ -25,6 +25,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.BUTTON,
       title: PageTitlesByUrl[ROUTER_LINKS.BUTTON]
+    },
+    {
+      routerLink: ROUTER_LINKS.ACCOUNT_BUTTON,
+      title: PageTitlesByUrl[ROUTER_LINKS.ACCOUNT_BUTTON]
     }
   ];
 
