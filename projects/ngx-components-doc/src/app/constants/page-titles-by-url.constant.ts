@@ -6,4 +6,5 @@ export const PageTitlesByUrl = {
   [ROUTER_LINKS.ACCOUNT_BALANCE]: 'Account Balance',
   [ROUTER_LINKS.ACCOUNT_BUTTON]: 'Account Button',
   [ROUTER_LINKS.ALERT]: 'Alert',
+  [ROUTER_LINKS.AVATAR]: 'Avatar',
 }

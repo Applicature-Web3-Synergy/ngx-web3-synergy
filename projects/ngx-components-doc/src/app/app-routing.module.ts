@@ -30,6 +30,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/alert/alert.module').then(m => m.AlertModule)
   },
   {
+    path: ROUTER_LINKS.AVATAR,
+    loadChildren: () => import('./pages/avatar/avatar.module').then(m => m.AvatarModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
