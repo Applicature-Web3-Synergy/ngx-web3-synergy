@@ -46,6 +46,10 @@ export class MainMenuComponent {
       routerLink: ROUTER_LINKS.TABLE,
       title: PageTitlesByUrl[ROUTER_LINKS.TABLE]
     },
+    {
+      routerLink: ROUTER_LINKS.DIALOG,
+      title: PageTitlesByUrl[ROUTER_LINKS.DIALOG]
+    }
   ];
 
 }
