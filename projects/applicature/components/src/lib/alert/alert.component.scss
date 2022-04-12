@@ -17,7 +17,7 @@
 }
 
 .auc-alert-white {
-  .auc-alert-icon:before {
+  .auc-alert-icon {
     color: c.getColor(grey, base);
   }
 }
@@ -26,10 +26,9 @@
   margin: 0 8px;
   display: inline-block;
   font-size: 20px;
-
-  &:before {
-    color: var(--auc-alert-text);
-  }
+  width: 20px;
+  height: 20px;
+  color: var(--auc-alert-text);
 }
 
 .auc-alert-text {

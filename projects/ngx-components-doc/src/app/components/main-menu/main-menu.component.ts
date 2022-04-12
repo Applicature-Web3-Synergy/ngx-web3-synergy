@@ -29,6 +29,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.BUTTON,
       title: PageTitlesByUrl[ROUTER_LINKS.BUTTON]
+    },
+    {
+      routerLink: ROUTER_LINKS.ALERT,
+      title: PageTitlesByUrl[ROUTER_LINKS.ALERT]
     }
   ];
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AucAlertComponent } from './alert.component';
 import { AucDirectivesModule } from '../directives';
+import { AucIconModule } from '../icon';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { AucDirectivesModule } from '../directives';
   imports: [
     CommonModule,
     AucDirectivesModule,
+    AucIconModule,
   ]
 })
 export class AucAlertModule {

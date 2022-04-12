@@ -26,6 +26,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/account-button/account-button.module').then(m => m.AccountButtonModule)
   },
   {
+    path: ROUTER_LINKS.ALERT,
+    loadChildren: () => import('./pages/alert/alert.module').then(m => m.AlertModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
