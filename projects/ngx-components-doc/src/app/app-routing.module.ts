@@ -43,6 +43,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/table/table.module').then(m => m.TableModule)
   },
   {
+    path: ROUTER_LINKS.DIALOG,
+    loadChildren: () => import('./pages/dialog/dialog.module').then(m => m.DialogModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
