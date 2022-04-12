@@ -19,6 +19,10 @@ export class MainMenuComponent {
       title: PageTitlesByUrl[ROUTER_LINKS.CONNECT_WALLET]
     },
     {
+      routerLink: ROUTER_LINKS.ACCOUNT_BUTTON,
+      title: PageTitlesByUrl[ROUTER_LINKS.ACCOUNT_BUTTON]
+    },
+    {
       routerLink: ROUTER_LINKS.ACCOUNT_BALANCE,
       title: PageTitlesByUrl[ROUTER_LINKS.ACCOUNT_BALANCE]
     },

@@ -1,0 +1,11 @@
+<ng-container *ngIf="isConnected; else notConnected">
+  <ng-content></ng-content>
+</ng-container>
+
+<ng-template #notConnected>
+  <div class="doc-not-connected">
+    <p class="doc-not-connected-text">You need to connect wallet for this feature.</p>
+
+    <auc-connect-wallet></auc-connect-wallet>
+  </div>
+</ng-template>

@@ -44,5 +44,9 @@ export class ConnectWalletAsIconComponent {
     console.log('Disconnected Wallet');
   }
 
+  onOptionClicked(evt: AucAccountOption): void {
+    console.log('Account option was clicked: ', evt);
+  }
+
 }
 `;

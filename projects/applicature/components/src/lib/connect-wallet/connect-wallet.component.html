@@ -54,6 +54,7 @@
           <auc-account-button [account]="account"
                               [options]="accountOptions"
                               [accountDropdownConfig]="accountDropdownConfig"
+                              (optionClick)="optionAction($event)"
           >
           </auc-account-button>
         </div>
