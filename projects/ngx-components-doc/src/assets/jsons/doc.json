@@ -5511,7 +5511,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link onClickEmitter} - It's an `@Output()` parameter.\nEmits an action when button was clicked.\nEmitted value is native click value."
+						"shortText": "{@link onClick} - It's an `@Output()` parameter.\nEmits an action when button was clicked.\nEmitted value is native click value."
 					},
 					"decorators": [
 						{
