@@ -52,3 +52,16 @@ $card-padding: 20px;
 }
 
 // End Mat Tab
+
+
+// Checkbox
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background
+.mat-checkbox-indeterminate,
+.mat-checkbox-checked {
+  &.mat-accent {
+    .mat-checkbox-background {
+      background-color: map-get(c.$blue, 2);
+    }
+  }
+}
+// End Checkbox
