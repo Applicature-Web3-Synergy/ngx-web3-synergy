@@ -33,7 +33,11 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.ALERT,
       title: PageTitlesByUrl[ROUTER_LINKS.ALERT]
-    }
+    },
+    {
+      routerLink: ROUTER_LINKS.AVATAR,
+      title: PageTitlesByUrl[ROUTER_LINKS.AVATAR]
+    },
   ];
 
 }
