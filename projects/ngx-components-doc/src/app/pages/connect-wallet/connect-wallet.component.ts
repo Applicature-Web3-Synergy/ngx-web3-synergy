@@ -10,7 +10,6 @@ import {
   ConnectWalletWithNetworkCodeHtml,
   ConnectWalletWithNetworkCodeTs,
   CustomConnectWalletCodeHtml,
-  CustomConnectWalletCodeScss,
   CustomConnectWalletCodeTs
 } from './components';
 import { AppModuleTab } from '../../constants';
@@ -91,13 +90,6 @@ export class ConnectWalletComponent {
       code: {
         code: CustomConnectWalletCodeTs,
         lang: CODE_TYPES.JS
-      }
-    },
-    {
-      title: 'SCSS',
-      code: {
-        code: CustomConnectWalletCodeScss,
-        lang: CODE_TYPES.CSS
       }
     }
   ];
