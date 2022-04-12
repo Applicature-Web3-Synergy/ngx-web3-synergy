@@ -154,6 +154,13 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
   @Output()
   public onDisconnect: EventEmitter<void> = new EventEmitter<void>();
 
+  /**
+   * {@link optionClicked} - It's an `@Output()` parameter. <br>
+   * Emits selected option from the list.
+   */
+  @Output()
+  public optionClicked: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
+
   public accountAddress: string;
   public identicon: HTMLDivElement;
   public isConnected: boolean = false;
@@ -267,6 +274,10 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.onDisconnect.emit();
       });
+  }
+
+  public optionAction(evt: AucAccountOption): void {
+    this.optionClicked.emit(evt);
   }
 
 }

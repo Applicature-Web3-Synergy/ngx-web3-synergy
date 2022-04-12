@@ -38,6 +38,7 @@ export const ConnectWalletAsIconCodeHtml = `<div class="doc-grid-container">
                         [accountOptions]="accountOptions"
                         (onConnect)="onConnect($event)"
                         (onDisconnect)="onDisconnect()"
+                        (optionClicked)="onOptionClicked($event)"
     >
     </auc-connect-wallet>
   </div>
@@ -54,4 +55,4 @@ export const ConnectWalletAsIconCodeHtml = `<div class="doc-grid-container">
     </auc-connect-wallet>
   </div>
 </div>
-`
+`;

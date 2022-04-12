@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NeedWalletConnectionComponent } from './need-wallet-connection.component';
+
 import { AucConnectWalletModule } from '@applicature/components';
 
+import { NeedWalletConnectionComponent } from './need-wallet-connection.component';
 
 
 @NgModule({
@@ -17,4 +18,5 @@ import { AucConnectWalletModule } from '@applicature/components';
     AucConnectWalletModule
   ]
 })
-export class NeedWalletConnectionModule { }
+export class NeedWalletConnectionModule {
+}

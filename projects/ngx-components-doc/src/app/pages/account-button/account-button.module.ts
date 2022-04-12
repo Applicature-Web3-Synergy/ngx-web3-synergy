@@ -8,7 +8,7 @@ import { AccountButtonComponent } from './account-button.component';
 import { ComponentViewerModule } from '../../modules/component-viewer/component-viewer.module';
 import { ExampleCardModule } from '../../modules/example-card/example-card.module';
 import { BasicAccountButtonComponent } from './components';
-import { NeedWalletConnectionModule } from '../../modules/need-wallet-connection/need-wallet-connection.module';
+import { NeedWalletConnectionModule } from '../../modules/need-wallet-connection';
 
 
 @NgModule({

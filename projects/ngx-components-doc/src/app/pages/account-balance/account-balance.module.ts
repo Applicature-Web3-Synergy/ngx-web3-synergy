@@ -11,7 +11,7 @@ import { ExampleCardModule } from '../../modules/example-card/example-card.modul
 import { BasicAccountBalanceComponent, CustomizedAccountBalanceComponent } from './components';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
-import { NeedWalletConnectionModule } from '../../modules/need-wallet-connection/need-wallet-connection.module';
+import { NeedWalletConnectionModule } from '../../modules/need-wallet-connection';
 
 
 @NgModule({
