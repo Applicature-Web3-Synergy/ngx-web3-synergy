@@ -11,4 +11,5 @@ export const PageTitlesByUrl = {
   [ROUTER_LINKS.TABLE]: 'Table',
   [ROUTER_LINKS.DIALOG]: 'Dialog',
   [ROUTER_LINKS.NETWORK_DROPDOWN]: 'Network Dropdown',
+  [ROUTER_LINKS.DROPDOWN]: 'Dropdown',
 }

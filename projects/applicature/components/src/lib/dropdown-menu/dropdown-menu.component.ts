@@ -6,9 +6,13 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnChanges,
   OnDestroy,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
+
+import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 import {
   AucContentBodyDirective,
@@ -16,6 +20,7 @@ import {
 } from '../directives';
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig, AucDropdownPositionStyles } from './interfaces';
+import { BaseSubscriber } from '../helpers';
 
 
 @Component({
@@ -24,7 +29,7 @@ import { AucDropdownConfig, AucDropdownPositionStyles } from './interfaces';
   styleUrls: [ './dropdown-menu.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucDropdownMenuComponent implements AfterViewInit, OnDestroy {
+export class AucDropdownMenuComponent extends BaseSubscriber implements OnChanges, AfterViewInit, OnDestroy {
   @Input() config?: AucDropdownConfig;
   @Input() trigger!: AucTriggerDirective;
   @ViewChild(AucContentBodyDirective) contentBody: AucContentBodyDirective;
@@ -33,12 +38,40 @@ export class AucDropdownMenuComponent implements AfterViewInit, OnDestroy {
   public positionStyles: AucDropdownPositionStyles = null;
   public isBelow: boolean;
   public isAfter: boolean;
+  private resize$: Subject<void> = new Subject();
 
   constructor(private _cdr: ChangeDetectorRef) {
+    super();
+
+    this.resize$
+      .pipe(
+        debounceTime(100),
+        takeUntil(this.notifier)
+      )
+      .subscribe(() => {
+        this.getPositions();
+      });
   }
 
   @HostListener('window:resize') onResize(): void {
-    this.getPositions();
+    this.resize$.next();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.config?.currentValue && !this.positionStyles && (this.config?.minWidth || this.config?.minHeight)) {
+      this.positionStyles = {
+        top: '0',
+        left: '0'
+      };
+
+      if (this.config?.minHeight) {
+        this.positionStyles.minHeight = `${this.config.minHeight}px`;
+      }
+
+      if (this.config?.minWidth) {
+        this.positionStyles.minWidth = `${this.config.minWidth}px`;
+      }
+    }
   }
 
   ngAfterViewInit(): void {
@@ -47,11 +80,13 @@ export class AucDropdownMenuComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  override ngOnDestroy(): void {
+    super.ngOnDestroy();
     this.close();
   }
 
   public getPositions(): void {
+    console.log('getPositions');
     const triggerRect: DOMRect = this.trigger.nativeElement.getBoundingClientRect();
 
     if (!triggerRect) {
@@ -117,11 +152,19 @@ export class AucDropdownMenuComponent implements AfterViewInit, OnDestroy {
     }
 
     if (!!maxHeight) {
-      styles.maxHeight = `${maxHeight}px`
+      styles.maxHeight = `${maxHeight}px`;
+    }
+
+    if (this.config?.minHeight) {
+      styles.minHeight = !maxHeight ? `${this.config.minHeight}px` : `${maxHeight}px`;
     }
 
     if (!!maxWidth) {
-      styles.maxWidth = `${maxWidth}px`
+      styles.maxWidth = `${maxWidth}px`;
+    }
+
+    if (this.config?.minWidth) {
+      styles.minWidth = !maxWidth ? `${this.config.minWidth}px` : `${maxWidth}px`;
     }
 
     this.positionStyles = styles;

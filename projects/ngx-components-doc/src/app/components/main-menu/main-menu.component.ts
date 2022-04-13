@@ -53,6 +53,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.DIALOG,
       title: PageTitlesByUrl[ROUTER_LINKS.DIALOG]
+    },
+    {
+      routerLink: ROUTER_LINKS.DROPDOWN,
+      title: PageTitlesByUrl[ROUTER_LINKS.DROPDOWN]
     }
   ];
 
