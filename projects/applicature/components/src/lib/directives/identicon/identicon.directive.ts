@@ -36,12 +36,12 @@ export class AucIdenticonDirective implements OnChanges {
   }
 
   public setIdenticon(): void {
-    if (!this.aucIdenticon) {
-      return;
-    }
-
     if (this.identicon) {
       this._renderer2.removeChild(this._elementRef.nativeElement, this.identicon);
+    }
+
+    if (!this.aucIdenticon) {
+      return;
     }
 
     this.identicon = this.aucIdenticon.cloneNode(true) as HTMLDivElement;

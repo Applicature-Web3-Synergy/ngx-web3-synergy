@@ -47,6 +47,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/dialog/dialog.module').then(m => m.DialogModule)
   },
   {
+    path: ROUTER_LINKS.NETWORK_DROPDOWN,
+    loadChildren: () => import('./pages/network-dropdown/network-dropdown.module').then(m => m.NetworkDropdownModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
