@@ -72,8 +72,8 @@ export class CustomizedDropdownComponent {
     this.dropdownForm = this.fb.group({
       transparent: [ true ],
       class: [ 'custom-dropdown' ],
-      minWidth: [ 150, [ Validators.min(0) ] ],
-      minHeight: [ 180, [ Validators.min(0) ] ],
+      minWidth: [ 200, [ Validators.min(0) ] ],
+      minHeight: [ 300, [ Validators.min(0) ] ],
       vertical: [ AUC_POSITIONS.ABOVE ],
       horizontal: [ AUC_POSITIONS.AFTER ]
     });
