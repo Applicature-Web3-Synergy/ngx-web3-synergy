@@ -76,11 +76,11 @@ export class BasicDialogComponent {
     );
 
     ref.afterOpened.subscribe(result => {
-      console.log('Transfer Dialog opened: ', result);
+      console.log('Wrong network dialog opened: ', result);
     });
 
     ref.afterClosed.subscribe(result => {
-      console.log('Transfer Dialog closed: ', result);
+      console.log('Wrong network dialog opened: ', result);
     });
   }
 
