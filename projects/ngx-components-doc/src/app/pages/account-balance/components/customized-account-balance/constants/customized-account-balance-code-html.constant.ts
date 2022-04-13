@@ -17,7 +17,7 @@ export const CustomizedAccountBalanceCodeHtml = `<div class="doc-grid-container"
   </div>
 
   <div class="full-width">
-    <form [formGroup]="balanceForm">
+    <form [formGroup]="balanceForm" class="doc-form">
       <div class="doc-controls-container">
         <div class="doc-control">
           <mat-checkbox formControlName="showCurrency">Show currency icon</mat-checkbox>
@@ -59,8 +59,8 @@ export const CustomizedAccountBalanceCodeHtml = `<div class="doc-grid-container"
       </div>
     </form>
 
-    <form *ngIf="balanceForm.get('showAddress').value" [formGroup]="accountAddressForm">
-      <h4 class="doc-controls-title">Customize AccountAddress123</h4>
+    <form class="doc-form" *ngIf="balanceForm.get('showAddress').value" [formGroup]="accountAddressForm">
+      <h4 class="doc-controls-title">Customize AccountAddress</h4>
 
       <div class="doc-controls-container">
         <div class="doc-control">

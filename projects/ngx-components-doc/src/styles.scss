@@ -54,3 +54,26 @@ doc-need-wallet-connection {
     background: rgba(map-get(c.$blue, 2), .9);
   }
 }
+
+.doc-controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.doc-control {
+  padding: 10px;
+}
+
+.doc-controls-title {
+  padding: 0 10px;
+}
+
+mat-select {
+  text-transform: capitalize;
+}
+
+.doc-form {
+  margin-top: 20px;
+}

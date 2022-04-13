@@ -51,6 +51,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/network-dropdown/network-dropdown.module').then(m => m.NetworkDropdownModule)
   },
   {
+    path: ROUTER_LINKS.DROPDOWN,
+    loadChildren: () => import('./pages/dropdown/dropdown.module').then(m => m.DropdownModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }

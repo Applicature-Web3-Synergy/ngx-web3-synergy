@@ -17,7 +17,7 @@
   </div>
 
   <div class="full-width">
-    <form [formGroup]="balanceForm">
+    <form [formGroup]="balanceForm" class="doc-form">
       <div class="doc-controls-container">
         <div class="doc-control">
           <mat-checkbox formControlName="showCurrency">Show currency icon</mat-checkbox>
@@ -59,7 +59,7 @@
       </div>
     </form>
 
-    <form *ngIf="balanceForm.get('showAddress').value" [formGroup]="accountAddressForm">
+    <form class="doc-form" *ngIf="balanceForm.get('showAddress').value" [formGroup]="accountAddressForm">
       <h4 class="doc-controls-title">Customize AccountAddress</h4>
 
       <div class="doc-controls-container">
