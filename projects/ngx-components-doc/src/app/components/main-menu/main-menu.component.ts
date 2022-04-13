@@ -31,6 +31,10 @@ export class MainMenuComponent {
       title: PageTitlesByUrl[ROUTER_LINKS.TRANSACTION_HISTORY]
     },
     {
+      routerLink: ROUTER_LINKS.NETWORK_DROPDOWN,
+      title: PageTitlesByUrl[ROUTER_LINKS.NETWORK_DROPDOWN]
+    },
+    {
       routerLink: ROUTER_LINKS.BUTTON,
       title: PageTitlesByUrl[ROUTER_LINKS.BUTTON]
     },

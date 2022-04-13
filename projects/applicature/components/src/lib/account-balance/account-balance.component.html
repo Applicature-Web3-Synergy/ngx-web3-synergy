@@ -13,7 +13,7 @@
               (onClick)="onAccountButtonClick($event)"
               [disabled]="addressConfig?.disabled"
               [label]="(address$ | async | aucShortAddress)"
-              [identicon]="identicon"
+              [identicon]="addressConfig?.showIdenticon ? identicon : null"
               [identiconPosition]="addressConfig?.identiconPosition"
               [color]="addressConfig?.color ?? COLOR_GROUP.WHITE">
   </auc-button>

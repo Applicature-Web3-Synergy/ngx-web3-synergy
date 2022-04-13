@@ -10,4 +10,5 @@ export const PageTitlesByUrl = {
   [ROUTER_LINKS.TRANSACTION_HISTORY]: 'Transaction History',
   [ROUTER_LINKS.TABLE]: 'Table',
   [ROUTER_LINKS.DIALOG]: 'Dialog',
+  [ROUTER_LINKS.NETWORK_DROPDOWN]: 'Network Dropdown',
 }
