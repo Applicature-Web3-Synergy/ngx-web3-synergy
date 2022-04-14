@@ -71,6 +71,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/spinner/spinner.module').then(m => m.SpinnerModule)
   },
   {
+    path: ROUTER_LINKS.RIPPLE,
+    loadChildren: () => import('./pages/ripple/ripple.module').then(m => m.RippleModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }

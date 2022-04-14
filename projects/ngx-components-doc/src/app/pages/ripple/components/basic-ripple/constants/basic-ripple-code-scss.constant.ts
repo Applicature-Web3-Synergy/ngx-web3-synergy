@@ -1,0 +1,10 @@
+export const BasicRippleCodeScss = `.doc-custom-btn {
+  background-color: #fff;
+  color: #222;
+  border: 1px solid gray;
+}
+
+.custom-ripple {
+  background-color: rgba(63, 103, 199, 0.5);
+}
+`;

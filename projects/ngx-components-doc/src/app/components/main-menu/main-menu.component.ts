@@ -8,7 +8,7 @@ import { PageTitlesByUrl } from '../../constants';
 @Component({
   selector: 'doc-main-menu',
   templateUrl: './main-menu.component.html',
-  styleUrls: ['./main-menu.component.scss'],
+  styleUrls: [ './main-menu.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
@@ -73,7 +73,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.SPINNER,
       title: PageTitlesByUrl[ROUTER_LINKS.SPINNER]
+    },
+    {
+      routerLink: ROUTER_LINKS.RIPPLE,
+      title: PageTitlesByUrl[ROUTER_LINKS.RIPPLE]
     }
   ];
-
 }
