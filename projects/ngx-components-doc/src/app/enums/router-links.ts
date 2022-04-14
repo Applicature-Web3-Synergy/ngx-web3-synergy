@@ -12,5 +12,6 @@ export enum ROUTER_LINKS {
   DROPDOWN = 'dropdown',
   COPY_TO_CLIPBOARD = 'copy-to-clipboard',
   ICON = 'icon',
-  PROGRESS_BAR = 'progress-bar'
+  PROGRESS_BAR = 'progress-bar',
+  SPINNER = 'spinner'
 }

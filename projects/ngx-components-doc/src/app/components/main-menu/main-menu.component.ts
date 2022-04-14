@@ -69,6 +69,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.PROGRESS_BAR,
       title: PageTitlesByUrl[ROUTER_LINKS.PROGRESS_BAR]
+    },
+    {
+      routerLink: ROUTER_LINKS.SPINNER,
+      title: PageTitlesByUrl[ROUTER_LINKS.SPINNER]
     }
   ];
 

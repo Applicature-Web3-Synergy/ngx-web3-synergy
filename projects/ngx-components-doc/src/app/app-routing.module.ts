@@ -67,6 +67,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/progress-bar/progress-bar.module').then(m => m.ProgressBarModule)
   },
   {
+    path: ROUTER_LINKS.SPINNER,
+    loadChildren: () => import('./pages/spinner/spinner.module').then(m => m.SpinnerModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
