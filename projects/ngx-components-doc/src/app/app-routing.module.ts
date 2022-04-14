@@ -63,6 +63,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/icon/icon.module').then(m => m.IconModule)
   },
   {
+    path: ROUTER_LINKS.PROGRESS_BAR,
+    loadChildren: () => import('./pages/progress-bar/progress-bar.module').then(m => m.ProgressBarModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }

@@ -27,6 +27,10 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
+
+  &.full-width {
+    width: 100%;
+  }
 }
 
 .doc-grid-item-title {

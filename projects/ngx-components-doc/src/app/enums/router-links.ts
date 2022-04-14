@@ -11,5 +11,6 @@ export enum ROUTER_LINKS {
   NETWORK_DROPDOWN = 'network-dropdown',
   DROPDOWN = 'dropdown',
   COPY_TO_CLIPBOARD = 'copy-to-clipboard',
-  ICON = 'icon'
+  ICON = 'icon',
+  PROGRESS_BAR = 'progress-bar'
 }
