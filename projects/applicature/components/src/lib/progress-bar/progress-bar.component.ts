@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 
 @Component({
@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   styleUrls: [ './progress-bar.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucProgressBarComponent implements OnInit {
+export class AucProgressBarComponent implements OnInit, OnChanges {
   /**
    * {@link progress} - It's an `@Input()` parameter.
    * Sets progress value.
@@ -23,13 +23,25 @@ export class AucProgressBarComponent implements OnInit {
    */
   @Input() total: number = 100;
 
+  private _progressVal: number;
+
+  get currentProgress(): number {
+    return this._progressVal;
+  }
+
   ngOnInit(): void {
     this.calculateData();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (!changes.total?.firstChange || !changes.progress?.firstChange) {
+      this.calculateData();
+    }
+  }
+
   private calculateData(): void {
     if (!this.progress) {
-      this.progress = 0;
+      this._progressVal = 0;
     }
 
     if (this.total === 0) {
@@ -39,10 +51,9 @@ export class AucProgressBarComponent implements OnInit {
     }
 
     if (this.progress > this.total) {
-      this.progress = 100;
-      this.total = 100;
+      this.progress = this.total;
     }
 
-    this.progress = (this.progress / this.total) * 100;
+    this._progressVal = (this.progress / this.total) * 100;
   }
 }
