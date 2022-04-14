@@ -57,6 +57,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.DROPDOWN,
       title: PageTitlesByUrl[ROUTER_LINKS.DROPDOWN]
+    },
+    {
+      routerLink: ROUTER_LINKS.COPY_TO_CLIPBOARD,
+      title: PageTitlesByUrl[ROUTER_LINKS.COPY_TO_CLIPBOARD]
     }
   ];
 

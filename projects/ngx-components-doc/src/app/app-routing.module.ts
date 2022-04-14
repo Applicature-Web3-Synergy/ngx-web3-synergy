@@ -51,6 +51,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/network-dropdown/network-dropdown.module').then(m => m.NetworkDropdownModule)
   },
   {
+    path: ROUTER_LINKS.COPY_TO_CLIPBOARD,
+    loadChildren: () => import('./pages/copy-to-clipboard/copy-to-clipboard.module').then(m => m.CopyToClipboardModule)
+  },
+  {
     path: ROUTER_LINKS.DROPDOWN,
     loadChildren: () => import('./pages/dropdown/dropdown.module').then(m => m.DropdownModule)
   },

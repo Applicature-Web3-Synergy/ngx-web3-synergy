@@ -9,5 +9,6 @@ export enum ROUTER_LINKS {
   TABLE = 'table',
   DIALOG = 'dialog',
   NETWORK_DROPDOWN = 'network-dropdown',
-  DROPDOWN = 'dropdown'
+  DROPDOWN = 'dropdown',
+  COPY_TO_CLIPBOARD = 'copy-to-clipboard'
 }
