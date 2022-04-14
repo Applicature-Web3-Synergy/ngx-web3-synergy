@@ -59,6 +59,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/dropdown/dropdown.module').then(m => m.DropdownModule)
   },
   {
+    path: ROUTER_LINKS.ICON,
+    loadChildren: () => import('./pages/icon/icon.module').then(m => m.IconModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
