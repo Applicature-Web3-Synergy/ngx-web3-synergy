@@ -12,5 +12,6 @@ export const PageTitlesByUrl = {
   [ROUTER_LINKS.DIALOG]: 'Dialog',
   [ROUTER_LINKS.NETWORK_DROPDOWN]: 'Network Dropdown',
   [ROUTER_LINKS.DROPDOWN]: 'Dropdown',
-  [ROUTER_LINKS.COPY_TO_CLIPBOARD]: 'Copy To Clipboard'
+  [ROUTER_LINKS.COPY_TO_CLIPBOARD]: 'Copy To Clipboard',
+  [ROUTER_LINKS.ICON]: 'Icon'
 }
