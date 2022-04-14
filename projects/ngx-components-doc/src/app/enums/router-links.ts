@@ -13,5 +13,6 @@ export enum ROUTER_LINKS {
   COPY_TO_CLIPBOARD = 'copy-to-clipboard',
   ICON = 'icon',
   PROGRESS_BAR = 'progress-bar',
-  SPINNER = 'spinner'
+  SPINNER = 'spinner',
+  RIPPLE = 'ripple'
 }

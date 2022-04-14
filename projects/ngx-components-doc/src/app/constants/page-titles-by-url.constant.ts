@@ -15,5 +15,6 @@ export const PageTitlesByUrl = {
   [ROUTER_LINKS.COPY_TO_CLIPBOARD]: 'Copy To Clipboard',
   [ROUTER_LINKS.ICON]: 'Icon',
   [ROUTER_LINKS.PROGRESS_BAR]: 'Progress Bar',
-  [ROUTER_LINKS.SPINNER]: 'Spinner'
+  [ROUTER_LINKS.SPINNER]: 'Spinner',
+  [ROUTER_LINKS.RIPPLE]: 'Ripple Effect'
 }
