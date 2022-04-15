@@ -25,9 +25,9 @@ export const INPUT_FIELD_VALUE_ACCESSOR = {
 @Component({
   selector: 'auc-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  styleUrls: [ './input.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [INPUT_FIELD_VALUE_ACCESSOR],
+  providers: [ INPUT_FIELD_VALUE_ACCESSOR ],
 })
 export class AucInputComponent implements ControlValueAccessor, OnChanges, OnInit {
   /**
@@ -86,6 +86,10 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   @Input()
   public suffix: string;
 
+  /** Sets Input field type */
+  @Input()
+  public type: 'string' | 'number' = 'string';
+
   /**
    * {@link decimal} - It's an `@Input()` parameter.
    * Allows to input number with decimal point
@@ -143,13 +147,13 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   }
 
   public ngOnInit(): void {
-    this.ngOnChanges();
+    this.setElStyles();
   }
 
   public ngOnChanges(changes?: SimpleChanges): void {
-    const element = this._elementRef.nativeElement;
-
-    element.style.display = this.adaptive ? 'block' : 'inline-flex'
+   if (changes.adaptive && !changes.adaptive?.firstChange) {
+     this.setElStyles();
+    }
   }
 
   public onMaxClick(): void {
@@ -193,4 +197,10 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
 
   private _onTouched: () => void = () => {
   };
+
+  private setElStyles(): void {
+    const element = this._elementRef.nativeElement;
+
+    element.style.display = this.adaptive ? 'block' : 'inline-flex'
+  }
 }
