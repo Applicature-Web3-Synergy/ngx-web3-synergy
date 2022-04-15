@@ -77,6 +77,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.RIPPLE,
       title: PageTitlesByUrl[ROUTER_LINKS.RIPPLE]
+    },
+    {
+      routerLink: ROUTER_LINKS.SHORT_ADDRESS,
+      title: PageTitlesByUrl[ROUTER_LINKS.SHORT_ADDRESS]
     }
   ];
 }

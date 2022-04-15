@@ -75,6 +75,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/ripple/ripple.module').then(m => m.RippleModule)
   },
   {
+    path: ROUTER_LINKS.SHORT_ADDRESS,
+    loadChildren: () => import('./pages/short-address/short-address.module').then(m => m.ShortAddressModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.CONNECT_WALLET,
   }
