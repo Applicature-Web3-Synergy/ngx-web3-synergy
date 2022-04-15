@@ -6,6 +6,7 @@ export enum ROUTER_LINKS {
   ALERT = 'alert',
   AVATAR = 'avatar',
   BUTTON = 'button',
+  INPUT = 'input',
   TABLE = 'table',
   DIALOG = 'dialog',
   NETWORK_DROPDOWN = 'network-dropdown',

@@ -81,6 +81,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.SHORT_ADDRESS,
       title: PageTitlesByUrl[ROUTER_LINKS.SHORT_ADDRESS]
+    },
+    {
+      routerLink: ROUTER_LINKS.INPUT,
+      title: PageTitlesByUrl[ROUTER_LINKS.INPUT]
     }
   ];
 }

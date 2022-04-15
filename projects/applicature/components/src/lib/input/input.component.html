@@ -6,24 +6,42 @@
     <div *ngIf="prefix" class="auc-input-prefix">{{ prefix }}</div>
 
     <div [ngClass]="classNames">
-      <input #inputElement
-             [placeholder]="placeholder"
-             [disabled]="disabled"
-             [ngModel]="value"
-             (ngModelChange)="onChange($event)"
-             (focus)="focus=true"
-             (blur)="focus=false"
-             [max]="max"
-             [decimalSeparator]="'.'"
-             [allowNegatives]="false"
-             [decimal]="decimal"
-             digitOnly
-             type="text"
-             class="auc-input-field">
+      <ng-container *ngIf="type === 'number'; else textInput">
+        <input #inputElement
+               [placeholder]="placeholder"
+               [disabled]="disabled"
+               [ngModel]="value"
+               (ngModelChange)="onChange($event)"
+               (focus)="focus=true"
+               (blur)="focus=false"
+               [max]="max"
+               [decimalSeparator]="'.'"
+               [allowNegatives]="false"
+               [decimal]="decimal"
+               digitOnly
+               type="text"
+               class="auc-input-field">
 
-      <span *ngIf="max"
-            (click)="onMaxClick()"
-            class="auc-input-max">MAX</span>
+        <span *ngIf="max"
+              (click)="onMaxClick()"
+              class="auc-input-max"
+        >
+          MAX
+        </span>
+      </ng-container>
+
+      <ng-template #textInput>
+        <input #inputElement
+               [placeholder]="placeholder"
+               [disabled]="disabled"
+               [ngModel]="value"
+               (ngModelChange)="onChange($event)"
+               (focus)="focus=true"
+               (blur)="focus=false"
+               type="text"
+               class="auc-input-field">
+      </ng-template>
+
     </div>
 
     <div *ngIf="suffix" class="auc-input-suffix">{{ suffix }}</div>
@@ -33,5 +51,5 @@
        class="auc-input-hint">{{ hint }}</div>
 
   <div *ngFor="let error of errors"
-       class="auc-input-error">{{ errors }}</div>
+       class="auc-input-error">{{ error }}</div>
 </div>

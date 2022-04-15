@@ -9,15 +9,15 @@ import { AucInputComponent } from './input.component';
 
 @NgModule({
   declarations: [
-    AucInputComponent,
+    AucInputComponent
   ],
   exports: [
-    AucInputComponent,
+    AucInputComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    DigitOnlyModule,
+    DigitOnlyModule
   ]
 })
 export class AucInputModule {
