@@ -14,5 +14,6 @@ export enum ROUTER_LINKS {
   ICON = 'icon',
   PROGRESS_BAR = 'progress-bar',
   SPINNER = 'spinner',
-  RIPPLE = 'ripple'
+  RIPPLE = 'ripple',
+  SHORT_ADDRESS = 'short-address'
 }

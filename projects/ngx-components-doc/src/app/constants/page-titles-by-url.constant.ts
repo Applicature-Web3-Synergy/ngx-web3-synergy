@@ -16,5 +16,6 @@ export const PageTitlesByUrl = {
   [ROUTER_LINKS.ICON]: 'Icon',
   [ROUTER_LINKS.PROGRESS_BAR]: 'Progress Bar',
   [ROUTER_LINKS.SPINNER]: 'Spinner',
-  [ROUTER_LINKS.RIPPLE]: 'Ripple Effect'
+  [ROUTER_LINKS.RIPPLE]: 'Ripple Effect',
+  [ROUTER_LINKS.SHORT_ADDRESS]: 'Short address'
 }
