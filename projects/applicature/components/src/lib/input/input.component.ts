@@ -126,9 +126,13 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   @ViewChild('inputElement', { static: true })
   public inputElement!: ElementRef<HTMLInputElement>;
 
+  /** @internal*/
   public value!: string;
+
+  /** @internal*/
   public focus: boolean = false;
 
+  /** @internal*/
   public get classNames(): { [el: string]: boolean } {
     return {
       ['auc-input-container']: true,
@@ -146,16 +150,19 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   ) {
   }
 
+  /** @internal*/
   public ngOnInit(): void {
     this.setElStyles();
   }
 
+  /** @internal*/
   public ngOnChanges(changes?: SimpleChanges): void {
    if (changes.adaptive && !changes.adaptive?.firstChange) {
      this.setElStyles();
     }
   }
 
+  /** @internal*/
   public onMaxClick(): void {
     if (this.disabled || !this.max) {
       return;
@@ -164,6 +171,7 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
     this.onChange(String(this.max));
   }
 
+  /** @internal*/
   public onChange(value: string): void {
     this.value = String(aucToBN(value).gt(this.max) ? this.max : value);
 
@@ -175,18 +183,22 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
     this._onChange(this.value);
   }
 
+  /** @internal*/
   public registerOnChange(fn: any): void {
     this._onChange = fn;
   }
 
+  /** @internal*/
   public registerOnTouched(fn: any): void {
     this._onTouched = fn;
   }
 
+  /** @internal*/
   public setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
 
+  /** @internal*/
   public writeValue(value: string): void {
     this.value = value || '';
     this._cdr.markForCheck();

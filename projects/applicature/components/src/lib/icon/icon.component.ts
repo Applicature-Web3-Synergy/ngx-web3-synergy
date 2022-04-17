@@ -30,6 +30,7 @@ export class AucIconComponent {
     this._icon = value;
   }
 
+  /** @internal */
   public get icon(): string {
     return this._icon;
   }

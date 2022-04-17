@@ -1,5 +1,6 @@
 /**
  * Supported font icons
+ * @enum
  */
 export enum AUC_WLC_ICON {
   ACTIVE = 'wcl-icon-active',

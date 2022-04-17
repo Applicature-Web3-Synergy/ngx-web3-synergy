@@ -1,3 +1,4 @@
+/** @enum */
 export enum AUC_VALUE_TYPES {
   ARRAY = 'Array',
   BLOB = 'Blob',
@@ -9,6 +10,7 @@ export enum AUC_VALUE_TYPES {
   STRING = 'String'
 }
 
+/** @enum */
 export type AucValueType = AUC_VALUE_TYPES.ARRAY
   | AUC_VALUE_TYPES.BLOB
   | AUC_VALUE_TYPES.BOOLEAN

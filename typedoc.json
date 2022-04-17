@@ -6,7 +6,6 @@
   "exclude": [
     "projects/applicature/styles/**/**.**",
     "projects/demo",
-    "projects/components-demo/**/**.**",
     "projects/ngx-components-demo/**/**.**",
     "**/**/*.module.ts",
     "**/**/*.index.ts",
@@ -15,6 +14,7 @@
   ],
   "json": "doc/doc.json",
   "excludePrivate": true,
+  "excludeProtected": true,
   "includeVersion": true,
   "readme": "projects/applicature/components/README.md",
   "name": "Applicature NGX Universal Components."
