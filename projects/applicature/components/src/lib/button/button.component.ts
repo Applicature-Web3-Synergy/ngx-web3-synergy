@@ -7,7 +7,6 @@ import {
   OnChanges,
   OnInit,
   Output,
-  SimpleChanges
 } from '@angular/core';
 
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
@@ -153,7 +152,10 @@ export class AucButtonComponent implements OnInit, OnChanges {
   public styleProperties: AucSetStyleProp[] = [];
   public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
 
-  get iconColor(): string {
+  /**
+   * Returns icon color according to button color;
+   */
+  public get iconColor(): string {
     return this.color === AS_COLOR_GROUP.WHITE
       ? AsColors[AS_COLOR_GROUP.GRAY].base
       : AsColors[AS_COLOR_GROUP.WHITE].base

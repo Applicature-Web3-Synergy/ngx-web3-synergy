@@ -14,8 +14,8 @@
   ],
   "json": "doc/doc.json",
   "excludePrivate": true,
-  "excludeProtected": true,
   "includeVersion": true,
+  "excludeInternal": true,
   "readme": "projects/applicature/components/README.md",
   "name": "Applicature NGX Universal Components."
 }

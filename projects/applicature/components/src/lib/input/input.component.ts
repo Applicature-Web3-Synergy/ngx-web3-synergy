@@ -88,13 +88,13 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
 
   /** Sets Input field type */
   @Input()
-  public type: 'string' | 'number' = 'string';
+  public type: 'text' | 'number' = 'text';
 
   /**
    * {@link decimal} - It's an `@Input()` parameter.
    * Allows to input number with decimal point
    * {@link decimal} = true - ignore non decimal symbols.
-   * This is an optional parameter. The default value is true.
+   * The default value is true.
    */
   @Input()
   public decimal: boolean = true;

@@ -85,7 +85,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
   /**
    * {@link accountOptions} - It's an `@Input()` parameter. <br>
    * List of options in popover. Needs for {@link AucAccountButtonComponent}. <br>
-   * This is an optional parameter, uses only with appearance {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   * This is an optional parameter, uses only when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
    */
   @Input()
   public accountOptions?: AucAccountOption[];
