@@ -4,7 +4,8 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
     "types": [],
-    "noPropertyAccessFromIndexSignature": false
+    "noPropertyAccessFromIndexSignature": false,
+    "noImplicitReturns": false
   },
   "files": [
     "src/main.ts",

@@ -1,7 +1,7 @@
-# Applicature Univarsal Components
+# Applicature Universal Components
 This library can help you to develop Blockchain projects easily.
 <br>
-For now, this library supports only Angular 13 version. We will add support lower versions int the future
+For now, this library supports only Angular 13 version. We will add support lower versions in the future
 
 ## Instaling library
 `npm i @applicature/styles @applicature/components`

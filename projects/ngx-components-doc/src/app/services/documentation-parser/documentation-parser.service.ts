@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 import { DocFather } from './interfaces';
-import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -66,6 +66,7 @@ export class DocumentationParserService {
     if (!this._docFather) {
       return undefined;
     }
+
     return this.walkThroughTree(this._docFather, component);
   }
 
@@ -97,18 +98,8 @@ export class DocumentationParserService {
     return child;
   }
 
-  /**
-   * Imports the doc file with the httpClient (So that we can take action if the file is not available)
-   */
+  /** Imports the doc file with the httpClient (So that we can take action if the file is not available) */
   public getDoc(): Observable<DocFather> {
     return this.http.get<DocFather>('./assets/jsons/doc.json');
-    //
-    // try {
-    //   if (DocJson) {
-    //     this.docFather = DocJson as DocFather;
-    //   }
-    // } catch (e) {
-    //   console.warn(`To show the api -> run "npm run docs-typedoc" and restart the server`);
-    // }
   }
 }

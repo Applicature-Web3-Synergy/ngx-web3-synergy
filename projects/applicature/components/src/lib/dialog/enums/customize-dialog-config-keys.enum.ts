@@ -1,3 +1,4 @@
+/** @enum */
 export enum AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS {
   WIDTH = 'width',
   HEIGHT = 'height',

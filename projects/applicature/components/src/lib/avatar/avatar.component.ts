@@ -31,7 +31,7 @@ export class AucAvatarComponent implements OnChanges {
 
   public iconStyleProperties: AucSetStyleProp[] = [];
   public defaultUserIcon: AucWlcIcon = AUC_WLC_ICON.USER;
-  public defaultUserIconColor: AucWlcIcon = AsColors[AS_COLOR_GROUP.WHITE].base;
+  public defaultUserIconColor: string = AsColors[AS_COLOR_GROUP.WHITE].base;
 
   constructor() {
     this.setIconStylesProperty();

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { AucWlcIcon } from './types';
 
@@ -11,30 +11,23 @@ import { AucWlcIcon } from './types';
 })
 export class AucIconComponent {
   /**
-   * {@link color} - It's an `@Input()` parameter.
-   * Sets css style color;
-   * This is an optional parameter.
+   * Sets css style color. <br>
+   * It's an optional parameter.
    */
   @Input()
   public color?: string;
 
   /**
-   * {@link icon} - It's an `@Input()` parameter.
-   * @param value type uses enum {@link AUC_WLC_ICON} or string;
-   * If you want to use custom icon you need to provide url to the image as a string value.
+   * Sets icon. <br>
+   * You can use enum {@link AUC_WLC_ICON} or other string. <br>
+   * If you want to use custom icon you need to provide url to the image as a string value. <br>
+   * It's required parameter.
    */
   @Input()
-  public set icon(value: AucWlcIcon) {
-    this.isImage = (/.+\..+$/i).test(value);
+  public icon!: AucWlcIcon;
 
-    this._icon = value;
+  /** @internal */
+  public get isImage(): boolean {
+    return !this.icon ? false : (/.+\..+$/i).test(this.icon);
   }
-
-  public get icon(): string {
-    return this._icon;
-  }
-
-  private _icon!: string;
-
-  public isImage: boolean = false;
 }

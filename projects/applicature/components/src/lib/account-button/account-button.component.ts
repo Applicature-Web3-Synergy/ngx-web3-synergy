@@ -10,10 +10,11 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
+
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { AucWalletConnectService } from '../services';
-import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 import { AucAccountData, AucAccountOption } from './interfaces';
 
 
@@ -61,9 +62,10 @@ export class AucAccountButtonComponent implements OnInit {
    *     vertical: AUC_POSITIONS.BELOW,
    *     horizontal: AUC_POSITIONS.BEFORE
    *   }
- *   }
+   * }
    */
-  @Input() accountDropdownConfig: AucDropdownConfig = {
+  @Input()
+  public accountDropdownConfig: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
@@ -108,6 +110,10 @@ export class AucAccountButtonComponent implements OnInit {
     this.isOptionsOpen = opened;
   }
 
+  /**
+   * Emits event when option was clicked. <br>
+   * @param option - Options what was clicked.
+   */
   public onOptionClick(option: AucAccountOption): void {
     this._closeOptions();
 

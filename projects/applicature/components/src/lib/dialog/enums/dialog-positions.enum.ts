@@ -1,3 +1,4 @@
+/** @enum */
 export enum AUC_DIALOG_POSITIONS {
   BOTTOM = 'bottom',
   CENTER = 'center',

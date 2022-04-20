@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MatTabsModule } from '@angular/material/tabs';
+
 import { ComponentViewerComponent } from './component-viewer.component';
 import { ApiContainerComponent } from './components/api-container/api-container.component';
 import { CodeExampleModule } from '../code-example/code-example.module';
-import { MatTabsModule } from '@angular/material/tabs';
+import { CommentDirective } from './directives';
+import { ExampleCardModule } from '../example-card/example-card.module';
 
 
 @NgModule({
   declarations: [
     ComponentViewerComponent,
-    ApiContainerComponent
+    ApiContainerComponent,
+    CommentDirective
   ],
   exports: [
     ComponentViewerComponent
@@ -18,7 +22,8 @@ import { MatTabsModule } from '@angular/material/tabs';
   imports: [
     CommonModule,
     CodeExampleModule,
-    MatTabsModule
+    MatTabsModule,
+    ExampleCardModule
   ]
 })
 export class ComponentViewerModule {

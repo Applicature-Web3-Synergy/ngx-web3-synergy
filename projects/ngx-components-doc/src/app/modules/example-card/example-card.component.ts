@@ -10,7 +10,7 @@ import { ExampleCardTab } from './interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleCardComponent {
-  @Input() tabs!: ExampleCardTab[];
+  @Input() tabs?: ExampleCardTab[];
   @Input() title?: string;
 
   public showCode = false;
