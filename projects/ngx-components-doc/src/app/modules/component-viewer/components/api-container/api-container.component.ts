@@ -3,7 +3,13 @@ import { take } from 'rxjs/operators';
 
 import { ComponentDoc } from './interfaces';
 import { DOC_GROUP_TITLE } from './enums/doc-group-title.enum';
-import { DocFather, DocFlags, DocType, DocumentationParserService } from '../../../../services/documentation-parser';
+import {
+  DocDecorator,
+  DocFather,
+  DocFlags,
+  DocType,
+  DocumentationParserService
+} from '../../../../services/documentation-parser';
 
 
 @Component({
@@ -64,26 +70,9 @@ export class ApiContainerComponent implements AfterContentInit {
             this.componentsDocs.push(componentDoc);
           });
 
-          console.log(this.componentsDocs);
-
           this.cd.markForCheck();
         }
       });
-  }
-
-  /**
-   * Returns the first accessor parameter.
-   *
-   * @param docFather - The DocFather to be searched for the accessor parameters
-   */
-  public getAccessorsParameters(docFather: DocFather): string {
-    for (const keyName of [ 'bindingPropertyName', 'hostPropertyName', 'type.name', 'type.types' ]) {
-      const keys = this.findKeys(docFather, keyName);
-      if (keys.length > 0) {
-        return keys[0];
-      }
-    }
-    return '';
   }
 
   /** Returns flag value, private, protected, public ... */
@@ -135,11 +124,11 @@ export class ApiContainerComponent implements AfterContentInit {
     }
 
     if (type.type === 'array' && type?.elementType) {
-      return `${this.getType({type: type?.elementType} as DocFather)}[]`;
+      return `${this.getType({ type: type?.elementType } as DocFather)}[]`;
     }
 
     if (type.type === 'query' && type?.queryType) {
-      return `${this.getType({type: type.queryType} as DocFather)}`;
+      return `${this.getType({ type: type.queryType } as DocFather)}`;
     }
 
     if (type.type === 'union' && type?.types?.length) {
@@ -168,13 +157,28 @@ export class ApiContainerComponent implements AfterContentInit {
       return typeVal.length ? `: {${typeVal}}` : '';
     }
 
-    return type?.name ? `${doc?.flags?.isOptional ? '?' : ''}: ${type.name}` : '';
+    let typeArgs = '';
+    if (type.type === 'reference' && type.typeArguments?.length) {
+      const typeVal: string = type.typeArguments
+        .map(item => this.getType({ type: item } as DocFather)
+          .replace(':', '')
+          .trim()
+        )
+        .filter(item => item?.length)
+        .join(', ');
+
+      typeArgs = `<${typeVal}>`;
+    }
+
+    return type?.name ? `${doc?.flags?.isOptional ? '?' : ''}: ${type.name}${typeArgs}` : '';
   }
 
-  public getMethodAsSting(method: DocFather): {code: string, comments: string[]} {
+  public getMethodAsSting(method: DocFather): { code: string, comments: string[], decorators: string } {
     if (!method) {
       return null;
     }
+
+    const isAccessor = method.kindString === 'Accessor';
 
     const comments: string[] = [];
 
@@ -183,21 +187,32 @@ export class ApiContainerComponent implements AfterContentInit {
     }
 
     const flag = this.getFlag(method.flags);
+    const decorators = method.decorators?.length
+      ? method.decorators
+        .filter((decorator: DocDecorator) => decorator?.name)
+        .map((decorator: DocDecorator) => {
+          const args = decorator?.arguments?.hostPropertyName
+            ?? decorator?.arguments?.bindingPropertyName
+            ?? '';
 
-    const signature: DocFather = (method.signatures ?? [])
+          return `@${decorator.name}(${args})`
+        }).join(' ')
+      : '';
+
+    const signature: DocFather = (isAccessor
+      ? (method.getSignature ?? method.setSignature)
+      : (method.signatures) ?? [])
       .filter((signature: DocFather) => method.name === signature.name)[0];
 
     if (signature?.comment?.shortText) {
       comments.push(signature.comment.shortText);
     }
 
-    // const signatureType: string = !signature?.type?.name ? '' : `: ${signature.type?.name}`;
     const signatureType: string = !signature?.type?.name ? '' : `${this.getType(signature)}`;
 
     const methodArguments: string = !signature
       ? ''
       : (signature.parameters || []).map((param: DocFather) => {
-        // const type: string = param.type?.name;
         const type: string = this.getType(param);
 
         if (param?.comment?.shortText) {
@@ -208,15 +223,21 @@ export class ApiContainerComponent implements AfterContentInit {
           return param.name;
         }
 
-        // return `${param.name}: ${type}`
         return `${param.name}${type}`
       }).join(', ');
 
+    const accessorType = !signature
+      ? ''
+      : signature.kindString === 'Set signature'
+        ? 'set '
+        : signature.kindString === 'Get signature' ? 'get ' : '';
+
     return {
       code: methodArguments
-        ? `${flag}${signature.name}(${methodArguments})${signatureType}`
-        : `${flag}${signature.name}()${signatureType}`,
-      comments
+        ? `${flag}${accessorType}${signature.name}(${methodArguments})${signatureType}`
+        : `${flag}${accessorType}${signature.name}()${signatureType}`,
+      comments,
+      decorators
     };
   }
 

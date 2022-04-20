@@ -29,8 +29,15 @@ export interface DocType {
   elementType?: DocType;
   queryType?: DocType;
   declaration?: DocFather;
-  types?: {type: string; value?: string; name?: string}[];
+  typeArguments?: DocTypeVal[];
+  types?: DocTypeVal[];
   type?: 'array' | 'reference' | 'query' | 'union' | 'reflection' | 'intrinsic';
+}
+
+export interface DocTypeVal {
+  type: string;
+  value?: string;
+  name?: string;
 }
 
 export interface DocFlags {

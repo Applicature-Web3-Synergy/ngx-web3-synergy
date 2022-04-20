@@ -3861,7 +3861,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1207,
+										"id": 1208,
 										"name": "AucTransactionService"
 									}
 								}
@@ -6145,7 +6145,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1207,
+										"id": 1208,
 										"name": "AucTransactionService"
 									}
 								},
@@ -10675,7 +10675,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "Sets icon. <br>\nYou can use enum {@link AUC_WLC_ICON} or string. <br>\nIf you want to use custom icon you need to provide url to the image as a string value. <br>\nIt's required parameter."
+						"shortText": "Sets icon. <br>\nYou can use enum {@link AUC_WLC_ICON} or other string. <br>\nIf you want to use custom icon you need to provide url to the image as a string value. <br>\nIt's required parameter."
 					},
 					"decorators": [
 						{
@@ -11120,7 +11120,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link decimal} - It's an `@Input()` parameter.\nAllows to input number with decimal point\n{@link decimal} = true - ignore non decimal symbols.\nThis is an optional parameter. The default value is true."
+						"shortText": "{@link decimal} - It's an `@Input()` parameter.\nAllows to input number with decimal point\n{@link decimal} = true - ignore non decimal symbols.\nThe default value is true."
 					},
 					"decorators": [
 						{
@@ -13727,7 +13727,7 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 59,
+							"line": 60,
 							"character": 9
 						}
 					],
@@ -13747,10 +13747,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
+						"isPublic": true,
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link customize} - It's an `@Input()` parameter.\nSets custom class to the table container.\nThis is an optional parameter."
+						"shortText": "Sets custom class to the table container. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -13767,8 +13768,8 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 44,
-							"character": 11
+							"line": 49,
+							"character": 9
 						}
 					],
 					"type": {
@@ -13793,9 +13794,11 @@
 					"name": "data",
 					"kind": 1024,
 					"kindString": "Property",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"comment": {
-						"shortText": "{@link data} - It's an `@Input()` parameter.\nSets table data.\nThis is required parameter."
+						"shortText": "Sets table data. <br>\nIt's required parameter."
 					},
 					"decorators": [
 						{
@@ -13812,8 +13815,8 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 30,
-							"character": 11
+							"line": 34,
+							"character": 9
 						}
 					],
 					"type": {
@@ -13837,7 +13840,7 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 58,
+							"line": 59,
 							"character": 9
 						}
 					],
@@ -13856,9 +13859,11 @@
 					"name": "isLoadMore",
 					"kind": 1024,
 					"kindString": "Property",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"comment": {
-						"shortText": "{@link isLoadMore} - It's an `@Input()` parameter.\nIf true the Load more button will be visible.\nThis is an optional parameter. The default value is false"
+						"shortText": "If true the Load more button will be visible. <br>\nIt's' an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -13875,8 +13880,8 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 37,
-							"character": 11
+							"line": 42,
+							"character": 9
 						}
 					],
 					"type": {
@@ -13890,9 +13895,11 @@
 					"name": "loadMore",
 					"kind": 1024,
 					"kindString": "Property",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"comment": {
-						"shortText": "{@link loadMore} - It's an `@Output()` parameter.\nEmits when load more button was clicked."
+						"shortText": "Emits event when load more button was clicked."
 					},
 					"decorators": [
 						{
@@ -13909,8 +13916,8 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 50,
-							"character": 12
+							"line": 53,
+							"character": 9
 						}
 					],
 					"type": {
@@ -13932,9 +13939,11 @@
 					"name": "sort",
 					"kind": 1024,
 					"kindString": "Property",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"comment": {
-						"shortText": "{@link sort} - It's an `@Output()` parameter.\nEmits when sort was clicked."
+						"shortText": "Emits when sort was clicked."
 					},
 					"decorators": [
 						{
@@ -13951,8 +13960,8 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 56,
-							"character": 12
+							"line": 57,
+							"character": 9
 						}
 					],
 					"type": {
@@ -13971,11 +13980,52 @@
 					"defaultValue": "..."
 				},
 				{
+					"id": 1165,
+					"name": "test",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/table/table.component.ts",
+							"line": 61,
+							"character": 9
+						}
+					],
+					"type": {
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "string"
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							},
+							{
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						],
+						"name": "TestInterface"
+					}
+				},
+				{
 					"id": 1155,
 					"name": "tableHeaders",
 					"kind": 262144,
 					"kindString": "Accessor",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"decorators": [
 						{
 							"name": "Input",
@@ -13991,8 +14041,8 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 20,
-							"character": 15
+							"line": 24,
+							"character": 13
 						}
 					],
 					"setSignature": [
@@ -14003,7 +14053,7 @@
 							"kindString": "Set signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link tableHeaders} - It's an `@Input()` parameter.\nSets table headers.\nThis is required parameter."
+								"shortText": "Sets table headers. <br>\nIt's required parameter."
 							},
 							"parameters": [
 								{
@@ -14030,7 +14080,7 @@
 					]
 				},
 				{
-					"id": 1165,
+					"id": 1166,
 					"name": "onLoadMore",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14040,13 +14090,13 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 61,
+							"line": 63,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1166,
+							"id": 1167,
 							"name": "onLoadMore",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14059,7 +14109,7 @@
 					]
 				},
 				{
-					"id": 1167,
+					"id": 1168,
 					"name": "sortBy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14069,20 +14119,20 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 65,
+							"line": 67,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1168,
+							"id": 1169,
 							"name": "sortBy",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1169,
+									"id": 1170,
 									"name": "sort",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14094,7 +14144,7 @@
 									}
 								},
 								{
-									"id": 1170,
+									"id": 1171,
 									"name": "columnIndex",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14131,7 +14181,8 @@
 						1163,
 						1159,
 						1161,
-						1162
+						1162,
+						1165
 					]
 				},
 				{
@@ -14145,21 +14196,21 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1165,
-						1167
+						1166,
+						1168
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "lib/table/table.component.ts",
-					"line": 14,
+					"line": 18,
 					"character": 13
 				}
 			]
 		},
 		{
-			"id": 1207,
+			"id": 1208,
 			"name": "AucTransactionService",
 			"kind": 128,
 			"kindString": "Class",
@@ -14178,7 +14229,7 @@
 			],
 			"children": [
 				{
-					"id": 1211,
+					"id": 1212,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -14192,14 +14243,14 @@
 					],
 					"signatures": [
 						{
-							"id": 1212,
+							"id": 1213,
 							"name": "new AucTransactionService",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1213,
+									"id": 1214,
 									"name": "_http",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14212,7 +14263,7 @@
 									}
 								},
 								{
-									"id": 1214,
+									"id": 1215,
 									"name": "_walletConnectService",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14226,14 +14277,14 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 1207,
+								"id": 1208,
 								"name": "AucTransactionService"
 							}
 						}
 					]
 				},
 				{
-					"id": 1218,
+					"id": 1219,
 					"name": "transactionsChanged$",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -14249,7 +14300,7 @@
 					],
 					"getSignature": [
 						{
-							"id": 1219,
+							"id": 1220,
 							"name": "transactionsChanged$",
 							"kind": 524288,
 							"kindString": "Get signature",
@@ -14274,7 +14325,7 @@
 					]
 				},
 				{
-					"id": 1232,
+					"id": 1233,
 					"name": "clearTransactions",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14290,7 +14341,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1233,
+							"id": 1234,
 							"name": "clearTransactions",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14303,7 +14354,7 @@
 					]
 				},
 				{
-					"id": 1222,
+					"id": 1223,
 					"name": "dispose",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14319,7 +14370,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1223,
+							"id": 1224,
 							"name": "dispose",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14332,7 +14383,7 @@
 					]
 				},
 				{
-					"id": 1234,
+					"id": 1235,
 					"name": "getRemoteTransactions",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14348,7 +14399,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1235,
+							"id": 1236,
 							"name": "getRemoteTransactions",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14358,7 +14409,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1236,
+									"id": 1237,
 									"name": "address",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14372,7 +14423,7 @@
 									}
 								},
 								{
-									"id": 1237,
+									"id": 1238,
 									"name": "chainId",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14386,7 +14437,7 @@
 									}
 								},
 								{
-									"id": 1238,
+									"id": 1239,
 									"name": "page",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14401,7 +14452,7 @@
 									"defaultValue": "1"
 								},
 								{
-									"id": 1239,
+									"id": 1240,
 									"name": "offset",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14416,14 +14467,14 @@
 									"defaultValue": "100"
 								},
 								{
-									"id": 1240,
+									"id": 1241,
 									"name": "sortDirection",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1252,
+										"id": 1253,
 										"name": "AucSortDirection"
 									},
 									"defaultValue": "AUC_SORT_DIRECTION.ASC"
@@ -14446,7 +14497,7 @@
 					]
 				},
 				{
-					"id": 1230,
+					"id": 1231,
 					"name": "markAsViewed",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14462,7 +14513,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1231,
+							"id": 1232,
 							"name": "markAsViewed",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14475,7 +14526,7 @@
 					]
 				},
 				{
-					"id": 1220,
+					"id": 1221,
 					"name": "refreshTransactions",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14491,7 +14542,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1221,
+							"id": 1222,
 							"name": "refreshTransactions",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14504,7 +14555,7 @@
 					]
 				},
 				{
-					"id": 1224,
+					"id": 1225,
 					"name": "saveTransaction",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14520,14 +14571,14 @@
 					],
 					"signatures": [
 						{
-							"id": 1225,
+							"id": 1226,
 							"name": "saveTransaction",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1226,
+									"id": 1227,
 									"name": "chainId",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14538,7 +14589,7 @@
 									}
 								},
 								{
-									"id": 1227,
+									"id": 1228,
 									"name": "name",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14549,7 +14600,7 @@
 									}
 								},
 								{
-									"id": 1228,
+									"id": 1229,
 									"name": "hash",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14560,7 +14611,7 @@
 									}
 								},
 								{
-									"id": 1229,
+									"id": 1230,
 									"name": "status",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14581,7 +14632,7 @@
 					]
 				},
 				{
-					"id": 1208,
+					"id": 1209,
 					"name": "getTransactionApiUrl",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14597,7 +14648,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1209,
+							"id": 1210,
 							"name": "getTransactionApiUrl",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14607,7 +14658,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1210,
+									"id": 1211,
 									"name": "chainId",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14634,27 +14685,27 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1211
+						1212
 					]
 				},
 				{
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						1218
+						1219
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1232,
-						1222,
-						1234,
-						1230,
-						1220,
-						1224,
-						1208
+						1233,
+						1223,
+						1235,
+						1231,
+						1221,
+						1225,
+						1209
 					]
 				}
 			],
@@ -14667,7 +14718,7 @@
 			]
 		},
 		{
-			"id": 1171,
+			"id": 1172,
 			"name": "AucTransactionsHistoryComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -14688,7 +14739,7 @@
 			],
 			"children": [
 				{
-					"id": 1172,
+					"id": 1173,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -14702,14 +14753,14 @@
 					],
 					"signatures": [
 						{
-							"id": 1173,
+							"id": 1174,
 							"name": "new AucTransactionsHistoryComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1174,
+									"id": 1175,
 									"name": "_dialogService",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14721,7 +14772,7 @@
 									}
 								},
 								{
-									"id": 1175,
+									"id": 1176,
 									"name": "_cdr",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14734,28 +14785,28 @@
 									}
 								},
 								{
-									"id": 1176,
+									"id": 1177,
 									"name": "_transactionService",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1207,
+										"id": 1208,
 										"name": "AucTransactionService"
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
-								"id": 1171,
+								"id": 1172,
 								"name": "AucTransactionsHistoryComponent"
 							}
 						}
 					]
 				},
 				{
-					"id": 1182,
+					"id": 1183,
 					"name": "BTN_APPEARANCE",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14780,7 +14831,7 @@
 					"defaultValue": "AUC_BUTTON_APPEARANCE"
 				},
 				{
-					"id": 1181,
+					"id": 1182,
 					"name": "COLORS",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14804,7 +14855,7 @@
 					"defaultValue": "AS_COLOR_GROUP"
 				},
 				{
-					"id": 1177,
+					"id": 1178,
 					"name": "disabled",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14840,7 +14891,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 1178,
+					"id": 1179,
 					"name": "hasFailedTx",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14861,7 +14912,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 1179,
+					"id": 1180,
 					"name": "hasPendingTx",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14882,7 +14933,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 1180,
+					"id": 1181,
 					"name": "txCount",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14903,7 +14954,7 @@
 					"defaultValue": "0"
 				},
 				{
-					"id": 1184,
+					"id": 1185,
 					"name": "ngOnInit",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14919,7 +14970,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1185,
+							"id": 1186,
 							"name": "ngOnInit",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14940,7 +14991,7 @@
 					}
 				},
 				{
-					"id": 1186,
+					"id": 1187,
 					"name": "onTransactionsClick",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14956,7 +15007,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1187,
+							"id": 1188,
 							"name": "onTransactionsClick",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14974,27 +15025,27 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1172
+						1173
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
+						1183,
 						1182,
-						1181,
-						1177,
 						1178,
 						1179,
-						1180
+						1180,
+						1181
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1184,
-						1186
+						1185,
+						1187
 					]
 				}
 			],
@@ -15015,7 +15066,7 @@
 			]
 		},
 		{
-			"id": 1190,
+			"id": 1191,
 			"name": "AucTransactionsHistoryModalComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -15036,7 +15087,7 @@
 			],
 			"children": [
 				{
-					"id": 1191,
+					"id": 1192,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -15050,14 +15101,14 @@
 					],
 					"signatures": [
 						{
-							"id": 1192,
+							"id": 1193,
 							"name": "new AucTransactionsHistoryModalComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1193,
+									"id": 1194,
 									"name": "_config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -15068,7 +15119,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 1188,
+												"id": 1189,
 												"name": "AucRecentTransactionsModalData"
 											}
 										],
@@ -15076,7 +15127,7 @@
 									}
 								},
 								{
-									"id": 1194,
+									"id": 1195,
 									"name": "_dialogRef",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -15094,28 +15145,28 @@
 									}
 								},
 								{
-									"id": 1195,
+									"id": 1196,
 									"name": "_transactionService",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1207,
+										"id": 1208,
 										"name": "AucTransactionService"
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
-								"id": 1190,
+								"id": 1191,
 								"name": "AucTransactionsHistoryModalComponent"
 							}
 						}
 					]
 				},
 				{
-					"id": 1197,
+					"id": 1198,
 					"name": "data",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15131,12 +15182,12 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1188,
+						"id": 1189,
 						"name": "AucRecentTransactionsModalData"
 					}
 				},
 				{
-					"id": 1196,
+					"id": 1197,
 					"name": "transactions$",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15168,7 +15219,7 @@
 					}
 				},
 				{
-					"id": 1200,
+					"id": 1201,
 					"name": "ngOnDestroy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -15184,7 +15235,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1201,
+							"id": 1202,
 							"name": "ngOnDestroy",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -15205,7 +15256,7 @@
 					}
 				},
 				{
-					"id": 1198,
+					"id": 1199,
 					"name": "onCloseClick",
 					"kind": 2048,
 					"kindString": "Method",
@@ -15221,7 +15272,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1199,
+							"id": 1200,
 							"name": "onCloseClick",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -15239,23 +15290,23 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1191
+						1192
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1197,
-						1196
+						1198,
+						1197
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1200,
-						1198
+						1201,
+						1199
 					]
 				}
 			],
@@ -15276,7 +15327,7 @@
 			]
 		},
 		{
-			"id": 1202,
+			"id": 1203,
 			"name": "AucTransactionsListComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -15297,28 +15348,28 @@
 			],
 			"children": [
 				{
-					"id": 1203,
+					"id": 1204,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
 					"flags": {},
 					"signatures": [
 						{
-							"id": 1204,
+							"id": 1205,
 							"name": "new AucTransactionsListComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"type": {
 								"type": "reference",
-								"id": 1202,
+								"id": 1203,
 								"name": "AucTransactionsListComponent"
 							}
 						}
 					]
 				},
 				{
-					"id": 1206,
+					"id": 1207,
 					"name": "emptyText",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15355,7 +15406,7 @@
 					"defaultValue": "'Your transactions will appear here...'"
 				},
 				{
-					"id": 1205,
+					"id": 1206,
 					"name": "transactions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15399,15 +15450,15 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1203
+						1204
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1206,
-						1205
+						1207,
+						1206
 					]
 				}
 			],
@@ -15531,7 +15582,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1207,
+										"id": 1208,
 										"name": "AucTransactionService"
 									}
 								}
@@ -20619,7 +20670,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1251,
+						"id": 1252,
 						"name": "AucHorizontalPosition"
 					}
 				},
@@ -20640,7 +20691,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1250,
+						"id": 1251,
 						"name": "AucVerticalPosition"
 					}
 				}
@@ -20821,14 +20872,14 @@
 			]
 		},
 		{
-			"id": 1188,
+			"id": 1189,
 			"name": "AucRecentTransactionsModalData",
 			"kind": 256,
 			"kindString": "Interface",
 			"flags": {},
 			"children": [
 				{
-					"id": 1189,
+					"id": 1190,
 					"name": "header",
 					"kind": 1024,
 					"kindString": "Property",
@@ -20851,7 +20902,7 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1189
+						1190
 					]
 				}
 			],
@@ -21053,7 +21104,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1252,
+						"id": 1253,
 						"name": "AucSortDirection"
 					}
 				}
@@ -21887,7 +21938,7 @@
 			}
 		},
 		{
-			"id": 1251,
+			"id": 1252,
 			"name": "AucHorizontalPosition",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -21945,7 +21996,7 @@
 			}
 		},
 		{
-			"id": 1252,
+			"id": 1253,
 			"name": "AucSortDirection",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -22063,7 +22114,7 @@
 			}
 		},
 		{
-			"id": 1250,
+			"id": 1251,
 			"name": "AucVerticalPosition",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -23548,10 +23599,10 @@
 				1007,
 				1130,
 				1152,
-				1207,
-				1171,
-				1190,
-				1202,
+				1208,
+				1172,
+				1191,
+				1203,
 				912,
 				279,
 				1049,
@@ -23585,7 +23636,7 @@
 				858,
 				761,
 				764,
-				1188,
+				1189,
 				768,
 				266,
 				861,
@@ -23604,12 +23655,12 @@
 				9,
 				112,
 				383,
-				1251,
-				253,
 				1252,
+				253,
+				1253,
 				911,
 				636,
-				1250,
+				1251,
 				679,
 				947,
 				153
