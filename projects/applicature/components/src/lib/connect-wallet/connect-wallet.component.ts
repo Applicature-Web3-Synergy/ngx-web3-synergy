@@ -152,16 +152,34 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
   @Output()
   public optionClicked: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
 
+  /** @internal */
   public accountAddress: string;
+
+  /** @internal */
   public identicon: HTMLDivElement;
+
+  /** @internal */
   public isConnected: boolean = false;
+
+  /** @internal */
   public hasFailedTx: boolean = false;
+
+  /** @internal */
   public hasPendingTx: boolean = false;
+
+  /** @internal */
   public txCount: number = 0;
+
+  /** @internal */
   public COLORS = AS_COLOR_GROUP;
+
+  /** @internal */
   public BALANCE_APPEARANCE = AUC_BALANCE_APPEARANCE;
+
+  /** @internal */
   public CONNECT_WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
+  /** @internal */
   private _sub: Subscription = new Subscription();
 
   constructor(
@@ -217,6 +235,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     }
   }
 
+  /** Shows  account modal. */
   public onAccountButtonClick(): void {
     if (this.disabled) {
       return;
@@ -247,6 +266,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     });
   }
 
+  /** Connect wallet and emit {@link onConnect} event. */
   public onConnectWalletClick(isDisconnect: boolean = false): void {
     if (this.disabled) {
       return;
@@ -258,6 +278,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
       })
   }
 
+  /** Disconnect wallet and emit {@link onDisconnect} event. */
   public onDisconnectWalletClick(): void {
     if (this.disabled) {
       return;
@@ -269,6 +290,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
       });
   }
 
+  /** Emit {@link optionClicked} event. */
   public optionAction(evt: AucAccountOption): void {
     this.optionClicked.emit(evt);
   }

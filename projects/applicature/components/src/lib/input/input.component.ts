@@ -119,7 +119,7 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   @Input()
   public errors?: string[];
 
-  /** Field ElementRef */
+  /** Field ElementRef. */
   @ViewChild('inputElement', { static: true })
   public inputElement!: ElementRef<HTMLInputElement>;
 
@@ -159,7 +159,7 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
     }
   }
 
-  /** Emit field value changes when clicked on Max */
+  /** Emit field value changes when clicked on Max. */
   public onMaxClick(): void {
     if (this.disabled || !this.max) {
       return;
@@ -168,7 +168,7 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
     this.onChange(String(this.max));
   }
 
-  /** Change Input value */
+  /** Change Input value. */
   public onChange(value: string): void {
     this.value = String(aucToBN(value).gt(this.max) ? this.max : value);
 
@@ -180,17 +180,17 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
     this._onChange(this.value);
   }
 
-  /** Register Field OnChange function */
+  /** Register Field OnChange function. */
   public registerOnChange(fn: any): void {
     this._onChange = fn;
   }
 
-  /** Register Field OnTouched function */
+  /** Register Field OnTouched function. */
   public registerOnTouched(fn: any): void {
     this._onTouched = fn;
   }
 
-  /** Disable Input */
+  /** Disable Input. */
   public setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }

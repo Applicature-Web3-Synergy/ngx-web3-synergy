@@ -313,7 +313,7 @@ export class AucWalletConnectService {
       );
   }
 
-  /** Disconnect wallet */
+  /** Disconnect wallet. */
   public disconnectWallet(): Observable<void> {
     return of(this._onboard ? this._onboard.walletReset() : null)
       .pipe(

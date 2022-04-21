@@ -76,8 +76,13 @@ export class AucAccountButtonComponent implements OnInit {
   @Output('optionClick')
   public optionEmitter: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
 
+  /** @internal */
   public isOptionsOpen: boolean = false;
+
+  /** @internal */
   public accountAddress!: string;
+
+  /** @internal */
   public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
   /** @internal */

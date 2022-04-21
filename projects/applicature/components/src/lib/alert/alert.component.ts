@@ -39,7 +39,7 @@ export class AucAlertComponent implements OnInit, OnChanges {
   public iconPosition?: AucAlertPosition = AUC_ALERT_POSITION.LEFT;
 
   /**
-   * Theme color palette for the alert. This sets the alert background color. <br>
+   * Theme color palette for the alert. Sets the alert background color. <br>
    * It's an optional parameter. <br>
    * The default value is red.
    */

@@ -25,16 +25,17 @@ export class CommentDirective implements OnInit {
         }
 
         if (item.includes('{@link')) {
-          (val.match(/\{@link ([^()]*)\}/g) ?? [])
+          const matchRegexStr = `\{@link (.*?)\}`;
+          
+          (val.match(new RegExp(matchRegexStr, 'g')) ?? [])
             .forEach((el: string) => {
-              const elToreplace = el.match(/\{@link ([^()]*)\}/);
-              const regex = new RegExp(el);
+              const elToreplace = el.match(new RegExp(matchRegexStr));
 
               if (!(elToreplace ?? [])[1]) {
                 return null;
               }
 
-              val = val.replace(regex, `<i>${elToreplace[1]}</i>`);
+              val = val.replace(new RegExp(el), `<i>${elToreplace[1]}</i>`);
             });
         }
 

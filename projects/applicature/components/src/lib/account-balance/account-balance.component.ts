@@ -33,8 +33,7 @@ import { AucAccountBalanceAddressConfig } from './interfaces';
 export class AucAccountBalanceComponent implements OnInit, OnChanges {
   /**
    * Sets style for appearance. <br>
-   * You can use one of the values from enum
-   * {@link AUC_BALANCE_APPEARANCE}.<br>
+   * You can use one of the values from enum {@link AUC_BALANCE_APPEARANCE}.<br>
    * It's an optional parameter.
    */
   @Input()
@@ -92,10 +91,19 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
   @ViewChild('addressRef', { static: true })
   private _addressRef!: ElementRef<HTMLDivElement>;
 
+  /** Current connected wallet address. */
   public address$: Observable<string>;
+
+  /** Current connected wallet balance. */
   public balance$: Observable<string>;
+
+  /** Current network */
   public activeNetwork: AucNetworkOption;
+
+  /** @internal */
   public styleProperties: AucSetStyleProp[] = [];
+
+  /** @internal */
   public COLOR_GROUP = AS_COLOR_GROUP;
 
   /** @internal */

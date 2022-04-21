@@ -52,8 +52,12 @@ export class AucNetworkDropdownComponent implements OnInit {
   };
 
   public isWrongNetwork: boolean = false;
-  public isOptionsOpen: boolean = false;
   public currentNetwork!: AucNetworkOption;
+
+  /** @internal */
+  public isOptionsOpen: boolean = false;
+
+  /** @internal */
   public COLORS = AS_COLOR_GROUP;
 
   /** @internal */

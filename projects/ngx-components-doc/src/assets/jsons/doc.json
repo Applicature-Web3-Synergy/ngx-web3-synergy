@@ -2481,7 +2481,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 110,
+							"line": 109,
 							"character": 2
 						}
 					],
@@ -2538,7 +2538,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 99,
+							"line": 98,
 							"character": 9
 						}
 					],
@@ -2562,7 +2562,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 97,
+							"line": 96,
 							"character": 9
 						}
 					],
@@ -2583,7 +2583,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 95,
+							"line": 94,
 							"character": 9
 						}
 					],
@@ -2627,7 +2627,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 75,
+							"line": 74,
 							"character": 9
 						}
 					],
@@ -2647,7 +2647,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "Sets style for appearance. <br>\nYou can use one of the values from enum\n{@link AUC_BALANCE_APPEARANCE}.<br>\nIt's an optional parameter."
+						"shortText": "Sets style for appearance. <br>\nYou can use one of the values from enum {@link AUC_BALANCE_APPEARANCE}.<br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -2664,7 +2664,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 41,
+							"line": 40,
 							"character": 9
 						}
 					],
@@ -2685,7 +2685,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 96,
+							"line": 95,
 							"character": 9
 						}
 					],
@@ -2729,7 +2729,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 51,
+							"line": 50,
 							"character": 9
 						}
 					],
@@ -2766,7 +2766,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 82,
+							"line": 81,
 							"character": 9
 						}
 					],
@@ -2804,7 +2804,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 60,
+							"line": 59,
 							"character": 9
 						}
 					],
@@ -2840,7 +2840,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 89,
+							"line": 88,
 							"character": 9
 						}
 					],
@@ -2885,7 +2885,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 68,
+							"line": 67,
 							"character": 9
 						}
 					],
@@ -2906,7 +2906,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 98,
+							"line": 97,
 							"character": 9
 						}
 					],
@@ -2931,7 +2931,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 163,
+							"line": 162,
 							"character": 9
 						}
 					],
@@ -4128,7 +4128,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "Theme color palette for the alert. This sets the alert background color. <br>\nIt's an optional parameter. <br>\nThe default value is red."
+						"shortText": "Theme color palette for the alert. Sets the alert background color. <br>\nIt's an optional parameter. <br>\nThe default value is red."
 					},
 					"decorators": [
 						{
@@ -5422,7 +5422,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 167,
+							"line": 185,
 							"character": 2
 						}
 					],
@@ -5514,80 +5514,6 @@
 					]
 				},
 				{
-					"id": 181,
-					"name": "BALANCE_APPEARANCE",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 162,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"id": 1,
-							"name": "AUC_BALANCE_APPEARANCE"
-						}
-					},
-					"defaultValue": "AUC_BALANCE_APPEARANCE"
-				},
-				{
-					"id": 180,
-					"name": "COLORS",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 161,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"name": "AS_COLOR_GROUP"
-						}
-					},
-					"defaultValue": "AS_COLOR_GROUP"
-				},
-				{
-					"id": 182,
-					"name": "CONNECT_WALLET_APPEARANCE",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 163,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"id": 150,
-							"name": "AUC_CONNECT_WALLET_APPEARANCE"
-						}
-					},
-					"defaultValue": "AUC_CONNECT_WALLET_APPEARANCE"
-				},
-				{
 					"id": 167,
 					"name": "account",
 					"kind": 1024,
@@ -5621,26 +5547,6 @@
 						"type": "reference",
 						"id": 40,
 						"name": "AucAccountData"
-					}
-				},
-				{
-					"id": 174,
-					"name": "accountAddress",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 155,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
 					}
 				},
 				{
@@ -5787,91 +5693,6 @@
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
 							"line": 51,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
-					"id": 177,
-					"name": "hasFailedTx",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 158,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
-					"id": 178,
-					"name": "hasPendingTx",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 159,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
-					"id": 175,
-					"name": "identicon",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 156,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "reference",
-						"qualifiedName": "HTMLDivElement",
-						"package": "typescript",
-						"name": "HTMLDivElement"
-					}
-				},
-				{
-					"id": 176,
-					"name": "isConnected",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 157,
 							"character": 9
 						}
 					],
@@ -6165,27 +5986,6 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 179,
-					"name": "txCount",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 160,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "number"
-					},
-					"defaultValue": "0"
-				},
-				{
 					"id": 188,
 					"name": "onAccountButtonClick",
 					"kind": 2048,
@@ -6196,7 +5996,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 220,
+							"line": 239,
 							"character": 9
 						}
 					],
@@ -6207,6 +6007,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Shows  account modal."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -6225,7 +6028,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 250,
+							"line": 270,
 							"character": 9
 						}
 					],
@@ -6236,6 +6039,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Connect wallet and emit {@link onConnect} event."
+							},
 							"parameters": [
 								{
 									"id": 192,
@@ -6268,7 +6074,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 261,
+							"line": 282,
 							"character": 9
 						}
 					],
@@ -6279,6 +6085,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Disconnect wallet and emit {@link onDisconnect} event."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -6297,7 +6106,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 272,
+							"line": 294,
 							"character": 9
 						}
 					],
@@ -6308,6 +6117,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Emit {@link optionClicked} event."
+							},
 							"parameters": [
 								{
 									"id": 197,
@@ -6342,27 +6154,18 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						181,
-						180,
-						182,
 						167,
-						174,
 						169,
 						168,
 						162,
 						163,
-						177,
-						178,
-						175,
-						176,
 						170,
 						171,
 						172,
 						173,
 						164,
 						166,
-						165,
-						179
+						165
 					]
 				},
 				{
