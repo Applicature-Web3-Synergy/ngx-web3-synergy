@@ -10,7 +10,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 export class AucCopyToClipboardComponent {
   /**
    * The string to copy. <br>
-   * This is required parameter.
+   * It's required parameter.
    */
   @Input()
   public value!: string;

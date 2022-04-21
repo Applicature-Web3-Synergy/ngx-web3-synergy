@@ -26,7 +26,6 @@ import { AucAccountData, AucAccountOption } from './interfaces';
 })
 export class AucAccountButtonComponent implements OnInit {
   /**
-   * {@link account} - It's an `@Input()` parameter. <br>
    * User account related information. <br>
    * Required parameter.
    */
@@ -34,25 +33,23 @@ export class AucAccountButtonComponent implements OnInit {
   public account!: AucAccountData;
 
   /**
-   * {@link options} - It's an `@Input()` parameter. <br>
    * List of options in popover. <br>
    * It's an optional parameter.
    */
   @Input()
-  public options: AucAccountOption[] = [];
+  public options?: AucAccountOption[] = [];
 
   /**
-   * {@link size} - It's an `@Input()` parameter. <br>
    * Sets size of the avatar. <br>
-   * It's an optional parameter. The default value is 40.
+   * It's an optional parameter. <br>
+   * The default value is 40.
    */
   @Input()
   public size: number = 40;
 
   /**
-   * {@link accountDropdownConfig} - It's an `@Input()` parameter. <br>
-   * You can customize dropdown position and overlay. <br>
-   * This is an optional parameter. <br>
+   * Customize account dropdown. <br>
+   * It's an optional parameter. <br>
    * The default value is: <br>
    * {
    *   overlay: {
@@ -65,7 +62,7 @@ export class AucAccountButtonComponent implements OnInit {
    * }
    */
   @Input()
-  public accountDropdownConfig: AucDropdownConfig = {
+  public accountDropdownConfig?: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
@@ -75,10 +72,7 @@ export class AucAccountButtonComponent implements OnInit {
     }
   }
 
-  /**
-   * {@link optionEmitter} - It's an `@Output()` parameter. <br>
-   * Emits selected option from the list.
-   */
+  /** Emits selected option from the list. */
   @Output('optionClick')
   public optionEmitter: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
 
@@ -86,6 +80,7 @@ export class AucAccountButtonComponent implements OnInit {
   public accountAddress!: string;
   public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
+  /** @internal */
   private _sub: Subscription = new Subscription();
 
   constructor(
@@ -95,6 +90,7 @@ export class AucAccountButtonComponent implements OnInit {
   ) {
   }
 
+  /** @internal */
   public ngOnInit(): void {
     this._sub.add(
       this._walletConnectService.accountsChanged$
@@ -106,20 +102,19 @@ export class AucAccountButtonComponent implements OnInit {
     );
   }
 
+  /** Open account dropdown menu. */
   public setOpened(opened: boolean): void {
     this.isOptionsOpen = opened;
   }
 
-  /**
-   * Emits event when option was clicked. <br>
-   * @param option - Options what was clicked.
-   */
+  /** Emit {@link optionEmitter} event. */
   public onOptionClick(option: AucAccountOption): void {
     this._closeOptions();
 
     this.optionEmitter.emit(option);
   }
 
+  /** Connect wallet. */
   public onChangeWalletProviderClick(): void {
     this._closeOptions();
 
@@ -127,6 +122,7 @@ export class AucAccountButtonComponent implements OnInit {
       .subscribe();
   }
 
+  /** Disconnect wallet. */
   public onDisconnectClick(): void {
     this._closeOptions();
 
@@ -134,6 +130,7 @@ export class AucAccountButtonComponent implements OnInit {
       .subscribe();
   }
 
+  /** @internal */
   private _closeOptions() {
     this.setOpened(false);
     this._cdr.markForCheck();

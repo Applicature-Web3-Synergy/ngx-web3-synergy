@@ -1,10 +1,7 @@
 /**
- *
- * This method uses for converting chainId as a number to 0x-prefixed hexadecimal string
- *
- * {@see AUC_CHAIN_ID} - Already converted Chains;
- *
- * @param chainId - this is chainId as number.
+ * This method uses for converting chainId as a number to 0x-prefixed hexadecimal string. <br>
+ * {@link AUC_CHAIN_ID} - Already converted Chains. <br>
+ * @param chainId - chainId as number. <br>
  * You can use {@link AUC_CHAIN_ID_NUM} or your specific value.
  */
 

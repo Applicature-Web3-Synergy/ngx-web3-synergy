@@ -11,26 +11,30 @@ import { AS_COLOR_GROUP, AsColors } from '@applicature/styles';
 })
 export class AucSpinnerComponent {
   /**
-   * {@link diameter} - It's an `@Input()` parameter.
-   * Sets diameter for the spinner.
-   * This is an optional parameter. The default value is 40.
+   * Sets diameter for the spinner. <br>
+   * It's an optional parameter. <br>
+   * The default value is 40.
    */
-  @Input() diameter?: number = 40;
+  @Input()
+  public diameter?: number = 40;
 
   /**
-   * {@link width} - It's an `@Input()` parameter.
-   * Вets the thickness of the spinnerю
-   * This is an optional parameter. The default value is 4.
+   * Sets the thickness of the spinner. <br>
+   * It's an optional parameter. <br>
+   * The default value is 4.
    */
-  @Input() width?: number = 4;
+  @Input()
+  public width?: number = 4;
 
   /**
-   * {@link color} - It's an `@Input()` parameter.
-   * Sets theme of the spinner.
-   * It's an optional parameter. The default value is #4678F0 - blue.
+   * Sets theme of the spinner. <br>
+   * It's an optional parameter. <br>
+   * The default value is #4678F0 - blue. <br>
    * You can use constant {@link AsColors} or use other colors by yourself.
    */
-  @Input() color?: string = AsColors[AS_COLOR_GROUP.BLUE].border;
+  @Input()
+  public color?: string = AsColors[AS_COLOR_GROUP.BLUE].border;
 
+  /** @internal */
   public parts = Array.from({ length: 4 }, () => undefined);
 }

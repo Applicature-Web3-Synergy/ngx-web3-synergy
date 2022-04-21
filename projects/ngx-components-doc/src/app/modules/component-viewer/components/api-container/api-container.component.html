@@ -1,4 +1,4 @@
-<div *ngFor="let componentDoc of componentsDocs">
+<div *ngFor="let componentDoc of componentsDocs" class="code-component-container">
   <h2 class="component-title">
     {{componentDoc.component}}
   </h2>
@@ -80,6 +80,6 @@
   </doc-example-card>
 </div>
 
-<code *ngIf="!wasLoaded" style="white-space: normal;">
+<code class="code-component-container" *ngIf="!wasLoaded" style="white-space: normal;">
   Ops! Something went wrong.
 </code>

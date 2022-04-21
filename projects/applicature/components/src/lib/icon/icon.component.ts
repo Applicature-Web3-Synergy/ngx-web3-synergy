@@ -19,8 +19,8 @@ export class AucIconComponent {
 
   /**
    * Sets icon. <br>
-   * You can use enum {@link AUC_WLC_ICON} or other string. <br>
-   * If you want to use custom icon you need to provide url to the image as a string value. <br>
+   * Use enum {@link AUC_WLC_ICON} or other string. <br>
+   * If you want to use custom icon, you need to provide url to the image as a string value. <br>
    * It's required parameter.
    */
   @Input()

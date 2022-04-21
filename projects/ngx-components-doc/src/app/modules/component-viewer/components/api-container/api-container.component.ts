@@ -70,6 +70,8 @@ export class ApiContainerComponent implements AfterContentInit {
             this.componentsDocs.push(componentDoc);
           });
 
+          console.log(this.componentsDocs);
+
           this.cd.markForCheck();
         }
       });
@@ -170,7 +172,10 @@ export class ApiContainerComponent implements AfterContentInit {
       typeArgs = `<${typeVal}>`;
     }
 
-    return type?.name ? `${doc?.flags?.isOptional ? '?' : ''}: ${type.name}${typeArgs}` : '';
+    const typeName = type?.name
+      ? type.name === 'default' ? type?.qualifiedName ?? '' : type.name
+      : '';
+    return typeName ? `${doc?.flags?.isOptional ? '?' : ''}: ${typeName}${typeArgs}` : '';
   }
 
   public getMethodAsSting(method: DocFather): { code: string, comments: string[], decorators: string } {
@@ -184,6 +189,10 @@ export class ApiContainerComponent implements AfterContentInit {
 
     if (method.comment?.shortText) {
       comments.push(method.comment.shortText);
+    }
+
+    if (method.comment?.returns) {
+      comments.push(`Returns ${method.comment.returns}`);
     }
 
     const flag = this.getFlag(method.flags);
@@ -206,6 +215,10 @@ export class ApiContainerComponent implements AfterContentInit {
 
     if (signature?.comment?.shortText) {
       comments.push(signature.comment.shortText);
+    }
+
+    if (signature.comment?.returns) {
+      comments.push(`Returns ${signature.comment.returns}`);
     }
 
     const signatureType: string = !signature?.type?.name ? '' : `${this.getType(signature)}`;

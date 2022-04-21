@@ -11,17 +11,16 @@ import { AucEtherscanTransactionLocalStorage } from '../../../interfaces';
 })
 export class AucTransactionsListComponent {
   /**
-   * {@link transactions} - It's an `@Input()` parameter. <br>
-   * Sets transactions list. <br>
-   * This is required parameter.
+   * Transactions list. <br>
+   * It's required parameter.
    */
   @Input()
   public transactions: AucEtherscanTransactionLocalStorage[];
 
   /**
-   * {@link emptyText} - It's an `@Input()` parameter. <br>
-   * Sets text if no transactions. <br>
-   * This is an optional parameter. The default value is "Your transactions will appear here..."
+   * Showed text if no transactions. <br>
+   * It's an optional parameter. <br>
+   * The default value is "Your transactions will appear here..."
    */
   @Input()
   public emptyText?: string = 'Your transactions will appear here...';

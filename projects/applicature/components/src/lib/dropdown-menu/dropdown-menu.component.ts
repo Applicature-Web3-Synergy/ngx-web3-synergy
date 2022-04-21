@@ -30,14 +30,23 @@ import { BaseSubscriber } from '../helpers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AucDropdownMenuComponent extends BaseSubscriber implements OnChanges, AfterViewInit, OnDestroy {
-  @Input() config?: AucDropdownConfig;
-  @Input() trigger!: AucTriggerDirective;
-  @ViewChild(AucContentBodyDirective) contentBody: AucContentBodyDirective;
-  @ViewChild('dropdown', { read: ElementRef }) dropdownRef: ElementRef;
+  @Input()
+  public config?: AucDropdownConfig;
+  @Input()
+  public trigger!: AucTriggerDirective;
+  @ViewChild(AucContentBodyDirective) public contentBody: AucContentBodyDirective;
+  @ViewChild('dropdown', { read: ElementRef }) public dropdownRef: ElementRef;
 
+  /** @internal */
   public positionStyles: AucDropdownPositionStyles = null;
+
+  /** @internal */
   public isBelow: boolean;
+
+  /** @internal */
   public isAfter: boolean;
+
+  /** @internal */
   private resize$: Subject<void> = new Subject();
 
   constructor(private _cdr: ChangeDetectorRef) {
@@ -53,10 +62,12 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
       });
   }
 
+  /** @internal */
   @HostListener('window:resize') onResize(): void {
     this.resize$.next();
   }
 
+  /** @internal */
   ngOnChanges(changes: SimpleChanges) {
     if (changes.config?.currentValue && !this.positionStyles && (this.config?.minWidth || this.config?.minHeight)) {
       this.positionStyles = {
@@ -74,19 +85,21 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
     }
   }
 
+  /** @internal */
   ngAfterViewInit(): void {
     if (this.dropdownRef) {
       this.getPositions();
     }
   }
 
+  /** @internal */
   override ngOnDestroy(): void {
     super.ngOnDestroy();
     this.close();
   }
 
+  /** @internal */
   public getPositions(): void {
-    console.log('getPositions');
     const triggerRect: DOMRect = this.trigger.nativeElement.getBoundingClientRect();
 
     if (!triggerRect) {
@@ -174,6 +187,7 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
     this._cdr.detectChanges();
   }
 
+  /** Hide dropdown */
   public close(): void {
     if (!this.contentBody) {
       return;
