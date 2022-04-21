@@ -2481,7 +2481,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 109,
+							"line": 118,
 							"character": 2
 						}
 					],
@@ -2528,30 +2528,6 @@
 					]
 				},
 				{
-					"id": 27,
-					"name": "COLOR_GROUP",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 98,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"name": "AS_COLOR_GROUP"
-						}
-					},
-					"defaultValue": "AS_COLOR_GROUP"
-				},
-				{
 					"id": 25,
 					"name": "activeNetwork",
 					"kind": 1024,
@@ -2559,10 +2535,13 @@
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Current network"
+					},
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 96,
+							"line": 101,
 							"character": 9
 						}
 					],
@@ -2580,10 +2559,13 @@
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Current connected wallet address."
+					},
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 94,
+							"line": 95,
 							"character": 9
 						}
 					],
@@ -2682,10 +2664,13 @@
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Current connected wallet balance."
+					},
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 95,
+							"line": 98,
 							"character": 9
 						}
 					],
@@ -2896,31 +2881,6 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 26,
-					"name": "styleProperties",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 97,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"id": 266,
-							"name": "AucSetStyleProp"
-						}
-					},
-					"defaultValue": "[]"
-				},
-				{
 					"id": 37,
 					"name": "onAccountButtonClick",
 					"kind": 2048,
@@ -2931,7 +2891,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 162,
+							"line": 171,
 							"character": 9
 						}
 					],
@@ -2978,7 +2938,6 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						27,
 						25,
 						23,
 						19,
@@ -2988,8 +2947,7 @@
 						20,
 						17,
 						21,
-						18,
-						26
+						18
 					]
 				},
 				{
@@ -3052,7 +3010,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 86,
+							"line": 91,
 							"character": 2
 						}
 					],
@@ -3156,26 +3114,6 @@
 					}
 				},
 				{
-					"id": 59,
-					"name": "accountAddress",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 80,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
 					"id": 56,
 					"name": "accountDropdownConfig",
 					"kind": 1024,
@@ -3212,48 +3150,6 @@
 						"name": "AucDropdownConfig"
 					},
 					"defaultValue": "..."
-				},
-				{
-					"id": 60,
-					"name": "disconnectBtnColor",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 81,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "reference",
-						"name": "AsColorGroup"
-					},
-					"defaultValue": "AS_COLOR_GROUP.RED"
-				},
-				{
-					"id": 58,
-					"name": "isOptionsOpen",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 79,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
 				},
 				{
 					"id": 57,
@@ -3390,7 +3286,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 118,
+							"line": 123,
 							"character": 9
 						}
 					],
@@ -3422,7 +3318,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 126,
+							"line": 131,
 							"character": 9
 						}
 					],
@@ -3454,7 +3350,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 111,
+							"line": 116,
 							"character": 9
 						}
 					],
@@ -3500,7 +3396,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 106,
+							"line": 111,
 							"character": 9
 						}
 					],
@@ -3548,10 +3444,7 @@
 					"kind": 1024,
 					"children": [
 						53,
-						59,
 						56,
-						60,
-						58,
 						57,
 						54,
 						55
@@ -8796,7 +8689,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 52,
+							"line": 62,
 							"character": 2
 						}
 					],
@@ -8849,6 +8742,9 @@
 						"isPublic": true,
 						"isOptional": true
 					},
+					"comment": {
+						"shortText": "Customize dropdown <br>\nIt's an optional parameter."
+					},
 					"decorators": [
 						{
 							"name": "Input",
@@ -8864,7 +8760,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 34,
+							"line": 38,
 							"character": 9
 						}
 					],
@@ -8872,84 +8768,6 @@
 						"type": "reference",
 						"id": 468,
 						"name": "AucDropdownConfig"
-					}
-				},
-				{
-					"id": 487,
-					"name": "contentBody",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"decorators": [
-						{
-							"name": "ViewChild",
-							"type": {
-								"type": "reference",
-								"qualifiedName": "ViewChildDecorator",
-								"package": "@angular/core",
-								"name": "ViewChild"
-							},
-							"arguments": {
-								"selector": "AucContentBodyDirective"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 37,
-							"character": 45
-						}
-					],
-					"type": {
-						"type": "reference",
-						"id": 222,
-						"name": "AucContentBodyDirective"
-					}
-				},
-				{
-					"id": 488,
-					"name": "dropdownRef",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"decorators": [
-						{
-							"name": "ViewChild",
-							"type": {
-								"type": "reference",
-								"qualifiedName": "ViewChildDecorator",
-								"package": "@angular/core",
-								"name": "ViewChild"
-							},
-							"arguments": {
-								"selector": "'dropdown'",
-								"opts": "{ read: ElementRef }"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 38,
-							"character": 54
-						}
-					],
-					"type": {
-						"type": "reference",
-						"typeArguments": [
-							{
-								"type": "intrinsic",
-								"name": "any"
-							}
-						],
-						"qualifiedName": "ElementRef",
-						"package": "@angular/core",
-						"name": "ElementRef"
 					}
 				},
 				{
@@ -8992,6 +8810,9 @@
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Trigger for toggle opens"
+					},
 					"decorators": [
 						{
 							"name": "Input",
@@ -9007,7 +8828,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 36,
+							"line": 42,
 							"character": 9
 						}
 					],
@@ -9028,7 +8849,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 191,
+							"line": 201,
 							"character": 9
 						}
 					],
@@ -9063,8 +8884,6 @@
 					"kind": 1024,
 					"children": [
 						485,
-						487,
-						488,
 						506,
 						486
 					]
@@ -9980,7 +9799,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "Field ElementRef"
+						"shortText": "Field ElementRef."
 					},
 					"decorators": [
 						{
@@ -10269,7 +10088,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Change Input value"
+								"shortText": "Change Input value."
 							},
 							"parameters": [
 								{
@@ -10314,7 +10133,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Emit field value changes when clicked on Max"
+								"shortText": "Emit field value changes when clicked on Max."
 							},
 							"type": {
 								"type": "intrinsic",
@@ -10346,7 +10165,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Register Field OnChange function"
+								"shortText": "Register Field OnChange function."
 							},
 							"parameters": [
 								{
@@ -10399,7 +10218,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Register Field OnTouched function"
+								"shortText": "Register Field OnTouched function."
 							},
 							"parameters": [
 								{
@@ -10452,7 +10271,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Disable Input"
+								"shortText": "Disable Input."
 							},
 							"parameters": [
 								{
@@ -10720,7 +10539,7 @@
 					"sources": [
 						{
 							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 62,
+							"line": 66,
 							"character": 2
 						}
 					],
@@ -10800,53 +10619,8 @@
 					]
 				},
 				{
-					"id": 987,
-					"name": "COLORS",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 57,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"name": "AS_COLOR_GROUP"
-						}
-					},
-					"defaultValue": "AS_COLOR_GROUP"
-				},
-				{
-					"id": 986,
-					"name": "currentNetwork",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 56,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "reference",
-						"id": 848,
-						"name": "AucNetworkOption"
-					}
-				},
-				{
 					"id": 985,
-					"name": "isOptionsOpen",
+					"name": "currentNetwork",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
@@ -10860,10 +10634,10 @@
 						}
 					],
 					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
+						"type": "reference",
+						"id": 848,
+						"name": "AucNetworkOption"
+					}
 				},
 				{
 					"id": 984,
@@ -10970,7 +10744,7 @@
 					"sources": [
 						{
 							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 118,
+							"line": 122,
 							"character": 9
 						}
 					],
@@ -11019,7 +10793,7 @@
 					"sources": [
 						{
 							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 109,
+							"line": 113,
 							"character": 9
 						}
 					],
@@ -11066,8 +10840,6 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						987,
-						986,
 						985,
 						984,
 						981
@@ -15507,7 +15279,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Disconnect wallet"
+								"shortText": "Disconnect wallet."
 							},
 							"type": {
 								"type": "reference",

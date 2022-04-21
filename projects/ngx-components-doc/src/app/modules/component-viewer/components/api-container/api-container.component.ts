@@ -42,6 +42,7 @@ export class ApiContainerComponent implements AfterContentInit {
     if (!this.components) {
       return;
     }
+
     this.documentationParserService.onDataLoaded$
       .pipe(take(1))
       .subscribe(wasLoaded => {
@@ -49,6 +50,7 @@ export class ApiContainerComponent implements AfterContentInit {
 
         if (wasLoaded) {
           this.componentsDocs = [];
+
           this.components.forEach(component => {
             const docFather = this.documentationParserService.find(component);
 
@@ -61,16 +63,15 @@ export class ApiContainerComponent implements AfterContentInit {
             componentDoc.accessors = this.arraySetup(componentDoc.docFather, DOC_GROUP_TITLE.ACCESSORS);
             componentDoc.methods = this.arraySetup(componentDoc.docFather, DOC_GROUP_TITLE.METHODS);
             componentDoc.functions = this.arraySetup(componentDoc.docFather, DOC_GROUP_TITLE.FUNCTIONS);
-            componentDoc.properties = this.arraySetup(componentDoc.docFather, DOC_GROUP_TITLE.PROPERTIES)
+            const dd = this.arraySetup(componentDoc.docFather, DOC_GROUP_TITLE.PROPERTIES)
               .filter(child =>
                 (child.flags.isProtected || child.flags.isPublic) && !child.flags?.isConstructorProperty
-              )
-              .sort(DocumentationParserService.sortByDecorator);
+              );
+
+            componentDoc.properties = dd.sort(DocumentationParserService.sortByDecorator);
 
             this.componentsDocs.push(componentDoc);
           });
-
-          console.log(this.componentsDocs);
 
           this.cd.markForCheck();
         }
@@ -178,7 +179,34 @@ export class ApiContainerComponent implements AfterContentInit {
     return typeName ? `${doc?.flags?.isOptional ? '?' : ''}: ${typeName}${typeArgs}` : '';
   }
 
-  public getMethodAsSting(method: DocFather): { code: string, comments: string[], decorators: string } {
+  public getDecorators(docDecorators: DocDecorator[]): string[] {
+    return docDecorators?.length
+      ? docDecorators.filter((decorator: DocDecorator) => decorator?.name)
+        .map((decorator: DocDecorator) => {
+          if (!decorator) {
+            return '';
+          }
+
+          const args: string[] = [];
+
+          if (decorator.arguments?.hostPropertyName) {
+            args.push(decorator.arguments?.hostPropertyName);
+          } else if (decorator.arguments?.bindingPropertyName) {
+            args.push(decorator.arguments?.bindingPropertyName);
+          } else if (decorator?.arguments?.selector) {
+            args.push(decorator?.arguments?.selector);
+          }
+
+          if (decorator.arguments?.opts) {
+            args.push(decorator.arguments?.opts);
+          }
+
+          return `@${decorator.name}(${args.join(', ')})`
+        })
+      :[];
+  }
+
+  public getMethodAsSting(method: DocFather): { code: string, comments: string[], decorators: string[] } {
     if (!method) {
       return null;
     }
@@ -196,17 +224,19 @@ export class ApiContainerComponent implements AfterContentInit {
     }
 
     const flag = this.getFlag(method.flags);
-    const decorators = method.decorators?.length
-      ? method.decorators
-        .filter((decorator: DocDecorator) => decorator?.name)
-        .map((decorator: DocDecorator) => {
-          const args = decorator?.arguments?.hostPropertyName
-            ?? decorator?.arguments?.bindingPropertyName
-            ?? '';
+    // const decorators = method.decorators?.length
+    //   ? method.decorators
+    //     .filter((decorator: DocDecorator) => decorator?.name)
+    //     .map((decorator: DocDecorator) => {
+    //       const args = decorator?.arguments?.hostPropertyName
+    //         ?? decorator?.arguments?.bindingPropertyName
+    //         ?? '';
+    //
+    //       return `@${decorator.name}(${args})`
+    //     }).join(' ')
+    //   : '';
 
-          return `@${decorator.name}(${args})`
-        }).join(' ')
-      : '';
+    const decorators = this.getDecorators(method?.decorators)
 
     const signature: DocFather = (isAccessor
       ? (method.getSignature ?? method.setSignature)

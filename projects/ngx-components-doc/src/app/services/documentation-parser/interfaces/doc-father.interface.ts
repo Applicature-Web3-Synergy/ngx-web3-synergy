@@ -53,7 +53,9 @@ export interface DocFlags {
 export interface DocDecorator {
   name: string;
   arguments: {
-    hostPropertyName: string;
-    bindingPropertyName: string;
+    hostPropertyName?: string;
+    bindingPropertyName?: string;
+    opts?: string;
+    selector?: string;
   }
 }

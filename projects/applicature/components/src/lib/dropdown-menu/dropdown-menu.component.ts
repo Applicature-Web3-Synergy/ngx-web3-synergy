@@ -30,11 +30,21 @@ import { BaseSubscriber } from '../helpers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AucDropdownMenuComponent extends BaseSubscriber implements OnChanges, AfterViewInit, OnDestroy {
+  /**
+   * Customize dropdown <br>
+   * It's an optional parameter.
+   */
   @Input()
   public config?: AucDropdownConfig;
+
+  /** Trigger for toggle opens */
   @Input()
   public trigger!: AucTriggerDirective;
+
+  /** @internal */
   @ViewChild(AucContentBodyDirective) public contentBody: AucContentBodyDirective;
+
+  /** @internal */
   @ViewChild('dropdown', { read: ElementRef }) public dropdownRef: ElementRef;
 
   /** @internal */
@@ -63,7 +73,7 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
   }
 
   /** @internal */
-  @HostListener('window:resize') onResize(): void {
+  @HostListener('window:resize') public onResize(): void {
     this.resize$.next();
   }
 
