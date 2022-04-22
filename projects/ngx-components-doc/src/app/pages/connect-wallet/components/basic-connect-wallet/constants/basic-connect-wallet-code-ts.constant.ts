@@ -1,8 +1,10 @@
-export const BasicConnectWalletCodeTs = `/** Dont forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
+export const BasicConnectWalletCodeTs =
+  `/** Don't forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AucConnectionState } from '@applicature/components';
+
 
 @Component({
   selector: 'doc-basic-connect-wallet',

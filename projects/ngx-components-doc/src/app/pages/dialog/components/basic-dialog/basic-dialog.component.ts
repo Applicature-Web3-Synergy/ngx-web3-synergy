@@ -1,5 +1,5 @@
-/** Dont forget import { AucDialogModule } from '@applicature/components'; to your module */
-/** Dont forget import { ModalsModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucDialogModule } from '@applicature/components'; to your module */
+/** Don't forget import { ModalsModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

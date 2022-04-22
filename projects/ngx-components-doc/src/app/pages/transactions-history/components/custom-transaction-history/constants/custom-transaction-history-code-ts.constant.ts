@@ -1,4 +1,5 @@
-export const CustomTransactionHistoryCodeTs = `/** Dont forget import { AucTransactionsModule } from '@applicature/components'; to your module */
+export const CustomTransactionHistoryCodeTs =
+  `/** Don't forget import { AucTransactionsModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

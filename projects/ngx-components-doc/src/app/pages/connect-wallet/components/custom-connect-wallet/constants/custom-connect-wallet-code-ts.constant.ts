@@ -1,4 +1,4 @@
-export const CustomConnectWalletCodeTs = `/** Notes: You can to use AucWalletConnectService for custom connection visualization */
+export const CustomConnectWalletCodeTs = `/** Notes: You can use AucWalletConnectService for custom connection visualization */
 
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';

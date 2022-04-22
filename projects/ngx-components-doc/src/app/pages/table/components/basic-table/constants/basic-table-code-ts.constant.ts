@@ -1,4 +1,5 @@
-export const BasicTableCodeTs = `/** Dont forget import { AucTableModule } from '@applicature/components'; to your module */
+export const BasicTableCodeTs =
+  `/** Don't forget import { AucTableModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

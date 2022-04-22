@@ -1,4 +1,5 @@
-export const CustomizedAccountBalanceCodeTs = `/** Dont forget import { AucAccountBalanceModule } from '@applicature/components'; to your module */
+export const CustomizedAccountBalanceCodeTs =
+  `/** Don't forget import { AucAccountBalanceModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';

@@ -1,8 +1,9 @@
-/** Dont forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AucConnectionState } from '@applicature/components';
+
 
 @Component({
   selector: 'doc-basic-connect-wallet',

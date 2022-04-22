@@ -1,4 +1,4 @@
-/** Dont forget import { AucNetworkDropdownModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucNetworkDropdownModule } from '@applicature/components'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 

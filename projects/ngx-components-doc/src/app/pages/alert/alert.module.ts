@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AucAlertModule } from '@applicature/components';
+
 import { AlertRoutingModule } from './alert-routing.module';
 import { AlertComponent } from './alert.component';
 import { ComponentViewerModule } from '../../modules/component-viewer/component-viewer.module';
 import { ExampleCardModule } from '../../modules/example-card/example-card.module';
 import { BasicAlertComponent } from './components';
-import { AucAlertModule } from '@applicature/components';
 
 
 @NgModule({

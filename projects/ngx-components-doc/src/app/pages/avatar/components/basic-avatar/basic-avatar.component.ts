@@ -1,4 +1,4 @@
-/** Dont forget import { AucAvatarModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucAvatarModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

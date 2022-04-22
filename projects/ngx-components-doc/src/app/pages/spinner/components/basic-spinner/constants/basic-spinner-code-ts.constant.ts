@@ -1,4 +1,5 @@
-export const BasicSpinnerCodeTs = `/** Dont forget import { AucSpinnerModule } from '@applicature/components'; to your module */
+export const BasicSpinnerCodeTs =
+  `/** Don't forget import { AucSpinnerModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

@@ -9,7 +9,7 @@ $card-padding: 20px;
   }
 
   .mat-ink-bar {
-    background-color: map-get(c.$gray, 4);
+    background-color: map-get(c.$gray, 4) !important;
   }
 
   .mat-tab-label {

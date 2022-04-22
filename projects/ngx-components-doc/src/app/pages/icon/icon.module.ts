@@ -5,7 +5,7 @@ import { AucIconModule } from '@applicature/components';
 
 import { IconRoutingModule } from './icon-routing.module';
 import { IconComponent } from './icon.component';
-import { BasicIconsComponent,  CustomizedIconsComponent } from './components';
+import { BasicIconsComponent, CustomizedIconsComponent } from './components';
 import { ComponentViewerModule } from '../../modules/component-viewer/component-viewer.module';
 import { ExampleCardModule } from '../../modules/example-card/example-card.module';
 

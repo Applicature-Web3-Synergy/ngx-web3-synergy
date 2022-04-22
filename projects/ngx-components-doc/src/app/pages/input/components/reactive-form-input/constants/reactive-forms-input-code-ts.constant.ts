@@ -1,4 +1,5 @@
-export const ReactiveFormsInputCodeTs = `/** Dont forget import { AucInputModule } from '@applicature/components'; to your module */
+export const ReactiveFormsInputCodeTs =
+  `/** Don't forget import { AucInputModule } from '@applicature/components'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -23,5 +24,6 @@ export class ReactiveFormInputComponent {
       requiredField: [ '', [ Validators.required ] ]
     });
   }
+
 }
 `;

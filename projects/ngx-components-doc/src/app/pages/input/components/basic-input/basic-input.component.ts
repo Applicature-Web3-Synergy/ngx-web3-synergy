@@ -1,4 +1,4 @@
-/** Dont forget import { AucInputModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucInputModule } from '@applicature/components'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 

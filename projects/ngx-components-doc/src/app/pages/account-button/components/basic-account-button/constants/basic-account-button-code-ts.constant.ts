@@ -1,4 +1,5 @@
-export const BasicAccountButtonCodeTs = `/** Dont forget import { AucAccountButtonModule } from '@applicature/components'; to your module */
+export const BasicAccountButtonCodeTs =
+  `/** Don't forget import { AucAccountButtonModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

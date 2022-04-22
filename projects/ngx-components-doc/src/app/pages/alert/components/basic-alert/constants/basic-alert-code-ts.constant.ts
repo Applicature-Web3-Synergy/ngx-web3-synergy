@@ -1,8 +1,10 @@
-export const BasicAlertCodeTs = `/** Dont forget import { AucAlertModule } from '@applicature/components'; to your module */
+export const BasicAlertCodeTs =
+  `/** Don't forget import { AucAlertModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
+
 import { AUC_WLC_ICON } from '../../../../../../../applicature/components/src/lib/icon';
 import { AUC_ALERT_POSITION } from '../../../../../../../applicature/components/src/lib/alert';
 

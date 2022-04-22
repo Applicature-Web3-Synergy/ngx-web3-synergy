@@ -20,4 +20,4 @@ export const ConnectWalletWithNetworkCodeHtml = `<div class="doc-grid-container"
     </auc-connect-wallet>
   </div>
 </div>
-`;
+`

@@ -1,4 +1,5 @@
-export const ButtonWithIdenticonCodeTs = `/** Dont forget import { AucButtonModule } from '@applicature/components'; to your module */
+export const ButtonWithIdenticonCodeTs =
+  `/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

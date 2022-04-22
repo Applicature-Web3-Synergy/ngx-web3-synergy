@@ -1,4 +1,5 @@
-export const BasicDropdownCodeTs = `/** Dont forget import { AucDropdownMenuModule } from '@applicature/components'; to your module */
+export const BasicDropdownCodeTs =
+  `/** Don't forget import { AucDropdownMenuModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -30,5 +31,6 @@ export class BasicDropdownComponent {
 
     console.log('Dropdown option clicked: ', evt);
   }
+
 }
 `;
