@@ -12,7 +12,7 @@ For now, this library supports only Angular 13 version. We will add support lowe
 
 or  
   
-Add `node_modules/@applicature/styles/src/lib/scss/styles to` to `angular.json` file, path `projects.YOUR_PROJECT_NAME.architect.build.options.styles`:
+Add <code class="md-line-code">node_modules/@applicature/styles/src/lib/scss/styles</code> to <code class="md-line-code">angular.json</code> file, path <code md-line-code>projects.YOUR_PROJECT_NAME.architect.build.options.styles</code:
 <pre><code>
 {
   ...,
@@ -58,8 +58,8 @@ window.global = window;
 window.global.Buffer = global.Buffer || Buffer;
 </code></pre>
 
-  - Install <strong>process</strong> if it needs `npm i process`
-    - add next option to `tsconfig.json`:
+  - Install **process** if it needs <code class="md-line-code">npm i process</code>
+    - add next option to <code class="md-line-code">tsconfig.json</code>:
 
       <pre><code>
       {
@@ -78,9 +78,7 @@ window.global.Buffer = global.Buffer || Buffer;
 for Angular 13+. Verify if you need this module and configure a polyfill for it.
 
 Solution:
-   - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify`
-<br>
-<br>
+   - <code class="md-line-code">npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify</code>
    - tsconfig.app.json
 
       <pre>
@@ -112,26 +110,6 @@ Solution:
         }
       }
       </code></pre>
-  
- - `BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default.
-This is no longer the case. Verify if you need this module and configure a polyfill for it.`
-    <br>
-    <br>
-    Solution: `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify` or add to the `package.json` next code:<br>
-    <pre><code>
-    {
-      ...,
-      "dependencies": {...},
-      "devDependencies": {...},
-      "browser": {
-        "http": false,
-        "https": false,
-        "os": false,
-        "crypto": false,
-        "stream": false
-      }
-    }
-    </code></pre>
 
 ## How to use
  - app.module.ts
@@ -235,7 +213,7 @@ export class AppModule { }
 </pre>
 
 ## WARNINGS
-You might need to add `allowedCommonJsDependencies` to `angular.json` file:
+You might need to add <code class="md-line-code">allowedCommonJsDependencies</code> to <code class="md-line-code">angular.json</code> file:
 <pre><code>
 {
   ...,

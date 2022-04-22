@@ -261,6 +261,7 @@
             "styles": [
               "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/code-prettify/styles/desert.css",
+              "node_modules/prismjs/themes/prism-okaidia.css",
               "projects/applicature/styles/src/lib/scss/as-styles.scss",
               "projects/ngx-components-doc/src/styles.scss"
             ],
@@ -270,7 +271,12 @@
                 "projects/ngx-components-doc/src/scss"
               ]
             },
-            "scripts": [],
+            "scripts": [
+              "node_modules/marked/marked.min.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-css.min.js"
+            ],
             "allowedCommonJsDependencies": [
               "@metamask/jazzicon",
               "web3",
