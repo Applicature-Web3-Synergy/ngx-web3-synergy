@@ -32,8 +32,7 @@ import { AucAccountBalanceAddressConfig } from './interfaces';
 })
 export class AucAccountBalanceComponent implements OnInit, OnChanges {
   /**
-   * {@link appearance} - It's an `@Input()` parameter. <br>
-   * Sets style for appearance.<br>
+   * Sets style for appearance. <br>
    * You can use one of the values from enum {@link AUC_BALANCE_APPEARANCE}.<br>
    * It's an optional parameter.
    */
@@ -41,63 +40,73 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
   public appearance?: AucBalanceAppearance;
 
   /**
-   * {@link color} - It's an `@Input()` parameter. <br>
    * Sets theme of the button. <br>
-   * It's an optional parameter. The default value is white. <br>
-   * You can use enum {@link AS_COLOR_GROUP}.
+   * It's an optional parameter. <br>
+   * The default value is white. <br>
+   * You can use enum {@link AS_COLOR_GROUP}. <br>
    * If selected appearance transparent, color is ignored.
    */
   @Input()
-  public color: AsColorGroup = AS_COLOR_GROUP.WHITE;
+  public color?: AsColorGroup = AS_COLOR_GROUP.WHITE;
 
   /**
-   * {@link isCurrency} - It's an `@Input()` parameter. <br>
    * Shows Currency icon from supported networks list. <br>
    * You will set supported networks when initialize library, {@link AucNetworkOption.icon}. <br>
-   * It's an optional parameter. The default value is false.
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
   public isCurrency?: boolean = false;
 
   /**
-   * {@link showAddress} - It's an `@Input()` parameter. <br>
    * Show or hide account address. <br>
-   * It's an optional parameter. The default value is false. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public showAddress: boolean = false;
+  public showAddress?: boolean = false;
 
   /**
-   * {@link addressConfig} - It's an `@Input()` parameter. <br>
    * Configuration for account address button <br>
-   * It's an optional parameter.<br>
+   * It's an optional parameter.
    */
   @Input()
   public addressConfig?: AucAccountBalanceAddressConfig;
 
   /**
-   * {@link onAddressClick} - It's an `@Output()` parameter. <br>
+   * Shows identicon if provided. <br>
+   * It's an optional parameter.
+   * */
+  @Input()
+  public identicon?: HTMLDivElement;
+
+  /**
    * Emits an action when account button was clicked. <br>
    * Emitted value is native click value.
    */
   @Output()
   public onAddressClick: EventEmitter<any> = new EventEmitter<any>();
 
-  public address$: Observable<string>;
-  public balance$: Observable<string>;
-  public activeNetwork: AucNetworkOption;
-  public styleProperties: AucSetStyleProp[] = [];
-  public COLOR_GROUP = AS_COLOR_GROUP;
-
-  /**
-   * {@link identicon} - Shows identicon if provided.
-   */
-  @Input()
-  public identicon: HTMLDivElement;
-
+  /** @internal */
   @ViewChild('addressRef', { static: true })
   private _addressRef!: ElementRef<HTMLDivElement>;
 
+  /** Current connected wallet address. */
+  public address$: Observable<string>;
+
+  /** Current connected wallet balance. */
+  public balance$: Observable<string>;
+
+  /** Current network */
+  public activeNetwork: AucNetworkOption;
+
+  /** @internal */
+  public styleProperties: AucSetStyleProp[] = [];
+
+  /** @internal */
+  public COLOR_GROUP = AS_COLOR_GROUP;
+
+  /** @internal */
   public get classNames(): { [el: string]: boolean } {
     return {
       ['auc-balance']: true,
@@ -127,6 +136,7 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
       });
   }
 
+  /** @internal */
   public ngOnInit(): void {
     this.address$ = this._walletConnectService.accountsChanged$
       .pipe(
@@ -142,6 +152,7 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
       );
   }
 
+  /** @internal */
   public ngOnChanges(): void {
     const colorProperties: AsColorProperties = AsColors[this.color || AS_COLOR_GROUP.WHITE];
 
@@ -156,6 +167,7 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
     this._cdr.markForCheck();
   }
 
+  /** Emit {@link onAddressClick} event. */
   public onAccountButtonClick(evt): void {
     this.onAddressClick.next(evt);
   }

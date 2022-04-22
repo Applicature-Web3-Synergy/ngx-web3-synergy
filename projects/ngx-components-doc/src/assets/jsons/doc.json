@@ -2481,7 +2481,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 109,
+							"line": 118,
 							"character": 2
 						}
 					],
@@ -2529,40 +2529,19 @@
 				},
 				{
 					"id": 25,
-					"name": "COLOR_GROUP",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 90,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"name": "AS_COLOR_GROUP"
-						}
-					},
-					"defaultValue": "AS_COLOR_GROUP"
-				},
-				{
-					"id": 23,
 					"name": "activeNetwork",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Current network"
+					},
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 88,
+							"line": 101,
 							"character": 9
 						}
 					],
@@ -2573,17 +2552,20 @@
 					}
 				},
 				{
-					"id": 21,
+					"id": 23,
 					"name": "address$",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Current connected wallet address."
+					},
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 86,
+							"line": 95,
 							"character": 9
 						}
 					],
@@ -2610,7 +2592,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link addressConfig} - It's an `@Input()` parameter. <br>\nConfiguration for account address button <br>\nIt's an optional parameter.<br>"
+						"shortText": "Configuration for account address button <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -2627,7 +2609,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 76,
+							"line": 74,
 							"character": 9
 						}
 					],
@@ -2647,7 +2629,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link appearance} - It's an `@Input()` parameter. <br>\nSets style for appearance.<br>\nYou can use one of the values from enum {@link AUC_BALANCE_APPEARANCE}.<br>\nIt's an optional parameter."
+						"shortText": "Sets style for appearance. <br>\nYou can use one of the values from enum {@link AUC_BALANCE_APPEARANCE}.<br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -2664,7 +2646,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 41,
+							"line": 40,
 							"character": 9
 						}
 					],
@@ -2675,17 +2657,20 @@
 					}
 				},
 				{
-					"id": 22,
+					"id": 24,
 					"name": "balance$",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Current connected wallet balance."
+					},
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 87,
+							"line": 98,
 							"character": 9
 						}
 					],
@@ -2708,10 +2693,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link color} - It's an `@Input()` parameter. <br>\nSets theme of the button. <br>\nIt's an optional parameter. The default value is white. <br>\nYou can use enum {@link AS_COLOR_GROUP}.\nIf selected appearance transparent, color is ignored."
+						"shortText": "Sets theme of the button. <br>\nIt's an optional parameter. <br>\nThe default value is white. <br>\nYou can use enum {@link AS_COLOR_GROUP}. <br>\nIf selected appearance transparent, color is ignored."
 					},
 					"decorators": [
 						{
@@ -2728,7 +2714,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 51,
+							"line": 50,
 							"character": 9
 						}
 					],
@@ -2739,15 +2725,16 @@
 					"defaultValue": "AS_COLOR_GROUP.WHITE"
 				},
 				{
-					"id": 26,
+					"id": 20,
 					"name": "identicon",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link identicon} - Shows identicon if provided."
+						"shortText": "Shows identicon if provided. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -2764,7 +2751,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 96,
+							"line": 81,
 							"character": 9
 						}
 					],
@@ -2785,7 +2772,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link isCurrency} - It's an `@Input()` parameter. <br>\nShows Currency icon from supported networks list. <br>\nYou will set supported networks when initialize library, {@link AucNetworkOption.icon}. <br>\nIt's an optional parameter. The default value is false."
+						"shortText": "Shows Currency icon from supported networks list. <br>\nYou will set supported networks when initialize library, {@link AucNetworkOption.icon}. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -2802,7 +2789,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 60,
+							"line": 59,
 							"character": 9
 						}
 					],
@@ -2813,7 +2800,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 20,
+					"id": 21,
 					"name": "onAddressClick",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2821,7 +2808,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link onAddressClick} - It's an `@Output()` parameter. <br>\nEmits an action when account button was clicked. <br>\nEmitted value is native click value."
+						"shortText": "Emits an action when account button was clicked. <br>\nEmitted value is native click value."
 					},
 					"decorators": [
 						{
@@ -2838,7 +2825,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 84,
+							"line": 88,
 							"character": 9
 						}
 					],
@@ -2862,10 +2849,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link showAddress} - It's an `@Input()` parameter. <br>\nShow or hide account address. <br>\nIt's an optional parameter. The default value is false. <br>"
+						"shortText": "Show or hide account address. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -2882,7 +2870,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 68,
+							"line": 67,
 							"character": 9
 						}
 					],
@@ -2891,163 +2879,6 @@
 						"name": "boolean"
 					},
 					"defaultValue": "false"
-				},
-				{
-					"id": 24,
-					"name": "styleProperties",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 89,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"id": 266,
-							"name": "AucSetStyleProp"
-						}
-					},
-					"defaultValue": "[]"
-				},
-				{
-					"id": 28,
-					"name": "classNames",
-					"kind": 262144,
-					"kindString": "Accessor",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 101,
-							"character": 13
-						}
-					],
-					"getSignature": [
-						{
-							"id": 29,
-							"name": "classNames",
-							"kind": 524288,
-							"kindString": "Get signature",
-							"flags": {},
-							"type": {
-								"type": "reflection",
-								"declaration": {
-									"id": 30,
-									"name": "__type",
-									"kind": 65536,
-									"kindString": "Type literal",
-									"flags": {},
-									"indexSignature": {
-										"id": 31,
-										"name": "__index",
-										"kind": 8192,
-										"kindString": "Index signature",
-										"flags": {},
-										"parameters": [
-											{
-												"id": 32,
-												"name": "el",
-												"kind": 32768,
-												"flags": {},
-												"type": {
-													"type": "intrinsic",
-													"name": "string"
-												}
-											}
-										],
-										"type": {
-											"type": "intrinsic",
-											"name": "boolean"
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"id": 35,
-					"name": "ngOnChanges",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 145,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 36,
-							"name": "ngOnChanges",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnChanges.ngOnChanges"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnChanges.ngOnChanges"
-					}
-				},
-				{
-					"id": 33,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 130,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 34,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
-					}
 				},
 				{
 					"id": 37,
@@ -3060,7 +2891,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-balance/account-balance.component.ts",
-							"line": 159,
+							"line": 171,
 							"character": 9
 						}
 					],
@@ -3071,6 +2902,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Emit {@link onAddressClick} event."
+							},
 							"parameters": [
 								{
 									"id": 39,
@@ -3106,31 +2940,20 @@
 					"children": [
 						25,
 						23,
-						21,
 						19,
 						15,
-						22,
+						24,
 						16,
-						26,
-						17,
 						20,
-						18,
-						24
-					]
-				},
-				{
-					"title": "Accessors",
-					"kind": 262144,
-					"children": [
-						28
+						17,
+						21,
+						18
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						35,
-						33,
 						37
 					]
 				}
@@ -3263,7 +3086,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link account} - It's an `@Input()` parameter. <br>\nUser account related information. <br>\nRequired parameter."
+						"shortText": "User account related information. <br>\nRequired parameter."
 					},
 					"decorators": [
 						{
@@ -3280,7 +3103,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 34,
+							"line": 33,
 							"character": 9
 						}
 					],
@@ -3291,35 +3114,16 @@
 					}
 				},
 				{
-					"id": 59,
-					"name": "accountAddress",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 86,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
 					"id": 56,
 					"name": "accountDropdownConfig",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link accountDropdownConfig} - It's an `@Input()` parameter. <br>\nYou can customize dropdown position and overlay. <br>\nThis is an optional parameter. <br>\nThe default value is: <br>\n{\n  overlay: {\n    transparent: true\n  },\n  position: {\n    vertical: AUC_POSITIONS.BELOW,\n    horizontal: AUC_POSITIONS.BEFORE\n  }\n}"
+						"shortText": "Customize account dropdown. <br>\nIt's an optional parameter. <br>\nThe default value is: <br>\n{\n  overlay: {\n    transparent: true\n  },\n  position: {\n    vertical: AUC_POSITIONS.BELOW,\n    horizontal: AUC_POSITIONS.BEFORE\n  }\n}"
 					},
 					"decorators": [
 						{
@@ -3336,7 +3140,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 68,
+							"line": 65,
 							"character": 9
 						}
 					],
@@ -3348,48 +3152,6 @@
 					"defaultValue": "..."
 				},
 				{
-					"id": 60,
-					"name": "disconnectBtnColor",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 87,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "reference",
-						"name": "AsColorGroup"
-					},
-					"defaultValue": "AS_COLOR_GROUP.RED"
-				},
-				{
-					"id": 58,
-					"name": "isOptionsOpen",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 85,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
 					"id": 57,
 					"name": "optionEmitter",
 					"kind": 1024,
@@ -3398,7 +3160,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link optionEmitter} - It's an `@Output()` parameter. <br>\nEmits selected option from the list."
+						"shortText": "Emits selected option from the list."
 					},
 					"decorators": [
 						{
@@ -3417,7 +3179,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 83,
+							"line": 77,
 							"character": 9
 						}
 					],
@@ -3442,10 +3204,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link options} - It's an `@Input()` parameter. <br>\nList of options in popover. <br>\nIt's an optional parameter."
+						"shortText": "List of options in popover. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -3462,7 +3225,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 42,
+							"line": 40,
 							"character": 9
 						}
 					],
@@ -3485,7 +3248,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link size} - It's an `@Input()` parameter. <br>\nSets size of the avatar. <br>\nIt's an optional parameter. The default value is 40."
+						"shortText": "Sets size of the avatar. <br>\nIt's an optional parameter. <br>\nThe default value is 40."
 					},
 					"decorators": [
 						{
@@ -3502,7 +3265,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 50,
+							"line": 48,
 							"character": 9
 						}
 					],
@@ -3511,43 +3274,6 @@
 						"name": "number"
 					},
 					"defaultValue": "40"
-				},
-				{
-					"id": 62,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 98,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 63,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
-					}
 				},
 				{
 					"id": 70,
@@ -3571,6 +3297,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Connect wallet."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -3589,7 +3318,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 130,
+							"line": 131,
 							"character": 9
 						}
 					],
@@ -3600,6 +3329,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Disconnect wallet."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -3618,7 +3350,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 117,
+							"line": 116,
 							"character": 9
 						}
 					],
@@ -3630,7 +3362,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Emits event when option was clicked. <br>"
+								"shortText": "Emit {@link optionEmitter} event."
 							},
 							"parameters": [
 								{
@@ -3639,9 +3371,6 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
-									"comment": {
-										"shortText": "Options what was clicked.\n"
-									},
 									"type": {
 										"type": "reference",
 										"id": 43,
@@ -3667,7 +3396,7 @@
 					"sources": [
 						{
 							"fileName": "lib/account-button/account-button.component.ts",
-							"line": 109,
+							"line": 111,
 							"character": 9
 						}
 					],
@@ -3678,6 +3407,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Open account dropdown menu."
+							},
 							"parameters": [
 								{
 									"id": 66,
@@ -3712,10 +3444,7 @@
 					"kind": 1024,
 					"children": [
 						53,
-						59,
 						56,
-						60,
-						58,
 						57,
 						54,
 						55
@@ -3725,7 +3454,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						62,
 						70,
 						72,
 						67,
@@ -3861,7 +3589,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1208,
+										"id": 1207,
 										"name": "AucTransactionService"
 									}
 								}
@@ -4293,7 +4021,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link color} - It's an `@Input()` parameter.\nTheme color palette for the alert. This sets the alert background color.\nIt's an optional parameter. The default value is red."
+						"shortText": "Theme color palette for the alert. Sets the alert background color. <br>\nIt's an optional parameter. <br>\nThe default value is red."
 					},
 					"decorators": [
 						{
@@ -4310,7 +4038,7 @@
 					"sources": [
 						{
 							"fileName": "lib/alert/alert.component.ts",
-							"line": 50,
+							"line": 47,
 							"character": 9
 						}
 					],
@@ -4326,10 +4054,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link icon}  It's an `Input()` parameter.\nThis sets the alert icon otherwise it’ll be hidden.\nYou can use supported icons from enum {@link AUC_WLC_ICON} or string.\nIf you want to use custom icon you need to provide url to the image as a string value.\nIt's an optional parameter.\nThis is required parameter."
+						"shortText": "Sets Alert icon. <br>\nSupported icons from enum {@link AUC_WLC_ICON} or string. <br>\nIf you want to use custom icon, you need to provide url to the image as a string value. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -4346,7 +4075,7 @@
 					"sources": [
 						{
 							"fileName": "lib/alert/alert.component.ts",
-							"line": 33,
+							"line": 30,
 							"character": 9
 						}
 					],
@@ -4361,10 +4090,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link iconPosition} - It's an `@Input()` parameter.\nControls icon position.\nIt's an optional parameter. The default value is right.\nYou can use enum {@link AUC_ALERT_POSITION}"
+						"shortText": "Controls icon position. <br>\nYou can use enum {@link AUC_ALERT_POSITION}. <br>\nIt's an optional parameter. <br>\nThe default value left."
 					},
 					"decorators": [
 						{
@@ -4381,7 +4111,7 @@
 					"sources": [
 						{
 							"fileName": "lib/alert/alert.component.ts",
-							"line": 42,
+							"line": 39,
 							"character": 9
 						}
 					],
@@ -4393,31 +4123,6 @@
 					"defaultValue": "AUC_ALERT_POSITION.LEFT"
 				},
 				{
-					"id": 87,
-					"name": "styleProperties",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/alert/alert.component.ts",
-							"line": 52,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"id": 266,
-							"name": "AucSetStyleProp"
-						}
-					},
-					"defaultValue": "[]"
-				},
-				{
 					"id": 83,
 					"name": "text",
 					"kind": 1024,
@@ -4426,7 +4131,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link text} - It's an `@Input()` parameter.\nThe message to show in the alert.\nThis is required parameter."
+						"shortText": "The message to show in the alert. <br>\nIt's required parameter. <br>"
 					},
 					"decorators": [
 						{
@@ -4443,145 +4148,13 @@
 					"sources": [
 						{
 							"fileName": "lib/alert/alert.component.ts",
-							"line": 22,
+							"line": 21,
 							"character": 9
 						}
 					],
 					"type": {
 						"type": "intrinsic",
 						"name": "string"
-					}
-				},
-				{
-					"id": 88,
-					"name": "classNames",
-					"kind": 262144,
-					"kindString": "Accessor",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/alert/alert.component.ts",
-							"line": 54,
-							"character": 13
-						}
-					],
-					"getSignature": [
-						{
-							"id": 89,
-							"name": "classNames",
-							"kind": 524288,
-							"kindString": "Get signature",
-							"flags": {},
-							"type": {
-								"type": "reflection",
-								"declaration": {
-									"id": 90,
-									"name": "__type",
-									"kind": 65536,
-									"kindString": "Type literal",
-									"flags": {},
-									"indexSignature": {
-										"id": 91,
-										"name": "__index",
-										"kind": 8192,
-										"kindString": "Index signature",
-										"flags": {},
-										"parameters": [
-											{
-												"id": 92,
-												"name": "el",
-												"kind": 32768,
-												"flags": {},
-												"type": {
-													"type": "intrinsic",
-													"name": "string"
-												}
-											}
-										],
-										"type": {
-											"type": "intrinsic",
-											"name": "boolean"
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"id": 95,
-					"name": "ngOnChanges",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/alert/alert.component.ts",
-							"line": 66,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 96,
-							"name": "ngOnChanges",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnChanges.ngOnChanges"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnChanges.ngOnChanges"
-					}
-				},
-				{
-					"id": 93,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/alert/alert.component.ts",
-							"line": 62,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 94,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
 					}
 				}
 			],
@@ -4600,23 +4173,7 @@
 						86,
 						84,
 						85,
-						87,
 						83
-					]
-				},
-				{
-					"title": "Accessors",
-					"kind": 262144,
-					"children": [
-						88
-					]
-				},
-				{
-					"title": "Methods",
-					"kind": 2048,
-					"children": [
-						95,
-						93
 					]
 				}
 			],
@@ -4672,7 +4229,7 @@
 					"sources": [
 						{
 							"fileName": "lib/avatar/avatar.component.ts",
-							"line": 36,
+							"line": 40,
 							"character": 2
 						}
 					],
@@ -4692,82 +4249,16 @@
 					]
 				},
 				{
-					"id": 103,
-					"name": "defaultUserIcon",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/avatar/avatar.component.ts",
-							"line": 33,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					},
-					"defaultValue": "AUC_WLC_ICON.USER"
-				},
-				{
-					"id": 104,
-					"name": "defaultUserIconColor",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/avatar/avatar.component.ts",
-							"line": 34,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					},
-					"defaultValue": "..."
-				},
-				{
-					"id": 102,
-					"name": "iconStyleProperties",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/avatar/avatar.component.ts",
-							"line": 32,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"id": 266,
-							"name": "AucSetStyleProp"
-						}
-					},
-					"defaultValue": "[]"
-				},
-				{
 					"id": 101,
 					"name": "size",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link size} - It's an `@Input()` parameter.\nSets size of the avatar.\nIt's an optional parameter. The default value is 40."
+						"shortText": "Sets size of the avatar.\nIt's an optional parameter. <br>\nThe default value is 40."
 					},
 					"decorators": [
 						{
@@ -4784,7 +4275,7 @@
 					"sources": [
 						{
 							"fileName": "lib/avatar/avatar.component.ts",
-							"line": 30,
+							"line": 29,
 							"character": 9
 						}
 					],
@@ -4804,7 +4295,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link src} - It's an `@Input()` parameter.\nSets provided image url as avatar otherwise default user icon will be shown.\nIt's an optional parameter."
+						"shortText": "Sets provided image url as avatar otherwise default user icon will be shown. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -4821,48 +4312,13 @@
 					"sources": [
 						{
 							"fileName": "lib/avatar/avatar.component.ts",
-							"line": 22,
+							"line": 21,
 							"character": 9
 						}
 					],
 					"type": {
 						"type": "intrinsic",
 						"name": "string"
-					}
-				},
-				{
-					"id": 105,
-					"name": "ngOnChanges",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/avatar/avatar.component.ts",
-							"line": 41,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 106,
-							"name": "ngOnChanges",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnChanges.ngOnChanges"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnChanges.ngOnChanges"
 					}
 				}
 			],
@@ -4878,18 +4334,8 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						103,
-						104,
-						102,
 						101,
 						100
-					]
-				},
-				{
-					"title": "Methods",
-					"kind": 2048,
-					"children": [
-						105
 					]
 				}
 			],
@@ -5118,7 +4564,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 164,
+							"line": 161,
 							"character": 2
 						}
 					],
@@ -5159,40 +4605,16 @@
 					]
 				},
 				{
-					"id": 133,
-					"name": "BUTTON_APPEARANCE",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/button/button.component.ts",
-							"line": 153,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"id": 109,
-							"name": "AUC_BUTTON_APPEARANCE"
-						}
-					},
-					"defaultValue": "AUC_BUTTON_APPEARANCE"
-				},
-				{
 					"id": 121,
 					"name": "adaptive",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link adaptive} - It's an `@Input()` parameter.\nWhether the button is full width.\nIt's an optional parameter. The default value is false."
+						"shortText": "Whether the button is full width. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -5225,10 +4647,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link appearance} - It's an `@Input()` parameter.\nIt's an optional parameter. The default value is flat.\nYou can use enum {@link AUC_BUTTON_APPEARANCE}."
+						"shortText": "Sets button appearance. <br>\nYou can use enum {@link AUC_BUTTON_APPEARANCE}. <br>\nIt's an optional parameter. <br>\nThe default value is flat."
 					},
 					"decorators": [
 						{
@@ -5245,7 +4668,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 118,
+							"line": 115,
 							"character": 9
 						}
 					],
@@ -5262,10 +4685,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link borderRadius} - It's an `@Input()` parameter.\nSets borderRadius of the button.\nIt's an optional parameter. The default value is 8."
+						"shortText": "Sets borderRadius of the button. <br>\nIt's an optional parameter. <br>\nThe default value is 8."
 					},
 					"decorators": [
 						{
@@ -5298,10 +4722,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link color} - It's an `@Input()` parameter.\nSets theme of the button.\nIt's an optional parameter. The default value is blue.\nYou can use enum {@link AS_COLOR_GROUP}."
+						"shortText": "Sets theme of the button. <br>\nIt's an optional parameter. <br>\nThe default value is blue. <br>\nYou can use enum {@link AS_COLOR_GROUP}."
 					},
 					"decorators": [
 						{
@@ -5334,10 +4759,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link disabled} - It's an `@Input()` parameter.\nWhether the button is disabled.\nIt's an optional parameter. The default value is false."
+						"shortText": "Whether the button is disabled. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -5370,10 +4796,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link height} - It's an `@Input()` parameter.\nSets height of the button.\nIt's an optional parameter. The default value is 40."
+						"shortText": "Sets height of the button. <br>\nIt's an optional parameter. <br>\nThe default value is 40."
 					},
 					"decorators": [
 						{
@@ -5406,10 +4833,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link identicon} - It's an `@Input()` parameter.\nShows identicon if provided.\nIt's an optional parameter."
+						"shortText": "Shows identicon if provided. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -5426,7 +4854,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 80,
+							"line": 79,
 							"character": 9
 						}
 					],
@@ -5443,10 +4871,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link identiconPosition} - It's an `@Input()` parameter.\nControls identicon position.\nIt's an optional parameter. The default value is right;\nYou can use enum ${@link AUC_IDENTICON_POSITION}"
+						"shortText": "Controls identicon position. <br>\nIt's an optional parameter. <br>\nThe default value is right. <br>\nYou can use enum {@link AUC_IDENTICON_POSITION}"
 					},
 					"decorators": [
 						{
@@ -5463,7 +4892,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 89,
+							"line": 88,
 							"character": 9
 						}
 					],
@@ -5480,10 +4909,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link label} - It's an `@Input()` parameter.\nText for the button label."
+						"shortText": "Text for the button label. <br>\nIt's an optional parameter, required if {@link appearance} equals to {@link AUC_BUTTON_APPEARANCE.FLAT}."
 					},
 					"decorators": [
 						{
@@ -5515,10 +4945,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link leftIcon} - It's an `@Input()` parameter.\nShows left icon if provided.\nYou can use supported icons from enum {@link AUC_WLC_ICON} or string;\nIf you want to use custom icon you need to provide url to the image as a string value.\nIt's an optional parameter."
+						"shortText": "Shows left icon if provided. <br>\nYou can use supported icons from enum {@link AUC_WLC_ICON} or string. <br>\nIf you want to use custom icon, you need to provide url to the image as a string value. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -5535,7 +4966,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 100,
+							"line": 97,
 							"character": 9
 						}
 					],
@@ -5553,7 +4984,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link onClick} - It's an `@Output()` parameter.\nEmits an action when button was clicked.\nEmitted value is native click value."
+						"shortText": "Emits an action when button was clicked. <br>\nEmitted value is native click value."
 					},
 					"decorators": [
 						{
@@ -5572,7 +5003,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 150,
+							"line": 146,
 							"character": 9
 						}
 					],
@@ -5596,10 +5027,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link pending} - It's an `@Input()` parameter.\nWhether the button shows spinner.\nIt's an optional parameter. The default value is false."
+						"shortText": "Whether the button shows spinner. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -5616,7 +5048,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 134,
+							"line": 131,
 							"character": 9
 						}
 					],
@@ -5632,10 +5064,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link rightIcon} - It's an `@Input()` parameter.\nShows right icon if provided.\nYou can use supported icons from enum {@link AUC_WLC_ICON} or string;\nIf you want to use custom icon you need to provide url to the image as a string value.\nIt's an optional parameter."
+						"shortText": "Shows right icon if provided. <br>\nYou can use supported icons from enum {@link AUC_WLC_ICON} or string. <br>\nIf you want to use custom icon, you need to provide url to the image as a string value. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -5652,7 +5085,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 110,
+							"line": 106,
 							"character": 9
 						}
 					],
@@ -5662,40 +5095,16 @@
 					}
 				},
 				{
-					"id": 132,
-					"name": "styleProperties",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/button/button.component.ts",
-							"line": 152,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "reference",
-							"id": 266,
-							"name": "AucSetStyleProp"
-						}
-					},
-					"defaultValue": "[]"
-				},
-				{
 					"id": 128,
 					"name": "transparent",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link transparent} - It's an `@Input()` parameter.\nWhether the button is transparent.\nIt's an optional parameter. The default value is false."
+						"shortText": "Whether the button is transparent. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -5712,7 +5121,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 126,
+							"line": 123,
 							"character": 9
 						}
 					],
@@ -5731,7 +5140,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link type} - It's an `@Input()` parameter.\nStandard HTMLButtonElement type {@link HTMLButtonElement.type}: 'button' | 'reset' | 'submit'.\nIt's an optional parameter. The default value is button."
+						"shortText": "Standard HTMLButtonElement type. <br>\nIt's an optional parameter. <br>\nThe default value is button."
 					},
 					"decorators": [
 						{
@@ -5748,7 +5157,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 142,
+							"line": 139,
 							"character": 9
 						}
 					],
@@ -5772,170 +5181,6 @@
 					"defaultValue": "'button'"
 				},
 				{
-					"id": 136,
-					"name": "classNames",
-					"kind": 262144,
-					"kindString": "Accessor",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/button/button.component.ts",
-							"line": 166,
-							"character": 13
-						}
-					],
-					"getSignature": [
-						{
-							"id": 137,
-							"name": "classNames",
-							"kind": 524288,
-							"kindString": "Get signature",
-							"flags": {},
-							"type": {
-								"type": "reflection",
-								"declaration": {
-									"id": 138,
-									"name": "__type",
-									"kind": 65536,
-									"kindString": "Type literal",
-									"flags": {},
-									"indexSignature": {
-										"id": 139,
-										"name": "__index",
-										"kind": 8192,
-										"kindString": "Index signature",
-										"flags": {},
-										"parameters": [
-											{
-												"id": 140,
-												"name": "el",
-												"kind": 32768,
-												"flags": {},
-												"type": {
-													"type": "intrinsic",
-													"name": "string"
-												}
-											}
-										],
-										"type": {
-											"type": "intrinsic",
-											"name": "boolean"
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				{
-					"id": 134,
-					"name": "iconColor",
-					"kind": 262144,
-					"kindString": "Accessor",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/button/button.component.ts",
-							"line": 158,
-							"character": 13
-						}
-					],
-					"getSignature": [
-						{
-							"id": 135,
-							"name": "iconColor",
-							"kind": 524288,
-							"kindString": "Get signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Returns icon color according to button color;"
-							},
-							"type": {
-								"type": "intrinsic",
-								"name": "string"
-							}
-						}
-					]
-				},
-				{
-					"id": 143,
-					"name": "ngOnChanges",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/button/button.component.ts",
-							"line": 181,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 144,
-							"name": "ngOnChanges",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnChanges.ngOnChanges"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnChanges.ngOnChanges"
-					}
-				},
-				{
-					"id": 141,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/button/button.component.ts",
-							"line": 177,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 142,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
-					}
-				},
-				{
 					"id": 145,
 					"name": "onClick",
 					"kind": 2048,
@@ -5946,7 +5191,7 @@
 					"sources": [
 						{
 							"fileName": "lib/button/button.component.ts",
-							"line": 185,
+							"line": 186,
 							"character": 9
 						}
 					],
@@ -5957,6 +5202,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Emit {@link onClickEmitter} event."
+							},
 							"parameters": [
 								{
 									"id": 147,
@@ -5990,7 +5238,6 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						133,
 						121,
 						127,
 						118,
@@ -6004,25 +5251,14 @@
 						131,
 						129,
 						126,
-						132,
 						128,
 						130
-					]
-				},
-				{
-					"title": "Accessors",
-					"kind": 262144,
-					"children": [
-						136,
-						134
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						143,
-						141,
 						145
 					]
 				}
@@ -6079,7 +5315,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 176,
+							"line": 185,
 							"character": 2
 						}
 					],
@@ -6145,7 +5381,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1208,
+										"id": 1207,
 										"name": "AucTransactionService"
 									}
 								},
@@ -6171,80 +5407,6 @@
 					]
 				},
 				{
-					"id": 181,
-					"name": "BALANCE_APPEARANCE",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 171,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"id": 1,
-							"name": "AUC_BALANCE_APPEARANCE"
-						}
-					},
-					"defaultValue": "AUC_BALANCE_APPEARANCE"
-				},
-				{
-					"id": 180,
-					"name": "COLORS",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 170,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"name": "AS_COLOR_GROUP"
-						}
-					},
-					"defaultValue": "AS_COLOR_GROUP"
-				},
-				{
-					"id": 182,
-					"name": "CONNECT_WALLET_APPEARANCE",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 172,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"id": 150,
-							"name": "AUC_CONNECT_WALLET_APPEARANCE"
-						}
-					},
-					"defaultValue": "AUC_CONNECT_WALLET_APPEARANCE"
-				},
-				{
 					"id": 167,
 					"name": "account",
 					"kind": 1024,
@@ -6253,7 +5415,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link account} - It's an `@Input()` parameter. <br>\nUser account related information. Needs for {@link AucAccountButtonComponent}. <br>\nThis is required parameter when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}"
+						"shortText": "User account related information. <br>\nNeeds for {@link AucAccountButtonComponent}. <br>\nIt's an optional parameter, required when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}"
 					},
 					"decorators": [
 						{
@@ -6281,33 +5443,16 @@
 					}
 				},
 				{
-					"id": 174,
-					"name": "accountAddress",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 164,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
 					"id": 169,
 					"name": "accountDropdownConfig",
 					"kind": 1024,
 					"kindString": "Property",
-					"flags": {},
+					"flags": {
+						"isPublic": true,
+						"isOptional": true
+					},
 					"comment": {
-						"shortText": "{@link accountDropdownConfig} - It's an `@Input()` parameter. <br>\nYou can customize dropdown position and overlay. <br>\nThis is an optional parameter. <br>\nThe default value is: <br>\n{\n  overlay: {\n    transparent: true\n  },\n  position: {\n    vertical: AUC_POSITIONS.BELOW,\n    horizontal: AUC_POSITIONS.BEFORE\n  }\n}"
+						"shortText": "Customize account dropdown <br>\nIt's an optional parameter. <br>\nThe default value is: <br>\n{\n  overlay: {\n    transparent: true\n  },\n  position: {\n    vertical: AUC_POSITIONS.BELOW,\n    horizontal: AUC_POSITIONS.BEFORE\n  }\n}"
 					},
 					"decorators": [
 						{
@@ -6325,7 +5470,7 @@
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
 							"line": 108,
-							"character": 11
+							"character": 9
 						}
 					],
 					"type": {
@@ -6345,7 +5490,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link accountOptions} - It's an `@Input()` parameter. <br>\nList of options in popover. Needs for {@link AucAccountButtonComponent}. <br>\nThis is an optional parameter, uses only when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}"
+						"shortText": "List of options in popover. <br>\nNeeds for {@link AucAccountButtonComponent}. <br>\nIt's an optional parameter, uses only when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}"
 					},
 					"decorators": [
 						{
@@ -6381,10 +5526,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link appearance} - It's an `@Input()` parameter. <br>\nAllows to control appearance components. Default is the button.\nIt's an optional parameter. The default value is {@link AUC_CONNECT_WALLET_APPEARANCE.BUTTON}. <br>\nYou can use enum {@link AUC_CONNECT_WALLET_APPEARANCE}."
+						"shortText": "Allows to control appearance components. Default is the button. <br>\nYou can use enum {@link AUC_CONNECT_WALLET_APPEARANCE}. <br>\nIt's an optional parameter. <br>\nThe default value is {@link AUC_CONNECT_WALLET_APPEARANCE.BUTTON}."
 					},
 					"decorators": [
 						{
@@ -6418,10 +5564,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link disabled} - It's an `@Input()` parameter. <br>\nWhether the button is disabled. <br>\nIt's an optional parameter. The default value is false."
+						"shortText": "Whether the button is disabled. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -6449,100 +5596,16 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 177,
-					"name": "hasFailedTx",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 167,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
-					"id": 178,
-					"name": "hasPendingTx",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 168,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
-					"id": 175,
-					"name": "identicon",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 165,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "reference",
-						"qualifiedName": "HTMLDivElement",
-						"package": "typescript",
-						"name": "HTMLDivElement"
-					}
-				},
-				{
-					"id": 176,
-					"name": "isConnected",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 166,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
 					"id": 170,
 					"name": "networkDropdownConfig",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
+						"isPublic": true,
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link networkDropdownConfig} - It's an `@Input()` parameter. <br>\nYou can customize dropdown position and overlay. <br>\nThis is an optional parameter. <br>\nThe default value is: <br>\n{\n  overlay: {\n    transparent: true\n  },\n  position: {\n    vertical: AUC_POSITIONS.BELOW,\n    horizontal: AUC_POSITIONS.AFTER\n  }\n}"
+						"shortText": "Customize networks dropdown <br>\nIt's an optional parameter. <br>\nThe default value is: <br>\n{\n  overlay: {\n    transparent: true\n  },\n  position: {\n    vertical: AUC_POSITIONS.BELOW,\n    horizontal: AUC_POSITIONS.AFTER\n  }\n}"
 					},
 					"decorators": [
 						{
@@ -6560,7 +5623,7 @@
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
 							"line": 133,
-							"character": 11
+							"character": 9
 						}
 					],
 					"type": {
@@ -6579,7 +5642,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link onConnect} - It's an `@Output()` parameter. <br>\nEmits an action when wallet was connected."
+						"shortText": "Emits an action when wallet was connected."
 					},
 					"decorators": [
 						{
@@ -6596,7 +5659,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 148,
+							"line": 145,
 							"character": 9
 						}
 					],
@@ -6624,7 +5687,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link onDisconnect} - It's an `@Output()` parameter. <br>\nEmits an action when wallet was disconnected."
+						"shortText": "Emits an action when wallet was disconnected."
 					},
 					"decorators": [
 						{
@@ -6641,7 +5704,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 155,
+							"line": 149,
 							"character": 9
 						}
 					],
@@ -6668,7 +5731,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link optionClicked} - It's an `@Output()` parameter. <br>\nEmits selected option from the list."
+						"shortText": "Emits selected option from the list."
 					},
 					"decorators": [
 						{
@@ -6685,7 +5748,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 162,
+							"line": 153,
 							"character": 9
 						}
 					],
@@ -6710,10 +5773,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link showBalance} - It's an `@Input()` parameter. <br>\nShow/hide account balance. <br>\nIt's an optional parameter. The default value is false."
+						"shortText": "Show/hide account balance. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -6746,10 +5810,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link showNetworkOptions} - It's an `@Input()` parameter. <br>\nShow/hide network options <br>\nIt's an optional parameter. The default value is false."
+						"shortText": "Show/hide network options <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -6782,10 +5847,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link showTransactions} - It's an `@Input()` parameter. <br>\nShow/hide Recent transactions button <br>\nIt's an optional parameter. The default value is false."
+						"shortText": "Show/hide Recent transactions button <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -6813,101 +5879,6 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 179,
-					"name": "txCount",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 169,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "number"
-					},
-					"defaultValue": "0"
-				},
-				{
-					"id": 186,
-					"name": "ngOnDestroy",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 221,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 187,
-							"name": "ngOnDestroy",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnDestroy.ngOnDestroy"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnDestroy.ngOnDestroy"
-					}
-				},
-				{
-					"id": 184,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 198,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 185,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
-					}
-				},
-				{
 					"id": 188,
 					"name": "onAccountButtonClick",
 					"kind": 2048,
@@ -6918,7 +5889,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 227,
+							"line": 239,
 							"character": 9
 						}
 					],
@@ -6929,6 +5900,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Shows  account modal."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -6947,7 +5921,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 257,
+							"line": 270,
 							"character": 9
 						}
 					],
@@ -6958,6 +5932,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Connect wallet and emit {@link onConnect} event."
+							},
 							"parameters": [
 								{
 									"id": 192,
@@ -6990,7 +5967,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 268,
+							"line": 282,
 							"character": 9
 						}
 					],
@@ -7001,6 +5978,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Disconnect wallet and emit {@link onDisconnect} event."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -7019,7 +5999,7 @@
 					"sources": [
 						{
 							"fileName": "lib/connect-wallet/connect-wallet.component.ts",
-							"line": 279,
+							"line": 294,
 							"character": 9
 						}
 					],
@@ -7030,6 +6010,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Emit {@link optionClicked} event."
+							},
 							"parameters": [
 								{
 									"id": 197,
@@ -7064,35 +6047,24 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						181,
-						180,
-						182,
 						167,
-						174,
 						169,
 						168,
 						162,
 						163,
-						177,
-						178,
-						175,
-						176,
 						170,
 						171,
 						172,
 						173,
 						164,
 						166,
-						165,
-						179
+						165
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						186,
-						184,
 						188,
 						190,
 						193,
@@ -7435,7 +6407,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "The string to copy. <br>\nThis is required parameter."
+						"shortText": "The string to copy. <br>\nIt's required parameter."
 					},
 					"decorators": [
 						{
@@ -7516,7 +6488,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/custom-class/custom-class.directive.ts",
-							"line": 16,
+							"line": 15,
 							"character": 2
 						}
 					],
@@ -7578,7 +6550,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link aucCustomClass} - It's an `@Input()` parameter.\nSets class / list of classes to the elements."
+						"shortText": "Sets class / list of classes to the elements."
 					},
 					"decorators": [
 						{
@@ -7595,7 +6567,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/custom-class/custom-class.directive.ts",
-							"line": 14,
+							"line": 13,
 							"character": 9
 						}
 					],
@@ -7617,33 +6589,6 @@
 					}
 				},
 				{
-					"id": 242,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/directives/custom-class/custom-class.directive.ts",
-							"line": 19,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 243,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
 					"id": 247,
 					"name": "removeClasses",
 					"kind": 2048,
@@ -7654,7 +6599,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/custom-class/custom-class.directive.ts",
-							"line": 33,
+							"line": 35,
 							"character": 9
 						}
 					],
@@ -7665,6 +6610,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Remove classes from the nativeElement"
+							},
 							"parameters": [
 								{
 									"id": 249,
@@ -7699,7 +6647,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/custom-class/custom-class.directive.ts",
-							"line": 23,
+							"line": 24,
 							"character": 9
 						}
 					],
@@ -7710,6 +6658,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Sets classes to the nativeElement"
+							},
 							"parameters": [
 								{
 									"id": 246,
@@ -7753,7 +6704,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						242,
 						247,
 						244
 					]
@@ -7800,7 +6750,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dialog/directives/customize-dialog/customize-dialog.directive.ts",
-							"line": 25,
+							"line": 24,
 							"character": 2
 						}
 					],
@@ -7863,7 +6813,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link config} - configuration data for customization dialog."
+						"shortText": "Configuration data for customization dialog."
 					},
 					"decorators": [
 						{
@@ -7880,7 +6830,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dialog/directives/customize-dialog/customize-dialog.directive.ts",
-							"line": 19,
+							"line": 17,
 							"character": 9
 						}
 					],
@@ -7888,70 +6838,6 @@
 						"type": "reference",
 						"id": 347,
 						"name": "AucCustomizeDialogConfig"
-					}
-				},
-				{
-					"id": 319,
-					"name": "mapConfig",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/dialog/directives/customize-dialog/customize-dialog.directive.ts",
-							"line": 50,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 320,
-							"name": "mapConfig",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 310,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/dialog/directives/customize-dialog/customize-dialog.directive.ts",
-							"line": 28,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 311,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
 					}
 				},
 				{
@@ -7965,7 +6851,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dialog/directives/customize-dialog/customize-dialog.directive.ts",
-							"line": 32,
+							"line": 33,
 							"character": 9
 						}
 					],
@@ -7976,6 +6862,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Sets classes to the nativeElement"
+							},
 							"parameters": [
 								{
 									"id": 314,
@@ -8010,7 +6899,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dialog/directives/customize-dialog/customize-dialog.directive.ts",
-							"line": 42,
+							"line": 44,
 							"character": 9
 						}
 					],
@@ -8021,6 +6910,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Sets css styles to the nativeElement"
+							},
 							"parameters": [
 								{
 									"id": 317,
@@ -8081,8 +6973,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						319,
-						310,
 						312,
 						315
 					]
@@ -9347,7 +8237,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link afterClosed} - emits after dialog was closed.\nYou can add subscription for it if needed. this.dialogRed.afterClosed.subscribe();"
+						"shortText": "Emits after dialog was closed. <br>\nYou can add subscription for it if needed. this.dialogRed.afterClosed.subscribe();"
 					},
 					"sources": [
 						{
@@ -9379,7 +8269,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link afterOpened} - emits after dialog was opened.\nYou can add subscription for it if needed. this.dialogRed._afterOpened.subscribe();"
+						"shortText": "Emits after dialog was opened. <br>\nYou can add subscription for it if needed. this.dialogRed._afterOpened.subscribe();"
 					},
 					"sources": [
 						{
@@ -9425,7 +8315,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link close} - emits close dialog action the dialog window."
+								"shortText": "Emits close dialog action the dialog window. <br>"
 							},
 							"parameters": [
 								{
@@ -9446,38 +8336,6 @@
 									}
 								}
 							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 457,
-					"name": "open",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/dialog/dialog-ref.ts",
-							"line": 31,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 458,
-							"name": "open",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "{@link open} - emits open dialog action the dialog window.\nYou mustn't use it. It's already used inside injection strategy."
-							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -9506,8 +8364,7 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						454,
-						457
+						454
 					]
 				}
 			],
@@ -9658,7 +8515,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dialog/services/dialog/dialog.service.ts",
-							"line": 75,
+							"line": 77,
 							"character": 9
 						}
 					],
@@ -9670,7 +8527,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "This method open dialog window."
+								"shortText": "Opens dialog window."
 							},
 							"typeParameter": [
 								{
@@ -9832,7 +8689,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 43,
+							"line": 62,
 							"character": 2
 						}
 					],
@@ -9882,7 +8739,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
+						"isPublic": true,
 						"isOptional": true
+					},
+					"comment": {
+						"shortText": "Customize dropdown <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -9899,128 +8760,14 @@
 					"sources": [
 						{
 							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 33,
-							"character": 11
+							"line": 38,
+							"character": 9
 						}
 					],
 					"type": {
 						"type": "reference",
 						"id": 468,
 						"name": "AucDropdownConfig"
-					}
-				},
-				{
-					"id": 487,
-					"name": "contentBody",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
-					"decorators": [
-						{
-							"name": "ViewChild",
-							"type": {
-								"type": "reference",
-								"qualifiedName": "ViewChildDecorator",
-								"package": "@angular/core",
-								"name": "ViewChild"
-							},
-							"arguments": {
-								"selector": "AucContentBodyDirective"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 35,
-							"character": 38
-						}
-					],
-					"type": {
-						"type": "reference",
-						"id": 222,
-						"name": "AucContentBodyDirective"
-					}
-				},
-				{
-					"id": 488,
-					"name": "dropdownRef",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
-					"decorators": [
-						{
-							"name": "ViewChild",
-							"type": {
-								"type": "reference",
-								"qualifiedName": "ViewChildDecorator",
-								"package": "@angular/core",
-								"name": "ViewChild"
-							},
-							"arguments": {
-								"selector": "'dropdown'",
-								"opts": "{ read: ElementRef }"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 36,
-							"character": 47
-						}
-					],
-					"type": {
-						"type": "reference",
-						"typeArguments": [
-							{
-								"type": "intrinsic",
-								"name": "any"
-							}
-						],
-						"qualifiedName": "ElementRef",
-						"package": "@angular/core",
-						"name": "ElementRef"
-					}
-				},
-				{
-					"id": 491,
-					"name": "isAfter",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 40,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					}
-				},
-				{
-					"id": 490,
-					"name": "isBelow",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 39,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
 					}
 				},
 				{
@@ -10056,33 +8803,16 @@
 					}
 				},
 				{
-					"id": 489,
-					"name": "positionStyles",
+					"id": 486,
+					"name": "trigger",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
 						"isPublic": true
 					},
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 38,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "reference",
-						"id": 474,
-						"name": "AucDropdownPositionStyles"
+					"comment": {
+						"shortText": "Trigger for toggle opens"
 					},
-					"defaultValue": "null"
-				},
-				{
-					"id": 486,
-					"name": "trigger",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
 					"decorators": [
 						{
 							"name": "Input",
@@ -10098,8 +8828,8 @@
 					"sources": [
 						{
 							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 34,
-							"character": 11
+							"line": 42,
+							"character": 9
 						}
 					],
 					"type": {
@@ -10119,7 +8849,7 @@
 					"sources": [
 						{
 							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 177,
+							"line": 201,
 							"character": 9
 						}
 					],
@@ -10130,206 +8860,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 502,
-					"name": "getPositions",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 88,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 503,
-							"name": "getPositions",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 498,
-					"name": "ngAfterViewInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 77,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 499,
-							"name": "ngAfterViewInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
+							"comment": {
+								"shortText": "Hide dropdown"
 							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "AfterViewInit.ngAfterViewInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "AfterViewInit.ngAfterViewInit"
-					}
-				},
-				{
-					"id": 495,
-					"name": "ngOnChanges",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 60,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 496,
-							"name": "ngOnChanges",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"parameters": [
-								{
-									"id": 497,
-									"name": "changes",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "reference",
-										"qualifiedName": "SimpleChanges",
-										"package": "@angular/core",
-										"name": "SimpleChanges"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnChanges.ngOnChanges"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnChanges.ngOnChanges"
-					}
-				},
-				{
-					"id": 500,
-					"name": "ngOnDestroy",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 83,
-							"character": 11
-						}
-					],
-					"signatures": [
-						{
-							"id": 501,
-							"name": "ngOnDestroy",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"overwrites": {
-								"type": "reference",
-								"id": 585,
-								"name": "BaseSubscriber.ngOnDestroy"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnDestroy.ngOnDestroy"
-							}
-						}
-					],
-					"overwrites": {
-						"type": "reference",
-						"id": 584,
-						"name": "BaseSubscriber.ngOnDestroy"
-					},
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnDestroy.ngOnDestroy"
-					}
-				},
-				{
-					"id": 493,
-					"name": "onResize",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"decorators": [
-						{
-							"name": "HostListener",
-							"type": {
-								"type": "reference",
-								"qualifiedName": "HostListenerDecorator",
-								"package": "@angular/core",
-								"name": "HostListener"
-							},
-							"arguments": {
-								"eventName": "'window:resize'"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "lib/dropdown-menu/dropdown-menu.component.ts",
-							"line": 56,
-							"character": 33
-						}
-					],
-					"signatures": [
-						{
-							"id": 494,
-							"name": "onResize",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -10351,12 +8884,7 @@
 					"kind": 1024,
 					"children": [
 						485,
-						487,
-						488,
-						491,
-						490,
 						506,
-						489,
 						486
 					]
 				},
@@ -10364,12 +8892,7 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						504,
-						502,
-						498,
-						495,
-						500,
-						493
+						504
 					]
 				}
 			],
@@ -10675,7 +9198,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "Sets icon. <br>\nYou can use enum {@link AUC_WLC_ICON} or other string. <br>\nIf you want to use custom icon you need to provide url to the image as a string value. <br>\nIt's required parameter."
+						"shortText": "Sets icon. <br>\nUse enum {@link AUC_WLC_ICON} or other string. <br>\nIf you want to use custom icon, you need to provide url to the image as a string value. <br>\nIt's required parameter."
 					},
 					"decorators": [
 						{
@@ -10816,10 +9339,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link aucIdenticon} - It's an `@Input()` parameter.\nShows identicon if provided.\nIt's an optional parameter."
+						"shortText": "Shows identicon if provided. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -10836,7 +9360,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/identicon/identicon.directive.ts",
-							"line": 18,
+							"line": 17,
 							"character": 9
 						}
 					],
@@ -10853,10 +9377,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link position} - It's an `@Input()` parameter.\nControls identicon position.\nIt's an optional parameter. The default value is right;\nYou can use enum {@link AUC_IDENTICON_POSITION}"
+						"shortText": "Controls identicon position. <br>\nYou can use enum {@link AUC_IDENTICON_POSITION} <br>\nIt's an optional parameter. <br>\nThe default value is right;"
 					},
 					"decorators": [
 						{
@@ -10873,7 +9398,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/identicon/identicon.directive.ts",
-							"line": 27,
+							"line": 26,
 							"character": 9
 						}
 					],
@@ -10883,41 +9408,6 @@
 						"name": "AucIdenticonPosition"
 					},
 					"defaultValue": "AUC_IDENTICON_POSITION.RIGHT"
-				},
-				{
-					"id": 262,
-					"name": "ngOnChanges",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/directives/identicon/identicon.directive.ts",
-							"line": 34,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 263,
-							"name": "ngOnChanges",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnChanges.ngOnChanges"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnChanges.ngOnChanges"
-					}
 				},
 				{
 					"id": 264,
@@ -10930,7 +9420,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/identicon/identicon.directive.ts",
-							"line": 38,
+							"line": 40,
 							"character": 9
 						}
 					],
@@ -10941,6 +9431,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Sets {@link aucIdenticon}."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -10969,7 +9462,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						262,
 						264
 					]
 				}
@@ -11020,7 +9512,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 147,
+							"line": 144,
 							"character": 2
 						}
 					],
@@ -11081,10 +9573,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link adaptive} - It's an `@Input()` parameter.\nWhether the form field is full width.\nIt's an optional parameter. The default value is false."
+						"shortText": "Whether the form field is full width. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -11101,7 +9594,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 71,
+							"line": 69,
 							"character": 9
 						}
 					],
@@ -11117,10 +9610,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link decimal} - It's an `@Input()` parameter.\nAllows to input number with decimal point\n{@link decimal} = true - ignore non decimal symbols.\nThe default value is true."
+						"shortText": "Allows to input number with decimal point. <br>\nIf true - ignore non decimals symbols. <br>\nThe default value is true."
 					},
 					"decorators": [
 						{
@@ -11137,7 +9631,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 100,
+							"line": 99,
 							"character": 9
 						}
 					],
@@ -11153,10 +9647,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link disabled} - It's an `@Input()` parameter.\nWhether the control is disabled.\nIt's an optional parameter. The default value is false."
+						"shortText": "Whether the control is disabled. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -11173,7 +9668,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 55,
+							"line": 53,
 							"character": 9
 						}
 					],
@@ -11189,10 +9684,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link errors} - It's an `@Input()` parameter.\nList of provided errors.\nIt's an optional parameter."
+						"shortText": "List of provided errors. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -11209,7 +9705,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 124,
+							"line": 120,
 							"character": 9
 						}
 					],
@@ -11227,10 +9723,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link height} - It's an `@Input()` parameter.\nSets height of form field.\nIt's an optional parameter. The default value is 48."
+						"shortText": "Sets height of form field. <br>\nIt's an optional parameter. <br>\nThe default value is 48."
 					},
 					"decorators": [
 						{
@@ -11247,7 +9744,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 63,
+							"line": 61,
 							"character": 9
 						}
 					],
@@ -11263,10 +9760,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link hint} - It's an `@Input()` parameter.\nSets hint for form field.\nIt's an optional parameter."
+						"shortText": "Sets hint for form field. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -11283,7 +9781,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 116,
+							"line": 113,
 							"character": 9
 						}
 					],
@@ -11299,6 +9797,9 @@
 					"kindString": "Property",
 					"flags": {
 						"isPublic": true
+					},
+					"comment": {
+						"shortText": "Field ElementRef."
 					},
 					"decorators": [
 						{
@@ -11318,7 +9819,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 127,
+							"line": 124,
 							"character": 9
 						}
 					],
@@ -11343,10 +9844,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link label} - It's an `@Input()` parameter.\nText for the form field label.\nIt's required parameter."
+						"shortText": "Text for the form field label. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -11363,7 +9865,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 39,
+							"line": 38,
 							"character": 9
 						}
 					],
@@ -11378,10 +9880,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link max} - It's an `@Input()` parameter.\nSets max boundaries.\nIt's an optional parameter."
+						"shortText": "Sets max boundaries. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -11398,7 +9901,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 108,
+							"line": 106,
 							"character": 9
 						}
 					],
@@ -11413,10 +9916,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link placeholder} - It's an `@Input()` parameter.\nText for the form field placeholder.\nIt's an optional parameter."
+						"shortText": "Text for the form field placeholder. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -11433,7 +9937,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 47,
+							"line": 45,
 							"character": 9
 						}
 					],
@@ -11449,10 +9953,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link prefix} - It's an `@Input()` parameter.\nText for the form field prefix.\nIt's an optional parameter."
+						"shortText": "Text for the form field prefix. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -11469,7 +9974,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 79,
+							"line": 76,
 							"character": 9
 						}
 					],
@@ -11484,10 +9989,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link suffix} - It's an `@Input()` parameter.\nText for the form field suffix.\nIt's an optional parameter."
+						"shortText": "Text for the form field suffix. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -11504,7 +10010,7 @@
 					"sources": [
 						{
 							"fileName": "lib/input/input.component.ts",
-							"line": 87,
+							"line": 83,
 							"character": 9
 						}
 					],
@@ -11519,10 +10025,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "Sets Input field type"
+						"shortText": "Sets Input field type. <br>\nIt's an optional parameter. <br>\nThe default value is text."
 					},
 					"decorators": [
 						{
@@ -11557,6 +10064,242 @@
 						]
 					},
 					"defaultValue": "'text'"
+				},
+				{
+					"id": 724,
+					"name": "onChange",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/input/input.component.ts",
+							"line": 172,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 725,
+							"name": "onChange",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Change Input value."
+							},
+							"parameters": [
+								{
+									"id": 726,
+									"name": "value",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 722,
+					"name": "onMaxClick",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/input/input.component.ts",
+							"line": 163,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 723,
+							"name": "onMaxClick",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Emit field value changes when clicked on Max."
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 727,
+					"name": "registerOnChange",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/input/input.component.ts",
+							"line": 184,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 728,
+							"name": "registerOnChange",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Register Field OnChange function."
+							},
+							"parameters": [
+								{
+									"id": 729,
+									"name": "fn",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"implementationOf": {
+								"type": "reference",
+								"name": "ControlValueAccessor.registerOnChange"
+							}
+						}
+					],
+					"implementationOf": {
+						"type": "reference",
+						"name": "ControlValueAccessor.registerOnChange"
+					}
+				},
+				{
+					"id": 730,
+					"name": "registerOnTouched",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/input/input.component.ts",
+							"line": 189,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 731,
+							"name": "registerOnTouched",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Register Field OnTouched function."
+							},
+							"parameters": [
+								{
+									"id": 732,
+									"name": "fn",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"implementationOf": {
+								"type": "reference",
+								"name": "ControlValueAccessor.registerOnTouched"
+							}
+						}
+					],
+					"implementationOf": {
+						"type": "reference",
+						"name": "ControlValueAccessor.registerOnTouched"
+					}
+				},
+				{
+					"id": 733,
+					"name": "setDisabledState",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/input/input.component.ts",
+							"line": 194,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 734,
+							"name": "setDisabledState",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Disable Input."
+							},
+							"parameters": [
+								{
+									"id": 735,
+									"name": "isDisabled",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							},
+							"implementationOf": {
+								"type": "reference",
+								"name": "ControlValueAccessor.setDisabledState"
+							}
+						}
+					],
+					"implementationOf": {
+						"type": "reference",
+						"name": "ControlValueAccessor.setDisabledState"
+					}
 				}
 			],
 			"groups": [
@@ -11584,6 +10327,17 @@
 						702,
 						703,
 						704
+					]
+				},
+				{
+					"title": "Methods",
+					"kind": 2048,
+					"children": [
+						724,
+						722,
+						727,
+						730,
+						733
 					]
 				}
 			],
@@ -11785,7 +10539,7 @@
 					"sources": [
 						{
 							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 61,
+							"line": 66,
 							"character": 2
 						}
 					],
@@ -11865,53 +10619,8 @@
 					]
 				},
 				{
-					"id": 987,
-					"name": "COLORS",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 57,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"name": "AS_COLOR_GROUP"
-						}
-					},
-					"defaultValue": "AS_COLOR_GROUP"
-				},
-				{
-					"id": 986,
-					"name": "currentNetwork",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 56,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "reference",
-						"id": 848,
-						"name": "AucNetworkOption"
-					}
-				},
-				{
 					"id": 985,
-					"name": "isOptionsOpen",
+					"name": "currentNetwork",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
@@ -11925,10 +10634,10 @@
 						}
 					],
 					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
+						"type": "reference",
+						"id": 848,
+						"name": "AucNetworkOption"
+					}
 				},
 				{
 					"id": 984,
@@ -11960,7 +10669,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link networkDropdownConfig} - It's an `@Input()` parameter.\nYou can customize dropdown position and overlay.\nThis is an optional parameter.\nThe default value is\n{\n  overlay: {\n    transparent: true\n  },\n  position: {\n    vertical: AUC_POSITIONS.BELOW,\n    horizontal: AUC_POSITIONS.AFTER\n  }\n}"
+						"shortText": "Customize dropdown <br>\nIt's an optional parameter. <br>\nThe default value is: <br>\n{\n  overlay: {\n    transparent: true\n  },\n  position: {\n    vertical: AUC_POSITIONS.BELOW,\n    horizontal: AUC_POSITIONS.AFTER\n  }\n}"
 					},
 					"decorators": [
 						{
@@ -11977,7 +10686,7 @@
 					"sources": [
 						{
 							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 37,
+							"line": 36,
 							"character": 9
 						}
 					],
@@ -12011,7 +10720,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "List of the supported networks. Gets from this._walletConnectService.supportedNetworks"
+								"shortText": "List of the supported networks. <br>\nGets from this._walletConnectService.supportedNetworks"
 							},
 							"type": {
 								"type": "array",
@@ -12025,43 +10734,6 @@
 					]
 				},
 				{
-					"id": 989,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 68,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 990,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
-					}
-				},
-				{
 					"id": 994,
 					"name": "onNetworkOptionClick",
 					"kind": 2048,
@@ -12072,7 +10744,7 @@
 					"sources": [
 						{
 							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 110,
+							"line": 122,
 							"character": 9
 						}
 					],
@@ -12083,6 +10755,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Switch to selected network. <br>\nHide Network dropdown menu. <br>"
+							},
 							"parameters": [
 								{
 									"id": 996,
@@ -12090,6 +10765,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "network to switch.\n"
+									},
 									"type": {
 										"type": "reference",
 										"id": 848,
@@ -12115,7 +10793,7 @@
 					"sources": [
 						{
 							"fileName": "lib/network-dropdown/network-dropdown.component.ts",
-							"line": 106,
+							"line": 113,
 							"character": 9
 						}
 					],
@@ -12126,6 +10804,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Open networks dropdown menu."
+							},
 							"parameters": [
 								{
 									"id": 993,
@@ -12159,8 +10840,6 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						987,
-						986,
 						985,
 						984,
 						981
@@ -12177,7 +10856,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						989,
 						994,
 						991
 					]
@@ -12415,10 +11093,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
+						"isPublic": true,
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link customize} - It's an `@Input()` parameter.\nYou can customize overlay.\nThis is an optional parameter."
+						"shortText": "You can customize overlay. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -12436,7 +11115,7 @@
 						{
 							"fileName": "lib/overlay/overlay.component.ts",
 							"line": 18,
-							"character": 11
+							"character": 9
 						}
 					],
 					"type": {
@@ -12450,9 +11129,11 @@
 					"name": "overlayClicked",
 					"kind": 1024,
 					"kindString": "Property",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"comment": {
-						"shortText": "{@link overlayClicked} - It's an `@Output()` parameter.\nEmits when overlay was clicked."
+						"shortText": "Emits when overlay was clicked."
 					},
 					"decorators": [
 						{
@@ -12469,8 +11150,8 @@
 					"sources": [
 						{
 							"fileName": "lib/overlay/overlay.component.ts",
-							"line": 24,
-							"character": 12
+							"line": 22,
+							"character": 9
 						}
 					],
 					"type": {
@@ -12498,7 +11179,7 @@
 					"sources": [
 						{
 							"fileName": "lib/overlay/overlay.component.ts",
-							"line": 26,
+							"line": 25,
 							"character": 9
 						}
 					],
@@ -12509,6 +11190,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Emit {@link overlayClicked} event."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -12596,9 +11280,11 @@
 					"name": "progress",
 					"kind": 1024,
 					"kindString": "Property",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"comment": {
-						"shortText": "{@link progress} - It's an `@Input()` parameter.\nSets progress value.\nThis is required parameter."
+						"shortText": "Sets progress value. <br>\nIt's required parameter."
 					},
 					"decorators": [
 						{
@@ -12616,7 +11302,7 @@
 						{
 							"fileName": "lib/progress-bar/progress-bar.component.ts",
 							"line": 16,
-							"character": 11
+							"character": 9
 						}
 					],
 					"type": {
@@ -12629,9 +11315,11 @@
 					"name": "total",
 					"kind": 1024,
 					"kindString": "Property",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"comment": {
-						"shortText": "{@link total} - It's an `@Input()` parameter.\nSets total value for the progress.\nYou might never use it.\nThis is an optional parameter. The default value is 100."
+						"shortText": "Sets total value for the progress. <br>\nYou might never use it. <br>\nIt's an optional parameter. <br>\nThe default value is 100."
 					},
 					"decorators": [
 						{
@@ -12648,8 +11336,8 @@
 					"sources": [
 						{
 							"fileName": "lib/progress-bar/progress-bar.component.ts",
-							"line": 24,
-							"character": 11
+							"line": 25,
+							"character": 9
 						}
 					],
 					"type": {
@@ -12663,12 +11351,14 @@
 					"name": "currentProgress",
 					"kind": 262144,
 					"kindString": "Accessor",
-					"flags": {},
+					"flags": {
+						"isPublic": true
+					},
 					"sources": [
 						{
 							"fileName": "lib/progress-bar/progress-bar.component.ts",
-							"line": 28,
-							"character": 6
+							"line": 31,
+							"character": 13
 						}
 					],
 					"getSignature": [
@@ -12678,97 +11368,15 @@
 							"kind": 524288,
 							"kindString": "Get signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Returns current progress value"
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "number"
 							}
 						}
 					]
-				},
-				{
-					"id": 1023,
-					"name": "ngOnChanges",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/progress-bar/progress-bar.component.ts",
-							"line": 36,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 1024,
-							"name": "ngOnChanges",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"parameters": [
-								{
-									"id": 1025,
-									"name": "changes",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "reference",
-										"qualifiedName": "SimpleChanges",
-										"package": "@angular/core",
-										"name": "SimpleChanges"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnChanges.ngOnChanges"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnChanges.ngOnChanges"
-					}
-				},
-				{
-					"id": 1021,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/progress-bar/progress-bar.component.ts",
-							"line": 32,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 1022,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
-					}
 				}
 			],
 			"groups": [
@@ -12792,14 +11400,6 @@
 					"kind": 262144,
 					"children": [
 						1019
-					]
-				},
-				{
-					"title": "Methods",
-					"kind": 2048,
-					"children": [
-						1023,
-						1021
 					]
 				}
 			],
@@ -12855,7 +11455,7 @@
 					"sources": [
 						{
 							"fileName": "lib/ripple/directives/ripple/ripple.directive.ts",
-							"line": 24,
+							"line": 26,
 							"character": 2
 						}
 					],
@@ -12914,10 +11514,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
+						"isPublic": true,
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link customClass} - It's an `@Input()` parameter.\nSets custom class to the ripple element.\nThis is an optional parameter."
+						"shortText": "Sets custom class to the ripple element. <br>\nIt's an optional parameter."
 					},
 					"decorators": [
 						{
@@ -12935,68 +11536,13 @@
 						{
 							"fileName": "lib/ripple/directives/ripple/ripple.directive.ts",
 							"line": 14,
-							"character": 11
+							"character": 9
 						}
 					],
 					"type": {
 						"type": "intrinsic",
 						"name": "string"
 					}
-				},
-				{
-					"id": 1035,
-					"name": "onMousedown",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"decorators": [
-						{
-							"name": "HostListener",
-							"type": {
-								"type": "reference",
-								"qualifiedName": "HostListenerDecorator",
-								"package": "@angular/core",
-								"name": "HostListener"
-							},
-							"arguments": {
-								"eventName": "'mousedown'",
-								"args": "[ '$event' ]"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "lib/ripple/directives/ripple/ripple.directive.ts",
-							"line": 18,
-							"character": 43
-						}
-					],
-					"signatures": [
-						{
-							"id": 1036,
-							"name": "onMousedown",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"parameters": [
-								{
-									"id": 1037,
-									"name": "e",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "intrinsic",
-										"name": "any"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
 				},
 				{
 					"id": 1038,
@@ -13009,7 +11555,7 @@
 					"sources": [
 						{
 							"fileName": "lib/ripple/directives/ripple/ripple.directive.ts",
-							"line": 29,
+							"line": 32,
 							"character": 9
 						}
 					],
@@ -13020,6 +11566,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Sets style to HTMLElement"
+							},
 							"parameters": [
 								{
 									"id": 1040,
@@ -13093,7 +11642,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1035,
 						1038
 					]
 				}
@@ -13185,7 +11733,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link aucSetStyleProps} - It's an `@Input()` parameter.\nUsed for setting style properties to the element.\nYou can use set properties in your scss.\nEx: aucSetStyleProps = {name: '--text-color: 'red'}.\nIn your scss file you can use it: color: var(--text-color);"
+						"shortText": "Used for setting style properties to the element. <br>\nYou can use set properties in your scss. <br>\nEx: aucSetStyleProps = {name: '--text-color: 'red'}. <br>\nIn your scss file you can use it: color: var(--text-color).\nIt's required parameter."
 					},
 					"decorators": [
 						{
@@ -13226,41 +11774,6 @@
 					}
 				},
 				{
-					"id": 274,
-					"name": "ngOnChanges",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/directives/set-style-props/set-style-props.directive.ts",
-							"line": 24,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 275,
-							"name": "ngOnChanges",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnChanges.ngOnChanges"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnChanges.ngOnChanges"
-					}
-				},
-				{
 					"id": 276,
 					"name": "setProperty",
 					"kind": 2048,
@@ -13271,7 +11784,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/set-style-props/set-style-props.directive.ts",
-							"line": 28,
+							"line": 30,
 							"character": 9
 						}
 					],
@@ -13282,6 +11795,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Sets property to nativeElement"
+							},
 							"parameters": [
 								{
 									"id": 278,
@@ -13326,7 +11842,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						274,
 						276
 					]
 				}
@@ -13520,10 +12035,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
+						"isPublic": true,
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link color} - It's an `@Input()` parameter.\nSets theme of the spinner.\nIt's an optional parameter. The default value is #4678F0 - blue.\nYou can use constant {@link AsColors} or use other colors by yourself."
+						"shortText": "Sets theme of the spinner. <br>\nIt's an optional parameter. <br>\nThe default value is #4678F0 - blue. <br>\nYou can use constant {@link AsColors} or use other colors by yourself."
 					},
 					"decorators": [
 						{
@@ -13540,8 +12056,8 @@
 					"sources": [
 						{
 							"fileName": "lib/spinner/spinner.component.ts",
-							"line": 33,
-							"character": 11
+							"line": 36,
+							"character": 9
 						}
 					],
 					"type": {
@@ -13556,10 +12072,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
+						"isPublic": true,
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link diameter} - It's an `@Input()` parameter.\nSets diameter for the spinner.\nThis is an optional parameter. The default value is 40."
+						"shortText": "Sets diameter for the spinner. <br>\nIt's an optional parameter. <br>\nThe default value is 40."
 					},
 					"decorators": [
 						{
@@ -13576,8 +12093,8 @@
 					"sources": [
 						{
 							"fileName": "lib/spinner/spinner.component.ts",
-							"line": 18,
-							"character": 11
+							"line": 19,
+							"character": 9
 						}
 					],
 					"type": {
@@ -13587,39 +12104,16 @@
 					"defaultValue": "40"
 				},
 				{
-					"id": 1136,
-					"name": "parts",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/spinner/spinner.component.ts",
-							"line": 35,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "array",
-						"elementType": {
-							"type": "intrinsic",
-							"name": "any"
-						}
-					},
-					"defaultValue": "..."
-				},
-				{
 					"id": 1134,
 					"name": "width",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
+						"isPublic": true,
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link width} - It's an `@Input()` parameter.\nВets the thickness of the spinnerю\nThis is an optional parameter. The default value is 4."
+						"shortText": "Sets the thickness of the spinner. <br>\nIt's an optional parameter. <br>\nThe default value is 4."
 					},
 					"decorators": [
 						{
@@ -13636,8 +12130,8 @@
 					"sources": [
 						{
 							"fileName": "lib/spinner/spinner.component.ts",
-							"line": 25,
-							"character": 11
+							"line": 27,
+							"character": 9
 						}
 					],
 					"type": {
@@ -13661,7 +12155,6 @@
 					"children": [
 						1135,
 						1133,
-						1136,
 						1134
 					]
 				}
@@ -13724,6 +12217,9 @@
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Sort directions"
+					},
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
@@ -13768,7 +12264,7 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 49,
+							"line": 46,
 							"character": 9
 						}
 					],
@@ -13798,7 +12294,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "Sets table data. <br>\nIt's required parameter."
+						"shortText": "Table data. <br>\nIt's required parameter."
 					},
 					"decorators": [
 						{
@@ -13815,7 +12311,7 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 34,
+							"line": 30,
 							"character": 9
 						}
 					],
@@ -13837,10 +12333,13 @@
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Table headers"
+					},
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 59,
+							"line": 57,
 							"character": 9
 						}
 					],
@@ -13860,10 +12359,11 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isPublic": true
+						"isPublic": true,
+						"isOptional": true
 					},
 					"comment": {
-						"shortText": "If true the Load more button will be visible. <br>\nIt's' an optional parameter. <br>\nThe default value is false."
+						"shortText": "Shows load more button. <br>\nIf true the Load more button will be visible. <br>\nIt's' an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -13880,7 +12380,7 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 42,
+							"line": 39,
 							"character": 9
 						}
 					],
@@ -13916,7 +12416,7 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 53,
+							"line": 50,
 							"character": 9
 						}
 					],
@@ -13960,7 +12460,7 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 57,
+							"line": 54,
 							"character": 9
 						}
 					],
@@ -13978,45 +12478,6 @@
 						"name": "EventEmitter"
 					},
 					"defaultValue": "..."
-				},
-				{
-					"id": 1165,
-					"name": "test",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/table/table.component.ts",
-							"line": 61,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "reference",
-						"typeArguments": [
-							{
-								"type": "union",
-								"types": [
-									{
-										"type": "intrinsic",
-										"name": "string"
-									},
-									{
-										"type": "intrinsic",
-										"name": "number"
-									}
-								]
-							},
-							{
-								"type": "intrinsic",
-								"name": "boolean"
-							}
-						],
-						"name": "TestInterface"
-					}
 				},
 				{
 					"id": 1155,
@@ -14041,7 +12502,7 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 24,
+							"line": 20,
 							"character": 13
 						}
 					],
@@ -14080,7 +12541,7 @@
 					]
 				},
 				{
-					"id": 1166,
+					"id": 1165,
 					"name": "onLoadMore",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14096,11 +12557,14 @@
 					],
 					"signatures": [
 						{
-							"id": 1167,
+							"id": 1166,
 							"name": "onLoadMore",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Emit {@link loadMore} event."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -14109,7 +12573,7 @@
 					]
 				},
 				{
-					"id": 1168,
+					"id": 1167,
 					"name": "sortBy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14119,20 +12583,23 @@
 					"sources": [
 						{
 							"fileName": "lib/table/table.component.ts",
-							"line": 67,
+							"line": 68,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1169,
+							"id": 1168,
 							"name": "sortBy",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Emit {@link sort} event."
+							},
 							"parameters": [
 								{
-									"id": 1170,
+									"id": 1169,
 									"name": "sort",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14144,7 +12611,7 @@
 									}
 								},
 								{
-									"id": 1171,
+									"id": 1170,
 									"name": "columnIndex",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14181,8 +12648,7 @@
 						1163,
 						1159,
 						1161,
-						1162,
-						1165
+						1162
 					]
 				},
 				{
@@ -14196,21 +12662,21 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1166,
-						1168
+						1165,
+						1167
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "lib/table/table.component.ts",
-					"line": 18,
+					"line": 14,
 					"character": 13
 				}
 			]
 		},
 		{
-			"id": 1208,
+			"id": 1207,
 			"name": "AucTransactionService",
 			"kind": 128,
 			"kindString": "Class",
@@ -14229,7 +12695,7 @@
 			],
 			"children": [
 				{
-					"id": 1212,
+					"id": 1211,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -14237,20 +12703,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 33,
+							"line": 37,
 							"character": 2
 						}
 					],
 					"signatures": [
 						{
-							"id": 1213,
+							"id": 1212,
 							"name": "new AucTransactionService",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1214,
+									"id": 1213,
 									"name": "_http",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14263,7 +12729,7 @@
 									}
 								},
 								{
-									"id": 1215,
+									"id": 1214,
 									"name": "_walletConnectService",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14277,14 +12743,14 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 1208,
+								"id": 1207,
 								"name": "AucTransactionService"
 							}
 						}
 					]
 				},
 				{
-					"id": 1219,
+					"id": 1218,
 					"name": "transactionsChanged$",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -14294,17 +12760,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 29,
+							"line": 33,
 							"character": 13
 						}
 					],
 					"getSignature": [
 						{
-							"id": 1220,
+							"id": 1219,
 							"name": "transactionsChanged$",
 							"kind": 524288,
 							"kindString": "Get signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Emits when transactions change. <br>\nYou can subscribe on it."
+							},
 							"type": {
 								"type": "reference",
 								"typeArguments": [
@@ -14325,7 +12794,7 @@
 					]
 				},
 				{
-					"id": 1233,
+					"id": 1232,
 					"name": "clearTransactions",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14335,17 +12804,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 113,
+							"line": 120,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1234,
+							"id": 1233,
 							"name": "clearTransactions",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Clear transactions list"
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -14354,7 +12826,7 @@
 					]
 				},
 				{
-					"id": 1223,
+					"id": 1222,
 					"name": "dispose",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14364,13 +12836,13 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 68,
+							"line": 72,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1224,
+							"id": 1223,
 							"name": "dispose",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -14383,7 +12855,7 @@
 					]
 				},
 				{
-					"id": 1235,
+					"id": 1234,
 					"name": "getRemoteTransactions",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14393,29 +12865,43 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 126,
+							"line": 133,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1236,
+							"id": 1235,
 							"name": "getRemoteTransactions",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Method gor getting remote transactions from blockchain."
+								"shortText": "Gets remote transactions from blockchain. <br>"
 							},
 							"parameters": [
 								{
-									"id": 1237,
+									"id": 1236,
 									"name": "address",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "wallet address."
+										"shortText": "wallet address. <br>"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								},
+								{
+									"id": 1237,
+									"name": "chainId",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "0x-prefixed hexadecimal string. <br>"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -14424,26 +12910,12 @@
 								},
 								{
 									"id": 1238,
-									"name": "chainId",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {
-										"shortText": "0x-prefixed hexadecimal string."
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "string"
-									}
-								},
-								{
-									"id": 1239,
 									"name": "page",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "number of the page. Uses for pagination."
+										"shortText": "number of the page. Uses for pagination. <br>"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -14452,13 +12924,13 @@
 									"defaultValue": "1"
 								},
 								{
-									"id": 1240,
+									"id": 1239,
 									"name": "offset",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Uses for pagination.\n"
+										"shortText": "uses for pagination.\n"
 									},
 									"type": {
 										"type": "intrinsic",
@@ -14467,14 +12939,14 @@
 									"defaultValue": "100"
 								},
 								{
-									"id": 1241,
+									"id": 1240,
 									"name": "sortDirection",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1253,
+										"id": 1252,
 										"name": "AucSortDirection"
 									},
 									"defaultValue": "AUC_SORT_DIRECTION.ASC"
@@ -14497,7 +12969,7 @@
 					]
 				},
 				{
-					"id": 1231,
+					"id": 1230,
 					"name": "markAsViewed",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14507,17 +12979,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 106,
+							"line": 112,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1232,
+							"id": 1231,
 							"name": "markAsViewed",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Marks transactions as viewed"
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -14526,7 +13001,7 @@
 					]
 				},
 				{
-					"id": 1221,
+					"id": 1220,
 					"name": "refreshTransactions",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14536,17 +13011,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 57,
+							"line": 61,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1222,
+							"id": 1221,
 							"name": "refreshTransactions",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Refresh transactions"
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -14555,7 +13033,7 @@
 					]
 				},
 				{
-					"id": 1225,
+					"id": 1224,
 					"name": "saveTransaction",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14565,20 +13043,23 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 74,
+							"line": 79,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1226,
+							"id": 1225,
 							"name": "saveTransaction",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "add transaction to the list"
+							},
 							"parameters": [
 								{
-									"id": 1227,
+									"id": 1226,
 									"name": "chainId",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14589,7 +13070,7 @@
 									}
 								},
 								{
-									"id": 1228,
+									"id": 1227,
 									"name": "name",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14600,7 +13081,7 @@
 									}
 								},
 								{
-									"id": 1229,
+									"id": 1228,
 									"name": "hash",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14611,7 +13092,7 @@
 									}
 								},
 								{
-									"id": 1230,
+									"id": 1229,
 									"name": "status",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14632,7 +13113,7 @@
 					]
 				},
 				{
-					"id": 1209,
+					"id": 1208,
 					"name": "getTransactionApiUrl",
 					"kind": 2048,
 					"kindString": "Method",
@@ -14642,30 +13123,28 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 47,
+							"line": 50,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1210,
+							"id": 1209,
 							"name": "getTransactionApiUrl",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"returns": "API url buy chainId. <br>\nSupported networks {@link BlockExplorerApiUrl}`. <br>\nYou can add your custom API url when init library {@link AucNetworkOption.blockExplorerApiUrl}.\n"
+								"shortText": "Supported networks {@link BlockExplorerApiUrl}`. <br>\nYou can add your custom API url when init library {@link AucNetworkOption.blockExplorerApiUrl}. <br>",
+								"returns": "API url by chainId.\n"
 							},
 							"parameters": [
 								{
-									"id": 1211,
+									"id": 1210,
 									"name": "chainId",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
-									"comment": {
-										"shortText": "0x-prefixed hexadecimal string."
-									},
 									"type": {
 										"type": "intrinsic",
 										"name": "string"
@@ -14685,27 +13164,27 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1212
+						1211
 					]
 				},
 				{
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						1219
+						1218
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1233,
-						1223,
-						1235,
-						1231,
-						1221,
-						1225,
-						1209
+						1232,
+						1222,
+						1234,
+						1230,
+						1220,
+						1224,
+						1208
 					]
 				}
 			],
@@ -14718,7 +13197,7 @@
 			]
 		},
 		{
-			"id": 1172,
+			"id": 1171,
 			"name": "AucTransactionsHistoryComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -14739,7 +13218,7 @@
 			],
 			"children": [
 				{
-					"id": 1173,
+					"id": 1172,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -14747,20 +13226,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 37,
+							"line": 47,
 							"character": 2
 						}
 					],
 					"signatures": [
 						{
-							"id": 1174,
+							"id": 1173,
 							"name": "new AucTransactionsHistoryComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1175,
+									"id": 1174,
 									"name": "_dialogService",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14772,7 +13251,7 @@
 									}
 								},
 								{
-									"id": 1176,
+									"id": 1175,
 									"name": "_cdr",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -14785,77 +13264,28 @@
 									}
 								},
 								{
-									"id": 1177,
+									"id": 1176,
 									"name": "_transactionService",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1208,
+										"id": 1207,
 										"name": "AucTransactionService"
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
-								"id": 1172,
+								"id": 1171,
 								"name": "AucTransactionsHistoryComponent"
 							}
 						}
 					]
 				},
 				{
-					"id": 1183,
-					"name": "BTN_APPEARANCE",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 33,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"id": 109,
-							"name": "AUC_BUTTON_APPEARANCE"
-						}
-					},
-					"defaultValue": "AUC_BUTTON_APPEARANCE"
-				},
-				{
-					"id": 1182,
-					"name": "COLORS",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 32,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "query",
-						"queryType": {
-							"type": "reference",
-							"name": "AS_COLOR_GROUP"
-						}
-					},
-					"defaultValue": "AS_COLOR_GROUP"
-				},
-				{
-					"id": 1178,
+					"id": 1177,
 					"name": "disabled",
 					"kind": 1024,
 					"kindString": "Property",
@@ -14863,7 +13293,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link disabled} - It's an `@Input()` parameter.\nWhether the button is disabled.\nThis is an optional parameter. The default value is false."
+						"shortText": "Whether the button is disabled. <br>\nIt's an optional parameter. <br>\nThe default value is false."
 					},
 					"decorators": [
 						{
@@ -14891,107 +13321,7 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 1179,
-					"name": "hasFailedTx",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 29,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
-					"id": 1180,
-					"name": "hasPendingTx",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 30,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					},
-					"defaultValue": "false"
-				},
-				{
-					"id": 1181,
-					"name": "txCount",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 31,
-							"character": 9
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "number"
-					},
-					"defaultValue": "0"
-				},
-				{
-					"id": 1185,
-					"name": "ngOnInit",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 44,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 1186,
-							"name": "ngOnInit",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnInit.ngOnInit"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnInit.ngOnInit"
-					}
-				},
-				{
-					"id": 1187,
+					"id": 1186,
 					"name": "onTransactionsClick",
 					"kind": 2048,
 					"kindString": "Method",
@@ -15001,17 +13331,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 67,
+							"line": 79,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1188,
+							"id": 1187,
 							"name": "onTransactionsClick",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Opens Recent Transaction Dialog."
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -15025,27 +13358,21 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1173
+						1172
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1183,
-						1182,
-						1178,
-						1179,
-						1180,
-						1181
+						1177
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1185,
-						1187
+						1186
 					]
 				}
 			],
@@ -15066,7 +13393,7 @@
 			]
 		},
 		{
-			"id": 1191,
+			"id": 1190,
 			"name": "AucTransactionsHistoryModalComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -15087,7 +13414,7 @@
 			],
 			"children": [
 				{
-					"id": 1192,
+					"id": 1191,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -15101,14 +13428,14 @@
 					],
 					"signatures": [
 						{
-							"id": 1193,
+							"id": 1192,
 							"name": "new AucTransactionsHistoryModalComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1194,
+									"id": 1193,
 									"name": "_config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -15119,7 +13446,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 1189,
+												"id": 1188,
 												"name": "AucRecentTransactionsModalData"
 											}
 										],
@@ -15127,7 +13454,7 @@
 									}
 								},
 								{
-									"id": 1195,
+									"id": 1194,
 									"name": "_dialogRef",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -15145,28 +13472,28 @@
 									}
 								},
 								{
-									"id": 1196,
+									"id": 1195,
 									"name": "_transactionService",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1208,
+										"id": 1207,
 										"name": "AucTransactionService"
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
-								"id": 1191,
+								"id": 1190,
 								"name": "AucTransactionsHistoryModalComponent"
 							}
 						}
 					]
 				},
 				{
-					"id": 1198,
+					"id": 1197,
 					"name": "data",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15182,12 +13509,12 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1189,
+						"id": 1188,
 						"name": "AucRecentTransactionsModalData"
 					}
 				},
 				{
-					"id": 1197,
+					"id": 1196,
 					"name": "transactions$",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15219,7 +13546,7 @@
 					}
 				},
 				{
-					"id": 1201,
+					"id": 1200,
 					"name": "ngOnDestroy",
 					"kind": 2048,
 					"kindString": "Method",
@@ -15235,7 +13562,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1202,
+							"id": 1201,
 							"name": "ngOnDestroy",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -15256,7 +13583,7 @@
 					}
 				},
 				{
-					"id": 1199,
+					"id": 1198,
 					"name": "onCloseClick",
 					"kind": 2048,
 					"kindString": "Method",
@@ -15272,7 +13599,7 @@
 					],
 					"signatures": [
 						{
-							"id": 1200,
+							"id": 1199,
 							"name": "onCloseClick",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -15290,23 +13617,23 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1192
+						1191
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1198,
-						1197
+						1197,
+						1196
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1201,
-						1199
+						1200,
+						1198
 					]
 				}
 			],
@@ -15327,7 +13654,7 @@
 			]
 		},
 		{
-			"id": 1203,
+			"id": 1202,
 			"name": "AucTransactionsListComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -15348,28 +13675,28 @@
 			],
 			"children": [
 				{
-					"id": 1204,
+					"id": 1203,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
 					"flags": {},
 					"signatures": [
 						{
-							"id": 1205,
+							"id": 1204,
 							"name": "new AucTransactionsListComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"type": {
 								"type": "reference",
-								"id": 1203,
+								"id": 1202,
 								"name": "AucTransactionsListComponent"
 							}
 						}
 					]
 				},
 				{
-					"id": 1207,
+					"id": 1206,
 					"name": "emptyText",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15378,7 +13705,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link emptyText} - It's an `@Input()` parameter. <br>\nSets text if no transactions. <br>\nThis is an optional parameter. The default value is \"Your transactions will appear here...\""
+						"shortText": "Showed text if no transactions. <br>\nIt's an optional parameter. <br>\nThe default value is \"Your transactions will appear here...\""
 					},
 					"decorators": [
 						{
@@ -15395,7 +13722,7 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-list/transactions-list.component.ts",
-							"line": 27,
+							"line": 26,
 							"character": 9
 						}
 					],
@@ -15406,7 +13733,7 @@
 					"defaultValue": "'Your transactions will appear here...'"
 				},
 				{
-					"id": 1206,
+					"id": 1205,
 					"name": "transactions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -15414,7 +13741,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link transactions} - It's an `@Input()` parameter. <br>\nSets transactions list. <br>\nThis is required parameter."
+						"shortText": "Transactions list. <br>\nIt's required parameter."
 					},
 					"decorators": [
 						{
@@ -15431,7 +13758,7 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-list/transactions-list.component.ts",
-							"line": 19,
+							"line": 18,
 							"character": 9
 						}
 					],
@@ -15450,15 +13777,15 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1204
+						1203
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1207,
-						1206
+						1206,
+						1205
 					]
 				}
 			],
@@ -15582,7 +13909,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1208,
+										"id": 1207,
 										"name": "AucTransactionService"
 									}
 								}
@@ -15940,7 +14267,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/trigger/trigger.directive.ts",
-							"line": 55,
+							"line": 65,
 							"character": 2
 						}
 					],
@@ -16002,7 +14329,7 @@
 						"isPublic": true
 					},
 					"comment": {
-						"shortText": "{@link onShowHide} - It's an `@Output()` parameter.\nEmits show/hide state.\nIf opened - true.\nIf closed - false."
+						"shortText": "Emits show/hide state.  <br>\nIf opened - true. <br>\nIf closed - false."
 					},
 					"decorators": [
 						{
@@ -16019,7 +14346,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/trigger/trigger.directive.ts",
-							"line": 27,
+							"line": 26,
 							"character": 9
 						}
 					],
@@ -16045,10 +14372,13 @@
 					"flags": {
 						"isPublic": true
 					},
+					"comment": {
+						"shortText": "Emits opened status. <br>\nYou can subscribe on it."
+					},
 					"sources": [
 						{
 							"fileName": "lib/directives/trigger/trigger.directive.ts",
-							"line": 32,
+							"line": 38,
 							"character": 9
 						}
 					],
@@ -16076,7 +14406,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link triggerClass} - It's an `@Input()` parameter.\nYou can customize element when opened status.\nThis is an optional parameter. By default, used auc-trigger-opened."
+						"shortText": "You can customize element when opened status. <br>\nIt's an optional parameter. <br>\nBy default, used auc-trigger-opened."
 					},
 					"decorators": [
 						{
@@ -16104,35 +14434,6 @@
 					"defaultValue": "'auc-trigger-opened'"
 				},
 				{
-					"id": 297,
-					"name": "nativeElement",
-					"kind": 262144,
-					"kindString": "Accessor",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/directives/trigger/trigger.directive.ts",
-							"line": 51,
-							"character": 13
-						}
-					],
-					"getSignature": [
-						{
-							"id": 298,
-							"name": "nativeElement",
-							"kind": 524288,
-							"kindString": "Get signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "any"
-							}
-						}
-					]
-				},
-				{
 					"id": 289,
 					"name": "opened",
 					"kind": 262144,
@@ -16143,7 +14444,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/trigger/trigger.directive.ts",
-							"line": 34,
+							"line": 41,
 							"character": 13
 						}
 					],
@@ -16154,66 +14455,12 @@
 							"kind": 524288,
 							"kindString": "Get signature",
 							"flags": {},
+							"comment": {
+								"returns": "is opened"
+							},
 							"type": {
 								"type": "intrinsic",
 								"name": "boolean"
-							}
-						}
-					]
-				},
-				{
-					"id": 294,
-					"name": "onClick",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"decorators": [
-						{
-							"name": "HostListener",
-							"type": {
-								"type": "reference",
-								"qualifiedName": "HostListenerDecorator",
-								"package": "@angular/core",
-								"name": "HostListener"
-							},
-							"arguments": {
-								"eventName": "'click'",
-								"args": "[ '$event' ]"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "lib/directives/trigger/trigger.directive.ts",
-							"line": 44,
-							"character": 39
-						}
-					],
-					"signatures": [
-						{
-							"id": 295,
-							"name": "onClick",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"parameters": [
-								{
-									"id": 296,
-									"name": "e",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"type": {
-										"type": "reference",
-										"qualifiedName": "MouseEvent",
-										"package": "typescript",
-										"name": "MouseEvent"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
 							}
 						}
 					]
@@ -16229,7 +14476,7 @@
 					"sources": [
 						{
 							"fileName": "lib/directives/trigger/trigger.directive.ts",
-							"line": 59,
+							"line": 73,
 							"character": 9
 						}
 					],
@@ -16240,6 +14487,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Sets show or hide status."
+							},
 							"parameters": [
 								{
 									"id": 301,
@@ -16284,7 +14534,6 @@
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						297,
 						289
 					]
 				},
@@ -16292,7 +14541,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						294,
 						299
 					]
 				}
@@ -16330,13 +14578,6 @@
 					"kind": 512,
 					"kindString": "Constructor",
 					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 235,
-							"character": 2
-						}
-					],
 					"signatures": [
 						{
 							"id": 1051,
@@ -16363,7 +14604,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 65,
+							"line": 57,
 							"character": 13
 						}
 					],
@@ -16375,7 +14616,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link accountsChanged$} It's getter. <br>\nEmits when account was changed. <br>\nYou can subscribe on it."
+								"shortText": "Emits when account was changed. <br>\nYou can subscribe on it."
 							},
 							"type": {
 								"type": "reference",
@@ -16406,7 +14647,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 119,
+							"line": 105,
 							"character": 13
 						}
 					],
@@ -16418,7 +14659,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link balanceChanged$} It's getter. <br>\nEmits when balance was changed. <br>\nYou can subscribe on it."
+								"shortText": "Emits when balance was changed. <br>\nYou can subscribe on it."
 							},
 							"type": {
 								"type": "reference",
@@ -16446,7 +14687,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 180,
+							"line": 157,
 							"character": 13
 						}
 					],
@@ -16458,7 +14699,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link cantFindAddingNetwork$} It's getter. <br>\nEmits when adding new network and config doesn't exist. <br>\nYou can subscribe on it and show some message to user."
+								"shortText": "Emits when adding new network and config doesn't exist. <br>\nYou can subscribe on it and show some message to user."
 							},
 							"type": {
 								"type": "reference",
@@ -16486,7 +14727,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 74,
+							"line": 65,
 							"character": 13
 						}
 					],
@@ -16498,7 +14739,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link chainChanged$} It's getter. <br>\nEmits when chain was changed. <br>\nYou can subscribe on it."
+								"shortText": "Emits when chain was changed. <br>\nYou can subscribe on it."
 							},
 							"type": {
 								"type": "reference",
@@ -16526,7 +14767,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 83,
+							"line": 73,
 							"character": 13
 						}
 					],
@@ -16538,7 +14779,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link connectChanged$} It's getter. <br>\nEmits when connect event. Emits from Metamask {@link AUC_ETH_EVENTS.CONNECT} event. <br>\nYou can subscribe on it."
+								"shortText": "Emits when connect event. Emits from Metamask {@link AUC_ETH_EVENTS.CONNECT} event. <br>\nYou can subscribe on it."
 							},
 							"type": {
 								"type": "reference",
@@ -16567,7 +14808,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 47,
+							"line": 40,
 							"character": 13
 						}
 					],
@@ -16579,8 +14820,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link connectionState} It's getter.",
-								"returns": "current connection state.\n"
+								"returns": "current connection state."
 							},
 							"type": {
 								"type": "reference",
@@ -16601,7 +14841,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 92,
+							"line": 81,
 							"character": 13
 						}
 					],
@@ -16613,7 +14853,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link disconnectChanged$} It's getter. <br>\nEmits when disconnect event. Emits from Metamask {@link AUC_ETH_EVENTS.DISCONNECT} event. <br>\nYou can subscribe on it."
+								"shortText": "Emits when disconnect event. Emits from Metamask {@link AUC_ETH_EVENTS.DISCONNECT} event. <br>\nYou can subscribe on it."
 							},
 							"type": {
 								"type": "reference",
@@ -16642,7 +14882,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 101,
+							"line": 89,
 							"character": 13
 						}
 					],
@@ -16654,7 +14894,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link messageChanged$} It's getter. <br>\nEmits when message events. Emits from Metamask {@link AUC_ETH_EVENTS.MESSAGE} event. <br>\nYou can subscribe on it."
+								"shortText": "Emits when message events. Emits from Metamask {@link AUC_ETH_EVENTS.MESSAGE} event. <br>\nYou can subscribe on it."
 							},
 							"type": {
 								"type": "reference",
@@ -16683,7 +14923,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 110,
+							"line": 97,
 							"character": 13
 						}
 					],
@@ -16695,7 +14935,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link networkChanged$} It's getter. <br>\nEmits when network was changed. <br>\nYou can subscribe on it."
+								"shortText": "Emits when network was changed. <br>\nYou can subscribe on it."
 							},
 							"type": {
 								"type": "reference",
@@ -16723,7 +14963,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 39,
+							"line": 35,
 							"character": 13
 						}
 					],
@@ -16735,7 +14975,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link onboard} It's getter. <br>\nThis library uses {@link Onboard} for connecting wallet.",
+								"shortText": "This library uses {@link Onboard} for connecting wallet. <br>",
 								"returns": "current {@link Onboard} instance.\n"
 							},
 							"type": {
@@ -16758,7 +14998,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 128,
+							"line": 113,
 							"character": 13
 						}
 					],
@@ -16770,7 +15010,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link selectedNetwork$} It's getter. <br>\nEmits when selected network. <br>\nYou can subscribe on it."
+								"shortText": "Emits when selected network. <br>\nYou can subscribe on it."
 							},
 							"type": {
 								"type": "reference",
@@ -16799,7 +15039,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 136,
+							"line": 118,
 							"character": 13
 						}
 					],
@@ -16811,8 +15051,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link supportedNetworks} It's getter. <br>",
-								"returns": "Supported networks list.\n"
+								"returns": "Supported networks list."
 							},
 							"type": {
 								"type": "array",
@@ -16832,8 +15071,8 @@
 							"kindString": "Set signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link supportedNetworks} It's setter. <br>\nSets supported networks list. <br>\nYou can set it in initialize method or set it later;",
-								"returns": "Supported networks list.\n"
+								"shortText": "Sets supported networks list.",
+								"returns": "Supported networks list."
 							},
 							"parameters": [
 								{
@@ -16870,7 +15109,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 30,
+							"line": 27,
 							"character": 13
 						}
 					],
@@ -16882,8 +15121,7 @@
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "{@link web3} It's getter.",
-								"returns": "current {@link Web3} instance.\n"
+								"returns": "current {@link Web3} instance."
 							},
 							"type": {
 								"type": "reference",
@@ -16905,7 +15143,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 360,
+							"line": 359,
 							"character": 9
 						}
 					],
@@ -16927,7 +15165,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Uses for adding new network to Metamask.\nThis Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}.\nYou can get it uses methood {@link aucGetChainParams}\n"
+										"shortText": "Uses for adding new network to Metamask.<br>\nThis Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}.<br>\nYou can get it uses method {@link aucGetChainParams}.\n"
 									},
 									"type": {
 										"type": "reference",
@@ -16970,7 +15208,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 288,
+							"line": 291,
 							"character": 9
 						}
 					],
@@ -16981,6 +15219,10 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Connect Wallet. <br>",
+								"returns": "Current connection state.\n"
+							},
 							"parameters": [
 								{
 									"id": 1104,
@@ -16988,6 +15230,9 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "If wallet already connected, will disconnect wallet if true and connect wallet again."
+									},
 									"type": {
 										"type": "intrinsic",
 										"name": "boolean"
@@ -17022,7 +15267,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 313,
+							"line": 317,
 							"character": 9
 						}
 					],
@@ -17033,6 +15278,9 @@
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "Disconnect wallet."
+							},
 							"type": {
 								"type": "reference",
 								"typeArguments": [
@@ -17059,7 +15307,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 244,
+							"line": 242,
 							"character": 9
 						}
 					],
@@ -17071,7 +15319,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "This library uses {@link Onboard} for initialization wallet connection.\nMore information about config {@link https://www.npmjs.com/package/bnc-onboard}."
+								"shortText": "This library uses {@link Onboard} for initialization wallet connection. <br>\nMore information about config {@link https://www.npmjs.com/package/bnc-onboard}. <br>"
 							},
 							"parameters": [
 								{
@@ -17160,7 +15408,7 @@
 					"sources": [
 						{
 							"fileName": "lib/services/wallet-connect/wallet-connect.service.ts",
-							"line": 334,
+							"line": 335,
 							"character": 9
 						}
 					],
@@ -17182,7 +15430,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "0x-prefixed hexadecimal string. <br>\nIf you don't have chainId, you can use helper {@link aucConvertChainIdToHex} to generate it.\n"
+										"shortText": "0x-prefixed hexadecimal string. You can use helper {@link aucConvertChainIdToHex}."
 									},
 									"type": {
 										"type": "intrinsic",
@@ -17715,12 +15963,12 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link color} - Sets theme of the address button. <br>\nIt's an optional parameter. The default value is blue. <br>\nYou can use enum {@link AS_COLOR_GROUP}."
+						"shortText": "{Sets theme of the address button. <br>\nYou can use enum {@link AS_COLOR_GROUP}. <br>\nIt's an optional parameter. <br>\nThe default value is blue. <br>"
 					},
 					"sources": [
 						{
 							"fileName": "lib/account-balance/interfaces/account-balance-address-config.interface.ts",
-							"line": 31,
+							"line": 32,
 							"character": 2
 						}
 					],
@@ -17738,7 +15986,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link disabled} - Whether the address button is disabled. <br>\nIt's an optional parameter. The default value is false. <br>"
+						"shortText": "Whether the address button is disabled. <br>\nIt's an optional parameter. The default value is false. <br>"
 					},
 					"sources": [
 						{
@@ -17761,7 +16009,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link identiconPosition} Controls identicon position. <br>\nIt's an optional parameter.  <br>\nYou can use enum ${@link AUC_IDENTICON_POSITION}"
+						"shortText": "Controls identicon position. <br>\nIt's an optional parameter.  <br>\nYou can use enum {@link AUC_IDENTICON_POSITION}"
 					},
 					"sources": [
 						{
@@ -17785,7 +16033,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link showIdenticon} - It's an `@Input()` parameter. <br>\nShow or hide account address identicon. <br>\nIt's an optional parameter. The default value is false. <br>"
+						"shortText": "Show or hide account address identicon. <br>\nIt's an optional parameter. <br>\nThe default value is false. <br>"
 					},
 					"sources": [
 						{
@@ -20293,7 +18541,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link blockExplorerApiUrl} - Ex: https://api.etherscan.io/api. <br>\nUsed for getting transactions information.\nYou can use {@link AucBlockExplorerUrls[chainId]} or set other url."
+						"shortText": "Ex: https://api.etherscan.io/api. <br>\nUsed for getting transactions information.\nYou can use {@link AucBlockExplorerUrls[chainId]} or set other url."
 					},
 					"sources": [
 						{
@@ -20314,7 +18562,7 @@
 					"kindString": "Property",
 					"flags": {},
 					"comment": {
-						"shortText": "{@link blockExplorerUrl} - Ex: https://etherscan.io. <br>\nYou can use {@link AucBlockExplorerUrls[chainId][0]} or set other url."
+						"shortText": "Ex: https://etherscan.io. <br>\nYou can use {@link AucBlockExplorerUrls[chainId][0]} or set other url."
 					},
 					"sources": [
 						{
@@ -20355,7 +18603,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link chainParams} - this params used for adding new network to the Metamask."
+						"shortText": "This params used for adding new network to the Metamask."
 					},
 					"sources": [
 						{
@@ -20397,7 +18645,7 @@
 					"kindString": "Property",
 					"flags": {},
 					"comment": {
-						"shortText": "{@link icon} - currency icon url"
+						"shortText": "Currency icon url"
 					},
 					"sources": [
 						{
@@ -20420,7 +18668,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "{@link isActive} - sets option as active"
+						"shortText": "Sets option as active"
 					},
 					"sources": [
 						{
@@ -20459,7 +18707,7 @@
 					"kindString": "Property",
 					"flags": {},
 					"comment": {
-						"shortText": "{@link symbol} -  currency symbol. You can use AucNativeCurrencies[chainID].name or other string."
+						"shortText": "Currency symbol. You can use AucNativeCurrencies[chainID].name or other string."
 					},
 					"sources": [
 						{
@@ -20670,7 +18918,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1252,
+						"id": 1251,
 						"name": "AucHorizontalPosition"
 					}
 				},
@@ -20691,7 +18939,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1251,
+						"id": 1250,
 						"name": "AucVerticalPosition"
 					}
 				}
@@ -20872,14 +19120,14 @@
 			]
 		},
 		{
-			"id": 1189,
+			"id": 1188,
 			"name": "AucRecentTransactionsModalData",
 			"kind": 256,
 			"kindString": "Interface",
 			"flags": {},
 			"children": [
 				{
-					"id": 1190,
+					"id": 1189,
 					"name": "header",
 					"kind": 1024,
 					"kindString": "Property",
@@ -20902,7 +19150,7 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1190
+						1189
 					]
 				}
 			],
@@ -21104,7 +19352,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1253,
+						"id": 1252,
 						"name": "AucSortDirection"
 					}
 				}
@@ -21938,7 +20186,7 @@
 			}
 		},
 		{
-			"id": 1252,
+			"id": 1251,
 			"name": "AucHorizontalPosition",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -21996,7 +20244,7 @@
 			}
 		},
 		{
-			"id": 1253,
+			"id": 1252,
 			"name": "AucSortDirection",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -22114,7 +20362,7 @@
 			}
 		},
 		{
-			"id": 1251,
+			"id": 1250,
 			"name": "AucVerticalPosition",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -22149,7 +20397,7 @@
 			"kindString": "Type alias",
 			"flags": {},
 			"comment": {
-				"shortText": "You can use supported icons from enum {@link AUC_WLC_ICON} or string;\nIf you want to use custom icon you need to provide url to the image as a string value."
+				"shortText": "You can use supported icons from enum {@link AUC_WLC_ICON} or string; <br>\nIf you want to use custom icon, you need to provide url to the image as a string value."
 			},
 			"sources": [
 				{
@@ -22798,7 +21046,7 @@
 			"sources": [
 				{
 					"fileName": "lib/helpers/convert-chainId-to-hex.helper.ts",
-					"line": 11,
+					"line": 8,
 					"character": 16
 				}
 			],
@@ -22810,8 +21058,7 @@
 					"kindString": "Call signature",
 					"flags": {},
 					"comment": {
-						"shortText": "This method uses for converting chainId as a number to 0x-prefixed hexadecimal string",
-						"text": "{@see AUC_CHAIN_ID} - Already converted Chains;\n"
+						"shortText": "This method uses for converting chainId as a number to 0x-prefixed hexadecimal string. <br>\n{@link AUC_CHAIN_ID} - Already converted Chains. <br>"
 					},
 					"parameters": [
 						{
@@ -22821,7 +21068,7 @@
 							"kindString": "Parameter",
 							"flags": {},
 							"comment": {
-								"shortText": "this is chainId as number.\nYou can use {@link AUC_CHAIN_ID_NUM} or your specific value.\n"
+								"shortText": "chainId as number. <br>\nYou can use {@link AUC_CHAIN_ID_NUM} or your specific value.\n"
 							},
 							"type": {
 								"type": "union",
@@ -23599,10 +21846,10 @@
 				1007,
 				1130,
 				1152,
-				1208,
-				1172,
-				1191,
-				1203,
+				1207,
+				1171,
+				1190,
+				1202,
 				912,
 				279,
 				1049,
@@ -23636,7 +21883,7 @@
 				858,
 				761,
 				764,
-				1189,
+				1188,
 				768,
 				266,
 				861,
@@ -23655,12 +21902,12 @@
 				9,
 				112,
 				383,
-				1252,
+				1251,
 				253,
-				1253,
+				1252,
 				911,
 				636,
-				1251,
+				1250,
 				679,
 				947,
 				153

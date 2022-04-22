@@ -23,19 +23,20 @@ export class AucTableComponent {
   };
 
   /**
-   * Sets table data. <br>
+   * Table data. <br>
    * It's required parameter.
    */
   @Input()
   public data: AucTableRow[] = [];
 
   /**
+   * Shows load more button. <br>
    * If true the Load more button will be visible. <br>
    * It's' an optional parameter. <br>
    * The default value is false.
    */
   @Input()
-  public isLoadMore: boolean = false;
+  public isLoadMore?: boolean = false;
 
   /**
    * Sets custom class to the table container. <br>
@@ -52,13 +53,18 @@ export class AucTableComponent {
   @Output()
   public sort: EventEmitter<AucSort> = new EventEmitter<AucSort>();
 
+  /** Table headers */
   public headers: AucTableHeaderItem[] = [];
+
+  /** Sort directions */
   public SORT_DIRECTION = AUC_SORT_DIRECTION;
 
+  /** Emit {@link loadMore} event. */
   public onLoadMore(): void {
     this.loadMore.emit();
   }
 
+  /** Emit {@link sort} event. */
   public sortBy(sort: AucSort, columnIndex: number): void {
     if (!sort || !this.headers[columnIndex]?.sort) {
       return;

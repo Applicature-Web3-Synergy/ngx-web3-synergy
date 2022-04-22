@@ -26,6 +26,10 @@ export class AucTransactionService {
   private _transactions: AucEtherscanTransactionLocalStorage[] = [];
   private _dispose: Subscription;
 
+  /**
+   * Emits when transactions change. <br>
+   * You can subscribe on it.
+   */
   public get transactionsChanged$(): Observable<AucEtherscanTransactionLocalStorage[]> {
     return this._transactionsChanged$.asObservable();
   }
@@ -39,10 +43,9 @@ export class AucTransactionService {
   }
 
   /**
-   * @param chainId - 0x-prefixed hexadecimal string.
-   * @returns API url buy chainId. <br>
    * Supported networks {@link BlockExplorerApiUrl}`. <br>
-   * You can add your custom API url when init library {@link AucNetworkOption.blockExplorerApiUrl}.
+   * You can add your custom API url when init library {@link AucNetworkOption.blockExplorerApiUrl}. <br>
+   * @returns API url by chainId.
    */
   static getTransactionApiUrl(chainId: string): string {
     const url: string = AucBlockExplorerApiUrl[chainId];
@@ -54,6 +57,7 @@ export class AucTransactionService {
     return url;
   }
 
+  /** Refresh transactions */
   public refreshTransactions(): void {
     this.dispose();
 
@@ -71,6 +75,7 @@ export class AucTransactionService {
     }
   }
 
+  /** add transaction to the list */
   public saveTransaction(chainId: string,
                          name: string,
                          hash: string,
@@ -103,6 +108,7 @@ export class AucTransactionService {
     this._refreshTransactions();
   }
 
+  /** Marks transactions as viewed */
   public markAsViewed(): void {
     this._transactions = this._transactions
       .map((tx: AucEtherscanTransactionLocalStorage) => ({ ...tx, viewed: true }));
@@ -110,6 +116,7 @@ export class AucTransactionService {
     this._refreshTransactions();
   }
 
+  /** Clear transactions list */
   public clearTransactions(): void {
     this._transactions = [];
 
@@ -117,11 +124,11 @@ export class AucTransactionService {
   }
 
   /**
-   * Method gor getting remote transactions from blockchain.
-   * @param address - wallet address.
-   * @param chainId - 0x-prefixed hexadecimal string.
-   * @param page - number of the page. Uses for pagination.
-   * @param offset - Uses for pagination.
+   * Gets remote transactions from blockchain. <br>
+   * @param address - wallet address. <br>
+   * @param chainId - 0x-prefixed hexadecimal string. <br>
+   * @param page - number of the page. Uses for pagination. <br>
+   * @param offset - uses for pagination.
    */
   public getRemoteTransactions(address: string,
                                chainId: string,
@@ -165,6 +172,7 @@ export class AucTransactionService {
     }
   }
 
+  /** @internal */
   private _pingTransactionsStatus(): void {
     const eth = this._walletConnectService.web3.eth;
 
@@ -185,18 +193,21 @@ export class AucTransactionService {
     this._refreshTransactions();
   }
 
+  /** @internal */
   private _getLocalStorageKey(): string {
     const { chainId, selectedAddress } = (window as any).ethereum as AucEthereum;
 
     return `${AUC_ETHERSCAN_TRANSACTIONS}[${selectedAddress}, ${chainId}]`.toUpperCase();
   }
 
+  /** @internal */
   private _refreshTransactions(): void {
     localStorage.setItem(this._getLocalStorageKey(), JSON.stringify(this._transactions));
 
     this._transactionsChanged$.next(this._transactions.slice());
   }
 
+  /** @internal */
   private _removeFromTransactions(hash: string): void {
     this._transactions = this._transactions.filter((tx) => tx.hash !== hash);
   }

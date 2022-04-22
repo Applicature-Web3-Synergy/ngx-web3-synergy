@@ -9,36 +9,42 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleCha
 })
 export class AucProgressBarComponent implements OnInit, OnChanges {
   /**
-   * {@link progress} - It's an `@Input()` parameter.
-   * Sets progress value.
-   * This is required parameter.
+   * Sets progress value. <br>
+   * It's required parameter.
    */
-  @Input() progress!: number;
+  @Input()
+  public progress!: number;
 
   /**
-   * {@link total} - It's an `@Input()` parameter.
-   * Sets total value for the progress.
-   * You might never use it.
-   * This is an optional parameter. The default value is 100.
+   * Sets total value for the progress. <br>
+   * You might never use it. <br>
+   * It's an optional parameter. <br>
+   * The default value is 100.
    */
-  @Input() total: number = 100;
+  @Input()
+  public total: number = 100;
 
+  /** @internal */
   private _progressVal: number;
 
-  get currentProgress(): number {
+  /** Returns current progress value */
+  public get currentProgress(): number {
     return this._progressVal;
   }
 
+  /** @internal */
   ngOnInit(): void {
     this.calculateData();
   }
 
+  /** @internal */
   ngOnChanges(changes: SimpleChanges) {
     if (!changes.total?.firstChange || !changes.progress?.firstChange) {
       this.calculateData();
     }
   }
 
+  /** @internal */
   private calculateData(): void {
     if (!this.progress) {
       this._progressVal = 0;

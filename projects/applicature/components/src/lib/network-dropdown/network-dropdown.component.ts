@@ -19,10 +19,9 @@ import { AucNoNetworkConfigComponent, AucNoNetworkConfigDialogDataI } from './no
 })
 export class AucNetworkDropdownComponent implements OnInit {
   /**
-   * {@link networkDropdownConfig} - It's an `@Input()` parameter.
-   * You can customize dropdown position and overlay.
-   * This is an optional parameter.
-   * The default value is
+   * Customize dropdown <br>
+   * It's an optional parameter. <br>
+   * The default value is: <br>
    * {
    *   overlay: {
    *     transparent: true
@@ -45,17 +44,23 @@ export class AucNetworkDropdownComponent implements OnInit {
   }
 
   /**
-   * List of the supported networks. Gets from this._walletConnectService.supportedNetworks
+   * List of the supported networks. <br>
+   * Gets from this._walletConnectService.supportedNetworks
    */
   public get networkOptions(): AucNetworkOption[] {
     return this._walletConnectService.supportedNetworks;
   };
 
   public isWrongNetwork: boolean = false;
-  public isOptionsOpen: boolean = false;
   public currentNetwork!: AucNetworkOption;
+
+  /** @internal */
+  public isOptionsOpen: boolean = false;
+
+  /** @internal */
   public COLORS = AS_COLOR_GROUP;
 
+  /** @internal */
   private _sub: Subscription = new Subscription();
 
   constructor(
@@ -65,6 +70,7 @@ export class AucNetworkDropdownComponent implements OnInit {
     private _dialogService: AucDialogService
   ) {}
 
+  /** @internal */
   public ngOnInit(): void {
     this._sub.add(
       this._walletConnectService.selectedNetwork$
@@ -103,10 +109,16 @@ export class AucNetworkDropdownComponent implements OnInit {
     )
   }
 
+  /** Open networks dropdown menu. */
   public setOpened(opened: boolean): void {
     this.isOptionsOpen = opened;
   }
 
+  /**
+   * Switch to selected network. <br>
+   * Hide Network dropdown menu. <br>
+   * @param option - network to switch.
+   */
   public onNetworkOptionClick(option: AucNetworkOption): void {
     this.setOpened(false);
 

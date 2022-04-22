@@ -14,6 +14,7 @@ export interface DocFather {
   type?: DocType;
   comment?: {
     shortText?: string;
+    returns?: string;
   };
   signatures?: DocFather[];
   setSignature?: DocFather[];
@@ -26,6 +27,7 @@ export interface DocFather {
 export interface DocType {
   id?: number;
   name?: string;
+  qualifiedName?: string;
   elementType?: DocType;
   queryType?: DocType;
   declaration?: DocFather;
@@ -51,7 +53,9 @@ export interface DocFlags {
 export interface DocDecorator {
   name: string;
   arguments: {
-    hostPropertyName: string;
-    bindingPropertyName: string;
+    hostPropertyName?: string;
+    bindingPropertyName?: string;
+    opts?: string;
+    selector?: string;
   }
 }

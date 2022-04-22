@@ -14,34 +14,39 @@ import { AucSetStyleProp } from '../directives';
 })
 export class AucAvatarComponent implements OnChanges {
   /**
-   * {@link src} - It's an `@Input()` parameter.
-   * Sets provided image url as avatar otherwise default user icon will be shown.
+   * Sets provided image url as avatar otherwise default user icon will be shown. <br>
    * It's an optional parameter.
    */
   @Input()
   public src?: string;
 
   /**
-   * {@link size} - It's an `@Input()` parameter.
    * Sets size of the avatar.
-   * It's an optional parameter. The default value is 40.
+   * It's an optional parameter. <br>
+   * The default value is 40.
    */
   @Input()
-  public size: number = 40;
+  public size?: number = 40;
 
+  /** @internal */
   public iconStyleProperties: AucSetStyleProp[] = [];
+
+  /** @internal */
   public defaultUserIcon: AucWlcIcon = AUC_WLC_ICON.USER;
+
+  /** @internal */
   public defaultUserIconColor: string = AsColors[AS_COLOR_GROUP.WHITE].base;
 
   constructor() {
     this.setIconStylesProperty();
   }
 
-
+  /** @internal */
   ngOnChanges(): void {
     this.setIconStylesProperty();
   }
 
+  /** @internal */
   private setIconStylesProperty(): void {
     this.iconStyleProperties = [
       {

@@ -12,12 +12,11 @@ import { AucCustomizeDialogConfig } from '../../interfaces';
   exportAs: 'aucCustomizeDialog'
 })
 export class AucCustomizeDialogDirective implements OnInit {
-  /**
-   * {@link config} - configuration data for customization dialog.
-   */
+  /** Configuration data for customization dialog. */
   @Input()
   public config?: AucCustomizeDialogConfig;
 
+  /** @internal */
   private get isConfig(): boolean {
     return !!(Object.keys(this.config ?? {})).length;
   }
@@ -25,10 +24,12 @@ export class AucCustomizeDialogDirective implements OnInit {
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
   }
 
+  /** @internal */
   ngOnInit(): void {
     this.mapConfig();
   }
 
+  /** Sets classes to the nativeElement */
   public setClasses(classes: string[]): void {
     if (!classes.length) {
       return;
@@ -39,6 +40,7 @@ export class AucCustomizeDialogDirective implements OnInit {
     });
   }
 
+  /** Sets css styles to the nativeElement */
   public setStyle(style: string, value: string | number): void {
     if (!this._elementRef?.nativeElement || !style || (!value && value !== 0)) {
       return;
@@ -47,6 +49,7 @@ export class AucCustomizeDialogDirective implements OnInit {
     this._renderer2.setStyle(this._elementRef.nativeElement, style, value);
   }
 
+  /** @internal */
   public mapConfig(): void {
     if (!this.isConfig) {
       return;

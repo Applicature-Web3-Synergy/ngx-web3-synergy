@@ -33,7 +33,7 @@ export class DocumentationParserService {
   static sortByDecorator(
     docFather1: DocFather,
     docFather2: DocFather,
-    decorator: 'Input' | 'Output' | 'HostBinding' = 'Input'
+    decorator: 'Input' | 'Output' | 'HostBinding' | 'ViewChild' | 'HostListener' = 'Input'
   ): number {
     if (docFather1.decorators) {
       // Element1 has decorators.

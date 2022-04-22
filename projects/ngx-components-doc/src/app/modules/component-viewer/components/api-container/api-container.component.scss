@@ -2,6 +2,12 @@
 
 $code-section-width: 400px;
 
+.code-component-container {
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+}
+
 .component-title {
   margin-bottom: 30px;
 }

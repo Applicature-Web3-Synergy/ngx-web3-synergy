@@ -34,66 +34,65 @@ import { AucTransactionService } from '../transactions';
 })
 export class AucConnectWalletComponent implements OnInit, OnDestroy {
   /**
-   * {@link appearance} - It's an `@Input()` parameter. <br>
-   * Allows to control appearance components. Default is the button.
-   * It's an optional parameter. The default value is {@link AUC_CONNECT_WALLET_APPEARANCE.BUTTON}. <br>
-   * You can use enum {@link AUC_CONNECT_WALLET_APPEARANCE}.
+   * Allows to control appearance components. Default is the button. <br>
+   * You can use enum {@link AUC_CONNECT_WALLET_APPEARANCE}. <br>
+   * It's an optional parameter. <br>
+   * The default value is {@link AUC_CONNECT_WALLET_APPEARANCE.BUTTON}.
    */
   @Input()
-  public appearance: ConnectWalletAppearance = AUC_CONNECT_WALLET_APPEARANCE.BUTTON;
+  public appearance?: ConnectWalletAppearance = AUC_CONNECT_WALLET_APPEARANCE.BUTTON;
 
   /**
-   * {@link disabled} - It's an `@Input()` parameter. <br>
    * Whether the button is disabled. <br>
-   * It's an optional parameter. The default value is false.
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public disabled: boolean = false;
+  public disabled?: boolean = false;
 
   /**
-   * {@link showBalance} - It's an `@Input()` parameter. <br>
    * Show/hide account balance. <br>
-   * It's an optional parameter. The default value is false.
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public showBalance: boolean = false;
+  public showBalance?: boolean = false;
 
   /**
-   * {@link showTransactions} - It's an `@Input()` parameter. <br>
    * Show/hide Recent transactions button <br>
-   * It's an optional parameter. The default value is false.
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public showTransactions: boolean = false;
+  public showTransactions?: boolean = false;
 
   /**
-   * {@link showNetworkOptions} - It's an `@Input()` parameter. <br>
    * Show/hide network options <br>
-   * It's an optional parameter. The default value is false.
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public showNetworkOptions: boolean = false;
+  public showNetworkOptions?: boolean = false;
 
   /**
-   * {@link account} - It's an `@Input()` parameter. <br>
-   * User account related information. Needs for {@link AucAccountButtonComponent}. <br>
-   * This is required parameter when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   * User account related information. <br>
+   * Needs for {@link AucAccountButtonComponent}. <br>
+   * It's an optional parameter, required when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
    */
   @Input()
   public account: AucAccountData;
 
   /**
-   * {@link accountOptions} - It's an `@Input()` parameter. <br>
-   * List of options in popover. Needs for {@link AucAccountButtonComponent}. <br>
-   * This is an optional parameter, uses only when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   * List of options in popover. <br>
+   * Needs for {@link AucAccountButtonComponent}. <br>
+   * It's an optional parameter, uses only when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
    */
   @Input()
   public accountOptions?: AucAccountOption[];
 
   /**
-   * {@link accountDropdownConfig} - It's an `@Input()` parameter. <br>
-   * You can customize dropdown position and overlay. <br>
-   * This is an optional parameter. <br>
+   * Customize account dropdown <br>
+   * It's an optional parameter. <br>
    * The default value is: <br>
    * {
    *   overlay: {
@@ -105,7 +104,8 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
    *   }
    * }
    */
-  @Input() accountDropdownConfig: AucDropdownConfig = {
+  @Input()
+  public accountDropdownConfig?: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
@@ -116,9 +116,8 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * {@link networkDropdownConfig} - It's an `@Input()` parameter. <br>
-   * You can customize dropdown position and overlay. <br>
-   * This is an optional parameter. <br>
+   * Customize networks dropdown <br>
+   * It's an optional parameter. <br>
    * The default value is: <br>
    * {
    *   overlay: {
@@ -130,7 +129,8 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
    *   }
    * }
    */
-  @Input() networkDropdownConfig?: AucDropdownConfig = {
+  @Input()
+  public networkDropdownConfig?: AucDropdownConfig = {
     overlay: {
       transparent: true
     },
@@ -140,37 +140,46 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     }
   }
 
-  /**
-   * {@link onConnect} - It's an `@Output()` parameter. <br>
-   * Emits an action when wallet was connected.
-   */
+  /** Emits an action when wallet was connected. */
   @Output()
   public onConnect: EventEmitter<AucConnectionState> = new EventEmitter<AucConnectionState>();
 
-  /**
-   * {@link onDisconnect} - It's an `@Output()` parameter. <br>
-   * Emits an action when wallet was disconnected.
-   */
+  /** Emits an action when wallet was disconnected. */
   @Output()
   public onDisconnect: EventEmitter<void> = new EventEmitter<void>();
 
-  /**
-   * {@link optionClicked} - It's an `@Output()` parameter. <br>
-   * Emits selected option from the list.
-   */
+  /** Emits selected option from the list. */
   @Output()
   public optionClicked: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
 
+  /** @internal */
   public accountAddress: string;
+
+  /** @internal */
   public identicon: HTMLDivElement;
+
+  /** @internal */
   public isConnected: boolean = false;
+
+  /** @internal */
   public hasFailedTx: boolean = false;
+
+  /** @internal */
   public hasPendingTx: boolean = false;
+
+  /** @internal */
   public txCount: number = 0;
+
+  /** @internal */
   public COLORS = AS_COLOR_GROUP;
+
+  /** @internal */
   public BALANCE_APPEARANCE = AUC_BALANCE_APPEARANCE;
+
+  /** @internal */
   public CONNECT_WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
+  /** @internal */
   private _sub: Subscription = new Subscription();
 
   constructor(
@@ -195,6 +204,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     );
   }
 
+  /** @internal */
   public ngOnInit(): void {
     this._sub.add(
       this._transactionService.transactionsChanged$
@@ -218,12 +228,14 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     );
   }
 
+  /** @internal */
   public ngOnDestroy(): void {
     if (aucCheckValueType(this._sub.unsubscribe, AUC_VALUE_TYPES.FUNCTION)) {
       this._sub.unsubscribe();
     }
   }
 
+  /** Shows  account modal. */
   public onAccountButtonClick(): void {
     if (this.disabled) {
       return;
@@ -254,6 +266,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     });
   }
 
+  /** Connect wallet and emit {@link onConnect} event. */
   public onConnectWalletClick(isDisconnect: boolean = false): void {
     if (this.disabled) {
       return;
@@ -265,6 +278,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
       })
   }
 
+  /** Disconnect wallet and emit {@link onDisconnect} event. */
   public onDisconnectWalletClick(): void {
     if (this.disabled) {
       return;
@@ -276,6 +290,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
       });
   }
 
+  /** Emit {@link optionClicked} event. */
   public optionAction(evt: AucAccountOption): void {
     this.optionClicked.emit(evt);
   }

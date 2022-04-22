@@ -1,4 +1,4 @@
-<div *ngFor="let componentDoc of componentsDocs">
+<div *ngFor="let componentDoc of componentsDocs" class="code-component-container">
   <h2 class="component-title">
     {{componentDoc.component}}
   </h2>
@@ -12,8 +12,8 @@
 
       <div *ngFor="let property of componentDoc.properties" class="doc-api-section-item">
         <div class="doc-api-code">
-          <code *ngFor="let decorator of property.decorators" class="code-decorator">
-            @{{decorator.name}}({{decorator?.arguments?.hostPropertyName || decorator?.arguments?.bindingPropertyName}})
+          <code *ngFor="let decorator of getDecorators(property?.decorators)" class="code-decorator">
+            {{decorator}}
           </code>
 
           <code class="code-property">
@@ -40,8 +40,8 @@
       <div *ngFor="let accessor of componentDoc.accessors" class="doc-api-section-item full-width">
         <ng-container *ngIf="getMethodAsSting(accessor) as acs">
           <div class="doc-api-code full-width as-title">
-            <code class="code-decorator" *ngIf="acs.decorators">
-              {{acs.decorators}}
+            <code class="code-decorator" *ngFor="let decorator of acs.decorators">
+              {{decorator}}
             </code>
 
             <code class="code-property">
@@ -57,15 +57,15 @@
     </section>
   </doc-example-card>
 
-
   <doc-example-card title="Methods" *ngIf="componentDoc.methods?.length">
     <section class="doc-api-table-section">
       <div *ngFor="let method of componentDoc.methods" class="doc-api-section-item full-width">
         <ng-container *ngIf="getMethodAsSting(method) as mth">
           <div class="doc-api-code full-width as-title">
-            <code class="code-decorator" *ngIf="mth.decorators">
-              {{mth.decorators}}
+            <code class="code-decorator" *ngFor="let decorator of mth.decorators">
+              {{decorator}}
             </code>
+
             <code class="code-property">
               <i>{{mth?.code}}</i>
             </code>
@@ -80,6 +80,6 @@
   </doc-example-card>
 </div>
 
-<code *ngIf="!wasLoaded" style="white-space: normal;">
+<code class="code-component-container" *ngIf="!wasLoaded" style="white-space: normal;">
   Ops! Something went wrong.
 </code>
