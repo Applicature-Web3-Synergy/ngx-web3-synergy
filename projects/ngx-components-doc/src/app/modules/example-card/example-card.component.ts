@@ -11,7 +11,7 @@ import { ExampleCardTab } from './interfaces';
 })
 export class ExampleCardComponent {
   @Input() tabs?: ExampleCardTab[];
-  @Input() title?: string;
+  @Input() label?: string;
 
   public showCode = false;
 
