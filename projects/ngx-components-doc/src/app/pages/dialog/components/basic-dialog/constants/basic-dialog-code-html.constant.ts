@@ -17,4 +17,4 @@ export const BasicDialogCodeHtml = `<div class="doc-grid-container">
     </auc-button>
   </div>
 </div>
-`
+`;

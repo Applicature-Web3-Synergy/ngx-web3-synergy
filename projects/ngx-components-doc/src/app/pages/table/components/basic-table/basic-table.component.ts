@@ -1,4 +1,4 @@
-/** Dont forget import { AucTableModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucTableModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

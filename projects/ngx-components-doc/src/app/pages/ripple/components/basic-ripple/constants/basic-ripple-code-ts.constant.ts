@@ -1,4 +1,5 @@
-export const BasicRippleCodeTs = `/** Dont forget import { AucRippleModule } from '@applicature/components'; to your module */
+export const BasicRippleCodeTs =
+  `/** Don't forget import { AucRippleModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -10,5 +11,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicRippleComponent {
+
 }
 `;

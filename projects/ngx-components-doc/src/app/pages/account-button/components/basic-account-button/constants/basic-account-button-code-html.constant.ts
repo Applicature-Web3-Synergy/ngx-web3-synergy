@@ -11,6 +11,7 @@ export const BasicAccountButtonCodeHtml = `<div class="doc-grid-container">
     <auc-account-button [account]="{ name: 'Account Name', image: 'assets/img/ex-avatar.png'}"
                         [options]="accountOptions"
                         [accountDropdownConfig]="accountDropdownConfig"
+                        [size]="50"
                         (optionClick)="onOptionClick($event)"
     >
     </auc-account-button>

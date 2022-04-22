@@ -1,4 +1,5 @@
-export const BasicInputCodeTs = `/** Dont forget import { AucInputModule } from '@applicature/components'; to your module */
+export const BasicInputCodeTs =
+  `/** Don't forget import { AucInputModule } from '@applicature/components'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 

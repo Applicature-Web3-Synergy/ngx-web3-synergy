@@ -1,4 +1,5 @@
-export const ConnectWalletAsIconCodeTs = `/** Dont forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
+export const ConnectWalletAsIconCodeTs =
+  `/** Don't forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

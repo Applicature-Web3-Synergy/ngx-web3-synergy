@@ -1,4 +1,5 @@
-export const CustomizedNetworkDropdownCodeTs = `/** Dont forget import { AucNetworkDropdownModule } from '@applicature/components'; to your module */
+export const CustomizedNetworkDropdownCodeTs =
+  `/** Don't forget import { AucNetworkDropdownModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

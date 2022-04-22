@@ -1,4 +1,5 @@
-export const BasicProgressBarCodeTs = `/** Dont forget import { AucProgressBarModule } from '@applicature/components'; to your module */
+export const BasicProgressBarCodeTs =
+  `/** Don't forget import { AucProgressBarModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

@@ -1,9 +1,9 @@
-/** Dont forget import { AucButtonModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { AUC_DIALOG_POSITIONS, AucDialogConfig, AucDialogRef, AucDialogService } from '@applicature/components';
-import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -108,6 +108,5 @@ export class CustomDialogComponent {
       console.log('Dialog opened: ', result);
     });
   }
-
 
 }

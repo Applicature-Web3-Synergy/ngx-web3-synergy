@@ -1,4 +1,5 @@
-export const BasicCopyToClipboardCodeTs = `/** Dont forget import { AucCopyToClipboardModule } from '@applicature/components'; to your module */
+export const BasicCopyToClipboardCodeTs =
+  `/** Don't forget import { AucCopyToClipboardModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

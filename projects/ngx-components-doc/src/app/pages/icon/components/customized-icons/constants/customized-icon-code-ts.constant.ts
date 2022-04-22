@@ -1,4 +1,5 @@
-export const CustomizedIconCodeTs = `/** Dont forget import { AucIconModule } from '@applicature/components'; to your module */
+export const CustomizedIconCodeTs = `
+/** Don't forget import { AucIconModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 

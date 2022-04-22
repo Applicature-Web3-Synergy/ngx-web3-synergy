@@ -1,9 +1,11 @@
-export const BasicAccountBalanceCodeTs = `/** Dont forget import { AucAccountBalanceModule } from '@applicature/components'; to your module */
+export const BasicAccountBalanceCodeTs =
+  `/** Don't forget import { AucAccountBalanceModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AUC_BALANCE_APPEARANCE, AUC_IDENTICON_POSITION } from '@applicature/components';
 import { AS_COLOR_GROUP } from '@applicature/styles';
+
 
 @Component({
   selector: 'doc-basic-account-balance',

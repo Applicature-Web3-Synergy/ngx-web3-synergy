@@ -28,7 +28,7 @@ export const BasicButtonCodeHtml = `<div class="doc-grid-container">
   </div>
 
   <div class="doc-grid-item">
-    <auc-button label="Transparent" [transparent] = true (onClick)="onClick($event)"></auc-button>
+    <auc-button label="Transparent" [transparent]=true (onClick)="onClick($event)"></auc-button>
   </div>
 
   <div class="doc-grid-item">
