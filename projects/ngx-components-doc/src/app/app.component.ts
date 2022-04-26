@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Inject, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, Observable, takeUntil } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
+import { MatSidenav } from '@angular/material/sidenav/sidenav';
 import { BaseSubscriber } from '@applicature/components';
 
-import { RouterHelperService } from './services/router-helper/router-helper.service';
+import { RouterHelperService } from './services/router-helper';
 
 
 @Component({
@@ -15,15 +17,43 @@ import { RouterHelperService } from './services/router-helper/router-helper.serv
 })
 export class AppComponent extends BaseSubscriber {
   public currentPageTitle$: Observable<string> = this.routerHelperService.currentPageTitle$;
+  public isMobile = false;
+  private resize$: Subject<void> = new Subject();
 
-  constructor(private router: Router, private routerHelperService: RouterHelperService) {
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
+  @HostListener('window:resize') public onResize(): void {
+    this.resize$.next();
+  }
+
+  constructor(@Inject(DOCUMENT) private document: Document,
+              private router: Router,
+              private routerHelperService: RouterHelperService
+  ) {
     super();
+    this.checkIsMobile();
 
     this.router.events
       .pipe(
         filter((event: any) => event instanceof NavigationEnd),
         takeUntil(this.notifier)
       )
-      .subscribe((e: NavigationEnd) => this.routerHelperService.activeUrl = e.url);
+      .subscribe((e: NavigationEnd) => {
+        this.routerHelperService.activeUrl = e.url;
+
+        if (this.isMobile) {
+          this.sidenav.opened = false;
+        }
+      });
+
+    this.resize$
+      .pipe(takeUntil(this.notifier))
+      .subscribe(() => {
+        this.checkIsMobile();
+      })
+  }
+
+  checkIsMobile(startMobileWidth: number = 959): void {
+   this.isMobile = (document?.body?.offsetWidth || 0) <= startMobileWidth;
   }
 }

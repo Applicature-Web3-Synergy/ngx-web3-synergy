@@ -2,11 +2,62 @@
 
 .main-header-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: c.$header-height;
   background: c.$header-bg;
-  color: c.$white-text-color;
   padding: c.$main-vertical-padding c.$main-horizontal-padding;
+}
+
+.doc-main-header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: calc(100% - 45px);
+}
+
+.doc-main-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 45px;
+}
+
+.main-header-content-container {
+  display: none;
+}
+
+.header-logo {
+  color: c.$white-text-color;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.doc-header-git {
+  display: block;
+  width: 40px;
+  height: 40px;
+
+  img {
+    width: 100%;
+  }
+}
+
+@media (max-width: map-get(c.$grid-breakpoints, lg)) {
+  .main-header-container {
+    padding: c.$main-vertical-mobile-padding c.$main-horizontal-mobile-padding;
+  }
+
+  .main-header-content-container {
+    display: block;
+    width: 45px;
+  }
+
+  .main-header {
+    width: calc(100% - 45px);
+    text-align: center;
+  }
 }

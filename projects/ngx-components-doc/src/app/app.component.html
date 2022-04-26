@@ -1,11 +1,22 @@
 <doc-header>
-<!--    <button mat-button *ngIf="mobileView" (click)="sidenav.toggle()">Toggle</button>-->
+  <button mat-mini-fab
+          aria-label="Menu icon"
+          class="main-menu-toggle"
+          (click)="sidenav.toggle()"
+          *ngIf="isMobile"
+  >
+    <mat-icon>{{sidenav?.opened ? 'close' : 'menu'}}</mat-icon>
+  </button>
 </doc-header>
 
-<main>
+<div>
   <mat-sidenav-container class="doc-sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened class="doc-sidenav"
-                 [fixedInViewport]="false" [fixedTopGap]="0"
+    <mat-sidenav #sidenav
+                 *ngIf="isMobile"
+                 [mode]="isMobile ? 'over' : 'side'"
+                 [opened]="!isMobile"
+                 class="doc-sidenav"
+                 [fixedInViewport]="isMobile" [fixedTopGap]="isMobile ? 55 : 0"
                  [fixedBottomGap]="0">
       <doc-main-menu></doc-main-menu>
     </mat-sidenav>
@@ -15,10 +26,16 @@
         <h2 class="doc-sidenav-title">{{currentPageTitle$ | async}}</h2>
       </div>
 
-      <div class="main-page-container">
-        <router-outlet></router-outlet>
-      </div>
+      <main class="doc-main-container" [class.doc-desktop]="!isMobile">
+        <doc-main-menu class="doc-sidenav doc-desktop-menu" *ngIf="!isMobile"></doc-main-menu>
+
+        <div class="main-page-container">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+
+      <doc-footer></doc-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</main>
+</div>
 

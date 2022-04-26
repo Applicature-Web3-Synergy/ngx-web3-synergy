@@ -76,3 +76,21 @@ doc-example-card {
 .code-property {
   white-space: pre-line
 }
+
+@media (max-width: map-get(c.$grid-breakpoints, md)) {
+  .doc-api-section-item {
+    flex-wrap: wrap;
+    word-break: break-word;
+  }
+
+  .doc-api-code {
+    width: 100%;
+    flex-wrap: wrap;
+    border-right: none;
+  }
+
+  .doc-api-description {
+    width: 100%;
+    padding-top: 0;
+  }
+}

@@ -5,7 +5,10 @@ $border-radius: 8px;
 $header-height: 55px;
 $main-horizontal-padding: 30px;
 $main-vertical-padding: 20px;
+$main-horizontal-mobile-padding: 15px;
+$main-vertical-mobile-padding: 20px;
 $card-padding: 20px;
+$card-mobile-padding: 15px;
 
 
 // Colors
@@ -19,3 +22,13 @@ $side-nav-bg: #fff;
 $side-nav-active-bg: map-get(c.$gray, 2);
 $border-color: map-get(c.$gray, 2);
 $main-bg-color: map-get(c.$gray, 1);
+
+// Breakpoints
+$grid-breakpoints: (
+  xs: 374px,
+  sm: 576px,
+  md: 767px,
+  lg: 959px,
+  xl: 1200px,
+  xxl: 1400px
+);

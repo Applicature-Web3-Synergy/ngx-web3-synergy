@@ -6,3 +6,9 @@
   border-radius: c.$border-radius;
   padding: c.$card-padding;
 }
+
+@media (max-width: map-get(c.$grid-breakpoints, sm)) {
+  :host {
+    padding: c.$card-mobile-padding;
+  }
+}
