@@ -1,5 +1,4 @@
-@import "../../../../../../styles/src/lib/scss/functions";
-@import "../../../../../../styles/src/lib/scss/mixins";
+@use "../../../../../../styles/src/lib/scss/as-common" as c;
 
 .auc-transactions-list {
   display: flex;
@@ -19,21 +18,21 @@
   }
 
   a {
-    color: getColor(blue, base);
+    color: c.getColor(blue, base);
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     text-decoration: none;
     max-width: calc(100% - 25px);
-    @include transition;
-    @include text-overflow;
+    @include c.transition;
+    @include c.text-overflow;
 
     &:hover {
       text-decoration: underline;
     }
 
     &.fail {
-      color: getColor(red, base);
+      color: c.getColor(red, base);
     }
   }
 
@@ -43,17 +42,17 @@
     font-size: 20px;
 
     &.auc-transaction-status-fail {
-      color: getColor(red, base);
+      color: c.getColor(red, base);
     }
 
     &.auc-transaction-status-success {
-      color: getColor(green, base);
+      color: c.getColor(green, base);
     }
   }
 }
 
 .auc-transaction-empty {
-  color: getColor(grey, base);
+  color: c.getColor(grey, base);
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;

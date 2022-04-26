@@ -10,37 +10,46 @@ import { AucCustomClassDirective } from '../custom-class';
 })
 export class AucTriggerDirective {
   /**
-   * {@link triggerClass} - It's an `@Input()` parameter.
-   * You can customize element when opened status.
-   * This is an optional parameter. By default, used auc-trigger-opened.
+   * You can customize element when opened status. <br>
+   * It's an optional parameter. <br>
+   * By default, used auc-trigger-opened.
    */
   @Input()
   public triggerClass?: string = 'auc-trigger-opened';
 
   /**
-   * {@link onShowHide} - It's an `@Output()` parameter.
-   * Emits show/hide state.
-   * If opened - true.
+   * Emits show/hide state.  <br>
+   * If opened - true. <br>
    * If closed - false.
    */
   @Output()
   public onShowHide: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  /** @internal */
   private _customClass: AucCustomClassDirective;
+
+  /** @internal */
   private _isOpened: boolean = false;
 
+  /**
+   * Emits opened status. <br>
+   * You can subscribe on it.
+   */
   public opened$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this._isOpened);
 
+  /** @returns is opened */
   public get opened(): boolean {
     return this._isOpened;
   }
 
+  /** @internal */
   private set _opened(opened: boolean) {
     this._isOpened = opened;
     this.opened$.next(this.opened);
     this.onShowHide.emit(this.opened);
   }
 
+  /** @internal */
   @HostListener('click', [ '$event' ]) onClick(e: MouseEvent): void {
     e.preventDefault();
     e.stopPropagation();
@@ -48,6 +57,7 @@ export class AucTriggerDirective {
     this.showHide();
   }
 
+  /** @internal */
   public get nativeElement() {
     return this._elementRef?.nativeElement;
   }
@@ -56,6 +66,10 @@ export class AucTriggerDirective {
     this._customClass = new AucCustomClassDirective(this._renderer2, this._elementRef);
   }
 
+  /**
+   * Sets show or hide status.
+   * @param isOpen: isOpened status.
+   */
   public showHide(isOpen?: boolean): void {
     if ((isOpen ?? null) !== null) {
       this._opened = isOpen;

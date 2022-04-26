@@ -14,43 +14,42 @@ import { AUC_ALERT_POSITION } from './enums';
 })
 export class AucAlertComponent implements OnInit, OnChanges {
   /**
-   * {@link text} - It's an `@Input()` parameter.
-   * The message to show in the alert.
-   * This is required parameter.
+   * The message to show in the alert. <br>
+   * It's required parameter. <br>
    */
   @Input()
   public text!: string;
 
   /**
-   * {@link icon}  It's an `Input()` parameter.
-   * This sets the alert icon otherwise it’ll be hidden.
-   * You can use supported icons from enum {@link AUC_WLC_ICON} or string.
-   * If you want to use custom icon you need to provide url to the image as a string value.
+   * Sets Alert icon. <br>
+   * Supported icons from enum {@link AUC_WLC_ICON} or string. <br>
+   * If you want to use custom icon, you need to provide url to the image as a string value. <br>
    * It's an optional parameter.
-   * This is required parameter.
    */
   @Input()
-  public icon!: string;
+  public icon?: string;
 
   /**
-   * {@link iconPosition} - It's an `@Input()` parameter.
-   * Controls icon position.
-   * It's an optional parameter. The default value is right.
-   * You can use enum {@link AUC_ALERT_POSITION}
+   * Controls icon position. <br>
+   * You can use enum {@link AUC_ALERT_POSITION}. <br>
+   * It's an optional parameter. <br>
+   * The default value left.
    */
   @Input()
-  public iconPosition: AucAlertPosition = AUC_ALERT_POSITION.LEFT;
+  public iconPosition?: AucAlertPosition = AUC_ALERT_POSITION.LEFT;
 
   /**
-   * {@link color} - It's an `@Input()` parameter.
-   * Theme color palette for the alert. This sets the alert background color.
-   * It's an optional parameter. The default value is red.
+   * Theme color palette for the alert. Sets the alert background color. <br>
+   * It's an optional parameter. <br>
+   * The default value is red.
    */
   @Input()
   public color: AsColorGroup = AS_COLOR_GROUP.RED;
 
+  /** @internal */
   public styleProperties: AucSetStyleProp[] = [];
 
+  /** @internal */
   public get classNames(): { [el: string]: boolean } {
     return {
       ['auc-alert']: true,
@@ -59,10 +58,12 @@ export class AucAlertComponent implements OnInit, OnChanges {
     };
   }
 
+  /** @internal */
   public ngOnInit(): void {
     this.ngOnChanges();
   }
 
+  /** @internal */
   public ngOnChanges(): void {
     const { base, text } = AsColors[this.color] as AsColorProperties;
 

@@ -13,55 +13,58 @@ import { AUC_SORT_DIRECTION } from '../enums';
 })
 export class AucTableComponent {
   /**
-   * {@link tableHeaders} - It's an `@Input()` parameter.
-   * Sets table headers.
-   * This is required parameter.
+   * Sets table headers. <br>
+   * It's required parameter.
    */
-  @Input() set tableHeaders(headers: AucTableHeaderItem[]) {
+  @Input()
+  public set tableHeaders(headers: AucTableHeaderItem[]) {
     this.headers = headers.sort((a: AucTableHeaderItem, b: AucTableHeaderItem) =>
       a.position - b.position);
   };
 
   /**
-   * {@link data} - It's an `@Input()` parameter.
-   * Sets table data.
-   * This is required parameter.
+   * Table data. <br>
+   * It's required parameter.
    */
-  @Input() data: AucTableRow[] = [];
+  @Input()
+  public data: AucTableRow[] = [];
 
   /**
-   * {@link isLoadMore} - It's an `@Input()` parameter.
-   * If true the Load more button will be visible.
-   * This is an optional parameter. The default value is false
+   * Shows load more button. <br>
+   * If true the Load more button will be visible. <br>
+   * It's' an optional parameter. <br>
+   * The default value is false.
    */
-  @Input() isLoadMore: boolean = false;
+  @Input()
+  public isLoadMore?: boolean = false;
 
   /**
-   * {@link customize} - It's an `@Input()` parameter.
-   * Sets custom class to the table container.
-   * This is an optional parameter.
+   * Sets custom class to the table container. <br>
+   * It's an optional parameter.
    */
-  @Input() customClass?: string | string[];
+  @Input()
+  public customClass?: string | string[];
 
-  /**
-   * {@link loadMore} - It's an `@Output()` parameter.
-   * Emits when load more button was clicked.
-   */
-  @Output() loadMore: EventEmitter<void> = new EventEmitter<void>();
+  /** Emits event when load more button was clicked. */
+  @Output()
+  public loadMore: EventEmitter<void> = new EventEmitter<void>();
 
-  /**
-   * {@link sort} - It's an `@Output()` parameter.
-   * Emits when sort was clicked.
-   */
-  @Output() sort: EventEmitter<AucSort> = new EventEmitter<AucSort>();
+  /** Emits when sort was clicked. */
+  @Output()
+  public sort: EventEmitter<AucSort> = new EventEmitter<AucSort>();
 
+  /** Table headers */
   public headers: AucTableHeaderItem[] = [];
+
+  /** Sort directions */
   public SORT_DIRECTION = AUC_SORT_DIRECTION;
 
+  /** Emit {@link loadMore} event. */
   public onLoadMore(): void {
     this.loadMore.emit();
   }
 
+  /** Emit {@link sort} event. */
   public sortBy(sort: AucSort, columnIndex: number): void {
     if (!sort || !this.headers[columnIndex]?.sort) {
       return;

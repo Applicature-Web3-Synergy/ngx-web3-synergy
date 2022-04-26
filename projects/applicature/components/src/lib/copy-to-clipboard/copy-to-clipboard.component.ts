@@ -9,9 +9,9 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 })
 export class AucCopyToClipboardComponent {
   /**
-   * {@link value} - It's an `@Input()` parameter.
-   * The value which will be copied after click on copy btn.
-   * This is required parameter.
+   * The string to copy. <br>
+   * It's required parameter.
    */
-  @Input() value!: string;
+  @Input()
+  public value!: string;
 }

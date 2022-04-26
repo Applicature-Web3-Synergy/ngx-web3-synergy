@@ -7,7 +7,6 @@ import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
 })
 export class AucCustomClassDirective {
   /**
-   * {@link aucCustomClass} - It's an `@Input()` parameter.
    * Sets class / list of classes to the elements.
    */
   @Input()
@@ -16,10 +15,12 @@ export class AucCustomClassDirective {
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
   }
 
+  /** @internal */
   ngOnInit(): void {
     this.setClasses([].concat(this.aucCustomClass ?? []));
   }
 
+  /** Sets classes to the nativeElement */
   public setClasses(classes: string[]): void {
     if (!classes?.length) {
       return;
@@ -30,6 +31,7 @@ export class AucCustomClassDirective {
     });
   }
 
+  /** Remove classes from the nativeElement */
   public removeClasses(classes: string[]): void {
     if (!classes?.length) {
       return;

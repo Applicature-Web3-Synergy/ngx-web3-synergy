@@ -1,0 +1,66 @@
+@use 'common' as c;
+
+
+// Mat Tab
+.mat-tab-group {
+  .mat-tab-header {
+    border-bottom: 1px solid c.$border-color;
+  }
+
+  .mat-ink-bar {
+    background-color: map-get(c.$gray, 4) !important;
+  }
+
+  .mat-tab-label {
+    color: c.$title-color;
+    font-size: 16px;
+    font-weight: 500;
+    height: 60px;
+    min-width: 100px;
+
+    &.mat-tab-label-active {
+      color: c.$title-color;
+      font-weight: 700;
+      opacity: 1;
+    }
+  }
+
+  &.tabs-as-card {
+    background-color: c.$card-bg;
+    border-radius: c.$border-radius;
+
+    .mat-tab-header {
+      padding: 0 c.$card-padding;
+    }
+
+    .mat-tab-body-content {
+      padding: c.$card-padding;
+    }
+  }
+
+  &.doc-example-card-tabs {
+    .mat-tab-header {
+      padding: 0;
+    }
+
+    .mat-tab-body-content {
+      padding: 20px 0 0 0;
+    }
+  }
+
+}
+
+// End Mat Tab
+
+
+// Checkbox
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background
+.mat-checkbox-indeterminate,
+.mat-checkbox-checked {
+  &.mat-accent {
+    .mat-checkbox-background {
+      background-color: map-get(c.$blue, 2);
+    }
+  }
+}
+// End Checkbox

@@ -1,13 +1,12 @@
-@import "../../../../styles/src/lib/scss/functions";
-@import "../../../../styles/src/lib/scss/mixins";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: block;
   width: 32px;
   height: 32px;
-  color: getColor(grey, hover);
+  color: c.getColor(grey, hover);
   border-radius: 50%;
-  @include transition;
+  @include c.transition;
 
   .auc-copy-to-clipboard-button {
     width: 100%;
@@ -30,6 +29,6 @@
   }
 
   &:hover {
-    color: getColor(grey, base);
+    color: c.getColor(grey, base);
   }
 }

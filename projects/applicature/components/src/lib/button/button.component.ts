@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
@@ -15,144 +24,147 @@ import { AUC_IDENTICON_POSITION, AucIdenticonPosition, AucSetStyleProp } from '.
 })
 export class AucButtonComponent implements OnInit, OnChanges {
   /**
-   * {@link label} - It's an `@Input()` parameter.
-   * Text for the button label.
+   * Text for the button label. <br>
+   * It's an optional parameter, required if {@link appearance} equals to {@link AUC_BUTTON_APPEARANCE.FLAT}.
    */
   @Input()
-  public label: string;
+  public label?: string;
 
   /**
-   * {@link borderRadius} - It's an `@Input()` parameter.
-   * Sets borderRadius of the button.
-   * It's an optional parameter. The default value is 8.
+   * Sets borderRadius of the button. <br>
+   * It's an optional parameter. <br>
+   * The default value is 8.
    */
   @Input()
-  public borderRadius: number = 8;
+  public borderRadius?: number = 8;
 
   /**
-   * {@link color} - It's an `@Input()` parameter.
-   * Sets theme of the button.
-   * It's an optional parameter. The default value is blue.
+   * Sets theme of the button. <br>
+   * It's an optional parameter. <br>
+   * The default value is blue. <br>
    * You can use enum {@link AS_COLOR_GROUP}.
    */
   @Input()
-  public color: AsColorGroup = AS_COLOR_GROUP.BLUE;
+  public color?: AsColorGroup = AS_COLOR_GROUP.BLUE;
 
   /**
-   * {@link disabled} - It's an `@Input()` parameter.
-   * Whether the button is disabled.
-   * It's an optional parameter. The default value is false.
+   * Whether the button is disabled. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public disabled: boolean = false;
+  public disabled?: boolean = false;
 
   /**
-   * {@link adaptive} - It's an `@Input()` parameter.
-   * Whether the button is full width.
-   * It's an optional parameter. The default value is false.
+   * Whether the button is full width. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public adaptive: boolean = false;
+  public adaptive?: boolean = false;
 
   /**
-   * {@link height} - It's an `@Input()` parameter.
-   * Sets height of the button.
-   * It's an optional parameter. The default value is 40.
+   * Sets height of the button. <br>
+   * It's an optional parameter. <br>
+   * The default value is 40.
    */
   @Input()
-  public height: number = 40;
+  public height?: number = 40;
 
   /**
-   * {@link identicon} - It's an `@Input()` parameter.
-   * Shows identicon if provided.
+   * Shows identicon if provided. <br>
    * It's an optional parameter.
    */
   @Input()
-  public identicon: HTMLDivElement;
+  public identicon?: HTMLDivElement;
 
   /**
-   * {@link identiconPosition} - It's an `@Input()` parameter.
-   * Controls identicon position.
-   * It's an optional parameter. The default value is right;
-   * You can use enum ${@link AUC_IDENTICON_POSITION}
+   * Controls identicon position. <br>
+   * It's an optional parameter. <br>
+   * The default value is right. <br>
+   * You can use enum {@link AUC_IDENTICON_POSITION}
    */
   @Input()
-  public identiconPosition: AucIdenticonPosition = AUC_IDENTICON_POSITION.RIGHT;
+  public identiconPosition?: AucIdenticonPosition = AUC_IDENTICON_POSITION.RIGHT;
 
   /**
-   * {@link leftIcon} - It's an `@Input()` parameter.
-   * Shows left icon if provided.
-   * You can use supported icons from enum {@link AUC_WLC_ICON} or string;
-   * If you want to use custom icon you need to provide url to the image as a string value.
-   * It's an optional parameter.
-   */
-
-  @Input()
-  public leftIcon: string;
-
-  /**
-   * {@link rightIcon} - It's an `@Input()` parameter.
-   * Shows right icon if provided.
-   * You can use supported icons from enum {@link AUC_WLC_ICON} or string;
-   * If you want to use custom icon you need to provide url to the image as a string value.
+   * Shows left icon if provided. <br>
+   * You can use supported icons from enum {@link AUC_WLC_ICON} or string. <br>
+   * If you want to use custom icon, you need to provide url to the image as a string value. <br>
    * It's an optional parameter.
    */
   @Input()
-  public rightIcon: string;
+  public leftIcon?: string;
 
   /**
-   * {@link appearance} - It's an `@Input()` parameter.
-   * It's an optional parameter. The default value is flat.
-   * You can use enum {@link AUC_BUTTON_APPEARANCE}.
+   * Shows right icon if provided. <br>
+   * You can use supported icons from enum {@link AUC_WLC_ICON} or string. <br>
+   * If you want to use custom icon, you need to provide url to the image as a string value. <br>
+   * It's an optional parameter.
    */
   @Input()
-  public appearance: AucButtonAppearance = AUC_BUTTON_APPEARANCE.FLAT;
+  public rightIcon?: string;
 
   /**
-   * {@link transparent} - It's an `@Input()` parameter.
-   * Whether the button is transparent.
-   * It's an optional parameter. The default value is false.
+   * Sets button appearance. <br>
+   * You can use enum {@link AUC_BUTTON_APPEARANCE}. <br>
+   * It's an optional parameter. <br>
+   * The default value is flat.
    */
   @Input()
-  public transparent: boolean = false;
+  public appearance?: AucButtonAppearance = AUC_BUTTON_APPEARANCE.FLAT;
 
   /**
-   * {@link pending} - It's an `@Input()` parameter.
-   * Whether the button shows spinner.
-   * It's an optional parameter. The default value is false.
+   * Whether the button is transparent. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public pending: boolean = false;
+  public transparent?: boolean = false;
 
   /**
-   * {@link type} - It's an `@Input()` parameter.
-   * Standard HTMLButtonElement type {@link HTMLButtonElement.type}: 'button' | 'reset' | 'submit'.
-   * It's an optional parameter. The default value is button.
+   * Whether the button shows spinner. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
+   */
+  @Input()
+  public pending?: boolean = false;
+
+  /**
+   * Standard HTMLButtonElement type. <br>
+   * It's an optional parameter. <br>
+   * The default value is button.
    */
   @Input()
   public type: 'button' | 'reset' | 'submit' = 'button';
 
   /**
-   * {@link onClickEmitter} - It's an `@Output()` parameter.
-   * Emits an action when button was clicked.
+   * Emits an action when button was clicked. <br>
    * Emitted value is native click value.
    */
   @Output('onClick')
   public onClickEmitter: EventEmitter<any> = new EventEmitter<any>();
 
+  /** @internal */
   public styleProperties: AucSetStyleProp[] = [];
+
+  /** @internal */
   public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
 
-  get iconColor(): string {
+  /** @internal */
+  public get iconColor(): string {
     return this.color === AS_COLOR_GROUP.WHITE
-      ? AsColors[AS_COLOR_GROUP.GREY].base
+      ? AsColors[AS_COLOR_GROUP.GRAY].base
       : AsColors[AS_COLOR_GROUP.WHITE].base
   }
 
+  constructor(private _elRef: ElementRef) {}
+
+  /** @internal */
   public get classNames(): { [el: string]: boolean } {
     return {
       ['auc-button']: true,
-      [`auc-button-white`]: this.color === AS_COLOR_GROUP.WHITE,
+      [`auc-button-white`]: !this.transparent && this.color === AS_COLOR_GROUP.WHITE,
       ['auc-button-disabled']: this.disabled,
       ['auc-button-adaptive']: this.adaptive,
       ['auc-button-transparent']: this.transparent,
@@ -160,11 +172,35 @@ export class AucButtonComponent implements OnInit, OnChanges {
     };
   }
 
+  /** @internal */
   public ngOnInit(): void {
-    this.ngOnChanges();
+    this.setProperties();
   }
 
+  /** @internal */
   public ngOnChanges(): void {
+    this.setProperties();
+  }
+
+  /** Emit {@link onClickEmitter} event. */
+  public onClick(event: any): void {
+    if (this.disabled) {
+      return;
+    }
+
+    this.onClickEmitter.emit(event);
+  }
+
+  /** @internal */
+  private setProperties(): void {
+    if (this.adaptive) {
+      this._elRef.nativeElement.style.width = '100%';
+    }
+
+    if (this.transparent && this.color !== AS_COLOR_GROUP.WHITE) {
+      this.color = AS_COLOR_GROUP.WHITE;
+    }
+
     const colorProperties: AsColorProperties = AsColors[this.color || AS_COLOR_GROUP.BLUE];
 
     const colorProps: AucSetStyleProp[] = Object.keys(colorProperties || {})
@@ -182,13 +218,5 @@ export class AucButtonComponent implements OnInit, OnChanges {
       },
       ...(colorProps || [])
     ];
-  }
-
-  public onClick(event: any): void {
-    if (this.disabled) {
-      return;
-    }
-
-    this.onClickEmitter.emit(event);
   }
 }

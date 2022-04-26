@@ -19,7 +19,7 @@ import {
   AucBlockExplorerUrls,
   AucConnectWalletModule,
   AucNativeCurrencies,
-  AucBlockExplorerApiUrl
+  AucBlockExplorerApiUrl,
 } from '@applicature/components';
 
 import { AppComponent } from './app.component';

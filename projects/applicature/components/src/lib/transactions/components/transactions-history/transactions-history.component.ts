@@ -19,19 +19,29 @@ import { AucTransactionService } from '../../services';
 })
 export class AucTransactionsHistoryComponent implements OnInit {
   /**
-   * {@link disabled} - It's an `@Input()` parameter.
-   * Whether the button is disabled.
-   * This is an optional parameter. The default value is false.
+   * Whether the button is disabled. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
   public disabled: boolean = false;
 
+  /** @internal */
   public hasFailedTx: boolean = false;
+
+  /** @internal */
   public hasPendingTx: boolean = false;
+
+  /** @internal */
   public txCount: number = 0;
+
+  /** @internal */
   public COLORS = AS_COLOR_GROUP;
+
+  /** @internal */
   public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
 
+  /** @internal */
   private _sub: Subscription = new Subscription();
 
   constructor(
@@ -41,6 +51,7 @@ export class AucTransactionsHistoryComponent implements OnInit {
   ) {
   }
 
+  /** @internal */
   public ngOnInit(): void {
     this._sub.add(
       this._transactionService.transactionsChanged$
@@ -64,6 +75,7 @@ export class AucTransactionsHistoryComponent implements OnInit {
     );
   }
 
+  /** Opens Recent Transaction Dialog. */
   public onTransactionsClick(): void {
     if (this.disabled) {
       return;

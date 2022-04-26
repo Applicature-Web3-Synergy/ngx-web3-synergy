@@ -2,6 +2,7 @@
             *ngIf="!(hasFailedTx || hasPendingTx)"
             [color]="COLORS.WHITE"
             [appearance]="BTN_APPEARANCE.ICON"
+            [disabled]="disabled"
             leftIcon="wcl-icon-recent"
             (onClick)="onTransactionsClick()"
 >
@@ -11,6 +12,7 @@
             *ngIf="hasFailedTx && !hasPendingTx"
             [label]="txCount + ' failing'"
             [color]="COLORS.RED"
+            [disabled]="disabled"
             rightIcon="wcl-icon-fail"
             (onClick)="onTransactionsClick()"
 >
@@ -21,6 +23,7 @@
             [label]="txCount + ' pending'"
             [pending]="true"
             [color]="COLORS.WHITE"
+            [disabled]="disabled"
             (onClick)="onTransactionsClick()"
 >
 </auc-button>

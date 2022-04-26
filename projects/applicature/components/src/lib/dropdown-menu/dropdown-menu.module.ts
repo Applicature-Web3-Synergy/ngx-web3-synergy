@@ -14,7 +14,8 @@ import { AucDirectivesModule } from '../directives';
   ],
   exports: [
     AucDropdownMenuDirective,
-    AucDropdownMenuComponent
+    AucDropdownMenuComponent,
+    AucDirectivesModule
   ],
   imports: [
     CommonModule,

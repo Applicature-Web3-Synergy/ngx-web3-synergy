@@ -152,7 +152,12 @@
             "styles": [
               "projects/demo/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/applicature/styles/src/lib/scss"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -219,6 +224,166 @@
             ],
             "styles": [
               "projects/demo/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "ngx-components-doc": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/ngx-components-doc",
+      "sourceRoot": "projects/ngx-components-doc/src",
+      "prefix": "doc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-components-doc",
+            "index": "projects/ngx-components-doc/src/index.html",
+            "main": "projects/ngx-components-doc/src/main.ts",
+            "polyfills": "projects/ngx-components-doc/src/polyfills.ts",
+            "tsConfig": "projects/ngx-components-doc/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ngx-components-doc/src/favicon.ico",
+              "projects/ngx-components-doc/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/code-prettify/styles/desert.css",
+              "projects/ngx-components-doc/src/styles.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/applicature/styles/src/lib/scss",
+                "projects/ngx-components-doc/src/scss"
+              ]
+            },
+            "scripts": [
+              "node_modules/marked/marked.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "@metamask/jazzicon",
+              "web3",
+              "tweetnacl",
+              "ethereumjs-util",
+              "ethereumjs-common",
+              "rtcpeerconnection-shim",
+              "gridplus-sdk",
+              "buffer",
+              "sturdy-websocket",
+              "walletlink",
+              "@walletconnect/web3-provider",
+              "trezor-connect",
+              "@ensdomains/ensjs",
+              "eth-sig-util",
+              "ethereumjs-tx",
+              "eth-lattice-keyring",
+              "@ethereumjs/tx",
+              "@ethereumjs/common",
+              "@shapeshiftoss/hdwallet-keepkey-webusb",
+              "@shapeshiftoss/hdwallet-core",
+              "@gnosis.pm/safe-apps-sdk",
+              "@gnosis.pm/safe-apps-provider",
+              "eth-provider",
+              "@cvbb/eth-keyring",
+              "authereum",
+              "web3-provider-engine/subproviders/subscription",
+              "web3-provider-engine/subproviders/nonce-tracker",
+              "web3-provider-engine/subproviders/hooked-wallet",
+              "web3-provider-engine/subproviders/fixture",
+              "web3-provider-engine/subproviders/filters",
+              "web3-provider-engine/subproviders/cache",
+              "web3-provider-engine",
+              "@walletconnect/qrcode-modal",
+              "query-string",
+              "@walletconnect/environment",
+              "@walletconnect/socket-transport",
+              "@walletconnect/window-metadata",
+              "pump",
+              "eth-rpc-errors",
+              "@metamask/obs-store",
+              "@ledgerhq/devices/lib/hid-framing",
+              "@ensdomains/address-encoder",
+              "@babel/runtime/helpers/slicedToArray",
+              "create-hash"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-components-doc/src/environments/environment.ts",
+                  "with": "projects/ngx-components-doc/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-components-doc:build:production"
+            },
+            "development": {
+              "browserTarget": "ngx-components-doc:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-components-doc:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-components-doc/src/test.ts",
+            "polyfills": "projects/ngx-components-doc/src/polyfills.ts",
+            "tsConfig": "projects/ngx-components-doc/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-components-doc/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ngx-components-doc/src/favicon.ico",
+              "projects/ngx-components-doc/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-components-doc/src/styles.scss"
             ],
             "scripts": []
           }

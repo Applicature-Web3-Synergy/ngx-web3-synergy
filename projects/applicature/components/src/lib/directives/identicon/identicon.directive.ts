@@ -10,38 +10,40 @@ import { AUC_IDENTICON_POSITION } from './enums';
 })
 export class AucIdenticonDirective implements OnChanges {
   /**
-   * {@link aucIdenticon} - It's an `@Input()` parameter.
-   * Shows identicon if provided.
+   * Shows identicon if provided. <br>
    * It's an optional parameter.
    */
   @Input()
-  public aucIdenticon: HTMLDivElement;
+  public aucIdenticon?: HTMLDivElement;
 
   /**
-   * {@link position} - It's an `@Input()` parameter.
-   * Controls identicon position.
-   * It's an optional parameter. The default value is right;
-   * You can use enum {@link AUC_IDENTICON_POSITION}
+   * Controls identicon position. <br>
+   * You can use enum {@link AUC_IDENTICON_POSITION} <br>
+   * It's an optional parameter. <br>
+   * The default value is right;
    */
   @Input()
-  public position: AucIdenticonPosition = AUC_IDENTICON_POSITION.RIGHT;
+  public position?: AucIdenticonPosition = AUC_IDENTICON_POSITION.RIGHT;
 
+  /** @internal */
   private identicon: HTMLDivElement;
 
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
   }
 
+  /** @internal */
   ngOnChanges() {
     this.setIdenticon();
   }
 
+  /** Sets {@link aucIdenticon}. */
   public setIdenticon(): void {
-    if (!this.aucIdenticon) {
-      return;
-    }
-
     if (this.identicon) {
       this._renderer2.removeChild(this._elementRef.nativeElement, this.identicon);
+    }
+
+    if (!this.aucIdenticon) {
+      return;
     }
 
     this.identicon = this.aucIdenticon.cloneNode(true) as HTMLDivElement;

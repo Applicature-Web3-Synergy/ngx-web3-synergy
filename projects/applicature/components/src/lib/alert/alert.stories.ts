@@ -48,8 +48,8 @@ Orange.args = {
 
 export const Grey = Template.bind({});
 Grey.args = {
-  text: 'Alert message grey color',
-  color: AS_COLOR_GROUP.GREY,
+  text: 'Alert message gray color',
+  color: AS_COLOR_GROUP.GRAY,
 };
 
 export const White = Template.bind({});
