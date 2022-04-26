@@ -1,9 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DOCUMENT } from '@angular/common';
 import { takeUntil } from 'rxjs';
 
 import { MarkdownService } from 'ngx-markdown';
 import { BaseSubscriber } from '@applicature/components';
+
+import { CodePrettyDirective } from '../../modules/code-example/directives';
 
 
 @Component({
@@ -17,7 +20,8 @@ export class GettingStartedComponent extends BaseSubscriber implements OnInit {
 
   constructor(private cdr: ChangeDetectorRef,
               private http: HttpClient,
-              private markdownService: MarkdownService
+              private markdownService: MarkdownService,
+              @Inject(DOCUMENT) private document: Document
   ) {
     super();
   }
@@ -32,6 +36,8 @@ export class GettingStartedComponent extends BaseSubscriber implements OnInit {
 
         this.markdown = this.markdownService.compile(res);
         this.cdr.markForCheck();
+
+        new CodePrettyDirective(document).prettyPrint();
       })
   }
 

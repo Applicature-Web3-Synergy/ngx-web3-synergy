@@ -1,6 +1,6 @@
 # Applicature Universal Components
 This library can help you to develop Blockchain projects easily.  
-For now, this library supports only Angular 13 version. We will add support lower versions in the future
+For now, this library supports only Angular 13 version.
 
 ## Instaling library
     npm i @applicature/styles @applicature/components
@@ -8,11 +8,12 @@ For now, this library supports only Angular 13 version. We will add support lowe
 ## How to make it works
 
 ### styles.scss
-     @import "~node_modules/@applicature/styles/src/lib/scss/styles";
+     @import "~node_modules/@applicature/styles/src/lib/scss/as-styles";
 
-or  
-  
-Add <code class="md-line-code">node_modules/@applicature/styles/src/lib/scss/styles</code> to <code class="md-line-code">angular.json</code> file, path <code md-line-code>projects.YOUR_PROJECT_NAME.architect.build.options.styles</code:
+or
+
+Add `node_modules/@applicature/styles/src/lib/scss/as-styles` to **angular.json** file, path **projects.YOUR_PROJECT_NAME.architect.build.options.styles**:
+
 <pre><code>
 {
   ...,
@@ -27,7 +28,7 @@ Add <code class="md-line-code">node_modules/@applicature/styles/src/lib/scss/sty
             ...,
             "styles": [
               ...,
-              "node_modules/@applicature/styles/src/lib/scss/styles.scss"
+              "node_modules/@applicature/styles/src/lib/scss/as-styles.scss"
             ],
           }
         }
@@ -57,9 +58,8 @@ window.process = process;
 window.global = window;
 window.global.Buffer = global.Buffer || Buffer;
 </code></pre>
-
-  - Install **process** if it needs <code class="md-line-code">npm i process</code>
-    - add next option to <code class="md-line-code">tsconfig.json</code>:
+  - Install <strong>process</strong> if it needs `npm i process`
+    - add next option to **tsconfig.json**:
 
       <pre><code>
       {
@@ -70,19 +70,17 @@ window.global.Buffer = global.Buffer || Buffer;
         }
       }
       </code></pre>
-
-
+  
 ### Fixing Build errors
 
 > BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default. This is no longer the case
 for Angular 13+. Verify if you need this module and configure a polyfill for it.
 
 Solution:
-   - <code class="md-line-code">npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify</code>
-   - tsconfig.app.json
+   - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify`
+   - **tsconfig.app.json**
 
-      <pre>
-      <code>
+      <pre><code>
       {
         ...,
         compilerOptions: {
@@ -112,7 +110,7 @@ Solution:
       </code></pre>
 
 ## How to use
- - app.module.ts
+ - **app.module.ts**
 
 <pre><code>
 const wallets: Array<WalletModule | WalletInitOptions> = [
@@ -213,7 +211,7 @@ export class AppModule { }
 </pre>
 
 ## WARNINGS
-You might need to add <code class="md-line-code">allowedCommonJsDependencies</code> to <code class="md-line-code">angular.json</code> file:
+You might need to add `allowedCommonJsDependencies` to `angular.json` file:
 <pre><code>
 {
   ...,

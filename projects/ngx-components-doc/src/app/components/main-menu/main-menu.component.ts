@@ -39,6 +39,10 @@ export class MainMenuComponent {
       title: PageTitlesByUrl[ROUTER_LINKS.NETWORK_DROPDOWN]
     },
     {
+      routerLink: ROUTER_LINKS.INPUT,
+      title: PageTitlesByUrl[ROUTER_LINKS.INPUT]
+    },
+    {
       routerLink: ROUTER_LINKS.BUTTON,
       title: PageTitlesByUrl[ROUTER_LINKS.BUTTON]
     },
@@ -85,10 +89,6 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.SHORT_ADDRESS,
       title: PageTitlesByUrl[ROUTER_LINKS.SHORT_ADDRESS]
-    },
-    {
-      routerLink: ROUTER_LINKS.INPUT,
-      title: PageTitlesByUrl[ROUTER_LINKS.INPUT]
     }
   ];
 }

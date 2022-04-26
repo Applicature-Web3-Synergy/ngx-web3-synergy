@@ -1,6 +1,6 @@
 # Applicature Universal Components
 This library can help you to develop Blockchain projects easily.  
-For now, this library supports only Angular 13 version. We will add support lower versions in the future
+For now, this library supports only Angular 13 version.
 
 ## Instaling library
     npm i @applicature/styles @applicature/components
@@ -8,11 +8,12 @@ For now, this library supports only Angular 13 version. We will add support lowe
 ## How to make it works
 
 ### styles.scss
-     @import "~node_modules/@applicature/styles/src/lib/scss/styles";
+     @import "~node_modules/@applicature/styles/src/lib/scss/as-styles";
 
-or  
-  
-Add `node_modules/@applicature/styles/src/lib/scss/styles to` to `angular.json` file, path `projects.YOUR_PROJECT_NAME.architect.build.options.styles`:
+or
+
+Add `node_modules/@applicature/styles/src/lib/scss/as-styles` to **angular.json** file, path **projects.YOUR_PROJECT_NAME.architect.build.options.styles**:
+
 <pre><code>
 {
   ...,
@@ -27,7 +28,7 @@ Add `node_modules/@applicature/styles/src/lib/scss/styles to` to `angular.json` 
             ...,
             "styles": [
               ...,
-              "node_modules/@applicature/styles/src/lib/scss/styles.scss"
+              "node_modules/@applicature/styles/src/lib/scss/as-styles.scss"
             ],
           }
         }
@@ -57,9 +58,8 @@ window.process = process;
 window.global = window;
 window.global.Buffer = global.Buffer || Buffer;
 </code></pre>
-
   - Install <strong>process</strong> if it needs `npm i process`
-    - add next option to `tsconfig.json`:
+    - add next option to **tsconfig.json**:
 
       <pre><code>
       {
@@ -70,8 +70,7 @@ window.global.Buffer = global.Buffer || Buffer;
         }
       }
       </code></pre>
-
-
+  
 ### Fixing Build errors
 
 > BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default. This is no longer the case
@@ -79,12 +78,9 @@ for Angular 13+. Verify if you need this module and configure a polyfill for it.
 
 Solution:
    - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify`
-<br>
-<br>
-   - tsconfig.app.json
+   - **tsconfig.app.json**
 
-      <pre>
-      <code>
+      <pre><code>
       {
         ...,
         compilerOptions: {
@@ -112,29 +108,9 @@ Solution:
         }
       }
       </code></pre>
-  
- - `BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default.
-This is no longer the case. Verify if you need this module and configure a polyfill for it.`
-    <br>
-    <br>
-    Solution: `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify` or add to the `package.json` next code:<br>
-    <pre><code>
-    {
-      ...,
-      "dependencies": {...},
-      "devDependencies": {...},
-      "browser": {
-        "http": false,
-        "https": false,
-        "os": false,
-        "crypto": false,
-        "stream": false
-      }
-    }
-    </code></pre>
 
 ## How to use
- - app.module.ts
+ - **app.module.ts**
 
 <pre><code>
 const wallets: Array<WalletModule | WalletInitOptions> = [

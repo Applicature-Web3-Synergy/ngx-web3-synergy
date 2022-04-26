@@ -92,9 +92,51 @@ mat-select {
   word-break: break-word;
 }
 
-.md-line-code {
-  background-color: #222;
-  color: #fff;
+// Getting started page styles
+.getting-started-code {
+  background-color: map-get(c.$gray, 1);
   border-radius: 2px;
-  padding: 0 5px;
+  padding: 5px;
 }
+
+.getting-started-paragraph {
+  margin: 10px 0;
+
+  &.with-code {
+    line-height: 24px;
+
+    .getting-started-code {
+      padding: 2px;
+    }
+  }
+
+}
+
+.doc.prettyprint {
+  border: 1px solid c.$border-color;
+  border-radius: c.$border-radius;
+  overflow: auto;
+  padding: 15px;
+
+  &.white-theme {
+    background-color: c.$card-bg;
+  }
+
+  & > .pln {
+    display: none;
+  }
+}
+
+.getting-started-h1{
+  margin-bottom: 15px;
+}
+
+.getting-started-h2,
+.getting-started-h3,
+.getting-started-h4,
+.getting-started-h5,
+.getting-started-h6 {
+  margin: 15px 0 ;
+}
+
+// End Getting started page styles

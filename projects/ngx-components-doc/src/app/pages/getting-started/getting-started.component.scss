@@ -1,3 +1,8 @@
+@use 'common' as c;
+
 :host {
-  background-color: #fff;
+  display: block;
+  background-color: c.$card-bg;
+  border-radius: c.$border-radius;
+  padding: c.$card-padding;
 }
