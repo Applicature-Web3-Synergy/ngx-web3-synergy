@@ -1,5 +1,13 @@
 <header class="main-header-container">
-  <ng-content></ng-content>
+  <div class="main-header-content-container">
+    <ng-content></ng-content>
+  </div>
 
-  NGX UNIVERSAL COMPONENTS
+  <div class="main-header">
+    <a routerLink="/" *ngIf="!(isStartPage$ | async); else startRef" class="header-logo">{{name}}</a>
+
+    <ng-template #startRef>
+      <span class="header-logo">{{name}}</span>
+    </ng-template>
+  </div>
 </header>

@@ -1,5 +1,11 @@
 <doc-header>
-<!--    <button mat-button *ngIf="mobileView" (click)="sidenav.toggle()">Toggle</button>-->
+  <button mat-mini-fab
+          aria-label="Menu icon"
+          class="main-menu-toggle"
+          (click)="sidenav.toggle()"
+  >
+    <mat-icon>{{sidenav?.opened ? 'close' : 'menu'}}</mat-icon>
+  </button>
 </doc-header>
 
 <main>

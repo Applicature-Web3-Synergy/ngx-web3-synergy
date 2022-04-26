@@ -4,7 +4,7 @@ import { filter, Observable, takeUntil } from 'rxjs';
 
 import { BaseSubscriber } from '@applicature/components';
 
-import { RouterHelperService } from './services/router-helper/router-helper.service';
+import { RouterHelperService } from './services/router-helper';
 
 
 @Component({

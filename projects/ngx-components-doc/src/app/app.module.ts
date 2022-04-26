@@ -8,10 +8,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces';
 import {
   AUC_CHAIN_ID,
-  AUC_CHAIN_ID_NUM, AucBlockExplorerApiUrl,
-  AucBlockExplorerUrls, AucConnectModule, aucGetChainParams,
+  AUC_CHAIN_ID_NUM,
+  AucBlockExplorerApiUrl,
+  AucBlockExplorerUrls,
+  AucConnectModule,
+  aucGetChainParams,
   AucNativeCurrencies,
-  AucNetworkOption, AucWalletConnectService
+  AucNetworkOption,
+  AucWalletConnectService
 } from '@applicature/components';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +23,8 @@ import { AppComponent } from './app.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AppInitializerService } from './app-initializer/app-initializer.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 const wallets: Array<WalletModule | WalletInitOptions> = [
@@ -104,7 +110,9 @@ export function initWalletServiceFactory(
     HttpClientModule,
     AppRoutingModule,
     MatSidenavModule,
-    AucConnectModule.forRoot()
+    AucConnectModule.forRoot(),
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     AppInitializerService,

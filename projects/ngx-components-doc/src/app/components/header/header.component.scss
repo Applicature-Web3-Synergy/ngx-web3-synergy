@@ -7,6 +7,28 @@
   width: 100%;
   height: c.$header-height;
   background: c.$header-bg;
-  color: c.$white-text-color;
   padding: c.$main-vertical-padding c.$main-horizontal-padding;
+}
+
+.main-header-content-container {
+  display: none;
+}
+
+.header-logo {
+  color: c.$white-text-color;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@media (max-width: map-get(c.$grid-breakpoints, lg)) {
+  .main-header-content-container {
+    display: block;
+    width: 45px;
+  }
+
+  .main-header {
+    width: calc(100% - 45px);
+    padding-right: 45px;
+    text-align: center;
+  }
 }

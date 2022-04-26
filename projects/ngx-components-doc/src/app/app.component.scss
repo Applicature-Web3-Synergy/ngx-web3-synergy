@@ -38,3 +38,9 @@ $sidenav-padding: 30px;
 .main-page-container {
   padding: $sidenav-padding;
 }
+
+.main-menu-toggle {
+  background-color: transparent;
+  box-shadow: none;
+  color: c.$white-text-color;
+}

@@ -19,3 +19,13 @@ $side-nav-bg: #fff;
 $side-nav-active-bg: map-get(c.$gray, 2);
 $border-color: map-get(c.$gray, 2);
 $main-bg-color: map-get(c.$gray, 1);
+
+// Breakpoints
+$grid-breakpoints: (
+  xs: 374px,
+  sm: 576px,
+  md: 767px,
+  lg: 959px,
+  xl: 1200px,
+  xxl: 1400px
+);
