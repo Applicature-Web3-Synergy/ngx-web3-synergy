@@ -6,8 +6,12 @@ import { ROUTER_LINKS } from './enums';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: ROUTER_LINKS.CONNECT_WALLET,
+    redirectTo: ROUTER_LINKS.GETTING_STARTED,
     pathMatch: 'full'
+  },
+  {
+    path: ROUTER_LINKS.GETTING_STARTED,
+    loadChildren: () => import('./pages/getting-started/getting-started.module').then(m => m.GettingStartedModule)
   },
   {
     path: ROUTER_LINKS.CONNECT_WALLET,
@@ -84,7 +88,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: ROUTER_LINKS.CONNECT_WALLET,
+    redirectTo: ROUTER_LINKS.GETTING_STARTED,
   }
 ];
 

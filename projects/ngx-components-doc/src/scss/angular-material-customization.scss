@@ -1,6 +1,5 @@
 @use 'common' as c;
 
-$card-padding: 20px;
 
 // Mat Tab
 .mat-tab-group {
@@ -31,11 +30,11 @@ $card-padding: 20px;
     border-radius: c.$border-radius;
 
     .mat-tab-header {
-      padding: 0 $card-padding;
+      padding: 0 c.$card-padding;
     }
 
     .mat-tab-body-content {
-      padding: $card-padding;
+      padding: c.$card-padding;
     }
   }
 

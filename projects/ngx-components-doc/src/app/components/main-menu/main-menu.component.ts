@@ -15,6 +15,10 @@ import { PageTitlesByUrl } from '../../constants';
 export class MainMenuComponent {
   public menuItems: MainMenuItem[] = [
     {
+      routerLink: ROUTER_LINKS.GETTING_STARTED,
+      title: PageTitlesByUrl[ROUTER_LINKS.GETTING_STARTED]
+    },
+    {
       routerLink: ROUTER_LINKS.CONNECT_WALLET,
       title: PageTitlesByUrl[ROUTER_LINKS.CONNECT_WALLET]
     },
@@ -33,6 +37,10 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.NETWORK_DROPDOWN,
       title: PageTitlesByUrl[ROUTER_LINKS.NETWORK_DROPDOWN]
+    },
+    {
+      routerLink: ROUTER_LINKS.INPUT,
+      title: PageTitlesByUrl[ROUTER_LINKS.INPUT]
     },
     {
       routerLink: ROUTER_LINKS.BUTTON,
@@ -81,10 +89,6 @@ export class MainMenuComponent {
     {
       routerLink: ROUTER_LINKS.SHORT_ADDRESS,
       title: PageTitlesByUrl[ROUTER_LINKS.SHORT_ADDRESS]
-    },
-    {
-      routerLink: ROUTER_LINKS.INPUT,
-      title: PageTitlesByUrl[ROUTER_LINKS.INPUT]
     }
   ];
 }

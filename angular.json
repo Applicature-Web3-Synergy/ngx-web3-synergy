@@ -261,7 +261,6 @@
             "styles": [
               "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/code-prettify/styles/desert.css",
-              "projects/applicature/styles/src/lib/scss/as-styles.scss",
               "projects/ngx-components-doc/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
@@ -270,7 +269,9 @@
                 "projects/ngx-components-doc/src/scss"
               ]
             },
-            "scripts": [],
+            "scripts": [
+              "node_modules/marked/marked.min.js"
+            ],
             "allowedCommonJsDependencies": [
               "@metamask/jazzicon",
               "web3",

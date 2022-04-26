@@ -16,5 +16,6 @@ export enum ROUTER_LINKS {
   PROGRESS_BAR = 'progress-bar',
   SPINNER = 'spinner',
   RIPPLE = 'ripple',
-  SHORT_ADDRESS = 'short-address'
+  SHORT_ADDRESS = 'short-address',
+  GETTING_STARTED = 'getting-started'
 }
