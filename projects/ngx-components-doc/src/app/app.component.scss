@@ -1,7 +1,6 @@
 @use 'common' as c;
 
 $sidenav-title-height: 60px;
-$sidenav-padding: 30px;
 
 .doc-sidenav-container {
   position: absolute;
@@ -21,7 +20,7 @@ $sidenav-padding: 30px;
 }
 
 .doc-sidenav-title-container {
-  padding: 10px $sidenav-padding;
+  padding: 10px c.$main-horizontal-padding;
   height: $sidenav-title-height;
   display: flex;
   align-items: center;
@@ -36,11 +35,27 @@ $sidenav-padding: 30px;
 }
 
 .main-page-container {
-  padding: $sidenav-padding;
+  padding: c.$main-horizontal-padding;
 }
 
 .main-menu-toggle {
   background-color: transparent;
   box-shadow: none;
   color: c.$white-text-color;
+}
+
+@media (max-width: map-get(c.$grid-breakpoints, lg)) {
+  .doc-sidenav-title-container {
+    padding: 10px c.$main-horizontal-mobile-padding;
+  }
+
+  .main-page-container {
+    padding: c.$main-horizontal-mobile-padding;
+  }
+}
+
+@media (max-width: map-get(c.$grid-breakpoints, sm)) {
+  .main-page-container {
+    padding: 0;
+  }
 }

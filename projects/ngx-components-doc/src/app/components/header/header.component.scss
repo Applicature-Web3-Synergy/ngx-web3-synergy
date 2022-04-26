@@ -21,6 +21,10 @@
 }
 
 @media (max-width: map-get(c.$grid-breakpoints, lg)) {
+  .main-header-container {
+    padding: c.$main-vertical-mobile-padding c.$main-horizontal-mobile-padding;
+  }
+
   .main-header-content-container {
     display: block;
     width: 45px;

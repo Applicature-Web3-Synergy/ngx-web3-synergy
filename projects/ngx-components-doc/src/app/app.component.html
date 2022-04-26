@@ -3,6 +3,7 @@
           aria-label="Menu icon"
           class="main-menu-toggle"
           (click)="sidenav.toggle()"
+          *ngIf="isMobile"
   >
     <mat-icon>{{sidenav?.opened ? 'close' : 'menu'}}</mat-icon>
   </button>
@@ -10,8 +11,9 @@
 
 <main>
   <mat-sidenav-container class="doc-sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened class="doc-sidenav"
-                 [fixedInViewport]="false" [fixedTopGap]="0"
+    <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'"
+                 [opened]="!isMobile" class="doc-sidenav"
+                 [fixedInViewport]="isMobile" [fixedTopGap]="isMobile ? 55 : 0"
                  [fixedBottomGap]="0">
       <doc-main-menu></doc-main-menu>
     </mat-sidenav>
