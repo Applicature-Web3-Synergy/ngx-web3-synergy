@@ -101,6 +101,7 @@ mat-select {
 
 .getting-started-paragraph {
   margin: 10px 0;
+  font-style: normal;
 
   &.with-code {
     line-height: 24px;
@@ -129,6 +130,7 @@ mat-select {
 
 .getting-started-h1{
   margin-bottom: 15px;
+  font-style: normal;
 }
 
 .getting-started-h2,
@@ -136,7 +138,8 @@ mat-select {
 .getting-started-h4,
 .getting-started-h5,
 .getting-started-h6 {
-  margin: 15px 0 ;
+  margin: 15px 0;
+  font-style: normal;
 }
 
 // End Getting started page styles

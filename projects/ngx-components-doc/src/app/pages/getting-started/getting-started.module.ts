@@ -32,7 +32,7 @@ export function markedOptionsFactory(): MarkedOptions {
   const renderer = new MarkedRenderer();
 
   renderer.blockquote = (text: string) => {
-    return `<blockquote class="doc-blockquote"><p><em>${text}<em></p></blockquote>`;
+    return `<blockquote class="doc-blockquote"><p><em>${text}</em></p></blockquote>`;
   };
 
   renderer.code = (code: string) => {

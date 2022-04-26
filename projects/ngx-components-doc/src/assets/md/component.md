@@ -2,6 +2,9 @@
 This library can help you to develop Blockchain projects easily.  
 For now, this library supports only Angular 13 version.
 
+## Documetation
+Coming soon.
+
 ## Instaling library
     npm i @applicature/styles @applicature/components
 
@@ -276,3 +279,8 @@ You might need to add `allowedCommonJsDependencies` to `angular.json` file:
   }
 }
 </code></pre>
+
+## Contributing
+This project is maintained by a community of developers. Contributions are welcome and appreciated.
+You can find Applicature Universal Component on GitHub; feel free to open an issue or create a pull request:
+The link coming soon.

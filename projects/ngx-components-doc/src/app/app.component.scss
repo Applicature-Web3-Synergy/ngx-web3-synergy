@@ -1,6 +1,7 @@
 @use 'common' as c;
 
 $sidenav-title-height: 60px;
+$desktop-menu-width: 240px;
 
 .doc-sidenav-container {
   position: absolute;
@@ -14,7 +15,7 @@ $sidenav-title-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 240px;
+  min-width: $desktop-menu-width;
   border-right: 1px solid c.$border-color;
   background-color: c.$side-nav-bg;
 }
@@ -34,7 +35,36 @@ $sidenav-title-height: 60px;
   line-height: 1.5;
 }
 
+.doc-main-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+
+  .doc-desktop-menu {
+    display: none;
+  }
+
+  &.doc-desktop {
+    .main-page-container {
+      width: calc(100% - #{$desktop-menu-width});
+    }
+
+    .doc-desktop-menu {
+      display: block;
+      width: $desktop-menu-width;
+      background-color: c.$side-nav-bg;
+      position: sticky;
+      top: 0;
+      height: calc(100vh - #{c.$header-height});
+      overflow: auto;
+    }
+  }
+}
+
 .main-page-container {
+  width: 100%;
+  display: block;
   padding: c.$main-horizontal-padding;
 }
 

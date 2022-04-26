@@ -9,10 +9,13 @@
   </button>
 </doc-header>
 
-<main>
+<div>
   <mat-sidenav-container class="doc-sidenav-container">
-    <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'"
-                 [opened]="!isMobile" class="doc-sidenav"
+    <mat-sidenav #sidenav
+                 *ngIf="isMobile"
+                 [mode]="isMobile ? 'over' : 'side'"
+                 [opened]="!isMobile"
+                 class="doc-sidenav"
                  [fixedInViewport]="isMobile" [fixedTopGap]="isMobile ? 55 : 0"
                  [fixedBottomGap]="0">
       <doc-main-menu></doc-main-menu>
@@ -23,10 +26,16 @@
         <h2 class="doc-sidenav-title">{{currentPageTitle$ | async}}</h2>
       </div>
 
-      <div class="main-page-container">
-        <router-outlet></router-outlet>
-      </div>
+      <main class="doc-main-container" [class.doc-desktop]="!isMobile">
+        <doc-main-menu class="doc-sidenav doc-desktop-menu" *ngIf="!isMobile"></doc-main-menu>
+
+        <div class="main-page-container">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+
+      <doc-footer></doc-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</main>
+</div>
 

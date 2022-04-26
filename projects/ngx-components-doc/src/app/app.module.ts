@@ -25,6 +25,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AppInitializerService } from './app-initializer/app-initializer.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 const wallets: Array<WalletModule | WalletInitOptions> = [
@@ -102,7 +103,8 @@ export function initWalletServiceFactory(
   declarations: [
     AppComponent,
     MainMenuComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

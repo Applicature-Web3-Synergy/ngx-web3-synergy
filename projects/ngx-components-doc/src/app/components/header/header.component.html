@@ -1,13 +1,21 @@
 <header class="main-header-container">
-  <div class="main-header-content-container">
-    <ng-content></ng-content>
+  <div class="doc-main-header-left">
+    <div class="main-header-content-container">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="main-header">
+      <a routerLink="/" *ngIf="!(isStartPage$ | async); else startRef" class="header-logo">{{name}}</a>
+
+      <ng-template #startRef>
+        <span class="header-logo">{{name}}</span>
+      </ng-template>
+    </div>
   </div>
 
-  <div class="main-header">
-    <a routerLink="/" *ngIf="!(isStartPage$ | async); else startRef" class="header-logo">{{name}}</a>
-
-    <ng-template #startRef>
-      <span class="header-logo">{{name}}</span>
-    </ng-template>
+  <div class="doc-main-header-right">
+    <a href="https://github.com/" target="_blank" class="doc-header-git">
+      <img src="assets/img/icons/github.svg" alt="Github logo"/>
+    </a>
   </div>
 </header>
