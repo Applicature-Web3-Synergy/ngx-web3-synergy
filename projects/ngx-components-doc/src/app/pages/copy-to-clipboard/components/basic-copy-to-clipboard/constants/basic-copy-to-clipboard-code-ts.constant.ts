@@ -2,6 +2,7 @@ export const BasicCopyToClipboardCodeTs =
   `/** Don't forget import { AucCopyToClipboardModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CopyToClipboardAction } from '@applicature/components';
 
 
 @Component({
@@ -12,5 +13,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class BasicCopyToClipboardComponent {
   public textToCopy = 'This text will be copied';
+
+  public copied(action: CopyToClipboardAction): void {
+    console.log('Action: ', action);
+  }
 }
 `;

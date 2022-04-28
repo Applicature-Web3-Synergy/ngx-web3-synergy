@@ -11,8 +11,8 @@ import {
   SimpleChanges,
   ViewChild
 } from '@angular/core';
-
-import { debounceTime, Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import {
   AucContentBodyDirective,

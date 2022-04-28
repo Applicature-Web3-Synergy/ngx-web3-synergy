@@ -43,7 +43,6 @@
     "bnc-onboard": "^1.37.0",
     "code-prettify": "^0.1.0",
     "i": "^0.3.7",
-    "ngx-clipboard": "^15.0.1",
     "ngx-markdown": "^13.1.0",
     "npm": "^8.6.0",
     "rxjs": "^7.5.4",

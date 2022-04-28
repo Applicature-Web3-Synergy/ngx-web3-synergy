@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, from, map, Observable, of, Subject, Subscriber, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, from, Observable, of, Subject, Subscriber } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
 import Onboard from 'bnc-onboard';

@@ -52,7 +52,7 @@
   padding: 0 12px;
   border: 1px solid c.getColor(grey, light);
   border-radius: 8px;
-  @include c.transition;
+  @include c.transition(border);
 
   &:not(.auc-input-container-disabled):not(.auc-input-container-error):not(.auc-input-container-focus):hover {
     border: 1px solid c.getColor(grey, hover);

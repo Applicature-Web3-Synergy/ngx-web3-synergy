@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ClipboardModule } from 'ngx-clipboard';
-
 import { AucIconModule } from '../icon';
 import { AucCopyToClipboardComponent } from './copy-to-clipboard.component';
+import { CopyToClipboardDirective } from './directives';
 
 
 @NgModule({
   declarations: [
     AucCopyToClipboardComponent,
+    CopyToClipboardDirective,
   ],
   exports: [
-    AucCopyToClipboardComponent
+    AucCopyToClipboardComponent,
+    CopyToClipboardDirective
   ],
   imports: [
     CommonModule,
-    AucIconModule,
-    ClipboardModule
+    AucIconModule
   ]
 })
 export class AucCopyToClipboardModule {
