@@ -106,6 +106,9 @@ Solution:
             ],
             "os": [
               "./node_modules/os-browserify"
+            ],
+            "path": [
+              "./node_modules/path-browserify"
             ]
           }
         }

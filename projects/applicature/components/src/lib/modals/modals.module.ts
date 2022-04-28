@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ClipboardModule } from 'ngx-clipboard';
-
 import { AucProgressBarModule } from '../progress-bar';
 import { AucRippleModule } from '../ripple';
 import { AucSpinnerModule } from '../spinner';
@@ -16,6 +14,7 @@ import { AucWrongNetworkModalComponent } from './wrong-network-modal';
 import { AucIconModule } from '../icon';
 import { AucDirectivesModule } from '../directives';
 import { AucTransactionsModule } from '../transactions';
+import { AucCopyToClipboardModule } from '../copy-to-clipboard';
 
 const components = [
   AucAccountModalComponent,
@@ -39,10 +38,10 @@ const components = [
     AucRippleModule,
     AucSpinnerModule,
     AucProgressBarModule,
-    ClipboardModule,
     AucIconModule,
     AucDirectivesModule,
-    AucTransactionsModule
+    AucTransactionsModule,
+    AucCopyToClipboardModule
   ]
 })
 export class ModalsModule {

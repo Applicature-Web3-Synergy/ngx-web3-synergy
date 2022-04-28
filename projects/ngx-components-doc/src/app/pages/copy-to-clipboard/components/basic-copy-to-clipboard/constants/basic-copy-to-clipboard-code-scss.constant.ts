@@ -6,4 +6,5 @@ export const BasicCopyToClipboardCodeScss = `.doc-grid-item {
   width: 50px;
   height: 50px;
 }
+
 `;
