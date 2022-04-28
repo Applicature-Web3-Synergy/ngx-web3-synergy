@@ -10,6 +10,7 @@
     "@angular/forms",
     "@applicature/styles",
     "@ethersproject/address",
+    "@shapeshiftoss/proto-tx-builder",
     "@metamask/jazzicon",
     "@uiowa/digit-only",
     "@uniswap/sdk-core",

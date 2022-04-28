@@ -20891,6 +20891,13 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {},
+							"sources": [
+								{
+									"fileName": "lib/input/input.component.ts",
+									"line": 21,
+									"character": 2
+								}
+							],
 							"type": {
 								"type": "intrinsic",
 								"name": "boolean"
@@ -20903,6 +20910,13 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {},
+							"sources": [
+								{
+									"fileName": "lib/input/input.component.ts",
+									"line": 19,
+									"character": 2
+								}
+							],
 							"type": {
 								"type": "reference",
 								"typeArguments": [
@@ -20932,6 +20946,13 @@
 							"kind": 1024,
 							"kindString": "Property",
 							"flags": {},
+							"sources": [
+								{
+									"fileName": "lib/input/input.component.ts",
+									"line": 20,
+									"character": 2
+								}
+							],
 							"type": {
 								"type": "reference",
 								"typeArguments": [
