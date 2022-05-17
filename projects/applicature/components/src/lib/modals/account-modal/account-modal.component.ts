@@ -35,18 +35,18 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
     this.data = this._config.data;
     this.transactions$ = this._transactionService.transactionsChanged$;
 
-    this.etherscanAddress$ = this._walletConnectService.selectedNetwork$
-      .pipe(
-        map((network: AucNetworkOption) => {
-          const connectionInfo: AucConnectionState = this._walletConnectService.connectionState;
-
-          if (!network || !network.blockExplorerUrl || !connectionInfo?.state?.address) {
-            return null;
-          }
-
-          return `${network.blockExplorerUrl}/address/${connectionInfo.state.address}`
-        })
-      );
+    // this.etherscanAddress$ = this._walletConnectService.selectedNetwork$ // TODO
+    //   .pipe(
+    //     map((network: AucNetworkOption) => {
+    //       const connectionInfo: AucConnectionState = this._walletConnectService.connectionState;
+    //
+    //       if (!network || !network.blockExplorerUrl || !connectionInfo?.state?.address) {
+    //         return null;
+    //       }
+    //
+    //       return `${network.blockExplorerUrl}/address/${connectionInfo.state.address}`
+    //     })
+    //   );
   }
 
   public ngOnInit(): void {

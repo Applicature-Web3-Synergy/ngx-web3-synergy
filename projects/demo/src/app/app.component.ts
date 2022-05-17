@@ -73,22 +73,7 @@ export class AppComponent implements OnInit {
 
     this._walletConnectService.chainChanged$
       .subscribe((data) => {
-        console.log('metamaskChainChanged$: ', data);
-      });
-
-    this._walletConnectService.connectChanged$
-      .subscribe((data) => {
-        console.log('metamaskConnect$: ', data);
-      });
-
-    this._walletConnectService.disconnectChanged$
-      .subscribe((data) => {
-        console.log('metamaskDisconnect$: ', data);
-      });
-
-    this._walletConnectService.messageChanged$
-      .subscribe((data) => {
-        console.log('metamaskMessage$: ', data);
+        console.log('ChainChanged$: ', data);
       });
   }
 

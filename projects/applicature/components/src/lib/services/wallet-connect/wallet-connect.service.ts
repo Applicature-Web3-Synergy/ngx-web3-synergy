@@ -1,29 +1,34 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, from, Observable, of, Subject, Subscriber } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, debounceTime, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
-import Onboard from 'bnc-onboard';
-import { API, Initialization, Subscriptions, Wallet } from 'bnc-onboard/dist/src/interfaces';
+import Onboard from '@web3-onboard/core'
+import { EIP1193Provider } from '@web3-onboard/common';
+import {
+  Account,
+  AppState,
+  Balances,
+  InitOptions,
+  OnboardAPI,
+  WalletState
+} from '@web3-onboard/core/dist/types'
 
-import { AUC_ETH_EVENTS, AUC_ETH_METHODS, AUC_METAMASK_CODES } from '../../enums';
+import { AUC_ETH_METHODS, AUC_METAMASK_CODES } from '../../enums';
 import {
   AucEthChainParams,
   AucNetworkOption,
-  AucConnectInfo,
   AucEthereum,
-  AucProviderMessage,
-  AucProviderRpcError
 } from '../../interfaces';
 import { AucConnectionState } from './interfaces';
-import { aucConvertChainIdToHex, aucGetChainParams } from '../../helpers';
+import { aucConvertChainIdToHex, aucGetChainParams, BaseSubscriber } from '../../helpers';
 import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../constants';
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
 
 @Injectable()
-export class AucWalletConnectService {
+export class AucWalletConnectService extends BaseSubscriber {
   /** @returns current {@link Web3} instance. */
   public get web3(): Web3 {
     return this._web3;
@@ -33,7 +38,7 @@ export class AucWalletConnectService {
    * This library uses {@link Onboard} for connecting wallet. <br>
    * @returns current {@link Onboard} instance.
    */
-  public get onboard(): API {
+  public get onboard(): OnboardAPI {
     return this._onboard;
   };
 
@@ -43,12 +48,33 @@ export class AucWalletConnectService {
       return { connected: false };
     }
 
-    const state = this._onboard.getState();
+    const state = this._onboard.state.get();
 
     return {
-      connected: !!state.address,
+      connected: !!state.wallets?.length,
       state
     }
+  }
+
+  /** @returns current connection state as Observable */
+  public get connectionState$(): Observable<AucConnectionState> {
+    return (!this._onboard
+        ? of(null)
+        : this._onboard.state.select()
+    )
+      .pipe(
+        debounceTime(300),
+        map((state: AppState | null) => {
+          if (!state) {
+            return { connected: false };
+          }
+
+          return {
+            connected: !!state?.wallets?.length,
+            state
+          }
+        })
+      );
   }
 
   /**
@@ -68,42 +94,10 @@ export class AucWalletConnectService {
   }
 
   /**
-   * Emits when connect event. Emits from Metamask {@link AUC_ETH_EVENTS.CONNECT} event. <br>
-   * You can subscribe on it.
-   */
-  public get connectChanged$(): Observable<AucConnectInfo> {
-    return this._connectChanged$.asObservable();
-  }
-
-  /**
-   * Emits when disconnect event. Emits from Metamask {@link AUC_ETH_EVENTS.DISCONNECT} event. <br>
-   * You can subscribe on it.
-   */
-  public get disconnectChanged$(): Observable<AucProviderRpcError> {
-    return this._disconnectChanged$.asObservable();
-  }
-
-  /**
-   * Emits when message events. Emits from Metamask {@link AUC_ETH_EVENTS.MESSAGE} event. <br>
-   * You can subscribe on it.
-   */
-  public get messageChanged$(): Observable<AucProviderMessage> {
-    return this._messageChanged$.asObservable();
-  }
-
-  /**
-   * Emits when network was changed. <br>
-   * You can subscribe on it.
-   */
-  public get networkChanged$(): Observable<number | null> {
-    return this._networkChanged$.asObservable();
-  }
-
-  /**
    * Emits when balance was changed. <br>
    * You can subscribe on it.
    */
-  public get balanceChanged$(): Observable<string | null> {
+  public get balanceChanged$(): Observable<Balances> {
     return this._balanceChanged$.asObservable();
   }
 
@@ -164,8 +158,10 @@ export class AucWalletConnectService {
    * @param chainId - 0x-prefixed hexadecimal string.
    */
   private set chainId(chainId: string) {
-    this._chainChanged$.next(chainId);
-    this.selectedNetwork = chainId;
+    if (this._chainChanged$.value !== chainId) {
+      this._chainChanged$.next(chainId);
+      this.selectedNetwork = chainId;
+    }
   }
 
   /**
@@ -199,7 +195,12 @@ export class AucWalletConnectService {
   }
 
   /** @internal */
-  private _onboard: API;
+  private _onboard: OnboardAPI;
+
+  /** @internal */
+  private get _shadowRoot(): ShadowRoot | null {
+    return document.querySelector('onboard-v2')?.shadowRoot
+  }
 
   /** @internal */
   private _web3: Web3;
@@ -211,22 +212,10 @@ export class AucWalletConnectService {
   private _chainChanged$: BehaviorSubject<string | null> = new BehaviorSubject<string>(null);
 
   /** @internal */
-  private _networkChanged$: BehaviorSubject<number | null> = new BehaviorSubject<number | null>(null);
-
-  /** @internal */
-  private _balanceChanged$: BehaviorSubject<string | null> = new BehaviorSubject<string>(null);
-
-  /** @internal */
-  private _connectChanged$: Subject<AucConnectInfo> = new Subject<AucConnectInfo>();
+  private _balanceChanged$: BehaviorSubject<Balances | null> = new BehaviorSubject<Balances>(null);
 
   /** @internal */
   private _cantFindAddingNetwork$: Subject<void> = new Subject<void>();
-
-  /** @internal */
-  private _disconnectChanged$: Subject<AucProviderRpcError> = new Subject<AucProviderRpcError>();
-
-  /** @internal */
-  private _messageChanged$: Subject<AucProviderMessage> = new Subject<AucProviderMessage>();
 
   /** @internal */
   private _selectedNetwork$: Subject<AucNetworkOption> = new BehaviorSubject<AucNetworkOption>(null);
@@ -234,53 +223,64 @@ export class AucWalletConnectService {
   /** @internal */
   private _supportedNetworks: AucNetworkOption[];
 
+  constructor() {
+    super();
+  }
+
   /**
    * This library uses {@link Onboard} for initialization wallet connection. <br>
    * More information about config {@link https://www.npmjs.com/package/bnc-onboard}. <br>
    * @param config - Initialization Config for wallet connection.
    * @param supportedNetworks - List of the supported networks.
    */
-  public initialize(config: Omit<Initialization, 'subscriptions' | 'darkMode' | 'hideBranding'>,
-                    supportedNetworks: AucNetworkOption[]
-  ): Observable<void> {
+  public initialize(config: InitOptions, supportedNetworks: AucNetworkOption[]): Observable<void> {
     if (this._onboard) {
-      console.error('bnc-onboard already initialized');
+      console.error('web3-onboard already initialized');
 
       return of(null);
     }
 
     if (supportedNetworks && Array.isArray(supportedNetworks)) {
-      this.supportedNetworks = supportedNetworks;
+      this.supportedNetworks = supportedNetworks; // TODO need to think about it
     } else {
       console.error('Invalid supported Networks. Please set supportedNetworks as AucNetworkOption[]');
     }
 
+
     return new Observable<void>((observer: Subscriber<void>) => {
-      this._onboard = Onboard({
-        ...config,
-        walletSelect: {
-          ...config.walletSelect,
-          heading: 'Connect a wallet',
-          description: '',
-        },
-        subscriptions: this._getSubscriptions<void>(observer),
-        hideBranding: true,
-      });
+      try {
+        this._onboard = Onboard({
+          accountCenter: {
+            desktop: {
+              enabled: false
+            }
+          },
+          ...config,
+        });
 
-      const previouslySelectedWallet = localStorage.getItem(AUC_CONNECTED_WALLET_NAME);
+        this._setStyles();
+        this._subscriptions();
 
-      if (previouslySelectedWallet !== null) {
-        this._onboard.walletSelect(previouslySelectedWallet)
-          .then(() => {
-            observer.next();
-            observer.complete();
-          })
-          .catch(error => observer.error(error));
+        const previouslyConnectedWallet = localStorage.getItem(AUC_CONNECTED_WALLET_NAME);
 
-        return;
+        if (previouslyConnectedWallet !== null) {
+          this._onboard.connectWallet({ autoSelect: { label: previouslyConnectedWallet, disableModals: true } })
+            .then(() => {
+              observer.next();
+              observer.complete();
+            })
+            .catch(error => observer.error(error));
+
+          return;
+        }
+
+        this._initWeb3();
+
+        observer.next();
+        observer.complete();
+      } catch (e) {
+        observer.error(e);
       }
-
-      this._initWeb3(observer);
     });
   }
 
@@ -304,24 +304,38 @@ export class AucWalletConnectService {
         return of(this.connectionState);
       }
 
-      connection$ = this.disconnectWallet()
+      connection$ = this.disconnectWallet();
     }
 
     return connection$
       .pipe(
-        switchMap(() => from(this._onboard.walletSelect())),
+        switchMap(() => {
+          const connection = this._onboard.connectWallet();
+          setTimeout(() => {
+            const header = this._shadowRoot?.querySelector('.header-heading');
+
+            if (header) {
+              header.innerHTML = 'Connect a wallet';
+            }
+          });
+
+          return from(connection);
+        }),
         map(() => this.connectionState)
       );
   }
 
   /** Disconnect wallet. */
   public disconnectWallet(): Observable<void> {
-    return of(this._onboard ? this._onboard.walletReset() : null)
+    const [ primaryWallet ] = this._onboard?.state?.get()?.wallets;
+
+    return of(primaryWallet ? this._onboard.disconnectWallet({ label: primaryWallet.label }) : null)
       .pipe(
+        map(() => null),
         tap(() => {
           localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
         })
-      )
+      );
   }
 
   /**
@@ -371,81 +385,104 @@ export class AucWalletConnectService {
   }
 
   /** @internal */
-  private _getSubscriptions<T = any>(observer: Subscriber<T>): Subscriptions {
-    let selectedWallet: Wallet;
+  private _subscriptions(): void {
+    this.onboard.state.select('wallets')
+      .pipe(
+        map((wallets: WalletState[]) => (wallets || [])[0]),
+        takeUntil(this.notifier)
+      )
+      .subscribe((wallet: WalletState) => {
+        this._initWeb3(wallet?.provider);
 
-    return {
-      address: (address: string): void => {
-        this._accountsChanged$.next(address ? [ address ] : []);
+        if (wallet) {
+          const connectedWallet = wallet.label;
 
-        this._initWeb3<T>(observer, selectedWallet);
-      },
-      network: (networkId: number): void => {
-        this._onboard.config({ networkId });
+          window.localStorage.setItem(
+            AUC_CONNECTED_WALLET_NAME,
+            connectedWallet
+          );
+        }
 
-        this.chainId = aucConvertChainIdToHex(networkId)
-        this._networkChanged$.next(networkId);
-      },
-      wallet: (wallet: Wallet): void => {
-        selectedWallet = wallet;
+        const account: Account = (wallet?.accounts ?? [])[0];
 
-        this._initWeb3<T>(observer, selectedWallet);
-      },
-      balance: (balance: string): void => {
-        this._balanceChanged$.next(balance);
-      },
-    };
+        if (!account) {
+          this._accountsChanged$.next([]);
+          this._balanceChanged$.next(null);
+          this.chainId = null;
+        } else {
+          const address: string = account.address;
+          const balance: Balances | null = account.balance;
+
+          this.chainId = (wallet.chains ?? [])[0]?.id;
+
+          if ((this._accountsChanged$.value ?? [])[0] !== address) {
+            this._accountsChanged$.next([ address ]);
+          }
+
+          if (this._balanceChanged$.value !== balance) {
+            this._balanceChanged$.next(balance);
+          }
+        }
+      });
   }
 
   /** @internal */
-  private _initWeb3<T = any>(observer: Subscriber<T>, selectedWallet?: Wallet): void {
+  private _setStyles(): void {
     try {
-      const provider = Object.assign({}, selectedWallet?.provider || {});
+      const shadowRoot = this._shadowRoot;
 
-      if (!provider?.selectedAddress || !selectedWallet?.name) {
-        this._web3 = new Web3();
-      } else {
-        localStorage.setItem(AUC_CONNECTED_WALLET_NAME, selectedWallet.name);
-
-        this._web3 = new Web3(selectedWallet.provider);
+      if (!shadowRoot) {
+        return;
       }
 
-      this._handleEthEvents();
+      const sheet: CSSStyleSheet = new CSSStyleSheet;
+      const styles = `
+        .sidebar,
+        .scroll-container .space,
+         .connecting-container .flex .flex > div:not(:last-child)  {
+          display: none;
+        }
+        .header { border-radius: 0 !important; }
+        .header-heading { line-height: 20px !important; }
+        .button-container { transform: translateY(-2px) }
+        .close-button { padding: 0 !important; }
+        .close-button:hover { color: #BBC7D9 !important; transition: color 0.25s}
+        .wallet-button-styling { padding: 11px 15px; transition: all 0.25s; font-weight: 500;}
+        .wallet-button-styling:hover { border-width: 2px; padding: 10px 14px;}
+        .wallet-button-styling:focus { background-color: #DDE3EC; }
+        .wallet-button-styling > div,
+        .connecting-container .flex .flex > div:last-child > div {
+            height: 32px !important;
+            width: 32px !important;
+            padding: 0 !important;
+            border: none !important;
+            background: transparent !important;
+        }
+        .connecting-container .flex .flex > div:last-child,
+        .connecting-container .flex  > .text {
+          right: 0 !important;
+        }
+        .connecting-container .flex  > .text { padding-left: 12px }
+        .wallet-button-styling > span { margin-left: 12px !important; }
+        .connecting-container { padding: 11px 15px !important; font-weight: 500; border-radius: 8px !important; }
+        .container .onboard-button-primary { position: initial; padding: 10px; margin-top: 15px }
+        button { border-radius: 8px; }
+      `;
 
-      observer.next();
-      observer.complete();
-    } catch (e) {
-      observer.error(e);
+      sheet['replaceSync'](styles);
+      shadowRoot['adoptedStyleSheets'] = [ sheet ];
+    } catch {
+
     }
   }
 
   /** @internal */
-  private _handleEthEvents(): void {
-    const eth = (window as any).ethereum as AucEthereum;
-
-    if (!eth) {
-      return;
+  private _initWeb3<T = any>(provider?: EIP1193Provider): void {
+    if (!provider) {
+      this._web3 = new Web3();
+    } else {
+      this._web3 = new Web3(provider as any);
     }
-
-    eth.on(AUC_ETH_EVENTS.CHAIN_CHANGED, (chainId: string) => {
-      /**
-       *  It's recommended to reload the page on chain changes, unless you have good reason not to. <br>
-       *  You can use window.location.reload()
-       */
-      this.chainId = chainId;
-    });
-
-    eth.on(AUC_ETH_EVENTS.CONNECT, (connectInfo: AucConnectInfo) => {
-      this._connectChanged$.next(connectInfo);
-    });
-
-    eth.on(AUC_ETH_EVENTS.DISCONNECT, (error: AucProviderRpcError) => {
-      this._disconnectChanged$.next(error);
-    });
-
-    eth.on(AUC_ETH_EVENTS.MESSAGE, (message: AucProviderMessage) => {
-      this._messageChanged$.next(message);
-    });
   }
 
   /** @internal */

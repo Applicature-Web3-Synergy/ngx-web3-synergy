@@ -1,6 +1,6 @@
-import { UserState } from 'bnc-onboard/dist/src/interfaces';
+import { AppState } from '@web3-onboard/core/dist/types';
 
 export interface AucConnectionState {
   connected: boolean;
-  state?: UserState
+  state?: AppState
 }

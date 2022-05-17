@@ -15,7 +15,8 @@
     "@uiowa/digit-only",
     "@uniswap/sdk-core",
     "bignumber.js",
-    "bnc-onboard",
+    "@web3-onboard/core",
+    "@web3-onboard/injected-wallets",
     "web3",
     "web3-utils"
   ]

@@ -11,12 +11,14 @@ import {
   ViewChild
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 
+import { Balances } from '@web3-onboard/core/dist/types';
+import BigNumber from 'bignumber.js';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
-import { aucGenerateJazzicon, aucNormalizeBalance } from '../helpers';
-import { AucConnectionState, AucWalletConnectService } from '../services';
+import { aucGenerateJazzicon, aucToBN, BaseSubscriber } from '../helpers';
+import { AucWalletConnectService } from '../services';
 import { AucBalanceAppearance } from './types';
 import { AUC_BALANCE_APPEARANCE } from './enums';
 import { AucNetworkOption } from '../interfaces';
@@ -30,7 +32,7 @@ import { AucAccountBalanceAddressConfig } from './interfaces';
   styleUrls: [ './account-balance.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucAccountBalanceComponent implements OnInit, OnChanges {
+export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit, OnChanges {
   /**
    * Sets style for appearance. <br>
    * You can use one of the values from enum {@link AUC_BALANCE_APPEARANCE}.<br>
@@ -95,7 +97,7 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
   public address$: Observable<string>;
 
   /** Current connected wallet balance. */
-  public balance$: Observable<string>;
+  public balance: string | null = null;
 
   /** Current network */
   public activeNetwork: AucNetworkOption;
@@ -119,25 +121,49 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: AucWalletConnectService,
   ) {
-    this.balance$ = this._walletConnectService.balanceChanged$
-      .pipe(
-        map((balance: string) => {
-          const connectionState: AucConnectionState = this._walletConnectService.connectionState;
+    super();
+  }
 
-          return aucNormalizeBalance(connectionState?.state?.network, balance) ?? '0'
-        })
-      );
+  /** @internal */
+  public ngOnInit(): void {
+    this._walletConnectService.balanceChanged$
+      .pipe(
+        map((balance: Balances | null) => {
+          if (!balance) {
+            return null;
+          }
+
+          const balanceSymbol = Object.keys(balance)[0];
+
+          if (!balanceSymbol) {
+            return null;
+          }
+
+          const balanceVal: string = balance[balanceSymbol];
+          const balanceBn: BigNumber = aucToBN(balanceVal);
+
+          const fixedVal = balanceVal.startsWith('0.000')
+            ? 4
+            : balanceVal.startsWith('0.00') ? 3 : 2;
+
+          return `${aucToBN(balanceBn.toFixed(fixedVal, 1)).toFixed()} ${balanceSymbol}`;
+        }),
+        takeUntil(this.notifier)
+      ).subscribe((balance: string | null) => {
+      if (this.balance !== balance) {
+        this.balance = balance;
+        this._cdr.detectChanges();
+      }
+    });
 
     this._walletConnectService.selectedNetwork$
+      .pipe(takeUntil(this.notifier))
       .subscribe((network: AucNetworkOption) => {
         this.activeNetwork = network;
 
         this._cdr.markForCheck();
       });
-  }
 
-  /** @internal */
-  public ngOnInit(): void {
     this.address$ = this._walletConnectService.accountsChanged$
       .pipe(
         map((accounts: string[]) => {

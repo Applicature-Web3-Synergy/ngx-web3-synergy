@@ -195,6 +195,10 @@ export class AucTransactionService {
 
   /** @internal */
   private _getLocalStorageKey(): string {
+    if (!(window as any).ethereum) {
+      return '';
+    }
+
     const { chainId, selectedAddress } = (window as any).ethereum as AucEthereum;
 
     return `${AUC_ETHERSCAN_TRANSACTIONS}[${selectedAddress}, ${chainId}]`.toUpperCase();

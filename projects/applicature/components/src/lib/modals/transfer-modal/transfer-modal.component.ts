@@ -42,7 +42,7 @@ export class AucTransferModalComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     const connectionState: AucConnectionState = this._walletConnectService.connectionState;
-    this.currentAllowance = aucNormalizeBalance(connectionState?.state?.network, this.data.allowance);
+    // this.currentAllowance = aucNormalizeBalance(connectionState?.state?.network, this.data.allowance); // TODO
 
     this.amountControl.valueChanges
       .subscribe((value) => {

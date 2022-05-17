@@ -18,5 +18,7 @@ export const AucRpcUrls: { [key: string]: string[] } = {
   [AUC_CHAIN_ID.FANTOM_MAINNET]: [ 'https://rpc.ftm.tools' ],
   [AUC_CHAIN_ID.FANTOM_TESTNET]: [ 'https://rpc.testnet.fantom.network' ],
   [AUC_CHAIN_ID.THETA_MAINNET]: [ 'https://eth-rpc-api.thetatoken.org/rpc' ],
-  [AUC_CHAIN_ID.THETA_TESTNET]: [ 'https://eth-rpc-api-testnet.thetatoken.org/rpc' ]
+  [AUC_CHAIN_ID.THETA_TESTNET]: [ 'https://eth-rpc-api-testnet.thetatoken.org/rpc' ],
+  [AUC_CHAIN_ID.RINKEBY_TESTNET]: [ 'https://rinkeby.infura.io/v3' ],
+  [AUC_CHAIN_ID.ETHEREUM_MAINNET]: [ 'https://mainnet.infura.io/v3/3' ]
 };

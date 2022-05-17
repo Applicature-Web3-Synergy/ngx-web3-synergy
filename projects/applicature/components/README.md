@@ -105,11 +105,20 @@ Solution:
               "./node_modules/https-browserify"
             ],
             "os": [
-              "./node_modules/os-browserify"
+              "./node_modules/os-browserify/browser"
             ],
             "path": [
               "./node_modules/path-browserify"
-            ]
+            ],
+            "buffer": [
+               "./node_modules/buffer"
+             ],
+             "process": [
+               "./node_modules/process/browser"
+             ],
+             "util": [
+               "./node_modules/util"
+             ]
           }
         }
       }
