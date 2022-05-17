@@ -10,10 +10,10 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { Observable } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
 import { Balances } from '@web3-onboard/core/dist/types';
+import { Chain } from '@web3-onboard/common/dist/types';
 import BigNumber from 'bignumber.js';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
@@ -21,7 +21,6 @@ import { aucGenerateJazzicon, aucToBN, BaseSubscriber } from '../helpers';
 import { AucWalletConnectService } from '../services';
 import { AucBalanceAppearance } from './types';
 import { AUC_BALANCE_APPEARANCE } from './enums';
-import { AucNetworkOption } from '../interfaces';
 import { AucSetStyleProp } from '../directives';
 import { AucAccountBalanceAddressConfig } from './interfaces';
 
@@ -53,7 +52,6 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
 
   /**
    * Shows Currency icon from supported networks list. <br>
-   * You will set supported networks when initialize library, {@link AucNetworkOption.icon}. <br>
    * It's an optional parameter. <br>
    * The default value is false.
    */
@@ -94,13 +92,16 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
   private _addressRef!: ElementRef<HTMLDivElement>;
 
   /** Current connected wallet address. */
-  public address$: Observable<string>;
+  public address: string;
 
   /** Current connected wallet balance. */
   public balance: string | null = null;
 
   /** Current network */
-  public activeNetwork: AucNetworkOption;
+  public activeNetwork: Chain;
+
+  /** @internal */
+  private chainsList: Chain[] = [];
 
   /** @internal */
   public styleProperties: AucSetStyleProp[] = [];
@@ -122,10 +123,27 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
     private _walletConnectService: AucWalletConnectService,
   ) {
     super();
+
+    const connectionState = this._walletConnectService.connectionState;
+
+    if (!connectionState.connected) {
+      this.chainsList = [];
+
+      return;
+    }
+
+    this.chainsList = connectionState.state.chains;
   }
 
   /** @internal */
   public ngOnInit(): void {
+    this._walletConnectService.chainChanged$
+      .pipe(takeUntil(this.notifier))
+      .subscribe((chainId: string) => {
+        this.activeNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;
+        this._cdr.markForCheck();
+      });
+
     this._walletConnectService.balanceChanged$
       .pipe(
         map((balance: Balances | null) => {
@@ -156,15 +174,7 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
       }
     });
 
-    this._walletConnectService.selectedNetwork$
-      .pipe(takeUntil(this.notifier))
-      .subscribe((network: AucNetworkOption) => {
-        this.activeNetwork = network;
-
-        this._cdr.markForCheck();
-      });
-
-    this.address$ = this._walletConnectService.accountsChanged$
+    this._walletConnectService.accountsChanged$
       .pipe(
         map((accounts: string[]) => {
           const account = (accounts ?? [])[0] || null;
@@ -175,7 +185,12 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
 
           return account;
         }),
-      );
+        takeUntil(this.notifier)
+      )
+      .subscribe((address: string) => {
+        this.address = address;
+        this._cdr.markForCheck();
+      });
   }
 
   /** @internal */

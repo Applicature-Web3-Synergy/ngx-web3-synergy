@@ -1,6 +1,6 @@
 import { AucEthChainParams } from './ethereum';
 
-export interface AucNetworkOption {
+export interface AucNetworkOption { // TODO REMOVE this file
   /** Currency icon url */
   icon: string;
   name: string;

@@ -32,18 +32,13 @@
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 8px 12px;
+  padding: 8px 57px 8px 12px;
   @include c.transition;
+  position: relative;
 
   &:hover {
     cursor: pointer;
     background: c.$grey-bg;
-  }
-
-  &.auc-network-options-item-disabled {
-    cursor: default;
-    opacity: .5;
-    pointer-events: none;
   }
 }
 
@@ -66,4 +61,11 @@
   font-size: 16px;
   line-height: 24px;
   color: c.$black;
+}
+
+.auc-active-network-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
 }

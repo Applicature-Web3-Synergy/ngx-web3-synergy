@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../../helpers';
-import { AucNetworkOption, AucEtherscanTransactionLocalStorage } from '../../interfaces';
+import { AucEtherscanTransactionLocalStorage } from '../../interfaces';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { AucConnectionState, AucWalletConnectService } from '../../services';
+import { AucWalletConnectService } from '../../services';
 import { AucTransactionService } from '../../transactions';
 
 

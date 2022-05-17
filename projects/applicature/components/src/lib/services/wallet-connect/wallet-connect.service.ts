@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Observable, of, Subject, Subscriber } from 'rxjs';
-import { catchError, debounceTime, map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { BehaviorSubject, from, Observable, of, Subscriber } from 'rxjs';
+import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
 import Onboard from '@web3-onboard/core'
@@ -14,15 +14,8 @@ import {
   WalletState
 } from '@web3-onboard/core/dist/types'
 
-import { AUC_ETH_METHODS, AUC_METAMASK_CODES } from '../../enums';
-import {
-  AucEthChainParams,
-  AucNetworkOption,
-  AucEthereum,
-} from '../../interfaces';
 import { AucConnectionState } from './interfaces';
-import { aucConvertChainIdToHex, aucGetChainParams, BaseSubscriber } from '../../helpers';
-import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../constants';
+import { BaseSubscriber } from '../../helpers';
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
@@ -63,7 +56,6 @@ export class AucWalletConnectService extends BaseSubscriber {
         : this._onboard.state.select()
     )
       .pipe(
-        debounceTime(300),
         map((state: AppState | null) => {
           if (!state) {
             return { connected: false };
@@ -102,96 +94,13 @@ export class AucWalletConnectService extends BaseSubscriber {
   }
 
   /**
-   * Emits when selected network. <br>
-   * You can subscribe on it.
-   */
-  public get selectedNetwork$(): Observable<AucNetworkOption> {
-    return this._selectedNetwork$.asObservable();
-  }
-
-  /** @returns Supported networks list. */
-  public get supportedNetworks(): AucNetworkOption[] {
-    if (!this._supportedNetworks || !this._supportedNetworks.length) {
-      console.error(`You don't have any supported networks. Pls set it when initialize library`);
-    }
-
-    return this._supportedNetworks ?? [];
-  }
-
-  /** Sets supported networks list. */
-  public set supportedNetworks(options: AucNetworkOption[]) {
-    this._supportedNetworks = options ?? [];
-    this._supportedNetworks.forEach((item: AucNetworkOption) => {
-      if (!item.chainId) {
-        return;
-      }
-
-      if (item.blockExplorerApiUrl) {
-        AucBlockExplorerApiUrl[item.chainId] = item.blockExplorerApiUrl;
-      }
-
-      if (!item.blockExplorerUrl) {
-        return;
-      }
-
-      AucBlockExplorerUrls[item.chainId] = [
-        ...new Set([
-          item.blockExplorerUrl,
-          ...(AucBlockExplorerUrls[item.chainId] || [])
-        ])
-      ];
-    });
-
-    this.selectedNetwork = this._chainChanged$.value;
-  }
-
-  /**
-   * Emits when adding new network and config doesn't exist. <br>
-   * You can subscribe on it and show some message to user.
-   */
-  public get cantFindAddingNetwork$(): Observable<void> {
-    return this._cantFindAddingNetwork$.asObservable();
-  }
-
-  /**
    * Sets selected chainId and selected network.
    * @param chainId - 0x-prefixed hexadecimal string.
    */
   private set chainId(chainId: string) {
     if (this._chainChanged$.value !== chainId) {
       this._chainChanged$.next(chainId);
-      this.selectedNetwork = chainId;
     }
-  }
-
-  /**
-   * @internal <br>
-   * Sets selected network by chainId. <br>
-   * @param chainId - 0x-prefixed hexadecimal string.
-   */
-  private set selectedNetwork(chainId: string) {
-    if (!chainId) {
-      this._selectedNetwork$.next(null);
-    }
-
-    let isSameSelected: boolean = false;
-
-    this._supportedNetworks = this.supportedNetworks
-      .map((option: AucNetworkOption) => {
-        if (option.isActive && option.chainId === chainId) {
-          isSameSelected = true;
-        }
-
-        return { ...option, isActive: option.chainId === chainId };
-      });
-
-    if (isSameSelected) {
-      return;
-    }
-
-    const active = this.supportedNetworks.find((option: AucNetworkOption) => option.isActive);
-
-    this._selectedNetwork$.next(active);
   }
 
   /** @internal */
@@ -214,38 +123,21 @@ export class AucWalletConnectService extends BaseSubscriber {
   /** @internal */
   private _balanceChanged$: BehaviorSubject<Balances | null> = new BehaviorSubject<Balances>(null);
 
-  /** @internal */
-  private _cantFindAddingNetwork$: Subject<void> = new Subject<void>();
-
-  /** @internal */
-  private _selectedNetwork$: Subject<AucNetworkOption> = new BehaviorSubject<AucNetworkOption>(null);
-
-  /** @internal */
-  private _supportedNetworks: AucNetworkOption[];
-
   constructor() {
     super();
   }
 
   /**
    * This library uses {@link Onboard} for initialization wallet connection. <br>
-   * More information about config {@link https://www.npmjs.com/package/bnc-onboard}. <br>
+   * More information about config {@link https://docs.blocknative.com/onboard/core}. <br>
    * @param config - Initialization Config for wallet connection.
-   * @param supportedNetworks - List of the supported networks.
    */
-  public initialize(config: InitOptions, supportedNetworks: AucNetworkOption[]): Observable<void> {
+  public initialize(config: InitOptions): Observable<void> {
     if (this._onboard) {
       console.error('web3-onboard already initialized');
 
       return of(null);
     }
-
-    if (supportedNetworks && Array.isArray(supportedNetworks)) {
-      this.supportedNetworks = supportedNetworks; // TODO need to think about it
-    } else {
-      console.error('Invalid supported Networks. Please set supportedNetworks as AucNetworkOption[]');
-    }
-
 
     return new Observable<void>((observer: Subscriber<void>) => {
       try {
@@ -338,52 +230,6 @@ export class AucWalletConnectService extends BaseSubscriber {
       );
   }
 
-  /**
-   * This method is used for switching Metamask network by {@link chainId}. <br>
-   * If Metamask doesn't have this {@link chainId} it can be added by parameter {@link chainParams}. <br>
-   * @param chainId - 0x-prefixed hexadecimal string. You can use helper {@link aucConvertChainIdToHex}.
-   * @param chainParams - An optional parameter. <br>
-   * Uses for adding new network to Metamask if it doesn't include network by {@link chainId}. <br>
-   * This Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}. <br>
-   * You can use your own specific params.
-   */
-  public switchEthereumChain(chainId: string, chainParams?: AucEthChainParams): Observable<boolean> {
-    if (!chainId) {
-      return of(false);
-    }
-
-    return this._request<void>(AUC_ETH_METHODS.SWITCH_ETHEREUM_CHAIN, [ { chainId } ])
-      .pipe(
-        map(() => true),
-        catchError(err => {
-          if (err?.code === AUC_METAMASK_CODES.UNRECOGNIZED_CHAIN_ID) {
-            return this.addEthereumChain(chainParams ?? aucGetChainParams(chainId))
-          }
-
-          return of(false);
-        })
-      );
-  }
-
-  /**
-   * This method is used for adding new network to Metamask by {@link chainParams}.
-   * @param chainParams - Uses for adding new network to Metamask.<br>
-   * This Library already have {@link chainParams} for the next chainIds {@link AUC_CHAIN_ID}.<br>
-   * You can get it uses method {@link aucGetChainParams}.
-   */
-  public addEthereumChain(chainParams: Partial<AucEthChainParams>): Observable<boolean> {
-    if (!chainParams) {
-      this._cantFindAddingNetwork$.next();
-      return of(false);
-    }
-
-    return this._request<void>(AUC_ETH_METHODS.ADD_ETHEREUM_CHAIN, [ chainParams ])
-      .pipe(
-        map(() => true),
-        catchError(() => of(false))
-      );
-  }
-
   /** @internal */
   private _subscriptions(): void {
     this.onboard.state.select('wallets')
@@ -392,6 +238,7 @@ export class AucWalletConnectService extends BaseSubscriber {
         takeUntil(this.notifier)
       )
       .subscribe((wallet: WalletState) => {
+        console.log(1111, this.connectionState);
         this._initWeb3(wallet?.provider);
 
         if (wallet) {
@@ -483,15 +330,5 @@ export class AucWalletConnectService extends BaseSubscriber {
     } else {
       this._web3 = new Web3(provider as any);
     }
-  }
-
-  /** @internal */
-  private _request<T = any>(
-    method: AUC_ETH_METHODS,
-    params?: unknown[] | Record<string, unknown>,
-  ): Observable<T> {
-    const eth = (window as any).ethereum as AucEthereum;
-
-    return from(eth.request({ method, params }));
   }
 }

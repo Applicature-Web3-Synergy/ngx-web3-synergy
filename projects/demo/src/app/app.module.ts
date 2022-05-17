@@ -28,7 +28,6 @@ import { ExampleTableModule } from './examples/example-table/example-table.modul
 import { ExampleDropdownMenuModule } from './examples/example-dropdown-menu/example-dropdown-menu.module';
 import { ExampleAccountBalanceModule } from './examples/example-account-balance/example-account-balance.module';
 import { AucRpcUrls } from '../../../applicature/components/src/lib/constants';
-import { InjectedWalletModule } from '@web3-onboard/injected-wallets/dist/types';
 
 const supportedNetworks: AucNetworkOption[] = [
   {
@@ -122,7 +121,7 @@ const supportedNetworks: AucNetworkOption[] = [
   //   isActive: false,
   // },
   {
-    icon: 'assets/svg/network/bsc.svg',
+    icon: 'assets/svg/network/polygon.svg',
     name: 'Polygon Testnet',
     chainId: AUC_CHAIN_ID.POLYGON_TESTNET,
     symbol: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
@@ -162,27 +161,30 @@ export function initWalletServiceFactory(
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
     wallets: [ injected ],
-    chains: [ // TODO
+    chains: [
       {
         id: AUC_CHAIN_ID.BSC_TESTNET,
         token: AucNativeCurrencies[AUC_CHAIN_ID.BSC_TESTNET].name,
         label: 'BNB Chain',
-        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.BSC_TESTNET][0]
+        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.BSC_TESTNET][0],
+        icon: 'assets/svg/network/bsc.svg'
       },
       {
         id: AUC_CHAIN_ID.POLYGON_TESTNET,
         token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
         label: 'Matic Mainnet',
-        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0]
+        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        icon: 'assets/svg/network/polygon.svg'
       },
       {
         id: AUC_CHAIN_ID.RINKEBY_TESTNET,
         token: 'rETH',
         label: 'Rinkeby Ethereum',
-        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0]
+        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
+        icon: 'assets/svg/network/eth.svg'
       }
     ]
-  }, supportedNetworks);
+  });
 }
 
 @NgModule({
