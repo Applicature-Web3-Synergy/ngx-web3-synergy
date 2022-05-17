@@ -5,6 +5,7 @@ import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import Web3 from 'web3';
 import Onboard from '@web3-onboard/core'
 import { EIP1193Provider } from '@web3-onboard/common';
+import { Chain } from '@web3-onboard/common/dist/types';
 import {
   Account,
   AppState,
@@ -12,13 +13,25 @@ import {
   InitOptions,
   OnboardAPI,
   WalletState
-} from '@web3-onboard/core/dist/types'
+} from '@web3-onboard/core/dist/types';
 
-import { AucConnectionState } from './interfaces';
+import { AucConnectionState, AucInitOptions, BlockExplorerUrlsByChainId } from './interfaces';
 import { BaseSubscriber } from '../../helpers';
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
+
+export interface AucChain extends Chain {
+  /** Ex: https://etherscan.io. <br>
+   * You can use {@link AucBlockExplorerUrls[chainId][0]} or set other url.
+   * */
+  blockExplorerUrl: string;
+  /** Ex: https://api.etherscan.io/api. <br>
+   * Used for getting transactions information.
+   * You can use {@link AucBlockExplorerUrls[chainId]} or set other url.
+   * */
+  blockExplorerApiUrl?: string;
+}
 
 @Injectable()
 export class AucWalletConnectService extends BaseSubscriber {
@@ -34,6 +47,11 @@ export class AucWalletConnectService extends BaseSubscriber {
   public get onboard(): OnboardAPI {
     return this._onboard;
   };
+
+  /** @returns Blockchain explorer urls config. */
+  get blockExplorerUrlByChainId(): BlockExplorerUrlsByChainId {
+    return this._blockExplorerUrlByChainId;
+  }
 
   /** @returns current connection state. */
   public get connectionState(): AucConnectionState {
@@ -123,6 +141,9 @@ export class AucWalletConnectService extends BaseSubscriber {
   /** @internal */
   private _balanceChanged$: BehaviorSubject<Balances | null> = new BehaviorSubject<Balances>(null);
 
+  /** @internal */
+  private _blockExplorerUrlByChainId: BlockExplorerUrlsByChainId = {};
+
   constructor() {
     super();
   }
@@ -132,7 +153,7 @@ export class AucWalletConnectService extends BaseSubscriber {
    * More information about config {@link https://docs.blocknative.com/onboard/core}. <br>
    * @param config - Initialization Config for wallet connection.
    */
-  public initialize(config: InitOptions): Observable<void> {
+  public initialize(config: AucInitOptions): Observable<void> {
     if (this._onboard) {
       console.error('web3-onboard already initialized');
 
@@ -141,14 +162,59 @@ export class AucWalletConnectService extends BaseSubscriber {
 
     return new Observable<void>((observer: Subscriber<void>) => {
       try {
-        this._onboard = Onboard({
-          accountCenter: {
-            desktop: {
-              enabled: false
-            }
-          },
-          ...config,
+        const chains: Chain[] = config.chains.map(({
+                                                     id,
+                                                     rpcUrl,
+                                                     label,
+                                                     token,
+                                                     namespace,
+                                                     color,
+                                                     icon,
+                                                     blockExplorerUrl,
+                                                     blockExplorerApiUrl
+                                                   }: AucChain) => {
+          const chain: Chain = {
+            id,
+            rpcUrl,
+            label,
+            token,
+          };
+
+          if (namespace) {
+            chain.namespace = namespace;
+          }
+
+          if (color) {
+            chain.color = color;
+          }
+
+          if (icon) {
+            chain.icon = icon;
+          }
+
+          this._blockExplorerUrlByChainId[id] = {
+            blockExplorerUrl,
+            blockExplorerApiUrl
+          }
+
+          return chain;
         });
+
+        const initOptions: InitOptions = {
+          wallets: config.wallets,
+          chains: chains,
+          accountCenter: config.accountCenter ?? { desktop: { enabled: false } }
+        }
+
+        if (config.appMetadata) {
+          initOptions.appMetadata = config.appMetadata;
+        }
+
+        if (config.i18n) {
+          initOptions.i18n = config.i18n;
+        }
+
+        this._onboard = Onboard(initOptions);
 
         this._setStyles();
         this._subscriptions();
@@ -238,7 +304,6 @@ export class AucWalletConnectService extends BaseSubscriber {
         takeUntil(this.notifier)
       )
       .subscribe((wallet: WalletState) => {
-        console.log(1111, this.connectionState);
         this._initWeb3(wallet?.provider);
 
         if (wallet) {
@@ -285,7 +350,7 @@ export class AucWalletConnectService extends BaseSubscriber {
       const sheet: CSSStyleSheet = new CSSStyleSheet;
       const styles = `
         .sidebar,
-        .scroll-container .space,
+        .scroll-container .spacer,
          .connecting-container .flex .flex > div:not(:last-child)  {
           display: none;
         }
@@ -314,6 +379,7 @@ export class AucWalletConnectService extends BaseSubscriber {
         .connecting-container { padding: 11px 15px !important; font-weight: 500; border-radius: 8px !important; }
         .container .onboard-button-primary { position: initial; padding: 10px; margin-top: 15px }
         button { border-radius: 8px; }
+        .container { min-height: 136px; max-height: 80vh }
       `;
 
       sheet['replaceSync'](styles);

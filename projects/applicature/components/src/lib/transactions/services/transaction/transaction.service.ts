@@ -44,7 +44,6 @@ export class AucTransactionService {
 
   /**
    * Supported networks {@link BlockExplorerApiUrl}`. <br>
-   * You can add your custom API url when init library {@link AucNetworkOption.blockExplorerApiUrl}. <br>
    * @returns API url by chainId.
    */
   static getTransactionApiUrl(chainId: string): string {
