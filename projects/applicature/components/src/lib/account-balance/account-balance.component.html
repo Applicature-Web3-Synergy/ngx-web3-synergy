@@ -1,18 +1,18 @@
 <div [ngClass]="classNames" [aucSetStyleProps]="styleProperties">
-  <div class="auc-balance-info" *ngIf="activeNetwork">
-    <auc-icon *ngIf="isCurrency && activeNetwork.icon"
+  <div class="auc-balance-info" *ngIf="balance">
+    <auc-icon *ngIf="isCurrency && activeNetwork?.icon"
               class="auc-balance-currency"
               [icon]="activeNetwork.icon"
     >
     </auc-icon>
 
-    <span>{{ balance$ | async }} {{ activeNetwork.symbol }}</span>
+    <span>{{ balance }}</span>
   </div>
 
   <auc-button *ngIf="showAddress"
               (onClick)="onAccountButtonClick($event)"
               [disabled]="addressConfig?.disabled"
-              [label]="(address$ | async | aucShortAddress)"
+              [label]="(address | aucShortAddress)"
               [identicon]="addressConfig?.showIdenticon ? identicon : null"
               [identiconPosition]="addressConfig?.identiconPosition"
               [color]="addressConfig?.color ?? COLOR_GROUP.WHITE">

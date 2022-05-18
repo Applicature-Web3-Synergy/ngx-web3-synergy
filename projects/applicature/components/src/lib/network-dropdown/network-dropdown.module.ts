@@ -6,17 +6,15 @@ import { AucPipesModule } from '../pipes';
 import { AucNetworkDropdownComponent } from './network-dropdown.component';
 import { AucDropdownMenuModule } from '../dropdown-menu';
 import { AucDirectivesModule } from '../directives';
-import { AucNoNetworkConfigComponent } from './no-network-config';
+import { AucIconModule } from '../icon';
 
 
 @NgModule({
   declarations: [
-    AucNetworkDropdownComponent,
-    AucNoNetworkConfigComponent
+    AucNetworkDropdownComponent
   ],
   exports: [
-    AucNetworkDropdownComponent,
-    AucNoNetworkConfigComponent
+    AucNetworkDropdownComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +22,7 @@ import { AucNoNetworkConfigComponent } from './no-network-config';
     AucPipesModule,
     AucDropdownMenuModule,
     AucDirectivesModule,
+    AucIconModule,
   ]
 })
 export class AucNetworkDropdownModule {

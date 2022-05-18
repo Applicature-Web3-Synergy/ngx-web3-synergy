@@ -44,7 +44,6 @@ export class AucTransactionService {
 
   /**
    * Supported networks {@link BlockExplorerApiUrl}`. <br>
-   * You can add your custom API url when init library {@link AucNetworkOption.blockExplorerApiUrl}. <br>
    * @returns API url by chainId.
    */
   static getTransactionApiUrl(chainId: string): string {
@@ -195,6 +194,10 @@ export class AucTransactionService {
 
   /** @internal */
   private _getLocalStorageKey(): string {
+    if (!(window as any).ethereum) {
+      return '';
+    }
+
     const { chainId, selectedAddress } = (window as any).ethereum as AucEthereum;
 
     return `${AUC_ETHERSCAN_TRANSACTIONS}[${selectedAddress}, ${chainId}]`.toUpperCase();

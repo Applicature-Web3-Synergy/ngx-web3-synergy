@@ -1,6 +1,8 @@
 @use 'common' as c;
 
 .doc-footer {
+  display: block;
+  height: c.$footer-height;
   background: c.$header-bg;
   padding: c.$main-vertical-padding c.$main-horizontal-padding;
   color: c.$white-text-color;

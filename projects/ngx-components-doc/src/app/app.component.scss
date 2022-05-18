@@ -40,6 +40,7 @@ $desktop-menu-width: 240px;
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
+  min-height: calc(100% - #{$sidenav-title-height} - #{c.$footer-height});
 
   .doc-desktop-menu {
     display: none;
