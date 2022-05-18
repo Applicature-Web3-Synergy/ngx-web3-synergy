@@ -1,11 +1,11 @@
 # Applicature Universal Components
-This library can help you to develop Blockchain projects easily.  
-For now, this library supports only Angular 13 version.
+This library was created and maintained by Applicature to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
+This library supports only Angular 13 version.
 
 ## Documetation
 Coming soon.
 
-## Instaling library
+## Library installation
     npm i @applicature/styles @applicature/components
 
 ## How to make it works
@@ -80,7 +80,7 @@ window.global.Buffer = global.Buffer || Buffer;
 for Angular 13+. Verify if you need this module and configure a polyfill for it.
 
 Solution:
-   - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify`
+   - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify buffer process util`
    - **tsconfig.app.json**
 
       <pre><code>
@@ -128,87 +128,51 @@ Solution:
  - **app.module.ts**
 
 <pre><code>
-const wallets: Array<WalletModule | WalletInitOptions> = [
-  {
-    walletName: 'metamask',
-    preferred: true
-  },
-  {
-    walletName: 'walletConnect',
-    infuraKey: '${YOUR_INFURA_KEY}',
-    preferred: false
-  }
-];
+import injectedModule from '@web3-onboard/injected-wallets'
 
-const networks = {
-  eth: 1,
-  kovanTestnet: AUC_CHAIN_ID_NUM.KOVAN_TESTNET,
-  // ...
-};
-
-const supportedNetworks: AucNetworkOption[] = [
-  {
-    icon: 'assets/svg/network/eth.svg',
-    name: 'Ethereum',
-    chainId: AUC_CHAIN_ID.RINKEBY_TESTNET,
-    symbol: AucNativeCurrencies[AUC_CHAIN_ID.RINKEBY_TESTNET].name,
-    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
-    isActive: false
-  },
-  {
-    icon: 'assets/svg/network/bsc.svg',
-    name: 'BSC',
-    chainId: '0x61',
-    symbol: 'BNB',
-    blockExplorerUrl: 'https://testnet.bscscan.com',
-    blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
-    isActive: false,
-    chainParams: { // Custom Chain params
-      chainId: '0x61',
-      chainName: 'Binance Smart Chain Testnet',
-      nativeCurrency: {
-        name: 'BNB',
-        symbol: 'bnb',
-        decimals: 18
-      },
-      rpcUrls: [ 'https://data-seed-prebsc-1-s1.binance.org:8545' ],
-      blockExplorerUrls: [ 'https://testnet.bscscan.com' ]
-    }
-  },
-  {
-    icon: 'assets/svg/network/avax.svg',
-    name: 'Avalanche',
-    chainId: AUC_CHAIN_ID.AVALANCH_TESTNET,
-    isActive: false,
-    symbol: AucNativeCurrencies[AUC_CHAIN_ID.AVALANCH_TESTNET].name,
-    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.AVALANCH_TESTNET][0],
-    blockExplorerApiUrl: AucBlockExplorerApiUrl[AUC_CHAIN_ID.AVALANCH_TESTNET],
-    chainParams: { // modified existing Chain params
-      ...(aucGetChainParams(AUC_CHAIN_ID.AVALANCH_TESTNET)),
-      chainName: 'Avalanche TestNet'
-    }
-  }
-];
+const injected = injectedModule();
 
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
-    networkId: networks.eth,
-    walletSelect: { wallets }
-  }, supportedNetworks);
+    wallets: [ injected ],
+    chains: [
+      {
+        id: AUC_CHAIN_ID.BSC_TESTNET,
+        token: 'BNB',
+        label: 'BNB Chain',
+        rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+        icon: 'assets/svg/network/bsc.svg',
+        blockExplorerUrl: 'https://testnet.bscscan.com',
+        blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
+      },
+      {
+        id: AUC_CHAIN_ID.POLYGON_TESTNET,
+        token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
+        label: 'Matic Mainnet',
+        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        icon: 'assets/svg/network/polygon.svg',
+        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+      },
+      {
+        id: AUC_CHAIN_ID.RINKEBY_TESTNET,
+        token: 'rETH',
+        label: 'Rinkeby Ethereum',
+        rpcUrl: `${AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
+        icon: 'assets/svg/network/eth.svg',
+        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
+      }
+    ]
+  });
 }
-
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
+    ...
     AucConnectModule.forRoot()
   ],
   providers: [

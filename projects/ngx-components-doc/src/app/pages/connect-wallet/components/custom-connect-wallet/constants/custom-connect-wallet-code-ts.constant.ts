@@ -5,11 +5,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { takeUntil } from 'rxjs';
 
 import {
-  AUC_CHAIN_ID,
-  AucBlockExplorerUrls,
   AucConnectionState,
-  AucNativeCurrencies,
-  AucNetworkOption,
   AucWalletConnectService,
   BaseSubscriber
 } from '@applicature/components';
@@ -27,7 +23,6 @@ export class CustomConnectWalletComponent extends BaseSubscriber implements OnIn
   public web3: Web3; // Current Web3 instance.
   public onboardConnection: OnboardAPI; // This library uses package @web3-onboard/core for wallet connection.
   public connectionState: AucConnectionState; // Current wallet connection state.
-  public supportedNetworks: AucNetworkOption[]; // Supportesd networks which you set in app.module.ts
 
   get isConnected(): boolean {
     return this.walletConnectService.connectionState.connected;
@@ -43,22 +38,15 @@ export class CustomConnectWalletComponent extends BaseSubscriber implements OnIn
 
     console.log('Current Web3 instance: ', this.web3);
 
-    /** You can set supported networks for your application */
-    this.walletConnectService.supportedNetworks = [
-      ...this.walletConnectService.supportedNetworks,
-      {
-        icon: 'assets/svg/network/eth.svg',
-        name: 'Kovan',
-        chainId: AUC_CHAIN_ID.KOVAN_TESTNET,
-        symbol: AucNativeCurrencies[AUC_CHAIN_ID.KOVAN_TESTNET].name,
-        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.KOVAN_TESTNET][0],
-        isActive: false
-      }
-    ];
+    /** Emits when connection was changed. */
+    this.walletConnectService.connectionState$
+      .pipe(takeUntil(this.notifier))
+      .subscribe((connectionState: AucConnectionState) => {
+        console.log('Current connectionState: ', connectionState);
 
-    /** You can get supported networks for your application */
-    this.supportedNetworks = this.walletConnectService.supportedNetworks
-    console.log('supportedNetworks: ', this.supportedNetworks);
+        this.cdr.markForCheck();
+      });
+
 
     /** Emits when account was changed. */
     this.walletConnectService.accountsChanged$
@@ -78,30 +66,11 @@ export class CustomConnectWalletComponent extends BaseSubscriber implements OnIn
         this.cdr.markForCheck();
       });
 
-    // TODO will remove
-    // /** Emits when network was changed */
-    // this.walletConnectService.networkChanged$
-    //   .pipe(takeUntil(this.notifier))
-    //   .subscribe((networkId: number) => {
-    //     console.log('Current network id: ', networkId);
-    //
-    //     this.cdr.markForCheck();
-    //   });
-
     /** Emits when balance was changed */
     this.walletConnectService.balanceChanged$
       .pipe(takeUntil(this.notifier))
       .subscribe((balance: Balances) => {
         console.log('Current balance: ', balance);
-
-        this.cdr.markForCheck();
-      });
-
-    /** Emits when selected network.  */
-    this.walletConnectService.selectedNetwork$
-      .pipe(takeUntil(this.notifier))
-      .subscribe((selectedNetwork: AucNetworkOption) => {
-        console.log('Selected Network: ', selectedNetwork);
 
         this.cdr.markForCheck();
       });

@@ -15,23 +15,11 @@ import {
   WalletState
 } from '@web3-onboard/core/dist/types';
 
-import { AucConnectionState, AucInitOptions, BlockExplorerUrlsByChainId } from './interfaces';
+import { AucChain, AucConnectionState, AucInitOptions, BlockExplorerUrlsByChainId } from './interfaces';
 import { BaseSubscriber } from '../../helpers';
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
-
-export interface AucChain extends Chain {
-  /** Ex: https://etherscan.io. <br>
-   * You can use {@link AucBlockExplorerUrls[chainId][0]} or set other url.
-   * */
-  blockExplorerUrl: string;
-  /** Ex: https://api.etherscan.io/api. <br>
-   * Used for getting transactions information.
-   * You can use {@link AucBlockExplorerUrls[chainId]} or set other url.
-   * */
-  blockExplorerApiUrl?: string;
-}
 
 @Injectable()
 export class AucWalletConnectService extends BaseSubscriber {

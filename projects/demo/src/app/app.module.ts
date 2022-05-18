@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable } from 'rxjs';
 
-import injectedModule from '@web3-onboard/injected-wallets'
+import injectedModule from '@web3-onboard/injected-wallets';
+import walletConnectModule from '@web3-onboard/walletconnect';
+
 import {
   AucAlertModule,
   AucDropdownMenuModule,
@@ -30,32 +32,38 @@ const INFURA_KEY = environment.infuraKey;
 
 const injected = injectedModule();
 
+const walletConnect = walletConnectModule({
+  qrcodeModalOptions: {
+    mobileLinks: ['rainbow', 'metamask', 'argent', 'trust', 'imtoken', 'pillar']
+  }
+});
+
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
-    wallets: [ injected ],
+    wallets: [ injected, walletConnect ],
     chains: [
       {
         id: AUC_CHAIN_ID.BSC_TESTNET,
-        token: AucNativeCurrencies[AUC_CHAIN_ID.BSC_TESTNET].name,
+        token: 'BNB',
         label: 'BNB Chain',
-        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.BSC_TESTNET][0],
+        rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545',
         icon: 'assets/svg/network/bsc.svg',
         blockExplorerUrl: 'https://testnet.bscscan.com',
         blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
       },
       {
-        id: AUC_CHAIN_ID.POLYGON_TESTNET,
-        token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
+        id: AUC_CHAIN_ID.POLYGON_MAINNET,
+        token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_MAINNET].name,
         label: 'Matic Mainnet',
-        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_MAINNET][0],
         icon: 'assets/svg/network/polygon.svg',
-        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_MAINNET][0],
       },
       {
         id: AUC_CHAIN_ID.RINKEBY_TESTNET,
-        token: 'rETH',
+        token: 'ETH',
         label: 'Rinkeby Ethereum',
         rpcUrl: `${AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
         icon: 'assets/svg/network/eth.svg',
@@ -64,6 +72,7 @@ export function initWalletServiceFactory(
     ]
   });
 }
+
 
 @NgModule({
   declarations: [

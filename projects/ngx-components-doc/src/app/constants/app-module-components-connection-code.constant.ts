@@ -1,79 +1,67 @@
-export const AppModuleComponentsConnectionCodeConstant = `import { APP_INITIALIZER, NgModule } from '@angular/core';
+export const AppModuleComponentsConnectionCodeConstant = `
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
-import { WalletInitOptions, WalletModule } from 'bnc-onboard/dist/src/interfaces';
+import injectedModule from '@web3-onboard/injected-wallets';
+import walletConnectModule from '@web3-onboard/walletconnect';
 import {
   AUC_CHAIN_ID,
-  AUC_CHAIN_ID_NUM, AucBlockExplorerApiUrl,
-  AucBlockExplorerUrls, AucConnectModule, aucGetChainParams,
+  AucBlockExplorerUrls,
+  AucConnectModule,
   AucNativeCurrencies,
-  AucNetworkOption, AucWalletConnectService
+  AucWalletConnectService,
+  AucRpcUrls
 } from '@applicature/components';
 
+/** Read more about Infura https://infura.io */
+const INFURA_KEY = environment.infuraKey;
 
-const wallets: Array<WalletModule | WalletInitOptions> = [
-  {
-    walletName: 'metamask',
-    preferred: true
+/** More info https://docs.blocknative.com/onboard/injected-wallets */
+const injected = injectedModule();
+
+/** More info https://docs.blocknative.com/onboard/wallet-connect */
+const walletConnect = walletConnectModule({
+  qrcodeModalOptions: {
+    mobileLinks: ['rainbow', 'metamask', 'argent', 'trust', 'imtoken', 'pillar']
   }
-];
+});
 
-const networks = {
-  eth: 1,
-  kovanTestnet: AUC_CHAIN_ID_NUM.KOVAN_TESTNET
-};
-
-const supportedNetworks: AucNetworkOption[] = [
-  {
-    icon: 'assets/svg/network/eth.svg',
-    name: 'Ethereum',
-    chainId: AUC_CHAIN_ID.RINKEBY_TESTNET,
-    symbol: AucNativeCurrencies[AUC_CHAIN_ID.RINKEBY_TESTNET].name,
-    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
-    isActive: false
-  },
-  {
-    icon: 'assets/svg/network/bsc.svg',
-    name: 'BSC',
-    chainId: '0x61',
-    symbol: 'BNB',
-    blockExplorerUrl: 'https://testnet.bscscan.com',
-    blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
-    isActive: false,
-    chainParams: { // Custom Chain params
-      chainId: '0x61',
-      chainName: 'Binance Smart Chain Testnet',
-      nativeCurrency: {
-        name: 'BNB',
-        symbol: 'bnb',
-        decimals: 18
-      },
-      rpcUrls: [ 'https://data-seed-prebsc-1-s1.binance.org:8545' ],
-      blockExplorerUrls: [ 'https://testnet.bscscan.com' ]
-    }
-  },
-  {
-    icon: 'assets/svg/network/avax.svg',
-    name: 'Avalanche',
-    chainId: AUC_CHAIN_ID.AVALANCH_TESTNET,
-    isActive: false,
-    symbol: AucNativeCurrencies[AUC_CHAIN_ID.AVALANCH_TESTNET].name,
-    blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.AVALANCH_TESTNET][0],
-    blockExplorerApiUrl: AucBlockExplorerApiUrl[AUC_CHAIN_ID.AVALANCH_TESTNET],
-    chainParams: { // modified existing Chain params
-      ...(aucGetChainParams(AUC_CHAIN_ID.AVALANCH_TESTNET)),
-      chainName: 'Avalanche TestNet'
-    }
-  }
-];
+/** More supported wallets https://docs.blocknative.com/onboard  */
 
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
-    networkId: networks.eth,
-    walletSelect: { wallets }
-  }, supportedNetworks);
+    wallets: [ injected, walletConnect ],
+    chains: [
+      {
+        id: AUC_CHAIN_ID.BSC_TESTNET,
+        token: 'BNB',
+        label: 'BNB Chain',
+        rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+        icon: 'assets/svg/network/bsc.svg',
+        blockExplorerUrl: 'https://testnet.bscscan.com',
+        blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
+      },
+      {
+        id: AUC_CHAIN_ID.POLYGON_TESTNET,
+        token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
+        label: 'Matic Mainnet',
+        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        icon: 'assets/svg/network/polygon.svg',
+        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+      },
+      {
+        id: AUC_CHAIN_ID.RINKEBY_TESTNET,
+        token: 'ETH',
+        label: 'Rinkeby Ethereum',
+        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0] + '/' + INFURA_KEY,
+        icon: 'assets/svg/network/eth.svg',
+        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
+      }
+    ]
+  });
 }
 
 
@@ -82,11 +70,11 @@ export function initWalletServiceFactory(
     ...
   ],
   imports: [
-    ...,
-    AucConnectModule.forRoot()
+    ...
+    AucConnectModule.forRoot(),
   ],
   providers: [
-    ...,
+    ...
     {
       provide: APP_INITIALIZER,
       useFactory: initWalletServiceFactory,
@@ -96,4 +84,5 @@ export function initWalletServiceFactory(
   ],
   bootstrap: [...]
 })
-export class AppModule { }`;
+export class AppModule { }
+`;

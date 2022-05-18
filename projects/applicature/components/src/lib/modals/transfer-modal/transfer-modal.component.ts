@@ -17,7 +17,7 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: [ './transfer-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucTransferModalComponen extends BaseSubscriber implements OnInit {
+export class AucTransferModalComponent extends BaseSubscriber implements OnInit {
   public amountControl: FormControl = new FormControl();
   public currentAllowance: string = '0';
   public data: AucTransferModalData;
