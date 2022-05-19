@@ -1,27 +1,33 @@
-# UILIBRARY
+# APPLICATURE LIBRARIES
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
 ## Development server
+  ### applicature/styles package
+    npm run watch-styles
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+  ### applicature/universal-component package
+    npm run watch-components
+  Keep in mind that before run, you will need to have build of applicature/styles (`npm run watch-styles` or `ng build @applicature/styles`)
 
-## Code scaffolding
+  ### demo
+  Just for developing.
+  Keep in mind that before run, you will need to have build of **applicature/styles** (`npm run watch-styles` or `ng build @applicature/styles`) and **applicature/universal-components** (`npm run watch-components` or `ng build @applicature/components`)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    npm run start
+
+  ### ngx-components-doc
+  This is documentation project for **applicature/universal-component package**
+  Keep in mind that before run, you will need to have build of **applicature/styles** (`npm run watch-styles` or `ng build @applicature/styles`) and **applicature/universal-components** (`npm run watch-components` or `ng build @applicature/components`)
+
+    npm run serve-doc
 
 ## Build
+  ### applicature/styles package
+    npm run build-styles-package
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  ### applicature/universal-component package
+    npm run build-components-package
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  ### ngx-components-doc
+     npm run build && npm run build-doc
