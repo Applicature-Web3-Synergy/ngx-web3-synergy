@@ -4,7 +4,6 @@ import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
 import Onboard from '@web3-onboard/core'
-import { EIP1193Provider } from '@web3-onboard/common';
 import { Chain } from '@web3-onboard/common/dist/types';
 import {
   Account,
@@ -148,60 +147,66 @@ export class AucWalletConnectService extends BaseSubscriber {
       return of(null);
     }
 
+    if (!config) {
+      console.error('Please set config!');
+
+      return of(null);
+    }
+
+    const chains: Chain[] = (config?.chains ?? []).map(({
+                                                          id,
+                                                          rpcUrl,
+                                                          label,
+                                                          token,
+                                                          namespace,
+                                                          color,
+                                                          icon,
+                                                          blockExplorerUrl,
+                                                          blockExplorerApiUrl
+                                                        }: AucChain) => {
+      const chain: Chain = {
+        id,
+        rpcUrl,
+        label,
+        token,
+      };
+
+      if (namespace) {
+        chain.namespace = namespace;
+      }
+
+      if (color) {
+        chain.color = color;
+      }
+
+      if (icon) {
+        chain.icon = icon;
+      }
+
+      this._blockExplorerUrlByChainId[id] = {
+        blockExplorerUrl,
+        blockExplorerApiUrl
+      }
+
+      return chain;
+    });
+
+    const initOptions: InitOptions = {
+      wallets: config.wallets,
+      chains,
+      accountCenter: config.accountCenter ?? { desktop: { enabled: false } }
+    }
+
+    if (config.appMetadata) {
+      initOptions.appMetadata = config.appMetadata;
+    }
+
+    if (config.i18n) {
+      initOptions.i18n = config.i18n;
+    }
+
     return new Observable<void>((observer: Subscriber<void>) => {
       try {
-        const chains: Chain[] = config.chains.map(({
-                                                     id,
-                                                     rpcUrl,
-                                                     label,
-                                                     token,
-                                                     namespace,
-                                                     color,
-                                                     icon,
-                                                     blockExplorerUrl,
-                                                     blockExplorerApiUrl
-                                                   }: AucChain) => {
-          const chain: Chain = {
-            id,
-            rpcUrl,
-            label,
-            token,
-          };
-
-          if (namespace) {
-            chain.namespace = namespace;
-          }
-
-          if (color) {
-            chain.color = color;
-          }
-
-          if (icon) {
-            chain.icon = icon;
-          }
-
-          this._blockExplorerUrlByChainId[id] = {
-            blockExplorerUrl,
-            blockExplorerApiUrl
-          }
-
-          return chain;
-        });
-
-        const initOptions: InitOptions = {
-          wallets: config.wallets,
-          chains: chains,
-          accountCenter: config.accountCenter ?? { desktop: { enabled: false } }
-        }
-
-        if (config.appMetadata) {
-          initOptions.appMetadata = config.appMetadata;
-        }
-
-        if (config.i18n) {
-          initOptions.i18n = config.i18n;
-        }
-
         this._onboard = Onboard(initOptions);
 
         this._setStyles();
@@ -220,7 +225,7 @@ export class AucWalletConnectService extends BaseSubscriber {
           return;
         }
 
-        this._initWeb3();
+        this.initWeb3();
 
         observer.next();
         observer.complete();
@@ -256,16 +261,21 @@ export class AucWalletConnectService extends BaseSubscriber {
     return connection$
       .pipe(
         switchMap(() => {
-          const connection = this._onboard.connectWallet();
-          setTimeout(() => {
-            const header = this._shadowRoot?.querySelector('.header-heading');
+          return new Observable<WalletState[]>(observer => {
+            setTimeout(() => {
+              const header = this._shadowRoot?.querySelector('.header-heading');
 
-            if (header) {
-              header.innerHTML = 'Connect a wallet';
-            }
+              if (header) {
+                header.innerHTML = 'Connect a wallet';
+              }
+            });
+            this._onboard.connectWallet()
+              .then((connection: WalletState[]) => {
+                observer.next(connection);
+                observer.complete();
+              })
+              .catch(error => observer.error(error));
           });
-
-          return from(connection);
         }),
         map(() => this.connectionState)
       );
@@ -292,7 +302,7 @@ export class AucWalletConnectService extends BaseSubscriber {
         takeUntil(this.notifier)
       )
       .subscribe((wallet: WalletState) => {
-        this._initWeb3(wallet?.provider);
+        this.initWeb3(wallet?.provider);
 
         if (wallet) {
           const connectedWallet = wallet.label;
@@ -377,12 +387,14 @@ export class AucWalletConnectService extends BaseSubscriber {
     }
   }
 
-  /** @internal */
-  private _initWeb3<T = any>(provider?: EIP1193Provider): void {
+  /** Init web3 instance */
+  public initWeb3<T = any>(provider?: T): Web3 {
     if (!provider) {
       this._web3 = new Web3();
     } else {
       this._web3 = new Web3(provider as any);
     }
+
+    return this._web3;
   }
 }

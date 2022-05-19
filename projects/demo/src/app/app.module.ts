@@ -68,8 +68,17 @@ export function initWalletServiceFactory(
         rpcUrl: `${AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
         icon: 'assets/svg/network/eth.svg',
         blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
-      }
-    ]
+      },
+    ],
+    appMetadata: {
+      name: "My Demo App",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      description: "My Demo app",
+      recommendedInjectedWallets: [
+        { name: "MetaMask", url: "https://metamask.io" }
+      ]
+    }
   });
 }
 
