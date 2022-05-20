@@ -18,10 +18,12 @@ export class BasicTransactionHistoryComponent {
 
   addTransaction(status: AUC_TRANSACTION_STATUS = AUC_TRANSACTION_STATUS.SUCCESS): void {
     this.transactionService.saveTransaction(
-      AUC_CHAIN_ID.POLYGON_TESTNET,
-      'Transfer', // Transaction name
-      `0x...${Math.random()}`, // transaction hash
-      status
+      {
+        chainId: AUC_CHAIN_ID.POLYGON_TESTNET,
+        name: 'Transfer', // Transaction name,
+        hash: `0x...${Math.random()}`, // transaction hash,
+        status
+      }
     )
   }
 
