@@ -3,21 +3,24 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subscription, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AUC_SORT_DIRECTION, AUC_TRANSACTION_STATUS } from '../../../enums';
-import {
-  AucEthereum,
-  AucEtherscanTransaction,
-  AucEtherscanTransactionLocalStorage,
-  AucEtherscanTransactionResponse
-} from '../../../interfaces';
+import { AUC_SORT_DIRECTION } from '../../../enums';
+import { AucEthereum } from '../../../interfaces';
 
 import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../../constants';
 import { AucSortDirection } from '../../../types';
 import { AucWalletConnectService } from '../../../services';
+import {
+  AucAddTransaction,
+  AucEtherscanTransaction,
+  AucEtherscanTransactionLocalStorage,
+  AucEtherscanTransactionResponse
+} from '../../interfaces';
+import { AUC_TRANSACTION_STATUS } from '../../enums';
 
 
 const AUC_ETHERSCAN_TRANSACTIONS = 'AUC_ETHERSCAN_TRANSACTIONS';
 const AUC_ETHERSCAN_INTERVAL = 10000;
+
 
 
 @Injectable()
@@ -75,28 +78,25 @@ export class AucTransactionService {
   }
 
   /** add transaction to the list */
-  public saveTransaction(chainId: string,
-                         name: string,
-                         hash: string,
-                         status: AUC_TRANSACTION_STATUS = AUC_TRANSACTION_STATUS.PENDING
-  ): void {
+  public saveTransaction(transaction: AucAddTransaction): void {
+    if (!transaction?.hash) {
+      return;
+    }
 
-    this._removeFromTransactions(hash);
+    this._removeFromTransactions(transaction.hash);
 
     this._transactions = [
       {
-        name,
-        hash,
-        status,
+        ...transaction,
         viewed: false,
         explorerUrl: undefined
       },
       ...this._transactions,
     ];
 
-    if (chainId) {
+    if (transaction.chainId) {
       this._transactions.forEach((tx) => {
-        tx.explorerUrl = `${AucBlockExplorerUrls[chainId]}/tx/${tx.hash}`;
+        tx.explorerUrl = `${AucBlockExplorerUrls[transaction.chainId]}/tx/${tx.hash}`;
       });
     }
 
@@ -173,6 +173,7 @@ export class AucTransactionService {
 
   /** @internal */
   private _pingTransactionsStatus(): void {
+    console.log(777);
     const eth = this._walletConnectService.web3.eth;
 
     this._transactions.forEach(async (tx) => {

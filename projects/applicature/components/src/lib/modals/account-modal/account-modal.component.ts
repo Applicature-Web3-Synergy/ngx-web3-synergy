@@ -3,11 +3,10 @@ import { combineLatest, Observable } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon, BaseSubscriber } from '../../helpers';
-import { AucEtherscanTransactionLocalStorage } from '../../interfaces';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
 import { AucWalletConnectService, BlockExplorerUrlsByChainId } from '../../services';
-import { AucTransactionService } from '../../transactions';
+import { AucEtherscanTransactionLocalStorage, AucTransactionService } from '../../transactions';
 
 
 @Component({

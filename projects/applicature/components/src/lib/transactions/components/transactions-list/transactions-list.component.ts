@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { AucEtherscanTransactionLocalStorage } from '../../../interfaces';
+import { AucEtherscanTransactionLocalStorage } from '../../interfaces';
 
 
 @Component({
