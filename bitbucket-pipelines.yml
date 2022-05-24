@@ -1,34 +1,43 @@
 image: node:16
 
 pipelines:
-  # default:
-  #   - step:
-  #       name: Code linting
-  #       script:
-  #       - npm install
-  #       - npm run build
-  #       - cd dist/applicature
-  #       - npm pack .
-  #       - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
-  #       - npm publish --access public
-  #       caches:
-  #         - node
-
   branches:
     master:
         - step:
-            name: Publish NPM packet
-            # trigger: manual
+            name: Cache invalidation
             script:
-              - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
-              - npm install
-              - npm run build
-              - cd dist/applicature/styles
-              - npm pack .
-              - npm publish --access public
-              - cd -
-              - cd dist/applicature/components
-              - npm pack .
-              - npm publish --access public
+              - pipe: atlassian/bitbucket-clear-cache:3.1.1
+                variables:
+                    BITBUCKET_USERNAME: $BITBUCKET_USER_NAME
+                    BITBUCKET_APP_PASSWORD: $BITBUCKET_APP_PASSWORD
+                    CACHES: ["node"]
+            condition:
+              changesets:
+                includePaths:
+                  - package.json
+
+        - step:
+            name: Build project
             caches:
               - node
+            script:
+              - npm install
+              - npm run build
+              - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
+        - parallel:
+            - step:
+                name: Publish components
+                caches:
+                  - node
+                script:
+                  - cd dist/applicature/components
+                  - npm pack .
+                  - npm publish --access public
+            - step:
+                name: Publish styles
+                caches:
+                  - node
+                script:
+                  - cd dist/applicature/styles
+                  - npm pack .
+                  - npm publish --access public
