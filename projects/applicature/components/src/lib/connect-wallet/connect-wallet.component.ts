@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 import { AucAccountData, AucAccountOption } from '../account-button';
-import { AUC_POSITIONS, AUC_TRANSACTION_STATUS } from '../enums';
+import { AUC_POSITIONS } from '../enums';
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
 import { AucConnectionState, AucWalletConnectService } from '../services';
@@ -23,7 +23,7 @@ import { AucDropdownConfig } from '../dropdown-menu';
 import { AUC_BALANCE_APPEARANCE } from '../account-balance';
 import { ConnectWalletAppearance } from './types';
 import { AUC_CONNECT_WALLET_APPEARANCE } from './enums';
-import { AucTransactionService } from '../transactions';
+import { AUC_TRANSACTION_STATUS, AucTransactionService } from '../transactions';
 
 
 @Component({

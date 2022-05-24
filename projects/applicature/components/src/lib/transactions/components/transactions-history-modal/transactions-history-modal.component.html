@@ -10,9 +10,13 @@
     </button>
   </div>
 
-  <ng-container *ngIf="(transactions$ | async) as transactions">
-    <div class="auc-transactions-history-list">
-      <auc-transactions-list [transactions]="transactions"></auc-transactions-list>
+  <div class="auc-transactions-history-list">
+    <div class="auc-transactions-loading" *ngIf="loading; else transactionsRef">
+      <auc-spinner [width]="2" [diameter]="30"></auc-spinner>
     </div>
-  </ng-container>
+
+    <ng-template #transactionsRef>
+      <auc-transactions-list [transactions]="transactions"></auc-transactions-list>
+    </ng-template>
+  </div>
 </div>

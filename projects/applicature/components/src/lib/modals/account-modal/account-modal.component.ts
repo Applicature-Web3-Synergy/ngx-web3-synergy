@@ -3,11 +3,10 @@ import { combineLatest, Observable } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
 
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon, BaseSubscriber } from '../../helpers';
-import { AucEtherscanTransactionLocalStorage } from '../../interfaces';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
 import { AucWalletConnectService, BlockExplorerUrlsByChainId } from '../../services';
-import { AucTransactionService } from '../../transactions';
+import { AucTransactionItem, AucTransactionService } from '../../transactions';
 
 
 @Component({
@@ -20,7 +19,7 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
   public identicon: HTMLDivElement;
   public accountAddress: string;
   public etherscanAddress$: Observable<string>;
-  public transactions$: Observable<AucEtherscanTransactionLocalStorage[]>;
+  public transactions$: Observable<AucTransactionItem[]>;
   public data: AucAccountModalData;
 
   constructor(
@@ -73,7 +72,7 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
 
   override ngOnDestroy() {
     super.ngOnDestroy();
-    this._transactionService.markAsViewed();
+    this._transactionService.markAllAsViewed();
   }
 
   public onCloseClick(): void {

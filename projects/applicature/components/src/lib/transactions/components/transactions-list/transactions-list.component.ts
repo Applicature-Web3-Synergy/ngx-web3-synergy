@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { AucEtherscanTransactionLocalStorage } from '../../../interfaces';
+import { AucTransactionItem } from '../../interfaces';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class AucTransactionsListComponent {
    * It's required parameter.
    */
   @Input()
-  public transactions: AucEtherscanTransactionLocalStorage[];
+  public transactions: AucTransactionItem[];
 
   /**
    * Showed text if no transactions. <br>
