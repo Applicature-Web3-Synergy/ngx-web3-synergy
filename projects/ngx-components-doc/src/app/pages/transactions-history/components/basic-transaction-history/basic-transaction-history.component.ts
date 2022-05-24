@@ -1,8 +1,14 @@
 /** Don't forget import { AucTransactionsModule } from '@applicature/components'; to your module */
 
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { takeUntil, takeWhile } from 'rxjs';
 
-import { AUC_CHAIN_ID, AUC_TRANSACTION_STATUS, AucTransactionService } from '@applicature/components';
+import {
+  AUC_TRANSACTION_STATUS,
+  AucTransactionService,
+  AucWalletConnectService,
+  BaseSubscriber
+} from '@applicature/components';
 
 
 @Component({
@@ -11,20 +17,39 @@ import { AUC_CHAIN_ID, AUC_TRANSACTION_STATUS, AucTransactionService } from '@ap
   styleUrls: [ './basic-transaction-history.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BasicTransactionHistoryComponent {
+export class BasicTransactionHistoryComponent extends BaseSubscriber {
   TRANSACTION_STATUS = AUC_TRANSACTION_STATUS;
+  currentChainId: string;
 
-  constructor(private transactionService: AucTransactionService) {}
+  constructor(private cdr: ChangeDetectorRef,
+              private walletConnectService: AucWalletConnectService,
+              private transactionService: AucTransactionService) {
+    super();
+
+    this.walletConnectService.chainChanged$
+      .pipe(takeUntil(this.notifier))
+      .subscribe((chainId: string) => {
+        this.currentChainId = chainId;
+        this.cdr.markForCheck();
+      })
+  }
 
   addTransaction(status: AUC_TRANSACTION_STATUS = AUC_TRANSACTION_STATUS.SUCCESS): void {
     this.transactionService.saveTransaction(
       {
-        chainId: AUC_CHAIN_ID.POLYGON_TESTNET,
-        name: 'Transfer', // Transaction name,
-        hash: `0x...${Math.random()}`, // transaction hash,
-        status
+        chainId: this.currentChainId,
+        name: 'Transfer ' + this.currentChainId, // Transaction name,
+        hash: '0x...' + Math.random(), // transaction hash, will disappear is status pending.
+        status,
+        viewed: false
       }
     )
+      .pipe(
+        takeWhile((res) => res.status !== AUC_TRANSACTION_STATUS.PENDING),
+      )
+      .subscribe(res => {
+        console.log('Transaction: ', res);
+      });
   }
 
   clearTransactions(): void {

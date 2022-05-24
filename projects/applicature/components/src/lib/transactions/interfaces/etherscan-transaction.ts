@@ -34,10 +34,12 @@ export interface AucAddTransaction {
   name: string;
   hash: string;
   status: AUC_TRANSACTION_STATUS;
+  explorerUrl?: string;
+  viewed: boolean;
   [key: string]: any;
 }
 
-export interface AucEtherscanTransactionLocalStorage extends AucAddTransaction {
-  explorerUrl: string;
-  viewed: boolean;
+export interface AucTransactionItem extends AucAddTransaction {
+  explorerUrl: string
 }
+

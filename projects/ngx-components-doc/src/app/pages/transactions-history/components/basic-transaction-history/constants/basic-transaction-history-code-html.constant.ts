@@ -11,11 +11,12 @@ export const BasicTransactionHistoryCodeHtml = `<div class="doc-grid-container">
     <auc-transactions-history [disabled]="true"></auc-transactions-history>
   </div>
 
-  <div class="doc-actions full-width">
+  <div class="doc-actions full-width" *ngIf="currentChainId">
     <auc-button label="Add Success Transaction" (onClick)="addTransaction()"></auc-button>
     <auc-button label="Add Pending Transaction" (onClick)="addTransaction(TRANSACTION_STATUS.PENDING)"></auc-button>
     <auc-button label="Add Fail Transaction" (onClick)="addTransaction(TRANSACTION_STATUS.FAIL)"></auc-button>
     <auc-button label="Clear Transactions" (onClick)="clearTransactions()"></auc-button>
   </div>
 </div>
+
 `;

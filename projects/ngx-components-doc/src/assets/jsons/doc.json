@@ -1781,7 +1781,7 @@
 			]
 		},
 		{
-			"id": 1152,
+			"id": 1159,
 			"name": "AUC_TRANSACTION_STATUS",
 			"kind": 8,
 			"kindString": "Enumeration",
@@ -1789,7 +1789,7 @@
 			"comment": {},
 			"children": [
 				{
-					"id": 1153,
+					"id": 1160,
 					"name": "FAIL",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1804,7 +1804,7 @@
 					"defaultValue": "\"fail\""
 				},
 				{
-					"id": 1155,
+					"id": 1162,
 					"name": "PENDING",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1819,7 +1819,7 @@
 					"defaultValue": "\"pending\""
 				},
 				{
-					"id": 1154,
+					"id": 1161,
 					"name": "SUCCESS",
 					"kind": 16,
 					"kindString": "Enumeration member",
@@ -1839,9 +1839,9 @@
 					"title": "Enumeration members",
 					"kind": 16,
 					"children": [
-						1153,
-						1155,
-						1154
+						1160,
+						1162,
+						1161
 					]
 				}
 			],
@@ -2909,43 +2909,6 @@
 					"defaultValue": "false"
 				},
 				{
-					"id": 42,
-					"name": "ngOnDestroy",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/helpers/base-subscriber/base-subscriber.service.ts",
-							"line": 10,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 43,
-							"name": "ngOnDestroy",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"inheritedFrom": {
-								"type": "reference",
-								"id": 601,
-								"name": "BaseSubscriber.ngOnDestroy"
-							}
-						}
-					],
-					"inheritedFrom": {
-						"type": "reference",
-						"id": 600,
-						"name": "BaseSubscriber.ngOnDestroy"
-					}
-				},
-				{
 					"id": 38,
 					"name": "onAccountButtonClick",
 					"kind": 2048,
@@ -3020,7 +2983,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						42,
 						38
 					]
 				}
@@ -3663,7 +3625,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1194,
+										"id": 1203,
 										"name": "AucTransactionService"
 									}
 								}
@@ -3831,8 +3793,8 @@
 								"type": "array",
 								"elementType": {
 									"type": "reference",
-									"id": 1187,
-									"name": "AucEtherscanTransactionLocalStorage"
+									"id": 1196,
+									"name": "AucTransactionItem"
 								}
 							}
 						],
@@ -3867,7 +3829,6 @@
 							},
 							"overwrites": {
 								"type": "reference",
-								"id": 601,
 								"name": "BaseSubscriber.ngOnDestroy"
 							},
 							"implementationOf": {
@@ -3878,7 +3839,6 @@
 					],
 					"overwrites": {
 						"type": "reference",
-						"id": 600,
 						"name": "BaseSubscriber.ngOnDestroy"
 					},
 					"implementationOf": {
@@ -5513,7 +5473,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1194,
+										"id": 1203,
 										"name": "AucTransactionService"
 									}
 								},
@@ -11004,43 +10964,6 @@
 					}
 				},
 				{
-					"id": 961,
-					"name": "ngOnDestroy",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/helpers/base-subscriber/base-subscriber.service.ts",
-							"line": 10,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 962,
-							"name": "ngOnDestroy",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"inheritedFrom": {
-								"type": "reference",
-								"id": 601,
-								"name": "BaseSubscriber.ngOnDestroy"
-							}
-						}
-					],
-					"inheritedFrom": {
-						"type": "reference",
-						"id": 600,
-						"name": "BaseSubscriber.ngOnDestroy"
-					}
-				},
-				{
 					"id": 954,
 					"name": "setOpened",
 					"kind": 2048,
@@ -11156,7 +11079,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						961,
 						954,
 						957
 					]
@@ -12816,7 +12738,7 @@
 			]
 		},
 		{
-			"id": 1194,
+			"id": 1203,
 			"name": "AucTransactionService",
 			"kind": 128,
 			"kindString": "Class",
@@ -12835,7 +12757,7 @@
 			],
 			"children": [
 				{
-					"id": 1198,
+					"id": 1207,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -12843,20 +12765,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 40,
+							"line": 59,
 							"character": 2
 						}
 					],
 					"signatures": [
 						{
-							"id": 1199,
+							"id": 1208,
 							"name": "new AucTransactionService",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1200,
+									"id": 1209,
 									"name": "_http",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -12869,7 +12791,7 @@
 									}
 								},
 								{
-									"id": 1201,
+									"id": 1210,
 									"name": "_walletConnectService",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -12883,14 +12805,56 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 1194,
+								"id": 1203,
 								"name": "AucTransactionService"
+							},
+							"overwrites": {
+								"type": "reference",
+								"id": 598,
+								"name": "BaseSubscriber.constructor"
 							}
 						}
-					]
+					],
+					"overwrites": {
+						"type": "reference",
+						"id": 597,
+						"name": "BaseSubscriber.constructor"
+					}
 				},
 				{
-					"id": 1205,
+					"id": 1264,
+					"name": "notifier",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/helpers/base-subscriber/base-subscriber.service.ts",
+							"line": 7,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "intrinsic",
+								"name": "unknown"
+							}
+						],
+						"qualifiedName": "Subject",
+						"package": "rxjs",
+						"name": "Subject"
+					},
+					"defaultValue": "...",
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 599,
+						"name": "BaseSubscriber.notifier"
+					}
+				},
+				{
+					"id": 1215,
 					"name": "transactionsChanged$",
 					"kind": 262144,
 					"kindString": "Accessor",
@@ -12900,19 +12864,20 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 36,
+							"line": 48,
 							"character": 13
 						}
 					],
 					"getSignature": [
 						{
-							"id": 1206,
+							"id": 1216,
 							"name": "transactionsChanged$",
 							"kind": 524288,
 							"kindString": "Get signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Emits when transactions change. <br>\nYou can subscribe on it."
+								"shortText": "Emits when transactions changed. <br>",
+								"returns": "transactions list as Observable.\n"
 							},
 							"type": {
 								"type": "reference",
@@ -12921,8 +12886,8 @@
 										"type": "array",
 										"elementType": {
 											"type": "reference",
-											"id": 1187,
-											"name": "AucEtherscanTransactionLocalStorage"
+											"id": 1196,
+											"name": "AucTransactionItem"
 										}
 									}
 								],
@@ -12934,7 +12899,7 @@
 					]
 				},
 				{
-					"id": 1216,
+					"id": 1237,
 					"name": "clearTransactions",
 					"kind": 2048,
 					"kindString": "Method",
@@ -12944,13 +12909,13 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 119,
+							"line": 284,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1217,
+							"id": 1238,
 							"name": "clearTransactions",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -12958,6 +12923,23 @@
 							"comment": {
 								"shortText": "Clear transactions list"
 							},
+							"parameters": [
+								{
+									"id": 1239,
+									"name": "isRefresh",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Optional parameter.\nIf true, will clear transaction from the history.\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									},
+									"defaultValue": "true"
+								}
+							],
 							"type": {
 								"type": "intrinsic",
 								"name": "void"
@@ -12966,36 +12948,7 @@
 					]
 				},
 				{
-					"id": 1209,
-					"name": "dispose",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 74,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 1210,
-							"name": "dispose",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 1218,
+					"id": 1240,
 					"name": "getRemoteTransactions",
 					"kind": 2048,
 					"kindString": "Method",
@@ -13005,13 +12958,13 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 132,
+							"line": 299,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1219,
+							"id": 1241,
 							"name": "getRemoteTransactions",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13021,7 +12974,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1220,
+									"id": 1242,
 									"name": "address",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13035,7 +12988,7 @@
 									}
 								},
 								{
-									"id": 1221,
+									"id": 1243,
 									"name": "chainId",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13049,7 +13002,7 @@
 									}
 								},
 								{
-									"id": 1222,
+									"id": 1244,
 									"name": "page",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13064,7 +13017,7 @@
 									"defaultValue": "1"
 								},
 								{
-									"id": 1223,
+									"id": 1245,
 									"name": "offset",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13079,14 +13032,14 @@
 									"defaultValue": "100"
 								},
 								{
-									"id": 1224,
+									"id": 1246,
 									"name": "sortDirection",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1236,
+										"id": 1269,
 										"name": "AucSortDirection"
 									},
 									"defaultValue": "AUC_SORT_DIRECTION.ASC"
@@ -13097,7 +13050,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"id": 1156,
+										"id": 1163,
 										"name": "AucEtherscanTransactionResponse"
 									}
 								],
@@ -13109,7 +13062,39 @@
 					]
 				},
 				{
-					"id": 1214,
+					"id": 1235,
+					"name": "markAllAsViewed",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
+							"line": 271,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 1236,
+							"name": "markAllAsViewed",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Marks all transactions as viewed"
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 1231,
 					"name": "markAsViewed",
 					"kind": 2048,
 					"kindString": "Method",
@@ -13119,96 +13104,49 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 111,
+							"line": 249,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1215,
+							"id": 1232,
 							"name": "markAsViewed",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "Marks transactions as viewed"
-							},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 1207,
-					"name": "refreshTransactions",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 63,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 1208,
-							"name": "refreshTransactions",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "Refresh transactions"
-							},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					]
-				},
-				{
-					"id": 1211,
-					"name": "saveTransaction",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 81,
-							"character": 9
-						}
-					],
-					"signatures": [
-						{
-							"id": 1212,
-							"name": "saveTransaction",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"comment": {
-								"shortText": "add transaction to the list"
+								"shortText": "Marks transaction as viewed."
 							},
 							"parameters": [
 								{
-									"id": 1213,
-									"name": "transaction",
+									"id": 1233,
+									"name": "hash",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
+									"comment": {
+										"shortText": "Transaction hash."
+									},
 									"type": {
-										"type": "reference",
-										"id": 1180,
-										"name": "AucAddTransaction"
+										"type": "intrinsic",
+										"name": "string"
 									}
+								},
+								{
+									"id": 1234,
+									"name": "isRefresh",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "Optional parameter.\nIf true, will emit {@link transactionsChanged$};\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									},
+									"defaultValue": "true"
 								}
 							],
 							"type": {
@@ -13219,7 +13157,189 @@
 					]
 				},
 				{
-					"id": 1195,
+					"id": 1224,
+					"name": "pingTransactionStatus",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
+							"line": 132,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 1225,
+							"name": "pingTransactionStatus",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Check transaction status on blockchain.",
+								"returns": "transaction with changed status.\n"
+							},
+							"parameters": [
+								{
+									"id": 1226,
+									"name": "transaction",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "transaction to check."
+									},
+									"type": {
+										"type": "reference",
+										"id": 1196,
+										"name": "AucTransactionItem"
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"id": 1196,
+										"name": "AucTransactionItem"
+									}
+								],
+								"qualifiedName": "Observable",
+								"package": "rxjs",
+								"name": "Observable"
+							}
+						}
+					]
+				},
+				{
+					"id": 1221,
+					"name": "refreshTransactions",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
+							"line": 108,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 1222,
+							"name": "refreshTransactions",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Refresh transactions status.\nEmits until transactions list includes transactions with pending status."
+							},
+							"parameters": [
+								{
+									"id": 1223,
+									"name": "intervalMs",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "used for status update in milliseconds.\nOptional parameter.\nDefault value is 30000 = 30 seconds.\n"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "30000"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				},
+				{
+					"id": 1227,
+					"name": "saveTransaction",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
+							"line": 204,
+							"character": 9
+						}
+					],
+					"signatures": [
+						{
+							"id": 1228,
+							"name": "saveTransaction",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "Add transaction to the list.",
+								"returns": "transaction as Observable value.<br>\nIf transaction status is pending, used parameter {@link updateIntervalMs} for getting transaction status from\nblockchain and emits it into returned observable.\n"
+							},
+							"parameters": [
+								{
+									"id": 1229,
+									"name": "transactionData",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "transaction data."
+									},
+									"type": {
+										"type": "reference",
+										"id": 1187,
+										"name": "AucAddTransaction"
+									}
+								},
+								{
+									"id": 1230,
+									"name": "updateIntervalMs",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"comment": {
+										"shortText": "used for status update in milliseconds.\nOptional parameter.\nDefault value is 30000 = 30 seconds."
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "number"
+									},
+									"defaultValue": "30000"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"id": 1196,
+										"name": "AucTransactionItem"
+									}
+								],
+								"qualifiedName": "Observable",
+								"package": "rxjs",
+								"name": "Observable"
+							}
+						}
+					]
+				},
+				{
+					"id": 1204,
 					"name": "getTransactionApiUrl",
 					"kind": 2048,
 					"kindString": "Method",
@@ -13229,13 +13349,13 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-							"line": 52,
+							"line": 184,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1196,
+							"id": 1205,
 							"name": "getTransactionApiUrl",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13246,7 +13366,7 @@
 							},
 							"parameters": [
 								{
-									"id": 1197,
+									"id": 1206,
 									"name": "chainId",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13270,35 +13390,50 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1198
+						1207
+					]
+				},
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						1264
 					]
 				},
 				{
 					"title": "Accessors",
 					"kind": 262144,
 					"children": [
-						1205
+						1215
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1216,
-						1209,
-						1218,
-						1214,
-						1207,
-						1211,
-						1195
+						1237,
+						1240,
+						1235,
+						1231,
+						1224,
+						1221,
+						1227,
+						1204
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "lib/transactions/services/transaction/transaction.service.ts",
-					"line": 27,
+					"line": 37,
 					"character": 13
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"id": 596,
+					"name": "BaseSubscriber"
 				}
 			]
 		},
@@ -13332,7 +13467,7 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 47,
+							"line": 49,
 							"character": 2
 						}
 					],
@@ -13377,7 +13512,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1194,
+										"id": 1203,
 										"name": "AucTransactionService"
 									}
 								}
@@ -13386,9 +13521,19 @@
 								"type": "reference",
 								"id": 1116,
 								"name": "AucTransactionsHistoryComponent"
+							},
+							"overwrites": {
+								"type": "reference",
+								"id": 598,
+								"name": "BaseSubscriber.constructor"
 							}
 						}
-					]
+					],
+					"overwrites": {
+						"type": "reference",
+						"id": 597,
+						"name": "BaseSubscriber.constructor"
+					}
 				},
 				{
 					"id": 1122,
@@ -13416,7 +13561,7 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 27,
+							"line": 29,
 							"character": 9
 						}
 					],
@@ -13425,6 +13570,38 @@
 						"name": "boolean"
 					},
 					"defaultValue": "false"
+				},
+				{
+					"id": 1133,
+					"name": "notifier",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/helpers/base-subscriber/base-subscriber.service.ts",
+							"line": 7,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "intrinsic",
+								"name": "unknown"
+							}
+						],
+						"qualifiedName": "Subject",
+						"package": "rxjs",
+						"name": "Subject"
+					},
+					"defaultValue": "...",
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 599,
+						"name": "BaseSubscriber.notifier"
+					}
 				},
 				{
 					"id": 1131,
@@ -13437,7 +13614,7 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-							"line": 79,
+							"line": 81,
 							"character": 9
 						}
 					],
@@ -13471,7 +13648,8 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1122
+						1122,
+						1133
 					]
 				},
 				{
@@ -13485,8 +13663,15 @@
 			"sources": [
 				{
 					"fileName": "lib/transactions/components/transactions-history/transactions-history.component.ts",
-					"line": 20,
+					"line": 22,
 					"character": 13
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"id": 596,
+					"name": "BaseSubscriber"
 				}
 			],
 			"implementedTypes": [
@@ -13499,7 +13684,7 @@
 			]
 		},
 		{
-			"id": 1135,
+			"id": 1138,
 			"name": "AucTransactionsHistoryModalComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -13520,7 +13705,7 @@
 			],
 			"children": [
 				{
-					"id": 1136,
+					"id": 1139,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -13528,20 +13713,33 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-history-modal/transactions-history-modal.component.ts",
-							"line": 20,
+							"line": 22,
 							"character": 2
 						}
 					],
 					"signatures": [
 						{
-							"id": 1137,
+							"id": 1140,
 							"name": "new AucTransactionsHistoryModalComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 1138,
+									"id": 1141,
+									"name": "cdr",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"qualifiedName": "ChangeDetectorRef",
+										"package": "@angular/core",
+										"name": "ChangeDetectorRef"
+									}
+								},
+								{
+									"id": 1142,
 									"name": "_config",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13552,7 +13750,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 1133,
+												"id": 1136,
 												"name": "AucRecentTransactionsModalData"
 											}
 										],
@@ -13560,7 +13758,7 @@
 									}
 								},
 								{
-									"id": 1139,
+									"id": 1143,
 									"name": "_dialogRef",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -13578,29 +13776,128 @@
 									}
 								},
 								{
-									"id": 1140,
+									"id": 1144,
 									"name": "_transactionService",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1194,
+										"id": 1203,
 										"name": "AucTransactionService"
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
-								"id": 1135,
+								"id": 1138,
 								"name": "AucTransactionsHistoryModalComponent"
+							},
+							"overwrites": {
+								"type": "reference",
+								"id": 598,
+								"name": "BaseSubscriber.constructor"
 							}
 						}
-					]
+					],
+					"overwrites": {
+						"type": "reference",
+						"id": 597,
+						"name": "BaseSubscriber.constructor"
+					}
 				},
 				{
-					"id": 1142,
+					"id": 1148,
+					"name": "cdr",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true
+					},
+					"type": {
+						"type": "reference",
+						"qualifiedName": "ChangeDetectorRef",
+						"package": "@angular/core",
+						"name": "ChangeDetectorRef"
+					}
+				},
+				{
+					"id": 1146,
 					"name": "data",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/transactions/components/transactions-history-modal/transactions-history-modal.component.ts",
+							"line": 19,
+							"character": 9
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 1136,
+						"name": "AucRecentTransactionsModalData"
+					}
+				},
+				{
+					"id": 1147,
+					"name": "loading",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/transactions/components/transactions-history-modal/transactions-history-modal.component.ts",
+							"line": 20,
+							"character": 9
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"defaultValue": "true"
+				},
+				{
+					"id": 1153,
+					"name": "notifier",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/helpers/base-subscriber/base-subscriber.service.ts",
+							"line": 7,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "intrinsic",
+								"name": "unknown"
+							}
+						],
+						"qualifiedName": "Subject",
+						"package": "rxjs",
+						"name": "Subject"
+					},
+					"defaultValue": "...",
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 599,
+						"name": "BaseSubscriber.notifier"
+					}
+				},
+				{
+					"id": 1145,
+					"name": "transactions",
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
@@ -13614,61 +13911,30 @@
 						}
 					],
 					"type": {
-						"type": "reference",
-						"id": 1133,
-						"name": "AucRecentTransactionsModalData"
-					}
-				},
-				{
-					"id": 1141,
-					"name": "transactions$",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "lib/transactions/components/transactions-history-modal/transactions-history-modal.component.ts",
-							"line": 17,
-							"character": 9
+						"type": "array",
+						"elementType": {
+							"type": "reference",
+							"id": 1196,
+							"name": "AucTransactionItem"
 						}
-					],
-					"type": {
-						"type": "reference",
-						"typeArguments": [
-							{
-								"type": "array",
-								"elementType": {
-									"type": "reference",
-									"id": 1187,
-									"name": "AucEtherscanTransactionLocalStorage"
-								}
-							}
-						],
-						"qualifiedName": "Observable",
-						"package": "rxjs",
-						"name": "Observable"
 					}
 				},
 				{
-					"id": 1145,
+					"id": 1151,
 					"name": "ngOnDestroy",
 					"kind": 2048,
 					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
+					"flags": {},
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-history-modal/transactions-history-modal.component.ts",
-							"line": 33,
-							"character": 9
+							"line": 48,
+							"character": 11
 						}
 					],
 					"signatures": [
 						{
-							"id": 1146,
+							"id": 1152,
 							"name": "ngOnDestroy",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13677,19 +13943,27 @@
 								"type": "intrinsic",
 								"name": "void"
 							},
+							"overwrites": {
+								"type": "reference",
+								"name": "BaseSubscriber.ngOnDestroy"
+							},
 							"implementationOf": {
 								"type": "reference",
 								"name": "OnDestroy.ngOnDestroy"
 							}
 						}
 					],
+					"overwrites": {
+						"type": "reference",
+						"name": "BaseSubscriber.ngOnDestroy"
+					},
 					"implementationOf": {
 						"type": "reference",
 						"name": "OnDestroy.ngOnDestroy"
 					}
 				},
 				{
-					"id": 1143,
+					"id": 1149,
 					"name": "onCloseClick",
 					"kind": 2048,
 					"kindString": "Method",
@@ -13699,13 +13973,13 @@
 					"sources": [
 						{
 							"fileName": "lib/transactions/components/transactions-history-modal/transactions-history-modal.component.ts",
-							"line": 29,
+							"line": 44,
 							"character": 9
 						}
 					],
 					"signatures": [
 						{
-							"id": 1144,
+							"id": 1150,
 							"name": "onCloseClick",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -13723,31 +13997,41 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1136
+						1139
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1142,
-						1141
+						1148,
+						1146,
+						1147,
+						1153,
+						1145
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						1145,
-						1143
+						1151,
+						1149
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "lib/transactions/components/transactions-history-modal/transactions-history-modal.component.ts",
-					"line": 16,
+					"line": 17,
 					"character": 13
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"id": 596,
+					"name": "BaseSubscriber"
 				}
 			],
 			"implementedTypes": [
@@ -13760,7 +14044,7 @@
 			]
 		},
 		{
-			"id": 1147,
+			"id": 1154,
 			"name": "AucTransactionsListComponent",
 			"kind": 128,
 			"kindString": "Class",
@@ -13781,28 +14065,28 @@
 			],
 			"children": [
 				{
-					"id": 1148,
+					"id": 1155,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
 					"flags": {},
 					"signatures": [
 						{
-							"id": 1149,
+							"id": 1156,
 							"name": "new AucTransactionsListComponent",
 							"kind": 16384,
 							"kindString": "Constructor signature",
 							"flags": {},
 							"type": {
 								"type": "reference",
-								"id": 1147,
+								"id": 1154,
 								"name": "AucTransactionsListComponent"
 							}
 						}
 					]
 				},
 				{
-					"id": 1151,
+					"id": 1158,
 					"name": "emptyText",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13839,7 +14123,7 @@
 					"defaultValue": "'Your transactions will appear here...'"
 				},
 				{
-					"id": 1150,
+					"id": 1157,
 					"name": "transactions",
 					"kind": 1024,
 					"kindString": "Property",
@@ -13872,8 +14156,8 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 1187,
-							"name": "AucEtherscanTransactionLocalStorage"
+							"id": 1196,
+							"name": "AucTransactionItem"
 						}
 					}
 				}
@@ -13883,15 +14167,15 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						1148
+						1155
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1151,
-						1150
+						1158,
+						1157
 					]
 				}
 			],
@@ -14015,7 +14299,7 @@
 									"flags": {},
 									"type": {
 										"type": "reference",
-										"id": 1194,
+										"id": 1203,
 										"name": "AucTransactionService"
 									}
 								}
@@ -14164,43 +14448,6 @@
 							}
 						}
 					]
-				},
-				{
-					"id": 911,
-					"name": "ngOnDestroy",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/helpers/base-subscriber/base-subscriber.service.ts",
-							"line": 10,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 912,
-							"name": "ngOnDestroy",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"inheritedFrom": {
-								"type": "reference",
-								"id": 601,
-								"name": "BaseSubscriber.ngOnDestroy"
-							}
-						}
-					],
-					"inheritedFrom": {
-						"type": "reference",
-						"id": 600,
-						"name": "BaseSubscriber.ngOnDestroy"
-					}
 				},
 				{
 					"id": 902,
@@ -14356,7 +14603,6 @@
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						911,
 						902,
 						906,
 						904,
@@ -15319,43 +15565,6 @@
 							}
 						}
 					]
-				},
-				{
-					"id": 1073,
-					"name": "ngOnDestroy",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/helpers/base-subscriber/base-subscriber.service.ts",
-							"line": 10,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 1074,
-							"name": "ngOnDestroy",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"inheritedFrom": {
-								"type": "reference",
-								"id": 601,
-								"name": "BaseSubscriber.ngOnDestroy"
-							}
-						}
-					],
-					"inheritedFrom": {
-						"type": "reference",
-						"id": 600,
-						"name": "BaseSubscriber.ngOnDestroy"
-					}
 				}
 			],
 			"groups": [
@@ -15394,8 +15603,7 @@
 						1059,
 						1062,
 						1068,
-						1056,
-						1073
+						1056
 					]
 				}
 			],
@@ -15760,41 +15968,6 @@
 						"name": "Subject"
 					},
 					"defaultValue": "..."
-				},
-				{
-					"id": 600,
-					"name": "ngOnDestroy",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/helpers/base-subscriber/base-subscriber.service.ts",
-							"line": 10,
-							"character": 2
-						}
-					],
-					"signatures": [
-						{
-							"id": 601,
-							"name": "ngOnDestroy",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							},
-							"implementationOf": {
-								"type": "reference",
-								"name": "OnDestroy.ngOnDestroy"
-							}
-						}
-					],
-					"implementationOf": {
-						"type": "reference",
-						"name": "OnDestroy.ngOnDestroy"
-					}
 				}
 			],
 			"groups": [
@@ -15810,13 +15983,6 @@
 					"kind": 1024,
 					"children": [
 						599
-					]
-				},
-				{
-					"title": "Methods",
-					"kind": 2048,
-					"children": [
-						600
 					]
 				}
 			],
@@ -15857,6 +16023,21 @@
 					"type": "reference",
 					"id": 1026,
 					"name": "AucWalletConnectService"
+				},
+				{
+					"type": "reference",
+					"id": 1116,
+					"name": "AucTransactionsHistoryComponent"
+				},
+				{
+					"type": "reference",
+					"id": 1138,
+					"name": "AucTransactionsHistoryModalComponent"
+				},
+				{
+					"type": "reference",
+					"id": 1203,
+					"name": "AucTransactionService"
 				}
 			],
 			"implementedTypes": [
@@ -16429,14 +16610,14 @@
 			]
 		},
 		{
-			"id": 1180,
+			"id": 1187,
 			"name": "AucAddTransaction",
 			"kind": 256,
 			"kindString": "Interface",
 			"flags": {},
 			"children": [
 				{
-					"id": 1181,
+					"id": 1188,
 					"name": "chainId",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16454,7 +16635,27 @@
 					}
 				},
 				{
-					"id": 1183,
+					"id": 1192,
+					"name": "explorerUrl",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isOptional": true
+					},
+					"sources": [
+						{
+							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+							"line": 37,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 1190,
 					"name": "hash",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16472,7 +16673,7 @@
 					}
 				},
 				{
-					"id": 1182,
+					"id": 1189,
 					"name": "name",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16490,7 +16691,7 @@
 					}
 				},
 				{
-					"id": 1184,
+					"id": 1191,
 					"name": "status",
 					"kind": 1024,
 					"kindString": "Property",
@@ -16504,8 +16705,26 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1152,
+						"id": 1159,
 						"name": "AUC_TRANSACTION_STATUS"
+					}
+				},
+				{
+					"id": 1193,
+					"name": "viewed",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+							"line": 38,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
 					}
 				}
 			],
@@ -16514,10 +16733,12 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1181,
-						1183,
-						1182,
-						1184
+						1188,
+						1192,
+						1190,
+						1189,
+						1191,
+						1193
 					]
 				}
 			],
@@ -16529,14 +16750,14 @@
 				}
 			],
 			"indexSignature": {
-				"id": 1185,
+				"id": 1194,
 				"name": "__index",
 				"kind": 8192,
 				"kindString": "Index signature",
 				"flags": {},
 				"parameters": [
 					{
-						"id": 1186,
+						"id": 1195,
 						"name": "key",
 						"kind": 32768,
 						"flags": {},
@@ -16554,8 +16775,8 @@
 			"extendedBy": [
 				{
 					"type": "reference",
-					"id": 1187,
-					"name": "AucEtherscanTransactionLocalStorage"
+					"id": 1196,
+					"name": "AucTransactionItem"
 				}
 			]
 		},
@@ -18152,14 +18373,14 @@
 			]
 		},
 		{
-			"id": 1160,
+			"id": 1167,
 			"name": "AucEtherscanTransaction",
 			"kind": 256,
 			"kindString": "Interface",
 			"flags": {},
 			"children": [
 				{
-					"id": 1165,
+					"id": 1172,
 					"name": "blockHash",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18177,7 +18398,7 @@
 					}
 				},
 				{
-					"id": 1161,
+					"id": 1168,
 					"name": "blockNumber",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18195,7 +18416,7 @@
 					}
 				},
 				{
-					"id": 1178,
+					"id": 1185,
 					"name": "confirmations",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18213,7 +18434,7 @@
 					}
 				},
 				{
-					"id": 1175,
+					"id": 1182,
 					"name": "contractAddress",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18231,7 +18452,7 @@
 					}
 				},
 				{
-					"id": 1176,
+					"id": 1183,
 					"name": "cumulativeGasUsed",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18249,7 +18470,7 @@
 					}
 				},
 				{
-					"id": 1179,
+					"id": 1186,
 					"name": "explorerUrl",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18269,7 +18490,7 @@
 					}
 				},
 				{
-					"id": 1167,
+					"id": 1174,
 					"name": "from",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18287,7 +18508,7 @@
 					}
 				},
 				{
-					"id": 1170,
+					"id": 1177,
 					"name": "gas",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18305,7 +18526,7 @@
 					}
 				},
 				{
-					"id": 1171,
+					"id": 1178,
 					"name": "gasPrice",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18323,7 +18544,7 @@
 					}
 				},
 				{
-					"id": 1177,
+					"id": 1184,
 					"name": "gasUsed",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18341,7 +18562,7 @@
 					}
 				},
 				{
-					"id": 1163,
+					"id": 1170,
 					"name": "hash",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18359,7 +18580,7 @@
 					}
 				},
 				{
-					"id": 1174,
+					"id": 1181,
 					"name": "input",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18377,7 +18598,7 @@
 					}
 				},
 				{
-					"id": 1172,
+					"id": 1179,
 					"name": "isError",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18404,7 +18625,7 @@
 					}
 				},
 				{
-					"id": 1164,
+					"id": 1171,
 					"name": "nonce",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18422,7 +18643,7 @@
 					}
 				},
 				{
-					"id": 1162,
+					"id": 1169,
 					"name": "timeStamp",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18440,7 +18661,7 @@
 					}
 				},
 				{
-					"id": 1168,
+					"id": 1175,
 					"name": "to",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18458,7 +18679,7 @@
 					}
 				},
 				{
-					"id": 1166,
+					"id": 1173,
 					"name": "transactionIndex",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18476,7 +18697,7 @@
 					}
 				},
 				{
-					"id": 1173,
+					"id": 1180,
 					"name": "txreceipt_status",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18494,7 +18715,7 @@
 					}
 				},
 				{
-					"id": 1169,
+					"id": 1176,
 					"name": "value",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18517,25 +18738,25 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1165,
-						1161,
-						1178,
-						1175,
-						1176,
-						1179,
-						1167,
-						1170,
-						1171,
-						1177,
-						1163,
-						1174,
 						1172,
-						1164,
-						1162,
 						1168,
-						1166,
+						1185,
+						1182,
+						1183,
+						1186,
+						1174,
+						1177,
+						1178,
+						1184,
+						1170,
+						1181,
+						1179,
+						1171,
+						1169,
+						1175,
 						1173,
-						1169
+						1180,
+						1176
 					]
 				}
 			],
@@ -18548,180 +18769,14 @@
 			]
 		},
 		{
-			"id": 1187,
-			"name": "AucEtherscanTransactionLocalStorage",
-			"kind": 256,
-			"kindString": "Interface",
-			"flags": {},
-			"children": [
-				{
-					"id": 1190,
-					"name": "chainId",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
-							"line": 33,
-							"character": 2
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					},
-					"inheritedFrom": {
-						"type": "reference",
-						"id": 1181,
-						"name": "AucAddTransaction.chainId"
-					}
-				},
-				{
-					"id": 1188,
-					"name": "explorerUrl",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
-							"line": 41,
-							"character": 2
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					}
-				},
-				{
-					"id": 1192,
-					"name": "hash",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
-							"line": 35,
-							"character": 2
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					},
-					"inheritedFrom": {
-						"type": "reference",
-						"id": 1183,
-						"name": "AucAddTransaction.hash"
-					}
-				},
-				{
-					"id": 1191,
-					"name": "name",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
-							"line": 34,
-							"character": 2
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "string"
-					},
-					"inheritedFrom": {
-						"type": "reference",
-						"id": 1182,
-						"name": "AucAddTransaction.name"
-					}
-				},
-				{
-					"id": 1193,
-					"name": "status",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
-							"line": 36,
-							"character": 2
-						}
-					],
-					"type": {
-						"type": "reference",
-						"id": 1152,
-						"name": "AUC_TRANSACTION_STATUS"
-					},
-					"inheritedFrom": {
-						"type": "reference",
-						"id": 1184,
-						"name": "AucAddTransaction.status"
-					}
-				},
-				{
-					"id": 1189,
-					"name": "viewed",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {},
-					"sources": [
-						{
-							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
-							"line": 42,
-							"character": 2
-						}
-					],
-					"type": {
-						"type": "intrinsic",
-						"name": "boolean"
-					}
-				}
-			],
-			"groups": [
-				{
-					"title": "Properties",
-					"kind": 1024,
-					"children": [
-						1190,
-						1188,
-						1192,
-						1191,
-						1193,
-						1189
-					]
-				}
-			],
-			"sources": [
-				{
-					"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
-					"line": 40,
-					"character": 17
-				}
-			],
-			"extendedTypes": [
-				{
-					"type": "reference",
-					"id": 1180,
-					"name": "AucAddTransaction"
-				}
-			]
-		},
-		{
-			"id": 1156,
+			"id": 1163,
 			"name": "AucEtherscanTransactionResponse",
 			"kind": 256,
 			"kindString": "Interface",
 			"flags": {},
 			"children": [
 				{
-					"id": 1158,
+					"id": 1165,
 					"name": "message",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18739,7 +18794,7 @@
 					}
 				},
 				{
-					"id": 1159,
+					"id": 1166,
 					"name": "result",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18755,13 +18810,13 @@
 						"type": "array",
 						"elementType": {
 							"type": "reference",
-							"id": 1160,
+							"id": 1167,
 							"name": "AucEtherscanTransaction"
 						}
 					}
 				},
 				{
-					"id": 1157,
+					"id": 1164,
 					"name": "status",
 					"kind": 1024,
 					"kindString": "Property",
@@ -18793,9 +18848,9 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1158,
-						1159,
-						1157
+						1165,
+						1166,
+						1164
 					]
 				}
 			],
@@ -19056,7 +19111,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1235,
+						"id": 1268,
 						"name": "AucHorizontalPosition"
 					}
 				},
@@ -19077,7 +19132,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1234,
+						"id": 1267,
 						"name": "AucVerticalPosition"
 					}
 				}
@@ -19258,14 +19313,14 @@
 			]
 		},
 		{
-			"id": 1133,
+			"id": 1136,
 			"name": "AucRecentTransactionsModalData",
 			"kind": 256,
 			"kindString": "Interface",
 			"flags": {},
 			"children": [
 				{
-					"id": 1134,
+					"id": 1137,
 					"name": "header",
 					"kind": 1024,
 					"kindString": "Property",
@@ -19288,7 +19343,7 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						1134
+						1137
 					]
 				}
 			],
@@ -19490,7 +19545,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 1236,
+						"id": 1269,
 						"name": "AucSortDirection"
 					}
 				}
@@ -19812,6 +19867,182 @@
 					"fileName": "lib/table/interfaces/table.interface.ts",
 					"line": 12,
 					"character": 17
+				}
+			]
+		},
+		{
+			"id": 1196,
+			"name": "AucTransactionItem",
+			"kind": 256,
+			"kindString": "Interface",
+			"flags": {},
+			"children": [
+				{
+					"id": 1198,
+					"name": "chainId",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+							"line": 33,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 1188,
+						"name": "AucAddTransaction.chainId"
+					}
+				},
+				{
+					"id": 1197,
+					"name": "explorerUrl",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+							"line": 43,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"overwrites": {
+						"type": "reference",
+						"id": 1192,
+						"name": "AucAddTransaction.explorerUrl"
+					}
+				},
+				{
+					"id": 1200,
+					"name": "hash",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+							"line": 35,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 1190,
+						"name": "AucAddTransaction.hash"
+					}
+				},
+				{
+					"id": 1199,
+					"name": "name",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+							"line": 34,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 1189,
+						"name": "AucAddTransaction.name"
+					}
+				},
+				{
+					"id": 1201,
+					"name": "status",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+							"line": 36,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 1159,
+						"name": "AUC_TRANSACTION_STATUS"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 1191,
+						"name": "AucAddTransaction.status"
+					}
+				},
+				{
+					"id": 1202,
+					"name": "viewed",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+							"line": 38,
+							"character": 2
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 1193,
+						"name": "AucAddTransaction.viewed"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						1198,
+						1197,
+						1200,
+						1199,
+						1201,
+						1202
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "lib/transactions/interfaces/etherscan-transaction.ts",
+					"line": 42,
+					"character": 17
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "reference",
+					"id": 1187,
+					"name": "AucAddTransaction"
 				}
 			]
 		},
@@ -20497,7 +20728,7 @@
 			}
 		},
 		{
-			"id": 1235,
+			"id": 1268,
 			"name": "AucHorizontalPosition",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -20555,7 +20786,7 @@
 			}
 		},
 		{
-			"id": 1236,
+			"id": 1269,
 			"name": "AucSortDirection",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -20673,7 +20904,7 @@
 			}
 		},
 		{
-			"id": 1234,
+			"id": 1267,
 			"name": "AucVerticalPosition",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -22135,7 +22366,7 @@
 				589,
 				527,
 				593,
-				1152,
+				1159,
 				872,
 				643,
 				676,
@@ -22177,10 +22408,10 @@
 				973,
 				1075,
 				1097,
-				1194,
+				1203,
 				1116,
-				1135,
-				1147,
+				1138,
+				1154,
 				888,
 				299,
 				1026,
@@ -22197,7 +22428,7 @@
 				44,
 				840,
 				47,
-				1180,
+				1187,
 				1015,
 				775,
 				1012,
@@ -22207,22 +22438,22 @@
 				494,
 				764,
 				787,
-				1160,
-				1187,
-				1156,
+				1167,
+				1163,
 				1018,
 				830,
 				963,
 				834,
 				777,
 				780,
-				1133,
+				1136,
 				784,
 				286,
 				837,
 				1082,
 				1094,
 				1089,
+				1196,
 				875,
 				917,
 				1020,
@@ -22237,12 +22468,12 @@
 				9,
 				116,
 				403,
-				1235,
+				1268,
 				273,
-				1236,
+				1269,
 				887,
 				652,
-				1234,
+				1267,
 				695,
 				923,
 				157
