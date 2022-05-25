@@ -130,7 +130,13 @@ Solution:
 <pre><code>
 import injectedModule from '@web3-onboard/injected-wallets'
 
+/** Read more about Infura https://infura.io */
+const INFURA_KEY = environment.infuraKey;
+
+/** More info https://docs.blocknative.com/onboard/injected-wallets */
 const injected = injectedModule();
+
+/** More supported wallets https://docs.blocknative.com/onboard  */
 
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
@@ -157,20 +163,28 @@ export function initWalletServiceFactory(
       },
       {
         id: AUC_CHAIN_ID.RINKEBY_TESTNET,
-        token: 'rETH',
+        token: 'ETH',
         label: 'Rinkeby Ethereum',
         rpcUrl: `${AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
         icon: 'assets/svg/network/eth.svg',
         blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
       }
-    ]
+    ],
+    appMetadata: {
+      name: "Ngx Universal Components",
+      icon: `${ICON_PATH}`,
+      logo: `${LOGO_PATH}`,
+      description: "Some Description",
+      recommendedInjectedWallets: [
+        { name: 'MetaMask', url: 'https://metamask.io' }
+      ]
+    }
   });
 }
 
+
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  ...
   imports: [
     ...
     AucConnectModule.forRoot()
@@ -182,8 +196,7 @@ export function initWalletServiceFactory(
       deps: [ AucWalletConnectService ],
       multi: true
     }
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }
 </code>
