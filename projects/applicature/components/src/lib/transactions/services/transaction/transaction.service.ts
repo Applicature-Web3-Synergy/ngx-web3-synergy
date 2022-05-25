@@ -60,7 +60,6 @@ export class AucTransactionService extends BaseSubscriber {
     private _http: HttpClient,
     private _walletConnectService: AucWalletConnectService
   ) {
-
     super();
 
     this.initialize();
@@ -344,6 +343,7 @@ export class AucTransactionService extends BaseSubscriber {
       JSON.parse(localStorage.getItem(this._getLocalStorageKey())) || [];
 
     this.clearTransactions(false);
+    this._emitTransactionChanges();
 
     transactions.forEach((transaction: AucTransactionItem) => this._setTransactionToMap(transaction));
   }

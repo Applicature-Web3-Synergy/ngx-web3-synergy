@@ -13140,7 +13140,7 @@
 									"kindString": "Parameter",
 									"flags": {},
 									"comment": {
-										"shortText": "Optional parameter.\nIf true, will emit {@link transactionsChanged$};\n"
+										"shortText": "Optional parameter.\nIf true, will emit transactionsChanged$;\n"
 									},
 									"type": {
 										"type": "intrinsic",

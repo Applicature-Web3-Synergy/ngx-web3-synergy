@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, } from '@angular/core';
-import { combineLatest, Observable } from 'rxjs';
-import { filter, map, takeUntil } from 'rxjs/operators';
+import { catchError, combineLatest, Observable, of } from 'rxjs';
+import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon, BaseSubscriber } from '../../helpers';
 import { AucAccountModalData } from './interfaces';
@@ -19,8 +19,9 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
   public identicon: HTMLDivElement;
   public accountAddress: string;
   public etherscanAddress$: Observable<string>;
-  public transactions$: Observable<AucTransactionItem[]>;
+  public transactions: AucTransactionItem[];
   public data: AucAccountModalData;
+  public loadingTransactions: boolean = true;
 
   constructor(
     private _config: AucDialogConfig<AucAccountModalData>,
@@ -32,7 +33,18 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
     super();
 
     this.data = this._config.data;
-    this.transactions$ = this._transactionService.transactionsChanged$;
+    this._transactionService.transactionsChanged$
+      .pipe(
+        debounceTime(200),
+        catchError(() => of(null)),
+        takeUntil(this.notifier)
+      )
+      .subscribe((transactions: AucTransactionItem[]) => {
+        this.loadingTransactions = false;
+        this.transactions = transactions ?? [];
+
+        this._cdr.detectChanges();
+      });
 
     this.etherscanAddress$ = combineLatest([
       this._walletConnectService.chainChanged$,
@@ -51,7 +63,6 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
           }
 
           return `${config[chainId].blockExplorerUrl}/address/${addresses[0]}`
-
         })
       );
   }
@@ -66,7 +77,7 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
           this.accountAddress = accountAddress;
           this.identicon = aucGenerateJazzicon(this.accountAddress);
 
-          this._cdr.markForCheck();
+          this._cdr.detectChanges();
         });
   }
 

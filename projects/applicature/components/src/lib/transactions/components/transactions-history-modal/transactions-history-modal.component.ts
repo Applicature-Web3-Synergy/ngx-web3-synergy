@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { catchError, of } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import { AucDialogConfig, AucDialogRef } from '../../../dialog';
@@ -20,7 +21,7 @@ export class AucTransactionsHistoryModalComponent extends BaseSubscriber impleme
   public loading: boolean = true;
 
   constructor(
-    public cdr: ChangeDetectorRef,
+    public _cdr: ChangeDetectorRef,
     private _config: AucDialogConfig<AucRecentTransactionsModalData>,
     private _dialogRef: AucDialogRef,
     private _transactionService: AucTransactionService
@@ -32,12 +33,13 @@ export class AucTransactionsHistoryModalComponent extends BaseSubscriber impleme
     this._transactionService.transactionsChanged$
       .pipe(
         debounceTime(200),
+        catchError(() => of(null)),
         takeUntil(this.notifier)
       )
       .subscribe((transactions: AucTransactionItem[]) => {
         this.loading = false;
         this.transactions = transactions ?? [];
-        this.cdr.detectChanges();
+        this._cdr.detectChanges();
       });
   }
 
