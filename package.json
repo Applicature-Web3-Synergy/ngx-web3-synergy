@@ -20,7 +20,8 @@
     "build-components-package": "ng build @applicature/components && cd dist/applicature/components && npm pack",
     "build-styles-package": "ng build @applicature/styles && cd dist/applicature/styles && npm pack",
     "install-components": "npm install ./dist/applicature/components/applicature-components-**.**.**.tgz",
-    "install-styles": "npm install ./dist/applicature/components/applicature-styles-**.**.**.tgz"
+    "install-styles": "npm install ./dist/applicature/components/applicature-styles-**.**.**.tgz",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -93,6 +94,7 @@
     "style-loader": "^3.3.1",
     "typedoc": "^0.22.13",
     "typescript": "~4.5.2",
-    "util": "^0.12.4"
+    "util": "^0.12.4",
+    "husky": "^8.0.0"
   }
 }
