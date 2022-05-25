@@ -131,6 +131,11 @@
 .auc-account-footer {
   padding: 20px 0;
   background-color: c.getColor(gray, background);
+
+  &.auc-with-loading {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
 }
 
 .auc-account-transactions {
@@ -173,6 +178,13 @@
     text-decoration: underline;
     cursor: pointer;
   }
+}
+
+.auc-transactions-loading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 767px) {

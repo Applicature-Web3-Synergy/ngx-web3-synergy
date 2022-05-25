@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, Observable, of, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subscriber } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
@@ -209,7 +209,7 @@ export class AucWalletConnectService extends BaseSubscriber {
       try {
         this._onboard = Onboard(initOptions);
 
-        this._setStyles();
+        // this._setStyles();
         this._subscriptions();
 
         const previouslyConnectedWallet = localStorage.getItem(AUC_CONNECTED_WALLET_NAME);
@@ -262,13 +262,6 @@ export class AucWalletConnectService extends BaseSubscriber {
       .pipe(
         switchMap(() => {
           return new Observable<WalletState[]>(observer => {
-            setTimeout(() => {
-              const header = this._shadowRoot?.querySelector('.header-heading');
-
-              if (header) {
-                header.innerHTML = 'Connect a wallet';
-              }
-            });
             this._onboard.connectWallet()
               .then((connection: WalletState[]) => {
                 observer.next(connection);
@@ -334,57 +327,6 @@ export class AucWalletConnectService extends BaseSubscriber {
           }
         }
       });
-  }
-
-  /** @internal */
-  private _setStyles(): void {
-    try {
-      const shadowRoot = this._shadowRoot;
-
-      if (!shadowRoot) {
-        return;
-      }
-
-      const sheet: CSSStyleSheet = new CSSStyleSheet;
-      const styles = `
-        .sidebar,
-        .scroll-container .spacer,
-         .connecting-container .flex .flex > div:not(:last-child)  {
-          display: none;
-        }
-        .header { border-radius: 0 !important; }
-        .header-heading { line-height: 20px !important; }
-        .button-container { transform: translateY(-2px) }
-        .close-button { padding: 0 !important; }
-        .close-button:hover { color: #BBC7D9 !important; transition: color 0.25s}
-        .wallet-button-styling { padding: 11px 15px; transition: all 0.25s; font-weight: 500;}
-        .wallet-button-styling:hover { border-width: 2px; padding: 10px 14px;}
-        .wallet-button-styling:focus { background-color: #DDE3EC; }
-        .wallet-button-styling > div,
-        .connecting-container .flex .flex > div:last-child > div {
-            height: 32px !important;
-            width: 32px !important;
-            padding: 0 !important;
-            border: none !important;
-            background: transparent !important;
-        }
-        .connecting-container .flex .flex > div:last-child,
-        .connecting-container .flex  > .text {
-          right: 0 !important;
-        }
-        .connecting-container .flex  > .text { padding-left: 12px }
-        .wallet-button-styling > span { margin-left: 12px !important; }
-        .connecting-container { padding: 11px 15px !important; font-weight: 500; border-radius: 8px !important; }
-        .container .onboard-button-primary { position: initial; padding: 10px; margin-top: 15px }
-        button { border-radius: 8px; }
-        .container { min-height: 136px; max-height: 80vh }
-      `;
-
-      sheet['replaceSync'](styles);
-      shadowRoot['adoptedStyleSheets'] = [ sheet ];
-    } catch {
-
-    }
   }
 
   /** Init web3 instance */

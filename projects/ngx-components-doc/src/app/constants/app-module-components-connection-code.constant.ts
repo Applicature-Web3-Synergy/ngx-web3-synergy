@@ -60,18 +60,25 @@ export function initWalletServiceFactory(
         icon: 'assets/svg/network/eth.svg',
         blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
       }
-    ]
+    ],
+    appMetadata: {
+      name: "Ngx Universal Components",
+      icon: "assets/img/connection/connection-icon.png",
+      logo: "assets/img/connection/connection-logo.svg",
+      description: "Ngx Universal Components documentation.",
+      recommendedInjectedWallets: [
+        { name: 'MetaMask', url: 'https://metamask.io' }
+      ]
+    }
   });
 }
 
 
 @NgModule({
-  declarations: [
-    ...
-  ],
+  ...
   imports: [
     ...
-    AucConnectModule.forRoot(),
+    AucConnectModule.forRoot()
   ],
   providers: [
     ...
@@ -81,8 +88,7 @@ export function initWalletServiceFactory(
       deps: [ AucWalletConnectService ],
       multi: true
     }
-  ],
-  bootstrap: [...]
+  ]
 })
 export class AppModule { }
 `;

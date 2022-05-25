@@ -72,11 +72,12 @@ export function initWalletServiceFactory(
     ],
     appMetadata: {
       name: "My Demo App",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+      icon: "assets/images/applicature-circle.png",
+      logo: "assets/svg/applicature-black.svg",
       description: "My Demo app",
       recommendedInjectedWallets: [
-        { name: "MetaMask", url: "https://metamask.io" }
+        { name: 'MetaMask', url: 'https://metamask.io' },
+        { name: 'Coinbase', url: 'https://wallet.coinbase.com/' }
       ]
     }
   });
