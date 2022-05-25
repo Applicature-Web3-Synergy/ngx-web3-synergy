@@ -86,7 +86,9 @@ Solution:
       <pre><code>
       {
         ...,
-        compilerOptions: {
+        "skipLibCheck": true,
+        "resolveJsonModule": true,
+        "compilerOptions": {
           ...,
           "paths": {
             "crypto": [
