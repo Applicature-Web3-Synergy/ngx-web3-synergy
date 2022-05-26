@@ -1,6 +1,6 @@
 # APPLICATURE LIBRARIES
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+- [@applicature/ngx-universal-components](projects/applicature/components/README.md)
+- [@applicature/styles](projects/applicature/styles/README.md)
 
 ## Development server
   ### applicature/styles package

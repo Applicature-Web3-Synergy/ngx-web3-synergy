@@ -1,8 +1,8 @@
-# Applicature Universal Components
+# Ngx Universal Components
 This library was created and maintained by Applicature to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
 This library supports only Angular 13 version.
 
-## Documetation
+## Documentation
 Coming soon.
 
 ## Library installation
@@ -62,32 +62,31 @@ window.global = window;
 window.global.Buffer = global.Buffer || Buffer;
 </code></pre>
   - Install <strong>process</strong> if it needs `npm i process`
-    - add next option to **tsconfig.json**:
 
-      <pre><code>
-      {
-        ...,
-        "compilerOptions": {
-          "allowSyntheticDefaultImports": true,
-          ...
-        }
-      }
-      </code></pre>
   
 ### Fixing Build errors
+- add next option to **tsconfig.json**:
+
+<pre><code>{
+  ...,
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    ...
+  }
+}</code></pre>
 
 > BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default. This is no longer the case
 for Angular 13+. Verify if you need this module and configure a polyfill for it.
 
 Solution:
    - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify buffer process util`
-   - **tsconfig.app.json**
+   - **tsconfig.json**
 
       <pre><code>
       {
         ...,
-        "skipLibCheck": true,
-        "resolveJsonModule": true,
         "compilerOptions": {
           ...,
           "paths": {
@@ -126,7 +125,31 @@ Solution:
       }
       </code></pre>
 
+   - or add the next to the **package.json**
+
+     <pre><code>
+     {
+        ...,
+        "browser": {
+          "crypto": false,
+          "stream": false,
+          "assert": false,
+          "http": false,
+          "https": false,
+          "os": false,
+          "path": false,
+          "buffer": false,
+          "process": false,
+          "util": false,
+          "url": false
+        }
+     }
+     </code></pre>
+
+
 ## How to use
+ This Library uses **@web3-onboard/core** for the connection wallet. So you can visit their [documentation](https://docs.blocknative.com/onboard/core) for more details.
+ 
  - **app.module.ts**
 
 <pre><code>
@@ -138,7 +161,7 @@ const INFURA_KEY = environment.infuraKey;
 /** More info https://docs.blocknative.com/onboard/injected-wallets */
 const injected = injectedModule();
 
-/** More supported wallets https://docs.blocknative.com/onboard  */
+/** More supported wallets https://docs.blocknative.com/onboard */
 
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
@@ -201,8 +224,7 @@ export function initWalletServiceFactory(
   ]
 })
 export class AppModule { }
-</code>
-</pre>
+</code></pre>
 
 ## WARNINGS
 You might need to add `allowedCommonJsDependencies` to `angular.json` file:
