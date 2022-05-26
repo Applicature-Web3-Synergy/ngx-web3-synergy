@@ -1,8 +1,8 @@
-# Applicature Universal Components
+# Ngx Universal Components
 This library was created and maintained by Applicature to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
 This library supports only Angular 13 version.
 
-## Documetation
+## Documentation
 Coming soon.
 
 ## Library installation
@@ -148,6 +148,8 @@ Solution:
 
 
 ## How to use
+ This Library uses **@web3-onboard/core** for the connection wallet. So you can visit their [documentation](https://docs.blocknative.com/onboard/core) for more details.
+ 
  - **app.module.ts**
 
 <pre><code>
@@ -159,7 +161,7 @@ const INFURA_KEY = environment.infuraKey;
 /** More info https://docs.blocknative.com/onboard/injected-wallets */
 const injected = injectedModule();
 
-/** More supported wallets https://docs.blocknative.com/onboard  */
+/** More supported wallets https://docs.blocknative.com/onboard */
 
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService

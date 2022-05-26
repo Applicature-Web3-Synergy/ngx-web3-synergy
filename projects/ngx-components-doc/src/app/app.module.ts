@@ -39,7 +39,7 @@ const walletConnect = walletConnectModule({
   }
 });
 
-/** More supported wallets https://docs.blocknative.com/onboard  */
+/** More supported wallets https://docs.blocknative.com/onboard */
 
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService

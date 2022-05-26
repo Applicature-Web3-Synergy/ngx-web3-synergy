@@ -39,7 +39,6 @@ export function markedOptionsFactory(): MarkedOptions {
     if (!code) {
       return '';
     }
-    debugger
 
     return `<code class="getting-started-code">${code}</code>`;
   };
