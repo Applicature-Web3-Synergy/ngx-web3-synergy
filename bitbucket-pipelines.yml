@@ -23,21 +23,20 @@ pipelines:
             script:
               - npm install
               - npm run build
-              - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
+            artifacts: 
+              - dist/**
         - parallel:
             - step:
                 name: Publish components
-                caches:
-                  - node
                 script:
+                  - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
                   - cd dist/applicature/components
                   - npm pack .
                   - npm publish --access public
             - step:
                 name: Publish styles
-                caches:
-                  - node
                 script:
+                  - npm set //$NPM_REGISTRY/:_authToken $NPM_AUTH_TOKEN
                   - cd dist/applicature/styles
                   - npm pack .
                   - npm publish --access public
