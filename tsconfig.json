@@ -58,6 +58,9 @@
       "util": [
         "./node_modules/util"
       ],
+      "url": [
+        "./node_modules/url"
+      ],
       "@applicature/components": [
         "dist/applicature/components/applicature-components",
         "dist/applicature/components"

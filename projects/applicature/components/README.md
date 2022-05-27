@@ -81,7 +81,7 @@ window.global.Buffer = global.Buffer || Buffer;
 for Angular 13+. Verify if you need this module and configure a polyfill for it.
 
 Solution:
-   - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify buffer process util`
+   - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify buffer process util url`
    - **tsconfig.json**
 
       <pre><code>
@@ -119,7 +119,10 @@ Solution:
              ],
              "util": [
                "./node_modules/util"
-             ]
+             ],
+             "url": [
+                "./node_modules/url"
+              ]
           }
         }
       }
