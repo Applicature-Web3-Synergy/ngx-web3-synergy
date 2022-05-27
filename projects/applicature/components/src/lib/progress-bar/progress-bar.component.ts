@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 
 @Component({
@@ -7,29 +7,47 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   styleUrls: [ './progress-bar.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucProgressBarComponent implements OnInit {
+export class AucProgressBarComponent implements OnInit, OnChanges {
   /**
-   * {@link progress} - It's an `@Input()` parameter.
-   * Sets progress value.
-   * This is required parameter.
+   * Sets progress value. <br>
+   * It's required parameter.
    */
-  @Input() progress!: number;
+  @Input()
+  public progress!: number;
 
   /**
-   * {@link total} - It's an `@Input()` parameter.
-   * Sets total value for the progress.
-   * You might never use it.
-   * This is an optional parameter. The default value is 100.
+   * Sets total value for the progress. <br>
+   * You might never use it. <br>
+   * It's an optional parameter. <br>
+   * The default value is 100.
    */
-  @Input() total: number = 100;
+  @Input()
+  public total: number = 100;
 
+  /** @internal */
+  private _progressVal: number;
+
+  /** Returns current progress value */
+  public get currentProgress(): number {
+    return this._progressVal;
+  }
+
+  /** @internal */
   ngOnInit(): void {
     this.calculateData();
   }
 
+  /** @internal */
+  ngOnChanges(changes: SimpleChanges) {
+    if (!changes.total?.firstChange || !changes.progress?.firstChange) {
+      this.calculateData();
+    }
+  }
+
+  /** @internal */
   private calculateData(): void {
     if (!this.progress) {
-      this.progress = 0;
+      this._progressVal = 0;
     }
 
     if (this.total === 0) {
@@ -39,10 +57,9 @@ export class AucProgressBarComponent implements OnInit {
     }
 
     if (this.progress > this.total) {
-      this.progress = 100;
-      this.total = 100;
+      this.progress = this.total;
     }
 
-    this.progress = (this.progress / this.total) * 100;
+    this._progressVal = (this.progress / this.total) * 100;
   }
 }

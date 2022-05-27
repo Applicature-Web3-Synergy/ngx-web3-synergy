@@ -1,0 +1,82 @@
+// Plus imports for other components in your app.
+@use "as-common" as c;
+@use "as-icons";
+@use "as-ripple";
+@use "as-wallet-connet-modal";
+
+* {
+  box-sizing: border-box;
+
+  &.block-scroll {
+    overflow: hidden;
+  }
+}
+
+body {
+  font-family: c.$as-font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  position: static !important;
+}
+
+// Dialog styles
+.auc-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+  min-height: 24px;
+  padding-right: 30px;
+
+  > h1 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: c.$black;
+    margin: 0;
+    width: 100%;
+    @include c.text-overflow;
+  }
+
+  .auc-close-btn {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.auc-close-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: c.getColor(grey, base);
+  @include c.transition;
+
+  .auc-icon {
+    color: inherit;
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+  }
+
+  &:hover {
+    color: c.getColor(grey, hover);
+  }
+
+  &:active {
+    color: c.getColor(grey, dark);
+  }
+}
+
+// End Dialog styles

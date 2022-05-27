@@ -1,3 +1,4 @@
+/** @enum */
 export enum AUC_CHAIN_ID_NUM {
   ARBITRUM_MAINNET = 42161,
   ARBITRUM_TESTNET = 421611,
@@ -24,6 +25,7 @@ export enum AUC_CHAIN_ID_NUM {
   THETA_TESTNET = 365
 }
 
+/** @enum */
 export enum AUC_CHAIN_ID {
   ARBITRUM_MAINNET = '0xa4b1',
   ARBITRUM_TESTNET = '0x66eeb',

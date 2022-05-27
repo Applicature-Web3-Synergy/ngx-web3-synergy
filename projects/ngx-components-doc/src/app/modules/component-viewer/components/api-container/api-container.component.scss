@@ -1,0 +1,96 @@
+@use 'common' as c;
+
+$code-section-width: 400px;
+
+.code-component-container {
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+}
+
+.component-title {
+  margin-bottom: 30px;
+}
+
+doc-example-card {
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}
+
+.doc-api-table-section {
+  display: block;
+  border: 1px solid c.$border-color;
+}
+
+.doc-api-section-item {
+  width: 100%;
+  min-height: 51px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  &.full-width {
+    flex-wrap: wrap;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid c.$border-color;
+  }
+
+  & > * {
+    padding: 15px;
+  }
+}
+
+.doc-api-code {
+  width: $code-section-width;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-right: 1px solid c.$border-color;
+
+  &.full-width {
+    width: 100%;
+    flex-wrap: wrap;
+    border-right: none;
+  }
+}
+
+.code-default {
+  margin-top: 15px;
+}
+
+.doc-api-description {
+  width: calc(100% - #{$code-section-width});
+
+  &.full-width {
+    width: 100%;
+    padding-top: 0;
+  }
+}
+
+.code-property {
+  white-space: pre-line
+}
+
+@media (max-width: map-get(c.$grid-breakpoints, md)) {
+  .doc-api-section-item {
+    flex-wrap: wrap;
+    word-break: break-word;
+  }
+
+  .doc-api-code {
+    width: 100%;
+    flex-wrap: wrap;
+    border-right: none;
+  }
+
+  .doc-api-description {
+    width: 100%;
+    padding-top: 0;
+  }
+}

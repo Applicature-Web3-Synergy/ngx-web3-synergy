@@ -1,0 +1,10 @@
+export const BasicCopyToClipboardCodeScss = `.doc-grid-item {
+  min-width: 100px;
+}
+
+.doc-ctc-custom-size {
+  width: 50px;
+  height: 50px;
+}
+
+`;

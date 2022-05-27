@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+@use "fonts";
+@use "resset";
+@use "angular-material-customization";
+@use "as-styles";
+@use 'common' as c;
+
+
+.full-width {
+  width: 100%;
+}
+
+.doc-grid-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: map-get(c.$gray, 5);
+  border-radius: c.$border-radius c.$border-radius 0 c.$border-radius;
+  padding: 10px;
+}
+
+.doc-grid-item {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+.doc-grid-item-title {
+  margin: 0 0 15px;
+}
+
+.doc-example-viewer-example-cards-list,
+doc-need-wallet-connection {
+  & > *:not(:last-child) {
+    display: block;
+    margin-bottom: 30px;
+  };
+}
+
+.doc-custom-btn {
+  border: none;
+  background: map-get(c.$blue, 2);
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 18px;
+  height: 40px;
+  transition: background-color .25s;
+
+  &:hover {
+    background: rgba(map-get(c.$blue, 2), .9);
+  }
+}
+
+.doc-controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.doc-control {
+  padding: 10px;
+}
+
+.doc-controls-title {
+  padding: 0 10px;
+}
+
+mat-select {
+  text-transform: capitalize;
+}
+
+.doc-form {
+  margin-top: 20px;
+}
+
+.doc-ex-val {
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.doc-comment-item {
+  word-break: break-word;
+}
+
+// Getting started page styles
+.getting-started-code {
+  background-color: map-get(c.$gray, 1);
+  border-radius: 2px;
+  padding: 5px;
+}
+
+.getting-started-paragraph {
+  margin: 10px 0;
+  font-style: normal;
+
+  &.with-code {
+    line-height: 24px;
+
+    .getting-started-code {
+      padding: 2px;
+    }
+  }
+
+}
+
+.doc.prettyprint {
+  border: 1px solid c.$border-color;
+  border-radius: c.$border-radius;
+  overflow: auto;
+  padding: 15px;
+
+  &.white-theme {
+    background-color: c.$card-bg;
+  }
+
+  & > .pln {
+    display: none;
+  }
+}
+
+.getting-started-h1{
+  margin-bottom: 15px;
+  font-style: normal;
+}
+
+.getting-started-h2,
+.getting-started-h3,
+.getting-started-h4,
+.getting-started-h5,
+.getting-started-h6 {
+  margin: 15px 0;
+  font-style: normal;
+}
+
+// End Getting started page styles

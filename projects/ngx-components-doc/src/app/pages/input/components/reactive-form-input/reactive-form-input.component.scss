@@ -1,0 +1,7 @@
+.doc-grid-item {
+  align-items: flex-start;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}

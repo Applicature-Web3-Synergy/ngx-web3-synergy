@@ -9,11 +9,11 @@ import { AucSetStyleProp } from './interfaces';
 })
 export class AucSetStylePropsDirective implements OnChanges {
   /**
-   * {@link aucSetStyleProps} - It's an `@Input()` parameter.
-   * Used for setting style properties to the element.
-   * You can use set properties in your scss.
-   * Ex: aucSetStyleProps = {name: '--text-color: 'red'}.
-   * In your scss file you can use it: color: var(--text-color);
+   * Used for setting style properties to the element. <br>
+   * You can use set properties in your scss. <br>
+   * Ex: aucSetStyleProps = {name: '--text-color: 'red'}. <br>
+   * In your scss file you can use it: color: var(--text-color).
+   * It's required parameter.
    */
   @Input()
   public aucSetStyleProps!: AucSetStyleProp | AucSetStyleProp[];
@@ -21,10 +21,12 @@ export class AucSetStylePropsDirective implements OnChanges {
   constructor(private _elementRef: ElementRef) {
   }
 
+  /** @internal */
   ngOnChanges(): void {
     this.setProperty([].concat(this.aucSetStyleProps ?? []));
   }
 
+  /** Sets property to nativeElement */
   public setProperty(props: AucSetStyleProp[]): void {
     if (!Array.isArray(props) || !props.length || !this._elementRef?.nativeElement?.style) {
       return;

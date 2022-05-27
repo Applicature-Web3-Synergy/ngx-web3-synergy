@@ -6,7 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -20,6 +20,9 @@
     "strictNullChecks": false,
     "target": "es2017",
     "module": "es2020",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "lib": [
       "es2020",
       "dom"
@@ -41,7 +44,22 @@
         "./node_modules/https-browserify"
       ],
       "os": [
-        "./node_modules/os-browserify"
+        "./node_modules/os-browserify/browser"
+      ],
+      "path": [
+        "./node_modules/path-browserify"
+      ],
+      "buffer": [
+        "./node_modules/buffer"
+      ],
+      "process": [
+        "./node_modules/process/browser"
+      ],
+      "util": [
+        "./node_modules/util"
+      ],
+      "url": [
+        "./node_modules/url"
       ],
       "@applicature/components": [
         "dist/applicature/components/applicature-components",

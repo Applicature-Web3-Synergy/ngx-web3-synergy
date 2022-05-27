@@ -1,3 +1,4 @@
+/** @enum */
 export enum AUC_POSITIONS {
   ABOVE = 'above',
   BELOW = 'below',

@@ -6,9 +6,13 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnChanges,
   OnDestroy,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import {
   AucContentBodyDirective,
@@ -16,6 +20,7 @@ import {
 } from '../directives';
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig, AucDropdownPositionStyles } from './interfaces';
+import { BaseSubscriber } from '../helpers';
 
 
 @Component({
@@ -24,33 +29,86 @@ import { AucDropdownConfig, AucDropdownPositionStyles } from './interfaces';
   styleUrls: [ './dropdown-menu.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucDropdownMenuComponent implements AfterViewInit, OnDestroy {
-  @Input() config?: AucDropdownConfig;
-  @Input() trigger!: AucTriggerDirective;
-  @ViewChild(AucContentBodyDirective) contentBody: AucContentBodyDirective;
-  @ViewChild('dropdown', { read: ElementRef }) dropdownRef: ElementRef;
+export class AucDropdownMenuComponent extends BaseSubscriber implements OnChanges, AfterViewInit, OnDestroy {
+  /**
+   * Customize dropdown <br>
+   * It's an optional parameter.
+   */
+  @Input()
+  public config?: AucDropdownConfig;
 
+  /** Trigger for toggle opens */
+  @Input()
+  public trigger!: AucTriggerDirective;
+
+  /** @internal */
+  @ViewChild(AucContentBodyDirective) public contentBody: AucContentBodyDirective;
+
+  /** @internal */
+  @ViewChild('dropdown', { read: ElementRef }) public dropdownRef: ElementRef;
+
+  /** @internal */
   public positionStyles: AucDropdownPositionStyles = null;
+
+  /** @internal */
   public isBelow: boolean;
+
+  /** @internal */
   public isAfter: boolean;
 
+  /** @internal */
+  private resize$: Subject<void> = new Subject();
+
   constructor(private _cdr: ChangeDetectorRef) {
+    super();
+
+    this.resize$
+      .pipe(
+        debounceTime(100),
+        takeUntil(this.notifier)
+      )
+      .subscribe(() => {
+        this.getPositions();
+      });
   }
 
-  @HostListener('window:resize') onResize(): void {
-    this.getPositions();
+  /** @internal */
+  @HostListener('window:resize') public onResize(): void {
+    this.resize$.next();
   }
 
+  /** @internal */
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.config?.currentValue && !this.positionStyles && (this.config?.minWidth || this.config?.minHeight)) {
+      this.positionStyles = {
+        top: '0',
+        left: '0'
+      };
+
+      if (this.config?.minHeight) {
+        this.positionStyles.minHeight = `${this.config.minHeight}px`;
+      }
+
+      if (this.config?.minWidth) {
+        this.positionStyles.minWidth = `${this.config.minWidth}px`;
+      }
+    }
+  }
+
+  /** @internal */
   ngAfterViewInit(): void {
     if (this.dropdownRef) {
       this.getPositions();
     }
   }
 
-  ngOnDestroy() {
+  /** @internal */
+  override ngOnDestroy(): void {
+    super.ngOnDestroy();
     this.close();
   }
 
+  /** @internal */
   public getPositions(): void {
     const triggerRect: DOMRect = this.trigger.nativeElement.getBoundingClientRect();
 
@@ -117,11 +175,19 @@ export class AucDropdownMenuComponent implements AfterViewInit, OnDestroy {
     }
 
     if (!!maxHeight) {
-      styles.maxHeight = `${maxHeight}px`
+      styles.maxHeight = `${maxHeight}px`;
+    }
+
+    if (this.config?.minHeight) {
+      styles.minHeight = !maxHeight ? `${this.config.minHeight}px` : `${maxHeight}px`;
     }
 
     if (!!maxWidth) {
-      styles.maxWidth = `${maxWidth}px`
+      styles.maxWidth = `${maxWidth}px`;
+    }
+
+    if (this.config?.minWidth) {
+      styles.minWidth = !maxWidth ? `${this.config.minWidth}px` : `${maxWidth}px`;
     }
 
     this.positionStyles = styles;
@@ -131,6 +197,7 @@ export class AucDropdownMenuComponent implements AfterViewInit, OnDestroy {
     this._cdr.detectChanges();
   }
 
+  /** Hide dropdown */
   public close(): void {
     if (!this.contentBody) {
       return;

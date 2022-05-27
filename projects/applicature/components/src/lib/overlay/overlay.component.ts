@@ -11,18 +11,17 @@ import { AucOverlayCustomizationConfig } from './interfaces';
 })
 export class AucOverlayComponent {
   /**
-   * {@link customize} - It's an `@Input()` parameter.
-   * You can customize overlay.
-   * This is an optional parameter.
+   * You can customize overlay. <br>
+   * It's an optional parameter.
    */
-  @Input() customize?: AucOverlayCustomizationConfig
+  @Input()
+  public customize?: AucOverlayCustomizationConfig
 
-  /**
-   * {@link overlayClicked} - It's an `@Output()` parameter.
-   * Emits when overlay was clicked.
-   */
-  @Output() overlayClicked: EventEmitter<void> = new EventEmitter<void>();
+  /** Emits when overlay was clicked. */
+  @Output()
+  public overlayClicked: EventEmitter<void> = new EventEmitter<void>();
 
+  /** Emit {@link overlayClicked} event. */
   public onOverlayClicked(): void {
     this.overlayClicked.emit();
   }

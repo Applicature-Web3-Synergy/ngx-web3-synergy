@@ -1,0 +1,30 @@
+<div class="doc-example-card-container">
+  <div class="doc-example-card-header" *ngIf="label">
+    <h4 class="doc-example-card-title">{{label}}</h4>
+  </div>
+
+  <div class="doc-example-card-content">
+    <div class="doc-example-box">
+      <ng-content></ng-content>
+
+      <button class="doc-show-code-bth"
+              (click)="toggleShow()"
+              *ngIf="tabs"
+      >
+        {{showCode ? 'Hide' : 'Show'}} Code
+      </button>
+    </div>
+
+    <mat-tab-group class="doc-example-card-tabs"
+                   *ngIf="tabs && showCode"
+                   dynamicHeight
+                   disableRipple
+                   mat-align-tabs="start"
+                   animationDuration="0ms"
+    >
+      <mat-tab *ngFor="let tab of (tabs ?? [])" [label]="tab.title" #tabItem>
+        <doc-code-example *ngIf="tabItem.isActive" [codeConfig]="tab.code"></doc-code-example>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

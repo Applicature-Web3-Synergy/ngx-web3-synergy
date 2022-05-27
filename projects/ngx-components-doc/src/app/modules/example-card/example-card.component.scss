@@ -1,0 +1,48 @@
+@use 'common' as c;
+@use 'as-common' as as;
+
+$card-padding: 20px;
+
+.doc-example-card-container {
+  background-color: c.$card-bg;
+  border-radius: c.$border-radius;
+  border: 1px solid c.$border-color;
+}
+
+.doc-example-card-header,
+.doc-example-card-content {
+  padding: $card-padding;
+}
+
+.doc-example-card-header {
+  border-bottom: 1px solid c.$border-color;
+}
+
+.doc-example-card-title {
+  color: c.$title-gray;
+}
+
+.doc-example-card-content {
+  & > *:not(:first-child) {
+    margin-top: 20px;
+  }
+}
+
+.doc-show-code-bth {
+  border: none;
+  border-radius: 0 0 c.$border-radius c.$border-radius;
+  padding: 10px;
+  width: 120px;
+  background-color: map-get(c.$gray, 5);
+  align-self: flex-end;
+  @include as.transition;
+
+  &:hover {
+    background-color: map-get(c.$gray, 2);
+  }
+}
+
+.doc-example-box {
+  display: flex;
+  flex-direction: column;
+}

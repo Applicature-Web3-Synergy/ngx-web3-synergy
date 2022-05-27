@@ -1,0 +1,29 @@
+@use 'common' as c;
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/Inter-Regular.ttf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../assets/fonts/inter/Inter-SemiBold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: c.$title-color;
+  font-weight: 600;
+}
+
+h1, h2 {
+  font-weight: 700;
+}

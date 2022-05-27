@@ -29,6 +29,7 @@ export class AucDialogService {
   ) {
   }
 
+  /** @internal */
   private appendDialogComponentToBody<T = any, R = any>(config: AucDialogConfig): AucDialogRef<R> {
     const map = new WeakMap();
     map.set(AucDialogConfig, config);
@@ -62,13 +63,14 @@ export class AucDialogService {
     return dialogRef;
   }
 
+  /** @internal */
   private removeDialogComponentFromBody(): void {
     this._appRef.detachView(this._dialogComponentRef.hostView);
     this._dialogComponentRef.destroy();
   }
 
   /**
-   * This method open dialog window.
+   * Opens dialog window.
    * @param componentType - component which will be shown inside the dialog.
    * @param config - configuration for the dialog window. More details {@link AucDialogConfig}.
    */

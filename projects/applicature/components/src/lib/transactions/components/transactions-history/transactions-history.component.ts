@@ -2,13 +2,15 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } 
 import { Subscription } from 'rxjs';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
+import { takeUntil } from 'rxjs/operators';
 
-import { AUC_TRANSACTION_STATUS } from '../../../enums';
 import { AucDialogService } from '../../../dialog';
 import { AUC_BUTTON_APPEARANCE } from '../../../button';
-import { AucEtherscanTransactionLocalStorage } from '../../../interfaces';
 import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } from '../transactions-history-modal';
 import { AucTransactionService } from '../../services';
+import { AucTransactionItem } from '../../interfaces';
+import { AUC_TRANSACTION_STATUS } from '../../enums';
+import { BaseSubscriber } from '../../../helpers';
 
 
 @Component({
@@ -17,21 +19,31 @@ import { AucTransactionService } from '../../services';
   styleUrls: [ './transactions-history.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucTransactionsHistoryComponent implements OnInit {
+export class AucTransactionsHistoryComponent extends BaseSubscriber implements OnInit {
   /**
-   * {@link disabled} - It's an `@Input()` parameter.
-   * Whether the button is disabled.
-   * This is an optional parameter. The default value is false.
+   * Whether the button is disabled. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
   public disabled: boolean = false;
 
+  /** @internal */
   public hasFailedTx: boolean = false;
+
+  /** @internal */
   public hasPendingTx: boolean = false;
+
+  /** @internal */
   public txCount: number = 0;
+
+  /** @internal */
   public COLORS = AS_COLOR_GROUP;
+
+  /** @internal */
   public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
 
+  /** @internal */
   private _sub: Subscription = new Subscription();
 
   constructor(
@@ -39,31 +51,33 @@ export class AucTransactionsHistoryComponent implements OnInit {
     private _cdr: ChangeDetectorRef,
     private _transactionService: AucTransactionService
   ) {
+    super();
   }
 
+  /** @internal */
   public ngOnInit(): void {
-    this._sub.add(
-      this._transactionService.transactionsChanged$
-        .subscribe((transactions: AucEtherscanTransactionLocalStorage[]) => {
-          this.txCount = transactions.filter((tx: AucEtherscanTransactionLocalStorage) => {
-            return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
+    this._transactionService.transactionsChanged$
+      .pipe(takeUntil(this.notifier))
+      .subscribe((transactions: AucTransactionItem[]) => {
+        this.txCount = transactions.filter((tx: AucTransactionItem) => {
+          return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
+        }).length;
+
+        this.hasFailedTx = this.txCount > 0;
+
+        if (!this.hasFailedTx) {
+          this.txCount = transactions.filter((tx: AucTransactionItem) => {
+            return tx.status === AUC_TRANSACTION_STATUS.PENDING;
           }).length;
 
-          this.hasFailedTx = this.txCount > 0;
+          this.hasPendingTx = this.txCount > 0;
+        }
 
-          if (!this.hasFailedTx) {
-            this.txCount = transactions.filter((tx: AucEtherscanTransactionLocalStorage) => {
-              return tx.status === AUC_TRANSACTION_STATUS.PENDING;
-            }).length;
-
-            this.hasPendingTx = this.txCount > 0;
-          }
-
-          this._cdr.markForCheck();
-        })
-    );
+        this._cdr.detectChanges();
+      });
   }
 
+  /** Opens Recent Transaction Dialog. */
   public onTransactionsClick(): void {
     if (this.disabled) {
       return;

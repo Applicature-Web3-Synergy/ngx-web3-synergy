@@ -1,6 +1,4 @@
-@import "../../../../styles/src/lib/scss/variables";
-@import "../../../../styles/src/lib/scss/functions";
-@import "../../../../styles/src/lib/scss/mixins";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: inline-flex;
@@ -9,7 +7,7 @@
 .auc-input {
   display: flex;
   flex-direction: column;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
 }
 
 .auc-input-label {
@@ -34,7 +32,7 @@
 
 .auc-input-label,
 .auc-input-hint {
-  color: getColor(grey, base);
+  color: c.getColor(grey, base);
 }
 
 .auc-input-hint {
@@ -43,7 +41,7 @@
 
 .auc-input-error {
   margin-top: 4px;
-  color: getColor(red, base);
+  color: c.getColor(red, base);
 }
 
 .auc-input-container {
@@ -52,12 +50,12 @@
   align-items: center;
   height: 100%;
   padding: 0 12px;
-  border: 1px solid getColor(grey, light);
+  border: 1px solid c.getColor(grey, light);
   border-radius: 8px;
-  @include transition;
+  @include c.transition(border);
 
   &:not(.auc-input-container-disabled):not(.auc-input-container-error):not(.auc-input-container-focus):hover {
-    border: 1px solid getColor(grey, hover);
+    border: 1px solid c.getColor(grey, hover);
   }
 }
 
@@ -73,19 +71,19 @@
 
 .auc-input-container-disabled {
   cursor: default;
-  background: $grey-bg;
+  background: c.$grey-bg;
   pointer-events: none;
 }
 
 .auc-input-container-focus {
-  border: 1px solid getColor(blue, base);
+  border: 1px solid c.getColor(blue, base);
 }
 
 .auc-input-container-error {
-  border: 1px solid getColor(red, base);
+  border: 1px solid c.getColor(red, base);
 
   .auc-input-max {
-    color: getColor(red, base);
+    color: c.getColor(red, base);
   }
 }
 
@@ -94,16 +92,16 @@
   width: 100%;
   border: 0;
   background-color: transparent;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
   outline: none;
   min-width: 180px;
   font-size: 14px;
   font-weight: 500;
-  color: $black;
+  color: c.$black;
 
   &::placeholder {
-    color: getColor(grey, hover);
-    font-family: $as-font-family;
+    color: c.getColor(grey, hover);
+    font-family: c.$as-font-family;
     font-size: 14px;
     font-weight: 500;
   }
@@ -114,13 +112,13 @@
   display: flex;
   align-items: center;
   padding: 0 12px;
-  background: $grey-bg;
+  background: c.$grey-bg;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: getColor(grey, base);
+  color: c.getColor(grey, base);
   height: 100%;
-  border: 1px solid getColor(grey, light);
+  border: 1px solid c.getColor(grey, light);
 }
 
 .auc-input-prefix {
@@ -141,11 +139,11 @@
   font-weight: 700;
   font-size: 13px;
   line-height: 16px;
-  color: getColor(blue, base);
-  @include transition;
+  color: c.getColor(blue, base);
+  @include c.transition;
 
   &:hover {
     cursor: pointer;
-    color: getColor(blue, hover);
+    color: c.getColor(blue, hover);
   }
 }

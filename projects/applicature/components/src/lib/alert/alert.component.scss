@@ -1,5 +1,4 @@
-@import "../../../../styles/src/lib/scss/variables";
-@import "../../../../styles/src/lib/scss/functions";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: block;
@@ -18,8 +17,8 @@
 }
 
 .auc-alert-white {
-  .auc-alert-icon:before {
-    color: getColor(grey, base);
+  .auc-alert-icon {
+    color: c.getColor(grey, base);
   }
 }
 
@@ -27,17 +26,16 @@
   margin: 0 8px;
   display: inline-block;
   font-size: 20px;
-
-  &:before {
-    color: var(--auc-alert-text);
-  }
+  width: 20px;
+  height: 20px;
+  color: var(--auc-alert-text);
 }
 
 .auc-alert-text {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
   color: var(--auc-alert-text);
 }
 

@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { catchError, combineLatest, Observable, of } from 'rxjs';
+import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 
-import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../../helpers';
-import { AucNetworkOption, AucEtherscanTransactionLocalStorage } from '../../interfaces';
+import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon, BaseSubscriber } from '../../helpers';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { AucConnectionState, AucWalletConnectService } from '../../services';
-import { AucTransactionService } from '../../transactions';
+import { AucWalletConnectService, BlockExplorerUrlsByChainId } from '../../services';
+import { AucTransactionItem, AucTransactionService } from '../../transactions';
 
 
 @Component({
@@ -16,14 +15,13 @@ import { AucTransactionService } from '../../transactions';
   styleUrls: [ './account-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucAccountModalComponent implements OnInit, OnDestroy {
+export class AucAccountModalComponent extends BaseSubscriber implements OnInit, OnDestroy {
   public identicon: HTMLDivElement;
   public accountAddress: string;
   public etherscanAddress$: Observable<string>;
-  public transactions$: Observable<AucEtherscanTransactionLocalStorage[]>;
+  public transactions: AucTransactionItem[];
   public data: AucAccountModalData;
-
-  private _sub: Subscription = new Subscription();
+  public loadingTransactions: boolean = true;
 
   constructor(
     private _config: AucDialogConfig<AucAccountModalData>,
@@ -32,42 +30,60 @@ export class AucAccountModalComponent implements OnInit, OnDestroy {
     private _walletConnectService: AucWalletConnectService,
     private _transactionService: AucTransactionService
   ) {
+    super();
+
     this.data = this._config.data;
-    this.transactions$ = this._transactionService.transactionsChanged$;
-
-    this.etherscanAddress$ = this._walletConnectService.selectedNetwork$
+    this._transactionService.transactionsChanged$
       .pipe(
-        map((network: AucNetworkOption) => {
-          const connectionInfo: AucConnectionState = this._walletConnectService.connectionState;
+        debounceTime(200),
+        catchError(() => of(null)),
+        takeUntil(this.notifier)
+      )
+      .subscribe((transactions: AucTransactionItem[]) => {
+        this.loadingTransactions = false;
+        this.transactions = transactions ?? [];
 
-          if (!network || !network.blockExplorerUrl || !connectionInfo?.state?.address) {
+        this._cdr.detectChanges();
+      });
+
+    this.etherscanAddress$ = combineLatest([
+      this._walletConnectService.chainChanged$,
+      this._walletConnectService.accountsChanged$
+    ])
+      .pipe(
+        map(([chainId, addresses]: [string, string[]]) => {
+          if (!chainId) {
             return null;
           }
 
-          return `${network.blockExplorerUrl}/address/${connectionInfo.state.address}`
+          const config: BlockExplorerUrlsByChainId = this._walletConnectService.blockExplorerUrlByChainId;
+
+          if (!(config ?? {})[chainId]?.blockExplorerUrl || !addresses.length) {
+            return null;
+          }
+
+          return `${config[chainId].blockExplorerUrl}/address/${addresses[0]}`
         })
       );
   }
 
   public ngOnInit(): void {
-    this._sub.add(
       this._walletConnectService.accountsChanged$
         .pipe(
-          filter((accounts) => accounts?.length > 0)
+          filter((accounts) => accounts?.length > 0),
+          takeUntil(this.notifier)
         )
         .subscribe(([ accountAddress ]) => {
           this.accountAddress = accountAddress;
           this.identicon = aucGenerateJazzicon(this.accountAddress);
 
-          this._cdr.markForCheck();
-        })
-    );
+          this._cdr.detectChanges();
+        });
   }
 
-  public ngOnDestroy(): void {
-    this._transactionService.markAsViewed();
-
-    this._sub.unsubscribe();
+  override ngOnDestroy() {
+    super.ngOnDestroy();
+    this._transactionService.markAllAsViewed();
   }
 
   public onCloseClick(): void {

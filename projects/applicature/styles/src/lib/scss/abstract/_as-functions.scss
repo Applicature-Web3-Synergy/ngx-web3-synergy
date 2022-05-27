@@ -1,0 +1,5 @@
+@use "as-variables" as v;
+
+@function getColor($base: blue, $shade: base) {
+  @return map-get(map-get(v.$as-colors, $base), $shade);
+}

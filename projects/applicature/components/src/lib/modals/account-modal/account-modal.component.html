@@ -33,17 +33,21 @@
       <span>{{ accountAddress | aucShortAddress }}</span>
     </div>
     <div class="auc-info-footer">
-      <span ngxClipboard
-            [cbContent]="accountAddress"
-            class="auc-info-footer-item"><i class="wcl-icon-copy"></i><span>Copy Address</span></span>
+      <span aucCopyToClipboard
+            [textToCopy]="accountAddress"
+            class="auc-info-footer-item">
+        <i class="wcl-icon-copy"></i>
+        <span>Copy Address</span>
+      </span>
+
       <a class="auc-info-footer-item" *ngIf="(etherscanAddress$ | async) as ethAddress" [href]="ethAddress"
          target="_blank"><i class="wcl-icon-external-link"></i><span>View on Explorer</span></a>
     </div>
   </div>
 
-  <ng-container *ngIf="(transactions$ | async) as transactions">
-    <div class="auc-account-footer">
-      <div class="auc-account-transactions">
+  <div class="auc-account-footer" [class.auc-with-loading]="loadingTransactions">
+    <div class="auc-account-transactions">
+      <ng-container *ngIf="!loadingTransactions; else loadingRef">
         <div class="auc-account-transactions-header" *ngIf="transactions.length">
           <div class="auc-account-transactions-header-title">Recent transactions</div>
           <button type="button"
@@ -53,8 +57,15 @@
             (clear all)
           </button>
         </div>
+
         <auc-transactions-list [transactions]="transactions"></auc-transactions-list>
-      </div>
+      </ng-container>
+
+      <ng-template #loadingRef>
+        <div class="auc-transactions-loading">
+          <auc-spinner [width]="2" [diameter]="30"></auc-spinner>
+        </div>
+      </ng-template>
     </div>
-  </ng-container>
+  </div>
 </div>

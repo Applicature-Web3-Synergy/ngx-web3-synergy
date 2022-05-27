@@ -1,0 +1,36 @@
+@use "as-common" as c;
+
+:root {
+  /* CUSTOMIZE THE COLOR PALLETTE */
+  --onboard-white: white;
+  --onboard-black: #222222;
+  --onboard-primary-100: transparent;
+  --onboard-primary-200: #DDE3EC;
+  --onboard-primary-300: transparent;
+  --onboard-gray-700: #222;
+  --onboard-close-button-background: transparent;
+  --onboard-close-button-color: #6D87AC;
+
+  /* FONTS */
+  --onboard-font-family-normal: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --onboard-font-family-semibold: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --onboard-font-family-light: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+  /* SPACING */
+  --onboard-spacing-4: 20px;
+  --onboard-spacing-5: 20px;
+
+  /* SIZING */
+  --onboard-connect-content-width: 420px;
+  --onboard-connect-content-height: auto;
+  --onboard-font-size-5: 16px;
+  --onboard-wallet-columns: 1fr;
+  --onboard-wallet-button-border-radius: 8px;
+
+  /* SHADOWS */
+  --onboard-shadow-1: none;
+  --onboard-shadow-2: none;
+  --onboard-modal-border-radius: 12px;
+  --onboard-modal-box-shadow: none;
+  --onboard-wallet-button-box-shadow: none;
+}

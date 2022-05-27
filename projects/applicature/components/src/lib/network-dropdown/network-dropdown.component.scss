@@ -1,6 +1,4 @@
-@import "../../../../styles/src/lib/scss/variables";
-@import "../../../../styles/src/lib/scss/functions";
-@import "../../../../styles/src/lib/scss/mixins";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 :host {
   display: inline-block;
@@ -10,10 +8,10 @@
   display: flex;
   flex-direction: column;
   margin: 0;
-  font-family: $as-font-family;
+  font-family: c.$as-font-family;
   min-width: 180px;
   padding: 8px 0;
-  background: $white;
+  background: c.$white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(56, 64, 75, 0.1);
   list-style-type: none;
@@ -27,25 +25,20 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: getColor(grey, base);
+  color: c.getColor(grey, base);
 }
 
 .auc-network-options-item {
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 8px 12px;
-  @include transition;
+  padding: 8px 57px 8px 12px;
+  @include c.transition;
+  position: relative;
 
   &:hover {
     cursor: pointer;
-    background: $grey-bg;
-  }
-
-  &.auc-network-options-item-disabled {
-    cursor: default;
-    opacity: .5;
-    pointer-events: none;
+    background: c.$grey-bg;
   }
 }
 
@@ -67,5 +60,12 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: $black;
+  color: c.$black;
+}
+
+.auc-active-network-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
 }

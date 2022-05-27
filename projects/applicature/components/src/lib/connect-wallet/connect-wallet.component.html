@@ -5,7 +5,7 @@
         <ng-container *ngTemplateOutlet="networkOptionsRef"></ng-container>
 
         <div class="auc-connect-wallet-container">
-          <auc-button *ngIf="(hasPendingTx || hasFailedTx) else acBallanceWithAddress"
+          <auc-button *ngIf="(hasPendingTx || hasFailedTx) else btnView"
                       (onClick)="onAccountButtonClick()"
                       [disabled]="disabled"
                       [label]="txCount + (hasPendingTx ? ' pending':  ' failing')"
@@ -14,23 +14,33 @@
                       [color]="hasFailedTx ? COLORS.RED : COLORS.WHITE">
           </auc-button>
 
-          <ng-template #acBallanceWithAddress>
-            <auc-account-balance
-              [appearance]="BALANCE_APPEARANCE.TRANSLUCENT"
-              [showAddress]="true"
-              [addressConfig]="{
+          <ng-template #btnView>
+            <auc-button *ngIf="!showBalance; else acBalance" (onClick)="onAccountButtonClick()"
+                        [disabled]="disabled"
+                        [label]="(accountAddress | aucShortAddress)"
+                        [identicon]="identicon"
+                        [color]="COLORS.WHITE">
+            </auc-button>
+
+            <ng-template #acBalance>
+              <auc-account-balance
+                [appearance]="BALANCE_APPEARANCE.TRANSLUCENT"
+                [showAddress]="true"
+                [addressConfig]="{
                                   showIdenticon: true,
                                   color: COLORS.WHITE
                                 }"
-              (onAddressClick)="onAccountButtonClick()"
-            >
-            </auc-account-balance>
+                (onAddressClick)="onAccountButtonClick()"
+              >
+              </auc-account-balance>
+            </ng-template>
           </ng-template>
         </div>
       </ng-container>
 
       <ng-container *ngSwitchCase="CONNECT_WALLET_APPEARANCE.ICON">
-        <auc-account-balance [appearance]="BALANCE_APPEARANCE.TRANSPARENT"
+        <auc-account-balance *ngIf="showBalance"
+                             [appearance]="BALANCE_APPEARANCE.TRANSPARENT"
                              class="auc-connect-wallet-account-balance">
         </auc-account-balance>
 
@@ -44,6 +54,7 @@
           <auc-account-button [account]="account"
                               [options]="accountOptions"
                               [accountDropdownConfig]="accountDropdownConfig"
+                              (optionClick)="optionAction($event)"
           >
           </auc-account-button>
         </div>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AucSpinnerModule } from '../spinner';
 import {
@@ -9,7 +10,6 @@ import {
 } from './components';
 import { AucIconModule } from '../icon';
 import { AucButtonModule } from '../button';
-import { HttpClientModule } from '@angular/common/http';
 import { AucTransactionService } from './services';
 
 

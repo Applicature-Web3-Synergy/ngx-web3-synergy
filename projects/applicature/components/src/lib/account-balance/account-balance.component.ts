@@ -10,16 +10,17 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 
+import { Balances } from '@web3-onboard/core/dist/types';
+import { Chain } from '@web3-onboard/common/dist/types';
+import BigNumber from 'bignumber.js';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
-import { aucGenerateJazzicon, aucNormalizeBalance } from '../helpers';
-import { AucConnectionState, AucWalletConnectService } from '../services';
+import { aucGenerateJazzicon, aucToBN, BaseSubscriber } from '../helpers';
+import { AucWalletConnectService } from '../services';
 import { AucBalanceAppearance } from './types';
 import { AUC_BALANCE_APPEARANCE } from './enums';
-import { AucNetworkOption } from '../interfaces';
 import { AucSetStyleProp } from '../directives';
 import { AucAccountBalanceAddressConfig } from './interfaces';
 
@@ -30,10 +31,9 @@ import { AucAccountBalanceAddressConfig } from './interfaces';
   styleUrls: [ './account-balance.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucAccountBalanceComponent implements OnInit, OnChanges {
+export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit, OnChanges {
   /**
-   * {@link appearance} - It's an `@Input()` parameter. <br>
-   * Sets style for appearance.<br>
+   * Sets style for appearance. <br>
    * You can use one of the values from enum {@link AUC_BALANCE_APPEARANCE}.<br>
    * It's an optional parameter.
    */
@@ -41,62 +41,75 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
   public appearance?: AucBalanceAppearance;
 
   /**
-   * {@link color} - It's an `@Input()` parameter. <br>
    * Sets theme of the button. <br>
-   * It's an optional parameter. The default value is white. <br>
-   * You can use enum {@link AS_COLOR_GROUP}.
+   * It's an optional parameter. <br>
+   * The default value is white. <br>
+   * You can use enum {@link AS_COLOR_GROUP}. <br>
+   * If selected appearance transparent, color is ignored.
    */
   @Input()
-  public color: AsColorGroup = AS_COLOR_GROUP.WHITE;
+  public color?: AsColorGroup = AS_COLOR_GROUP.WHITE;
 
   /**
-   * {@link isCurrency} - It's an `@Input()` parameter. <br>
    * Shows Currency icon from supported networks list. <br>
-   * You will set supported networks when initialize library, {@link AucNetworkOption.icon}. <br>
-   * It's an optional parameter. The default value is false.
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
   public isCurrency?: boolean = false;
 
   /**
-   * {@link showAddress} - It's an `@Input()` parameter. <br>
    * Show or hide account address. <br>
-   * It's an optional parameter. The default value is false. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
    */
   @Input()
-  public showAddress: boolean = false;
+  public showAddress?: boolean = false;
 
   /**
-   * {@link addressConfig} - It's an `@Input()` parameter. <br>
    * Configuration for account address button <br>
-   * It's an optional parameter.<br>
+   * It's an optional parameter.
    */
   @Input()
   public addressConfig?: AucAccountBalanceAddressConfig;
 
   /**
-   * {@link onAddressClick} - It's an `@Output()` parameter. <br>
+   * Shows identicon if provided. <br>
+   * It's an optional parameter.
+   * */
+  @Input()
+  public identicon?: HTMLDivElement;
+
+  /**
    * Emits an action when account button was clicked. <br>
    * Emitted value is native click value.
    */
   @Output()
   public onAddressClick: EventEmitter<any> = new EventEmitter<any>();
 
-  public address$: Observable<string>;
-  public balance$: Observable<string>;
-  public activeNetwork: AucNetworkOption;
-  public styleProperties: AucSetStyleProp[] = [];
-  public COLOR_GROUP = AS_COLOR_GROUP;
-
-  /**
-   * {@link identicon} - Shows identicon if provided.
-   */
-  @Input()
-  public identicon: HTMLDivElement;
-
+  /** @internal */
   @ViewChild('addressRef', { static: true })
   private _addressRef!: ElementRef<HTMLDivElement>;
 
+  /** Current connected wallet address. */
+  public address: string;
+
+  /** Current connected wallet balance. */
+  public balance: string | null = null;
+
+  /** Current network */
+  public activeNetwork: Chain;
+
+  /** @internal */
+  private chainsList: Chain[] = [];
+
+  /** @internal */
+  public styleProperties: AucSetStyleProp[] = [];
+
+  /** @internal */
+  public COLOR_GROUP = AS_COLOR_GROUP;
+
+  /** @internal */
   public get classNames(): { [el: string]: boolean } {
     return {
       ['auc-balance']: true,
@@ -109,25 +122,59 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: AucWalletConnectService,
   ) {
-    this.balance$ = this._walletConnectService.balanceChanged$
-      .pipe(
-        map((balance: string) => {
-          const connectionState: AucConnectionState = this._walletConnectService.connectionState;
+    super();
 
-          return aucNormalizeBalance(connectionState?.state?.network, balance) ?? '0'
-        })
-      );
+    const connectionState = this._walletConnectService.connectionState;
 
-    this._walletConnectService.selectedNetwork$
-      .subscribe((network: AucNetworkOption) => {
-        this.activeNetwork = network;
+    if (!connectionState.connected) {
+      this.chainsList = [];
 
-        this._cdr.markForCheck();
-      });
+      return;
+    }
+
+    this.chainsList = connectionState.state.chains;
   }
 
+  /** @internal */
   public ngOnInit(): void {
-    this.address$ = this._walletConnectService.accountsChanged$
+    this._walletConnectService.chainChanged$
+      .pipe(takeUntil(this.notifier))
+      .subscribe((chainId: string) => {
+        this.activeNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;
+        this._cdr.markForCheck();
+      });
+
+    this._walletConnectService.balanceChanged$
+      .pipe(
+        map((balance: Balances | null) => {
+          if (!balance) {
+            return null;
+          }
+
+          const balanceSymbol = Object.keys(balance)[0];
+
+          if (!balanceSymbol) {
+            return null;
+          }
+
+          const balanceVal: string = balance[balanceSymbol];
+          const balanceBn: BigNumber = aucToBN(balanceVal);
+
+          const fixedVal = balanceVal.startsWith('0.000')
+            ? 4
+            : balanceVal.startsWith('0.00') ? 3 : 2;
+
+          return `${aucToBN(balanceBn.toFixed(fixedVal, 1)).toFixed()} ${balanceSymbol}`;
+        }),
+        takeUntil(this.notifier)
+      ).subscribe((balance: string | null) => {
+      if (this.balance !== balance) {
+        this.balance = balance;
+        this._cdr.detectChanges();
+      }
+    });
+
+    this._walletConnectService.accountsChanged$
       .pipe(
         map((accounts: string[]) => {
           const account = (accounts ?? [])[0] || null;
@@ -138,14 +185,16 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
 
           return account;
         }),
-      );
+        takeUntil(this.notifier)
+      )
+      .subscribe((address: string) => {
+        this.address = address;
+        this._cdr.markForCheck();
+      });
   }
 
+  /** @internal */
   public ngOnChanges(): void {
-    if (this.appearance === AUC_BALANCE_APPEARANCE.TRANSPARENT) {
-      return;
-    }
-
     const colorProperties: AsColorProperties = AsColors[this.color || AS_COLOR_GROUP.WHITE];
 
     this.styleProperties = Object.keys(colorProperties || {})
@@ -159,6 +208,7 @@ export class AucAccountBalanceComponent implements OnInit, OnChanges {
     this._cdr.markForCheck();
   }
 
+  /** Emit {@link onAddressClick} event. */
   public onAccountButtonClick(evt): void {
     this.onAddressClick.next(evt);
   }

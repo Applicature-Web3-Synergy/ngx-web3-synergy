@@ -1,11 +1,11 @@
-@import "../../../../styles/src/lib/scss/functions";
+@use "../../../../styles/src/lib/scss/as-common" as c;
 
 .auc-progress-bar-container {
   height: 8px;
   width: 100%;
   border-radius: 4px;
   overflow: hidden;
-  background-color: getColor(grey, light);
+  background-color: c.getColor(grey, light);
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -15,5 +15,5 @@
   width: 0;
   height: 100%;
   transition: all 0.25s;
-  background-color: getColor(blue, base);
+  background-color: c.getColor(blue, base);
 }

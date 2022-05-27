@@ -5,19 +5,19 @@ export class AucDialogRef<R = any> {
   private readonly _afterOpened = new Subject<null>();
 
   /**
-   * {@link afterClosed} - emits after dialog was closed.
+   * Emits after dialog was closed. <br>
    * You can add subscription for it if needed. this.dialogRed.afterClosed.subscribe();
    */
   public afterClosed: Observable<any> = this._afterClosed.asObservable();
 
   /**
-   * {@link afterOpened} - emits after dialog was opened.
+   * Emits after dialog was opened. <br>
    * You can add subscription for it if needed. this.dialogRed._afterOpened.subscribe();
    */
   public afterOpened: Observable<null> = this._afterOpened.asObservable();
 
   /**
-   * {@link close} - emits close dialog action the dialog window.
+   * Emits close dialog action the dialog window. <br>
    * @param result - the value which will be emitted for afterClosed action.
    */
   public close(result?: R): void {
@@ -25,7 +25,8 @@ export class AucDialogRef<R = any> {
   }
 
   /**
-   * {@link open} - emits open dialog action the dialog window.
+   * @internal
+   * Emits open dialog action the dialog window. <br>
    * You mustn't use it. It's already used inside injection strategy.
    */
   public open(): void {

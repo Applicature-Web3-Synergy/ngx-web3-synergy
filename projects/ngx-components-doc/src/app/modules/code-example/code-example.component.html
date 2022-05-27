@@ -1,0 +1,8 @@
+<div class="code-example-container" *ngIf="codeConfig">
+  <pre class="prettyprint"
+       [ngClass]="classes"
+       docCodePretty
+  >{{codeConfig.code ?? ''.trim()}}</pre>
+
+  <auc-copy-to-clipboard class="copy-code" [value]="codeConfig.code"></auc-copy-to-clipboard>
+</div>
