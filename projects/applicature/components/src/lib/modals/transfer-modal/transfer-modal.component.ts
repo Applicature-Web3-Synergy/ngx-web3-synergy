@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
 
 import { aucNormalizeBalance, aucToBN, BaseSubscriber } from '../../helpers';
 import { AucWalletConnectService } from '../../services';
@@ -8,7 +9,6 @@ import { AucTransferModalData } from './interfaces';
 import { AucTransactionStep } from './types';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
 import { AucTransactionService } from '../../transactions';
-import { takeUntil } from 'rxjs/operators';
 
 
 @Component({

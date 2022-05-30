@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 import { AucWalletConnectService } from '../../services';
 import { AucWrongNetworkModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
+import { BaseSubscriber } from '../../helpers';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { AucDialogConfig, AucDialogRef } from '../../dialog';
   styleUrls: [ './wrong-network-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucWrongNetworkModalComponent {
+export class AucWrongNetworkModalComponent extends BaseSubscriber {
   public data: AucWrongNetworkModalData;
   public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
@@ -22,6 +24,7 @@ export class AucWrongNetworkModalComponent {
     private _dialogRef: AucDialogRef,
     private _walletConnectService: AucWalletConnectService
   ) {
+    super();
     this.data = this._config.data;
   }
 
@@ -35,6 +38,7 @@ export class AucWrongNetworkModalComponent {
 
   public onDisconnectClick(): void {
     this._walletConnectService.disconnectWallet()
+      .pipe(takeUntil(this.notifier))
       .subscribe();
 
     this.onCloseClick(false);
