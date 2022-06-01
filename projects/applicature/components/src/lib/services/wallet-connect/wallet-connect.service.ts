@@ -194,7 +194,7 @@ export class AucWalletConnectService extends BaseSubscriber {
     const initOptions: InitOptions = {
       wallets: config.wallets,
       chains,
-      accountCenter: config.accountCenter ?? { desktop: { enabled: false } }
+      accountCenter: config.accountCenter ?? { desktop: { enabled: false }, mobile: { enabled: false } }
     }
 
     if (config.appMetadata) {
