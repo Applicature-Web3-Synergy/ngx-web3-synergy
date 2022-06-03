@@ -6,6 +6,7 @@ import { DOCUMENT } from '@angular/common';
  */
 @Injectable()
 export class AucBlockScrollHelperService {
+
   constructor(@Inject(DOCUMENT) private _document: Document) {
   }
 
@@ -23,5 +24,21 @@ export class AucBlockScrollHelperService {
    */
   public unlockScroll(): void {
     this._document.body.classList.remove('block-scroll');
+    this.removeHtmlOverflow();
+  }
+
+  /** Needs because of @web3-onboard added it, and it's affect scroll*/
+  public removeHtmlOverflow(): void {
+    let iteration = 1;
+
+    this._document.querySelector('html').style.removeProperty('overflow');
+
+    while (iteration < 5) {
+      setTimeout(() => {
+        this._document.querySelector('html').style.removeProperty('overflow');
+      }, 1000);
+
+      iteration++
+    }
   }
 }
