@@ -167,6 +167,7 @@ export class AucWalletConnectService extends BaseSubscriber {
                                                           namespace,
                                                           color,
                                                           icon,
+                                                          providerConnectionInfo,
                                                           blockExplorerUrl,
                                                           blockExplorerApiUrl
                                                         }: AucChain) => {
@@ -187,6 +188,10 @@ export class AucWalletConnectService extends BaseSubscriber {
 
       if (icon) {
         chain.icon = icon;
+      }
+
+      if (providerConnectionInfo?.url) {
+        chain.providerConnectionInfo = providerConnectionInfo;
       }
 
       this._blockExplorerUrlByChainId[id] = {
