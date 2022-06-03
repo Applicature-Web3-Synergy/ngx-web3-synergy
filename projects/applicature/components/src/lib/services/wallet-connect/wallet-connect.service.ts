@@ -15,7 +15,7 @@ import {
 } from '@web3-onboard/core/dist/types';
 
 import { AucChain, AucConnectionState, AucInitOptions, BlockExplorerUrlsByChainId } from './interfaces';
-import { BaseSubscriber } from '../../helpers';
+import { AucBlockScrollHelperService, BaseSubscriber } from '../../helpers';
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
@@ -131,7 +131,7 @@ export class AucWalletConnectService extends BaseSubscriber {
   /** @internal */
   private _blockExplorerUrlByChainId: BlockExplorerUrlsByChainId = {};
 
-  constructor() {
+  constructor(private aucBlockScrollHelperService: AucBlockScrollHelperService) {
     super();
   }
 
@@ -258,6 +258,8 @@ export class AucWalletConnectService extends BaseSubscriber {
       connection$ = this.disconnectWallet();
     }
 
+    this.aucBlockScrollHelperService.lockScroll();
+
     return connection$
       .pipe(
         switchMap(() => {
@@ -270,7 +272,8 @@ export class AucWalletConnectService extends BaseSubscriber {
               .catch(error => observer.error(error));
           });
         }),
-        map(() => this.connectionState)
+        map(() => this.connectionState),
+        tap(() => this.aucBlockScrollHelperService.unlockScroll())
       );
   }
 
