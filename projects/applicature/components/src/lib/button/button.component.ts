@@ -158,6 +158,13 @@ export class AucButtonComponent implements OnInit, OnChanges {
       : AsColors[AS_COLOR_GROUP.WHITE].base
   }
 
+  /** @internal */
+  public get spinnerColor(): string {
+    return this.color === AS_COLOR_GROUP.WHITE
+      ? AsColors[AS_COLOR_GROUP.BLUE].base
+      : AsColors[AS_COLOR_GROUP.WHITE].base
+  }
+
   constructor(private _elRef: ElementRef) {}
 
   /** @internal */

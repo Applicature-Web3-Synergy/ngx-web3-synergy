@@ -1,0 +1,23 @@
+@use "../../../../styles/src/lib/scss/as-common" as c;
+
+.auc-faucet {
+  width: 100%;
+  max-width: 564px;
+  padding: 28px 20px;
+  background: c.$white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .auc-faucet-token-info {
+    display: flex;
+    align-items: center;
+
+    .auc-faucet-token-symbol-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div class="auc-faucet">
+  <div class="auc-faucet-token-info">
+    <auc-icon *ngIf="iconToken"
+              [icon]="iconToken"
+              class="auc-faucet-token-symbol-icon"
+    >
+    </auc-icon>
+    <div class="auc-faucet-token-symbol">{{ tokenSymbol }}</div>
+  </div>
+
+  <auc-button [label]="!hasPending ? 'Get token' : 'Pending'"
+              class="auc-button-label"
+              [pending]="hasPending"
+              (click)="mint()">
+  </auc-button>
+</div>

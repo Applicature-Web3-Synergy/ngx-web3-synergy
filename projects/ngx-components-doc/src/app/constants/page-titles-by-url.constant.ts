@@ -19,5 +19,6 @@ export const PageTitlesByUrl = {
   [ROUTER_LINKS.SPINNER]: 'Spinner',
   [ROUTER_LINKS.RIPPLE]: 'Ripple Effect',
   [ROUTER_LINKS.SHORT_ADDRESS]: 'Short address',
-  [ROUTER_LINKS.INPUT]: 'Input'
+  [ROUTER_LINKS.INPUT]: 'Input',
+  [ROUTER_LINKS.FAUCET]: 'Faucet'
 }

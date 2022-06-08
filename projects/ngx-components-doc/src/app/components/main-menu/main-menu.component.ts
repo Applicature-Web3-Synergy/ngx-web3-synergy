@@ -39,6 +39,10 @@ export class MainMenuComponent {
       title: PageTitlesByUrl[ROUTER_LINKS.NETWORK_DROPDOWN]
     },
     {
+      routerLink: ROUTER_LINKS.FAUCET,
+      title: PageTitlesByUrl[ROUTER_LINKS.FAUCET]
+    },
+    {
       routerLink: ROUTER_LINKS.INPUT,
       title: PageTitlesByUrl[ROUTER_LINKS.INPUT]
     },
