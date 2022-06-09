@@ -11,6 +11,7 @@
     "@angular/forms",
     "@applicature/styles",
     "@ethersproject/address",
+    "@cosmjs/stargate",
     "@shapeshiftoss/proto-tx-builder",
     "@metamask/jazzicon",
     "@uiowa/digit-only",
