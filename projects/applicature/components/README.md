@@ -1,9 +1,9 @@
 # Ngx Universal Components
 This library was created and maintained by Applicature to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
-This library supports only Angular 13 version.
+This library supports Angular from version 13 and higher.
 
 ## Documentation
-Coming soon.
+For more information visit the [**documentation**](https://master.d3usbl1jx19gvv.amplifyapp.com).
 
 ## Library installation
     npm i @applicature/styles @applicature/components
@@ -298,5 +298,5 @@ You might need to add `allowedCommonJsDependencies` to `angular.json` file:
 
 ## Contributing
 This project is maintained by a community of developers. Contributions are welcome and appreciated.
-You can find Applicature Universal Component on GitHub; feel free to open an issue or create a pull request:
-The link coming soon.
+You can find Applicature Universal Component on [**GitHub**](https://github.com/Applicature-Web3-Components/ngx-web3-components); feel free to open an issue or create a pull request:
+

@@ -16,6 +16,7 @@
     "@metamask/jazzicon": ">=2.0.0",
     "@uiowa/digit-only": ">=3.2.0",
     "@uniswap/sdk-core": ">=3.0.1",
+    "@cosmjs/stargate": "0.28.4",
     "@shapeshiftoss/proto-tx-builder": ">=0.2.1",
     "bignumber.js": ">=7.0.2",
     "@web3-onboard/core": ">=2.2.9",
