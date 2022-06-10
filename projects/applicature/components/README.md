@@ -3,7 +3,7 @@ This library was created and maintained by Applicature to help create a front-en
 This library supports Angular from version 13 and higher.
 
 ## Documentation
-For more information visit the [**documentation**](https://master.d3usbl1jx19gvv.amplifyapp.com).
+For more information visit the [**documentation**](https://master.d1bdle1xqu39tu.amplifyapp.com).
 
 ## Library installation
     npm i @applicature/styles @applicature/components
