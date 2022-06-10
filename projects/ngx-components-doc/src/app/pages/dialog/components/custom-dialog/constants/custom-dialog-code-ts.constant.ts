@@ -1,5 +1,5 @@
-export const CustomDialogCodeTs =
-  `/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
+export const CustomDialogCodeTs = `
+/** Don't forget import { AucDialogModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
