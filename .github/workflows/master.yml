@@ -41,7 +41,8 @@ jobs:
           path: dist
 
   publish:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
+    continue-on-error: true 
     needs: [build]
     strategy:
       matrix:
@@ -53,26 +54,10 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
       - uses: actions/download-artifact@v3
-        with:
-          name: dist
-          
       - name: Publish project
         run: |
-          cd dist/applicature/{{ matrix.package_name }} &&
-          npm pack . &&
+          cd dist/applicature/${{ matrix.package_name }}
+          npm pack .
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-
-
-#  slackNotification:
-#    name: Slack Notification
-#    runs-on: ubuntu-latest
-#    steps: 
-#      - name: Slack Notification
-#        uses: rtCamp/action-slack-notify@v2
-#        env:
-#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-#          SLACK_MESSAGE: 'Deploy FE to DEV server :rocket:'
-#          SLACK_TITLE: CI/CD
