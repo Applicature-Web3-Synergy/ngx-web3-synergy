@@ -58,8 +58,8 @@ jobs:
           
       - name: Publish project
         run: |
-          cd dist/applicature/{{ matrix.package_name }}
-          npm pack .
+          cd dist/applicature/{{ matrix.package_name }} &&
+          npm pack . &&
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
 #  slackNotification:
 #    name: Slack Notification
 #    runs-on: ubuntu-latest
-#    steps:
+#    steps: 
 #      - name: Slack Notification
 #        uses: rtCamp/action-slack-notify@v2
 #        env:
