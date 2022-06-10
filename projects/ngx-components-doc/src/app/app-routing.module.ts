@@ -87,6 +87,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/short-address/short-address.module').then(m => m.ShortAddressModule)
   },
   {
+    path: ROUTER_LINKS.FAUCET,
+    loadChildren: () => import('./pages/faucet/faucet.module').then(m => m.FaucetModule)
+  },
+  {
     path: '**',
     redirectTo: ROUTER_LINKS.GETTING_STARTED,
   }

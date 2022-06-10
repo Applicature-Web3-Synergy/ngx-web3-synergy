@@ -5,17 +5,16 @@ import {
   ElementRef,
   EventEmitter,
   Input,
-  OnDestroy,
   OnInit,
   Output
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 import { AucAccountData, AucAccountOption } from '../account-button';
 import { AUC_POSITIONS } from '../enums';
-import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon } from '../helpers';
+import { aucGenerateJazzicon, BaseSubscriber } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
 import { AucConnectionState, AucWalletConnectService } from '../services';
 import { AucDialogService } from '../dialog';
@@ -32,7 +31,7 @@ import { AUC_TRANSACTION_STATUS, AucTransactionService } from '../transactions';
   styleUrls: [ './connect-wallet.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucConnectWalletComponent implements OnInit, OnDestroy {
+export class AucConnectWalletComponent extends BaseSubscriber implements OnInit {
   /**
    * Allows to control appearance components. Default is the button. <br>
    * You can use enum {@link AUC_CONNECT_WALLET_APPEARANCE}. <br>
@@ -179,9 +178,6 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
   /** @internal */
   public CONNECT_WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
-  /** @internal */
-  private _sub: Subscription = new Subscription();
-
   constructor(
     private _dialogService: AucDialogService,
     private _cdr: ChangeDetectorRef,
@@ -189,8 +185,10 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     private _transactionService: AucTransactionService,
     private _walletConnectService: AucWalletConnectService,
   ) {
-    this._sub.add(
+    super();
+
       this._walletConnectService.accountsChanged$
+        .pipe(takeUntil(this.notifier))
         .subscribe((accounts) => {
           this.accountAddress = accounts?.length && accounts[0];
           this.isConnected = Boolean(this.accountAddress);
@@ -200,14 +198,13 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
           }
 
           this._cdr.markForCheck();
-        }),
-    );
+        })
   }
 
   /** @internal */
   public ngOnInit(): void {
-    this._sub.add(
       this._transactionService.transactionsChanged$
+        .pipe(takeUntil(this.notifier))
         .subscribe((transactions) => {
           this.txCount = transactions.filter((tx) => {
             return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
@@ -224,15 +221,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
           }
 
           this._cdr.markForCheck();
-        }),
-    );
-  }
-
-  /** @internal */
-  public ngOnDestroy(): void {
-    if (aucCheckValueType(this._sub.unsubscribe, AUC_VALUE_TYPES.FUNCTION)) {
-      this._sub.unsubscribe();
-    }
+        });
   }
 
   /** Shows  account modal. */
@@ -273,6 +262,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     }
 
     this._walletConnectService.connectWallet(isDisconnect)
+      .pipe(takeUntil(this.notifier))
       .subscribe((connectionState: AucConnectionState) => {
         this.onConnect.emit(connectionState);
       })
@@ -285,6 +275,7 @@ export class AucConnectWalletComponent implements OnInit, OnDestroy {
     }
 
     this._walletConnectService.disconnectWallet()
+      .pipe(takeUntil(this.notifier))
       .subscribe(() => {
         this.onDisconnect.emit();
       });

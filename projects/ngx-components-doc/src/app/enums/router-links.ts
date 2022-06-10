@@ -17,5 +17,6 @@ export enum ROUTER_LINKS {
   SPINNER = 'spinner',
   RIPPLE = 'ripple',
   SHORT_ADDRESS = 'short-address',
-  GETTING_STARTED = 'getting-started'
+  GETTING_STARTED = 'getting-started',
+  FAUCET = 'faucet',
 }

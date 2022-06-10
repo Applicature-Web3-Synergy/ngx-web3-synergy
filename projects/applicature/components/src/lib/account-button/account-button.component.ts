@@ -8,7 +8,7 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
@@ -16,15 +16,16 @@ import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { AucWalletConnectService } from '../services';
 import { AucAccountData, AucAccountOption } from './interfaces';
+import { BaseSubscriber } from '../helpers';
 
 
 @Component({
   selector: 'auc-account-button',
   templateUrl: './account-button.component.html',
-  styleUrls: [ './account-button.component.scss' ],
+  styleUrls: ['./account-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucAccountButtonComponent implements OnInit {
+export class AucAccountButtonComponent extends BaseSubscriber implements OnInit {
   /**
    * User account related information. <br>
    * Required parameter.
@@ -85,26 +86,23 @@ export class AucAccountButtonComponent implements OnInit {
   /** @internal */
   public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
-  /** @internal */
-  private _sub: Subscription = new Subscription();
-
   constructor(
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: AucWalletConnectService,
     private _elementRef: ElementRef<HTMLElement>,
   ) {
+    super();
   }
 
   /** @internal */
   public ngOnInit(): void {
-    this._sub.add(
-      this._walletConnectService.accountsChanged$
-        .subscribe((accounts) => {
-          this.accountAddress = accounts?.length && accounts[0];
+    this._walletConnectService.accountsChanged$
+      .pipe(takeUntil(this.notifier))
+      .subscribe((accounts) => {
+        this.accountAddress = accounts?.length && accounts[0];
 
-          this._closeOptions();
-        }),
-    );
+        this._closeOptions();
+      });
   }
 
   /** Open account dropdown menu. */
@@ -124,6 +122,7 @@ export class AucAccountButtonComponent implements OnInit {
     this._closeOptions();
 
     this._walletConnectService.connectWallet(true)
+      .pipe(takeUntil(this.notifier))
       .subscribe();
   }
 
@@ -132,6 +131,7 @@ export class AucAccountButtonComponent implements OnInit {
     this._closeOptions();
 
     this._walletConnectService.disconnectWallet()
+      .pipe(takeUntil(this.notifier))
       .subscribe();
   }
 

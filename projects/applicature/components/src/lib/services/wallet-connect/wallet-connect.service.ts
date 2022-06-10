@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject, Subscriber, take } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
-import Onboard from '@web3-onboard/core'
+import Onboard from '@web3-onboard/core';
 import { Chain } from '@web3-onboard/common/dist/types';
 import {
   Account,
@@ -15,13 +15,19 @@ import {
 } from '@web3-onboard/core/dist/types';
 
 import { AucChain, AucConnectionState, AucInitOptions, BlockExplorerUrlsByChainId } from './interfaces';
-import { BaseSubscriber } from '../../helpers';
+import { AucBlockScrollHelperService, BaseSubscriber } from '../../helpers';
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
 
 @Injectable()
 export class AucWalletConnectService extends BaseSubscriber {
+  /**
+   * @internal
+   * Emits when Onboard was successfully initialized.
+   * */
+  private _onboardInitialized$: Subject<void> = new Subject<void>();
+
   /** @returns current {@link Web3} instance. */
   public get web3(): Web3 {
     return this._web3;
@@ -51,7 +57,7 @@ export class AucWalletConnectService extends BaseSubscriber {
     return {
       connected: !!state.wallets?.length,
       state
-    }
+    };
   }
 
   /** @returns current connection state as Observable */
@@ -69,7 +75,7 @@ export class AucWalletConnectService extends BaseSubscriber {
           return {
             connected: !!state?.wallets?.length,
             state
-          }
+          };
         })
       );
   }
@@ -113,7 +119,7 @@ export class AucWalletConnectService extends BaseSubscriber {
 
   /** @internal */
   private get _shadowRoot(): ShadowRoot | null {
-    return document.querySelector('onboard-v2')?.shadowRoot
+    return document.querySelector('onboard-v2')?.shadowRoot;
   }
 
   /** @internal */
@@ -131,7 +137,7 @@ export class AucWalletConnectService extends BaseSubscriber {
   /** @internal */
   private _blockExplorerUrlByChainId: BlockExplorerUrlsByChainId = {};
 
-  constructor() {
+  constructor(private aucBlockScrollHelperService: AucBlockScrollHelperService) {
     super();
   }
 
@@ -186,7 +192,7 @@ export class AucWalletConnectService extends BaseSubscriber {
       this._blockExplorerUrlByChainId[id] = {
         blockExplorerUrl,
         blockExplorerApiUrl
-      }
+      };
 
       return chain;
     });
@@ -194,8 +200,8 @@ export class AucWalletConnectService extends BaseSubscriber {
     const initOptions: InitOptions = {
       wallets: config.wallets,
       chains,
-      accountCenter: config.accountCenter ?? { desktop: { enabled: false } }
-    }
+      accountCenter: config.accountCenter ?? { desktop: { enabled: false }, mobile: { enabled: false } }
+    };
 
     if (config.appMetadata) {
       initOptions.appMetadata = config.appMetadata;
@@ -209,23 +215,9 @@ export class AucWalletConnectService extends BaseSubscriber {
       try {
         this._onboard = Onboard(initOptions);
 
-        // this._setStyles();
         this._subscriptions();
-
-        const previouslyConnectedWallet = localStorage.getItem(AUC_CONNECTED_WALLET_NAME);
-
-        if (previouslyConnectedWallet !== null) {
-          this._onboard.connectWallet({ autoSelect: { label: previouslyConnectedWallet, disableModals: true } })
-            .then(() => {
-              observer.next();
-              observer.complete();
-            })
-            .catch(error => observer.error(error));
-
-          return;
-        }
-
         this.initWeb3();
+        this._onboardInitialized$.next();
 
         observer.next();
         observer.complete();
@@ -258,6 +250,8 @@ export class AucWalletConnectService extends BaseSubscriber {
       connection$ = this.disconnectWallet();
     }
 
+    this.aucBlockScrollHelperService.lockScroll();
+
     return connection$
       .pipe(
         switchMap(() => {
@@ -270,7 +264,8 @@ export class AucWalletConnectService extends BaseSubscriber {
               .catch(error => observer.error(error));
           });
         }),
-        map(() => this.connectionState)
+        map(() => this.connectionState),
+        tap(() => this.aucBlockScrollHelperService.unlockScroll())
       );
   }
 
@@ -289,6 +284,20 @@ export class AucWalletConnectService extends BaseSubscriber {
 
   /** @internal */
   private _subscriptions(): void {
+    this._onboardInitialized$
+      .pipe(take(1))
+      .subscribe(() => {
+        const previouslyConnectedWallet = localStorage.getItem(AUC_CONNECTED_WALLET_NAME);
+
+        if (previouslyConnectedWallet !== null) {
+          this._onboard.connectWallet({
+            autoSelect: {
+              label: previouslyConnectedWallet, disableModals: true
+            }
+          }).then();
+        }
+      });
+
     this.onboard.state.select('wallets')
       .pipe(
         map((wallets: WalletState[]) => (wallets || [])[0]),

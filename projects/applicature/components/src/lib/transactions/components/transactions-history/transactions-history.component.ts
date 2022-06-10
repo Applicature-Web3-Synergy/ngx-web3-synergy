@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
-import { takeUntil } from 'rxjs/operators';
 
 import { AucDialogService } from '../../../dialog';
 import { AUC_BUTTON_APPEARANCE } from '../../../button';
@@ -42,9 +41,6 @@ export class AucTransactionsHistoryComponent extends BaseSubscriber implements O
 
   /** @internal */
   public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
-
-  /** @internal */
-  private _sub: Subscription = new Subscription();
 
   constructor(
     private _dialogService: AucDialogService,

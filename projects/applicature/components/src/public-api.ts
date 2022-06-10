@@ -10,6 +10,7 @@ export * from './lib/directives';
 export * from './lib/dialog';
 export * from './lib/dropdown-menu';
 export * from './lib/enums';
+export * from './lib/faucet';
 export * from './lib/helpers';
 export * from './lib/icon';
 export * from './lib/input';
