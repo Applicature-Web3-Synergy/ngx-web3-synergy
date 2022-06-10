@@ -58,9 +58,9 @@ jobs:
           
       - name: Publish project
         run: |
-          echo {{ matrix.package_name }}
-          echo "{{ matrix.package_name }}"
-          cd dist/applicature/{{ matrix.package_name }}
+          echo ${{ matrix.package_name }}
+          echo "${{ matrix.package_name }}"
+          cd dist/applicature/${{ matrix.package_name }}
           npm pack .
           npm publish --access public
         env:
