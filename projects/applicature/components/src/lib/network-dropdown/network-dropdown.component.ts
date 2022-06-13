@@ -3,14 +3,17 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   HostBinding,
   Input,
   OnChanges,
-  OnInit, SimpleChanges
+  OnInit,
+  Output,
+  SimpleChanges
 } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 
-import { Chain } from '@web3-onboard/common/dist/types'
+import { Chain } from '@web3-onboard/common/dist/types';
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 import { AUC_POSITIONS } from '../enums';
@@ -18,6 +21,7 @@ import { AucDropdownConfig } from '../dropdown-menu';
 import { AucWalletConnectService } from '../services';
 import { AucDialogService } from '../dialog';
 import { BaseSubscriber } from '../helpers';
+import { AucSelectedNetwork } from './interfaces';
 
 
 @Component({
@@ -50,7 +54,7 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
       vertical: AUC_POSITIONS.BELOW,
       horizontal: AUC_POSITIONS.AFTER
     }
-  }
+  };
 
   /** Customize button color schema.</br>
    * I's an optional parameter.
@@ -64,6 +68,10 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
    */
   @Input()
   public bordered: boolean = false;
+
+  /** Emits when chainChanged. */
+  @Output()
+  public networkSelected: EventEmitter<AucSelectedNetwork> = new EventEmitter<AucSelectedNetwork>();
 
   @HostBinding('class.auc-full-width') private _fullWidth: boolean = true;
 
@@ -108,6 +116,10 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
       .subscribe((chainId: string) => {
         this.currentNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;
         this.isWrongNetwork = !this.currentNetwork;
+        this.networkSelected.emit({
+          chainId,
+          valid: !this.isWrongNetwork
+        });
         this.isOptionsOpen = false;
         this._cdr.detectChanges();
       });
@@ -116,7 +128,7 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
   /** @internal */
   ngOnChanges(changes: SimpleChanges) {
     if (changes.networkDropdownConfig.firstChange) {
-      this._fullWidth = !!this.networkDropdownConfig?.fullwidth
+      this._fullWidth = !!this.networkDropdownConfig?.fullwidth;
     }
   }
 
