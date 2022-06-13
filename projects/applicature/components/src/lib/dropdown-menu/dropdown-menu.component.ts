@@ -59,7 +59,7 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
   /** @internal */
   private resize$: Subject<void> = new Subject();
 
-  constructor(private _cdr: ChangeDetectorRef) {
+  constructor(private _cdr: ChangeDetectorRef, private _elRef: ElementRef) {
     super();
 
     this.resize$
@@ -79,7 +79,8 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
 
   /** @internal */
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.config?.currentValue && !this.positionStyles && (this.config?.minWidth || this.config?.minHeight)) {
+    if (changes.config?.currentValue && !this.positionStyles
+      && (this.config?.minWidth || this.config?.minHeight || this.config?.fullwidth)) {
       this.positionStyles = {
         top: '0',
         left: '0'
@@ -91,6 +92,10 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
 
       if (this.config?.minWidth) {
         this.positionStyles.minWidth = `${this.config.minWidth}px`;
+      }
+
+      if (this.config?.fullwidth) {
+        this.positionStyles.width = '100%';
       }
     }
   }
@@ -165,7 +170,7 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
     let topPosition = isBelow
       ? bottom
       : top - (!maxHeight || dropdownHeight > maxHeight ? dropdownHeight : maxHeight);
-    let leftPosition = isAfter
+    let leftPosition = isAfter || this.config?.fullwidth
       ? left
       : right - (!maxWidth || dropdownWidth > maxWidth ? dropdownWidth : maxWidth);
 
@@ -188,6 +193,15 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
 
     if (this.config?.minWidth) {
       styles.minWidth = !maxWidth ? `${this.config.minWidth}px` : `${maxWidth}px`;
+    }
+
+    if (this.config?.fullwidth) {
+      styles.width = '100%';
+      const parentWidth = this._elRef?.nativeElement?.parentNode?.clientWidth;
+
+      if (parentWidth) {
+        styles.maxWidth = `${parentWidth}px`;
+      }
     }
 
     this.positionStyles = styles;

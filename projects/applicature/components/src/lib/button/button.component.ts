@@ -123,6 +123,14 @@ export class AucButtonComponent implements OnInit, OnChanges {
   public transparent?: boolean = false;
 
   /**
+   * Whether the button is bordered. <br>
+   * It's an optional parameter. <br>
+   * The default value is false.
+   */
+  @Input()
+  public bordered?: boolean = false;
+
+  /**
    * Whether the button shows spinner. <br>
    * It's an optional parameter. <br>
    * The default value is false.
@@ -171,10 +179,11 @@ export class AucButtonComponent implements OnInit, OnChanges {
   public get classNames(): { [el: string]: boolean } {
     return {
       ['auc-button']: true,
-      [`auc-button-white`]: !this.transparent && this.color === AS_COLOR_GROUP.WHITE,
+      [`auc-button-white`]: !this.transparent && !this.bordered && this.color === AS_COLOR_GROUP.WHITE,
       ['auc-button-disabled']: this.disabled,
       ['auc-button-adaptive']: this.adaptive,
-      ['auc-button-transparent']: this.transparent,
+      ['auc-button-transparent']: this.transparent && !this.bordered,
+      ['auc-button-bordered']: this.bordered,
       [`auc-button-${this.appearance}`]: true,
     };
   }
