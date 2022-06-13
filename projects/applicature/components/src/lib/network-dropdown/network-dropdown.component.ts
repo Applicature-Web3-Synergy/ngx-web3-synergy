@@ -1,8 +1,17 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnInit, SimpleChanges
+} from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 
 import { Chain } from '@web3-onboard/common/dist/types'
-import { AS_COLOR_GROUP } from '@applicature/styles';
+import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
@@ -17,7 +26,7 @@ import { BaseSubscriber } from '../helpers';
   styleUrls: [ './network-dropdown.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucNetworkDropdownComponent extends BaseSubscriber implements OnInit {
+export class AucNetworkDropdownComponent extends BaseSubscriber implements OnInit, OnChanges {
   /**
    * Customize dropdown <br>
    * It's an optional parameter. <br>
@@ -43,6 +52,22 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
     }
   }
 
+  /** Customize button color schema.</br>
+   * I's an optional parameter.
+   */
+  @Input()
+  public btnStyle?: AsColorGroup = AS_COLOR_GROUP.WHITE;
+
+  /** Sets bordered style to Dropdown button.</br>
+   * I's an optional parameter.</br>
+   * The default value is false.
+   */
+  @Input()
+  public bordered: boolean = false;
+
+  @HostBinding('class.auc-full-width') private _fullWidth: boolean = true;
+
+  /** @internal */
   public isWrongNetwork: boolean = false;
 
   /** Current active network */
@@ -86,6 +111,13 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
         this.isOptionsOpen = false;
         this._cdr.detectChanges();
       });
+  }
+
+  /** @internal */
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.networkDropdownConfig.firstChange) {
+      this._fullWidth = !!this.networkDropdownConfig?.fullwidth
+    }
   }
 
   /** Open networks dropdown menu. */

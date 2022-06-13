@@ -5,4 +5,5 @@ export interface AucDropdownPositionStyles {
   maxHeight?: string;
   minWidth?: string;
   minHeight?: string;
+  width?: string;
 }

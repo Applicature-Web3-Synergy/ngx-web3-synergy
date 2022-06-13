@@ -25,11 +25,19 @@ auc-overlay,
   &.below-after,
   &.above-after {
     padding: 12px 12px 12px 0;
+
+    &.auc-dropdown-menu-full-width {
+      padding-right: 0;
+    }
   }
 
   &.below-before,
   &.above-before {
     padding: 12px 0 12px 12px;
+
+    &.auc-dropdown-menu-full-width {
+      padding-left: 0;
+    }
   }
 }
 

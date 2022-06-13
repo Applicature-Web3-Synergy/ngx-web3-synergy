@@ -61,6 +61,22 @@
     }
   }
 
+  &.auc-button-bordered {
+    border: 2px solid var(--auc-button-borderHover);
+    background: transparent;
+    transition: none;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid var(--auc-button-borderHover);
+    }
+
+    &:active:focus {
+      background: transparent;
+      border: 2px solid var(--auc-button-borderFocus);
+    }
+  }
+
   auc-icon {
     &:not(.auc-button-icon) {
       &.auc-button-left-icon {

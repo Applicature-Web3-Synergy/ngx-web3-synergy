@@ -9,9 +9,9 @@ const targetPath = path.resolve(__dirname, 'projects/ngx-components-doc/src/asse
 
 console.log('--------------- copy docJson file -----------------------');
 fs.copySync(path.resolve(docJson), path.resolve(targetPath, 'jsons/doc.json'));
-console.log('---------------done-----------------------');
+console.log('--------------- done -----------------------');
 
 
 console.log('--------------- copy component readme file -----------------------');
 fs.copySync(path.resolve(componentsReadme), path.resolve(targetPath, 'md/component.md'));
-console.log('---------------done-----------------------');
+console.log('--------------- done -----------------------');
