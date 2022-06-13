@@ -2,9 +2,11 @@
             aucTrigger
             #networkOptionsTrigger="aucTrigger"
             [label]="isWrongNetwork ? 'Wrong Network' : currentNetwork?.label"
-            [color]="isWrongNetwork ? COLORS.RED : COLORS.WHITE"
+            [color]="isWrongNetwork ? COLORS.RED : btnStyle"
+            [bordered]="isWrongNetwork ? false : bordered"
             [leftIcon]="isWrongNetwork ? 'wcl-icon-wrong' : currentNetwork?.icon"
             [rightIcon]="isOptionsOpen ? 'wcl-icon-chevron-up' : 'wcl-icon-chevron-down'"
+            [adaptive]="networkDropdownConfig?.fullwidth"
             (onShowHide)="setOpened($event)">
 </auc-button>
 
