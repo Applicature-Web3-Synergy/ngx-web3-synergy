@@ -21,6 +21,8 @@ export class AucTransferModalComponent extends BaseSubscriber implements OnInit 
   public amountControl: FormControl = new FormControl();
   public currentAllowance: string = '0';
   public data: AucTransferModalData;
+  /** @internal */
+  public STEPS = AUC_TRANSFER_STEPS;
 
   public get currentStep(): AucTransactionStep {
     return this._currentStep;
