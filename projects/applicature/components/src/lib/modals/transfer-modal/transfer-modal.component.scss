@@ -16,30 +16,6 @@
   margin-bottom: 16px;
 }
 
-.auc-transfer-progress {
-  background: c.getColor(grey, background);
-  border-radius: 8px;
-  padding: 16px;
+.auc-progress-steps-container {
   margin-bottom: 24px;
-  color: c.$black;
 }
-
-.auc-transfer-steps {
-  margin: 0 0 4px;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.auc-transfer-info {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: c.$black;
-  margin: 0;
-
-  &:last-of-type {
-    margin-bottom: 16px;
-  }
-}
-
