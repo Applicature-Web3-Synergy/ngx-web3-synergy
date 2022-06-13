@@ -22,23 +22,25 @@
              class="auc-transfer-input">
   </auc-input>
 
-  <div class="auc-transfer-progress">
-    <h3 class="auc-transfer-steps">Step {{ currentStep }} of 2</h3>
+  <div class="auc-progress-steps-container">
+    <h3 class="auc-progress-step">Step {{ currentStep }} of 2</h3>
 
-    <ng-container *ngIf="currentStep === 1 else secondView">
-      <p class="auc-transfer-info">Your allowance must be first increased.</p>
-      <p class="auc-transfer-info">Please click Approve to increase your allowance.</p>
+    <ng-container [ngSwitch]="currentStep">
+      <div *ngSwitchCase="STEPS.APPROVE">
+        <p class="auc-progress-step-text">Your allowance must be first increased.</p>
+        <p class="auc-progress-step-text">Please click {{data.approveButton}} to increase your allowance.</p>
+      </div>
+
+      <div *ngSwitchCase="STEPS.CONFIRM">
+        <p class="auc-progress-step-text">Now you can purchase subscription.</p>
+        <p class="auc-progress-step-text">Please click {{data.confirmButton}}.</p>
+      </div>
     </ng-container>
-
-    <ng-template #secondView>
-      <p class="auc-transfer-info">Now you can transfer funds.</p>
-      <p class="auc-transfer-info">Please click Transfer.</p>
-    </ng-template>
 
     <auc-progress-bar [progress]="50 * currentStep"></auc-progress-bar>
   </div>
 
-  <ng-container *ngIf="currentStep === 1 else transferButton">
+  <ng-container *ngIf="currentStep === STEPS.APPROVE else transferButton">
     <auc-button [label]="data.approveButton"
                 [adaptive]="true"
                 [height]="48"
