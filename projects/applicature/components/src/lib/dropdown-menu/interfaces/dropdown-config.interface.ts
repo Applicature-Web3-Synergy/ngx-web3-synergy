@@ -7,4 +7,5 @@ export interface AucDropdownConfig {
   class?: string | string[];
   minWidth?: number;
   minHeight?: number;
+  fullwidth?: boolean;
 }

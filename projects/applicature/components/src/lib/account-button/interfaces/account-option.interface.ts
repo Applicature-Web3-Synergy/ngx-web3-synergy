@@ -1,5 +1,5 @@
 export interface AucAccountOption {
   name: string;
-  id: number;
+  id: string;
   disabled?: boolean;
 }

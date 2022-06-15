@@ -1,14 +1,27 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 
-import { Chain } from '@web3-onboard/common/dist/types'
-import { AS_COLOR_GROUP } from '@applicature/styles';
+import { Chain } from '@web3-onboard/common/dist/types';
+import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { AucWalletConnectService } from '../services';
 import { AucDialogService } from '../dialog';
 import { BaseSubscriber } from '../helpers';
+import { AucSelectedNetwork } from './interfaces';
 
 
 @Component({
@@ -17,7 +30,7 @@ import { BaseSubscriber } from '../helpers';
   styleUrls: [ './network-dropdown.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucNetworkDropdownComponent extends BaseSubscriber implements OnInit {
+export class AucNetworkDropdownComponent extends BaseSubscriber implements OnInit, OnChanges {
   /**
    * Customize dropdown <br>
    * It's an optional parameter. <br>
@@ -41,8 +54,28 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
       vertical: AUC_POSITIONS.BELOW,
       horizontal: AUC_POSITIONS.AFTER
     }
-  }
+  };
 
+  /** Customize button color schema.</br>
+   * I's an optional parameter.
+   */
+  @Input()
+  public btnStyle?: AsColorGroup = AS_COLOR_GROUP.WHITE;
+
+  /** Sets bordered style to Dropdown button.</br>
+   * I's an optional parameter.</br>
+   * The default value is false.
+   */
+  @Input()
+  public bordered: boolean = false;
+
+  /** Emits when chainChanged. */
+  @Output()
+  public networkSelected: EventEmitter<AucSelectedNetwork> = new EventEmitter<AucSelectedNetwork>();
+
+  @HostBinding('class.auc-full-width') private _fullWidth: boolean = true;
+
+  /** @internal */
   public isWrongNetwork: boolean = false;
 
   /** Current active network */
@@ -83,9 +116,20 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
       .subscribe((chainId: string) => {
         this.currentNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;
         this.isWrongNetwork = !this.currentNetwork;
+        this.networkSelected.emit({
+          chainId,
+          valid: !this.isWrongNetwork
+        });
         this.isOptionsOpen = false;
         this._cdr.detectChanges();
       });
+  }
+
+  /** @internal */
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.networkDropdownConfig.firstChange) {
+      this._fullWidth = !!this.networkDropdownConfig?.fullwidth;
+    }
   }
 
   /** Open networks dropdown menu. */

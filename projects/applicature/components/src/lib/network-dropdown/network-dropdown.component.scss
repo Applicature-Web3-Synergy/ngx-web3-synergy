@@ -4,6 +4,11 @@
   display: inline-block;
 }
 
+:host(.auc-full-width) {
+  display: block;
+  width: 100%;
+}
+
 .auc-network-options {
   display: flex;
   flex-direction: column;
