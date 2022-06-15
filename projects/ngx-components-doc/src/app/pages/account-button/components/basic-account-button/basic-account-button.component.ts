@@ -13,9 +13,9 @@ import { AUC_POSITIONS, AucAccountOption, AucDropdownConfig } from '@applicature
 })
 export class BasicAccountButtonComponent {
   public accountOptions: AucAccountOption[] = [
-    { name: 'My Account', id: 1 },
-    { name: 'Some menu Item', id: 2 },
-    { name: 'Some other menu Item', id: 3 }
+    { name: 'My Account', id: '1' },
+    { name: 'Some menu Item', id: '2' },
+    { name: 'Some other menu Item', id: '3' }
   ];
 
   public accountDropdownConfig: AucDropdownConfig = {
