@@ -14,6 +14,8 @@ import {
   AucWalletConnectService
 } from '@applicature/components';
 import { AS_COLOR_GROUP } from '@applicature/styles';
+import { Observable } from 'rxjs';
+import { WalletState } from '@web3-onboard/core';
 
 
 @Component({
@@ -89,6 +91,20 @@ export class AppComponent implements OnInit {
     this._walletConnectService.connectWallet()
       .subscribe((connectionstate: AucConnectionState) => {
         console.log('Custom connect connectionState: ', connectionstate);
+      })
+  }
+
+  public customConnect(): void {
+    new Observable<WalletState[]>(observer => {
+      this._walletConnectService.onboard.connectWallet({ autoSelect: { label: 'WalletConnect', disableModals: true } })
+        .then((connection: WalletState[]) => {
+          observer.next(connection);
+          observer.complete();
+        })
+        .catch(error => observer.error(error));
+    })
+      .subscribe((connectionstate) => {
+        console.log('Custom connect connectionState 999: ', connectionstate);
       })
   }
 }
