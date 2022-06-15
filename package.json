@@ -30,6 +30,7 @@
     "@angular/platform-browser": "~13.3.1",
     "@angular/platform-browser-dynamic": "~13.3.1",
     "@angular/router": "~13.3.1",
+    "@cosmjs/stargate": "0.28.4",
     "@ethersproject/address": "^5.5.0",
     "@metamask/jazzicon": "^2.0.0",
     "@shapeshiftoss/proto-tx-builder": "^0.2.1",
