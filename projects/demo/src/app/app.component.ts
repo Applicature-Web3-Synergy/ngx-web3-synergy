@@ -51,9 +51,9 @@ export class AppComponent implements OnInit {
   }
 
   public accountOptions: AucAccountOption[] = [
-    { name: 'My Account', id: 1 },
-    { name: 'Some menu Item', id: 2 },
-    { name: 'Some menu Item', id: 3 }
+    { name: 'My Account', id: '1' },
+    { name: 'Some menu Item', id: '2' },
+    { name: 'Some menu Item', id: '3' }
   ];
 
   constructor(
