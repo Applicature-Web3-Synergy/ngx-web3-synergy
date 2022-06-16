@@ -18,7 +18,7 @@ import BigNumber from 'bignumber.js';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
 import { aucGenerateJazzicon, aucToBN, BaseSubscriber } from '../helpers';
-import { AucWalletConnectService } from '../services';
+import { AucWalletConnectService } from '../connect/services';
 import { AucBalanceAppearance } from './types';
 import { AUC_BALANCE_APPEARANCE } from './enums';
 import { AucSetStyleProp } from '../directives';

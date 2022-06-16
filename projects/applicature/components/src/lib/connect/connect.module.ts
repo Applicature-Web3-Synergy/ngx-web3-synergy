@@ -1,10 +1,21 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
 import { AucWalletConnectService } from './services';
+import { AucConnectModalComponent } from './components/';
+import { AucDialogModule } from '../dialog';
+import { AucBlockScrollHelperService } from '../helpers';
 
 
 @NgModule({
-  imports: []
+  imports: [
+    AucDialogModule
+  ],
+  declarations: [
+    AucConnectModalComponent
+  ],
+  providers: [
+    AucBlockScrollHelperService
+  ]
 })
 export class AucConnectModule {
   constructor(@Optional() @SkipSelf() parentModule: AucConnectModule) {

@@ -8,7 +8,7 @@ import { ContractOptions, Contract } from 'web3-eth-contract';
 
 import { AUC_BUTTON_APPEARANCE } from '../button';
 import { BaseSubscriber } from '../helpers';
-import { AucWalletConnectService } from '../services';
+import { AucWalletConnectService } from '../connect/services';
 import ERC20 from '../smart-contracts/ERC20.json'
 
 

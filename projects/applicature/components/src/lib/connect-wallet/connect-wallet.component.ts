@@ -16,7 +16,7 @@ import { AucAccountData, AucAccountOption } from '../account-button';
 import { AUC_POSITIONS } from '../enums';
 import { aucGenerateJazzicon, BaseSubscriber } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
-import { AucConnectionState, AucWalletConnectService } from '../services';
+import { AucConnectionState, AucWalletConnectService } from '../connect/services';
 import { AucDialogService } from '../dialog';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { AUC_BALANCE_APPEARANCE } from '../account-balance';

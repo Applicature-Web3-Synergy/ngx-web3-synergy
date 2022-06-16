@@ -19,7 +19,7 @@ import { Transaction, TransactionReceipt } from 'web3-core';
 import { AUC_SORT_DIRECTION } from '../../../enums';
 import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../../constants';
 import { AucSortDirection } from '../../../types';
-import { AucWalletConnectService } from '../../../services';
+import { AucWalletConnectService } from '../../../connect/services';
 import {
   AucAddTransaction,
   AucEtherscanTransaction,
