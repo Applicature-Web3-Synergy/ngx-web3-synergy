@@ -16,7 +16,7 @@ import { AucAccountData, AucAccountOption } from '../account-button';
 import { AUC_POSITIONS } from '../enums';
 import { aucGenerateJazzicon, BaseSubscriber } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
-import { AucConnectionState, AucWalletConnectService } from '../services';
+import { AucConnectionState, AucWalletConnectService } from '../connect/services';
 import { AucDialogService } from '../dialog';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { AUC_BALANCE_APPEARANCE } from '../account-balance';
@@ -235,7 +235,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
       change: () => {
         modal.close();
 
-        this.onConnectWalletClick(true);
+        this.connect();
       },
       disconnect: () => {
         this.onDisconnectWalletClick();
@@ -256,12 +256,12 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
   }
 
   /** Connect wallet and emit {@link onConnect} event. */
-  public onConnectWalletClick(isDisconnect: boolean = false): void {
+  public connect(): void {
     if (this.disabled) {
       return;
     }
 
-    this._walletConnectService.connectWallet(isDisconnect)
+    this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
       .subscribe((connectionState: AucConnectionState) => {
         this.onConnect.emit(connectionState);

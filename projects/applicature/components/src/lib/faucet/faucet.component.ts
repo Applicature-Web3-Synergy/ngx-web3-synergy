@@ -8,7 +8,7 @@ import { ContractOptions, Contract } from 'web3-eth-contract';
 
 import { AUC_BUTTON_APPEARANCE } from '../button';
 import { BaseSubscriber } from '../helpers';
-import { AucWalletConnectService } from '../services';
+import { AucWalletConnectService } from '../connect/services';
 import ERC20 from '../smart-contracts/ERC20.json'
 
 
@@ -127,7 +127,7 @@ export class AucFaucetComponent extends BaseSubscriber implements OnInit {
 
   /** Show modal for connecting to wallets */
   public connectWallet(): void {
-    this._walletConnectService.connectWallet(false)
+    this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
       .subscribe();
   }

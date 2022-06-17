@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 
 import { aucNormalizeBalance, aucToBN, BaseSubscriber } from '../../helpers';
-import { AucWalletConnectService } from '../../services';
+import { AucWalletConnectService } from '../../connect';
 import { AUC_TRANSFER_STEPS } from './enums';
 import { AucTransferModalData } from './interfaces';
 import { AucTransactionStep } from './types';

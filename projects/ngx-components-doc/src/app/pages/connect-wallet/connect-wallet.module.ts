@@ -11,6 +11,7 @@ import {
   BasicConnectWalletComponent,
   ConnectWalletAsIconComponent,
   ConnectWalletWithNetworkComponent,
+  CustomConnectButtonComponent,
   CustomConnectWalletComponent
 } from './components';
 
@@ -21,7 +22,8 @@ import {
     BasicConnectWalletComponent,
     ConnectWalletAsIconComponent,
     ConnectWalletWithNetworkComponent,
-    CustomConnectWalletComponent
+    CustomConnectWalletComponent,
+    CustomConnectButtonComponent
   ],
   imports: [
     CommonModule,

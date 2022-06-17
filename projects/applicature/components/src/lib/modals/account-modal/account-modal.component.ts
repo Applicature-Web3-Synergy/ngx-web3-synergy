@@ -5,7 +5,7 @@ import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon, BaseSubscriber } from '../../helpers';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { AucWalletConnectService, BlockExplorerUrlsByChainId } from '../../services';
+import { AucWalletConnectService, BlockExplorerUrlsByChainId } from '../../connect/services';
 import { AucTransactionItem, AucTransactionService } from '../../transactions';
 
 

@@ -14,7 +14,7 @@ import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
-import { AucWalletConnectService } from '../services';
+import { AucWalletConnectService } from '../connect/services';
 import { AucAccountData, AucAccountOption } from './interfaces';
 import { BaseSubscriber } from '../helpers';
 
@@ -121,7 +121,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
   public onChangeWalletProviderClick(): void {
     this._closeOptions();
 
-    this._walletConnectService.connectWallet(true)
+    this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
       .subscribe();
   }
