@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject, Subscriber, take } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of, Subject, Subscriber, take } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
 import Onboard from '@web3-onboard/core';
 import { Chain } from '@web3-onboard/common/dist/types';
-import {
-  Account,
-  AppState,
-  Balances,
-  InitOptions,
-  OnboardAPI,
-  WalletState
-} from '@web3-onboard/core/dist/types';
+import { Account, AppState, Balances, InitOptions, OnboardAPI, WalletState } from '@web3-onboard/core/dist/types';
 
 import { AucChain, AucConnectionState, AucInitOptions, BlockExplorerUrlsByChainId } from './interfaces';
 import { AucBlockScrollHelperService, BaseSubscriber } from '../../../helpers';
-import { AucDialogService } from '../../../dialog';
+import { AucDialogConfig, AucDialogService } from '../../../dialog';
+import { AucWalletLabel } from './types';
+import { AucConnectDialogData, AucConnectModalComponent } from '../../components';
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
@@ -73,8 +68,14 @@ export class AucWalletConnectService extends BaseSubscriber {
             return { connected: false };
           }
 
+          const connected: boolean = !!state?.wallets?.length;
+
+          if (!connected) {
+            localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
+          }
+
           return {
-            connected: !!state?.wallets?.length,
+            connected,
             state
           };
         })
@@ -119,11 +120,6 @@ export class AucWalletConnectService extends BaseSubscriber {
   private _onboard: OnboardAPI;
 
   /** @internal */
-  private get _shadowRoot(): ShadowRoot | null {
-    return document.querySelector('onboard-v2')?.shadowRoot;
-  }
-
-  /** @internal */
   private _web3: Web3;
 
   /** @internal */
@@ -155,6 +151,7 @@ export class AucWalletConnectService extends BaseSubscriber {
       return of(null);
     }
 
+    console.log('config', config);
     if (!config) {
       console.error('Please set config!');
 
@@ -234,12 +231,7 @@ export class AucWalletConnectService extends BaseSubscriber {
     });
   }
 
-  /**
-   * Connect Wallet. <br>
-   * @param isDisconnect - If wallet already connected, will disconnect wallet if true and connect wallet again.
-   * @return Current connection state.
-   */
-  public connectWallet(isDisconnect: boolean = false): Observable<AucConnectionState> {
+  public connect(dialogConfig?: AucDialogConfig<AucConnectDialogData>): Observable<AucConnectionState> {
     if (!this._onboard) {
       return of({ connected: false })
         .pipe(
@@ -247,29 +239,80 @@ export class AucWalletConnectService extends BaseSubscriber {
         );
     }
 
-    let connection$: Observable<void> = of(null);
+    this._aucBlockScrollHelperService.lockScroll();
 
-    if (this.connectionState.connected) {
-      if (!isDisconnect) {
-        return of(this.connectionState);
+    const config: AucDialogConfig<AucConnectDialogData> = {
+      data: { title: 'Connect a wallet' },
+      width: '400px',
+      dialogClass: 'auc-connect-dialog',
+      overlay: {
+        hasOverlay: true,
+        closeByClick: false,
+        overlayClass: [ 'auc-connect-dialog-overlay' ],
       }
+    };
 
-      connection$ = this.disconnectWallet();
+    const ref = this._dialogService.open<AucConnectModalComponent, AucConnectDialogData, AucWalletLabel | null>(
+      AucConnectModalComponent,
+      dialogConfig ?? config
+    );
+
+    return ref.afterClosed
+      .pipe(
+        switchMap((label: AucWalletLabel | null) => !label
+          ? of(this.connectionState)
+          : this.connectWallet(label)
+        )
+      );
+  }
+
+  /**
+   * Connect Wallet. <br>
+   * @param label - Wallets label to connect.
+   * @return Current connection state.
+   */
+  public connectWallet(label: AucWalletLabel): Observable<AucConnectionState> {
+    if (!this._onboard) {
+      return of({ connected: false })
+        .pipe(
+          tap(() => new Error('initialize method must be called'))
+        );
+    }
+
+    if (!label) {
+      return of(this.connectionState)
+        .pipe(
+          tap(() => new Error('label is required parameter'))
+        );
     }
 
     this._aucBlockScrollHelperService.lockScroll();
 
-    return connection$
+    return new Observable<WalletState[]>(observer => {
+      this.onboard.connectWallet({ autoSelect: { label, disableModals: true } })
+        .then((connection: WalletState[]) => {
+          observer.next(connection);
+          observer.complete();
+        })
+        .catch(error => observer.error(error));
+    })
       .pipe(
-        switchMap(() => {
-          return new Observable<WalletState[]>(observer => {
-            this._onboard.connectWallet()
-              .then((connection: WalletState[]) => {
-                observer.next(connection);
-                observer.complete();
-              })
-              .catch(error => observer.error(error));
-          });
+        map((states: WalletState[]) => states ?? []),
+        switchMap((states: WalletState[]) => {
+          const connectedWallet: WalletState = states.find((state: WalletState) => state.label === label);
+
+          if (!connectedWallet || states.length === 1) {
+            return of(states);
+          }
+
+          return combineLatest(
+            states
+              .filter((state: WalletState) => state.label !== label)
+              .map((state: WalletState) => this.disconnectWallet(state.label as AucWalletLabel))
+          )
+            .pipe(
+              map(() => [ connectedWallet ])
+            );
         }),
         map(() => this.connectionState),
         tap(() => this._aucBlockScrollHelperService.unlockScroll())
@@ -277,10 +320,14 @@ export class AucWalletConnectService extends BaseSubscriber {
   }
 
   /** Disconnect wallet. */
-  public disconnectWallet(): Observable<void> {
+  public disconnectWallet(label?: AucWalletLabel): Observable<void> {
     const [ primaryWallet ] = this._onboard?.state?.get()?.wallets;
 
-    return of(primaryWallet ? this._onboard.disconnectWallet({ label: primaryWallet.label }) : null)
+    return of(
+      primaryWallet || label
+        ? this._onboard.disconnectWallet({ label: label ? label : primaryWallet.label })
+        : null
+    )
       .pipe(
         map(() => null),
         tap(() => {
@@ -320,6 +367,8 @@ export class AucWalletConnectService extends BaseSubscriber {
             AUC_CONNECTED_WALLET_NAME,
             connectedWallet
           );
+        } else {
+          localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
         }
 
         const account: Account = (wallet?.accounts ?? [])[0];

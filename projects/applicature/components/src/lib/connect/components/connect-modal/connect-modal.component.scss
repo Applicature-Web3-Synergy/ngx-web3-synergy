@@ -1,0 +1,74 @@
+@use "../../../../../../styles/src/lib/scss/as-common" as c;
+
+.auc-connect-dialog-wallets-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.auc-connect-dialog-wallet-item {
+  width: 100%;
+  padding: 12px 55px 12px 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  cursor: pointer;
+
+  &.auc-active-wallet {
+    &:before {
+      background-color: c.getColor(white, borderHover);
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border: 1px solid c.getColor(white, borderHover);
+    border-radius: map-get(c.$as-border-radius, sm);
+    transition: all 0.2ms;
+    overflow: hidden;
+  }
+
+  &:not(.auc-active-wallet) {
+
+    &:hover {
+      &:before {
+        border-width: 2px;
+      }
+    }
+  }
+
+  &:not(:first-child) {
+    margin-top: 8px;
+  }
+}
+
+.auc-connect-dialog-wallet-item-icon {
+  position: absolute;
+  top: 11px;
+  left: 15px;
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.auc-connect-dialog-wallet-item-label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: c.getColor(white, text);
+}
+
+.auc-active-wallet-icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+}

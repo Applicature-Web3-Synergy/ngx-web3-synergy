@@ -1,4 +1,5 @@
-.doc-list-wallets {
+export const CustomConnectWalletCodeScss =
+`.doc-list-wallets {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -14,3 +15,4 @@
   width: 100%;
   margin: 0 -10px;
 }
+`;

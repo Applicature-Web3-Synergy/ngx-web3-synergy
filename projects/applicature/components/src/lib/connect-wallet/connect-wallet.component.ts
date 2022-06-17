@@ -235,7 +235,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
       change: () => {
         modal.close();
 
-        this.onConnectWalletClick(true);
+        this.connect();
       },
       disconnect: () => {
         this.onDisconnectWalletClick();
@@ -256,12 +256,12 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
   }
 
   /** Connect wallet and emit {@link onConnect} event. */
-  public onConnectWalletClick(isDisconnect: boolean = false): void {
+  public connect(): void {
     if (this.disabled) {
       return;
     }
 
-    this._walletConnectService.connectWallet(isDisconnect)
+    this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
       .subscribe((connectionState: AucConnectionState) => {
         this.onConnect.emit(connectionState);

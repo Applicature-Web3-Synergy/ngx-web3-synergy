@@ -121,7 +121,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
   public onChangeWalletProviderClick(): void {
     this._closeOptions();
 
-    this._walletConnectService.connectWallet(true)
+    this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
       .subscribe();
   }

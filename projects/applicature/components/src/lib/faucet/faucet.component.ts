@@ -127,7 +127,7 @@ export class AucFaucetComponent extends BaseSubscriber implements OnInit {
 
   /** Show modal for connecting to wallets */
   public connectWallet(): void {
-    this._walletConnectService.connectWallet(false)
+    this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
       .subscribe();
   }

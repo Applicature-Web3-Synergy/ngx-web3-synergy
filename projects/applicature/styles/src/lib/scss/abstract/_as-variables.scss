@@ -6,6 +6,10 @@ $table-hover-bg: #F9FAFD;
 
 $as-main-padding: 20px;
 $as-main-border-radius: 8px;
+$as-border-radius: (
+  sm: 8px,
+  lg: 12px
+);
 
 $as-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 

@@ -1,1 +1,24 @@
-<p>connect-modal works!</p>
+<div class="auc-dialog-header">
+  <h1 *ngIf="data?.title">{{ data.title }}</h1>
+
+  <button type="button" class="auc-close-btn">
+    <auc-icon icon="wcl-icon-close"
+              (click)="close()"
+    >
+    </auc-icon>
+  </button>
+</div>
+
+<div class="auc-connect-dialog-wallets-list">
+  <div class="auc-connect-dialog-wallet-item"
+       *ngFor="let wallet of wallets"
+       [class.auc-active-wallet]="wallet.active"
+       (click)="connect(wallet)"
+  >
+    <auc-icon *ngIf="wallet.icon" [icon]="wallet.icon" class="auc-connect-dialog-wallet-item-icon"></auc-icon>
+    <span class="auc-connect-dialog-wallet-item-label">{{wallet.label}}</span>
+    <auc-icon *ngIf="wallet.active" icon="wcl-icon-active" class="auc-active-wallet-icon"></auc-icon>
+  </div>
+</div>
+
+

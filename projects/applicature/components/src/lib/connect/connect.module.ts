@@ -1,14 +1,18 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AucWalletConnectService } from './services';
 import { AucConnectModalComponent } from './components/';
 import { AucDialogModule } from '../dialog';
 import { AucBlockScrollHelperService } from '../helpers';
+import { AucIconModule } from '../icon';
 
 
 @NgModule({
   imports: [
-    AucDialogModule
+    CommonModule,
+    AucDialogModule,
+    AucIconModule
   ],
   declarations: [
     AucConnectModalComponent
