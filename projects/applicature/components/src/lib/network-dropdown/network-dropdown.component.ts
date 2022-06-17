@@ -111,7 +111,7 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
 
   /** @internal */
   public ngOnInit(): void {
-    this._walletConnectService.chainChanged$
+    this._walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
         this.currentNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;

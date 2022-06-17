@@ -96,7 +96,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
 
   /** @internal */
   public ngOnInit(): void {
-    this._walletConnectService.accountsChanged$
+    this._walletConnectService.accounts$
       .pipe(takeUntil(this.notifier))
       .subscribe((accounts) => {
         this.accountAddress = accounts?.length && accounts[0];

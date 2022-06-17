@@ -86,24 +86,24 @@ export class AucWalletConnectService extends BaseSubscriber {
    * Emits when account was changed. <br>
    * You can subscribe on it.
    */
-  public get accountsChanged$(): Observable<string[]> {
-    return this._accountsChanged$.asObservable();
+  public get accounts$(): Observable<string[]> {
+    return this._accounts$.asObservable();
   }
 
   /**
    * Emits when chain was changed. <br>
    * You can subscribe on it.
    */
-  public get chainChanged$(): Observable<string | null> {
-    return this._chainChanged$.asObservable();
+  public get chain$(): Observable<string | null> {
+    return this._chain$.asObservable();
   }
 
   /**
    * Emits when balance was changed. <br>
    * You can subscribe on it.
    */
-  public get balanceChanged$(): Observable<Balances> {
-    return this._balanceChanged$.asObservable();
+  public get balance$(): Observable<Balances> {
+    return this._balance$.asObservable();
   }
 
   /**
@@ -111,8 +111,8 @@ export class AucWalletConnectService extends BaseSubscriber {
    * @param chainId - 0x-prefixed hexadecimal string.
    */
   private set chainId(chainId: string) {
-    if (this._chainChanged$.value !== chainId) {
-      this._chainChanged$.next(chainId);
+    if (this._chain$.value !== chainId) {
+      this._chain$.next(chainId);
     }
   }
 
@@ -123,13 +123,13 @@ export class AucWalletConnectService extends BaseSubscriber {
   private _web3: Web3;
 
   /** @internal */
-  private _accountsChanged$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  private _accounts$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
   /** @internal */
-  private _chainChanged$: BehaviorSubject<string | null> = new BehaviorSubject<string>(null);
+  private _chain$: BehaviorSubject<string | null> = new BehaviorSubject<string>(null);
 
   /** @internal */
-  private _balanceChanged$: BehaviorSubject<Balances | null> = new BehaviorSubject<Balances>(null);
+  private _balance$: BehaviorSubject<Balances | null> = new BehaviorSubject<Balances>(null);
 
   /** @internal */
   private _blockExplorerUrlByChainId: BlockExplorerUrlsByChainId = {};
@@ -374,8 +374,8 @@ export class AucWalletConnectService extends BaseSubscriber {
         const account: Account = (wallet?.accounts ?? [])[0];
 
         if (!account) {
-          this._accountsChanged$.next([]);
-          this._balanceChanged$.next(null);
+          this._accounts$.next([]);
+          this._balance$.next(null);
           this.chainId = null;
         } else {
           const address: string = account.address;
@@ -383,12 +383,12 @@ export class AucWalletConnectService extends BaseSubscriber {
 
           this.chainId = (wallet.chains ?? [])[0]?.id;
 
-          if ((this._accountsChanged$.value ?? [])[0] !== address) {
-            this._accountsChanged$.next([ address ]);
+          if ((this._accounts$.value ?? [])[0] !== address) {
+            this._accounts$.next([ address ]);
           }
 
-          if (this._balanceChanged$.value !== balance) {
-            this._balanceChanged$.next(balance);
+          if (this._balance$.value !== balance) {
+            this._balance$.next(balance);
           }
         }
       });

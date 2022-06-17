@@ -187,7 +187,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
   ) {
     super();
 
-      this._walletConnectService.accountsChanged$
+      this._walletConnectService.accounts$
         .pipe(takeUntil(this.notifier))
         .subscribe((accounts) => {
           this.accountAddress = accounts?.length && accounts[0];

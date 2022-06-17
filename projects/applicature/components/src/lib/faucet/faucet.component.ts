@@ -70,7 +70,7 @@ export class AucFaucetComponent extends BaseSubscriber implements OnInit {
 
   /** @internal */
   ngOnInit(): void {
-    this._walletConnectService.accountsChanged$
+    this._walletConnectService.accounts$
       .pipe(takeUntil(this.notifier))
       .subscribe((accounts: string[]) => {
         this.account = (accounts || [])[0];
