@@ -45,7 +45,7 @@ export class CustomConnectButtonComponent extends BaseSubscriber implements OnIn
 
 
     /** Emits when account was changed. */
-    this.walletConnectService.accountsChanged$
+    this.walletConnectService.accounts$
       .pipe(takeUntil(this.notifier))
       .subscribe((accounts: string[]) => {
         console.log('Current accounts: ', accounts);
@@ -54,7 +54,7 @@ export class CustomConnectButtonComponent extends BaseSubscriber implements OnIn
       });
 
     /** Emits when chain was changed */
-    this.walletConnectService.chainChanged$
+    this.walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
         console.log('Current chainId: ', chainId);
@@ -63,7 +63,7 @@ export class CustomConnectButtonComponent extends BaseSubscriber implements OnIn
       });
 
     /** Emits when balance was changed */
-    this.walletConnectService.balanceChanged$
+    this.walletConnectService.balance$
       .pipe(takeUntil(this.notifier))
       .subscribe((balance: Balances) => {
         console.log('Current balance: ', balance);

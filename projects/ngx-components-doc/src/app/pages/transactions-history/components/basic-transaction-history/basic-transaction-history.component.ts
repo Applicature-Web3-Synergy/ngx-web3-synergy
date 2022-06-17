@@ -26,7 +26,7 @@ export class BasicTransactionHistoryComponent extends BaseSubscriber {
               private transactionService: AucTransactionService) {
     super();
 
-    this.walletConnectService.chainChanged$
+    this.walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
         this.currentChainId = chainId;

@@ -137,14 +137,14 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
 
   /** @internal */
   public ngOnInit(): void {
-    this._walletConnectService.chainChanged$
+    this._walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
         this.activeNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;
         this._cdr.markForCheck();
       });
 
-    this._walletConnectService.balanceChanged$
+    this._walletConnectService.balance$
       .pipe(
         map((balance: Balances | null) => {
           if (!balance) {
@@ -174,7 +174,7 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
       }
     });
 
-    this._walletConnectService.accountsChanged$
+    this._walletConnectService.accounts$
       .pipe(
         map((accounts: string[]) => {
           const account = (accounts ?? [])[0] || null;

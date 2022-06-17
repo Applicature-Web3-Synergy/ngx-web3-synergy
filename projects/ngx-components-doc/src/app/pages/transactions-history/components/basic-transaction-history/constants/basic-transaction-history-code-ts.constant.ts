@@ -1,4 +1,5 @@
-export const BasicTransactionHistoryCodeTs = `/** Don't forget import { AucTransactionsModule } from '@applicature/components'; to your module */
+export const BasicTransactionHistoryCodeTs =
+`/** Don't forget import { AucTransactionsModule } from '@applicature/components'; to your module */
 
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { takeUntil, takeWhile } from 'rxjs';
@@ -26,7 +27,7 @@ export class BasicTransactionHistoryComponent extends BaseSubscriber {
               private transactionService: AucTransactionService) {
     super();
 
-    this.walletConnectService.chainChanged$
+    this.walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
         this.currentChainId = chainId;

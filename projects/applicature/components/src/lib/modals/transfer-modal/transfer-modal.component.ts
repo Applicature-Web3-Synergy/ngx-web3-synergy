@@ -42,7 +42,7 @@ export class AucTransferModalComponent extends BaseSubscriber implements OnInit 
   }
 
   public ngOnInit(): void {
-    this._walletConnectService.chainChanged$
+    this._walletConnectService.chain$
       .pipe(
         takeUntil(this.notifier)
       )

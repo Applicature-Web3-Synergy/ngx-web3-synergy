@@ -68,8 +68,8 @@ export class AucTransactionService extends BaseSubscriber {
   /** @internal */
   private initialize(): void {
     combineLatest([
-      this._walletConnectService.chainChanged$,
-      this._walletConnectService.accountsChanged$
+      this._walletConnectService.chain$,
+      this._walletConnectService.accounts$
         .pipe(map((accounts: string[]) => (accounts ?? [])[0] || null))
     ])
       .pipe(
