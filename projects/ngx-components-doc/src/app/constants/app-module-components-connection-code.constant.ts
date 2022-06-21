@@ -33,7 +33,22 @@ export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
-    wallets: [ injected, walletConnect ],
+    wallets: [
+      /** Shows always Metamask wallet. Doesn't matter is Metamask installed. */
+      {
+        label: 'MetaMask',
+        module: injected,
+      },
+      /** Will show all installed injected wallets */
+      {
+        label: 'injected',
+        module: injected,
+      },
+      {
+        label: 'WalletConnect',
+        module: walletConnect
+      }
+    ],
     chains: [
       {
         id: AUC_CHAIN_ID.BSC_TESTNET,
@@ -47,7 +62,7 @@ export function initWalletServiceFactory(
       {
         id: AUC_CHAIN_ID.POLYGON_TESTNET,
         token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
-        label: 'Matic Mainnet',
+        label: 'Matic',
         rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
         icon: 'assets/svg/network/polygon.svg',
         blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],

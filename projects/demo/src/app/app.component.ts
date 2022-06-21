@@ -14,7 +14,6 @@ import {
   AucWalletConnectService
 } from '@applicature/components';
 import { AS_COLOR_GROUP } from '@applicature/styles';
-import { ProviderLabel } from '@web3-onboard/injected-wallets';
 
 
 @Component({
@@ -69,12 +68,12 @@ export class AppComponent implements OnInit {
 
     this._walletConnectService.accounts$
       .subscribe((data) => {
-        console.log('metamaskAccountsChanged$: ', data);
+        console.log('Accounts Changed: ', data);
       });
 
     this._walletConnectService.chain$
       .subscribe((data) => {
-        console.log('ChainChanged$: ', data);
+        console.log('Chain Changed: ', data);
       });
   }
 
@@ -89,14 +88,7 @@ export class AppComponent implements OnInit {
   public customBtnConnect(): void {
     this._walletConnectService.connect()
       .subscribe((connectionstate: AucConnectionState) => {
-        console.log('Custom connect connectionState: ', connectionstate);
-      })
-  }
-
-  public customConnect(): void {
-    this._walletConnectService.connect()
-      .subscribe((connectionstate) => {
-        console.log('Custom connect connectionState 999: ', connectionstate);
+        console.log('Custom Btn connect connectionState: ', connectionstate);
       })
   }
 }

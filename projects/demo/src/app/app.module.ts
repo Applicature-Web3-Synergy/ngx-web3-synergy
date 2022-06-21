@@ -43,7 +43,22 @@ export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
-    wallets: [ injected, walletConnect ],
+    wallets: [
+      /** Shows always Metamask wallet. Doesn't matter is Metamask installed. */
+      {
+        label: 'MetaMask',
+        module: injected,
+      },
+      /** Will show all installed injected wallets */
+      {
+        label: 'injected',
+        module: injected,
+      },
+      {
+        label: 'WalletConnect',
+        module: walletConnect
+      }
+    ],
     chains: [
       {
         id: AUC_CHAIN_ID.BSC_TESTNET,
@@ -55,12 +70,12 @@ export function initWalletServiceFactory(
         blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
       },
       {
-        id: AUC_CHAIN_ID.POLYGON_MAINNET,
-        token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_MAINNET].name,
-        label: 'Matic Mainnet',
-        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_MAINNET][0],
+        id: AUC_CHAIN_ID.POLYGON_TESTNET,
+        token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
+        label: 'Matic',
+        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
         icon: 'assets/svg/network/polygon.svg',
-        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_MAINNET][0],
+        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
       },
       {
         id: AUC_CHAIN_ID.RINKEBY_TESTNET,
@@ -71,16 +86,6 @@ export function initWalletServiceFactory(
         blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
       },
     ],
-    appMetadata: {
-      name: "My Demo App",
-      icon: "assets/images/applicature-circle.png",
-      logo: "assets/svg/applicature-black.svg",
-      description: "My Demo app",
-      recommendedInjectedWallets: [
-        { name: 'MetaMask', url: 'https://metamask.io' },
-        { name: 'Coinbase', url: 'https://wallet.coinbase.com/' }
-      ]
-    }
   });
 }
 
