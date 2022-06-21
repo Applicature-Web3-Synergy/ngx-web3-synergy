@@ -50,8 +50,9 @@
 
 .auc-connect-dialog-wallet-item-icon {
   position: absolute;
-  top: 11px;
   left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 32px;
   height: 32px;
   margin-right: 12px;

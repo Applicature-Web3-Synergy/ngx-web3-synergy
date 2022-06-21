@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AucWalletConnectService } from './services';
 import { AucConnectModalComponent } from './components/';
 import { AucDialogModule } from '../dialog';
-import { AucBlockScrollHelperService } from '../helpers';
+import { AucBlockScrollHelperService, AucInstallWalletHelperService } from '../helpers';
 import { AucIconModule } from '../icon';
 
 
@@ -18,7 +18,8 @@ import { AucIconModule } from '../icon';
     AucConnectModalComponent
   ],
   providers: [
-    AucBlockScrollHelperService
+    AucBlockScrollHelperService,
+    AucInstallWalletHelperService
   ]
 })
 export class AucConnectModule {

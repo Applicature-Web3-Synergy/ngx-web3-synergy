@@ -170,7 +170,22 @@ export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
-    wallets: [ injected ],
+    wallets: [
+      /** Shows always Metamask wallet. Doesn't matter is Metamask installed. */
+      {
+        label: 'MetaMask',
+        module: injected,
+      },
+      /** Will show all installed injected wallets */
+      {
+        label: 'injected',
+        module: injected,
+      },
+      {
+        label: 'WalletConnect',
+        module: walletConnect
+      }
+    ],
     chains: [
       {
         id: AUC_CHAIN_ID.BSC_TESTNET,
@@ -184,7 +199,7 @@ export function initWalletServiceFactory(
       {
         id: AUC_CHAIN_ID.POLYGON_TESTNET,
         token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
-        label: 'Matic Mainnet',
+        label: 'Matic',
         rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
         icon: 'assets/svg/network/polygon.svg',
         blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
@@ -196,17 +211,8 @@ export function initWalletServiceFactory(
         rpcUrl: `${AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
         icon: 'assets/svg/network/eth.svg',
         blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
-      }
+      },
     ],
-    appMetadata: {
-      name: "Ngx Universal Components",
-      icon: `${ICON_PATH}`,
-      logo: `${LOGO_PATH}`,
-      description: "Some Description",
-      recommendedInjectedWallets: [
-        { name: 'MetaMask', url: 'https://metamask.io' }
-      ]
-    }
   });
 }
 

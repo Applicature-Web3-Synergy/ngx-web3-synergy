@@ -5,13 +5,27 @@ import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import Web3 from 'web3';
 import Onboard from '@web3-onboard/core';
 import { Chain } from '@web3-onboard/common/dist/types';
-import { Account, AppState, Balances, InitOptions, OnboardAPI, WalletState } from '@web3-onboard/core/dist/types';
+import {
+  Account,
+  AppState,
+  Balances,
+  InitOptions,
+  OnboardAPI,
+  WalletState
+} from '@web3-onboard/core/dist/types';
 
-import { AucChain, AucConnectionState, AucInitOptions, BlockExplorerUrlsByChainId } from './interfaces';
+import {
+  AucChain,
+  AucConnectionState,
+  AucInitOptions,
+  AucWalletConfig, AucWalletConfigMap, AucWalletsToInitLabel,
+  BlockExplorerUrlsByChainId
+} from './interfaces';
 import { AucBlockScrollHelperService, BaseSubscriber } from '../../../helpers';
 import { AucDialogConfig, AucDialogService } from '../../../dialog';
 import { AucWalletLabel } from './types';
 import { AucConnectDialogData, AucConnectModalComponent } from '../../components';
+
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
 
@@ -23,6 +37,16 @@ export class AucWalletConnectService extends BaseSubscriber {
    * Emits when Onboard was successfully initialized.
    * */
   private _onboardInitialized$: Subject<void> = new Subject<void>();
+
+  /** @returns initialization config. */
+  public get initializationConfig(): AucInitOptions {
+    return this._initializationConfig;
+  }
+
+  /** @returns wallets Map from initialization config. */
+  public get initializedWalletsMap(): Map<AucWalletsToInitLabel, AucWalletConfigMap> {
+    return this._initializedWalletsMap;
+  }
 
   /** @returns current {@link Web3} instance. */
   public get web3(): Web3 {
@@ -117,6 +141,13 @@ export class AucWalletConnectService extends BaseSubscriber {
   }
 
   /** @internal */
+  private _initializationConfig: AucInitOptions;
+
+  /** @internal */
+  private _initializedWalletsMap: Map<AucWalletsToInitLabel, AucWalletConfigMap> =
+    new Map<AucWalletsToInitLabel, AucWalletConfigMap>();
+
+  /** @internal */
   private _onboard: OnboardAPI;
 
   /** @internal */
@@ -151,12 +182,21 @@ export class AucWalletConnectService extends BaseSubscriber {
       return of(null);
     }
 
-    console.log('config', config);
     if (!config) {
       console.error('Please set config!');
 
       return of(null);
     }
+
+    if (!config.wallets || !config.wallets.length) {
+      console.error('Minimum 1 wallets should be set. Please set wallets to config!');
+
+      return of(null);
+    }
+
+    this._initializationConfig = config;
+    config.wallets.forEach((wallet: AucWalletConfig, index: number) =>
+      this._initializedWalletsMap.set(wallet.label, { ...wallet, position: index }));
 
     const chains: Chain[] = (config?.chains ?? []).map(({
                                                           id,
@@ -202,18 +242,10 @@ export class AucWalletConnectService extends BaseSubscriber {
     });
 
     const initOptions: InitOptions = {
-      wallets: config.wallets,
+      wallets: config.wallets.map(item => item.module),
       chains,
-      accountCenter: config.accountCenter ?? { desktop: { enabled: false }, mobile: { enabled: false } }
+      accountCenter: { desktop: { enabled: false }, mobile: { enabled: false } }
     };
-
-    if (config.appMetadata) {
-      initOptions.appMetadata = config.appMetadata;
-    }
-
-    if (config.i18n) {
-      initOptions.i18n = config.i18n;
-    }
 
     return new Observable<void>((observer: Subscriber<void>) => {
       try {
@@ -286,7 +318,6 @@ export class AucWalletConnectService extends BaseSubscriber {
         );
     }
 
-    this._aucBlockScrollHelperService.lockScroll();
 
     return new Observable<WalletState[]>(observer => {
       this.onboard.connectWallet({ autoSelect: { label, disableModals: true } })
@@ -314,8 +345,7 @@ export class AucWalletConnectService extends BaseSubscriber {
               map(() => [ connectedWallet ])
             );
         }),
-        map(() => this.connectionState),
-        tap(() => this._aucBlockScrollHelperService.unlockScroll())
+        map(() => this.connectionState)
       );
   }
 
@@ -351,6 +381,8 @@ export class AucWalletConnectService extends BaseSubscriber {
           }).then();
         }
       });
+
+    console.log(100500, this.onboard.state.get());
 
     this.onboard.state.select('wallets')
       .pipe(
