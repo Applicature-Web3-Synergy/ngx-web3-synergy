@@ -3,7 +3,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
-import { AucWalletConnectService } from '../../services';
+import { AucWalletConnectService } from '../../connect/services';
 import { AucWrongNetworkModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
 import { BaseSubscriber } from '../../helpers';

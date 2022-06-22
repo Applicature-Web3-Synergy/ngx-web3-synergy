@@ -68,14 +68,14 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     this.identicon = aucGenerateJazzicon('0x6FF69D870c84a9D7F6c12095313F18F883A77f1D');
 
-    this._walletConnectService.accountsChanged$
+    this._walletConnectService.accounts$
       .subscribe((data) => {
-        console.log('metamaskAccountsChanged$: ', data);
+        console.log('Accounts Changed: ', data);
       });
 
-    this._walletConnectService.chainChanged$
+    this._walletConnectService.chain$
       .subscribe((data) => {
-        console.log('ChainChanged$: ', data);
+        console.log('Chain Changed: ', data);
       });
   }
 
@@ -88,9 +88,9 @@ export class AppComponent implements OnInit {
   }
 
   public customBtnConnect(): void {
-    this._walletConnectService.connectWallet()
+    this._walletConnectService.connect()
       .subscribe((connectionstate: AucConnectionState) => {
-        console.log('Custom connect connectionState: ', connectionstate);
+        console.log('Custom Btn connect connectionState: ', connectionstate);
       })
   }
 
@@ -104,7 +104,7 @@ export class AppComponent implements OnInit {
         .catch(error => observer.error(error));
     })
       .subscribe((connectionstate) => {
-        console.log('Custom connect connectionState 999: ', connectionstate);
+        console.log('Custom connect connectionState: ', connectionstate);
       })
   }
 }

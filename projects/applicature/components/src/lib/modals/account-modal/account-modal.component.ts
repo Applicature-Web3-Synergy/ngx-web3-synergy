@@ -5,7 +5,7 @@ import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon, BaseSubscriber } from '../../helpers';
 import { AucAccountModalData } from './interfaces';
 import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { AucWalletConnectService, BlockExplorerUrlsByChainId } from '../../services';
+import { AucWalletConnectService, BlockExplorerUrlsByChainId } from '../../connect/services';
 import { AucTransactionItem, AucTransactionService } from '../../transactions';
 
 
@@ -47,8 +47,8 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
       });
 
     this.etherscanAddress$ = combineLatest([
-      this._walletConnectService.chainChanged$,
-      this._walletConnectService.accountsChanged$
+      this._walletConnectService.chain$,
+      this._walletConnectService.accounts$
     ])
       .pipe(
         map(([chainId, addresses]: [string, string[]]) => {
@@ -68,7 +68,7 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
   }
 
   public ngOnInit(): void {
-      this._walletConnectService.accountsChanged$
+      this._walletConnectService.accounts$
         .pipe(
           filter((accounts) => accounts?.length > 0),
           takeUntil(this.notifier)

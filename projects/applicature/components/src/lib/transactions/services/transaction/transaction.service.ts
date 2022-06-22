@@ -19,7 +19,7 @@ import { Transaction, TransactionReceipt } from 'web3-core';
 import { AUC_SORT_DIRECTION } from '../../../enums';
 import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../../constants';
 import { AucSortDirection } from '../../../types';
-import { AucWalletConnectService } from '../../../services';
+import { AucWalletConnectService } from '../../../connect';
 import {
   AucAddTransaction,
   AucEtherscanTransaction,
@@ -68,8 +68,8 @@ export class AucTransactionService extends BaseSubscriber {
   /** @internal */
   private initialize(): void {
     combineLatest([
-      this._walletConnectService.chainChanged$,
-      this._walletConnectService.accountsChanged$
+      this._walletConnectService.chain$,
+      this._walletConnectService.accounts$
         .pipe(map((accounts: string[]) => (accounts ?? [])[0] || null))
     ])
       .pipe(

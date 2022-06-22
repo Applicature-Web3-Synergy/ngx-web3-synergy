@@ -1,10 +1,9 @@
 export const BasicButtonCodeTs =
-  `/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
+`/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
-import { AUC_BUTTON_APPEARANCE } from '@applicature/components';
 
 
 @Component({
@@ -15,7 +14,6 @@ import { AUC_BUTTON_APPEARANCE } from '@applicature/components';
 })
 export class BasicButtonsComponent {
   public COLORS = AS_COLOR_GROUP;
-  public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
 
   onClick(event: any): void {
     console.log('Button clicked: ', event);

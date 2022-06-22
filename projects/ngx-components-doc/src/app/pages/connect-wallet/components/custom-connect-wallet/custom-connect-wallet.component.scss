@@ -1,0 +1,16 @@
+.doc-list-wallets {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+
+  & > * {
+    width: 250px;
+    margin: 10px;
+  }
+}
+
+.doc-grid-item {
+  width: 100%;
+  margin: 0 -10px;
+}

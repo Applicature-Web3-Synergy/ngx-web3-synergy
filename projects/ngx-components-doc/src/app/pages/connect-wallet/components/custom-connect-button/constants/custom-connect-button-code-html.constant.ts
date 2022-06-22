@@ -1,0 +1,12 @@
+export const CustomConnectButtonCodeHtml =
+`<div class="doc-grid-container">
+  <div class="doc-grid-item">
+    <button type="button"
+            class="doc-custom-btn"
+            (click)="toggleConnect()"
+    >
+      {{isConnected ? 'Disconnect' : 'Connect'}}
+    </button>
+  </div>
+</div>
+`;

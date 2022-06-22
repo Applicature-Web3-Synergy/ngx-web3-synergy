@@ -21,10 +21,13 @@ import { AucDialogRef } from '../../dialog-ref';
 export class AucDialogService {
   private _dialogComponentRef: ComponentRef<AucDialogComponent>;
 
+  private get _appRef(): ApplicationRef {
+    return this._injector.get(ApplicationRef);
+  }
+
   constructor(
     private _componentFactoryResolver: ComponentFactoryResolver,
-    private _appRef: ApplicationRef,
-    private _injector: Injector,
+    @Inject(Injector) private readonly _injector: Injector,
     @Inject(DOCUMENT) private document: Document
   ) {
   }

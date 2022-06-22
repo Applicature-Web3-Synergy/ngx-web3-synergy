@@ -1,11 +1,21 @@
-export const CustomConnectWalletCodeHtml = `<div class="doc-grid-container">
+export const CustomConnectWalletCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
-    <button type="button"
-            class="doc-custom-btn"
-            (click)="toggleConnect()"
-    >
-      {{isConnected ? 'Disconnect' : 'Connect'}}
-    </button>
+    <div class="doc-list-wallets">
+      <button type="button"
+              class="doc-custom-btn"
+              (click)="connect('MetaMask')"
+      >
+        {{connectedWalletLabel === 'MetaMask' ? 'Disconnect' : 'Connect'}} Metamask
+      </button>
+
+      <button type="button"
+              class="doc-custom-btn"
+              (click)="connect('WalletConnect')"
+      >
+        {{connectedWalletLabel === 'WalletConnect' ? 'Disconnect' : 'Connect'}} WalletConnect
+      </button>
+    </div>
   </div>
 </div>
 `;

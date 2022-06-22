@@ -20,7 +20,7 @@ export class NeedWalletConnectionComponent extends BaseSubscriber implements OnI
   }
 
   ngOnInit() {
-    this.walletConnectService.accountsChanged$
+    this.walletConnectService.accounts$
       .pipe(takeUntil(this.notifier))
       .subscribe(() => {
         this.cdr.markForCheck();

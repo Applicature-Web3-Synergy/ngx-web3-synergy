@@ -1,10 +1,12 @@
-export const CustomDialogCodeTs = `
-/** Don't forget import { AucDialogModule } from '@applicature/components'; to your module */
+export const CustomDialogCodeTs =
+`/** Don't forget import { AucDialogModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { AUC_DIALOG_POSITIONS, AucDialogConfig, AucDialogRef, AucDialogService } from '@applicature/components';
+
+import { AucDialogPosition } from '../../../../../../../applicature/components/src/lib/dialog';
 
 
 @Component({
@@ -62,7 +64,7 @@ export class CustomDialogViewComponent {
 export class CustomDialogComponent {
   dialogPosition: FormControl = new FormControl(AUC_DIALOG_POSITIONS.CENTER);
 
-  dialogPositionsList: AUC_DIALOG_POSITIONS[] = [
+  dialogPositionsList: AucDialogPosition[] = [
     AUC_DIALOG_POSITIONS.CENTER,
     AUC_DIALOG_POSITIONS.BOTTOM,
     AUC_DIALOG_POSITIONS.LEFT,

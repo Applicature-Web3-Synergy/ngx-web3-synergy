@@ -1,3 +1,5 @@
+@use "../../../../styles/src/lib/scss/as-common" as c;
+
 :host {
   width: 100vw;
   height: 100vh;
@@ -14,7 +16,7 @@
   height: 100%;
 
   &:not(.transparent) {
-    background-color: rgba(0, 0, 0, 0.32);
+    color: c.getColor(white, text);
+    background-color: rgba(c.getColor(white, text), 0.25);
   }
 }
-

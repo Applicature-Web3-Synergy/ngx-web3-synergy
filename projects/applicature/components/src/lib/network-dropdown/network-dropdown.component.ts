@@ -18,7 +18,7 @@ import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
-import { AucWalletConnectService } from '../services';
+import { AucWalletConnectService } from '../connect/services';
 import { AucDialogService } from '../dialog';
 import { BaseSubscriber } from '../helpers';
 import { AucSelectedNetwork } from './interfaces';
@@ -111,7 +111,7 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
 
   /** @internal */
   public ngOnInit(): void {
-    this._walletConnectService.chainChanged$
+    this._walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
         this.currentNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;

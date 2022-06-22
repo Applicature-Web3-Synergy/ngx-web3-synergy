@@ -9,7 +9,10 @@ import {
   ConnectWalletAsIconCodeTs,
   ConnectWalletWithNetworkCodeHtml,
   ConnectWalletWithNetworkCodeTs,
+  CustomConnectButtonCodeHtml,
+  CustomConnectButtonCodeTs,
   CustomConnectWalletCodeHtml,
+  CustomConnectWalletCodeScss,
   CustomConnectWalletCodeTs
 } from './components';
 import { AppModuleTab } from '../../constants';
@@ -76,6 +79,24 @@ export class ConnectWalletComponent {
     }
   ];
 
+  customBtnCwTabs: ExampleCardTab[] = [
+    AppModuleTab,
+    {
+      title: 'HTML',
+      code: {
+        code: CustomConnectButtonCodeHtml,
+        lang: CODE_TYPES.HTML
+      }
+    },
+    {
+      title: 'TS',
+      code: {
+        code: CustomConnectButtonCodeTs,
+        lang: CODE_TYPES.JS
+      }
+    }
+  ];
+
   customCwTabs: ExampleCardTab[] = [
     AppModuleTab,
     {
@@ -90,6 +111,13 @@ export class ConnectWalletComponent {
       code: {
         code: CustomConnectWalletCodeTs,
         lang: CODE_TYPES.JS
+      }
+    },
+    {
+      title: 'SCSS',
+      code: {
+        code: CustomConnectWalletCodeScss,
+        lang: CODE_TYPES.CSS
       }
     }
   ];
