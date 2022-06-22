@@ -1,4 +1,5 @@
-export const IconButtonCodeHtml = `<div class="doc-grid-container">
+export const IconButtonCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
     <h5 class="doc-grid-item-title">Default color</h5>
 
@@ -12,9 +13,9 @@ export const IconButtonCodeHtml = `<div class="doc-grid-container">
   <div class="doc-grid-item">
     <h5 class="doc-grid-item-title">Colored</h5>
 
-    <auc-button [appearance]="BUTTON_APPEARANCE.ICON"
+    <auc-button appearance="icon"
                 leftIcon="wcl-icon-recent"
-                [color]="COLORS.WHITE"
+                color="white"
                 (onClick)="onClick($event)"
     >
     </auc-button>

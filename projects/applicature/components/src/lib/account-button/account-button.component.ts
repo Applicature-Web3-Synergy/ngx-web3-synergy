@@ -14,7 +14,7 @@ import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
 import { AUC_POSITIONS } from '../enums';
 import { AucDropdownConfig } from '../dropdown-menu';
-import { AucWalletConnectService } from '../connect/services';
+import { AucWalletConnectService } from '../connect';
 import { AucAccountData, AucAccountOption } from './interfaces';
 import { BaseSubscriber } from '../helpers';
 

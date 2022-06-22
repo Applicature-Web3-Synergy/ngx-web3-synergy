@@ -1,4 +1,5 @@
-export const BasicButtonCodeHtml = `<div class="doc-grid-container">
+export const BasicButtonCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
     <auc-button label="Default" (onClick)="onClick($event)"></auc-button>
   </div>
@@ -24,7 +25,7 @@ export const BasicButtonCodeHtml = `<div class="doc-grid-container">
   </div>
 
   <div class="doc-grid-item">
-    <auc-button label="Red" [color]="COLORS.RED" (onClick)="onClick($event)"></auc-button>
+    <auc-button label="Red" color="red" (onClick)="onClick($event)"></auc-button>
   </div>
 
   <div class="doc-grid-item">

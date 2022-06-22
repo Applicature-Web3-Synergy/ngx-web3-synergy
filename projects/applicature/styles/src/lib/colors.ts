@@ -7,12 +7,12 @@ export enum AS_COLOR_GROUP {
   WHITE = 'white'
 }
 
-export type AsColorGroup = AS_COLOR_GROUP.BLUE
-  | AS_COLOR_GROUP.GREEN
-  | AS_COLOR_GROUP.GRAY
-  | AS_COLOR_GROUP.ORANGE
-  | AS_COLOR_GROUP.RED
-  | AS_COLOR_GROUP.WHITE;
+export type AsColorGroup = `${AS_COLOR_GROUP.BLUE}`
+  | `${AS_COLOR_GROUP.GREEN}`
+  | `${AS_COLOR_GROUP.GRAY}`
+  | `${AS_COLOR_GROUP.ORANGE}`
+  | `${AS_COLOR_GROUP.RED}`
+  | `${AS_COLOR_GROUP.WHITE}`
 
 export interface AsColorProperties {
   base: string;
@@ -25,7 +25,7 @@ export interface AsColorProperties {
   borderFocus: string;
 }
 
-export const AsColors: { [key: string]: AsColorProperties } = {
+export const AsColors: { [key in AsColorGroup]: AsColorProperties } = {
   [AS_COLOR_GROUP.BLUE]: {
     base: '#4678F0',
     hover: '#608BF2',

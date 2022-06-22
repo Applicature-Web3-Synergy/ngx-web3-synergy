@@ -1,9 +1,11 @@
 import { AUC_WLC_ICON } from '../enums';
+import { EnumsTypeTransformer } from '../../types';
+
 /**
  * You can use supported icons from enum {@link AUC_WLC_ICON} or string; <br>
  * If you want to use custom icon, you need to provide url to the image as a string value.
  */
-export type AucWlcIcon = AUC_WLC_ICON.ACTIVE
+export type AucWlcIcon = EnumsTypeTransformer<AUC_WLC_ICON.ACTIVE
   | AUC_WLC_ICON.ARROW_DOWN
   | AUC_WLC_ICON.ARROW_UP
   | AUC_WLC_ICON.CHECK
@@ -21,4 +23,4 @@ export type AucWlcIcon = AUC_WLC_ICON.ACTIVE
   | AUC_WLC_ICON.WALLET
   | AUC_WLC_ICON.WALLET_CONNECT
   | AUC_WLC_ICON.WRONG
-  | string;
+  | string>;

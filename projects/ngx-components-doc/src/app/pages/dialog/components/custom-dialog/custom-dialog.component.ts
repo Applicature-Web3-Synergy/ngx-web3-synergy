@@ -5,6 +5,8 @@ import { FormControl } from '@angular/forms';
 
 import { AUC_DIALOG_POSITIONS, AucDialogConfig, AucDialogRef, AucDialogService } from '@applicature/components';
 
+import { AucDialogPosition } from '../../../../../../../applicature/components/src/lib/dialog';
+
 
 @Component({
   selector: 'doc-custom-dialog-view',
@@ -61,7 +63,7 @@ export class CustomDialogViewComponent {
 export class CustomDialogComponent {
   dialogPosition: FormControl = new FormControl(AUC_DIALOG_POSITIONS.CENTER);
 
-  dialogPositionsList: AUC_DIALOG_POSITIONS[] = [
+  dialogPositionsList: AucDialogPosition[] = [
     AUC_DIALOG_POSITIONS.CENTER,
     AUC_DIALOG_POSITIONS.BOTTOM,
     AUC_DIALOG_POSITIONS.LEFT,
