@@ -4,7 +4,7 @@
             [appearance]="BTN_APPEARANCE.ICON"
             [disabled]="disabled"
             leftIcon="wcl-icon-recent"
-            (onClick)="onTransactionsClick()"
+            (buttonClicked)="onTransactionsClick()"
 >
 </auc-button>
 
@@ -14,7 +14,7 @@
             [color]="COLORS.RED"
             [disabled]="disabled"
             rightIcon="wcl-icon-fail"
-            (onClick)="onTransactionsClick()"
+            (buttonClicked)="onTransactionsClick()"
 >
 </auc-button>
 
@@ -24,6 +24,6 @@
             [pending]="true"
             [color]="COLORS.WHITE"
             [disabled]="disabled"
-            (onClick)="onTransactionsClick()"
+            (buttonClicked)="onTransactionsClick()"
 >
 </auc-button>

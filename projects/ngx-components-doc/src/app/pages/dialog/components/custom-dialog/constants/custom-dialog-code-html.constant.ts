@@ -1,8 +1,9 @@
-export const CustomDialogCodeHtml = `<div class="doc-grid-container">
+export const CustomDialogCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
 
     <auc-button label="Show custom modal"
-                (onClick)="showModal()"
+                (buttonClicked)="showModal()"
     >
     </auc-button>
   </div>

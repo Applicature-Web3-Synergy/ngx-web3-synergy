@@ -217,7 +217,7 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
       return;
     }
 
-    this.trigger.showHide(false);
+    this.trigger.showHideStatus(false);
 
     this.contentBody.destroy();
   }

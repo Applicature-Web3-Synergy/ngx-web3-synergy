@@ -7,7 +7,7 @@
             [leftIcon]="isWrongNetwork ? 'wcl-icon-wrong' : currentNetwork?.icon"
             [rightIcon]="isOptionsOpen ? 'wcl-icon-chevron-up' : 'wcl-icon-chevron-down'"
             [adaptive]="networkDropdownConfig?.fullwidth"
-            (onShowHide)="setOpened($event)">
+            (showHide)="setOpened($event)">
 </auc-button>
 
 <auc-dropdown-menu *ngIf="isOptionsOpen"

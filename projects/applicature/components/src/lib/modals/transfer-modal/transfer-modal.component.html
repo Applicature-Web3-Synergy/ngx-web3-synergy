@@ -44,13 +44,13 @@
     <auc-button [label]="data.approveButton"
                 [adaptive]="true"
                 [height]="48"
-                (onClick)="onApproveClick()"></auc-button>
+                (buttonClicked)="onApproveClick()"></auc-button>
   </ng-container>
 
   <ng-template #transferButton>
     <auc-button [label]="data.confirmButton"
                 [adaptive]="true"
                 [height]="48"
-                (onClick)="onConfirmClick()"></auc-button>
+                (buttonClicked)="onConfirmClick()"></auc-button>
   </ng-template>
 </div>

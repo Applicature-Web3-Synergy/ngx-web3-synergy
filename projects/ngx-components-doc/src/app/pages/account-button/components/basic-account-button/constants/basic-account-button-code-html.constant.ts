@@ -1,4 +1,5 @@
-export const BasicAccountButtonCodeHtml = `<div class="doc-grid-container">
+export const BasicAccountButtonCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
     <h5 class="doc-grid-item-title">Default</h5>
 
@@ -12,7 +13,7 @@ export const BasicAccountButtonCodeHtml = `<div class="doc-grid-container">
                         [options]="accountOptions"
                         [accountDropdownConfig]="accountDropdownConfig"
                         [size]="50"
-                        (optionClick)="onOptionClick($event)"
+                        (optionClicked)="optionClicked($event)"
     >
     </auc-account-button>
   </div>

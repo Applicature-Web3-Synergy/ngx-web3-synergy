@@ -13,11 +13,11 @@ import { AUC_CONNECT_WALLET_APPEARANCE, AucConnectionState } from '@applicature/
 export class ConnectWalletWithNetworkComponent {
   public WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
-  onConnect(evt: AucConnectionState): void {
+  connected(evt: AucConnectionState): void {
     console.log('Connected Wallet: ', evt);
   }
 
-  onDisconnect(): void {
+  disconnected(): void {
     console.log('Disconnected Wallet');
   }
 }

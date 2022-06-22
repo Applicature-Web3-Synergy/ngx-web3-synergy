@@ -1,4 +1,5 @@
-export const CustomizedAccountBalanceCodeHtml = `<div class="doc-grid-container">
+export const CustomizedAccountBalanceCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
     <auc-account-balance
       [isCurrency]="balanceForm.get('showCurrency').value"
@@ -11,7 +12,7 @@ export const CustomizedAccountBalanceCodeHtml = `<div class="doc-grid-container"
                           color: accountAddressForm.get('color').value,
                           disabled: accountAddressForm.get('disabled').value
                         }"
-      (onAddressClick)="onAddressClick()"
+      (accountClicked)="accountClicked()"
     >
     </auc-account-balance>
   </div>

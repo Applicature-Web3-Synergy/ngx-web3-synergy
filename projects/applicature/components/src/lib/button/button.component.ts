@@ -150,8 +150,8 @@ export class AucButtonComponent implements OnInit, OnChanges {
    * Emits an action when button was clicked. <br>
    * Emitted value is native click value.
    */
-  @Output('onClick')
-  public onClickEmitter: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  public buttonClicked: EventEmitter<any> = new EventEmitter<any>();
 
   /** @internal */
   public styleProperties: AucSetStyleProp[] = [];
@@ -198,13 +198,13 @@ export class AucButtonComponent implements OnInit, OnChanges {
     this.setProperties();
   }
 
-  /** Emit {@link onClickEmitter} event. */
-  public onClick(event: any): void {
+  /** Emit {@link buttonClicked} event. */
+  public clicked(event: any): void {
     if (this.disabled) {
       return;
     }
 
-    this.onClickEmitter.emit(event);
+    this.buttonClicked.emit(event);
   }
 
   /** @internal */

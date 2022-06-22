@@ -5,7 +5,7 @@ export const IconButtonCodeHtml =
 
     <auc-button [appearance]="BUTTON_APPEARANCE.ICON"
                 [leftIcon]="WLC_ICON.STAR"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>
@@ -16,7 +16,7 @@ export const IconButtonCodeHtml =
     <auc-button appearance="icon"
                 leftIcon="wcl-icon-recent"
                 color="white"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>
@@ -27,7 +27,7 @@ export const IconButtonCodeHtml =
     <auc-button [appearance]="BUTTON_APPEARANCE.ICON"
                 [leftIcon]="WLC_ICON.WALLET"
                 [transparent]="true"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>
@@ -38,7 +38,7 @@ export const IconButtonCodeHtml =
     <auc-button [appearance]="BUTTON_APPEARANCE.ICON"
                 leftIcon="assets/img/icons/eth.svg"
                 [transparent]="true"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>

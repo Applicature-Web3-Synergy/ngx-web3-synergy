@@ -85,7 +85,7 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
    * Emitted value is native click value.
    */
   @Output()
-  public onAddressClick: EventEmitter<any> = new EventEmitter<any>();
+  public accountClicked: EventEmitter<any> = new EventEmitter<any>();
 
   /** @internal */
   @ViewChild('addressRef', { static: true })
@@ -208,9 +208,9 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
     this._cdr.markForCheck();
   }
 
-  /** Emit {@link onAddressClick} event. */
-  public onAccountButtonClick(evt): void {
-    this.onAddressClick.next(evt);
+  /** Emit {@link accountClicked} event. */
+  public accountButtonClick(evt): void {
+    this.accountClicked.next(evt);
   }
 
 }

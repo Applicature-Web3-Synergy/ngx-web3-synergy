@@ -1,10 +1,11 @@
-export const ConnectWalletAsIconCodeHtml = `<div class="doc-grid-container">
+export const ConnectWalletAsIconCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
     <h5 class="doc-grid-item-title">Default</h5>
 
     <auc-connect-wallet [appearance]="WALLET_APPEARANCE.ICON"
-                        (onConnect)="onConnect($event)"
-                        (onDisconnect)="onDisconnect()"
+                        (connected)="connected($event)"
+                        (disconnected)="disconnected()"
     >
     </auc-connect-wallet>
   </div>
@@ -14,8 +15,8 @@ export const ConnectWalletAsIconCodeHtml = `<div class="doc-grid-container">
 
     <auc-connect-wallet [appearance]="WALLET_APPEARANCE.ICON"
                         [showBalance]="true"
-                        (onConnect)="onConnect($event)"
-                        (onDisconnect)="onDisconnect()"
+                        (connected)="connected($event)"
+                        (disconnected)="disconnected()"
     >
     </auc-connect-wallet>
   </div>
@@ -25,8 +26,8 @@ export const ConnectWalletAsIconCodeHtml = `<div class="doc-grid-container">
 
     <auc-connect-wallet [appearance]="WALLET_APPEARANCE.ICON"
                         [showTransactions]="true"
-                        (onConnect)="onConnect($event)"
-                        (onDisconnect)="onDisconnect()"
+                        (connected)="connected($event)"
+                        (disconnected)="disconnected()"
     >
     </auc-connect-wallet>
   </div>
@@ -36,9 +37,9 @@ export const ConnectWalletAsIconCodeHtml = `<div class="doc-grid-container">
 
     <auc-connect-wallet [appearance]="WALLET_APPEARANCE.ICON"
                         [accountOptions]="accountOptions"
-                        (onConnect)="onConnect($event)"
-                        (onDisconnect)="onDisconnect()"
-                        (optionClicked)="onOptionClicked($event)"
+                        (connected)="connected($event)"
+                        (disconnected)="disconnected()"
+                        (optionClicked)="optionClicked($event)"
     >
     </auc-connect-wallet>
   </div>
@@ -49,8 +50,8 @@ export const ConnectWalletAsIconCodeHtml = `<div class="doc-grid-container">
     <auc-connect-wallet [appearance]="WALLET_APPEARANCE.ICON"
                         [account]="{ name: 'Account Name', image: 'assets/img/ex-avatar.png'}"
                         [accountDropdownConfig]="accountDropdownConfig"
-                        (onConnect)="onConnect($event)"
-                        (onDisconnect)="onDisconnect()"
+                        (connected)="connected($event)"
+                        (disconnected)="disconnected()"
     >
     </auc-connect-wallet>
   </div>
