@@ -79,12 +79,12 @@ export class AppComponent implements OnInit {
       });
   }
 
-  public onDisconnect(evt): void {
-    console.log('onDisconnect: ', evt);
+  public disconnected(evt): void {
+    console.log('disconnected: ', evt);
   }
 
-  public onConnect(evt): void {
-    console.log('onConnect: ', evt);
+  public connected(evt): void {
+    console.log('connected: ', evt);
   }
 
   public customBtnConnect(): void {

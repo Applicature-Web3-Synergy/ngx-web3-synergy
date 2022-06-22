@@ -22,9 +22,9 @@
   <ng-container [ngSwitch]="data.appearance">
     <ng-container *ngSwitchCase="'switch'">
       <auc-button [label]="data.switchLabel"
-                          (onClick)="onSwitchNetworkClick()"
-                          [adaptive]="true"
-                          class="auc-wrong-network-action auc-switch-network-btn"
+                  (buttonClicked)="onSwitchNetworkClick()"
+                  [adaptive]="true"
+                  class="auc-wrong-network-action auc-switch-network-btn"
       >
       </auc-button>
     </ng-container>
@@ -33,7 +33,7 @@
       <auc-button label="Disconnect"
                           [color]="disconnectBtnColor"
                           [adaptive]="true"
-                          (onClick)="onDisconnectClick()"
+                          (buttonClicked)="disconnectClick()"
                           class="auc-wrong-network-action auc-disconnect-btn"
       >
       </auc-button>

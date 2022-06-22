@@ -59,7 +59,7 @@ export class CustomizedAccountBalanceComponent {
     })
   }
 
-  onAddressClick(): void {
+  accountClicked(): void {
     console.log('Account balance address button was clicked');
   }
 }

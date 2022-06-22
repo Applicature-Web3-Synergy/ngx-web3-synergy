@@ -36,7 +36,7 @@ export class AucWrongNetworkModalComponent extends BaseSubscriber {
     this.onCloseClick(true);
   }
 
-  public onDisconnectClick(): void {
+  public disconnectClick(): void {
     this._walletConnectService.disconnectWallet()
       .pipe(takeUntil(this.notifier))
       .subscribe();

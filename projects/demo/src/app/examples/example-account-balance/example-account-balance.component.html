@@ -113,7 +113,7 @@
 <auc-account-balance
   [isCurrency]="true"
   [showAddress]="true"
-  (onAddressClick)="onAddressClick()"
+  (accountClicked)="accountClicked()"
 ></auc-account-balance>
 
 <br>
@@ -125,7 +125,7 @@
   [isCurrency]="true"
   [color]="COLORS.BLUE"
   [showAddress]="true"
-  (onAddressClick)="onAddressClick()"
+  (accountClicked)="accountClicked()"
 ></auc-account-balance>
 
 <br>
@@ -137,7 +137,7 @@
   [isCurrency]="true"
   [appearance]="BALANCE_APPEARANCE.TRANSPARENT"
   [showAddress]="true"
-  (onAddressClick)="onAddressClick()"
+  (accountClicked)="accountClicked()"
 ></auc-account-balance>
 
 <br>
@@ -149,7 +149,7 @@
   [isCurrency]="true"
   [appearance]="BALANCE_APPEARANCE.TRANSLUCENT"
   [showAddress]="true"
-  (onAddressClick)="onAddressClick()"
+  (accountClicked)="accountClicked()"
 ></auc-account-balance>
 
 <br>
@@ -162,7 +162,7 @@
   [appearance]="BALANCE_APPEARANCE.TRANSLUCENT"
   [color]="COLORS.GRAY"
   [showAddress]="true"
-  (onAddressClick)="onAddressClick()"
+  (accountClicked)="accountClicked()"
 ></auc-account-balance>
 
 <br>
@@ -177,7 +177,7 @@
   [addressConfig]="{
     showIdenticon: true
   }"
-  (onAddressClick)="onAddressClick()"
+  (accountClicked)="accountClicked()"
 ></auc-account-balance>
 
 <h2>Icon + appearance translucent + adderss + address idenciton + identicon position left + address color</h2>
@@ -191,7 +191,7 @@
     identiconPosition: IDENTICON_POSITION.LEFT,
     color: COLORS.BLUE
   }"
-  (onAddressClick)="onAddressClick()"
+  (accountClicked)="accountClicked()"
 ></auc-account-balance>
 
 <h2>Without Icon + appearance translucent + adderss + address idenciton + identicon position left + address color + address disabled</h2>
@@ -205,5 +205,5 @@
     color: COLORS.BLUE,
     disabled: true
   }"
-  (onAddressClick)="onAddressClick()"
+  (accountClicked)="accountClicked()"
 ></auc-account-balance>

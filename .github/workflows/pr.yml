@@ -1,8 +1,8 @@
-name: Build and publish
+name: PR
 
 on:
-  push:
-    branches: [ master ]
+  pull_request:
+    branches: [ "**" ]
 
 jobs:
   build:
@@ -42,25 +42,3 @@ jobs:
         with:
           name: dist
           path: dist
-
-  publish:
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    needs: [build]
-    strategy:
-      matrix:
-        package_name: [components,styles]
-    steps:
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
-      - uses: actions/download-artifact@v3
-      - name: Publish project
-        run: |
-          cd dist/applicature/${{ matrix.package_name }}
-          npm pack .
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

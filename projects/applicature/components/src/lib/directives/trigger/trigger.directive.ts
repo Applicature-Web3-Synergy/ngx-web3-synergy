@@ -23,7 +23,7 @@ export class AucTriggerDirective {
    * If closed - false.
    */
   @Output()
-  public onShowHide: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public showHide: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   /** @internal */
   private _customClass: AucCustomClassDirective;
@@ -46,7 +46,7 @@ export class AucTriggerDirective {
   private set _opened(opened: boolean) {
     this._isOpened = opened;
     this.opened$.next(this.opened);
-    this.onShowHide.emit(this.opened);
+    this.showHide.emit(this.opened);
   }
 
   /** @internal */
@@ -54,7 +54,7 @@ export class AucTriggerDirective {
     e.preventDefault();
     e.stopPropagation();
 
-    this.showHide();
+    this.showHideStatus();
   }
 
   /** @internal */
@@ -70,7 +70,7 @@ export class AucTriggerDirective {
    * Sets show or hide status.
    * @param isOpen: isOpened status.
    */
-  public showHide(isOpen?: boolean): void {
+  public showHideStatus(isOpen?: boolean): void {
     if ((isOpen ?? null) !== null) {
       this._opened = isOpen;
     } else {

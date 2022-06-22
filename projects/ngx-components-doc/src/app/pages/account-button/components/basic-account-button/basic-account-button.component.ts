@@ -28,7 +28,7 @@ export class BasicAccountButtonComponent {
     }
   }
 
-  onOptionClick(evt: AucAccountOption) {
+  optionClicked(evt: AucAccountOption) {
     console.log('Account button option clicked: ', evt);
   }
 }

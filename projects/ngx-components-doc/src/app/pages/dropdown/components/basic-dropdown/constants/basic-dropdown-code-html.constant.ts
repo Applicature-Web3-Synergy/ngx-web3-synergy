@@ -1,8 +1,9 @@
-export const BasicDropdownCodeHtml = `<div class="doc-grid-container">
+export const BasicDropdownCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
     <h5 class="doc-grid-item-title">Default</h5>
 
-    <auc-button (onShowHide)="showHideDropdown($event)"
+    <auc-button (showHide)="showHideDropdown($event)"
                 label="Custom Dropdown Menu"
                 aucTrigger
                 #customMenuTrigger="aucTrigger"

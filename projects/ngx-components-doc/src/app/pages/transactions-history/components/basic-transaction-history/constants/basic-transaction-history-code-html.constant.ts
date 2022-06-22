@@ -1,4 +1,5 @@
-export const BasicTransactionHistoryCodeHtml = `<div class="doc-grid-container">
+export const BasicTransactionHistoryCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
     <h5 class="doc-grid-item-title">Default</h5>
 
@@ -12,11 +13,10 @@ export const BasicTransactionHistoryCodeHtml = `<div class="doc-grid-container">
   </div>
 
   <div class="doc-actions full-width" *ngIf="currentChainId">
-    <auc-button label="Add Success Transaction" (onClick)="addTransaction()"></auc-button>
-    <auc-button label="Add Pending Transaction" (onClick)="addTransaction(TRANSACTION_STATUS.PENDING)"></auc-button>
-    <auc-button label="Add Fail Transaction" (onClick)="addTransaction(TRANSACTION_STATUS.FAIL)"></auc-button>
-    <auc-button label="Clear Transactions" (onClick)="clearTransactions()"></auc-button>
+    <auc-button label="Add Success Transaction" (buttonClicked)="addTransaction()"></auc-button>
+    <auc-button label="Add Pending Transaction" (buttonClicked)="addTransaction(TRANSACTION_STATUS.PENDING)"></auc-button>
+    <auc-button label="Add Fail Transaction" (buttonClicked)="addTransaction(TRANSACTION_STATUS.FAIL)"></auc-button>
+    <auc-button label="Clear Transactions" (buttonClicked)="clearTransactions()"></auc-button>
   </div>
 </div>
-
 `;

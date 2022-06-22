@@ -12,11 +12,11 @@ import { AucConnectionState } from '@applicature/components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicConnectWalletComponent {
-  onConnect(evt: AucConnectionState): void {
+  connected(evt: AucConnectionState): void {
     console.log('Connected Wallet: ', evt);
   }
 
-  onDisconnect(): void {
+  disconnected(): void {
     console.log('Disconnected Wallet');
   }
 }

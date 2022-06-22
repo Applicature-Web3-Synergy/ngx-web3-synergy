@@ -1,4 +1,5 @@
-export const BasicAccountBalanceCodeHtml = `<div class="doc-grid-container">
+export const BasicAccountBalanceCodeHtml =
+`<div class="doc-grid-container">
   <div class="doc-grid-item">
     <h5 class="doc-grid-item-title">Default</h5>
 
@@ -52,7 +53,7 @@ export const BasicAccountBalanceCodeHtml = `<div class="doc-grid-container">
       [isCurrency]="true"
       [showAddress]="true"
       [appearance]="BALANCE_APPEARANCE.TRANSLUCENT"
-      (onAddressClick)="onAddressClick()"
+      (accountClicked)="accountClicked()"
     >
     </auc-account-balance>
   </div>

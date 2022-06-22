@@ -15,8 +15,8 @@
     <auc-connect-wallet [showBalance]="true"
                         [showNetworkOptions]="true"
                         [networkDropdownConfig]="networkDropdownConfig"
-                        (onConnect)="onConnect($event)"
-                        (onDisconnect)="onDisconnect($event)"
+                        (connected)="connected($event)"
+                        (disconnected)="disconnected($event)"
     >
     </auc-connect-wallet>
   </div>

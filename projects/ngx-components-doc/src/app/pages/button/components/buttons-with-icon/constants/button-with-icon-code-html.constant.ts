@@ -4,7 +4,7 @@ export const ButtonWithIconCodeHtm = `<div class="doc-grid-container">
 
     <auc-button label="Button"
                 [leftIcon]="WLC_ICON.STAR"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>
@@ -15,7 +15,7 @@ export const ButtonWithIconCodeHtm = `<div class="doc-grid-container">
     <auc-button label="Button"
                 rightIcon="wcl-icon-recent"
                 [color]="COLORS.WHITE"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>
@@ -27,7 +27,7 @@ export const ButtonWithIconCodeHtm = `<div class="doc-grid-container">
                 [leftIcon]="WLC_ICON.WALLET"
                 [rightIcon]="WLC_ICON.RECENT"
                 [transparent]="true"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>
@@ -38,7 +38,7 @@ export const ButtonWithIconCodeHtm = `<div class="doc-grid-container">
     <auc-button label="Button"
                 rightIcon="assets/img/icons/eth.svg"
                 [color]="COLORS.RED"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>
@@ -49,7 +49,7 @@ export const ButtonWithIconCodeHtm = `<div class="doc-grid-container">
     <auc-button label="1 pending"
                 [color]="COLORS.WHITE"
                 [pending]="true"
-                (onClick)="onClick($event)"
+                (buttonClicked)="onClick($event)"
     >
     </auc-button>
   </div>

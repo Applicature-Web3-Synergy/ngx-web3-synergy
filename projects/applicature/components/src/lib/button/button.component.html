@@ -5,7 +5,7 @@
         [style.height.px]="height"
         [disabled]="disabled"
         [ngClass]="classNames"
-        (click)="onClick($event)"
+        (click)="clicked($event)"
 >
   <ng-container [ngSwitch]="appearance">
     <ng-container *ngSwitchCase="BUTTON_APPEARANCE.ICON">
