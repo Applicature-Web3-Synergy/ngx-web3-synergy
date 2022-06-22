@@ -1,5 +1,5 @@
 export const IconButtonCodeTs =
-  `/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
+`/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
@@ -14,7 +14,6 @@ import { AUC_BUTTON_APPEARANCE, AUC_WLC_ICON } from '@applicature/components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconButtonsComponent {
-  public COLORS = AS_COLOR_GROUP;
   public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
   public WLC_ICON = AUC_WLC_ICON;
 
