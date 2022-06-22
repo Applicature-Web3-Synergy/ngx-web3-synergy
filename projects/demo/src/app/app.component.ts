@@ -104,7 +104,7 @@ export class AppComponent implements OnInit {
         .catch(error => observer.error(error));
     })
       .subscribe((connectionstate) => {
-        console.log('Custom connect connectionState 999: ', connectionstate);
+        console.log('Custom connect connectionState: ', connectionstate);
       })
   }
 }
