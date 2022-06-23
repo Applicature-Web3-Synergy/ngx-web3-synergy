@@ -1,8 +1,10 @@
 import { Injector, Type, InjectionToken, InjectFlags } from '@angular/core';
 
+
 export class AucDialogInjector implements Injector {
   constructor(
     private _parentInjector: Injector,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private _additionalTokens: WeakMap<any, any>
   ) {
   }
@@ -12,7 +14,9 @@ export class AucDialogInjector implements Injector {
     notFoundValue?: T,
     flags?: InjectFlags
   ): T;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   get(token: any, notFoundValue?: any);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   get<T>(token: any, notFoundValue?: any, flags?: any): T {
     const value = this._additionalTokens.get(token);
 

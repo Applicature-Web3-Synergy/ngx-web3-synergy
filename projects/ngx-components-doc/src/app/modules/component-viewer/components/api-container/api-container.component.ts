@@ -114,7 +114,7 @@ export class ApiContainerComponent implements AfterContentInit {
       return '';
     }
 
-    let type: DocType = doc.type;
+    const type: DocType = doc.type;
 
     if (!type) {
       const signature = ((doc.getSignature || doc.setSignature) ?? []).find(el => el.name === doc.name);
@@ -291,6 +291,7 @@ export class ApiContainerComponent implements AfterContentInit {
    * @param inspectedObject - The object to get inspected
    * @param keyName - The name of the key to be found
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private findKeys(inspectedObject: any, keyName: string): string[] {
     const results = [];
     if (typeof inspectedObject === 'object') {

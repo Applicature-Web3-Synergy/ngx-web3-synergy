@@ -14,7 +14,7 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 export class BasicButtonsComponent {
   public COLORS = AS_COLOR_GROUP;
 
-  onClick(event: any): void {
+  onClick(event): void {
     console.log('Button clicked: ', event);
   }
 

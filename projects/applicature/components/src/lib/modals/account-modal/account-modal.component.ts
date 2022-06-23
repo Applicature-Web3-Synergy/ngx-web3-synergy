@@ -21,7 +21,7 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
   public etherscanAddress$: Observable<string>;
   public transactions: AucTransactionItem[];
   public data: AucAccountModalData;
-  public loadingTransactions: boolean = true;
+  public loadingTransactions = true;
 
   constructor(
     private _config: AucDialogConfig<AucAccountModalData>,

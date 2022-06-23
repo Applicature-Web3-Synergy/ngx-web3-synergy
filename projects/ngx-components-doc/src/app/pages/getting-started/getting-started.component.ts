@@ -16,7 +16,7 @@ import { CodePrettyDirective } from '../../modules/code-example/directives';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GettingStartedComponent extends BaseSubscriber implements OnInit {
-  markdown: string = '';
+  markdown = '';
 
   constructor(private cdr: ChangeDetectorRef,
               private http: HttpClient,

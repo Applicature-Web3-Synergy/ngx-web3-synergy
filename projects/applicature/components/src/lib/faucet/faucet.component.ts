@@ -11,7 +11,7 @@ import { BaseSubscriber } from '../helpers';
 import { AucWalletConnectService } from '../connect/services';
 import ERC20 from '../smart-contracts/ERC20.json'
 
-
+// eslint-disable @typescript-eslint/no-unsafe-call
 @Component({
   selector: 'auc-faucet',
   templateUrl: './faucet.component.html',
@@ -31,7 +31,7 @@ export class AucFaucetComponent extends BaseSubscriber implements OnInit {
   public account: string;
 
   /** @internal */
-  public hasPending: boolean = false;
+  public hasPending = false;
 
   /**
    * Sets icon of the token. <br>

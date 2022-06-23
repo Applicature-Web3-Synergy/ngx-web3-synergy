@@ -29,7 +29,7 @@ export class AucTriggerDirective {
   private _customClass: AucCustomClassDirective;
 
   /** @internal */
-  private _isOpened: boolean = false;
+  private _isOpened = false;
 
   /**
    * Emits opened status. <br>

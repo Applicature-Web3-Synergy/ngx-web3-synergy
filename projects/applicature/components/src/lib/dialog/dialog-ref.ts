@@ -1,5 +1,6 @@
 import { Observable, Subject } from 'rxjs';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class AucDialogRef<R = any> {
   private readonly _afterClosed = new Subject<R>();
   private readonly _afterOpened = new Subject<null>();
@@ -8,6 +9,7 @@ export class AucDialogRef<R = any> {
    * Emits after dialog was closed. <br>
    * You can add subscription for it if needed. this.dialogRed.afterClosed.subscribe();
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public afterClosed: Observable<any> = this._afterClosed.asObservable();
 
   /**

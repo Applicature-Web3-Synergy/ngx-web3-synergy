@@ -27,6 +27,7 @@ export type AucValueType = EnumsTypeTransformer<AUC_VALUE_TYPES.ARRAY
  * @param value - value to check type.
  * @param type - expected type of Value;
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function aucCheckValueType<T = any>(value: T, type: AucValueType): boolean {
   const valueType = Object.prototype.toString.call(value).slice(8, -1);
 

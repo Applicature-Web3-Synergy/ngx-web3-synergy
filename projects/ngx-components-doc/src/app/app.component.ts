@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostListener, Inject, ViewChild } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Event, NavigationEnd, Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
@@ -35,6 +35,7 @@ export class AppComponent extends BaseSubscriber {
 
     this.router.events
       .pipe(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         filter((event: any) => event instanceof NavigationEnd),
         takeUntil(this.notifier)
       )
@@ -53,7 +54,7 @@ export class AppComponent extends BaseSubscriber {
       })
   }
 
-  checkIsMobile(startMobileWidth: number = 959): void {
+  checkIsMobile(startMobileWidth = 959): void {
    this.isMobile = (document?.body?.offsetWidth || 0) <= startMobileWidth;
   }
 }

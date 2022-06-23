@@ -9,10 +9,12 @@ import 'code-prettify/loader/run_prettify';
   exportAs: 'docCodePretty'
 })
 export class CodePrettyDirective implements AfterViewInit {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private window: Window & { PR: any };
 
   constructor(@Inject(DOCUMENT) private document: Document
   ) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.window = this.document.defaultView as any;
   }
 
@@ -21,6 +23,7 @@ export class CodePrettyDirective implements AfterViewInit {
   }
 
   public prettyPrint(): void {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     setTimeout(() => {
       this.window?.PR?.prettyPrint();
     }, 100);

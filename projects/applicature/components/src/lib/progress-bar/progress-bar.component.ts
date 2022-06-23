@@ -21,6 +21,7 @@ export class AucProgressBarComponent implements OnInit, OnChanges {
    * It's an optional parameter. <br>
    * The default value is 100.
    */
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   @Input()
   public total: number = 100;
 

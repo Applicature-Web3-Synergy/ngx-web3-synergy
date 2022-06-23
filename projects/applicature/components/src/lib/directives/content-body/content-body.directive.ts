@@ -18,8 +18,10 @@ import { AucBlockScrollHelperService } from '../../helpers';
   providers: [ AucBlockScrollHelperService ]
 })
 export class AucContentBodyDirective implements AfterViewInit, OnDestroy {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _embeddedViewRef: EmbeddedViewRef<any>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(private _templateRef: TemplateRef<any>,
               private _viewContainerRef: ViewContainerRef,
               @Inject(DOCUMENT) private _document: Document,

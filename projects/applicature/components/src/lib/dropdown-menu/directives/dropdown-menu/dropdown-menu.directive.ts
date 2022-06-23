@@ -8,6 +8,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AucDropdownMenuDirective implements AfterViewInit {
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(private _templateRef: TemplateRef<any>,
               private _viewContainerRef: ViewContainerRef,
               @Inject(DOCUMENT) private document: Document
@@ -15,11 +16,11 @@ export class AucDropdownMenuDirective implements AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    let embeddedViewRef = this._viewContainerRef.createEmbeddedView(this._templateRef);
+    const embeddedViewRef = this._viewContainerRef.createEmbeddedView(this._templateRef);
 
     embeddedViewRef.detectChanges();
 
-    embeddedViewRef.rootNodes.forEach(node => this.document.body.appendChild(node))
+    embeddedViewRef.rootNodes.forEach(node => this.document.body.appendChild(node));
   }
 
 }

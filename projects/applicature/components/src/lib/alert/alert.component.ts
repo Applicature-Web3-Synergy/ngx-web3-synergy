@@ -65,7 +65,7 @@ export class AucAlertComponent implements OnInit, OnChanges {
 
   /** @internal */
   public ngOnChanges(): void {
-    const { base, text } = AsColors[this.color] as AsColorProperties;
+    const { base, text } = AsColors[this.color];
 
     this.styleProperties = [
       {

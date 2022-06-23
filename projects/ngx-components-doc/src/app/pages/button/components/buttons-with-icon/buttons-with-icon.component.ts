@@ -16,7 +16,7 @@ export class ButtonsWithIconComponent {
   public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
   public WLC_ICON = AUC_WLC_ICON;
 
-  onClick(event: any): void {
+  onClick(event): void {
     console.log('Button with icon clicked: ', event);
   }
 

@@ -10,18 +10,18 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicInputComponent {
-  public suffix: string = 'ETH';
-  public prefix: string = '$';
-  public defaultVal: string = 'Default Value';
-  public disabledVal: string = 'Disabled Field value';
-  public withLabelVal: string = '';
-  public withPlaceholderVal: string = '';
-  public withHintVal: string = '';
-  public withDecimalVal: string = '0';
-  public withSuffixVal: string = '0';
-  public withPrefixVal: string = '0';
-  public nonDecimalsVal: string = '0';
-  public customHeightVal: string = '';
-  public fullWidthVal: string = '';
+  public suffix = 'ETH';
+  public prefix = '$';
+  public defaultVal = 'Default Value';
+  public disabledVal = 'Disabled Field value';
+  public withLabelVal = '';
+  public withPlaceholderVal = '';
+  public withHintVal = '';
+  public withDecimalVal = '0';
+  public withSuffixVal = '0';
+  public withPrefixVal = '0';
+  public nonDecimalsVal = '0';
+  public customHeightVal = '';
+  public fullWidthVal = '';
 
 }

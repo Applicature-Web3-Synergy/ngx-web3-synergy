@@ -1,7 +1,8 @@
 {
   "extends": "../../.eslintrc.json",
   "ignorePatterns": [
-    "!**/*"
+    "!**/*",
+    "src/polyfills.ts"
   ],
   "overrides": [
     {
@@ -31,7 +32,9 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "no-console": "off"
       }
     },
     {

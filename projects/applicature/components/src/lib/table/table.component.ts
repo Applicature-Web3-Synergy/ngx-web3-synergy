@@ -20,7 +20,7 @@ export class AucTableComponent {
   public set tableHeaders(headers: AucTableHeaderItem[]) {
     this.headers = headers.sort((a: AucTableHeaderItem, b: AucTableHeaderItem) =>
       a.position - b.position);
-  };
+  }
 
   /**
    * Table data. <br>

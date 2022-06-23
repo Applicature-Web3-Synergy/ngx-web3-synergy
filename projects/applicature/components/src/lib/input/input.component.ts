@@ -21,7 +21,7 @@ export const INPUT_FIELD_VALUE_ACCESSOR = {
   multi: true,
 };
 
-
+// eslint-disable @typescript-eslint/no-explicit-any
 @Component({
   selector: 'auc-input',
   templateUrl: './input.component.html',
@@ -127,7 +127,7 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   public value!: string;
 
   /** @internal*/
-  public focus: boolean = false;
+  public focus = false;
 
   /** @internal*/
   public get classNames(): { [el: string]: boolean } {
@@ -181,11 +181,13 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   }
 
   /** Register Field OnChange function. */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public registerOnChange(fn: any): void {
     this._onChange = fn;
   }
 
   /** Register Field OnTouched function. */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public registerOnTouched(fn: any): void {
     this._onTouched = fn;
   }
@@ -202,10 +204,12 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   }
 
   /** @internal*/
+  // eslint-disable-next-line  @typescript-eslint/no-empty-function
   private _onChange: (value: string) => void = () => {
   };
 
   /** @internal*/
+  // eslint-disable-next-line  @typescript-eslint/no-empty-function
   private _onTouched: () => void = () => {
   };
 
