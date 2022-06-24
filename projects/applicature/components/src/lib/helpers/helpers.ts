@@ -34,5 +34,6 @@ export function aucGenerateJazzicon(address: string, diameter = 20): HTMLDivElem
     return null;
   }
 
-  return jazzicon(diameter, parseInt(address.slice(2, 10), 16));
+  // eslint-disable-next-line  @typescript-eslint/no-unsafe-call
+  return jazzicon(diameter, parseInt(address.slice(2, 10), 16)) as HTMLDivElement;
 }

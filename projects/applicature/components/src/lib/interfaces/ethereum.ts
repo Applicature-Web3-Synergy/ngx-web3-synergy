@@ -54,5 +54,5 @@ export interface AucEthereum {
 
   on(eventName: AUC_ETH_EVENTS.MESSAGE, handler: (message: AucProviderMessage) => void): void;
 
-  request<T = any>(args: AucRequestArguments): Promise<T>;
+  request<T = any>(args: AucRequestArguments): Promise<T>; // eslint-disable-line  @typescript-eslint/no-explicit-any
 }

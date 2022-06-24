@@ -66,6 +66,7 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
    * I's an optional parameter.</br>
    * The default value is false.
    */
+  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   @Input()
   public bordered: boolean = false;
 
@@ -73,10 +74,10 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
   @Output()
   public networkSelected: EventEmitter<AucSelectedNetwork> = new EventEmitter<AucSelectedNetwork>();
 
-  @HostBinding('class.auc-full-width') private _fullWidth: boolean = true;
+  @HostBinding('class.auc-full-width') private _fullWidth = true;
 
   /** @internal */
-  public isWrongNetwork: boolean = false;
+  public isWrongNetwork = false;
 
   /** Current active network */
   public currentNetwork: Chain;
@@ -85,7 +86,7 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
   public chainsList: Chain[] = [];
 
   /** @internal */
-  public isOptionsOpen: boolean = false;
+  public isOptionsOpen = false;
 
   /** @internal */
   public COLORS = AS_COLOR_GROUP;

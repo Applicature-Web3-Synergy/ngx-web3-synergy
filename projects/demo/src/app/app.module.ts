@@ -42,6 +42,7 @@ const walletConnect = walletConnectModule({
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return () => walletConnectService.initialize({
     wallets: [
       /** Shows always Metamask wallet. Doesn't matter is Metamask installed. */

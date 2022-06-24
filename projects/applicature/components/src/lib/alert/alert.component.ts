@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
-import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
+import { AS_COLOR_GROUP, AsColorGroup, AsColors } from '@applicature/styles';
 
 import { AucSetStyleProp } from '../directives';
 import { AucAlertPosition } from './types';
@@ -65,7 +65,7 @@ export class AucAlertComponent implements OnInit, OnChanges {
 
   /** @internal */
   public ngOnChanges(): void {
-    const { base, text } = AsColors[this.color] as AsColorProperties;
+    const { base, text } = AsColors[this.color];
 
     this.styleProperties = [
       {

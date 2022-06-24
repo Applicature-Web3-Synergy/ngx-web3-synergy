@@ -18,9 +18,8 @@ import BigNumber from 'bignumber.js';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
 import { aucGenerateJazzicon, aucToBN, BaseSubscriber } from '../helpers';
-import { AucWalletConnectService } from '../connect/services';
+import { AucWalletConnectService } from '../connect';
 import { AucBalanceAppearance } from './types';
-import { AUC_BALANCE_APPEARANCE } from './enums';
 import { AucSetStyleProp } from '../directives';
 import { AucAccountBalanceAddressConfig } from './interfaces';
 
@@ -85,7 +84,7 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
    * Emitted value is native click value.
    */
   @Output()
-  public accountClicked: EventEmitter<any> = new EventEmitter<any>();
+  public accountClicked: EventEmitter<any> = new EventEmitter<any>(); // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /** @internal */
   @ViewChild('addressRef', { static: true })

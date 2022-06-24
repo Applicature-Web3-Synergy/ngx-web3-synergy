@@ -1,6 +1,7 @@
 import { AucDialogPosition } from './types';
 import { AucCustomizeDialogOverlayConfigInterface } from './interfaces';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class AucDialogConfig<D = any> {
   data?: D; // Data for injected component.
   width?: string; // '300px', '50%', '1rem' ...

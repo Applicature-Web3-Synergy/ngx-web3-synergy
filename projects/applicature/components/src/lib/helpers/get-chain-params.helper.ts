@@ -7,7 +7,7 @@ import { AucBlockExplorerUrls, AucChainName, AucNativeCurrencies, AucRpcUrls } f
  * @param chainId - 0x-prefixed hexadecimal string;
  */
 
-export function aucGetChainParams(chainId: string = ''): AucEthChainParams {
+export function aucGetChainParams(chainId = ''): AucEthChainParams {
   if (!AucChainName[chainId]) {
     return null;
   }

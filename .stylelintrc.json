@@ -1,0 +1,61 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "string-quotes": null,
+    "no-empty-source": null,
+    "value-keyword-case": null,
+    "color-hex-case": null,
+    "no-descending-specificity": null,
+    "selector-pseudo-element-colon-notation": null,
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null,
+    "selector-attribute-quotes": null,
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number",
+    "font-family-name-quotes": "always-unless-keyword",
+    "font-family-no-missing-generic-family-keyword": [
+      true,
+      {
+        "ignoreFontFamilies": ["wcl-icons"]
+      }
+    ],
+    "function-name-case": [
+      "lower",
+      {
+        "ignoreFunctions": ["c.getColor"]
+      }
+    ],
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "ignore": [
+          "inside-block",
+          "first-nested",
+          "blockless-after-blockless"
+        ],
+        "ignoreAtRules": ["use"]
+      }
+    ],
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": [
+          "font",
+          "transition",
+          "animation",
+          "flex",
+          "flex-flow",
+          "grid",
+          "grid-area",
+          "grid-column",
+          "grid-gap",
+          "grid-row",
+          "grid-template"
+        ]
+      }
+    ],
+    "custom-property-pattern": null,
+    "scss/no-global-function-names": null,
+    "scss/at-function-pattern": null
+  }
+}

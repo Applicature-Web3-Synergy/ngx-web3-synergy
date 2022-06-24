@@ -132,7 +132,7 @@ export class BasicTableComponent {
     }
   ];
   public tableData: AucTableRow[] = [ ...TableData ];
-  public isLoadMore: boolean = true;
+  public isLoadMore = true;
 
   loadMoreTable(): void {
     console.log('Table Load more clicked');

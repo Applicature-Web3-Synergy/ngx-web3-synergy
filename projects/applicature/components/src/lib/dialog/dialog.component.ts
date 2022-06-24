@@ -26,9 +26,11 @@ import { AucBlockScrollHelperService } from '../helpers';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AucDialogComponent implements AfterViewInit, OnDestroy {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private readonly _onClose = new Subject<any>();
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public componentRef: ComponentRef<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public childComponentType: Type<any>;
   public onClose = this._onClose.asObservable();
   public panelConfig: AucCustomizeDialogConfig;
@@ -129,11 +131,13 @@ export class AucDialogComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public loadChildComponent(componentType: Type<any>): void {
-    let componentFactory = this._componentFactoryResolver.resolveComponentFactory(componentType);
-    let viewContainerRef = this.insertionPoint.viewContainerRef;
+    const componentFactory = this._componentFactoryResolver.resolveComponentFactory(componentType);
+    const viewContainerRef = this.insertionPoint.viewContainerRef;
     viewContainerRef.clear();
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.componentRef = viewContainerRef.createComponent<any>(componentFactory);
   }
 }

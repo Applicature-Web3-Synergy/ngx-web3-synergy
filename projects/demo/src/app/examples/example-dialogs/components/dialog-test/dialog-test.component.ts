@@ -16,7 +16,7 @@ export class DialogTestComponent {
   constructor(public config: AucDialogConfig, private _dialogRef: AucDialogRef<string>) {
   }
 
-  onClose(val: any): void {
+  onClose(val): void {
     this._dialogRef.close(val);
   }
 

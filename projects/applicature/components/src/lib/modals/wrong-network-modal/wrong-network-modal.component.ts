@@ -28,7 +28,7 @@ export class AucWrongNetworkModalComponent extends BaseSubscriber {
     this.data = this._config.data;
   }
 
-  public onCloseClick(value: boolean = false): void {
+  public onCloseClick(value = false): void {
     this._dialogRef.close(value);
   }
 

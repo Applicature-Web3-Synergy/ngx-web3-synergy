@@ -23,6 +23,6 @@ export class AppInitializerService {
         }),
         map(() => null)
       )
-      .toPromise();
+      .toPromise()
   }
 }

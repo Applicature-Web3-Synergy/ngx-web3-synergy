@@ -33,7 +33,8 @@ export class AucDialogService {
   }
 
   /** @internal */
-  private appendDialogComponentToBody<T = any, R = any>(config: AucDialogConfig): AucDialogRef<R> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private appendDialogComponentToBody<R = any>(config: AucDialogConfig): AucDialogRef<R> {
     const map = new WeakMap();
     map.set(AucDialogConfig, config);
 
@@ -52,6 +53,7 @@ export class AucDialogService {
 
     this._appRef.attachView(componentRef.hostView);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     this.document.body.appendChild(domElem);
 
@@ -77,8 +79,9 @@ export class AucDialogService {
    * @param componentType - component which will be shown inside the dialog.
    * @param config - configuration for the dialog window. More details {@link AucDialogConfig}.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public open<T = any, D = any, R = any>(componentType: Type<T>, config: AucDialogConfig<D>): AucDialogRef<Type<R>> {
-    const dialogRef: AucDialogRef<Type<R>> = this.appendDialogComponentToBody<Type<T>, Type<R>>(config);
+    const dialogRef: AucDialogRef<Type<R>> = this.appendDialogComponentToBody<Type<R>>(config);
 
     this._dialogComponentRef.instance.childComponentType = componentType;
 

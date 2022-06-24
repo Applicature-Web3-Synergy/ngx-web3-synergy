@@ -158,16 +158,16 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
   public identicon: HTMLDivElement;
 
   /** @internal */
-  public isConnected: boolean = false;
+  public isConnected = false;
 
   /** @internal */
-  public hasFailedTx: boolean = false;
+  public hasFailedTx = false;
 
   /** @internal */
-  public hasPendingTx: boolean = false;
+  public hasPendingTx = false;
 
   /** @internal */
-  public txCount: number = 0;
+  public txCount = 0;
 
   /** @internal */
   public COLORS = AS_COLOR_GROUP;

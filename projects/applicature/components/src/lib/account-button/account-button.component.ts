@@ -45,6 +45,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
    * It's an optional parameter. <br>
    * The default value is 40.
    */
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   @Input()
   public size: number = 40;
 
@@ -78,7 +79,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
   public optionClicked: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
 
   /** @internal */
-  public isOptionsOpen: boolean = false;
+  public isOptionsOpen = false;
 
   /** @internal */
   public accountAddress!: string;

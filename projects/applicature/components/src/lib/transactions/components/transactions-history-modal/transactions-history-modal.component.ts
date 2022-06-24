@@ -18,7 +18,7 @@ import { BaseSubscriber } from '../../../helpers';
 export class AucTransactionsHistoryModalComponent extends BaseSubscriber implements OnDestroy {
   public transactions: AucTransactionItem[];
   public data: AucRecentTransactionsModalData;
-  public loading: boolean = true;
+  public loading = true;
 
   constructor(
     public _cdr: ChangeDetectorRef,

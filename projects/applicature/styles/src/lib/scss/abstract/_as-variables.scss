@@ -1,17 +1,22 @@
-$black: #222222;
-$white: #FFFFFF;
+$black: #222;
+$white: #FFF;
 $red-bg: #FCE7E8;
 $grey-bg: #F3F5FB;
 $table-hover-bg: #F9FAFD;
-
 $as-main-padding: 20px;
+
+// Borders
 
 $as-border-radius: (
   sm: 8px,
   lg: 12px
 );
 
-$as-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+// Fonts
+
+$as-font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+
+// Colors groups
 
 $as-colors: (
   blue: (
@@ -19,7 +24,7 @@ $as-colors: (
     hover: #608BF2,
     light: #8CABF6,
     dark: #3F67C7,
-    text: #FFFFFF,
+    text: #FFF,
     border: #4678F0,
     borderHover: #608BF2,
     borderFocus: #3F67C7,
@@ -29,7 +34,7 @@ $as-colors: (
     hover: #EA5C5E,
     light: #F0898B,
     dark: #C03B3C,
-    text: #FFFFFF,
+    text: #FFF,
     border: #E84142,
     borderHover: #EA5C5E,
     borderFocus: #C03B3C,
@@ -39,7 +44,7 @@ $as-colors: (
     hover: #6BD66B,
     light: #94E194,
     dark: #33A830,
-    text: #FFFFFF,
+    text: #FFF,
     border: #37CA34,
     borderHover: #6BD66B,
     borderFocus: #33A830,
@@ -49,7 +54,7 @@ $as-colors: (
     hover: #F2A45B,
     light: #F6BE8A,
     dark: #C77F3C,
-    text: #FFFFFF,
+    text: #FFF,
     border: #F09643,
     borderHover: #F2A45B,
     borderFocus: #C77F3C,
@@ -60,19 +65,19 @@ $as-colors: (
     light: #DDE3EC,
     dark: #5F7492,
     darkest: #151B26,
-    text: #FFFFFF,
+    text: #FFF,
     border: #6D87AC,
     borderHover: #BBC7D9,
     borderFocus: #5F7492,
     background: #F3F5FB
   ),
   white: (
-    base: #FFFFFF,
+    base: #FFF,
     hover: #F9FAFD,
-    light: #FFFFFF,
-    dark: #FFFFFF,
-    text: #222222,
-    border: #FFFFFF,
+    light: #FFF,
+    dark: #FFF,
+    text: #222,
+    border: #FFF,
     borderHover: #DDE3EC,
     borderFocus: #608BF2,
     boxShadow: rgba(56, 64, 75, 0.1)

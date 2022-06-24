@@ -59,7 +59,7 @@ export class AucWalletConnectService extends BaseSubscriber {
    */
   public get onboard(): OnboardAPI {
     return this._onboard;
-  };
+  }
 
   /** @returns Blockchain explorer urls config. */
   get blockExplorerUrlByChainId(): BlockExplorerUrlsByChainId {
@@ -92,7 +92,7 @@ export class AucWalletConnectService extends BaseSubscriber {
             return { connected: false };
           }
 
-          const connected: boolean = !!state?.wallets?.length;
+          const connected = !!state?.wallets?.length;
 
           if (!connected) {
             localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
@@ -359,10 +359,10 @@ export class AucWalletConnectService extends BaseSubscriber {
         : null
     )
       .pipe(
-        map(() => null),
         tap(() => {
           localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
-        })
+        }),
+        map(() => null),
       );
   }
 
@@ -381,8 +381,6 @@ export class AucWalletConnectService extends BaseSubscriber {
           }).then();
         }
       });
-
-    console.log(100500, this.onboard.state.get());
 
     this.onboard.state.select('wallets')
       .pipe(
@@ -427,10 +425,12 @@ export class AucWalletConnectService extends BaseSubscriber {
   }
 
   /** Init web3 instance */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public initWeb3<T = any>(provider?: T): Web3 {
     if (!provider) {
       this._web3 = new Web3();
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this._web3 = new Web3(provider as any);
     }
 
