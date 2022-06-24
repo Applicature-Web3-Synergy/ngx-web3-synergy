@@ -20,7 +20,6 @@ import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@appl
 import { aucGenerateJazzicon, aucToBN, BaseSubscriber } from '../helpers';
 import { AucWalletConnectService } from '../connect';
 import { AucBalanceAppearance } from './types';
-import { AUC_BALANCE_APPEARANCE } from './enums';
 import { AucSetStyleProp } from '../directives';
 import { AucAccountBalanceAddressConfig } from './interfaces';
 

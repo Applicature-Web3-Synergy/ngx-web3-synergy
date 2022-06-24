@@ -1,6 +1,5 @@
 @use 'common' as c;
 
-
 // Mat Tab
 .mat-tab-group {
   .mat-tab-header {
@@ -44,18 +43,16 @@
     }
 
     .mat-tab-body-content {
-      padding: 20px 0 0 0;
+      padding: 20px 0 0;
     }
   }
-
 }
 
 // End Mat Tab
 
-
 // Checkbox
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background
-.mat-checkbox-indeterminate,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background .mat-checkbox-indeterminate,
 .mat-checkbox-checked {
   &.mat-accent {
     .mat-checkbox-background {
@@ -63,4 +60,5 @@
     }
   }
 }
+
 // End Checkbox

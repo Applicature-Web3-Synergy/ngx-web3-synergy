@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
-import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
+import { AS_COLOR_GROUP, AsColorGroup, AsColors } from '@applicature/styles';
 
 import { AucSetStyleProp } from '../directives';
 import { AucAlertPosition } from './types';

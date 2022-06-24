@@ -24,6 +24,7 @@
     line-height: 20px;
     text-decoration: none;
     max-width: calc(100% - 25px);
+
     @include c.transition;
     @include c.text-overflow;
 

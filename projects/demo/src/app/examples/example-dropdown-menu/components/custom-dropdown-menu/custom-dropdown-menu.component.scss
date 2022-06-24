@@ -1,13 +1,14 @@
 @use 'as-common' as c;
 
 .custom-dropdown-container {
-  padding: 0
+  padding: 0;
 }
 
 .custom-dropdown-item {
   margin: 0;
   padding: 15px 10px;
   cursor: pointer;
+
   @include c.transition(background-color, 0.3s);
 
   &:hover {
