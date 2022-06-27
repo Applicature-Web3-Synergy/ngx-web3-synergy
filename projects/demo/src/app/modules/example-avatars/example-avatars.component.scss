@@ -1,0 +1,11 @@
+.example-avatars-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  auc-avatar {
+    margin: 10px 20px 10px 0;
+  }
+}

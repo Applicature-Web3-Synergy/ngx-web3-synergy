@@ -95,7 +95,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         },
         "@schematics/angular:application": {
           "strict": true
@@ -172,7 +173,8 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "projects/applicature/styles/src/lib/scss"
+                "projects/applicature/styles/src/lib/scss",
+                "projects/demo/src/scss"
               ]
             }
           },

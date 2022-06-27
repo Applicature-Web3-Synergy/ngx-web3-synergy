@@ -1,0 +1,122 @@
+<div class="example-block">
+  <h3 class="example-block-title">Default</h3>
+
+  <auc-connect-wallet (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">With balance</h3>
+
+  <auc-connect-wallet [showBalance]="true"
+                      (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">With Networks</h3>
+
+  <auc-connect-wallet [showNetworkOptions]="true"
+                      [networkDropdownConfig]="networkDropdownConfig"
+                      (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">All in one</h3>
+
+  <auc-connect-wallet [showBalance]="true"
+                      [showNetworkOptions]="true"
+                      [networkDropdownConfig]="networkDropdownConfig"
+                      (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+
+<div class="example-block">
+  <h3 class="example-block-title">As Icon Default</h3>
+
+  <auc-connect-wallet appearance="icon"
+                      (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">As Icon With Balance</h3>
+
+  <auc-connect-wallet appearance="icon"
+                      [showBalance]="true"
+                      (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">As Icon With Networks</h3>
+
+  <auc-connect-wallet appearance="icon"
+                      [showNetworkOptions]="true"
+                      [networkDropdownConfig]="networkDropdownConfig"
+                      (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">As Icon With Transactions</h3>
+
+  <auc-connect-wallet appearance="icon"
+                      [showTransactions]="true"
+                      (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">As Icon All in one</h3>
+
+  <auc-connect-wallet appearance="icon"
+                      [showBalance]="true"
+                      [showTransactions]="true"
+                      [showNetworkOptions]="true"
+                      [networkDropdownConfig]="networkDropdownConfig"
+                      [account]="{ name: 'John Doe', image: 'assets/images/ex-avatar.png' }"
+                      [accountOptions]="accountOptions"
+                      (connected)="connected($event)"
+                      (disconnected)="disconnected($event)">
+  </auc-connect-wallet>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">Custom Connect button</h3>
+
+  <button type="button"
+          (click)="!isConnected ? customBtnConnect() : customBtnDisconnect()"
+          class="custom-connect-btn"
+  >
+    Custom Button {{isConnected ? 'Disconnect' : 'Connect'}}
+  </button>
+</div>
+
+<div class="example-block">
+  <h3 class="example-block-title">Custom connect</h3>
+
+  <button type="button"
+          (click)="customConnect('MetaMask')"
+          class="custom-connect-btn"
+  >
+    {{connectedLabel === 'MetaMask' ? 'Disconnect' : 'Connect'}} WalletConnect
+  </button>
+
+  <button type="button"
+          (click)="customConnect('WalletConnect')"
+          class="custom-connect-btn"
+  >
+    {{connectedLabel === 'WalletConnect' ? 'Disconnect' : 'Connect'}} WalletConnect
+  </button>
+</div>
