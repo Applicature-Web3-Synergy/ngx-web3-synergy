@@ -1,0 +1,85 @@
+@use 'common' as c;
+
+ul[class],
+ol[class] {
+  padding: 0;
+  list-style: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  font-family: c.$main-font;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: c.$text-color;
+  background-color: c.$main-bg-color;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input,
+img,
+button,
+[type=button],
+textarea,
+mat-icon,
+select {
+  outline: none;
+  -webkit-appearance: none !important;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+}
+
+* {
+  font-family: c.$main-font;
+  box-sizing: border-box;
+}

@@ -1,21 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { takeUntil } from 'rxjs';
 
-import {
-  AUC_ALERT_POSITION,
-  AUC_BUTTON_APPEARANCE,
-  AUC_CONNECT_WALLET_APPEARANCE,
-  AUC_IDENTICON_POSITION,
-  AUC_POSITIONS,
-  AucAccountOption,
-  AucConnectionState,
-  AucDropdownConfig,
-  aucGenerateJazzicon,
-  AucTransactionService,
-  AucWalletConnectService
-} from '@applicature/components';
-import { AS_COLOR_GROUP } from '@applicature/styles';
-import { Observable } from 'rxjs';
-import { WalletState } from '@web3-onboard/core';
+import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '@applicature/components';
+
+import { BaseSubscriber } from '@applicature/components';
 
 
 @Component({
@@ -24,87 +12,20 @@ import { WalletState } from '@web3-onboard/core';
   styleUrls: [ './app.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
-  public identicon!: HTMLDivElement;
-  public COLORS = AS_COLOR_GROUP;
-  public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
-  public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
-  public ALERT_POSITION = AUC_ALERT_POSITION;
-  public CONNECT_WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
-
-  networkDropdownConfig: AucDropdownConfig = {
-    overlay: {
-      transparent: true
-    },
-    position: {
-      vertical: AUC_POSITIONS.BELOW,
-      horizontal: AUC_POSITIONS.AFTER
-    }
-  }
-
-  accountDropdownConfig: AucDropdownConfig = {
-    overlay: {
-      transparent: true
-    },
-    position: {
-      vertical: AUC_POSITIONS.BELOW,
-      horizontal: AUC_POSITIONS.BEFORE
-    }
-  }
-
-  public accountOptions: AucAccountOption[] = [
-    { name: 'My Account', id: '1' },
-    { name: 'Some menu Item', id: '2' },
-    { name: 'Some menu Item', id: '3' }
-  ];
+export class AppComponent extends BaseSubscriber {
+  isConnected: boolean;
 
   constructor(
     private _transactionService: AucTransactionService,
     private _walletConnectService: AucWalletConnectService,
     private _cdr: ChangeDetectorRef
   ) {
-  }
+    super();
 
-  public ngOnInit(): void {
-    this.identicon = aucGenerateJazzicon('0x6FF69D870c84a9D7F6c12095313F18F883A77f1D');
-
-    this._walletConnectService.accounts$
-      .subscribe((data) => {
-        console.log('Accounts Changed: ', data);
+    this._walletConnectService.connectionState$
+      .pipe(takeUntil(this.notifier))
+      .subscribe((connectionState: AucConnectionState) => {
+        this.isConnected = connectionState.connected;
       });
-
-    this._walletConnectService.chain$
-      .subscribe((data) => {
-        console.log('Chain Changed: ', data);
-      });
-  }
-
-  public disconnected(evt): void {
-    console.log('disconnected: ', evt);
-  }
-
-  public connected(evt): void {
-    console.log('connected: ', evt);
-  }
-
-  public customBtnConnect(): void {
-    this._walletConnectService.connect()
-      .subscribe((connectionstate: AucConnectionState) => {
-        console.log('Custom Btn connect connectionState: ', connectionstate);
-      })
-  }
-
-  public customConnect(): void {
-    new Observable<WalletState[]>(observer => {
-      this._walletConnectService.onboard.connectWallet({ autoSelect: { label: 'WalletConnect', disableModals: true } })
-        .then((connection: WalletState[]) => {
-          observer.next(connection);
-          observer.complete();
-        })
-        .catch(error => observer.error(error));
-    })
-      .subscribe((connectionstate) => {
-        console.log('Custom connect connectionState: ', connectionstate);
-      })
   }
 }

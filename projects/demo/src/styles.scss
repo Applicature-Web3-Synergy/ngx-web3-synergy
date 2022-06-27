@@ -1,29 +1,16 @@
-@import 'as-styles';
+@use "fonts";
+@use "resset";
+@use "as-styles";
+@use 'common' as c;
 
-*,
-*:after,
-*:before {
-  box-sizing: border-box;
+.example-block {
+  padding: 15px 0;
+
+  &:not(:first-child) {
+    border-top: 1px solid #DDE3EC;
+  }
 }
 
-html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  background: #F3F5FB;
-}
-
-.example-card {
-  padding: 50px;
-  background: #DDE3EC;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.auc-dialog {
-  padding: 20px;
-  border-radius: 12px;
+.example-block-title {
+  margin-bottom: 10px;
 }
