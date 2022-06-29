@@ -24,17 +24,18 @@ export class AucTransactionsHistoryComponent extends BaseSubscriber implements O
    * It's an optional parameter. <br>
    * The default value is false.
    */
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   @Input()
   public disabled: boolean = false;
 
   /** @internal */
-  public hasFailedTx: boolean = false;
+  public hasFailedTx = false;
 
   /** @internal */
-  public hasPendingTx: boolean = false;
+  public hasPendingTx = false;
 
   /** @internal */
-  public txCount: number = 0;
+  public txCount = 0;
 
   /** @internal */
   public COLORS = AS_COLOR_GROUP;

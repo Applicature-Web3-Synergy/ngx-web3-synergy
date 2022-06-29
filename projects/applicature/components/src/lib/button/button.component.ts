@@ -150,8 +150,8 @@ export class AucButtonComponent implements OnInit, OnChanges {
    * Emits an action when button was clicked. <br>
    * Emitted value is native click value.
    */
-  @Output('onClick')
-  public onClickEmitter: EventEmitter<any> = new EventEmitter<any>();
+  @Output()
+  public buttonClicked: EventEmitter<any> = new EventEmitter<any>();  // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /** @internal */
   public styleProperties: AucSetStyleProp[] = [];
@@ -198,19 +198,19 @@ export class AucButtonComponent implements OnInit, OnChanges {
     this.setProperties();
   }
 
-  /** Emit {@link onClickEmitter} event. */
-  public onClick(event: any): void {
+  /** Emit {@link buttonClicked} event. */
+  public clicked(event: any): void {  // eslint-disable-line @typescript-eslint/no-explicit-any
     if (this.disabled) {
       return;
     }
 
-    this.onClickEmitter.emit(event);
+    this.buttonClicked.emit(event);
   }
 
   /** @internal */
   private setProperties(): void {
     if (this.adaptive) {
-      this._elRef.nativeElement.style.width = '100%';
+      this._elRef.nativeElement.style.width = '100%';  // eslint-disable-line @typescript-eslint/no-unsafe-member-access
     }
 
     if (this.transparent && this.color !== AS_COLOR_GROUP.WHITE) {

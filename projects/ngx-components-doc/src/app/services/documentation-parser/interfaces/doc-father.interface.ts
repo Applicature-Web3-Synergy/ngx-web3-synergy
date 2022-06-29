@@ -7,9 +7,13 @@ export interface DocFather {
   flags?: DocFlags;
   originalName?: string;
   decorators?: DocDecorator[],
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children?: DocFather[] | any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   groups?: any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sources?: any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   implementedTypes?: any;
   type?: DocType;
   comment?: {
@@ -21,6 +25,7 @@ export interface DocFather {
   getSignature?: DocFather[];
   indexSignature?: DocFather;
   parameters?: DocFather[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 

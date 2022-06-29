@@ -1,4 +1,4 @@
-@use "../../../../../styles/src/lib/scss/as-common" as c;
+@use '~@applicature/styles/src/lib/scss/as-common' as c;
 
 :host {
   display: block;
@@ -38,11 +38,11 @@
   text-align: center;
   color: c.getColor(grey, base);
   padding: 0 24px;
-  margin-top: 8px
+  margin-top: 8px;
 }
 
 .auc-wrong-network-fail,
-.auc-wrong-network-title{
+.auc-wrong-network-title {
   align-self: center;
 }
 

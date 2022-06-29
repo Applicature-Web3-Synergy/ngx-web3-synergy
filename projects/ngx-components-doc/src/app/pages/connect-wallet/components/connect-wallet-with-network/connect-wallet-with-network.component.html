@@ -3,8 +3,8 @@
     <h5 class="doc-grid-item-title">Default</h5>
 
     <auc-connect-wallet [showNetworkOptions]="true"
-                        (onConnect)="onConnect($event)"
-                        (onDisconnect)="onDisconnect()"
+                        (connected)="connected($event)"
+                        (disconnected)="disconnected()"
     >
     </auc-connect-wallet>
   </div>
@@ -14,8 +14,8 @@
 
     <auc-connect-wallet [appearance]="WALLET_APPEARANCE.ICON"
                         [showNetworkOptions]="true"
-                        (onConnect)="onConnect($event)"
-                        (onDisconnect)="onDisconnect()"
+                        (connected)="connected($event)"
+                        (disconnected)="disconnected()"
     >
     </auc-connect-wallet>
   </div>

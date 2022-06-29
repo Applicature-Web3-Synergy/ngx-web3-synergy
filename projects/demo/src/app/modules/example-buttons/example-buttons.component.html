@@ -1,0 +1,49 @@
+<div class="example-buttons-container">
+  <auc-button label="Button" [disabled]="true"></auc-button>
+
+  <auc-button label="Button"></auc-button>
+
+  <auc-button label="Button" leftIcon="wcl-icon-star"></auc-button>
+
+  <auc-button label="Button" rightIcon="wcl-icon-chevron-down"></auc-button>
+
+  <auc-button label="Button" leftIcon="wcl-icon-star" rightIcon="wcl-icon-chevron-down"></auc-button>
+
+  <auc-button appearance="icon" leftIcon="wcl-icon-recent" color="white"></auc-button>
+
+  <auc-button label="Ethereum"
+              leftIcon="wcl-icon-star"
+              rightIcon="wcl-icon-chevron-down"
+              color="white"
+  >
+  </auc-button>
+
+  <ng-container *ngIf="identicon">
+    <auc-button label="0x643...5456" [identicon]="identicon"></auc-button>
+
+    <auc-button label="0x643...5456"
+                [identicon]="identicon"
+                identiconPosition="left"
+    >
+    </auc-button>
+  </ng-container>
+
+  <auc-button label="Ethereum"
+              leftIcon="wcl-icon-star"
+              [borderRadius]="0"
+              color="white"
+  >
+  </auc-button>
+
+  <auc-button label="Ethereum"
+              leftIcon="wcl-icon-star"
+              [borderRadius]="0"
+              [transparent]="true"
+              color="white"
+  >
+  </auc-button>
+
+  <auc-button label="1 pending" color="white" [pending]="true"></auc-button>
+
+  <auc-button label="Full width btn" [adaptive]="true"></auc-button>
+</div>

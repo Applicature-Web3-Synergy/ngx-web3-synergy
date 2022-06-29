@@ -17,7 +17,7 @@ export class BasicAccountBalanceComponent {
   public COLORS = AS_COLOR_GROUP;
   public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
 
-  onAddressClick(): void {
+  accountClicked(): void {
     console.log('Account balance address button was clicked');
   }
 }

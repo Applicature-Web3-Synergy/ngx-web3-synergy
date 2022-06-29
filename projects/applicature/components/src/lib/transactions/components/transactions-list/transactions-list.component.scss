@@ -1,4 +1,4 @@
-@use "../../../../../../styles/src/lib/scss/as-common" as c;
+@use '~@applicature/styles/src/lib/scss/as-common' as c;
 
 .auc-transactions-list {
   display: flex;
@@ -24,6 +24,7 @@
     line-height: 20px;
     text-decoration: none;
     max-width: calc(100% - 25px);
+
     @include c.transition;
     @include c.text-overflow;
 

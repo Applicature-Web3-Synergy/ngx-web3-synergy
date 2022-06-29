@@ -4,9 +4,13 @@ export const CustomDialogCodeTs =
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { AUC_DIALOG_POSITIONS, AucDialogConfig, AucDialogRef, AucDialogService } from '@applicature/components';
-
-import { AucDialogPosition } from '../../../../../../../applicature/components/src/lib/dialog';
+import {
+  AUC_DIALOG_POSITIONS,
+  AucDialogConfig,
+  AucDialogRef,
+  AucDialogService,
+  AucDialogPosition
+} from '@applicature/components';
 
 
 @Component({
@@ -112,5 +116,4 @@ export class CustomDialogComponent {
     });
   }
 
-}
-`;
+}`;

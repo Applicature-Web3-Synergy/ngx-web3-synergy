@@ -6,7 +6,7 @@
 
         <div class="auc-connect-wallet-container">
           <auc-button *ngIf="(hasPendingTx || hasFailedTx) else btnView"
-                      (onClick)="onAccountButtonClick()"
+                      (buttonClicked)="accountButtonClick()"
                       [disabled]="disabled"
                       [label]="txCount + (hasPendingTx ? ' pending':  ' failing')"
                       [pending]="hasPendingTx"
@@ -15,7 +15,8 @@
           </auc-button>
 
           <ng-template #btnView>
-            <auc-button *ngIf="!showBalance; else acBalance" (onClick)="onAccountButtonClick()"
+            <auc-button *ngIf="!showBalance; else acBalance"
+                        (buttonClicked)="accountButtonClick()"
                         [disabled]="disabled"
                         [label]="(accountAddress | aucShortAddress)"
                         [identicon]="identicon"
@@ -30,7 +31,7 @@
                                   showIdenticon: true,
                                   color: COLORS.WHITE
                                 }"
-                (onAddressClick)="onAccountButtonClick()"
+                (accountClicked)="accountButtonClick()"
               >
               </auc-account-balance>
             </ng-template>
@@ -54,14 +55,14 @@
           <auc-account-button [account]="account"
                               [options]="accountOptions"
                               [accountDropdownConfig]="accountDropdownConfig"
-                              (optionClick)="optionAction($event)"
+                              (optionClicked)="optionAction($event)"
           >
           </auc-account-button>
         </div>
       </ng-container>
 
       <ng-container *ngSwitchDefault>
-        <auc-button (onClick)="onDisconnectWalletClick()"
+        <auc-button (buttonClicked)="disconnectWalletClick()"
                     [disabled]="disabled"
                     [color]="COLORS.RED"
                     label="Disconnect Wallet"
@@ -74,7 +75,7 @@
 
 
   <ng-template #connectWallet>
-    <auc-button (onClick)="connect()"
+    <auc-button (buttonClicked)="connect()"
                 [disabled]="disabled"
                 leftIcon="wcl-icon-wallet"
                 label="Connect Wallet"

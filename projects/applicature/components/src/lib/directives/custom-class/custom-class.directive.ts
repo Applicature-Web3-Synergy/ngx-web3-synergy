@@ -1,11 +1,11 @@
-import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
 
 @Directive({
   selector: '[aucCustomClass]',
   exportAs: 'aucCustomClass'
 })
-export class AucCustomClassDirective {
+export class AucCustomClassDirective implements OnInit {
   /**
    * Sets class / list of classes to the elements.
    */

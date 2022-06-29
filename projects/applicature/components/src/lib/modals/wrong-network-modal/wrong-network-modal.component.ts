@@ -28,7 +28,7 @@ export class AucWrongNetworkModalComponent extends BaseSubscriber {
     this.data = this._config.data;
   }
 
-  public onCloseClick(value: boolean = false): void {
+  public onCloseClick(value = false): void {
     this._dialogRef.close(value);
   }
 
@@ -36,7 +36,7 @@ export class AucWrongNetworkModalComponent extends BaseSubscriber {
     this.onCloseClick(true);
   }
 
-  public onDisconnectClick(): void {
+  public disconnectClick(): void {
     this._walletConnectService.disconnectWallet()
       .pipe(takeUntil(this.notifier))
       .subscribe();

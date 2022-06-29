@@ -1,0 +1,48 @@
+.example-card-container {
+  display: block;
+  border-radius: 12px;
+  background-color: rgba(#fff, 0.6);
+  padding: 15px;
+}
+
+.example-card-header {
+  position: relative;
+  padding-right: 54px;
+  cursor: pointer;
+
+  auc-icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+  }
+}
+
+.example-card-title {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.example-card {
+  height: 0;
+  overflow: hidden;
+
+  &.example-card-expanded {
+    height: auto;
+    margin-top: 15px;
+    padding-top: 16px;
+    position: relative;
+
+    &:before {
+      content: '';
+      border-top: 1px solid #DDE3EC;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+}

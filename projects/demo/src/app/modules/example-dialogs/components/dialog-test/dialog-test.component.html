@@ -1,0 +1,16 @@
+<div class="text-wrapper"><p>{{config.data.message}}</p></div>
+
+<div class="actions">
+  <auc-button (buttonClicked)="onClose('cancel')"
+                      label="Cancel"
+                      [color]="COLORS.RED"
+                      [adaptive]="true"
+  >
+  </auc-button>
+
+  <auc-button (buttonClicked)="onClose('ok')"
+                      label="Ok"
+                      [adaptive]="true"
+  >
+  </auc-button>
+</div>

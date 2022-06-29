@@ -74,7 +74,7 @@ doc-example-card {
 }
 
 .code-property {
-  white-space: pre-line
+  white-space: pre-line;
 }
 
 @media (max-width: map-get(c.$grid-breakpoints, md)) {

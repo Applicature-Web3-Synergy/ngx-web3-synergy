@@ -60,14 +60,6 @@
       ],
       "url": [
         "./node_modules/url"
-      ],
-      "@applicature/components": [
-        "dist/applicature/components/applicature-components",
-        "dist/applicature/components"
-      ],
-      "@applicature/styles": [
-        "dist/applicature/styles/applicature-styles",
-        "dist/applicature/styles"
       ]
     }
   },

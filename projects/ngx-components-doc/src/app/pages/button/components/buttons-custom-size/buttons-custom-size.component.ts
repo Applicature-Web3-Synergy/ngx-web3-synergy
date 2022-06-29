@@ -10,7 +10,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class ButtonsCustomSizeComponent {
 
-  onClick(event: any): void {
+  onClick(event): void {
     console.log('Button with custom size clicked : ', event);
   }
 

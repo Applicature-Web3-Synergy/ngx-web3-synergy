@@ -45,6 +45,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
    * It's an optional parameter. <br>
    * The default value is 40.
    */
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   @Input()
   public size: number = 40;
 
@@ -74,11 +75,11 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
   }
 
   /** Emits selected option from the list. */
-  @Output('optionClick')
-  public optionEmitter: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
+  @Output()
+  public optionClicked: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
 
   /** @internal */
-  public isOptionsOpen: boolean = false;
+  public isOptionsOpen = false;
 
   /** @internal */
   public accountAddress!: string;
@@ -110,11 +111,11 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
     this.isOptionsOpen = opened;
   }
 
-  /** Emit {@link optionEmitter} event. */
-  public onOptionClick(option: AucAccountOption): void {
+  /** Emit {@link optionClicked} event. */
+  public optionClick(option: AucAccountOption): void {
     this._closeOptions();
 
-    this.optionEmitter.emit(option);
+    this.optionClicked.emit(option);
   }
 
   /** Connect wallet. */
@@ -127,7 +128,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
   }
 
   /** Disconnect wallet. */
-  public onDisconnectClick(): void {
+  public disconnectClick(): void {
     this._closeOptions();
 
     this._walletConnectService.disconnectWallet()

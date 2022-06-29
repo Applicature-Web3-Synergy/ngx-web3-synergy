@@ -35,6 +35,7 @@ $card-padding: 20px;
   width: 120px;
   background-color: map-get(c.$gray, 5);
   align-self: flex-end;
+
   @include as.transition;
 
   &:hover {

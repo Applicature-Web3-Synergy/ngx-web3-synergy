@@ -104,7 +104,7 @@ export class AucTransactionService extends BaseSubscriber {
    * Optional parameter.
    * Default value is 30000 = 30 seconds.
    */
-  public refreshTransactions(intervalMs: number = 30000): void {
+  public refreshTransactions(intervalMs = 30000): void {
     this._refreshTransactionList$()
       .pipe(
         map(() => [ this._transactionsMapAsArr[0], this._transactionsMapAsArr[1] ]),
@@ -201,7 +201,7 @@ export class AucTransactionService extends BaseSubscriber {
    * blockchain and emits it into returned observable.
    */
   public saveTransaction(transactionData: AucAddTransaction,
-                         updateIntervalMs: number = 30000): Observable<AucTransactionItem> {
+                         updateIntervalMs = 30000): Observable<AucTransactionItem> {
     if (!transactionData?.hash) {
       return EMPTY;
     }
@@ -245,7 +245,7 @@ export class AucTransactionService extends BaseSubscriber {
    * @param isRefresh - Optional parameter.
    * If true, will emit transactionsChanged$;
    */
-  public markAsViewed(hash: string, isRefresh: boolean = true): void {
+  public markAsViewed(hash: string, isRefresh = true): void {
     if (!hash) {
       return;
     }
@@ -280,7 +280,7 @@ export class AucTransactionService extends BaseSubscriber {
    * @param isRefresh - Optional parameter.
    * If true, will clear transaction from the history.
    */
-  public clearTransactions(isRefresh: boolean = true): void {
+  public clearTransactions(isRefresh = true): void {
     this._transactionsMap.clear();
 
     if (isRefresh) {
@@ -297,8 +297,8 @@ export class AucTransactionService extends BaseSubscriber {
    */
   public getRemoteTransactions(address: string,
                                chainId: string,
-                               page: number = 1,
-                               offset: number = 100,
+                               page = 1,
+                               offset = 100,
                                sortDirection: AucSortDirection = AUC_SORT_DIRECTION.ASC
   ): Observable<AucEtherscanTransactionResponse> {
     try {

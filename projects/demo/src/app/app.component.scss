@@ -1,5 +1,13 @@
-h2.section-title {
-  font-size: 36px;
-  font-weight: bold;
+#main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 15px;
 }
 
+app-card {
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}

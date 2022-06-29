@@ -1,5 +1,5 @@
 export const ConnectWalletWithNetworkCodeTs =
-  `/** Don't forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
+`/** Don't forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AUC_CONNECT_WALLET_APPEARANCE, AucConnectionState } from '@applicature/components';
@@ -14,11 +14,11 @@ import { AUC_CONNECT_WALLET_APPEARANCE, AucConnectionState } from '@applicature/
 export class ConnectWalletWithNetworkComponent {
   public WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
 
-  onConnect(evt: AucConnectionState): void {
+  connected(evt: AucConnectionState): void {
     console.log('Connected Wallet: ', evt);
   }
 
-  onDisconnect(): void {
+  disconnected(): void {
     console.log('Disconnected Wallet');
   }
 }

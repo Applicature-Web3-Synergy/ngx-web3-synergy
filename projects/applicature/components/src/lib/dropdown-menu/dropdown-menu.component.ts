@@ -129,8 +129,8 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
     const { vertical, horizontal } = this.config?.position ?? {};
     let isBelow: boolean = (vertical ?? AUC_POSITIONS.BELOW) === AUC_POSITIONS.BELOW;
     let isAfter: boolean = (horizontal ?? AUC_POSITIONS.AFTER) === AUC_POSITIONS.AFTER;
-    let maxHeight: number = 0;
-    let maxWidth: number = 0;
+    let maxHeight = 0;
+    let maxWidth = 0;
 
     if (this.dropdownRef?.nativeElement?.getBoundingClientRect()) {
       const vw = window.innerWidth;
@@ -167,10 +167,10 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
       }
     }
 
-    let topPosition = isBelow
+    const topPosition = isBelow
       ? bottom
       : top - (!maxHeight || dropdownHeight > maxHeight ? dropdownHeight : maxHeight);
-    let leftPosition = isAfter || this.config?.fullwidth
+    const leftPosition = isAfter || this.config?.fullwidth
       ? left
       : right - (!maxWidth || dropdownWidth > maxWidth ? dropdownWidth : maxWidth);
 
@@ -217,7 +217,7 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
       return;
     }
 
-    this.trigger.showHide(false);
+    this.trigger.showHideStatus(false);
 
     this.contentBody.destroy();
   }

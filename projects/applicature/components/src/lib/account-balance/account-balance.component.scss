@@ -1,3 +1,5 @@
+@use '~@applicature/styles/src/lib/scss/as-common' as c;
+
 :host {
   display: inline-block;
 }
@@ -7,7 +9,7 @@
   align-items: center;
   overflow: hidden;
   height: 40px;
-  border-radius: 8px;
+  border-radius: map-get(c.$as-border-radius, sm);
   position: relative;
   z-index: 0;
 
@@ -52,4 +54,3 @@ auc-icon {
   font-size: 20px;
   margin-right: 8px;
 }
-

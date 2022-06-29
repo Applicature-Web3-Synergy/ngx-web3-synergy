@@ -1,29 +1,16 @@
-$font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+@use "fonts";
+@use "resset";
+@use "as-styles";
+@use 'common' as c;
 
-@import 'as-styles';
+.example-block {
+  padding: 15px 0;
 
-*, *:after, *:before {
-  box-sizing: border-box;
+  &:not(:first-child) {
+    border-top: 1px solid #DDE3EC;
+  }
 }
 
-html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  background: #F3F5FB;
-}
-
-.example-card {
-  padding: 50px;
-  background: #DDE3EC;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.auc-dialog {
-  padding: 20px;
-  border-radius: 12px;
+.example-block-title {
+  margin-bottom: 10px;
 }

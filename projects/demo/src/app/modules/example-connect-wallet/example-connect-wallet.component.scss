@@ -1,0 +1,7 @@
+.custom-connect-btn {
+  padding: 10px;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+}

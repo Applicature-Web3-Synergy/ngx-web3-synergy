@@ -1,14 +1,16 @@
 @font-face {
   font-family: 'wcl-icons';
-  src: url('./fonts/wcl-icons.ttf?djj1e') format('truetype'),
-  url('./fonts/wcl-icons.woff?djj1e') format('woff'),
-  url('./fonts/wcl-icons.svg?djj1e#wcl-icons') format('svg');
+  src:
+    url('./fonts/wcl-icons.ttf?djj1e') format('truetype'),
+    url('./fonts/wcl-icons.woff?djj1e') format('woff'),
+    url('./fonts/wcl-icons.svg?djj1e#wcl-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="wcl-icon-"], [class*=" wcl-icon-"] {
+[class^="wcl-icon-"],
+[class*=" wcl-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'wcl-icons' !important;
   speak: never;

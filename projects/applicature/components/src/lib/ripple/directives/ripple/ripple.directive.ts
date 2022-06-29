@@ -17,15 +17,15 @@ export class AucRippleDirective {
   private readonly rippleClass = 'auc-ripple';
 
   /** @internal */
-  @HostListener('mousedown', [ '$event' ]) onMousedown(e) {
+  @HostListener('mousedown', [ '$event' ]) onMousedown(e: MouseEvent) {
     e.preventDefault();
     e.stopPropagation();
     this.createRipple(e);
   }
 
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
-    this.setStyle(this._elementRef.nativeElement, 'overflow', 'hidden');
-    this.setStyle(this._elementRef.nativeElement, 'position', 'relative');
+    this.setStyle(this._elementRef.nativeElement as HTMLElement, 'overflow', 'hidden');
+    this.setStyle(this._elementRef.nativeElement as HTMLElement, 'position', 'relative');
   }
 
   /** Sets style to HTMLElement */
@@ -38,7 +38,7 @@ export class AucRippleDirective {
   }
 
   /** @internal */
-  private createRipple(event): void {
+  private createRipple(event: MouseEvent): void {
     const rippleIndex = [ ...this._elementRef.nativeElement.childNodes ]
       .findIndex(node => node.className === this.rippleClass);
 

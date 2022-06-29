@@ -36,15 +36,15 @@ export class ConnectWalletAsIconComponent {
     }
   }
 
-  onConnect(evt: AucConnectionState): void {
+  connected(evt: AucConnectionState): void {
     console.log('Connected Wallet: ', evt);
   }
 
-  onDisconnect(): void {
+  disconnected(): void {
     console.log('Disconnected Wallet');
   }
 
-  onOptionClicked(evt: AucAccountOption): void {
+  optionClicked(evt: AucAccountOption): void {
     console.log('Account option was clicked: ', evt);
   }
 

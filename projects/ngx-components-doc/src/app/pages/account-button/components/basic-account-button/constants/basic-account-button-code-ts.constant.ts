@@ -1,5 +1,5 @@
 export const BasicAccountButtonCodeTs =
-  `/** Don't forget import { AucAccountButtonModule } from '@applicature/components'; to your module */
+`/** Don't forget import { AucAccountButtonModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -29,7 +29,7 @@ export class BasicAccountButtonComponent {
     }
   }
 
-  onOptionClick(evt: AucAccountOption) {
+  optionClicked(evt: AucAccountOption) {
     console.log('Account button option clicked: ', evt);
   }
 }

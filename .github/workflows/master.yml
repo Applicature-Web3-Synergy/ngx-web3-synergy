@@ -1,6 +1,6 @@
 name: Build and publish
 
-on:   
+on:
   push:
     branches: [ master ]
 
@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      
+
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
@@ -28,12 +28,18 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - if: steps.cache-npm.outputs.cache-hit != 'true'
-        name: Install dependencies        
+        name: Install dependencies
         run: npm install --no-audit --progress=false
+
+      - name: Run scss lint
+        run: npm run lint-scss
+
+      - name: Run lint
+        run: npm run lint
 
       - name: Build project
         run: npm run build
-      
+
       - name: Archive artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -42,7 +48,7 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    continue-on-error: true 
+    continue-on-error: true
     needs: [build]
     strategy:
       matrix:
@@ -56,7 +62,7 @@ jobs:
       - uses: actions/download-artifact@v3
       - name: Publish project
         run: |
-          cd dist/applicature/${{ matrix.package_name }}
+          cd dist/@applicature/${{ matrix.package_name }}
           npm pack .
           npm publish --access public
         env:

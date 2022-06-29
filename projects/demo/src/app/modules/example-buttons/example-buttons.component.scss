@@ -1,0 +1,11 @@
+.example-buttons-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  auc-button {
+    margin: 10px 20px 10px 0;
+  }
+}

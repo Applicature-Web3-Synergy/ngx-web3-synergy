@@ -25,7 +25,8 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/applicature/components/tsconfig.lib.prod.json"
+              "tsConfig": "projects/applicature/components/tsconfig.lib.prod.json",
+              "project": "projects/applicature/components/ng-package.prod.json"
             },
             "development": {
               "tsConfig": "projects/applicature/components/tsconfig.lib.json"
@@ -39,6 +40,15 @@
             "main": "projects/applicature/components/src/test.ts",
             "tsConfig": "projects/applicature/components/tsconfig.spec.json",
             "karmaConfig": "projects/applicature/components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/applicature/components/**/*.ts",
+              "projects/applicature/components/**/*.html"
+            ]
           }
         }
       }
@@ -56,7 +66,8 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/applicature/styles/tsconfig.lib.prod.json"
+              "tsConfig": "projects/applicature/styles/tsconfig.lib.prod.json",
+              "project": "projects/applicature/styles/ng-package.prod.json"
             },
             "development": {
               "tsConfig": "projects/applicature/styles/tsconfig.lib.json"
@@ -71,6 +82,14 @@
             "tsConfig": "projects/applicature/styles/tsconfig.spec.json",
             "karmaConfig": "projects/applicature/styles/karma.conf.js"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/applicature/styles/**/*.ts"
+            ]
+          }
         }
       }
     },
@@ -78,7 +97,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         },
         "@schematics/angular:application": {
           "strict": true
@@ -155,7 +175,8 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "projects/applicature/styles/src/lib/scss"
+                "node_modules/@applicature/styles/src/lib/scss",
+                "projects/demo/src/scss"
               ]
             }
           },
@@ -164,8 +185,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -227,6 +248,15 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/demo/**/*.ts",
+              "projects/demo/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -265,7 +295,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "projects/applicature/styles/src/lib/scss",
+                "node_modules/@applicature/styles/src/lib/scss",
                 "projects/ngx-components-doc/src/scss"
               ]
             },
@@ -389,6 +419,15 @@
               "projects/ngx-components-doc/src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-components-doc/**/*.ts",
+              "projects/ngx-components-doc/**/*.html"
+            ]
           }
         }
       }

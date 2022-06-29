@@ -5,29 +5,29 @@ import { Observable } from 'rxjs';
 
 import injectedModule from '@web3-onboard/injected-wallets';
 import walletConnectModule from '@web3-onboard/walletconnect';
-
 import {
-  AucAlertModule,
-  AucDropdownMenuModule,
-  AucAvatarModule,
-  AucButtonModule,
-  AucInputModule,
-  AucConnectModule,
-  AucWalletConnectService,
   AUC_CHAIN_ID,
-  AucBlockExplorerUrls,
-  AucConnectWalletModule,
+  AucBlockExplorerUrls, AucConnectModule,
   AucNativeCurrencies,
+  AucRpcUrls,
+  AucWalletConnectService
 } from '@applicature/components';
 
 import { AppComponent } from './app.component';
-import { ExampleDialogsModule } from './examples/example-dialogs/example-dialogs.module';
-import { ExampleTableModule } from './examples/example-table/example-table.module';
-import { ExampleDropdownMenuModule } from './examples/example-dropdown-menu/example-dropdown-menu.module';
-import { ExampleAccountBalanceModule } from './examples/example-account-balance/example-account-balance.module';
-import { ExampleFaucetModule } from './examples/example-faucet/example-faucet.module';
-import { AucRpcUrls } from '../../../applicature/components/src/lib/constants';
 import { environment } from '../environments/environment';
+import {
+  CardModule,
+  ExampleAccountBalanceModule,
+  ExampleAlertsModule,
+  ExampleAvatarsModule,
+  ExampleButtonsModule,
+  ExampleConnectWalletModule,
+  ExampleDialogsModule,
+  ExampleDropdownMenuModule,
+  ExampleFaucetModule,
+  ExampleInputsModule,
+  ExampleTableModule
+} from './modules';
 
 const INFURA_KEY = environment.infuraKey;
 
@@ -42,6 +42,7 @@ const walletConnect = walletConnectModule({
 export function initWalletServiceFactory(
   walletConnectService: AucWalletConnectService
 ): () => Observable<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return () => walletConnectService.initialize({
     wallets: [
       /** Shows always Metamask wallet. Doesn't matter is Metamask installed. */
@@ -92,23 +93,23 @@ export function initWalletServiceFactory(
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AucAlertModule,
-    AucAvatarModule,
-    AucButtonModule,
-    AucInputModule,
     AucConnectModule.forRoot(),
     ExampleDialogsModule,
     ExampleTableModule,
-    AucDropdownMenuModule,
-    ExampleDropdownMenuModule,
     ExampleAccountBalanceModule,
-    AucConnectWalletModule,
-    ExampleFaucetModule
+    CardModule,
+    ExampleConnectWalletModule,
+    ExampleButtonsModule,
+    ExampleAvatarsModule,
+    ExampleFaucetModule,
+    ExampleAlertsModule,
+    ExampleDropdownMenuModule,
+    ExampleInputsModule
   ],
   providers: [
     {

@@ -7,12 +7,14 @@ export enum AS_COLOR_GROUP {
   WHITE = 'white'
 }
 
-export type AsColorGroup = `${AS_COLOR_GROUP.BLUE}`
-  | `${AS_COLOR_GROUP.GREEN}`
-  | `${AS_COLOR_GROUP.GRAY}`
-  | `${AS_COLOR_GROUP.ORANGE}`
-  | `${AS_COLOR_GROUP.RED}`
-  | `${AS_COLOR_GROUP.WHITE}`
+type AsEnumsTypeTransformer<T> = T extends string ? `${T}` : never;
+
+export type AsColorGroup = AsEnumsTypeTransformer<AS_COLOR_GROUP.BLUE
+  | AS_COLOR_GROUP.GREEN
+  | AS_COLOR_GROUP.GRAY
+  | AS_COLOR_GROUP.ORANGE
+  | AS_COLOR_GROUP.RED
+  | AS_COLOR_GROUP.WHITE>;
 
 export interface AsColorProperties {
   base: string;

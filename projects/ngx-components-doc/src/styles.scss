@@ -5,7 +5,6 @@
 @use "as-styles";
 @use 'common' as c;
 
-
 .full-width {
   width: 100%;
 }
@@ -42,7 +41,7 @@ doc-need-wallet-connection {
   & > *:not(:last-child) {
     display: block;
     margin-bottom: 30px;
-  };
+  }
 }
 
 .doc-custom-btn {
@@ -52,10 +51,10 @@ doc-need-wallet-connection {
   padding: 5px 15px;
   font-size: 18px;
   height: 40px;
-  transition: background-color .25s;
+  transition: background-color 0.25s;
 
   &:hover {
-    background: rgba(map-get(c.$blue, 2), .9);
+    background: rgba(map-get(c.$blue, 2), 0.9);
   }
 }
 
@@ -110,7 +109,6 @@ mat-select {
       padding: 2px;
     }
   }
-
 }
 
 .doc.prettyprint {
@@ -128,7 +126,7 @@ mat-select {
   }
 }
 
-.getting-started-h1{
+.getting-started-h1 {
   margin-bottom: 15px;
   font-style: normal;
 }

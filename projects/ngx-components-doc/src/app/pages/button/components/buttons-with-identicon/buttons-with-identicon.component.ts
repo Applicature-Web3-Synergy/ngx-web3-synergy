@@ -19,7 +19,7 @@ export class ButtonsWithIdenticonComponent {
   public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
   public identicon: HTMLDivElement = aucGenerateJazzicon(exampleEthAddress);
 
-  onClick(event: any): void {
+  onClick(event): void {
     console.log('Button with identicon clicked: ', event);
   }
 

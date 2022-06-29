@@ -16,7 +16,7 @@ import { AucAccountData, AucAccountOption } from '../account-button';
 import { AUC_POSITIONS } from '../enums';
 import { aucGenerateJazzicon, BaseSubscriber } from '../helpers';
 import { AucAccountModalComponent, AucAccountModalData } from '../modals';
-import { AucConnectionState, AucWalletConnectService } from '../connect/services';
+import { AucConnectionState, AucWalletConnectService } from '../connect';
 import { AucDialogService } from '../dialog';
 import { AucDropdownConfig } from '../dropdown-menu';
 import { AUC_BALANCE_APPEARANCE } from '../account-balance';
@@ -141,11 +141,11 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
 
   /** Emits an action when wallet was connected. */
   @Output()
-  public onConnect: EventEmitter<AucConnectionState> = new EventEmitter<AucConnectionState>();
+  public connected: EventEmitter<AucConnectionState> = new EventEmitter<AucConnectionState>();
 
   /** Emits an action when wallet was disconnected. */
   @Output()
-  public onDisconnect: EventEmitter<void> = new EventEmitter<void>();
+  public disconnected: EventEmitter<void> = new EventEmitter<void>();
 
   /** Emits selected option from the list. */
   @Output()
@@ -158,16 +158,16 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
   public identicon: HTMLDivElement;
 
   /** @internal */
-  public isConnected: boolean = false;
+  public isConnected = false;
 
   /** @internal */
-  public hasFailedTx: boolean = false;
+  public hasFailedTx = false;
 
   /** @internal */
-  public hasPendingTx: boolean = false;
+  public hasPendingTx = false;
 
   /** @internal */
-  public txCount: number = 0;
+  public txCount = 0;
 
   /** @internal */
   public COLORS = AS_COLOR_GROUP;
@@ -225,7 +225,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
   }
 
   /** Shows  account modal. */
-  public onAccountButtonClick(): void {
+  public accountButtonClick(): void {
     if (this.disabled) {
       return;
     }
@@ -238,7 +238,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
         this.connect();
       },
       disconnect: () => {
-        this.onDisconnectWalletClick();
+        this.disconnectWalletClick();
 
         modal.close();
       },
@@ -255,7 +255,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
     });
   }
 
-  /** Connect wallet and emit {@link onConnect} event. */
+  /** Connect wallet and emit {@link connected} event. */
   public connect(): void {
     if (this.disabled) {
       return;
@@ -264,12 +264,12 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
     this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
       .subscribe((connectionState: AucConnectionState) => {
-        this.onConnect.emit(connectionState);
+        this.connected.emit(connectionState);
       })
   }
 
-  /** Disconnect wallet and emit {@link onDisconnect} event. */
-  public onDisconnectWalletClick(): void {
+  /** Disconnect wallet and emit {@link disconnected} event. */
+  public disconnectWalletClick(): void {
     if (this.disabled) {
       return;
     }
@@ -277,7 +277,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
     this._walletConnectService.disconnectWallet()
       .pipe(takeUntil(this.notifier))
       .subscribe(() => {
-        this.onDisconnect.emit();
+        this.disconnected.emit();
       });
   }
 

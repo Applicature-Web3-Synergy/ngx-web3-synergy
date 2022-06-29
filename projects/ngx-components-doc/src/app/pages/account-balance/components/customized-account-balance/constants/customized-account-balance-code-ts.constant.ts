@@ -1,5 +1,5 @@
 export const CustomizedAccountBalanceCodeTs =
-  `/** Don't forget import { AucAccountBalanceModule } from '@applicature/components'; to your module */
+`/** Don't forget import { AucAccountBalanceModule } from '@applicature/components'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -60,7 +60,7 @@ export class CustomizedAccountBalanceComponent {
     })
   }
 
-  onAddressClick(): void {
+  accountClicked(): void {
     console.log('Account balance address button was clicked');
   }
 }

@@ -10,7 +10,7 @@
   </div>
 
   <auc-button *ngIf="showAddress"
-              (onClick)="onAccountButtonClick($event)"
+              (buttonClicked)="accountButtonClick($event)"
               [disabled]="addressConfig?.disabled"
               [label]="(address | aucShortAddress)"
               [identicon]="addressConfig?.showIdenticon ? identicon : null"
