@@ -62,7 +62,7 @@ jobs:
       - uses: actions/download-artifact@v3
       - name: Publish project
         run: |
-          cd dist/applicature/${{ matrix.package_name }}
+          cd dist/@applicature/${{ matrix.package_name }}
           npm pack .
           npm publish --access public
         env:

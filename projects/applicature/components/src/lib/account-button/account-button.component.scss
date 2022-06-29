@@ -1,4 +1,4 @@
-@use "../../../../styles/src/lib/scss/as-common" as c;
+@use '~@applicature/styles/src/lib/scss/as-common' as c;
 
 :host {
   display: inline-block;
@@ -16,7 +16,7 @@
   min-width: 250px;
   padding: 8px 0;
   background: c.getColor(white, base);
-  border-radius: 8px;
+  border-radius: map-get(c.$as-border-radius, sm);
   box-shadow: 0 0 10px rgba(56, 64, 75, 0.1);
   list-style-type: none;
 }

@@ -25,7 +25,8 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/applicature/components/tsconfig.lib.prod.json"
+              "tsConfig": "projects/applicature/components/tsconfig.lib.prod.json",
+              "project": "projects/applicature/components/ng-package.prod.json"
             },
             "development": {
               "tsConfig": "projects/applicature/components/tsconfig.lib.json"
@@ -65,7 +66,8 @@
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/applicature/styles/tsconfig.lib.prod.json"
+              "tsConfig": "projects/applicature/styles/tsconfig.lib.prod.json",
+              "project": "projects/applicature/styles/ng-package.prod.json"
             },
             "development": {
               "tsConfig": "projects/applicature/styles/tsconfig.lib.json"
@@ -173,7 +175,7 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "projects/applicature/styles/src/lib/scss",
+                "node_modules/@applicature/styles/src/lib/scss",
                 "projects/demo/src/scss"
               ]
             }
@@ -183,8 +185,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -293,7 +295,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "projects/applicature/styles/src/lib/scss",
+                "node_modules/@applicature/styles/src/lib/scss",
                 "projects/ngx-components-doc/src/scss"
               ]
             },
