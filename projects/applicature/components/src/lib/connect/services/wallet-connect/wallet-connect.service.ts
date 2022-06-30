@@ -18,7 +18,9 @@ import {
   AucChain,
   AucConnectionState,
   AucInitOptions,
-  AucWalletConfig, AucWalletConfigMap, AucWalletsToInitLabel,
+  AucWalletConfig,
+  AucWalletConfigMap,
+  AucWalletsToInitLabel,
   BlockExplorerUrlsByChainId
 } from './interfaces';
 import { AucBlockScrollHelperService, BaseSubscriber } from '../../../helpers';

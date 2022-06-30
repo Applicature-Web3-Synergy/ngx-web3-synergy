@@ -16,6 +16,7 @@
     "build-package:styles": "npm run build:styles && cd dist/@applicature/styles && npm pack .",
     "build-package:components": "npm run build:components && cd dist/@applicature/components && npm pack .",
     "build-packages": "npm run build-package:styles && npm run build-package:components",
+    "test:components": "ng test @applicature/components --code-coverage",
     "test": "ng test",
     "prepare": "husky install",
     "lint": "ng lint",
