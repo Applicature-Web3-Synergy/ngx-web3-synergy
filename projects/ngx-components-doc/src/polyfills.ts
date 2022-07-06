@@ -54,10 +54,10 @@ import 'zone.js';  // Included with Angular CLI.
 import { Buffer } from 'buffer';
 import process from 'process';
 
-import { WindowEth } from '@applicature/components';
+import { AucWindowEth } from '@applicature/components';
 
 declare global {
-  interface Window extends WindowEth {}
+  interface Window extends AucWindowEth {}
 }
 
 window.process = process;
