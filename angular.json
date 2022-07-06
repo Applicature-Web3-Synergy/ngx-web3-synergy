@@ -55,6 +55,15 @@
               "projects/applicature/components/**/*.html"
             ]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/applicature/components/**/*.ts",
+              "projects/applicature/components/**/*.html"
+            ]
+          }
         }
       }
     },
@@ -444,6 +453,15 @@
             },
             "scripts": [
               "node_modules/marked/marked.min.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-components-doc/**/*.ts",
+              "projects/ngx-components-doc/**/*.html"
             ]
           }
         },
