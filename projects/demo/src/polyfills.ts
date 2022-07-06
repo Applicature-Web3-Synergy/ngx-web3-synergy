@@ -46,21 +46,17 @@
  * Zone JS is required by default for Angular itself.
  */
 import 'zone.js';
-import { AucEthereum } from '@applicature/components';
-import { Buffer } from 'buffer';
-import process from 'process';
-import Web3 from 'web3';
-
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+import { Buffer } from 'buffer';
+import process from 'process';
+
+import { AucWindowEth } from '@applicature/components';
+
 declare global {
-  interface Window {
-    ethereum: AucEthereum;
-    global: any;
-    web3: Web3;
-  }
+  interface Window extends AucWindowEth {}
 }
 
 window.process = process;

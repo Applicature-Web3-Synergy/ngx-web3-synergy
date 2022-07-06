@@ -39,7 +39,21 @@
           "options": {
             "main": "projects/applicature/components/src/test.ts",
             "tsConfig": "projects/applicature/components/tsconfig.spec.json",
-            "karmaConfig": "projects/applicature/components/karma.conf.js"
+            "karmaConfig": "projects/applicature/components/karma.conf.js",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules"
+              ]
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/applicature/components/**/*.ts",
+              "projects/applicature/components/**/*.html"
+            ]
           }
         },
         "lint": {
@@ -157,7 +171,9 @@
               "web3-provider-engine/subproviders/hooked-wallet",
               "web3-provider-engine/subproviders/nonce-tracker",
               "web3-provider-engine/subproviders/subscriptions",
-              "hash.js"
+              "hash.js",
+              "copy-to-clipboard",
+              "qrcode"
             ],
             "outputPath": "dist/demo",
             "index": "projects/demo/src/index.html",
@@ -246,6 +262,12 @@
             "styles": [
               "projects/demo/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/@applicature/styles/src/lib/scss",
+                "projects/demo/src/scss"
+              ]
+            },
             "scripts": []
           }
         },
@@ -346,7 +368,10 @@
               "@ledgerhq/devices/lib/hid-framing",
               "@ensdomains/address-encoder",
               "@babel/runtime/helpers/slicedToArray",
-              "create-hash"
+              "hash.js",
+              "create-hash",
+              "copy-to-clipboard",
+              "qrcode"
             ]
           },
           "configurations": {
@@ -416,9 +441,28 @@
               "projects/ngx-components-doc/src/assets"
             ],
             "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/code-prettify/styles/desert.css",
               "projects/ngx-components-doc/src/styles.scss"
             ],
-            "scripts": []
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/@applicature/styles/src/lib/scss",
+                "projects/ngx-components-doc/src/scss"
+              ]
+            },
+            "scripts": [
+              "node_modules/marked/marked.min.js"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-components-doc/**/*.ts",
+              "projects/ngx-components-doc/**/*.html"
+            ]
           }
         },
         "lint": {

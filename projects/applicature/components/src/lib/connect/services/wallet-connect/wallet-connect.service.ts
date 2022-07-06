@@ -18,13 +18,15 @@ import {
   AucChain,
   AucConnectionState,
   AucInitOptions,
-  AucWalletConfig, AucWalletConfigMap, AucWalletsToInitLabel,
+  AucWalletConfig,
+  AucWalletConfigMap,
+  AucWalletsToInitLabel,
   BlockExplorerUrlsByChainId
 } from './interfaces';
 import { AucBlockScrollHelperService, BaseSubscriber } from '../../../helpers';
 import { AucDialogConfig, AucDialogService } from '../../../dialog';
 import { AucWalletLabel } from './types';
-import { AucConnectDialogData, AucConnectModalComponent } from '../../components';
+import { AucConnectDialogConfig, AucConnectDialogData, AucConnectModalComponent } from '../../components';
 
 
 const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
@@ -263,7 +265,7 @@ export class AucWalletConnectService extends BaseSubscriber {
     });
   }
 
-  public connect(dialogConfig?: AucDialogConfig<AucConnectDialogData>): Observable<AucConnectionState> {
+  public connect(dialogConfig?: AucDialogConfig<AucConnectDialogConfig>): Observable<AucConnectionState> {
     if (!this._onboard) {
       return of({ connected: false })
         .pipe(
@@ -274,7 +276,10 @@ export class AucWalletConnectService extends BaseSubscriber {
     this._aucBlockScrollHelperService.lockScroll();
 
     const config: AucDialogConfig<AucConnectDialogData> = {
-      data: { title: 'Connect a wallet' },
+      data: {
+        title: 'Connect a wallet',
+        service: this
+      },
       width: '400px',
       dialogClass: 'auc-connect-dialog',
       overlay: {
@@ -286,7 +291,15 @@ export class AucWalletConnectService extends BaseSubscriber {
 
     const ref = this._dialogService.open<AucConnectModalComponent, AucConnectDialogData, AucWalletLabel | null>(
       AucConnectModalComponent,
-      dialogConfig ?? config
+      dialogConfig
+        ? {
+          ...dialogConfig,
+          data: {
+            ...dialogConfig.data,
+            service: this
+          }
+        }
+        : config
     );
 
     return ref.afterClosed
@@ -313,9 +326,7 @@ export class AucWalletConnectService extends BaseSubscriber {
 
     if (!label) {
       return of(this.connectionState)
-        .pipe(
-          tap(() => new Error('label is required parameter'))
-        );
+        .pipe(tap(() => new Error('label is required parameter')));
     }
 
 

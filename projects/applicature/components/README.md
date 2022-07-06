@@ -44,17 +44,13 @@ Add `node_modules/@applicature/styles/src/lib/scss/as-styles` to **angular.json*
 ### polyfills.ts
 
 <pre><code>
-import { AucEthereum } from '@applicature/components';
 import { Buffer } from 'buffer';
 import process from 'process';
-import Web3 from 'web3';
+
+import { WindowEth } from '@applicature/components';
 
 declare global {
-  interface Window {
-    ethereum: AucEthereum;
-    global: any;
-    web3: Web3;
-  }
+  interface Window extends WindowEth {}
 }
 
 window.process = process;
@@ -292,7 +288,11 @@ You might need to add `allowedCommonJsDependencies` to `angular.json` file:
               "@metamask/obs-store",
               "@ledgerhq/devices/lib/hid-framing",
               "@ensdomains/address-encoder",
-              "@babel/runtime/helpers/slicedToArray"
+              "@babel/runtime/helpers/slicedToArray",
+              "hash.js",
+              "create-hash",
+              "copy-to-clipboard",
+              "qrcode"
             ]
           }
         }
