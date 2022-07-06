@@ -7,7 +7,6 @@ import { WalletState } from '@web3-onboard/core/dist/types';
 import { AucDialogConfig, AucDialogRef } from '../../../dialog';
 import {
   AucWalletConfigMap,
-  AucWalletConnectService,
   AucWalletLabel,
   AucWalletsToInitLabel
 } from '../../services';
@@ -37,13 +36,12 @@ export class AucConnectModalComponent extends BaseSubscriber {
   constructor(private _config: AucDialogConfig<AucConnectDialogData>,
               private _cdr: ChangeDetectorRef,
               private _dialogRef: AucDialogRef<AucWalletLabel | null>,
-              private _walletConnectService: AucWalletConnectService,
               private _installWalletHelperService: AucInstallWalletHelperService) {
     super();
 
     this.data = this._config?.data;
-    const state = this._walletConnectService.onboard.state.get();
-    const initWallets: Map<AucWalletsToInitLabel, AucWalletConfigMap> = this._walletConnectService.initializedWalletsMap;
+    const state = this.data.service.onboard.state.get();
+    const initWallets: Map<AucWalletsToInitLabel, AucWalletConfigMap> = this.data.service.initializedWalletsMap;
 
     (state?.walletModules ?? []).forEach((wallet: WalletModule) => {
       const label: AucWalletLabel = wallet.label as AucWalletLabel;
@@ -100,7 +98,7 @@ export class AucConnectModalComponent extends BaseSubscriber {
         this._cdr.detectChanges();
       });
 
-    this._walletConnectService.connectionState$
+    this.data.service.connectionState$
       .pipe(takeUntil(this.notifier))
       .subscribe((res) => {
         this.wallets
@@ -126,7 +124,7 @@ export class AucConnectModalComponent extends BaseSubscriber {
     }
 
     if (wallet.needToInstall) {
-      const url: string = this._walletConnectService.initializedWalletsMap.get(wallet.label)?.walletUrl
+      const url: string = this.data.service.initializedWalletsMap.get(wallet.label)?.walletUrl
         ?? AucWalletsLinks[wallet.label] ?? null;
 
       if (url) {

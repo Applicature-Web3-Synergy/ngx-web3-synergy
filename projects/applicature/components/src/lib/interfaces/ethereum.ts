@@ -1,7 +1,7 @@
 import { AUC_ETH_EVENTS, AUC_ETH_METHODS } from '../enums';
 import Web3 from 'web3';
 
-export interface WindowEth {
+export interface AucWindowEth {
   ethereum: AucEthereum;
   global: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   web3: Web3;

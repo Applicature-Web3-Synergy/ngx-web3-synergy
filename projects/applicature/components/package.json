@@ -1,6 +1,6 @@
 {
   "name": "@applicature/components",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "peerDependencies": {
     "@angular/common": ">=13.0.0",
     "@angular/core": ">=13.0.0",
