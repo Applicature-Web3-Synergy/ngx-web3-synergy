@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucCopyToClipboardModule } from '@applicature/components';
+import { AucCopyToClipboardModule } from '@applicature/ngx-web3-synergy';
 
 import { CopyToClipboardRoutingModule } from './copy-to-clipboard-routing.module';
 import { CopyToClipboardComponent } from './copy-to-clipboard.component';

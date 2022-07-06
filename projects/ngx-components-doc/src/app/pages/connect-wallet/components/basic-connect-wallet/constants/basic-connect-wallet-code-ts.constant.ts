@@ -1,9 +1,9 @@
 export const BasicConnectWalletCodeTs =
-`/** Don't forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
+`/** Don't forget import { AucConnectWalletModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AucConnectionState } from '@applicature/components';
+import { AucConnectionState } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

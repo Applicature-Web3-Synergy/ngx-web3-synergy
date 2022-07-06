@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucAvatarModule } from '@applicature/components';
+import { AucAvatarModule } from '@applicature/ngx-web3-synergy';
 
 import { AvatarRoutingModule } from './avatar-routing.module';
 import { AvatarComponent } from './avatar.component';

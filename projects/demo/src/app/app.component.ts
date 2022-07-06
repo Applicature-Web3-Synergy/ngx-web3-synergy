@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { takeUntil } from 'rxjs';
 
-import { AucConnectionState, AucTransactionService, AucWalletConnectService } from '@applicature/components';
-
-import { BaseSubscriber } from '@applicature/components';
+import {
+  AucConnectionState,
+  AucTransactionService,
+  AucWalletConnectService,
+  BaseSubscriber
+} from '@applicature/ngx-web3-synergy';
 
 
 @Component({

@@ -1,4 +1,4 @@
-/** Don't forget import { AucNetworkDropdownModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucNetworkDropdownModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 

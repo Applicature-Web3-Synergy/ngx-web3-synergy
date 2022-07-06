@@ -16,7 +16,7 @@ import {
   AucNativeCurrencies,
   AucWalletConnectService,
   AucRpcUrls
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

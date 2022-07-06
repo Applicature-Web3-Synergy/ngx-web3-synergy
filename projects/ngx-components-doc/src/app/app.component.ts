@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
 import { MatSidenav } from '@angular/material/sidenav/sidenav';
-import { BaseSubscriber } from '@applicature/components';
+import { BaseSubscriber } from '@applicature/ngx-web3-synergy';
 
 import { RouterHelperService } from './services/router-helper';
 

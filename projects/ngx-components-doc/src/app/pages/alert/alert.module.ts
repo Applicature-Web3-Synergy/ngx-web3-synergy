@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucAlertModule } from '@applicature/components';
+import { AucAlertModule } from '@applicature/ngx-web3-synergy';
 
 import { AlertRoutingModule } from './alert-routing.module';
 import { AlertComponent } from './alert.component';

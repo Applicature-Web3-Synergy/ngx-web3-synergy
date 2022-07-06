@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs';
 
 import Web3 from 'web3';
 import { Balances, OnboardAPI } from '@web3-onboard/core/dist/types';
-import { AucConnectionState, AucWalletConnectService, BaseSubscriber } from '@applicature/components';
+import { AucConnectionState, AucWalletConnectService, BaseSubscriber } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

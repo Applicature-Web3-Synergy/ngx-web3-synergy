@@ -1,9 +1,9 @@
 export const CustomizedNetworkDropdownCodeTs =
-  `/** Don't forget import { AucNetworkDropdownModule } from '@applicature/components'; to your module */
+  `/** Don't forget import { AucNetworkDropdownModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AUC_POSITIONS, AucDropdownConfig } from '@applicature/components';
+import { AUC_POSITIONS, AucDropdownConfig } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

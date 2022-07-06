@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "@applicature/components": {
+    "@applicature/ngx-web3-synergy": {
       "projectType": "library",
       "schematics": {
         "@schematics/angular:component": {
@@ -14,22 +14,22 @@
           "strict": true
         }
       },
-      "root": "projects/applicature/components",
-      "sourceRoot": "projects/applicature/components/src",
+      "root": "projects/applicature/ngx-web3-synergy",
+      "sourceRoot": "projects/applicature/ngx-web3-synergy/src",
       "prefix": "auc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/applicature/components/ng-package.json"
+            "project": "projects/applicature/ngx-web3-synergy/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/applicature/components/tsconfig.lib.prod.json",
-              "project": "projects/applicature/components/ng-package.prod.json"
+              "tsConfig": "projects/applicature/ngx-web3-synergy/tsconfig.lib.prod.json",
+              "project": "projects/applicature/ngx-web3-synergy/ng-package.prod.json"
             },
             "development": {
-              "tsConfig": "projects/applicature/components/tsconfig.lib.json"
+              "tsConfig": "projects/applicature/ngx-web3-synergy/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -37,9 +37,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/applicature/components/src/test.ts",
-            "tsConfig": "projects/applicature/components/tsconfig.spec.json",
-            "karmaConfig": "projects/applicature/components/karma.conf.js",
+            "main": "projects/applicature/ngx-web3-synergy/src/test.ts",
+            "tsConfig": "projects/applicature/ngx-web3-synergy/tsconfig.spec.json",
+            "karmaConfig": "projects/applicature/ngx-web3-synergy/karma.conf.js",
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules"
@@ -51,17 +51,8 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/applicature/components/**/*.ts",
-              "projects/applicature/components/**/*.html"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "projects/applicature/components/**/*.ts",
-              "projects/applicature/components/**/*.html"
+              "projects/applicature/ngx-web3-synergy/**/*.ts",
+              "projects/applicature/ngx-web3-synergy/**/*.html"
             ]
           }
         }
@@ -477,5 +468,5 @@
       }
     }
   },
-  "defaultProject": "@applicature/components"
+  "defaultProject": "@applicature/ngx-web3-synergy"
 }

@@ -1,8 +1,8 @@
-/** Don't forget import { AucAccountButtonModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucAccountButtonModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AUC_POSITIONS, AucAccountOption, AucDropdownConfig } from '@applicature/components';
+import { AUC_POSITIONS, AucAccountOption, AucDropdownConfig } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

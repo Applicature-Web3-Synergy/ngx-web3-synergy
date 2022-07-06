@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucPipesModule } from '@applicature/components';
+import { AucPipesModule } from '@applicature/ngx-web3-synergy';
 
 import { ShortAddressRoutingModule } from './short-address-routing.module';
 import { ShortAddressComponent } from './short-address.component';

@@ -7,7 +7,7 @@ import {
   AucDropdownConfig,
   AucWalletConnectService,
   AucWalletLabel, BaseSubscriber
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 
 @Component({

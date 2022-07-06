@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatSelectModule } from '@angular/material/select';
-import { AucButtonModule, AucDialogModule, ModalsModule } from '@applicature/components';
+import { AucButtonModule, AucDialogModule, ModalsModule } from '@applicature/ngx-web3-synergy';
 
 import { DialogRoutingModule } from './dialog-routing.module';
 import { DialogComponent } from './dialog.component';

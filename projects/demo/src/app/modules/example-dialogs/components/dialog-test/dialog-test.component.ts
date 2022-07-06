@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AucDialogConfig, AucDialogRef } from '@applicature/components';
+import { AucDialogConfig, AucDialogRef } from '@applicature/ngx-web3-synergy';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 

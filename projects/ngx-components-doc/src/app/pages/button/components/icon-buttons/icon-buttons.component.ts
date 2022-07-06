@@ -1,9 +1,8 @@
-/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucButtonModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { AS_COLOR_GROUP } from '@applicature/styles';
-import { AUC_BUTTON_APPEARANCE, AUC_WLC_ICON } from '@applicature/components';
+import { AUC_BUTTON_APPEARANCE, AUC_WLC_ICON } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

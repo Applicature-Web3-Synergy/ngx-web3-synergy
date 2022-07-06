@@ -1,10 +1,10 @@
-/** Don't forget import { AucProgressBarModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucProgressBarModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { takeUntil } from 'rxjs';
 
-import { BaseSubscriber } from '@applicature/components';
+import { BaseSubscriber } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

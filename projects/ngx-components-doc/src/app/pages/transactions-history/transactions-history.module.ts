@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucButtonModule, AucTransactionsModule } from '@applicature/components';
+import { AucButtonModule, AucTransactionsModule } from '@applicature/ngx-web3-synergy';
 
 import { TransactionsHistoryRoutingModule } from './transactions-history-routing.module';
 import { TransactionsHistoryComponent } from './transactions-history.component';

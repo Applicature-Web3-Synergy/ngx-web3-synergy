@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { takeUntil } from 'rxjs';
 
-import { aucGenerateJazzicon, AucWalletConnectService, BaseSubscriber } from '@applicature/components';
+import { aucGenerateJazzicon, AucWalletConnectService, BaseSubscriber } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

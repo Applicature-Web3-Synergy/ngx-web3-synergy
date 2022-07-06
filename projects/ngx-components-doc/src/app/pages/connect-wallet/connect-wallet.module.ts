@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucConnectWalletModule } from '@applicature/components';
+import { AucConnectWalletModule } from '@applicature/ngx-web3-synergy';
 
 import { ConnectWalletRoutingModule } from './connect-wallet-routing.module';
 import { ConnectWalletComponent } from './connect-wallet.component';

@@ -1,6 +1,5 @@
 export const BasicDialogCodeTs =
-  `/** Don't forget import { AucDialogModule } from '@applicature/components'; to your module */
-/** Don't forget import { ModalsModule } from '@applicature/components'; to your module */
+  `/** Don't forget import { AucDialogModule, ModalsModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
@@ -11,7 +10,7 @@ import {
   AucTransferModalData,
   AucWrongNetworkModalComponent,
   AucWrongNetworkModalData
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 
 @Component({

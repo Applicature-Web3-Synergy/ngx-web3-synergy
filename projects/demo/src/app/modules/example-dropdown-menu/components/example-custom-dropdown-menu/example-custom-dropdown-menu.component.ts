@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { AUC_POSITIONS, AucDropdownConfig } from '@applicature/components';
+import { AUC_POSITIONS, AucDropdownConfig } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

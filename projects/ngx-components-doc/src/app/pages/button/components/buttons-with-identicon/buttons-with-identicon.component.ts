@@ -1,9 +1,9 @@
-/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucButtonModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
-import { AUC_IDENTICON_POSITION, aucGenerateJazzicon } from '@applicature/components';
+import { AUC_IDENTICON_POSITION, aucGenerateJazzicon } from '@applicature/ngx-web3-synergy';
 
 import { exampleEthAddress } from '../../../../constants';
 

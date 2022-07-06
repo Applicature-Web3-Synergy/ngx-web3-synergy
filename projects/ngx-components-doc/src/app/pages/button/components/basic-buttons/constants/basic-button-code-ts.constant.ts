@@ -1,5 +1,5 @@
 export const BasicButtonCodeTs =
-`/** Don't forget import { AucButtonModule } from '@applicature/components'; to your module */
+`/** Don't forget import { AucButtonModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 

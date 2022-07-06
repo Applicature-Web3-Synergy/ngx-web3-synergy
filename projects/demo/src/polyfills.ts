@@ -53,7 +53,7 @@ import 'zone.js';
 import { Buffer } from 'buffer';
 import process from 'process';
 
-import { AucWindowEth } from '@applicature/components';
+import { AucWindowEth } from '@applicature/ngx-web3-synergy';
 
 declare global {
   interface Window extends AucWindowEth {}

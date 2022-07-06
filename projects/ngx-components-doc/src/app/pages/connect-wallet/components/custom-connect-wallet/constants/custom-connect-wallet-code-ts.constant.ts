@@ -4,7 +4,12 @@ export const CustomConnectWalletCodeTs =
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
 
-import { AucConnectionState, AucWalletConnectService, AucWalletLabel, BaseSubscriber } from '@applicature/components';
+import {
+  AucConnectionState,
+  AucWalletConnectService,
+  AucWalletLabel,
+  BaseSubscriber
+} from '@applicature/ngx-web3-synergy';
 
 
 @Component({

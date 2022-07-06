@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { aucToWei } from '@applicature/components';
+import { aucToWei } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

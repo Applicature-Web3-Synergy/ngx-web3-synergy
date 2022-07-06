@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { AucButtonModule, AucDropdownMenuModule } from '@applicature/components';
+import { AucButtonModule, AucDropdownMenuModule } from '@applicature/ngx-web3-synergy';
 
 import { DropdownRoutingModule } from './dropdown-routing.module';
 import { DropdownComponent } from './dropdown.component';

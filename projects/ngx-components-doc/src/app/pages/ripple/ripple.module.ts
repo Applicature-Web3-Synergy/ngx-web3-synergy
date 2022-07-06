@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucButtonModule, AucRippleModule } from '@applicature/components';
+import { AucButtonModule, AucRippleModule } from '@applicature/ngx-web3-synergy';
 
 import { RippleRoutingModule } from './ripple-routing.module';
 import { RippleComponent } from './ripple.component';

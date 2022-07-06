@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucNetworkDropdownModule } from '@applicature/components';
+import { AucNetworkDropdownModule } from '@applicature/ngx-web3-synergy';
 
 import { NetworkDropdownRoutingModule } from './network-dropdown-routing.module';
 import { NetworkDropdownComponent } from './network-dropdown.component';

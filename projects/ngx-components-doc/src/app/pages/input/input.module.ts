@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AucInputModule } from '@applicature/components';
+import { AucInputModule } from '@applicature/ngx-web3-synergy';
 
 
 import { InputRoutingModule } from './input-routing.module';

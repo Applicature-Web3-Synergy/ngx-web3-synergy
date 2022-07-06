@@ -1,5 +1,5 @@
 export const CustomizedDropdownCodeTs =
-  `/** Don't forget import { AucDropdownMenuModule } from '@applicature/components'; to your module */
+  `/** Don't forget import { AucDropdownMenuModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,7 +9,7 @@ import {
   AucDropdownConfig,
   AucHorizontalPosition,
   AucVerticalPosition
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 
 @Component({

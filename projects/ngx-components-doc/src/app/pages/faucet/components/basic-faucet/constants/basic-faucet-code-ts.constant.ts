@@ -1,8 +1,8 @@
 export const BasicFaucetCodeTs =
-  `/** Don't forget import { AucFaucetModule } from '@applicature/components'; to your module */
+  `/** Don't forget import { AucFaucetModule } from '@applicature/ngx-web3-synergy'; to your module */
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { aucToWei } from '@applicature/components';
+import { aucToWei } from '@applicature/ngx-web3-synergy';
 
 import { environment } from '../../../../../environments/environment';
 

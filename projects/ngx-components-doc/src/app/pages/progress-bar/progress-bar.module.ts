@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
-import { AucProgressBarModule } from '@applicature/components';
+import { AucProgressBarModule } from '@applicature/ngx-web3-synergy';
 
 import { ProgressBarRoutingModule } from './progress-bar-routing.module';
 import { ProgressBarComponent } from './progress-bar.component';

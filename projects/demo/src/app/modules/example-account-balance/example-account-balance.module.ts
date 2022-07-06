@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { AucAccountBalanceModule } from '@applicature/ngx-web3-synergy';
+
 import { ExampleAccountBalanceComponent } from './example-account-balance.component';
-import { AucAccountBalanceModule } from '@applicature/components';
 
 
 

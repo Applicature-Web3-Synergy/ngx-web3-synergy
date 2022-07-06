@@ -1,6 +1,6 @@
 {
   "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../../node_modules/@applicature/components",
+  "dest": "../../../node_modules/@applicature/ngx-web3-synergy",
   "lib": {
     "entryFile": "src/public-api.ts"
   },

@@ -8,7 +8,7 @@ import {
   AucWrongNetworkModalComponent,
   AucWrongNetworkModalData,
   AucDialogService
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
 

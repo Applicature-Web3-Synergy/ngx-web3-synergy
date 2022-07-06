@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common';
 import { takeUntil } from 'rxjs';
 
 import { MarkdownService } from 'ngx-markdown';
-import { BaseSubscriber } from '@applicature/components';
+import { BaseSubscriber } from '@applicature/ngx-web3-synergy';
 
 import { CodePrettyDirective } from '../../modules/code-example/directives';
 

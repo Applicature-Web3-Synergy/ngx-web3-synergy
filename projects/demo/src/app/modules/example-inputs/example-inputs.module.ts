@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { AucInputModule } from '@applicature/ngx-web3-synergy';
+
 import { ExampleInputsComponent } from './example-inputs.component';
-import { AucInputModule } from '@applicature/components';
 
 
 

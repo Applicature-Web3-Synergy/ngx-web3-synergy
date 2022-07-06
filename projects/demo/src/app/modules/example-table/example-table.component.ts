@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import {
   AucTableHeaderItem,
   AucTableRow,
   AucSort,
   AUC_SORT_DIRECTION
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 const TableData: AucTableRow[] = [
   {

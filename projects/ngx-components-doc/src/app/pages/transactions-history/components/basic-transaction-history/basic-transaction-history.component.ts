@@ -1,4 +1,4 @@
-/** Don't forget import { AucTransactionsModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucTransactionsModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { takeUntil, takeWhile } from 'rxjs';
@@ -8,7 +8,7 @@ import {
   AucTransactionService,
   AucWalletConnectService,
   BaseSubscriber
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 
 @Component({

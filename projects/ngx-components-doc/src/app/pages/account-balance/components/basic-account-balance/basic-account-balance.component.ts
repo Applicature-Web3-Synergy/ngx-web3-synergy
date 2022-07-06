@@ -1,8 +1,8 @@
-/** Don't forget import { AucAccountBalanceModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucAccountBalanceModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AUC_BALANCE_APPEARANCE, AUC_IDENTICON_POSITION } from '@applicature/components';
+import { AUC_BALANCE_APPEARANCE, AUC_IDENTICON_POSITION } from '@applicature/ngx-web3-synergy';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 

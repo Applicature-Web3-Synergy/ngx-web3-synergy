@@ -12,8 +12,8 @@
       ],
       "parserOptions": {
         "project": [
-          "projects/applicature/components/tsconfig.lib.json",
-          "projects/applicature/components/tsconfig.spec.json"
+          "projects/applicature/ngx-web3-synergy/tsconfig.lib.json",
+          "projects/applicature/ngx-web3-synergy/tsconfig.spec.json"
         ],
         "createDefaultProgram": true
       },

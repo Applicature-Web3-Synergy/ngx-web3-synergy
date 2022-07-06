@@ -1,7 +1,7 @@
-/** Don't forget import { AucConnectWalletModule } from '@applicature/components'; to your module */
+/** Don't forget import { AucConnectWalletModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AUC_CONNECT_WALLET_APPEARANCE, AucConnectionState } from '@applicature/components';
+import { AUC_CONNECT_WALLET_APPEARANCE, AucConnectionState } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

@@ -1,4 +1,4 @@
-# Ngx Universal Components
+# Web3 Synergy
 This library was created and maintained by Applicature to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
 This library supports Angular from version 13 and higher.
 
@@ -6,7 +6,7 @@ This library supports Angular from version 13 and higher.
 For more information visit the [**documentation**](https://master.d1bdle1xqu39tu.amplifyapp.com).
 
 ## Library installation
-    npm i @applicature/styles @applicature/components
+    npm i @applicature/styles @applicature/ngx-web3-synergy
 
 ## How to make it works
 
@@ -47,7 +47,7 @@ Add `node_modules/@applicature/styles/src/lib/scss/as-styles` to **angular.json*
 import { Buffer } from 'buffer';
 import process from 'process';
 
-import { WindowEth } from '@applicature/components';
+import { WindowEth } from '@applicature/ngx-web3-synergy';
 
 declare global {
   interface Window extends WindowEth {}

@@ -11,7 +11,7 @@ import {
   AucNativeCurrencies,
   AucRpcUrls,
   AucWalletConnectService
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';

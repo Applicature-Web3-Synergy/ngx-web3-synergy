@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
-import { AucAccountBalanceModule, AucConnectWalletModule } from '@applicature/components';
+import { AucAccountBalanceModule, AucConnectWalletModule } from '@applicature/ngx-web3-synergy';
 
 import { AccountBalanceRoutingModule } from './account-balance-routing.module';
 import { AccountBalanceComponent } from './account-balance.component';

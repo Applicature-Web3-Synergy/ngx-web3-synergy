@@ -12,7 +12,7 @@ import {
   AucNativeCurrencies,
   AucWalletConnectService,
   AucRpcUrls
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 /** Read more about Infura https://infura.io */
 const INFURA_KEY = environment.infuraKey;

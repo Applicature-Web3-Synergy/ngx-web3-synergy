@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucAccountButtonModule } from '@applicature/components';
+import { AucAccountButtonModule } from '@applicature/ngx-web3-synergy';
 
 import { AccountButtonRoutingModule } from './account-button-routing.module';
 import { AccountButtonComponent } from './account-button.component';

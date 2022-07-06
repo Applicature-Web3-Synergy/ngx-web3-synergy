@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucButtonModule } from '@applicature/components';
+import { AucButtonModule } from '@applicature/ngx-web3-synergy';
 
 import { ExampleButtonsComponent } from './example-buttons.component';
 

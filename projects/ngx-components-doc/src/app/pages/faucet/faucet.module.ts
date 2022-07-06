@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucFaucetModule } from '@applicature/components';
+import { AucFaucetModule } from '@applicature/ngx-web3-synergy';
 
 import { FaucetComponent } from './faucet.component';
 import { ComponentViewerModule } from '../../modules/component-viewer/component-viewer.module';

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { AUC_WLC_ICON } from '@applicature/components';
+import { AUC_WLC_ICON } from '@applicature/ngx-web3-synergy';
 
 
 @Component({

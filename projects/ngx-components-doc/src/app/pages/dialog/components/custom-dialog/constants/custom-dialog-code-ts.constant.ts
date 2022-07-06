@@ -1,5 +1,5 @@
 export const CustomDialogCodeTs =
-`/** Don't forget import { AucDialogModule } from '@applicature/components'; to your module */
+`/** Don't forget import { AucDialogModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -10,7 +10,7 @@ import {
   AucDialogRef,
   AucDialogService,
   AucDialogPosition
-} from '@applicature/components';
+} from '@applicature/ngx-web3-synergy';
 
 
 @Component({

@@ -1,9 +1,9 @@
 export const BasicTableCodeTs =
-  `/** Don't forget import { AucTableModule } from '@applicature/components'; to your module */
+  `/** Don't forget import { AucTableModule } from '@applicature/ngx-web3-synergy'; to your module */
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AUC_SORT_DIRECTION, AucSort, AucTableHeaderItem, AucTableRow } from '@applicature/components';
+import { AUC_SORT_DIRECTION, AucSort, AucTableHeaderItem, AucTableRow } from '@applicature/ngx-web3-synergy';
 
 const TableData: AucTableRow[] = [
   {
