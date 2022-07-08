@@ -1,0 +1,26 @@
+import { W3S_CHAIN_ID } from '../enums';
+
+export const W3sChainName: { [key: string]: string } = {
+  [W3S_CHAIN_ID.ARBITRUM_MAINNET]: 'Arbitrum Mainnet',
+  [W3S_CHAIN_ID.ARBITRUM_TESTNET]: 'Arbitrum Rinkeby Testnet',
+  [W3S_CHAIN_ID.ASTAR_MAINNET]: 'Astar Network Mainnet',
+  [W3S_CHAIN_ID.ASTAR_TESTNET]: 'Shibuya Testnet',
+  [W3S_CHAIN_ID.AVALANCH_MAINNET]: 'Avalanche Network Mainnet',
+  [W3S_CHAIN_ID.AVALANCH_TESTNET]: 'Fuji Testnet',
+  [W3S_CHAIN_ID.BSC_MAINNET]: 'Binance Smart Chain Mainnet',
+  [W3S_CHAIN_ID.BSC_TESTNET]: 'Binance Smart Chain Testnet',
+  [W3S_CHAIN_ID.ETHEREUM_MAINNET]: 'Ethereum Mainnet',
+  [W3S_CHAIN_ID.FANTOM_MAINNET]: 'Fantom Opera',
+  [W3S_CHAIN_ID.FANTOM_TESTNET]: 'Fantom Testnet',
+  [W3S_CHAIN_ID.GOERLI_TESTNET]: 'Goreli Testnet',
+  [W3S_CHAIN_ID.KOVAN_TESTNET]: 'Kovan Testnet',
+  [W3S_CHAIN_ID.OPTIMISTIC_MAINNET]: 'Optimistic Ethereum Mainnet',
+  [W3S_CHAIN_ID.OPTIMISTIC_TESTNET]: 'Optimistic Ethereum Kovan Testnet',
+  [W3S_CHAIN_ID.POLYGON_MAINNET]: 'Polygon Mainnet',
+  [W3S_CHAIN_ID.POLYGON_TESTNET]: 'Mumbai Testnet',
+  [W3S_CHAIN_ID.RINKEBY_TESTNET]: 'Rinkeby Testnet',
+  [W3S_CHAIN_ID.SHIDEN_MAINNET]: 'Shiden Network Mainnet',
+  [W3S_CHAIN_ID.SHIDEN_TESTNET]: 'Shibuya Testnet',
+  [W3S_CHAIN_ID.THETA_MAINNET]: 'Theta Mainnet',
+  [W3S_CHAIN_ID.THETA_TESTNET]: 'Theta Testnet',
+};

@@ -1,11 +1,11 @@
-<auc-button (showHide)="showHideDropdown($event)"
+<w3s-button (showHide)="showHideDropdown($event)"
             label="Custom Dropdown Menu"
-            aucTrigger
-            #customMenuTrigger="aucTrigger"
+            w3sTrigger
+            #customMenuTrigger="w3sTrigger"
 >
-</auc-button>
+</w3s-button>
 
-<auc-dropdown-menu *ngIf="isOpenedCustomDropdownMenu"
+<w3s-dropdown-menu *ngIf="isOpenedCustomDropdownMenu"
                    [config]="customDropdownConfig"
                    [trigger]="customMenuTrigger"
 >
@@ -17,4 +17,4 @@
       {{item.title}}
     </div>
   </div>
-</auc-dropdown-menu>
+</w3s-dropdown-menu>

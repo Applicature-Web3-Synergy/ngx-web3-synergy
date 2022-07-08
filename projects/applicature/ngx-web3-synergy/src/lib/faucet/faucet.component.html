@@ -1,0 +1,16 @@
+<div class="w3s-faucet">
+  <div class="w3s-faucet-token-info">
+    <w3s-icon *ngIf="iconToken"
+              [icon]="iconToken"
+              class="w3s-faucet-token-symbol-icon"
+    >
+    </w3s-icon>
+    <div class="w3s-faucet-token-symbol">{{ tokenSymbol }}</div>
+  </div>
+
+  <w3s-button [label]="!hasPending ? 'Get token' : 'Pending'"
+              class="w3s-button-label"
+              [pending]="hasPending"
+              (click)="mint()">
+  </w3s-button>
+</div>

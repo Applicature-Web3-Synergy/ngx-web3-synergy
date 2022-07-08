@@ -1,0 +1,128 @@
+@use '@applicature/styles/src/lib/scss/as-common' as c;
+
+:host {
+  display: block;
+  width: 100%;
+  font-family: c.$as-font-family;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 8px;
+  background-color: c.getColor(white, base);
+  overflow: hidden;
+}
+
+.w3s-table-container {
+  width: 100%;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+.w3s-table {
+  width: 100%;
+  border: none;
+  border-spacing: 0;
+  border-collapse: collapse;
+  overflow-x: auto;
+
+  tr {
+    & > th,
+    & > td {
+      text-align: left;
+    }
+
+    & > th {
+      padding: 18px 20px;
+      font-weight: bold;
+      color: c.getColor(grey, base);
+      border-bottom: 1px solid c.getColor(grey, light);
+    }
+
+    & > td {
+      padding: 14px 20px;
+      font-weight: 500;
+    }
+  }
+
+  tbody {
+    tr {
+      @include c.transition;
+
+      &:hover {
+        background-color: c.getColor(grey, background);
+      }
+    }
+  }
+}
+
+.w3s-table-cell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &.sortable {
+    color: c.getColor(blue, base);
+    cursor: pointer;
+    @include c.transition;
+
+    &:hover {
+      color: c.getColor(blue, hover);
+    }
+  }
+
+  & > *:not(:first-child) {
+    margin-left: 8px;
+  }
+
+  & > .w3s-table-sort {
+    margin-left: 4px;
+    line-height: 0;
+  }
+}
+
+.w3s-table-cell-value {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &.with-bg {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: c.getColor(grey, background);
+  }
+
+  w3s-icon {
+    margin-right: 8px;
+  }
+}
+
+.w3s-table-link {
+  color: c.getColor(blue, base);
+  text-decoration: none;
+  @include c.transition;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.w3s-table-load-more {
+  border-top: 1px solid c.getColor(grey, light);
+  padding: 14px 20px;
+  color: c.getColor(grey, base);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  @include c.transition;
+
+  &:hover {
+    background-color: c.getColor(white, hover);
+    color: c.getColor(white, text);
+  }
+}
+
+.w3s-table-load-more-text {
+  padding-right: 8px;
+}

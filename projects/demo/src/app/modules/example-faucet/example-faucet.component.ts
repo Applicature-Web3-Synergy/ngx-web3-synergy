@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { aucToWei } from '@applicature/components';
+import { w3sToWei } from '@applicature/ngx-web3-synergy';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { aucToWei } from '@applicature/components';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleFaucetComponent {
-  amount: string = aucToWei(1, 18);
+  amount: string = w3sToWei(1, 18);
   contractToken = '0x9c77Cc2C6F2C2844D7F54c6aBeC14afbc928D0ED'
 
 }

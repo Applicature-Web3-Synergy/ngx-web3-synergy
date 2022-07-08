@@ -1,86 +1,86 @@
 <div class="example-block">
   <h3 class="example-block-title">Default</h3>
 
-  <auc-connect-wallet (connected)="connected($event)"
+  <w3s-connect-wallet (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 <div class="example-block">
   <h3 class="example-block-title">With balance</h3>
 
-  <auc-connect-wallet [showBalance]="true"
+  <w3s-connect-wallet [showBalance]="true"
                       (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 <div class="example-block">
   <h3 class="example-block-title">With Networks</h3>
 
-  <auc-connect-wallet [showNetworkOptions]="true"
+  <w3s-connect-wallet [showNetworkOptions]="true"
                       [networkDropdownConfig]="networkDropdownConfig"
                       (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 <div class="example-block">
   <h3 class="example-block-title">All in one</h3>
 
-  <auc-connect-wallet [showBalance]="true"
+  <w3s-connect-wallet [showBalance]="true"
                       [showNetworkOptions]="true"
                       [networkDropdownConfig]="networkDropdownConfig"
                       (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 
 <div class="example-block">
   <h3 class="example-block-title">As Icon Default</h3>
 
-  <auc-connect-wallet appearance="icon"
+  <w3s-connect-wallet appearance="icon"
                       (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 <div class="example-block">
   <h3 class="example-block-title">As Icon With Balance</h3>
 
-  <auc-connect-wallet appearance="icon"
+  <w3s-connect-wallet appearance="icon"
                       [showBalance]="true"
                       (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 <div class="example-block">
   <h3 class="example-block-title">As Icon With Networks</h3>
 
-  <auc-connect-wallet appearance="icon"
+  <w3s-connect-wallet appearance="icon"
                       [showNetworkOptions]="true"
                       [networkDropdownConfig]="networkDropdownConfig"
                       (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 <div class="example-block">
   <h3 class="example-block-title">As Icon With Transactions</h3>
 
-  <auc-connect-wallet appearance="icon"
+  <w3s-connect-wallet appearance="icon"
                       [showTransactions]="true"
                       (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 <div class="example-block">
   <h3 class="example-block-title">As Icon All in one</h3>
 
-  <auc-connect-wallet appearance="icon"
+  <w3s-connect-wallet appearance="icon"
                       [showBalance]="true"
                       [showTransactions]="true"
                       [showNetworkOptions]="true"
@@ -89,7 +89,7 @@
                       [accountOptions]="accountOptions"
                       (connected)="connected($event)"
                       (disconnected)="disconnected($event)">
-  </auc-connect-wallet>
+  </w3s-connect-wallet>
 </div>
 
 <div class="example-block">

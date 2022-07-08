@@ -1,0 +1,149 @@
+@use '@applicature/styles/src/lib/scss/as-common' as c;
+
+:host {
+  display: inline-flex;
+}
+
+.w3s-input {
+  display: flex;
+  flex-direction: column;
+  font-family: c.$as-font-family;
+}
+
+.w3s-input-label {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.w3s-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.w3s-input-hint,
+.w3s-input-error {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.w3s-input-label,
+.w3s-input-hint {
+  color: c.getColor(grey, base);
+}
+
+.w3s-input-hint {
+  margin-top: 8px;
+}
+
+.w3s-input-error {
+  margin-top: 4px;
+  color: c.getColor(red, base);
+}
+
+.w3s-input-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 12px;
+  border: 1px solid c.getColor(grey, light);
+  border-radius: 8px;
+  @include c.transition(border);
+
+  &:not(.w3s-input-container-disabled):not(.w3s-input-container-error):not(.w3s-input-container-focus):hover {
+    border: 1px solid c.getColor(grey, hover);
+  }
+}
+
+.w3s-input-container-prefix {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.w3s-input-container-suffix {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.w3s-input-container-disabled {
+  cursor: default;
+  background: c.$grey-bg;
+  pointer-events: none;
+}
+
+.w3s-input-container-focus {
+  border: 1px solid c.getColor(blue, base);
+}
+
+.w3s-input-container-error {
+  border: 1px solid c.getColor(red, base);
+
+  .w3s-input-max {
+    color: c.getColor(red, base);
+  }
+}
+
+.w3s-input-field {
+  height: 100%;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  font-family: c.$as-font-family;
+  outline: none;
+  min-width: 180px;
+  font-size: 14px;
+  font-weight: 500;
+  color: c.$black;
+
+  &::placeholder {
+    color: c.getColor(grey, hover);
+    font-family: c.$as-font-family;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.w3s-input-prefix,
+.w3s-input-suffix {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: c.$grey-bg;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: c.getColor(grey, base);
+  height: 100%;
+  border: 1px solid c.getColor(grey, light);
+}
+
+.w3s-input-prefix {
+  border-right: 0;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.w3s-input-suffix {
+  border-left: 0;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.w3s-input-max {
+  display: inline-block;
+  margin-left: 12px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  color: c.getColor(blue, base);
+  @include c.transition;
+
+  &:hover {
+    cursor: pointer;
+    color: c.getColor(blue, hover);
+  }
+}

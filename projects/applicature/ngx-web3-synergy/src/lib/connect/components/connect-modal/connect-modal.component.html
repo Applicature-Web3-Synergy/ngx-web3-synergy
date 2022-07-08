@@ -1,0 +1,24 @@
+<div class="w3s-dialog-header">
+  <h1 *ngIf="data?.title">{{ data.title }}</h1>
+
+  <button type="button" class="w3s-close-btn">
+    <w3s-icon icon="wcl-icon-close"
+              (click)="close()"
+    >
+    </w3s-icon>
+  </button>
+</div>
+
+<div class="w3s-connect-dialog-wallets-list">
+  <div class="w3s-connect-dialog-wallet-item"
+       *ngFor="let wallet of wallets"
+       [class.w3s-active-wallet]="wallet.active"
+       (click)="connect(wallet)"
+  >
+    <w3s-icon *ngIf="wallet.icon" [icon]="wallet.icon" class="w3s-connect-dialog-wallet-item-icon"></w3s-icon>
+    <span class="w3s-connect-dialog-wallet-item-label">{{wallet.label}}</span>
+    <w3s-icon *ngIf="wallet.active" icon="wcl-icon-active" class="w3s-active-wallet-icon"></w3s-icon>
+  </div>
+</div>
+
+

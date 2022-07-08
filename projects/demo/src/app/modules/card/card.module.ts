@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucIconModule } from '@applicature/components';
+import { W3sIconModule } from '@applicature/ngx-web3-synergy';
 
 import { CardComponent } from './card.component';
 import { CardHelperService } from './services';
@@ -18,7 +18,7 @@ import { CardHelperService } from './services';
   ],
   imports: [
     CommonModule,
-    AucIconModule
+    W3sIconModule
   ]
 })
 export class CardModule { }

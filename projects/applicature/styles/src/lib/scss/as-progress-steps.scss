@@ -1,20 +1,20 @@
 @use "as-common" as c;
 
-.auc-progress-steps-container {
+.w3s-progress-steps-container {
   background: c.getColor(grey, background);
   border-radius: 8px;
   padding: 16px;
   color: c.$black;
 }
 
-.auc-progress-step {
+.w3s-progress-step {
   margin: 0 0 4px;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
 }
 
-.auc-progress-step-text {
+.w3s-progress-step-text {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;

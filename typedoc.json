@@ -1,6 +1,6 @@
 {
   "entryPoints": [
-    "projects/applicature/components/src/public-api.ts"
+    "projects/applicature/ngx-web3-synergy/src/public-api.ts"
   ],
   "out": "doc/typedoc",
   "exclude": [
@@ -16,6 +16,6 @@
   "excludePrivate": true,
   "includeVersion": true,
   "excludeInternal": true,
-  "readme": "projects/applicature/components/README.md",
-  "name": "Applicature NGX Universal Components."
+  "readme": "projects/applicature/ngx-web3-synergy/README.md",
+  "name": "Web 3 Synergy"
 }

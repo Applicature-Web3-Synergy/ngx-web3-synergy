@@ -1,0 +1,55 @@
+<div class="w3s-input">
+  <span *ngIf="label" class="w3s-input-label">{{ label }}</span>
+
+  <div [style.height.px]="height"
+       class="w3s-input-wrapper">
+    <div *ngIf="prefix" class="w3s-input-prefix">{{ prefix }}</div>
+
+    <div [ngClass]="classNames">
+      <ng-container *ngIf="type === 'number'; else textInput">
+        <input #inputElement
+               [placeholder]="placeholder"
+               [disabled]="disabled"
+               [ngModel]="value"
+               (ngModelChange)="onChange($event)"
+               (focus)="focus=true"
+               (blur)="focus=false"
+               [max]="max"
+               [decimalSeparator]="'.'"
+               [allowNegatives]="false"
+               [decimal]="decimal"
+               digitOnly
+               type="text"
+               class="w3s-input-field">
+
+        <span *ngIf="max"
+              (click)="onMaxClick()"
+              class="w3s-input-max"
+        >
+          MAX
+        </span>
+      </ng-container>
+
+      <ng-template #textInput>
+        <input #inputElement
+               [placeholder]="placeholder"
+               [disabled]="disabled"
+               [ngModel]="value"
+               (ngModelChange)="onChange($event)"
+               (focus)="focus=true"
+               (blur)="focus=false"
+               type="text"
+               class="w3s-input-field">
+      </ng-template>
+
+    </div>
+
+    <div *ngIf="suffix" class="w3s-input-suffix">{{ suffix }}</div>
+  </div>
+
+  <div *ngIf="hint"
+       class="w3s-input-hint">{{ hint }}</div>
+
+  <div *ngFor="let error of errors"
+       class="w3s-input-error">{{ error }}</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="w3s-wrong-network">
+  <div class="w3s-dialog-header w3s-wrong-network-header">
+    <button type="button" class="w3s-close-btn">
+      <w3s-icon icon="wcl-icon-close"
+                (click)="onCloseClick()"
+      >
+      </w3s-icon>
+    </button>
+  </div>
+
+
+  <w3s-icon icon="wcl-icon-fail"
+            class="w3s-wrong-network-fail"
+            (click)="onCloseClick()"
+  >
+  </w3s-icon>
+
+  <h1 class="w3s-wrong-network-title">{{ data.header }}</h1>
+
+  <div class="w3s-wrong-network-message">{{ data.message }}</div>
+
+  <ng-container [ngSwitch]="data.appearance">
+    <ng-container *ngSwitchCase="'switch'">
+      <w3s-button [label]="data.switchLabel"
+                  (buttonClicked)="onSwitchNetworkClick()"
+                  [adaptive]="true"
+                  class="w3s-wrong-network-action w3s-switch-network-btn"
+      >
+      </w3s-button>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'disconnect'">
+      <w3s-button label="Disconnect"
+                          [color]="disconnectBtnColor"
+                          [adaptive]="true"
+                          (buttonClicked)="disconnectClick()"
+                          class="w3s-wrong-network-action w3s-disconnect-btn"
+      >
+      </w3s-button>
+    </ng-container>
+  </ng-container>
+</div>

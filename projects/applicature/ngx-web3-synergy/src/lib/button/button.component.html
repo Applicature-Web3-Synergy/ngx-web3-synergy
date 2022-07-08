@@ -1,0 +1,45 @@
+<button [w3sSetStyleProps]="styleProperties"
+        [w3sIdenticon]="identicon"
+        [position]="identiconPosition"
+        [type]="type"
+        [style.height.px]="height"
+        [disabled]="disabled"
+        [ngClass]="classNames"
+        (click)="clicked($event)"
+>
+  <ng-container [ngSwitch]="appearance">
+    <ng-container *ngSwitchCase="BUTTON_APPEARANCE.ICON">
+      <w3s-icon [icon]="leftIcon || rightIcon"
+                        [color]="iconColor"
+                        class="w3s-button-icon"
+      >
+      </w3s-icon>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <w3s-icon *ngIf="leftIcon"
+                        [icon]="leftIcon"
+                        [color]="iconColor"
+                        class="w3s-button-left-icon"
+      >
+      </w3s-icon>
+
+      <span class="w3s-button-label">{{ label }}</span>
+
+      <w3s-icon *ngIf="!pending && rightIcon"
+                        [icon]="rightIcon"
+                        [color]="iconColor"
+                        class="w3s-button-right-icon"
+      >
+      </w3s-icon>
+
+      <w3s-spinner *ngIf="pending"
+                           [diameter]="20"
+                           [width]="2"
+                           [color]="spinnerColor"
+                           class="w3s-button-spinner"
+      >
+      </w3s-spinner>
+    </ng-container>
+  </ng-container>
+</button>

@@ -1,0 +1,35 @@
+:host {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+.w3s-icon-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.w3s-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.w3s-icon-svg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.w3s-icon-font {
+  line-height: 0;
+  color: inherit;
+}

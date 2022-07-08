@@ -1,0 +1,17 @@
+<div class="w3s-dialog-container"
+     w3sCustomizeDialog
+     [config]="panelConfig"
+>
+  <w3s-overlay *ngIf="hasOverlay"
+               [customize]="overlayConfig"
+               (overlayClicked)="onOverlayClicked()"
+  >
+  </w3s-overlay>
+
+  <div class="w3s-dialog"
+       w3sCustomizeDialog
+       [config]="dialogConfig"
+  >
+    <ng-template w3sInsertion></ng-template>
+  </div>
+</div>

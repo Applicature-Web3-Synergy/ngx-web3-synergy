@@ -1,0 +1,110 @@
+export const BasicIconCodeHtml = `<div class="doc-grid-container">
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.ACTIVE}}</h5>
+
+    <w3s-icon [icon]="ICONS.ACTIVE"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.ARROW_DOWN}}</h5>
+
+    <w3s-icon [icon]="ICONS.ARROW_DOWN"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.ARROW_UP}}</h5>
+
+    <w3s-icon [icon]="ICONS.ARROW_UP"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.CHECK}}</h5>
+
+    <w3s-icon [icon]="ICONS.CHECK"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.CHEVRON_DOWN}}</h5>
+
+    <w3s-icon [icon]="ICONS.CHEVRON_DOWN"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.CHEVRON_UP}}</h5>
+
+    <w3s-icon [icon]="ICONS.CHEVRON_UP"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.CLOSE}}</h5>
+
+    <w3s-icon [icon]="ICONS.CLOSE"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.COPY}}</h5>
+
+    <w3s-icon [icon]="ICONS.COPY"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.EXTERNAL_LINK}}</h5>
+
+    <w3s-icon [icon]="ICONS.EXTERNAL_LINK"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.FAIL}}</h5>
+
+    <w3s-icon [icon]="ICONS.FAIL"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.MINUS}}</h5>
+
+    <w3s-icon [icon]="ICONS.MINUS"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.PLUS}}</h5>
+
+    <w3s-icon [icon]="ICONS.PLUS"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.RECENT}}</h5>
+
+    <w3s-icon [icon]="ICONS.RECENT"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.STAR}}</h5>
+
+    <w3s-icon [icon]="ICONS.STAR"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.USER}}</h5>
+
+    <w3s-icon [icon]="ICONS.USER"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.WALLET}}</h5>
+
+    <w3s-icon [icon]="ICONS.WALLET"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.WALLET_CONNECT}}</h5>
+
+    <w3s-icon [icon]="ICONS.WALLET_CONNECT"></w3s-icon>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">{{ICONS.WRONG}}</h5>
+
+    <w3s-icon [icon]="ICONS.WRONG"></w3s-icon>
+  </div>
+</div>
+`;

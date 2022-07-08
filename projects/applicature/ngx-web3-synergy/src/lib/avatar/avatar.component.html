@@ -1,0 +1,13 @@
+<div [w3sSetStyleProps]="iconStyleProperties"
+     class="w3s-avatar"
+>
+  <img *ngIf="src; else iconRef" [src]="src" class="w3s-avatar-img" alt="">
+
+  <ng-template #iconRef>
+    <w3s-icon [icon]="defaultUserIcon"
+              [color]="defaultUserIconColor"
+              class="w3s-avatar-icon"
+    >
+    </w3s-icon>
+  </ng-template>
+</div>

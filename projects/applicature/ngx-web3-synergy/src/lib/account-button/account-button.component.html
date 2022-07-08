@@ -1,0 +1,57 @@
+<w3s-avatar class="w3s-account-button"
+            w3sTrigger
+            #networkOptionsTrigger="w3sTrigger"
+            [src]="account?.image"
+            [size]="size"
+            (showHide)="setOpened($event)"
+>
+</w3s-avatar>
+
+<w3s-dropdown-menu *ngIf="isOptionsOpen"
+                   [config]="accountDropdownConfig"
+                   [trigger]="networkOptionsTrigger"
+>
+  <ul class="w3s-account-button-options">
+    <li class="w3s-account-button-header">Connected with Metamask</li>
+
+    <li class="w3s-account-button-header">
+      <div class="w3s-account-button-user-info">
+        <w3s-avatar [src]="account?.image"
+                    [size]="48"
+                    class="w3s-account-button-user-info-avatar">
+        </w3s-avatar>
+
+        <div class="w3s-account-button-user-info-name">
+          <h1>{{ account?.name || (accountAddress | w3sShortAddress) }}</h1>
+          <span *ngIf="account?.name">{{ accountAddress | w3sShortAddress }}</span>
+        </div>
+
+        <w3s-copy-to-clipboard [value]="accountAddress"
+                               class="w3s-account-button-user-info-copy"
+        >
+        </w3s-copy-to-clipboard>
+      </div>
+    </li>
+
+    <li *ngFor="let option of options"
+        (click)="optionClick(option)"
+        [class.w3s-options-item-disabled]="option.disabled"
+        class="w3s-account-button-options-item">
+      <span class="w3s-account-button-options-name">{{ option.name }}</span>
+    </li>
+
+    <li class="w3s-account-button-options-footer">
+      <w3s-button [adaptive]="true"
+                  (buttonClicked)="onChangeWalletProviderClick()"
+                  label="Change wallet provider"
+                  class="w3s-account-button-options-button">
+      </w3s-button>
+      <w3s-button [adaptive]="true"
+                  (buttonClicked)="disconnectClick()"
+                  [color]="disconnectBtnColor"
+                  label="Disconnect"
+                  class="w3s-account-button-options-button">
+      </w3s-button>
+    </li>
+  </ul>
+</w3s-dropdown-menu>
