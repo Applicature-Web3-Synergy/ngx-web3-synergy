@@ -1,6 +1,22 @@
 {
   "name": "@applicature/ngx-web3-synergy",
-  "version": "0.0.25",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Applicature-Web3-Synergy/ngx-web3-synergy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Applicature-Web3-Synergy/ngx-web3-synergy/issues"
+  },
+  "homepage": "https://github.com/Applicature-Web3-Synergy/ngx-web3-synergy#readme",
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng",
+    "ng2",
+    "ngx",
+    "web3"
+  ],
   "peerDependencies": {
     "@angular/common": ">=13.0.0",
     "@angular/core": ">=13.0.0",

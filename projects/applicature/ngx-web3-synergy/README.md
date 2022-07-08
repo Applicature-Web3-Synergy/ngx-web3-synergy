@@ -3,7 +3,7 @@ This library was created and maintained by [**Applicature**](https://applicature
 This library supports Angular from version 13 and higher.
 
 ## Documentation
-For more information visit the [**documentation**](https://master.d1bdle1xqu39tu.amplifyapp.com).
+For more information visit the [**documentation**](http://docs.web3synergy.net).
 
 ## Library installation
     npm i @applicature/styles @applicature/ngx-web3-synergy
@@ -304,5 +304,5 @@ You might need to add `allowedCommonJsDependencies` to `angular.json` file:
 
 ## Contributing
 This project is maintained by a community of developers. Contributions are welcome and appreciated.
-You can find Web3 Synergy on [**GitHub**](https://github.com/Applicature-Web3-Components/ngx-web3-components); feel free to open an issue or create a pull request:
+You can find Web3 Synergy on [**GitHub**](https://github.com/Applicature-Web3-Synergy/ngx-web3-synergy); feel free to open an issue or create a pull request:
 
