@@ -1,0 +1,56 @@
+@use '@applicature/styles/src/lib/scss/as-common' as c;
+
+:host {
+  display: inline-block;
+}
+
+.w3s-balance {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  height: 40px;
+  border-radius: map-get(c.$as-border-radius, sm);
+  position: relative;
+  z-index: 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--w3s-account-balance-base);
+    z-index: -1;
+  }
+
+  &.w3s-balance-translucent {
+    &:before {
+      opacity: 0.5;
+    }
+  }
+
+  &.w3s-balance-transparent {
+    &:before {
+      background: transparent;
+      opacity: 0;
+    }
+  }
+}
+
+.w3s-balance-info {
+  display: flex;
+  align-items: center;
+  color: var(--w3s-account-balance-text);
+  padding: 8px 12px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+w3s-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  margin-right: 8px;
+}

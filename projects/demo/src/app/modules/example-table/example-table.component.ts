@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {
-  AucTableHeaderItem,
-  AucTableRow,
-  AucSort,
-  AUC_SORT_DIRECTION
-} from '@applicature/components';
 
-const TableData: AucTableRow[] = [
+import {
+  W3sTableHeaderItem,
+  W3sTableRow,
+  W3sSort,
+  W3S_SORT_DIRECTION
+} from '@applicature/ngx-web3-synergy';
+
+const TableData: W3sTableRow[] = [
   {
     action: {
       value: 'Withdraw',
@@ -107,7 +108,7 @@ const TableData: AucTableRow[] = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleTableComponent {
-  public tableHeaders: AucTableHeaderItem[] = [
+  public tableHeaders: W3sTableHeaderItem[] = [
     {
       position: 1,
       rowKey: 'action',
@@ -129,11 +130,11 @@ export class ExampleTableComponent {
       value: 'Time',
       sort: {
         sortBy: 'time',
-        sortDirection: AUC_SORT_DIRECTION.DESC
+        sortDirection: W3S_SORT_DIRECTION.DESC
       }
     }
   ];
-  public tableData: AucTableRow[] = [...TableData];
+  public tableData: W3sTableRow[] = [...TableData];
 
   public isLoadMore = true;
 
@@ -153,7 +154,7 @@ export class ExampleTableComponent {
     ]
   }
 
-  tableSort(sort: AucSort): void {
+  tableSort(sort: W3sSort): void {
     console.log('TABLE SORT ACTION: ', sort);
 
     this.tableData = this.tableData.reverse();

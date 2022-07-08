@@ -1,0 +1,20 @@
+<div [ngClass]="classNames" [w3sSetStyleProps]="styleProperties">
+  <div class="w3s-balance-info" *ngIf="balance">
+    <w3s-icon *ngIf="isCurrency && activeNetwork?.icon"
+              class="w3s-balance-currency"
+              [icon]="activeNetwork.icon"
+    >
+    </w3s-icon>
+
+    <span>{{ balance }}</span>
+  </div>
+
+  <w3s-button *ngIf="showAddress"
+              (buttonClicked)="accountButtonClick($event)"
+              [disabled]="addressConfig?.disabled"
+              [label]="(address | w3sShortAddress)"
+              [identicon]="addressConfig?.showIdenticon ? identicon : null"
+              [identiconPosition]="addressConfig?.identiconPosition"
+              [color]="addressConfig?.color ?? COLOR_GROUP.WHITE">
+  </w3s-button>
+</div>

@@ -1,0 +1,95 @@
+@use '@applicature/styles/src/lib/scss/as-common' as c;
+
+:host {
+  display: inline-flex;
+}
+
+.w3s-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 14px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  font-family: c.$as-font-family;
+  color: var(--w3s-button-text);
+  border: 2px solid var(--w3s-button-border);
+  border-radius: var(--w3s-button-radius);
+  background: var(--w3s-button-base);
+  @include c.transition(background);
+
+  &:hover {
+    background: var(--w3s-button-hover);
+    border: 2px solid var(--w3s-button-borderHover);
+  }
+
+  &:active:focus {
+    background: var(--w3s-button-dark);
+    border: 2px solid var(--w3s-button-borderFocus);
+  }
+
+  &.w3s-button-disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  &.w3s-button-icon {
+    padding: 10px 12px;
+  }
+
+  &.w3s-button-adaptive {
+    width: 100%;
+  }
+
+  &.w3s-button-transparent {
+    border: 2px solid transparent;
+    background: transparent;
+    transition: none;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid var(--w3s-button-borderHover);
+    }
+
+    &:active:focus {
+      background: transparent;
+      border: 2px solid var(--w3s-button-borderFocus);
+    }
+  }
+
+  &.w3s-button-bordered {
+    border: 2px solid var(--w3s-button-borderHover);
+    background: transparent;
+    transition: none;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid var(--w3s-button-borderHover);
+    }
+
+    &:active:focus {
+      background: transparent;
+      border: 2px solid var(--w3s-button-borderFocus);
+    }
+  }
+
+  w3s-icon {
+    &:not(.w3s-button-icon) {
+      &.w3s-button-left-icon {
+        margin-right: 8px;
+      }
+
+      &.w3s-button-right-icon {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .w3s-button-spinner {
+    margin-left: 8px;
+  }
+}

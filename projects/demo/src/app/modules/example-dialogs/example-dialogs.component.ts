@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import {
-  AUC_DIALOG_POSITIONS,
-  AucTransferModalComponent,
-  AucTransferModalData,
-  AUC_WRONG_NETWORK_APPEARANCE,
-  AucWrongNetworkModalComponent,
-  AucWrongNetworkModalData,
-  AucDialogService
-} from '@applicature/components';
+  W3S_DIALOG_POSITIONS,
+  W3sTransferModalComponent,
+  W3sTransferModalData,
+  W3S_WRONG_NETWORK_APPEARANCE,
+  W3sWrongNetworkModalComponent,
+  W3sWrongNetworkModalData,
+  W3sDialogService
+} from '@applicature/ngx-web3-synergy';
 
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
 
@@ -21,7 +21,7 @@ import { DialogTestComponent } from './components/dialog-test/dialog-test.compon
 })
 export class ExampleDialogsComponent {
 
-  constructor(private _dialogService: AucDialogService) {
+  constructor(private _dialogService: W3sDialogService) {
   }
 
   public showCustomModal(): void {
@@ -35,7 +35,7 @@ export class ExampleDialogsComponent {
         minHeight: '320px',
         maxWidth: '600px',
         maxHeight: '700px',
-        position: AUC_DIALOG_POSITIONS.TOP_RIGHT,
+        position: W3S_DIALOG_POSITIONS.TOP_RIGHT,
         dialogClass: 'dialog-class-test',
         panel: {
           panelClass: 'panel-class-test'
@@ -58,7 +58,7 @@ export class ExampleDialogsComponent {
   }
 
   public onOpenTransferModalClick(): void {
-    const data: AucTransferModalData = {
+    const data: W3sTransferModalData = {
       header: 'Transfer',
       symbol: 'USDT',
       allowance: '1000000000000000000',
@@ -74,7 +74,7 @@ export class ExampleDialogsComponent {
       }
     };
 
-    const ref = this._dialogService.open<AucTransferModalComponent, AucTransferModalData>(AucTransferModalComponent, {
+    const ref = this._dialogService.open<W3sTransferModalComponent, W3sTransferModalData>(W3sTransferModalComponent, {
       data,
       dialogClass: 'transfer-dialog',
     });
@@ -85,16 +85,16 @@ export class ExampleDialogsComponent {
   }
 
   public onOpenWrongNetworkModalClick(): void {
-    const data: AucWrongNetworkModalData = {
+    const data: W3sWrongNetworkModalData = {
       header: 'WRONG NETWORK',
       message: 'Looks like you connected to unsupported network. Change network to Mainnet.',
       chainId: '156',
       switchLabel: 'Switch label',
-      appearance: AUC_WRONG_NETWORK_APPEARANCE.SWITCH
+      appearance: W3S_WRONG_NETWORK_APPEARANCE.SWITCH
     };
 
-    const ref = this._dialogService.open<AucWrongNetworkModalComponent, AucWrongNetworkModalData>(
-      AucWrongNetworkModalComponent,
+    const ref = this._dialogService.open<W3sWrongNetworkModalComponent, W3sWrongNetworkModalData>(
+      W3sWrongNetworkModalComponent,
       {
         data,
         width: '100%',

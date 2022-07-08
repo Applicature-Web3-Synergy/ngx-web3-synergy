@@ -1,0 +1,24 @@
+@use '@applicature/styles/src/lib/scss/as-common' as c;
+
+:host {
+  display: inline-block;
+}
+
+.w3s-connect-wallet {
+  display: flex;
+  align-items: center;
+  font-family: c.$as-font-family;
+}
+
+.w3s-connect-wallet-container {
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.w3s-connect-wallet-account-balance,
+.w3s-connect-wallet-transactions,
+.w3s-connect-wallet-container,
+.w3s-connect-wallet-networks {
+  margin-right: 12px;
+}

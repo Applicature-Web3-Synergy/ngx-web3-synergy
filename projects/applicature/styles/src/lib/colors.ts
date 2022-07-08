@@ -7,9 +7,9 @@ export enum AS_COLOR_GROUP {
   WHITE = 'white'
 }
 
-type AsEnumsTypeTransformer<T> = T extends string ? `${T}` : never;
+type AsW3sEnumsTypeTransformer<T> = T extends string ? `${T}` : never;
 
-export type AsColorGroup = AsEnumsTypeTransformer<AS_COLOR_GROUP.BLUE
+export type AsColorGroup = AsW3sEnumsTypeTransformer<AS_COLOR_GROUP.BLUE
   | AS_COLOR_GROUP.GREEN
   | AS_COLOR_GROUP.GRAY
   | AS_COLOR_GROUP.ORANGE

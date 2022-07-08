@@ -2,12 +2,12 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/
 import { takeUntil } from 'rxjs';
 
 import {
-  AUC_POSITIONS,
-  AucAccountOption, AucConnectionState,
-  AucDropdownConfig,
-  AucWalletConnectService,
-  AucWalletLabel, BaseSubscriber
-} from '@applicature/components';
+  W3S_POSITIONS,
+  W3sAccountOption, W3sConnectionState,
+  W3sDropdownConfig,
+  W3sWalletConnectService,
+  W3sWalletLabel, BaseSubscriber
+} from '@applicature/ngx-web3-synergy';
 
 
 @Component({
@@ -17,37 +17,37 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleConnectWalletComponent extends BaseSubscriber {
-  public networkDropdownConfig: AucDropdownConfig = {
+  public networkDropdownConfig: W3sDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: AUC_POSITIONS.BELOW,
-      horizontal: AUC_POSITIONS.AFTER
+      vertical: W3S_POSITIONS.BELOW,
+      horizontal: W3S_POSITIONS.AFTER
     }
   }
 
-  public accountOptions: AucAccountOption[] = [
+  public accountOptions: W3sAccountOption[] = [
     { name: 'Some menu Item', id: '2' },
     { name: 'Some other Item', id: '3' }
   ];
 
-  public connectedLabel: AucWalletLabel;
+  public connectedLabel: W3sWalletLabel;
   public isConnected: boolean;
 
-  constructor(private walletConnectService: AucWalletConnectService,
+  constructor(private walletConnectService: W3sWalletConnectService,
               private cdr: ChangeDetectorRef) {
     super();
 
     this.walletConnectService.connectionState$
       .pipe(takeUntil(this.notifier))
-      .subscribe((connectionState: AucConnectionState) => {
+      .subscribe((connectionState: W3sConnectionState) => {
         this.isConnected = connectionState.connected;
 
         if (!connectionState.connected) {
           this.connectedLabel = null;
         } else {
-          this.connectedLabel = (connectionState?.state?.wallets[0]?.label as AucWalletLabel) ?? null;
+          this.connectedLabel = (connectionState?.state?.wallets[0]?.label as W3sWalletLabel) ?? null;
         }
 
         this.cdr.markForCheck();
@@ -65,7 +65,7 @@ export class ExampleConnectWalletComponent extends BaseSubscriber {
   public customBtnConnect(): void {
     this.walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
-      .subscribe((connectionState: AucConnectionState) => {
+      .subscribe((connectionState: W3sConnectionState) => {
         console.log('Custom Btn connect connectionState: ', connectionState);
       })
   }
@@ -76,7 +76,7 @@ export class ExampleConnectWalletComponent extends BaseSubscriber {
       .subscribe();
   }
 
-  public customConnect(walletLabel: AucWalletLabel): void {
+  public customConnect(walletLabel: W3sWalletLabel): void {
     if (!walletLabel) {
       return;
     }
@@ -91,7 +91,7 @@ export class ExampleConnectWalletComponent extends BaseSubscriber {
 
     this.walletConnectService.connectWallet(walletLabel)
       .pipe(takeUntil(this.notifier))
-      .subscribe((connectionState: AucConnectionState) => {
+      .subscribe((connectionState: W3sConnectionState) => {
         console.log('Custom connect connectionState: ', connectionState);
       });
   }

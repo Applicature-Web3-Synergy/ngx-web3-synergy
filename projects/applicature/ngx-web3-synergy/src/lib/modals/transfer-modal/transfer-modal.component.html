@@ -1,0 +1,58 @@
+<div class="w3s-transfer">
+  <div class="w3s-dialog-header">
+    <h1>{{ data.header }}</h1>
+
+    <button type="button" class="w3s-close-btn">
+      <w3s-icon icon="wcl-icon-close"
+                (click)="onCloseClick()"
+      >
+      </w3s-icon>
+    </button>
+  </div>
+
+  <w3s-input [max]="data.max"
+             [suffix]="data.symbol"
+             [hint]="'Current allowance: ' + currentAllowance + ' ' + data.symbol"
+             [adaptive]="true"
+             [decimal]="true"
+             [formControl]="amountControl"
+             type="number"
+             label="Amount"
+             placeholder="Enter amount"
+             class="w3s-transfer-input">
+  </w3s-input>
+
+  <div class="w3s-progress-steps-container">
+    <h3 class="w3s-progress-step">Step {{ currentStep }} of 2</h3>
+
+    <ng-container [ngSwitch]="currentStep">
+      <div *ngSwitchCase="STEPS.APPROVE">
+        <p class="w3s-progress-step-text">Your allowance must be first increased.</p>
+        <p class="w3s-progress-step-text">Please click {{data.approveButton}} to increase your allowance.</p>
+      </div>
+
+      <div *ngSwitchCase="STEPS.CONFIRM">
+        <p class="w3s-progress-step-text">Now you can purchase subscription.</p>
+        <p class="w3s-progress-step-text">Please click {{data.confirmButton}}.</p>
+      </div>
+    </ng-container>
+
+    <w3s-progress-bar [progress]="50 * currentStep"></w3s-progress-bar>
+  </div>
+
+  <ng-container *ngIf="currentStep === STEPS.APPROVE else transferButton">
+    <w3s-button [label]="data.approveButton"
+                [adaptive]="true"
+                [height]="48"
+                (buttonClicked)="onApproveClick()"></w3s-button>
+  </ng-container>
+
+  <ng-template #transferButton>
+    <w3s-button [label]="data.confirmButton"
+                [adaptive]="true"
+                [height]="48"
+                (buttonClicked)="onConfirmClick()"
+    >
+    </w3s-button>
+  </ng-template>
+</div>

@@ -1,0 +1,29 @@
+<w3s-button class="w3s-transaction-history-btn"
+            *ngIf="!(hasFailedTx || hasPendingTx)"
+            [color]="COLORS.WHITE"
+            [appearance]="BTN_APPEARANCE.ICON"
+            [disabled]="disabled"
+            leftIcon="wcl-icon-recent"
+            (buttonClicked)="onTransactionsClick()"
+>
+</w3s-button>
+
+<w3s-button class="w3s-transaction-history-btn"
+            *ngIf="hasFailedTx && !hasPendingTx"
+            [label]="txCount + ' failing'"
+            [color]="COLORS.RED"
+            [disabled]="disabled"
+            rightIcon="wcl-icon-fail"
+            (buttonClicked)="onTransactionsClick()"
+>
+</w3s-button>
+
+<w3s-button class="w3s-transaction-history-btn"
+            *ngIf="hasPendingTx"
+            [label]="txCount + ' pending'"
+            [pending]="true"
+            [color]="COLORS.WHITE"
+            [disabled]="disabled"
+            (buttonClicked)="onTransactionsClick()"
+>
+</w3s-button>

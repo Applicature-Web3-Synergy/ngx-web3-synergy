@@ -1,0 +1,6 @@
+export const CustomizedNetworkDropdownCodeHtml = `<div class="doc-grid-container">
+  <div class="doc-grid-item">
+    <w3s-network-dropdown [networkDropdownConfig]="networkDropdownConfig"></w3s-network-dropdown>
+  </div>
+</div>
+`;

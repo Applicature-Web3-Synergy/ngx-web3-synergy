@@ -1,0 +1,29 @@
+<ng-template [ngIf]="trigger?.opened$ | async">
+  <ng-template #contentBody w3sContentBody>
+    <div class="w3s-dropdown-menu-container">
+      <w3s-overlay [customize]="config?.overlay"
+                           (overlayClicked)="close()"
+      >
+      </w3s-overlay>
+
+      <div class="w3s-dropdown-menu"
+           #dropdown
+           [w3sCustomClass]="config?.class"
+           [ngStyle]="positionStyles"
+           [ngClass]="{
+              'below-after': isBelow && isAfter,
+              'below-before': isBelow && !isAfter,
+              'above-after': !isBelow && isAfter,
+              'above-before': !isBelow && !isAfter,
+              'w3s-dropdown-menu-full-width': config?.fullwidth
+           }"
+      >
+        <div class="w3s-dropdown-menu-content-container">
+          <div class="w3s-dropdown-menu-content">
+            <ng-content></ng-content>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>

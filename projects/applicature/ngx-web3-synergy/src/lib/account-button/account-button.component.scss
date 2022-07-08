@@ -1,0 +1,129 @@
+@use '@applicature/styles/src/lib/scss/as-common' as c;
+
+:host {
+  display: inline-block;
+}
+
+.w3s-account-button {
+  cursor: pointer;
+}
+
+.w3s-account-button-options {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: c.$as-font-family;
+  min-width: 250px;
+  padding: 8px 0;
+  background: c.getColor(white, base);
+  border-radius: map-get(c.$as-border-radius, sm);
+  box-shadow: 0 0 10px rgba(56, 64, 75, 0.1);
+  list-style-type: none;
+}
+
+.w3s-account-button-header {
+  display: inline-block;
+  padding: 0 12px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: c.getColor(grey, base);
+}
+
+.w3s-account-button-user-info {
+  display: flex;
+  align-items: center;
+  font-family: c.$as-font-family;
+}
+
+.w3s-account-button-user-info-avatar {
+  margin-right: 12px;
+}
+
+.w3s-account-button-user-info-name {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+
+  > h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: c.$black;
+  }
+
+  > span {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: c.getColor(grey, base);
+  }
+}
+
+.w3s-account-button-user-info-copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  @include c.transition;
+
+  &:hover {
+    background: c.getColor(grey, background);
+
+    &:before {
+      color: c.getColor(grey, base);
+    }
+  }
+
+  &:before {
+    font-size: 18px;
+    color: c.getColor(grey, hover);
+  }
+}
+
+.w3s-account-button-options-item {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 8px 12px;
+  @include c.transition;
+
+  &:hover {
+    cursor: pointer;
+    background: c.getColor(grey, background);
+  }
+
+  &.w3s-options-item-disabled {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.w3s-account-button-options-name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: c.$black;
+}
+
+.w3s-account-button-options-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+}
+
+.w3s-account-button-options-button {
+  margin-bottom: 8px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}

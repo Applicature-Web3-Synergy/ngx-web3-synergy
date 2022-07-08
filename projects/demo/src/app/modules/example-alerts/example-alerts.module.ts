@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucAlertModule } from '@applicature/components';
+import { W3sAlertModule } from '@applicature/ngx-web3-synergy';
 
 import { ExampleAlertsComponent } from './example-alerts.component';
 
@@ -15,7 +15,7 @@ import { ExampleAlertsComponent } from './example-alerts.component';
   ],
   imports: [
     CommonModule,
-    AucAlertModule
+    W3sAlertModule
   ]
 })
 export class ExampleAlertsModule { }

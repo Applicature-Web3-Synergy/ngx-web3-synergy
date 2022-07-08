@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AucDialogConfig, AucDialogRef } from '@applicature/components';
+import { W3sDialogConfig, W3sDialogRef } from '@applicature/ngx-web3-synergy';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 
@@ -13,7 +13,7 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 export class DialogTestComponent {
   public COLORS = AS_COLOR_GROUP;
 
-  constructor(public config: AucDialogConfig, private _dialogRef: AucDialogRef<string>) {
+  constructor(public config: W3sDialogConfig, private _dialogRef: W3sDialogRef<string>) {
   }
 
   onClose(val): void {

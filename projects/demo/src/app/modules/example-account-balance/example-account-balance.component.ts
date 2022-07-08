@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AUC_BALANCE_APPEARANCE, AUC_IDENTICON_POSITION } from '@applicature/components';
+import { W3S_BALANCE_APPEARANCE, W3S_IDENTICON_POSITION } from '@applicature/ngx-web3-synergy';
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
 
@@ -11,9 +11,9 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleAccountBalanceComponent {
-  public BALANCE_APPEARANCE = AUC_BALANCE_APPEARANCE;
+  public BALANCE_APPEARANCE = W3S_BALANCE_APPEARANCE;
   public COLORS = AS_COLOR_GROUP;
-  public IDENTICON_POSITION = AUC_IDENTICON_POSITION;
+  public IDENTICON_POSITION = W3S_IDENTICON_POSITION;
 
   accountClicked() {
     console.log('Account button was clicked');

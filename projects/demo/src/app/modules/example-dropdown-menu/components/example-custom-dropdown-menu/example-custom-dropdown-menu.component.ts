@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-import { AUC_POSITIONS, AucDropdownConfig } from '@applicature/components';
+import { W3S_POSITIONS, W3sDropdownConfig } from '@applicature/ngx-web3-synergy';
 
 
 @Component({
@@ -12,14 +12,14 @@ import { AUC_POSITIONS, AucDropdownConfig } from '@applicature/components';
 export class ExampleCustomDropdownMenuComponent {
   public isOpenedCustomDropdownMenu = false;
 
-  public customDropdownConfig: AucDropdownConfig = {
+  public customDropdownConfig: W3sDropdownConfig = {
     overlay: {
       transparent: true,
       overlayClass: 'app-custom-dropdown-overlay'
     },
     position: {
-      vertical: AUC_POSITIONS.ABOVE,
-      horizontal: AUC_POSITIONS.AFTER
+      vertical: W3S_POSITIONS.ABOVE,
+      horizontal: W3S_POSITIONS.AFTER
     },
     class: 'custom-dropdown-menu',
     minWidth: 500,

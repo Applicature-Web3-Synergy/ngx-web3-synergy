@@ -1,0 +1,36 @@
+<w3s-button class="w3s-network-dropdown-btn"
+            w3sTrigger
+            #networkOptionsTrigger="w3sTrigger"
+            [label]="isWrongNetwork ? 'Wrong Network' : currentNetwork?.label"
+            [color]="isWrongNetwork ? COLORS.RED : btnStyle"
+            [bordered]="isWrongNetwork ? false : bordered"
+            [leftIcon]="isWrongNetwork ? 'wcl-icon-wrong' : currentNetwork?.icon"
+            [rightIcon]="isOptionsOpen ? 'wcl-icon-chevron-up' : 'wcl-icon-chevron-down'"
+            [adaptive]="networkDropdownConfig?.fullwidth"
+            (showHide)="setOpened($event)">
+</w3s-button>
+
+<w3s-dropdown-menu *ngIf="isOptionsOpen"
+                   [config]="networkDropdownConfig"
+                   [trigger]="networkOptionsTrigger"
+>
+  <ul class="w3s-network-options">
+    <li class="w3s-network-options-header">Select a Network</li>
+    <li class="w3s-network-options-item"
+        *ngFor="let chain of chainsList"
+        (click)="switchChain(chain)">
+      <div class="w3s-network-options-img" *ngIf="chain.icon">
+        <img [src]="chain.icon" [alt]="chain.label + ' icon'">
+      </div>
+
+      <span class="w3s-network-options-name">{{ chain.label }}</span>
+
+      <w3s-icon *ngIf="chain.id === currentNetwork?.id"
+                icon="wcl-icon-active"
+                color="#37CA34"
+                class="w3s-active-network-icon"
+      >
+      </w3s-icon>
+    </li>
+  </ul>
+</w3s-dropdown-menu>

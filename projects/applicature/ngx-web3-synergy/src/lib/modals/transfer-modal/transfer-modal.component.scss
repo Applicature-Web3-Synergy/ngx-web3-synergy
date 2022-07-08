@@ -1,0 +1,21 @@
+@use '@applicature/styles/src/lib/scss/as-common' as c;
+
+:host {
+  display: block;
+  min-width: 372px;
+  max-width: 372px;
+}
+
+.w3s-transfer {
+  display: flex;
+  flex-direction: column;
+  font-family: c.$as-font-family;
+}
+
+.w3s-transfer-input {
+  margin-bottom: 16px;
+}
+
+.w3s-progress-steps-container {
+  margin-bottom: 24px;
+}

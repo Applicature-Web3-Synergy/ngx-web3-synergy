@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 import injectedModule from '@web3-onboard/injected-wallets';
 import walletConnectModule from '@web3-onboard/walletconnect';
 import {
-  AUC_CHAIN_ID,
-  AucBlockExplorerUrls, AucConnectModule,
-  AucNativeCurrencies,
-  AucRpcUrls,
-  AucWalletConnectService
-} from '@applicature/components';
+  W3S_CHAIN_ID,
+  W3sBlockExplorerUrls, W3sConnectModule,
+  W3sNativeCurrencies,
+  W3sRpcUrls,
+  W3sWalletConnectService
+} from '@applicature/ngx-web3-synergy';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -40,7 +40,7 @@ const walletConnect = walletConnectModule({
 });
 
 export function initWalletServiceFactory(
-  walletConnectService: AucWalletConnectService
+  walletConnectService: W3sWalletConnectService
 ): () => Observable<void> {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return () => walletConnectService.initialize({
@@ -62,7 +62,7 @@ export function initWalletServiceFactory(
     ],
     chains: [
       {
-        id: AUC_CHAIN_ID.BSC_TESTNET,
+        id: W3S_CHAIN_ID.BSC_TESTNET,
         token: 'BNB',
         label: 'BNB Chain',
         rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545',
@@ -71,20 +71,20 @@ export function initWalletServiceFactory(
         blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
       },
       {
-        id: AUC_CHAIN_ID.POLYGON_TESTNET,
-        token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
+        id: W3S_CHAIN_ID.POLYGON_TESTNET,
+        token: W3sNativeCurrencies[W3S_CHAIN_ID.POLYGON_TESTNET].name,
         label: 'Matic',
-        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        rpcUrl: W3sRpcUrls[W3S_CHAIN_ID.POLYGON_TESTNET][0],
         icon: 'assets/svg/network/polygon.svg',
-        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        blockExplorerUrl: W3sBlockExplorerUrls[W3S_CHAIN_ID.POLYGON_TESTNET][0],
       },
       {
-        id: AUC_CHAIN_ID.RINKEBY_TESTNET,
+        id: W3S_CHAIN_ID.RINKEBY_TESTNET,
         token: 'ETH',
         label: 'Rinkeby Ethereum',
-        rpcUrl: `${AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
+        rpcUrl: `${W3sRpcUrls[W3S_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
         icon: 'assets/svg/network/eth.svg',
-        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
+        blockExplorerUrl: W3sBlockExplorerUrls[W3S_CHAIN_ID.RINKEBY_TESTNET][0],
       },
     ],
   });
@@ -98,7 +98,7 @@ export function initWalletServiceFactory(
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AucConnectModule.forRoot(),
+    W3sConnectModule.forRoot(),
     ExampleDialogsModule,
     ExampleTableModule,
     ExampleAccountBalanceModule,
@@ -115,7 +115,7 @@ export function initWalletServiceFactory(
     {
       provide: APP_INITIALIZER,
       useFactory: initWalletServiceFactory,
-      deps: [ AucWalletConnectService ],
+      deps: [ W3sWalletConnectService ],
       multi: true
     }
   ],

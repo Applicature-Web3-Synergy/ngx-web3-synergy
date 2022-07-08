@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/@applicature/ngx-web3-synergy",
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  },
+  "allowedNonPeerDependencies": [
+    "@angular/common",
+    "@angular/core",
+    "@angular/forms",
+    "@applicature/styles",
+    "@ethersproject/address",
+    "@cosmjs/stargate",
+    "@shapeshiftoss/proto-tx-builder",
+    "@metamask/jazzicon",
+    "@uiowa/digit-only",
+    "@uniswap/sdk-core",
+    "bignumber.js",
+    "@web3-onboard/core",
+    "@web3-onboard/injected-wallets",
+    "web3",
+    "web3-utils"
+  ]
+}

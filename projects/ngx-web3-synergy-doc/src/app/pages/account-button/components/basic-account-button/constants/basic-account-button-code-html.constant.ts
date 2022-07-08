@@ -1,0 +1,21 @@
+export const BasicAccountButtonCodeHtml =
+`<div class="doc-grid-container">
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">Default</h5>
+
+    <w3s-account-button></w3s-account-button>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">Customized</h5>
+
+    <w3s-account-button [account]="{ name: 'Account Name', image: 'assets/img/ex-avatar.png'}"
+                        [options]="accountOptions"
+                        [accountDropdownConfig]="accountDropdownConfig"
+                        [size]="50"
+                        (optionClicked)="optionClicked($event)"
+    >
+    </w3s-account-button>
+  </div>
+</div>
+`;

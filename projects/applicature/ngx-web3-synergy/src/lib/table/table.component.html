@@ -1,0 +1,62 @@
+<div class="w3s-table-component" [w3sCustomClass]="customClass">
+  <div class="w3s-table-container">
+    <table class="w3s-table">
+      <thead>
+      <tr>
+        <ng-container *ngFor="let header of headers; let i = index">
+          <th>
+            <div class="w3s-table-cell" [class.sortable]="header.sort" (click)="sortBy(header.sort, i)">
+              <div>{{header.value}}</div>
+
+              <div *ngIf="header.sort"
+                   class="w3s-table-sort"
+              >
+                <w3s-icon
+                  [icon]="header.sort.sortDirection === SORT_DIRECTION.DESC? 'wcl-icon-arrow-down' : 'wcl-icon-arrow-up'"
+                >
+                </w3s-icon>
+              </div>
+            </div>
+          </th>
+        </ng-container>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let row of data; let i = index">
+        <td *ngFor="let header of headers">
+          <div class="w3s-table-cell">
+            <ng-container *ngFor="let item of [].concat(row[header.rowKey])">
+              <a *ngIf="item.link; else other"
+                 [href]="item.link"
+                 class="w3s-table-link"
+                 target="_blank"
+              >
+                <ng-container *ngTemplateOutlet="cellValueRef; context: {$implicit: item}"></ng-container>
+              </a>
+
+              <ng-template #other>
+                <ng-container *ngTemplateOutlet="cellValueRef; context: {$implicit: item}"></ng-container>
+              </ng-template>
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="w3s-table-load-more"
+       *ngIf="isLoadMore"
+       (click)="onLoadMore()">
+    <span class="w3s-table-load-more-text">Load more</span>
+    <w3s-icon icon="wcl-icon-chevron-down"></w3s-icon>
+  </div>
+
+  <ng-template #cellValueRef let-item>
+    <div class="w3s-table-cell-value" [class.with-bg]="item.withBg">
+      <w3s-icon *ngIf="item.icon as icon" [icon]="icon"></w3s-icon>
+      {{item.value}}
+    </div>
+  </ng-template>
+</div>
