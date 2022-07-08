@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucIconModule } from '../icon';
-import { AucTableComponent } from './table.component';
-import { AucDirectivesModule } from '../directives';
+import { W3sIconModule } from '../icon';
+import { W3sTableComponent } from './table.component';
+import { W3sDirectivesModule } from '../directives';
 
 
 @NgModule({
   declarations: [
-    AucTableComponent
+    W3sTableComponent
   ],
   exports: [
-    AucTableComponent
+    W3sTableComponent
   ],
   imports: [
     CommonModule,
-    AucIconModule,
-    AucDirectivesModule
+    W3sIconModule,
+    W3sDirectivesModule
   ]
 })
-export class AucTableModule {
+export class W3sTableModule {
 }

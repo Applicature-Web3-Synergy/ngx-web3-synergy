@@ -6,23 +6,23 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 import { AbiItem } from 'web3-utils';
 import { ContractOptions, Contract } from 'web3-eth-contract';
 
-import { AUC_BUTTON_APPEARANCE } from '../button';
+import { W3S_BUTTON_APPEARANCE } from '../button';
 import { BaseSubscriber } from '../helpers';
-import { AucWalletConnectService } from '../connect/services';
+import { W3sWalletConnectService } from '../connect';
 import ERC20 from '../smart-contracts/ERC20.json'
 
 // eslint-disable @typescript-eslint/no-unsafe-call
 @Component({
-  selector: 'auc-faucet',
+  selector: 'w3s-faucet',
   templateUrl: './faucet.component.html',
   styleUrls: ['./faucet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucFaucetComponent extends BaseSubscriber implements OnInit {
+export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
 
   /** Color Scheme button */
   public COLORS = AS_COLOR_GROUP;
-  public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
+  public BUTTON_APPEARANCE = W3S_BUTTON_APPEARANCE;
 
   /** @internal */
   private ERC20Json: AbiItem[] = ERC20 as AbiItem[];
@@ -63,7 +63,7 @@ export class AucFaucetComponent extends BaseSubscriber implements OnInit {
 
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: AucWalletConnectService
+    private _walletConnectService: W3sWalletConnectService
   ) {
     super();
   }

@@ -17,27 +17,27 @@ import { Chain } from '@web3-onboard/common/dist/types';
 import BigNumber from 'bignumber.js';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
-import { aucGenerateJazzicon, aucToBN, BaseSubscriber } from '../helpers';
-import { AucWalletConnectService } from '../connect';
-import { AucBalanceAppearance } from './types';
-import { AucSetStyleProp } from '../directives';
-import { AucAccountBalanceAddressConfig } from './interfaces';
+import { w3sGenerateJazzicon, w3sToBN, BaseSubscriber } from '../helpers';
+import { W3sWalletConnectService } from '../connect';
+import { W3sBalanceAppearance } from './types';
+import { W3sSetStyleProp } from '../directives';
+import { W3sAccountBalanceAddressConfig } from './interfaces';
 
 
 @Component({
-  selector: 'auc-account-balance',
+  selector: 'w3s-account-balance',
   templateUrl: './account-balance.component.html',
   styleUrls: [ './account-balance.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit, OnChanges {
+export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit, OnChanges {
   /**
    * Sets style for appearance. <br>
-   * You can use one of the values from enum {@link AUC_BALANCE_APPEARANCE}.<br>
+   * You can use one of the values from enum {@link W3S_BALANCE_APPEARANCE}.<br>
    * It's an optional parameter.
    */
   @Input()
-  public appearance?: AucBalanceAppearance;
+  public appearance?: W3sBalanceAppearance;
 
   /**
    * Sets theme of the button. <br>
@@ -70,7 +70,7 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
    * It's an optional parameter.
    */
   @Input()
-  public addressConfig?: AucAccountBalanceAddressConfig;
+  public addressConfig?: W3sAccountBalanceAddressConfig;
 
   /**
    * Shows identicon if provided. <br>
@@ -103,7 +103,7 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
   private chainsList: Chain[] = [];
 
   /** @internal */
-  public styleProperties: AucSetStyleProp[] = [];
+  public styleProperties: W3sSetStyleProp[] = [];
 
   /** @internal */
   public COLOR_GROUP = AS_COLOR_GROUP;
@@ -111,15 +111,15 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
   /** @internal */
   public get classNames(): { [el: string]: boolean } {
     return {
-      ['auc-balance']: true,
-      [`auc-balance-${this.appearance}`]: true,
-      ['auc-balance-with-address']: this.showAddress,
+      ['w3s-balance']: true,
+      [`w3s-balance-${this.appearance}`]: true,
+      ['w3s-balance-with-address']: this.showAddress,
     };
   }
 
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: AucWalletConnectService,
+    private _walletConnectService: W3sWalletConnectService,
   ) {
     super();
 
@@ -157,13 +157,13 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
           }
 
           const balanceVal: string = balance[balanceSymbol];
-          const balanceBn: BigNumber = aucToBN(balanceVal);
+          const balanceBn: BigNumber = w3sToBN(balanceVal);
 
           const fixedVal = balanceVal.startsWith('0.000')
             ? 4
             : balanceVal.startsWith('0.00') ? 3 : 2;
 
-          return `${aucToBN(balanceBn.toFixed(fixedVal, 1)).toFixed()} ${balanceSymbol}`;
+          return `${w3sToBN(balanceBn.toFixed(fixedVal, 1)).toFixed()} ${balanceSymbol}`;
         }),
         takeUntil(this.notifier)
       ).subscribe((balance: string | null) => {
@@ -179,7 +179,7 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
           const account = (accounts ?? [])[0] || null;
 
           if (account && this.showAddress && this.addressConfig?.showIdenticon) {
-            this.identicon = aucGenerateJazzicon(account);
+            this.identicon = w3sGenerateJazzicon(account);
           }
 
           return account;
@@ -199,7 +199,7 @@ export class AucAccountBalanceComponent extends BaseSubscriber implements OnInit
     this.styleProperties = Object.keys(colorProperties || {})
       .map((prop: string) => {
         return {
-          name: `--auc-account-balance-${prop}`,
+          name: `--w3s-account-balance-${prop}`,
           value: colorProperties[prop]
         }
       });

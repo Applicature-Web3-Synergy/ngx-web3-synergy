@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucInputComponent } from './input.component';
+import { W3sInputComponent } from './input.component';
 
-describe('AucInputComponent', () => {
-  let component: AucInputComponent;
-  let fixture: ComponentFixture<AucInputComponent>;
+describe('W3sInputComponent', () => {
+  let component: W3sInputComponent;
+  let fixture: ComponentFixture<W3sInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AucInputComponent]
+      declarations: [W3sInputComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucInputComponent);
+    fixture = TestBed.createComponent(W3sInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

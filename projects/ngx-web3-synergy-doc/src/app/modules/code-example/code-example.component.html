@@ -1,0 +1,8 @@
+<div class="code-example-container" *ngIf="codeConfig">
+  <pre class="prettyprint"
+       [ngClass]="classes"
+       docCodePretty
+  >{{codeConfig.code ?? ''.trim()}}</pre>
+
+  <w3s-copy-to-clipboard class="copy-code" [value]="codeConfig.code"></w3s-copy-to-clipboard>
+</div>

@@ -1,20 +1,20 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
-import { AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS } from '../../enums';
-import { AucCustomizeDialogConfig } from '../../interfaces';
+import { W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS } from '../../enums';
+import { W3sCustomizeDialogConfig } from '../../interfaces';
 
 
 /**
  * Uses for customization dialog window by config.
  */
 @Directive({
-  selector: '[aucCustomizeDialog]',
-  exportAs: 'aucCustomizeDialog'
+  selector: '[w3sCustomizeDialog]',
+  exportAs: 'w3sCustomizeDialog'
 })
-export class AucCustomizeDialogDirective implements OnInit {
+export class W3sCustomizeDialogDirective implements OnInit {
   /** Configuration data for customization dialog. */
   @Input()
-  public config?: AucCustomizeDialogConfig;
+  public config?: W3sCustomizeDialogConfig;
 
   /** @internal */
   private get isConfig(): boolean {
@@ -56,49 +56,49 @@ export class AucCustomizeDialogDirective implements OnInit {
     }
 
     Object.keys(this.config).forEach((key: string) => {
-      if (key === AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.CLASSES) {
+      if (key === W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS.CLASSES) {
         this.setClasses([].concat(this.config[key]));
 
         return;
       }
 
-      if (key === AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.WIDTH) {
+      if (key === W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS.WIDTH) {
         this.setStyle('width', this.config[key]);
 
         return;
       }
 
-      if (key === AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.HEIGHT) {
+      if (key === W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS.HEIGHT) {
         this.setStyle('height', this.config[key]);
 
         return;
       }
 
-      if (key === AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.MIN_WIDTH) {
+      if (key === W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS.MIN_WIDTH) {
         this.setStyle('min-width', this.config[key]);
 
         return;
       }
 
-      if (key === AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.MIN_HEIGHT) {
+      if (key === W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS.MIN_HEIGHT) {
         this.setStyle('min-height', this.config[key]);
 
         return;
       }
 
-      if (key === AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.MAX_WIDTH) {
+      if (key === W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS.MAX_WIDTH) {
         this.setStyle('max-width', this.config[key]);
 
         return;
       }
 
-      if (key === AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.MAX_HEIGHT) {
+      if (key === W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS.MAX_HEIGHT) {
         this.setStyle('max-height', this.config[key]);
 
         return;
       }
 
-      if (key === AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS.POSITION) {
+      if (key === W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS.POSITION) {
         this.setClasses([].concat(this.config[key]));
 
         return;

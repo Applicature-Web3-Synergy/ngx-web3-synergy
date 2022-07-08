@@ -1,6 +1,6 @@
-import { AUC_WRONG_NETWORK_APPEARANCE } from '../enums';
-import { EnumsTypeTransformer } from '../../../types';
+import { W3S_WRONG_NETWORK_APPEARANCE } from '../enums';
+import { W3sEnumsTypeTransformer } from '../../../types';
 
-export type AucWrongNetworkAppearance = EnumsTypeTransformer<AUC_WRONG_NETWORK_APPEARANCE.DISCONNECT
-  | AUC_WRONG_NETWORK_APPEARANCE.NONE
-  | AUC_WRONG_NETWORK_APPEARANCE.SWITCH>;
+export type W3sWrongNetworkAppearance = W3sEnumsTypeTransformer<W3S_WRONG_NETWORK_APPEARANCE.DISCONNECT
+  | W3S_WRONG_NETWORK_APPEARANCE.NONE
+  | W3S_WRONG_NETWORK_APPEARANCE.SWITCH>;

@@ -11,21 +11,21 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { AucDialogConfig } from './dialog-config';
-import { AucDialogRef } from './dialog-ref';
-import { AucInsertionDirective } from './directives';
-import { AucCustomizeDialogConfig } from './interfaces';
-import { AucOverlayCustomizationConfig } from '../overlay';
-import { AucBlockScrollHelperService } from '../helpers';
+import { W3sDialogConfig } from './dialog-config';
+import { W3sDialogRef } from './dialog-ref';
+import { W3sInsertionDirective } from './directives';
+import { W3sCustomizeDialogConfig } from './interfaces';
+import { W3sOverlayCustomizationConfig } from '../overlay';
+import { W3sBlockScrollHelperService } from '../helpers';
 
 
 @Component({
-  selector: 'auc-dialog',
+  selector: 'w3s-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: [ './dialog.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucDialogComponent implements AfterViewInit, OnDestroy {
+export class W3sDialogComponent implements AfterViewInit, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private readonly _onClose = new Subject<any>();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,11 +33,11 @@ export class AucDialogComponent implements AfterViewInit, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public childComponentType: Type<any>;
   public onClose = this._onClose.asObservable();
-  public panelConfig: AucCustomizeDialogConfig;
-  public overlayConfig: AucOverlayCustomizationConfig;
-  public dialogConfig: AucCustomizeDialogConfig = {};
+  public panelConfig: W3sCustomizeDialogConfig;
+  public overlayConfig: W3sOverlayCustomizationConfig;
+  public dialogConfig: W3sCustomizeDialogConfig = {};
 
-  @ViewChild(AucInsertionDirective) insertionPoint: AucInsertionDirective;
+  @ViewChild(W3sInsertionDirective) insertionPoint: W3sInsertionDirective;
 
   public get hasOverlay(): boolean {
     return (this._config?.overlay?.hasOverlay ?? null) === null ? true : this._config.overlay.hasOverlay;
@@ -45,9 +45,9 @@ export class AucDialogComponent implements AfterViewInit, OnDestroy {
 
   constructor(private _componentFactoryResolver: ComponentFactoryResolver,
               private _cdr: ChangeDetectorRef,
-              private _config: AucDialogConfig,
-              private _dialogRef: AucDialogRef,
-              private _blockScroll: AucBlockScrollHelperService) {
+              private _config: W3sDialogConfig,
+              private _dialogRef: W3sDialogRef,
+              private _blockScroll: W3sBlockScrollHelperService) {
     this.mapConfig(this._config);
     this._blockScroll.lockScroll();
   }
@@ -66,7 +66,7 @@ export class AucDialogComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  private mapConfig(config: AucDialogConfig): void {
+  private mapConfig(config: W3sDialogConfig): void {
     if (!config) {
       return;
     }

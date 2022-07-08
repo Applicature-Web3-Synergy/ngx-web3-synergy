@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucTransactionsHistoryComponent } from './transactions-history.component';
+import { W3sTransactionsHistoryComponent } from './transactions-history.component';
 
-describe('AucTransactionsHistoryComponent', () => {
-  let component: AucTransactionsHistoryComponent;
-  let fixture: ComponentFixture<AucTransactionsHistoryComponent>;
+describe('W3sTransactionsHistoryComponent', () => {
+  let component: W3sTransactionsHistoryComponent;
+  let fixture: ComponentFixture<W3sTransactionsHistoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AucTransactionsHistoryComponent]
+      declarations: [W3sTransactionsHistoryComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucTransactionsHistoryComponent);
+    fixture = TestBed.createComponent(W3sTransactionsHistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

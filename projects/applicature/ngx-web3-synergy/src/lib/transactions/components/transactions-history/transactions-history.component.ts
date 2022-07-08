@@ -3,22 +3,22 @@ import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
-import { AucDialogService } from '../../../dialog';
-import { AUC_BUTTON_APPEARANCE } from '../../../button';
-import { AucRecentTransactionsModalData, AucTransactionsHistoryModalComponent } from '../transactions-history-modal';
-import { AucTransactionService } from '../../services';
-import { AucTransactionItem } from '../../interfaces';
-import { AUC_TRANSACTION_STATUS } from '../../enums';
+import { W3sDialogService } from '../../../dialog';
+import { W3S_BUTTON_APPEARANCE } from '../../../button';
+import { W3sRecentTransactionsModalData, W3sTransactionsHistoryModalComponent } from '../transactions-history-modal';
+import { W3sTransactionService } from '../../services';
+import { W3sTransactionItem } from '../../interfaces';
+import { W3S_TRANSACTION_STATUS } from '../../enums';
 import { BaseSubscriber } from '../../../helpers';
 
 
 @Component({
-  selector: 'auc-transactions-history',
+  selector: 'w3s-transactions-history',
   templateUrl: './transactions-history.component.html',
   styleUrls: [ './transactions-history.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucTransactionsHistoryComponent extends BaseSubscriber implements OnInit {
+export class W3sTransactionsHistoryComponent extends BaseSubscriber implements OnInit {
   /**
    * Whether the button is disabled. <br>
    * It's an optional parameter. <br>
@@ -41,12 +41,12 @@ export class AucTransactionsHistoryComponent extends BaseSubscriber implements O
   public COLORS = AS_COLOR_GROUP;
 
   /** @internal */
-  public BTN_APPEARANCE = AUC_BUTTON_APPEARANCE;
+  public BTN_APPEARANCE = W3S_BUTTON_APPEARANCE;
 
   constructor(
-    private _dialogService: AucDialogService,
+    private _dialogService: W3sDialogService,
     private _cdr: ChangeDetectorRef,
-    private _transactionService: AucTransactionService
+    private _transactionService: W3sTransactionService
   ) {
     super();
   }
@@ -55,16 +55,16 @@ export class AucTransactionsHistoryComponent extends BaseSubscriber implements O
   public ngOnInit(): void {
     this._transactionService.transactionsChanged$
       .pipe(takeUntil(this.notifier))
-      .subscribe((transactions: AucTransactionItem[]) => {
-        this.txCount = transactions.filter((tx: AucTransactionItem) => {
-          return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
+      .subscribe((transactions: W3sTransactionItem[]) => {
+        this.txCount = transactions.filter((tx: W3sTransactionItem) => {
+          return tx.status === W3S_TRANSACTION_STATUS.FAIL && !tx.viewed;
         }).length;
 
         this.hasFailedTx = this.txCount > 0;
 
         if (!this.hasFailedTx) {
-          this.txCount = transactions.filter((tx: AucTransactionItem) => {
-            return tx.status === AUC_TRANSACTION_STATUS.PENDING;
+          this.txCount = transactions.filter((tx: W3sTransactionItem) => {
+            return tx.status === W3S_TRANSACTION_STATUS.PENDING;
           }).length;
 
           this.hasPendingTx = this.txCount > 0;
@@ -84,7 +84,7 @@ export class AucTransactionsHistoryComponent extends BaseSubscriber implements O
       data: {
         header: 'Recent transactions'
       },
-      dialogClass: 'auc-recent-transactions-dialog',
+      dialogClass: 'w3s-recent-transactions-dialog',
       width: '100%',
       maxWidth: '372px',
       overlay: {
@@ -92,8 +92,8 @@ export class AucTransactionsHistoryComponent extends BaseSubscriber implements O
       }
     };
 
-    this._dialogService.open<AucTransactionsHistoryModalComponent, AucRecentTransactionsModalData>(
-      AucTransactionsHistoryModalComponent,
+    this._dialogService.open<W3sTransactionsHistoryModalComponent, W3sRecentTransactionsModalData>(
+      W3sTransactionsHistoryModalComponent,
       config
     );
   }

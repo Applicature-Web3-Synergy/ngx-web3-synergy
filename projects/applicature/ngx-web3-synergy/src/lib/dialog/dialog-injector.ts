@@ -1,7 +1,7 @@
 import { Injector, Type, InjectionToken, InjectFlags } from '@angular/core';
 
 
-export class AucDialogInjector implements Injector {
+export class W3sDialogInjector implements Injector {
   constructor(
     private _parentInjector: Injector,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

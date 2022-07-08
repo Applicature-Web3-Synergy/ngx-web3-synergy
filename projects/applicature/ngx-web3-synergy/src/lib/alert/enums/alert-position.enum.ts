@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_ALERT_POSITION {
+export enum W3S_ALERT_POSITION {
   LEFT = 'left',
   RIGHT = 'right'
 }

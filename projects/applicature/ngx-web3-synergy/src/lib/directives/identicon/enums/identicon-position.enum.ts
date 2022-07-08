@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_IDENTICON_POSITION {
+export enum W3S_IDENTICON_POSITION {
   LEFT = 'left',
   RIGHT = 'right'
 }

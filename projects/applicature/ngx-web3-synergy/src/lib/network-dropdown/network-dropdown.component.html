@@ -1,6 +1,6 @@
-<auc-button class="auc-network-dropdown-btn"
-            aucTrigger
-            #networkOptionsTrigger="aucTrigger"
+<w3s-button class="w3s-network-dropdown-btn"
+            w3sTrigger
+            #networkOptionsTrigger="w3sTrigger"
             [label]="isWrongNetwork ? 'Wrong Network' : currentNetwork?.label"
             [color]="isWrongNetwork ? COLORS.RED : btnStyle"
             [bordered]="isWrongNetwork ? false : bordered"
@@ -8,29 +8,29 @@
             [rightIcon]="isOptionsOpen ? 'wcl-icon-chevron-up' : 'wcl-icon-chevron-down'"
             [adaptive]="networkDropdownConfig?.fullwidth"
             (showHide)="setOpened($event)">
-</auc-button>
+</w3s-button>
 
-<auc-dropdown-menu *ngIf="isOptionsOpen"
+<w3s-dropdown-menu *ngIf="isOptionsOpen"
                    [config]="networkDropdownConfig"
                    [trigger]="networkOptionsTrigger"
 >
-  <ul class="auc-network-options">
-    <li class="auc-network-options-header">Select a Network</li>
-    <li class="auc-network-options-item"
+  <ul class="w3s-network-options">
+    <li class="w3s-network-options-header">Select a Network</li>
+    <li class="w3s-network-options-item"
         *ngFor="let chain of chainsList"
         (click)="switchChain(chain)">
-      <div class="auc-network-options-img" *ngIf="chain.icon">
+      <div class="w3s-network-options-img" *ngIf="chain.icon">
         <img [src]="chain.icon" [alt]="chain.label + ' icon'">
       </div>
 
-      <span class="auc-network-options-name">{{ chain.label }}</span>
+      <span class="w3s-network-options-name">{{ chain.label }}</span>
 
-      <auc-icon *ngIf="chain.id === currentNetwork?.id"
+      <w3s-icon *ngIf="chain.id === currentNetwork?.id"
                 icon="wcl-icon-active"
                 color="#37CA34"
-                class="auc-active-network-icon"
+                class="w3s-active-network-icon"
       >
-      </auc-icon>
+      </w3s-icon>
     </li>
   </ul>
-</auc-dropdown-menu>
+</w3s-dropdown-menu>

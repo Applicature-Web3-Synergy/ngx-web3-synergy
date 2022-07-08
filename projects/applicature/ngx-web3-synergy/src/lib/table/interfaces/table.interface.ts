@@ -1,22 +1,22 @@
-import { AucSort } from '../../interfaces';
+import { W3sSort } from '../../interfaces';
 
-export interface AucTableHeaderItem {
+export interface W3sTableHeaderItem {
   position: number; // column position 1, 2, 3, ...
   rowKey: string;
   value: string;
   icon?: string;
-  sort?: AucSort;
+  sort?: W3sSort;
   sortBy?: string;
 }
 
-export interface AucTableRowItem {
+export interface W3sTableRowItem {
   value: string;
   link?: string;
   icon?: string;
   withBg?: boolean;
 }
 
-export interface AucTableRow {
-  [key: string]: AucTableRowItem | AucTableRowItem[];
+export interface W3sTableRow {
+  [key: string]: W3sTableRowItem | W3sTableRowItem[];
 }
 

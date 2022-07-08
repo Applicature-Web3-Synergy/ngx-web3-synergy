@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-.auc-transactions-history {
+.w3s-transactions-history {
   display: flex;
   flex-wrap: wrap;
   font-family: c.$as-font-family;
@@ -13,18 +13,18 @@
   height: 100%;
   width: 100%;
 
-  & > *:not(.auc-dialog-header) {
+  & > *:not(.w3s-dialog-header) {
     width: 100%;
   }
 }
 
-.auc-dialog-header {
+.w3s-dialog-header {
   margin-left: 20px;
   margin-right: 20px;
   width: calc(100% - 40px);
 }
 
-.auc-transactions-history-list {
+.w3s-transactions-history-list {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -37,7 +37,7 @@
   padding: 0 20px;
 }
 
-.auc-transactions-loading {
+.w3s-transactions-loading {
   width: 100%;
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@
 }
 
 @media (max-width: 767px) {
-  .auc-transactions-history-list {
+  .w3s-transactions-history-list {
     max-height: calc(100vh - 84px);
   }
 }

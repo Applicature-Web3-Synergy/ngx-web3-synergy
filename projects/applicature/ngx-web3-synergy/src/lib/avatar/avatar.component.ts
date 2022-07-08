@@ -2,17 +2,17 @@ import { Component, ChangeDetectionStrategy, Input, OnChanges } from '@angular/c
 
 import { AS_COLOR_GROUP, AsColors } from '@applicature/styles';
 
-import { AUC_WLC_ICON, AucWlcIcon } from '../icon';
-import { AucSetStyleProp } from '../directives';
+import { W3S_WLC_ICON, W3sWlcIcon } from '../icon';
+import { W3sSetStyleProp } from '../directives';
 
 
 @Component({
-  selector: 'auc-avatar',
+  selector: 'w3s-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: [ './avatar.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucAvatarComponent implements OnChanges {
+export class W3sAvatarComponent implements OnChanges {
   /**
    * Sets provided image url as avatar otherwise default user icon will be shown. <br>
    * It's an optional parameter.
@@ -29,10 +29,10 @@ export class AucAvatarComponent implements OnChanges {
   public size?: number = 40;
 
   /** @internal */
-  public iconStyleProperties: AucSetStyleProp[] = [];
+  public iconStyleProperties: W3sSetStyleProp[] = [];
 
   /** @internal */
-  public defaultUserIcon: AucWlcIcon = AUC_WLC_ICON.USER;
+  public defaultUserIcon: W3sWlcIcon = W3S_WLC_ICON.USER;
 
   /** @internal */
   public defaultUserIconColor: string = AsColors[AS_COLOR_GROUP.WHITE].base;
@@ -60,7 +60,7 @@ export class AucAvatarComponent implements OnChanges {
     ].concat(this.src
       ? []
       : {
-        name: '--auc-avatar-icon-size',
+        name: '--w3s-avatar-icon-size',
         value: `${this.size - (this.size / 3)}px`
       }
     )

@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { aucShortAddress, aucIsTxHash, aucShortTxHash } from '../helpers';
+import { w3sShortAddress, w3sIsTxHash, w3sShortTxHash } from '../helpers';
 
 @Pipe({
-  name: 'aucShortAddress'
+  name: 'w3sShortAddress'
 })
-export class AucShortAddressPipe implements PipeTransform {
+export class W3sShortAddressPipe implements PipeTransform {
   public transform(address: string): string {
-    return aucIsTxHash(address) ? aucShortTxHash(address) : aucShortAddress(address);
+    return w3sIsTxHash(address) ? w3sShortTxHash(address) : w3sShortAddress(address);
   }
 }

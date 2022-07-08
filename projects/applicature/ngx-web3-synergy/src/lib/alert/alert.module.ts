@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucAlertComponent } from './alert.component';
-import { AucDirectivesModule } from '../directives';
-import { AucIconModule } from '../icon';
+import { W3sAlertComponent } from './alert.component';
+import { W3sDirectivesModule } from '../directives';
+import { W3sIconModule } from '../icon';
 
 
 @NgModule({
   declarations: [
-    AucAlertComponent,
+    W3sAlertComponent,
   ],
   exports: [
-    AucAlertComponent,
+    W3sAlertComponent,
   ],
   imports: [
     CommonModule,
-    AucDirectivesModule,
-    AucIconModule,
+    W3sDirectivesModule,
+    W3sIconModule,
   ]
 })
-export class AucAlertModule {
+export class W3sAlertModule {
 }

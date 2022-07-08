@@ -4,12 +4,12 @@ import { AS_COLOR_GROUP, AsColors } from '@applicature/styles';
 
 
 @Component({
-  selector: 'auc-spinner',
+  selector: 'w3s-spinner',
   templateUrl: './spinner.component.html',
   styleUrls: [ './spinner.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucSpinnerComponent {
+export class W3SpinnerComponent {
   /**
    * Sets diameter for the spinner. <br>
    * It's an optional parameter. <br>

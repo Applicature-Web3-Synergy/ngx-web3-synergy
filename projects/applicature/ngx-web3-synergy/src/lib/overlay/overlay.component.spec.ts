@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucOverlayComponent } from './overlay.component';
+import { W3sOverlayComponent } from './overlay.component';
 
-describe('AucOverlayComponent', () => {
-  let component: AucOverlayComponent;
-  let fixture: ComponentFixture<AucOverlayComponent>;
+describe('W3sOverlayComponent', () => {
+  let component: W3sOverlayComponent;
+  let fixture: ComponentFixture<W3sOverlayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucOverlayComponent ]
+      declarations: [ W3sOverlayComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucOverlayComponent);
+    fixture = TestBed.createComponent(W3sOverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

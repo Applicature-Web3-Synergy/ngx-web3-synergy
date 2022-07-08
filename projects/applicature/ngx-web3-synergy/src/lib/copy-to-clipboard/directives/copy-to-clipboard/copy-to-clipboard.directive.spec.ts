@@ -1,8 +1,8 @@
-import { CopyToClipboardDirective } from './copy-to-clipboard.directive';
+import { W3sCopyToClipboardDirective } from './copy-to-clipboard.directive';
 
-describe('CopyToClipboardDirective', () => {
+describe('W3sCopyToClipboardDirective', () => {
   it('should create an instance', () => {
-    const directive = new CopyToClipboardDirective();
+    const directive = new W3sCopyToClipboardDirective();
     expect(directive).toBeTruthy();
   });
 });

@@ -1,24 +1,24 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
-import { AucTableHeaderItem, AucTableRow } from './interfaces';
-import { AucSort } from '../interfaces';
-import { AUC_SORT_DIRECTION } from '../enums';
+import { W3sTableHeaderItem, W3sTableRow } from './interfaces';
+import { W3sSort } from '../interfaces';
+import { W3S_SORT_DIRECTION } from '../enums';
 
 
 @Component({
-  selector: 'auc-table',
+  selector: 'w3s-table',
   templateUrl: './table.component.html',
   styleUrls: [ './table.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucTableComponent {
+export class W3sTableComponent {
   /**
    * Sets table headers. <br>
    * It's required parameter.
    */
   @Input()
-  public set tableHeaders(headers: AucTableHeaderItem[]) {
-    this.headers = headers.sort((a: AucTableHeaderItem, b: AucTableHeaderItem) =>
+  public set tableHeaders(headers: W3sTableHeaderItem[]) {
+    this.headers = headers.sort((a: W3sTableHeaderItem, b: W3sTableHeaderItem) =>
       a.position - b.position);
   }
 
@@ -27,7 +27,7 @@ export class AucTableComponent {
    * It's required parameter.
    */
   @Input()
-  public data: AucTableRow[] = [];
+  public data: W3sTableRow[] = [];
 
   /**
    * Shows load more button. <br>
@@ -51,13 +51,13 @@ export class AucTableComponent {
 
   /** Emits when sort was clicked. */
   @Output()
-  public sort: EventEmitter<AucSort> = new EventEmitter<AucSort>();
+  public sort: EventEmitter<W3sSort> = new EventEmitter<W3sSort>();
 
   /** Table headers */
-  public headers: AucTableHeaderItem[] = [];
+  public headers: W3sTableHeaderItem[] = [];
 
   /** Sort directions */
-  public SORT_DIRECTION = AUC_SORT_DIRECTION;
+  public SORT_DIRECTION = W3S_SORT_DIRECTION;
 
   /** Emit {@link loadMore} event. */
   public onLoadMore(): void {
@@ -65,14 +65,14 @@ export class AucTableComponent {
   }
 
   /** Emit {@link sort} event. */
-  public sortBy(sort: AucSort, columnIndex: number): void {
+  public sortBy(sort: W3sSort, columnIndex: number): void {
     if (!sort || !this.headers[columnIndex]?.sort) {
       return;
     }
 
-    sort.sortDirection = sort.sortDirection === AUC_SORT_DIRECTION.ASC
-      ? AUC_SORT_DIRECTION.DESC
-      : AUC_SORT_DIRECTION.ASC;
+    sort.sortDirection = sort.sortDirection === W3S_SORT_DIRECTION.ASC
+      ? W3S_SORT_DIRECTION.DESC
+      : W3S_SORT_DIRECTION.ASC;
     this.headers[columnIndex].sort.sortDirection = sort.sortDirection;
 
     this.sort.emit(sort);

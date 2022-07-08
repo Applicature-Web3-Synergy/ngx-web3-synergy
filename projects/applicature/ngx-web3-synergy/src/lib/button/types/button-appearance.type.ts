@@ -1,4 +1,4 @@
-import { AUC_BUTTON_APPEARANCE } from '../enums';
-import { EnumsTypeTransformer } from '../../types';
+import { W3S_BUTTON_APPEARANCE } from '../enums';
+import { W3sEnumsTypeTransformer } from '../../types';
 
-export type AucButtonAppearance = EnumsTypeTransformer<AUC_BUTTON_APPEARANCE.FLAT | AUC_BUTTON_APPEARANCE.ICON>;
+export type W3sButtonAppearance = W3sEnumsTypeTransformer<W3S_BUTTON_APPEARANCE.FLAT | W3S_BUTTON_APPEARANCE.ICON>;

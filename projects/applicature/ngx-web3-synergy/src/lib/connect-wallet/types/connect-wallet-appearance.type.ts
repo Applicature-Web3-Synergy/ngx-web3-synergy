@@ -1,5 +1,5 @@
-import { AUC_CONNECT_WALLET_APPEARANCE } from '../enums';
-import { EnumsTypeTransformer } from '../../types';
+import { W3S_CONNECT_WALLET_APPEARANCE } from '../enums';
+import { W3sEnumsTypeTransformer } from '../../types';
 
-export type ConnectWalletAppearance = EnumsTypeTransformer<AUC_CONNECT_WALLET_APPEARANCE.ICON
-  | AUC_CONNECT_WALLET_APPEARANCE.BUTTON>;
+export type W3sConnectWalletAppearance = W3sEnumsTypeTransformer<W3S_CONNECT_WALLET_APPEARANCE.ICON
+  | W3S_CONNECT_WALLET_APPEARANCE.BUTTON>;

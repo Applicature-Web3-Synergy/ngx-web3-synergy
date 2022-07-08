@@ -1,30 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucDialogComponent } from './dialog.component';
-import { AucCustomizeDialogDirective, AucInsertionDirective } from './directives';
-import { AucDialogService } from './services';
-import { AucOverlayModule } from '../overlay';
-import { AucBlockScrollHelperService } from '../helpers';
+import { W3sDialogComponent } from './dialog.component';
+import { W3sCustomizeDialogDirective, W3sInsertionDirective } from './directives';
+import { W3sDialogService } from './services';
+import { W3sOverlayModule } from '../overlay';
+import { W3sBlockScrollHelperService } from '../helpers';
 
 
 @NgModule({
   declarations: [
-    AucDialogComponent,
-    AucInsertionDirective,
-    AucCustomizeDialogDirective
+    W3sDialogComponent,
+    W3sInsertionDirective,
+    W3sCustomizeDialogDirective
   ],
   entryComponents: [
-    AucDialogComponent
+    W3sDialogComponent
   ],
   providers: [
-    AucDialogService,
-    AucBlockScrollHelperService
+    W3sDialogService,
+    W3sBlockScrollHelperService
   ],
   imports: [
     CommonModule,
-    AucOverlayModule
+    W3sOverlayModule
   ]
 })
-export class AucDialogModule {
+export class W3sDialogModule {
 }

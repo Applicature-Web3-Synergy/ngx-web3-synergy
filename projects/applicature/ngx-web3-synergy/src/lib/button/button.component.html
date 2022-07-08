@@ -1,5 +1,5 @@
-<button [aucSetStyleProps]="styleProperties"
-        [aucIdenticon]="identicon"
+<button [w3sSetStyleProps]="styleProperties"
+        [w3sIdenticon]="identicon"
         [position]="identiconPosition"
         [type]="type"
         [style.height.px]="height"
@@ -9,38 +9,37 @@
 >
   <ng-container [ngSwitch]="appearance">
     <ng-container *ngSwitchCase="BUTTON_APPEARANCE.ICON">
-      <auc-icon [icon]="leftIcon || rightIcon"
+      <w3s-icon [icon]="leftIcon || rightIcon"
                         [color]="iconColor"
-                        class="auc-button-icon"
+                        class="w3s-button-icon"
       >
-      </auc-icon>
+      </w3s-icon>
     </ng-container>
 
     <ng-container *ngSwitchDefault>
-      <auc-icon *ngIf="leftIcon"
+      <w3s-icon *ngIf="leftIcon"
                         [icon]="leftIcon"
                         [color]="iconColor"
-                        class="auc-button-left-icon"
+                        class="w3s-button-left-icon"
       >
-      </auc-icon>
+      </w3s-icon>
 
-      <span class="auc-button-label">{{ label }}</span>
+      <span class="w3s-button-label">{{ label }}</span>
 
-      <auc-icon *ngIf="!pending && rightIcon"
+      <w3s-icon *ngIf="!pending && rightIcon"
                         [icon]="rightIcon"
                         [color]="iconColor"
-                        class="auc-button-right-icon"
+                        class="w3s-button-right-icon"
       >
-      </auc-icon>
+      </w3s-icon>
 
-      <auc-spinner *ngIf="pending"
+      <w3s-spinner *ngIf="pending"
                            [diameter]="20"
                            [width]="2"
                            [color]="spinnerColor"
-                           class="auc-button-spinner"
+                           class="w3s-button-spinner"
       >
-      </auc-spinner>
-
+      </w3s-spinner>
     </ng-container>
   </ng-container>
 </button>

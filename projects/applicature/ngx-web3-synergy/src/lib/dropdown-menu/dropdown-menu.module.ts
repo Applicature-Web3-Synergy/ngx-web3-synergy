@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucDropdownMenuDirective } from './directives';
-import { AucDropdownMenuComponent } from './dropdown-menu.component';
-import { AucOverlayModule } from '../overlay';
-import { AucDirectivesModule } from '../directives';
+import { W3sDropdownMenuDirective } from './directives';
+import { W3sDropdownMenuComponent } from './dropdown-menu.component';
+import { W3sOverlayModule } from '../overlay';
+import { W3sDirectivesModule } from '../directives';
 
 
 @NgModule({
   declarations: [
-    AucDropdownMenuDirective,
-    AucDropdownMenuComponent
+    W3sDropdownMenuDirective,
+    W3sDropdownMenuComponent
   ],
   exports: [
-    AucDropdownMenuDirective,
-    AucDropdownMenuComponent,
-    AucDirectivesModule
+    W3sDropdownMenuDirective,
+    W3sDropdownMenuComponent,
+    W3sDirectivesModule
   ],
   imports: [
     CommonModule,
-    AucOverlayModule,
-    AucDirectivesModule
+    W3sOverlayModule,
+    W3sDirectivesModule
   ]
 })
-export class AucDropdownMenuModule { }
+export class W3sDropdownMenuModule { }

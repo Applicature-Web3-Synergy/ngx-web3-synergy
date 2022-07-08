@@ -2,24 +2,24 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { AucProgressBarModule } from '../progress-bar';
-import { AucRippleModule } from '../ripple';
-import { AucSpinnerModule } from '../spinner';
-import { AucButtonModule } from '../button';
-import { AucInputModule } from '../input';
-import { AucPipesModule } from '../pipes';
-import { AucAccountModalComponent } from './account-modal';
-import { AucTransferModalComponent } from './transfer-modal';
-import { AucWrongNetworkModalComponent } from './wrong-network-modal';
-import { AucIconModule } from '../icon';
-import { AucDirectivesModule } from '../directives';
-import { AucTransactionsModule } from '../transactions';
-import { AucCopyToClipboardModule } from '../copy-to-clipboard';
+import { W3sProgressBarModule } from '../progress-bar';
+import { W3RippleModule } from '../ripple';
+import { W3SpinnerModule } from '../spinner';
+import { W3sButtonModule } from '../button';
+import { W3sInputModule } from '../input';
+import { W3sPipesModule } from '../pipes';
+import { W3sAccountModalComponent } from './account-modal';
+import { W3sTransferModalComponent } from './transfer-modal';
+import { W3sWrongNetworkModalComponent } from './wrong-network-modal';
+import { W3sIconModule } from '../icon';
+import { W3sDirectivesModule } from '../directives';
+import { W3sTransactionsModule } from '../transactions';
+import { W3sCopyToClipboardModule } from '../copy-to-clipboard';
 
 const components = [
-  AucAccountModalComponent,
-  AucTransferModalComponent,
-  AucWrongNetworkModalComponent
+  W3sAccountModalComponent,
+  W3sTransferModalComponent,
+  W3sWrongNetworkModalComponent
 ];
 
 @NgModule({
@@ -32,17 +32,17 @@ const components = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AucPipesModule,
-    AucButtonModule,
-    AucInputModule,
-    AucRippleModule,
-    AucSpinnerModule,
-    AucProgressBarModule,
-    AucIconModule,
-    AucDirectivesModule,
-    AucTransactionsModule,
-    AucCopyToClipboardModule
+    W3sPipesModule,
+    W3sButtonModule,
+    W3sInputModule,
+    W3RippleModule,
+    W3SpinnerModule,
+    W3sProgressBarModule,
+    W3sIconModule,
+    W3sDirectivesModule,
+    W3sTransactionsModule,
+    W3sCopyToClipboardModule
   ]
 })
-export class ModalsModule {
+export class W3sModalsModule {
 }

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucShortAddressPipe } from './short-address.pipe';
+import { W3sShortAddressPipe } from './short-address.pipe';
 
 @NgModule({
   declarations: [
-    AucShortAddressPipe,
+    W3sShortAddressPipe,
   ],
   exports: [
-    AucShortAddressPipe,
+    W3sShortAddressPipe,
   ],
   imports: [
     CommonModule,
   ]
 })
-export class AucPipesModule {
+export class W3sPipesModule {
 }

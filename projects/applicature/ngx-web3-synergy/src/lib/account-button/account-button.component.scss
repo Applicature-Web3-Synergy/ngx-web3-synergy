@@ -4,11 +4,11 @@
   display: inline-block;
 }
 
-.auc-account-button {
+.w3s-account-button {
   cursor: pointer;
 }
 
-.auc-account-button-options {
+.w3s-account-button-options {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -21,7 +21,7 @@
   list-style-type: none;
 }
 
-.auc-account-button-header {
+.w3s-account-button-header {
   display: inline-block;
   padding: 0 12px;
   margin-top: 4px;
@@ -32,17 +32,17 @@
   color: c.getColor(grey, base);
 }
 
-.auc-account-button-user-info {
+.w3s-account-button-user-info {
   display: flex;
   align-items: center;
   font-family: c.$as-font-family;
 }
 
-.auc-account-button-user-info-avatar {
+.w3s-account-button-user-info-avatar {
   margin-right: 12px;
 }
 
-.auc-account-button-user-info-name {
+.w3s-account-button-user-info-name {
   display: flex;
   flex-direction: column;
   margin-right: auto;
@@ -63,7 +63,7 @@
   }
 }
 
-.auc-account-button-user-info-copy {
+.w3s-account-button-user-info-copy {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,7 +88,7 @@
   }
 }
 
-.auc-account-button-options-item {
+.w3s-account-button-options-item {
   display: flex;
   align-items: center;
   height: 40px;
@@ -100,27 +100,27 @@
     background: c.getColor(grey, background);
   }
 
-  &.auc-options-item-disabled {
+  &.w3s-options-item-disabled {
     cursor: default;
     opacity: 0.5;
     pointer-events: none;
   }
 }
 
-.auc-account-button-options-name {
+.w3s-account-button-options-name {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   color: c.$black;
 }
 
-.auc-account-button-options-footer {
+.w3s-account-button-options-footer {
   display: flex;
   flex-direction: column;
   padding: 8px 12px;
 }
 
-.auc-account-button-options-button {
+.w3s-account-button-options-button {
   margin-bottom: 8px;
 
   &:last-of-type {

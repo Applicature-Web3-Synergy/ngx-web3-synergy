@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
 import { takeUntil } from 'rxjs';
 
 import {
-  AucConnectionState,
-  AucTransactionService,
-  AucWalletConnectService,
+  W3sConnectionState,
+  W3sTransactionService,
+  W3sWalletConnectService,
   BaseSubscriber
 } from '@applicature/ngx-web3-synergy';
 
@@ -19,15 +19,15 @@ export class AppComponent extends BaseSubscriber {
   isConnected: boolean;
 
   constructor(
-    private _transactionService: AucTransactionService,
-    private _walletConnectService: AucWalletConnectService,
+    private _transactionService: W3sTransactionService,
+    private _walletConnectService: W3sWalletConnectService,
     private _cdr: ChangeDetectorRef
   ) {
     super();
 
     this._walletConnectService.connectionState$
       .pipe(takeUntil(this.notifier))
-      .subscribe((connectionState: AucConnectionState) => {
+      .subscribe((connectionState: W3sConnectionState) => {
         this.isConnected = connectionState.connected;
       });
   }

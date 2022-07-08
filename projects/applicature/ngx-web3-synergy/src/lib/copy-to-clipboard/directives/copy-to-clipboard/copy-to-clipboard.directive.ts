@@ -1,13 +1,13 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
-import { CopyToClipboardAction } from '../../interfaces';
+import { W3sCopyToClipboardAction } from '../../interfaces';
 
 
 @Directive({
-  selector: '[aucCopyToClipboard]',
-  exportAs: 'aucCopyToClipboard'
+  selector: '[w3sCopyToClipboard]',
+  exportAs: 'w3sCopyToClipboard'
 })
-export class CopyToClipboardDirective {
+export class W3sCopyToClipboardDirective {
   /**
    * The string to copy. <br>
    * It's required parameter.
@@ -17,7 +17,7 @@ export class CopyToClipboardDirective {
 
   /** Emits when copied action <br> */
   @Output()
-  public action: EventEmitter<CopyToClipboardAction> = new EventEmitter<CopyToClipboardAction>();
+  public action: EventEmitter<W3sCopyToClipboardAction> = new EventEmitter<W3sCopyToClipboardAction>();
 
   /** @internal */
   @HostListener('click')

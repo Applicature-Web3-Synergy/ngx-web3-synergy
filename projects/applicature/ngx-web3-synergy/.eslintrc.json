@@ -22,7 +22,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "auc",
+            "prefix": "w3s",
             "style": "camelCase"
           }
         ],
@@ -30,7 +30,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "auc",
+            "prefix": "w3s",
             "style": "kebab-case"
           }
         ],

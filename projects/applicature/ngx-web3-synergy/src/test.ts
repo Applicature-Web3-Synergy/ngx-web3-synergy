@@ -10,11 +10,11 @@ import {
 import { Buffer } from 'buffer';
 import process from 'process';
 
-import { AucWindowEth } from './lib/interfaces';
+import { W3sWindowEth } from './lib/interfaces';
 
 
 declare global {
-  interface Window extends AucWindowEth {}
+  interface Window extends W3sWindowEth {}
 }
 
 window.process = process;

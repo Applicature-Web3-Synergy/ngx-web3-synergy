@@ -1,8 +1,8 @@
-import { AucContentBodyDirective } from './content-body.directive';
+import { W3sContentBodyDirective } from './content-body.directive';
 
-describe('AucContentBodyDirective', () => {
+describe('W3sContentBodyDirective', () => {
   it('should create an instance', () => {
-    // const directive = new AucContentBodyDirective();
+    // const directive = new W3sContentBodyDirective();
     // expect(directive).toBeTruthy();
   });
 });

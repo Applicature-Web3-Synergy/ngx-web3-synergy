@@ -1,7 +1,7 @@
 import { Observable, Subject } from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class AucDialogRef<R = any> {
+export class W3sDialogRef<R = any> {
   private readonly _afterClosed = new Subject<R>();
   private readonly _afterOpened = new Subject<null>();
 

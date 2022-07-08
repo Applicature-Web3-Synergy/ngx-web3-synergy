@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucButtonComponent } from './button.component';
+import { W3sButtonComponent } from './button.component';
 
-describe('AucIdenticonDirective', () => {
-  let component: AucButtonComponent;
-  let fixture: ComponentFixture<AucButtonComponent>;
+describe('W3sIdenticonDirective', () => {
+  let component: W3sButtonComponent;
+  let fixture: ComponentFixture<W3sButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucButtonComponent ]
+      declarations: [ W3sButtonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucButtonComponent);
+    fixture = TestBed.createComponent(W3sButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

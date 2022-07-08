@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucDialogComponent } from './dialog.component';
+import { W3sDialogComponent } from './dialog.component';
 
-describe('AucDialogComponent', () => {
-  let component: AucDialogComponent;
-  let fixture: ComponentFixture<AucDialogComponent>;
+describe('W3sDialogComponent', () => {
+  let component: W3sDialogComponent;
+  let fixture: ComponentFixture<W3sDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucDialogComponent ]
+      declarations: [ W3sDialogComponent ]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucDialogComponent);
+    fixture = TestBed.createComponent(W3sDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

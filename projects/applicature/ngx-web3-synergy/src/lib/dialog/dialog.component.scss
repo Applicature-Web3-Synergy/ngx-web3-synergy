@@ -1,6 +1,6 @@
 @use '@applicature/styles/src/lib/scss/as-common' as c;
 
-.auc-dialog-container {
+.w3s-dialog-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,12 +11,12 @@
   z-index: 999;
 }
 
-auc-overlay,
-.auc-dialog {
+w3s-overlay,
+.w3s-dialog {
   z-index: 9999;
 }
 
-.auc-dialog {
+.w3s-dialog {
   width: auto;
   height: auto;
   min-width: 320px;
@@ -34,8 +34,8 @@ auc-overlay,
   border-radius: map-get(c.$as-border-radius, lg);
   overflow: hidden;
 
-  &.auc-account-dialog,
-  &.auc-recent-transactions-dialog {
+  &.w3s-account-dialog,
+  &.w3s-recent-transactions-dialog {
     padding: 0;
   }
 
@@ -91,7 +91,7 @@ auc-overlay,
 }
 
 @media (max-width: 767px) {
-  .auc-dialog {
+  .w3s-dialog {
     width: 100% !important;
     min-width: 100% !important;
     height: 100vh !important;

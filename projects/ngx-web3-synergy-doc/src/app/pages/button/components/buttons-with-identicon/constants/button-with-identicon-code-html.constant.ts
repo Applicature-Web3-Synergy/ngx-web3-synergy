@@ -1,0 +1,25 @@
+export const ButtonWithIdenticonCodeHtml =
+`<div class="doc-grid-container">
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">Identicon position right</h5>
+
+    <w3s-button label="0xXXX...XXXX"
+                [identicon]="identicon"
+                (buttonClicked)="onClick($event)"
+    >
+
+    </w3s-button>
+  </div>
+
+  <div class="doc-grid-item">
+    <h5 class="doc-grid-item-title">Identicon position left</h5>
+
+    <w3s-button label="0xXXX...XXXX"
+                [identicon]="identicon"
+                [identiconPosition]="IDENTICON_POSITION.LEFT"
+                (buttonClicked)="onClick($event)"
+    >
+    </w3s-button>
+  </div>
+</div>
+`;

@@ -1,7 +1,7 @@
-import { AucWalletLabel } from '../../../services';
+import { W3sWalletLabel } from '../../../services';
 
-export interface AucConnectWalletItem {
-  label: AucWalletLabel;
+export interface W3sConnectWalletItem {
+  label: W3sWalletLabel;
   icon: string;
   active: boolean;
   needToInstall: boolean;

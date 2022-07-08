@@ -21,7 +21,7 @@ body {
 }
 
 // Dialog styles
-.auc-dialog-header {
+.w3s-dialog-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,7 +40,7 @@ body {
     @include c.text-overflow;
   }
 
-  .auc-close-btn {
+  .w3s-close-btn {
     height: 24px;
     width: 24px;
     position: absolute;
@@ -49,7 +49,7 @@ body {
   }
 }
 
-.auc-close-btn {
+.w3s-close-btn {
   width: 24px;
   height: 24px;
   padding: 0;
@@ -63,7 +63,7 @@ body {
   color: c.getColor(grey, base);
   @include c.transition;
 
-  .auc-icon {
+  .w3s-icon {
     color: inherit;
     width: 24px;
     height: 24px;

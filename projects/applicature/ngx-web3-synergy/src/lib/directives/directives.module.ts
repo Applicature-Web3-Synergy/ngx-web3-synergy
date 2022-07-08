@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucContentBodyDirective } from './content-body';
-import { AucCustomClassDirective } from './custom-class';
-import { AucIdenticonDirective } from './identicon';
-import { AucSetStylePropsDirective } from './set-style-props';
-import { AucTriggerDirective } from './trigger';
+import { W3sContentBodyDirective } from './content-body';
+import { W3sCustomClassDirective } from './custom-class';
+import { W3sIdenticonDirective } from './identicon';
+import { W3sSetStylePropsDirective } from './set-style-props';
+import { W3sTriggerDirective } from './trigger';
 
 
 const directives = [
-  AucContentBodyDirective,
-  AucCustomClassDirective,
-  AucIdenticonDirective,
-  AucSetStylePropsDirective,
-  AucTriggerDirective
+  W3sContentBodyDirective,
+  W3sCustomClassDirective,
+  W3sIdenticonDirective,
+  W3sSetStylePropsDirective,
+  W3sTriggerDirective
 ];
 
 @NgModule({
@@ -27,5 +27,5 @@ const directives = [
     CommonModule
   ]
 })
-export class AucDirectivesModule {
+export class W3sDirectivesModule {
 }

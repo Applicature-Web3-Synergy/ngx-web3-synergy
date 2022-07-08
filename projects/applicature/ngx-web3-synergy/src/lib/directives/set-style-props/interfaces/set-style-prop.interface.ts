@@ -1,4 +1,4 @@
-export interface AucSetStyleProp {
+export interface W3sSetStyleProp {
   name: string;
   value: string;
 }

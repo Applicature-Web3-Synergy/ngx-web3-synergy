@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucFaucetModule } from '@applicature/ngx-web3-synergy';
+import { W3sFaucetModule } from '@applicature/ngx-web3-synergy';
 
 import { ExampleFaucetComponent } from './example-faucet.component';
 
@@ -15,7 +15,7 @@ import { ExampleFaucetComponent } from './example-faucet.component';
   ],
   imports: [
     CommonModule,
-    AucFaucetModule
+    W3sFaucetModule
   ]
 })
 export class ExampleFaucetModule {

@@ -15,40 +15,40 @@ import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
 import {
-  AucContentBodyDirective,
-  AucTriggerDirective
+  W3sContentBodyDirective,
+  W3sTriggerDirective
 } from '../directives';
-import { AUC_POSITIONS } from '../enums';
-import { AucDropdownConfig, AucDropdownPositionStyles } from './interfaces';
+import { W3S_POSITIONS } from '../enums';
+import { W3sDropdownConfig, W3sDropdownPositionStyles } from './interfaces';
 import { BaseSubscriber } from '../helpers';
 
 
 @Component({
-  selector: 'auc-dropdown-menu',
+  selector: 'w3s-dropdown-menu',
   templateUrl: './dropdown-menu.component.html',
   styleUrls: [ './dropdown-menu.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucDropdownMenuComponent extends BaseSubscriber implements OnChanges, AfterViewInit, OnDestroy {
+export class W3sDropdownMenuComponent extends BaseSubscriber implements OnChanges, AfterViewInit, OnDestroy {
   /**
    * Customize dropdown <br>
    * It's an optional parameter.
    */
   @Input()
-  public config?: AucDropdownConfig;
+  public config?: W3sDropdownConfig;
 
   /** Trigger for toggle opens */
   @Input()
-  public trigger!: AucTriggerDirective;
+  public trigger!: W3sTriggerDirective;
 
   /** @internal */
-  @ViewChild(AucContentBodyDirective) public contentBody: AucContentBodyDirective;
+  @ViewChild(W3sContentBodyDirective) public contentBody: W3sContentBodyDirective;
 
   /** @internal */
   @ViewChild('dropdown', { read: ElementRef }) public dropdownRef: ElementRef;
 
   /** @internal */
-  public positionStyles: AucDropdownPositionStyles = null;
+  public positionStyles: W3sDropdownPositionStyles = null;
 
   /** @internal */
   public isBelow: boolean;
@@ -127,8 +127,8 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
     } = this.dropdownRef?.nativeElement?.getBoundingClientRect() ?? {};
     const { top, left, bottom, right } = triggerRect;
     const { vertical, horizontal } = this.config?.position ?? {};
-    let isBelow: boolean = (vertical ?? AUC_POSITIONS.BELOW) === AUC_POSITIONS.BELOW;
-    let isAfter: boolean = (horizontal ?? AUC_POSITIONS.AFTER) === AUC_POSITIONS.AFTER;
+    let isBelow: boolean = (vertical ?? W3S_POSITIONS.BELOW) === W3S_POSITIONS.BELOW;
+    let isAfter: boolean = (horizontal ?? W3S_POSITIONS.AFTER) === W3S_POSITIONS.AFTER;
     let maxHeight = 0;
     let maxWidth = 0;
 
@@ -174,7 +174,7 @@ export class AucDropdownMenuComponent extends BaseSubscriber implements OnChange
       ? left
       : right - (!maxWidth || dropdownWidth > maxWidth ? dropdownWidth : maxWidth);
 
-    const styles: AucDropdownPositionStyles = {
+    const styles: W3sDropdownPositionStyles = {
       top: `${topPosition <= 0 ? 0 : topPosition}px`,
       left: `${leftPosition <= 0 ? 0 : leftPosition}px`
     }

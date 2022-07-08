@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucAccountBalanceComponent } from './account-balance.component';
+import { W3sAccountBalanceComponent } from './account-balance.component';
 
-describe('AucAccountBalanceComponent', () => {
-  let component: AucAccountBalanceComponent;
-  let fixture: ComponentFixture<AucAccountBalanceComponent>;
+describe('W3sAccountBalanceComponent', () => {
+  let component: W3sAccountBalanceComponent;
+  let fixture: ComponentFixture<W3sAccountBalanceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucAccountBalanceComponent ]
+      declarations: [ W3sAccountBalanceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucAccountBalanceComponent);
+    fixture = TestBed.createComponent(W3sAccountBalanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

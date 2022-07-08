@@ -15,25 +15,25 @@ import {
 } from '@web3-onboard/core/dist/types';
 
 import {
-  AucChain,
-  AucConnectionState,
-  AucInitOptions,
-  AucWalletConfig,
-  AucWalletConfigMap,
-  AucWalletsToInitLabel,
-  BlockExplorerUrlsByChainId
+  W3sChain,
+  W3sConnectionState,
+  W3sInitOptions,
+  W3sWalletConfig,
+  W3sWalletConfigMap,
+  W3sWalletsToInitLabel,
+  W3sBlockExplorerUrlsByChainId
 } from './interfaces';
-import { AucBlockScrollHelperService, BaseSubscriber } from '../../../helpers';
-import { AucDialogConfig, AucDialogService } from '../../../dialog';
-import { AucWalletLabel } from './types';
-import { AucConnectDialogConfig, AucConnectDialogData, AucConnectModalComponent } from '../../components';
+import { W3sBlockScrollHelperService, BaseSubscriber } from '../../../helpers';
+import { W3sDialogConfig, W3sDialogService } from '../../../dialog';
+import { W3sWalletLabel } from './types';
+import { W3sConnectDialogConfig, W3sConnectDialogData, W3sConnectModalComponent } from '../../components';
 
 
-const AUC_CONNECTED_WALLET_NAME = 'AUC_CONNECTED_WALLET_NAME';
+const W3S_CONNECTED_WALLET_NAME = 'W3S_CONNECTED_WALLET_NAME';
 
 
 @Injectable()
-export class AucWalletConnectService extends BaseSubscriber {
+export class W3sWalletConnectService extends BaseSubscriber {
   /**
    * @internal
    * Emits when Onboard was successfully initialized.
@@ -41,12 +41,12 @@ export class AucWalletConnectService extends BaseSubscriber {
   private _onboardInitialized$: Subject<void> = new Subject<void>();
 
   /** @returns initialization config. */
-  public get initializationConfig(): AucInitOptions {
+  public get initializationConfig(): W3sInitOptions {
     return this._initializationConfig;
   }
 
   /** @returns wallets Map from initialization config. */
-  public get initializedWalletsMap(): Map<AucWalletsToInitLabel, AucWalletConfigMap> {
+  public get initializedWalletsMap(): Map<W3sWalletsToInitLabel, W3sWalletConfigMap> {
     return this._initializedWalletsMap;
   }
 
@@ -64,12 +64,12 @@ export class AucWalletConnectService extends BaseSubscriber {
   }
 
   /** @returns Blockchain explorer urls config. */
-  get blockExplorerUrlByChainId(): BlockExplorerUrlsByChainId {
+  get blockExplorerUrlByChainId(): W3sBlockExplorerUrlsByChainId {
     return this._blockExplorerUrlByChainId;
   }
 
   /** @returns current connection state. */
-  public get connectionState(): AucConnectionState {
+  public get connectionState(): W3sConnectionState {
     if (!this._onboard) {
       return { connected: false };
     }
@@ -83,7 +83,7 @@ export class AucWalletConnectService extends BaseSubscriber {
   }
 
   /** @returns current connection state as Observable */
-  public get connectionState$(): Observable<AucConnectionState> {
+  public get connectionState$(): Observable<W3sConnectionState> {
     return (!this._onboard
         ? of(null)
         : this._onboard.state.select()
@@ -97,7 +97,7 @@ export class AucWalletConnectService extends BaseSubscriber {
           const connected = !!state?.wallets?.length;
 
           if (!connected) {
-            localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
+            localStorage.removeItem(W3S_CONNECTED_WALLET_NAME);
           }
 
           return {
@@ -143,11 +143,11 @@ export class AucWalletConnectService extends BaseSubscriber {
   }
 
   /** @internal */
-  private _initializationConfig: AucInitOptions;
+  private _initializationConfig: W3sInitOptions;
 
   /** @internal */
-  private _initializedWalletsMap: Map<AucWalletsToInitLabel, AucWalletConfigMap> =
-    new Map<AucWalletsToInitLabel, AucWalletConfigMap>();
+  private _initializedWalletsMap: Map<W3sWalletsToInitLabel, W3sWalletConfigMap> =
+    new Map<W3sWalletsToInitLabel, W3sWalletConfigMap>();
 
   /** @internal */
   private _onboard: OnboardAPI;
@@ -165,10 +165,10 @@ export class AucWalletConnectService extends BaseSubscriber {
   private _balance$: BehaviorSubject<Balances | null> = new BehaviorSubject<Balances>(null);
 
   /** @internal */
-  private _blockExplorerUrlByChainId: BlockExplorerUrlsByChainId = {};
+  private _blockExplorerUrlByChainId: W3sBlockExplorerUrlsByChainId = {};
 
-  constructor(private _aucBlockScrollHelperService: AucBlockScrollHelperService,
-              private _dialogService: AucDialogService) {
+  constructor(private _blockScrollHelperService: W3sBlockScrollHelperService,
+              private _dialogService: W3sDialogService) {
     super();
   }
 
@@ -177,7 +177,7 @@ export class AucWalletConnectService extends BaseSubscriber {
    * More information about config {@link https://docs.blocknative.com/onboard/core}. <br>
    * @param config - Initialization Config for wallet connection.
    */
-  public initialize(config: AucInitOptions): Observable<void> {
+  public initialize(config: W3sInitOptions): Observable<void> {
     if (this._onboard) {
       console.error('web3-onboard already initialized');
 
@@ -197,7 +197,7 @@ export class AucWalletConnectService extends BaseSubscriber {
     }
 
     this._initializationConfig = config;
-    config.wallets.forEach((wallet: AucWalletConfig, index: number) =>
+    config.wallets.forEach((wallet: W3sWalletConfig, index: number) =>
       this._initializedWalletsMap.set(wallet.label, { ...wallet, position: index }));
 
     const chains: Chain[] = (config?.chains ?? []).map(({
@@ -211,7 +211,7 @@ export class AucWalletConnectService extends BaseSubscriber {
                                                           providerConnectionInfo,
                                                           blockExplorerUrl,
                                                           blockExplorerApiUrl
-                                                        }: AucChain) => {
+                                                        }: W3sChain) => {
       const chain: Chain = {
         id,
         rpcUrl,
@@ -265,7 +265,7 @@ export class AucWalletConnectService extends BaseSubscriber {
     });
   }
 
-  public connect(dialogConfig?: AucDialogConfig<AucConnectDialogConfig>): Observable<AucConnectionState> {
+  public connect(dialogConfig?: W3sDialogConfig<W3sConnectDialogConfig>): Observable<W3sConnectionState> {
     if (!this._onboard) {
       return of({ connected: false })
         .pipe(
@@ -273,24 +273,24 @@ export class AucWalletConnectService extends BaseSubscriber {
         );
     }
 
-    this._aucBlockScrollHelperService.lockScroll();
+    this._blockScrollHelperService.lockScroll();
 
-    const config: AucDialogConfig<AucConnectDialogData> = {
+    const config: W3sDialogConfig<W3sConnectDialogData> = {
       data: {
         title: 'Connect a wallet',
         service: this
       },
       width: '400px',
-      dialogClass: 'auc-connect-dialog',
+      dialogClass: 'w3s-connect-dialog',
       overlay: {
         hasOverlay: true,
         closeByClick: false,
-        overlayClass: [ 'auc-connect-dialog-overlay' ],
+        overlayClass: [ 'w3s-connect-dialog-overlay' ],
       }
     };
 
-    const ref = this._dialogService.open<AucConnectModalComponent, AucConnectDialogData, AucWalletLabel | null>(
-      AucConnectModalComponent,
+    const ref = this._dialogService.open<W3sConnectModalComponent, W3sConnectDialogData, W3sWalletLabel | null>(
+      W3sConnectModalComponent,
       dialogConfig
         ? {
           ...dialogConfig,
@@ -304,7 +304,7 @@ export class AucWalletConnectService extends BaseSubscriber {
 
     return ref.afterClosed
       .pipe(
-        switchMap((label: AucWalletLabel | null) => !label
+        switchMap((label: W3sWalletLabel | null) => !label
           ? of(this.connectionState)
           : this.connectWallet(label)
         )
@@ -316,7 +316,7 @@ export class AucWalletConnectService extends BaseSubscriber {
    * @param label - Wallets label to connect.
    * @return Current connection state.
    */
-  public connectWallet(label: AucWalletLabel): Observable<AucConnectionState> {
+  public connectWallet(label: W3sWalletLabel): Observable<W3sConnectionState> {
     if (!this._onboard) {
       return of({ connected: false })
         .pipe(
@@ -350,7 +350,7 @@ export class AucWalletConnectService extends BaseSubscriber {
           return combineLatest(
             states
               .filter((state: WalletState) => state.label !== label)
-              .map((state: WalletState) => this.disconnectWallet(state.label as AucWalletLabel))
+              .map((state: WalletState) => this.disconnectWallet(state.label as W3sWalletLabel))
           )
             .pipe(
               map(() => [ connectedWallet ])
@@ -361,7 +361,7 @@ export class AucWalletConnectService extends BaseSubscriber {
   }
 
   /** Disconnect wallet. */
-  public disconnectWallet(label?: AucWalletLabel): Observable<void> {
+  public disconnectWallet(label?: W3sWalletLabel): Observable<void> {
     const [ primaryWallet ] = this._onboard?.state?.get()?.wallets;
 
     return of(
@@ -371,7 +371,7 @@ export class AucWalletConnectService extends BaseSubscriber {
     )
       .pipe(
         tap(() => {
-          localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
+          localStorage.removeItem(W3S_CONNECTED_WALLET_NAME);
         }),
         map(() => null),
       );
@@ -382,7 +382,7 @@ export class AucWalletConnectService extends BaseSubscriber {
     this._onboardInitialized$
       .pipe(take(1))
       .subscribe(() => {
-        const previouslyConnectedWallet = localStorage.getItem(AUC_CONNECTED_WALLET_NAME);
+        const previouslyConnectedWallet = localStorage.getItem(W3S_CONNECTED_WALLET_NAME);
 
         if (previouslyConnectedWallet !== null) {
           this._onboard.connectWallet({
@@ -405,11 +405,11 @@ export class AucWalletConnectService extends BaseSubscriber {
           const connectedWallet = wallet.label;
 
           window.localStorage.setItem(
-            AUC_CONNECTED_WALLET_NAME,
+            W3S_CONNECTED_WALLET_NAME,
             connectedWallet
           );
         } else {
-          localStorage.removeItem(AUC_CONNECTED_WALLET_NAME);
+          localStorage.removeItem(W3S_CONNECTED_WALLET_NAME);
         }
 
         const account: Account = (wallet?.accounts ?? [])[0];

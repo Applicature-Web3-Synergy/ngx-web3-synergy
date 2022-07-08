@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
 
-export interface AucTransferModalData {
+export interface W3sTransferModalData {
   header: string;
   symbol: string;
   allowance: BigNumber.Value;

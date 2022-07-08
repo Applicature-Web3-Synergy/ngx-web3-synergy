@@ -1,21 +1,21 @@
 import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input } from '@angular/core';
 
-import { AucOverlayCustomizationConfig } from './interfaces';
+import { W3sOverlayCustomizationConfig } from './interfaces';
 
 
 @Component({
-  selector: 'auc-overlay',
+  selector: 'w3s-overlay',
   templateUrl: './overlay.component.html',
   styleUrls: [ './overlay.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucOverlayComponent {
+export class W3sOverlayComponent {
   /**
    * You can customize overlay. <br>
    * It's an optional parameter.
    */
   @Input()
-  public customize?: AucOverlayCustomizationConfig
+  public customize?: W3sOverlayCustomizationConfig
 
   /** Emits when overlay was clicked. */
   @Output()

@@ -1,8 +1,8 @@
-import { AucDialogPosition } from './types';
-import { AucCustomizeDialogOverlayConfigInterface } from './interfaces';
+import { W3sDialogPosition } from './types';
+import { W3sCustomizeDialogOverlayConfigInterface } from './interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class AucDialogConfig<D = any> {
+export class W3sDialogConfig<D = any> {
   data?: D; // Data for injected component.
   width?: string; // '300px', '50%', '1rem' ...
   height?: string; // '300px', '50%', '1rem' ...
@@ -10,10 +10,10 @@ export class AucDialogConfig<D = any> {
   minHeight?: string; // '300px', '50%', '1rem' ...
   maxWidth?: string; // '300px', '50%', '1rem' ...
   maxHeight?: string; // '300px', '50%', '1rem' ...
-  position?: AucDialogPosition;
+  position?: W3sDialogPosition;
   dialogClass?: string | string[]; // Add custom class to the dialog container.
   panel?: {
     panelClass: string | string[]; // Add custom class to the dialog panel.
   };
-  overlay?: AucCustomizeDialogOverlayConfigInterface; // customize overlay.
+  overlay?: W3sCustomizeDialogOverlayConfigInterface; // customize overlay.
 }

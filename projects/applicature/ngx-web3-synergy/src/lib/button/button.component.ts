@@ -11,21 +11,21 @@ import {
 
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
-import { AucButtonAppearance } from './types';
-import { AUC_BUTTON_APPEARANCE } from './enums';
-import { AUC_IDENTICON_POSITION, AucIdenticonPosition, AucSetStyleProp } from '../directives';
+import { W3sButtonAppearance } from './types';
+import { W3S_BUTTON_APPEARANCE } from './enums';
+import { W3S_IDENTICON_POSITION, W3sIdenticonPosition, W3sSetStyleProp } from '../directives';
 
 
 @Component({
-  selector: 'auc-button',
+  selector: 'w3s-button',
   templateUrl: './button.component.html',
   styleUrls: [ './button.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucButtonComponent implements OnInit, OnChanges {
+export class W3sButtonComponent implements OnInit, OnChanges {
   /**
    * Text for the button label. <br>
-   * It's an optional parameter, required if {@link appearance} equals to {@link AUC_BUTTON_APPEARANCE.FLAT}.
+   * It's an optional parameter, required if {@link appearance} equals to {@link W3S_BUTTON_APPEARANCE.FLAT}.
    */
   @Input()
   public label?: string;
@@ -82,14 +82,14 @@ export class AucButtonComponent implements OnInit, OnChanges {
    * Controls identicon position. <br>
    * It's an optional parameter. <br>
    * The default value is right. <br>
-   * You can use enum {@link AUC_IDENTICON_POSITION}
+   * You can use enum {@link W3S_IDENTICON_POSITION}
    */
   @Input()
-  public identiconPosition?: AucIdenticonPosition = AUC_IDENTICON_POSITION.RIGHT;
+  public identiconPosition?: W3sIdenticonPosition = W3S_IDENTICON_POSITION.RIGHT;
 
   /**
    * Shows left icon if provided. <br>
-   * You can use supported icons from enum {@link AUC_WLC_ICON} or string. <br>
+   * You can use supported icons from enum {@link W3S_WLC_ICON} or string. <br>
    * If you want to use custom icon, you need to provide url to the image as a string value. <br>
    * It's an optional parameter.
    */
@@ -98,7 +98,7 @@ export class AucButtonComponent implements OnInit, OnChanges {
 
   /**
    * Shows right icon if provided. <br>
-   * You can use supported icons from enum {@link AUC_WLC_ICON} or string. <br>
+   * You can use supported icons from enum {@link W3S_WLC_ICON} or string. <br>
    * If you want to use custom icon, you need to provide url to the image as a string value. <br>
    * It's an optional parameter.
    */
@@ -107,12 +107,12 @@ export class AucButtonComponent implements OnInit, OnChanges {
 
   /**
    * Sets button appearance. <br>
-   * You can use enum {@link AUC_BUTTON_APPEARANCE}. <br>
+   * You can use enum {@link W3S_BUTTON_APPEARANCE}. <br>
    * It's an optional parameter. <br>
    * The default value is flat.
    */
   @Input()
-  public appearance?: AucButtonAppearance = AUC_BUTTON_APPEARANCE.FLAT;
+  public appearance?: W3sButtonAppearance = W3S_BUTTON_APPEARANCE.FLAT;
 
   /**
    * Whether the button is transparent. <br>
@@ -154,10 +154,10 @@ export class AucButtonComponent implements OnInit, OnChanges {
   public buttonClicked: EventEmitter<any> = new EventEmitter<any>();  // eslint-disable-line @typescript-eslint/no-explicit-any
 
   /** @internal */
-  public styleProperties: AucSetStyleProp[] = [];
+  public styleProperties: W3sSetStyleProp[] = [];
 
   /** @internal */
-  public BUTTON_APPEARANCE = AUC_BUTTON_APPEARANCE;
+  public BUTTON_APPEARANCE = W3S_BUTTON_APPEARANCE;
 
   /** @internal */
   public get iconColor(): string {
@@ -178,13 +178,13 @@ export class AucButtonComponent implements OnInit, OnChanges {
   /** @internal */
   public get classNames(): { [el: string]: boolean } {
     return {
-      ['auc-button']: true,
-      [`auc-button-white`]: !this.transparent && !this.bordered && this.color === AS_COLOR_GROUP.WHITE,
-      ['auc-button-disabled']: this.disabled,
-      ['auc-button-adaptive']: this.adaptive,
-      ['auc-button-transparent']: this.transparent && !this.bordered,
-      ['auc-button-bordered']: this.bordered,
-      [`auc-button-${this.appearance}`]: true,
+      ['w3s-button']: true,
+      [`w3s-button-white`]: !this.transparent && !this.bordered && this.color === AS_COLOR_GROUP.WHITE,
+      ['w3s-button-disabled']: this.disabled,
+      ['w3s-button-adaptive']: this.adaptive,
+      ['w3s-button-transparent']: this.transparent && !this.bordered,
+      ['w3s-button-bordered']: this.bordered,
+      [`w3s-button-${this.appearance}`]: true,
     };
   }
 
@@ -219,17 +219,17 @@ export class AucButtonComponent implements OnInit, OnChanges {
 
     const colorProperties: AsColorProperties = AsColors[this.color || AS_COLOR_GROUP.BLUE];
 
-    const colorProps: AucSetStyleProp[] = Object.keys(colorProperties || {})
+    const colorProps: W3sSetStyleProp[] = Object.keys(colorProperties || {})
       .map((prop: string) => {
         return {
-          name: `--auc-button-${prop}`,
+          name: `--w3s-button-${prop}`,
           value: colorProperties[prop]
         }
       });
 
     this.styleProperties = [
       {
-        name: '--auc-button-radius',
+        name: '--w3s-button-radius',
         value: `${this.borderRadius}px`
       },
       ...(colorProps || [])

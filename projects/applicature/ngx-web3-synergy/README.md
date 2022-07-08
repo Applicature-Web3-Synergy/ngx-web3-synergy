@@ -1,5 +1,5 @@
 # Web3 Synergy
-This library was created and maintained by Applicature to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
+This library was created and maintained by [**Applicature**](https://applicature.com/) to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
 This library supports Angular from version 13 and higher.
 
 ## Documentation
@@ -163,7 +163,7 @@ const injected = injectedModule();
 /** More supported wallets https://docs.blocknative.com/onboard */
 
 export function initWalletServiceFactory(
-  walletConnectService: AucWalletConnectService
+  walletConnectService: W3sWalletConnectService
 ): () => Observable<void> {
   return () => walletConnectService.initialize({
     wallets: [
@@ -184,7 +184,7 @@ export function initWalletServiceFactory(
     ],
     chains: [
       {
-        id: AUC_CHAIN_ID.BSC_TESTNET,
+        id: W3S_CHAIN_ID.BSC_TESTNET,
         token: 'BNB',
         label: 'BNB Chain',
         rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545',
@@ -193,20 +193,20 @@ export function initWalletServiceFactory(
         blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
       },
       {
-        id: AUC_CHAIN_ID.POLYGON_TESTNET,
-        token: AucNativeCurrencies[AUC_CHAIN_ID.POLYGON_TESTNET].name,
+        id: W3S_CHAIN_ID.POLYGON_TESTNET,
+        token: W3sNativeCurrencies[W3S_CHAIN_ID.POLYGON_TESTNET].name,
         label: 'Matic',
-        rpcUrl: AucRpcUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        rpcUrl: W3sRpcUrls[W3S_CHAIN_ID.POLYGON_TESTNET][0],
         icon: 'assets/svg/network/polygon.svg',
-        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.POLYGON_TESTNET][0],
+        blockExplorerUrl: W3sBlockExplorerUrls[W3S_CHAIN_ID.POLYGON_TESTNET][0],
       },
       {
-        id: AUC_CHAIN_ID.RINKEBY_TESTNET,
+        id: W3S_CHAIN_ID.RINKEBY_TESTNET,
         token: 'ETH',
         label: 'Rinkeby Ethereum',
-        rpcUrl: `${AucRpcUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
+        rpcUrl: `${W3sRpcUrls[W3S_CHAIN_ID.RINKEBY_TESTNET][0]}/${INFURA_KEY}`,
         icon: 'assets/svg/network/eth.svg',
-        blockExplorerUrl: AucBlockExplorerUrls[AUC_CHAIN_ID.RINKEBY_TESTNET][0],
+        blockExplorerUrl: W3sBlockExplorerUrls[W3S_CHAIN_ID.RINKEBY_TESTNET][0],
       },
     ],
   });
@@ -217,13 +217,13 @@ export function initWalletServiceFactory(
   ...
   imports: [
     ...
-    AucConnectModule.forRoot()
+    W3sConnectModule.forRoot()
   ],
   providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: initWalletServiceFactory,
-      deps: [ AucWalletConnectService ],
+      deps: [ W3sWalletConnectService ],
       multi: true
     }
   ]
@@ -304,5 +304,5 @@ You might need to add `allowedCommonJsDependencies` to `angular.json` file:
 
 ## Contributing
 This project is maintained by a community of developers. Contributions are welcome and appreciated.
-You can find Applicature Universal Component on [**GitHub**](https://github.com/Applicature-Web3-Components/ngx-web3-components); feel free to open an issue or create a pull request:
+You can find Web3 Synergy on [**GitHub**](https://github.com/Applicature-Web3-Components/ngx-web3-components); feel free to open an issue or create a pull request:
 

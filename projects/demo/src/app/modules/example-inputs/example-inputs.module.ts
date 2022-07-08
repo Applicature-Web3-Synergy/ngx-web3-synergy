@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucInputModule } from '@applicature/ngx-web3-synergy';
+import { W3sInputModule } from '@applicature/ngx-web3-synergy';
 
 import { ExampleInputsComponent } from './example-inputs.component';
 
@@ -16,7 +16,7 @@ import { ExampleInputsComponent } from './example-inputs.component';
   ],
   imports: [
     CommonModule,
-    AucInputModule
+    W3sInputModule
   ]
 })
 export class ExampleInputsModule { }

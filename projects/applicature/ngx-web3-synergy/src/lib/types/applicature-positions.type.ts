@@ -1,6 +1,6 @@
-import { AUC_POSITIONS } from '../enums';
-import { EnumsTypeTransformer } from './enums-type-transformer.type';
+import { W3S_POSITIONS } from '../enums';
+import { W3sEnumsTypeTransformer } from './enums-type-transformer.type';
 
-export type AucVerticalPosition = EnumsTypeTransformer<AUC_POSITIONS.ABOVE | AUC_POSITIONS.BELOW>;
+export type W3sVerticalPosition = W3sEnumsTypeTransformer<W3S_POSITIONS.ABOVE | W3S_POSITIONS.BELOW>;
 
-export type AucHorizontalPosition = EnumsTypeTransformer<AUC_POSITIONS.BEFORE | AUC_POSITIONS.AFTER>;
+export type W3sHorizontalPosition = W3sEnumsTypeTransformer<W3S_POSITIONS.BEFORE | W3S_POSITIONS.AFTER>;

@@ -1,24 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { AucSpinnerModule } from '../spinner';
-import { AucIconModule } from '../icon';
-import { AucButtonComponent } from './button.component';
-import { AucDirectivesModule } from '../directives';
+import { W3SpinnerModule } from '../spinner';
+import { W3sIconModule } from '../icon';
+import { W3sButtonComponent } from './button.component';
+import { W3sDirectivesModule } from '../directives';
 
 @NgModule({
   declarations: [
-    AucButtonComponent
+    W3sButtonComponent
   ],
   exports: [
-    AucButtonComponent
+    W3sButtonComponent
   ],
   imports: [
     CommonModule,
-    AucIconModule,
-    AucDirectivesModule,
-    AucSpinnerModule
+    W3sIconModule,
+    W3sDirectivesModule,
+    W3SpinnerModule
   ]
 })
-export class AucButtonModule {
+export class W3sButtonModule {
 }

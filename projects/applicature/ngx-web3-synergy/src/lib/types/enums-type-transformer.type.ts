@@ -1,1 +1,1 @@
-export type EnumsTypeTransformer<T> = T extends string ? `${T}` : never;
+export type W3sEnumsTypeTransformer<T> = T extends string ? `${T}` : never;

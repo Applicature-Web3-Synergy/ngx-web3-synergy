@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_SORT_DIRECTION {
+export enum W3S_SORT_DIRECTION {
   ASC = 'asc',
   DESC = 'desc',
 }

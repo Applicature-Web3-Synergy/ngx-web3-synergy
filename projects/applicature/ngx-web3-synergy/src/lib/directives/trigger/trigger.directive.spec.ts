@@ -1,8 +1,8 @@
-import { AucTriggerDirective } from './trigger.directive';
+import { W3sTriggerDirective } from './trigger.directive';
 
-describe('AucTriggerDirective', () => {
+describe('W3sTriggerDirective', () => {
   it('should create an instance', () => {
-    // const directive = new AucTriggerDirective();
+    // const directive = new W3sTriggerDirective();
     // expect(directive).toBeTruthy();
   });
 });

@@ -1,4 +1,4 @@
-<auc-button class="auc-transaction-history-btn"
+<w3s-button class="w3s-transaction-history-btn"
             *ngIf="!(hasFailedTx || hasPendingTx)"
             [color]="COLORS.WHITE"
             [appearance]="BTN_APPEARANCE.ICON"
@@ -6,9 +6,9 @@
             leftIcon="wcl-icon-recent"
             (buttonClicked)="onTransactionsClick()"
 >
-</auc-button>
+</w3s-button>
 
-<auc-button class="auc-transaction-history-btn"
+<w3s-button class="w3s-transaction-history-btn"
             *ngIf="hasFailedTx && !hasPendingTx"
             [label]="txCount + ' failing'"
             [color]="COLORS.RED"
@@ -16,9 +16,9 @@
             rightIcon="wcl-icon-fail"
             (buttonClicked)="onTransactionsClick()"
 >
-</auc-button>
+</w3s-button>
 
-<auc-button class="auc-transaction-history-btn"
+<w3s-button class="w3s-transaction-history-btn"
             *ngIf="hasPendingTx"
             [label]="txCount + ' pending'"
             [pending]="true"
@@ -26,4 +26,4 @@
             [disabled]="disabled"
             (buttonClicked)="onTransactionsClick()"
 >
-</auc-button>
+</w3s-button>

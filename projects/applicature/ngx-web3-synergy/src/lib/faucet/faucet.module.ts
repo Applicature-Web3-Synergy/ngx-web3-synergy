@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucFaucetComponent } from './faucet.component';
-import { AucButtonModule } from '../button';
-import { AucIconModule } from '../icon';
+import { W3sFaucetComponent } from './faucet.component';
+import { W3sButtonModule } from '../button';
+import { W3sIconModule } from '../icon';
 
 
 @NgModule({
   declarations: [
-    AucFaucetComponent
+    W3sFaucetComponent
   ],
   exports: [
-    AucFaucetComponent
+    W3sFaucetComponent
   ],
   imports: [
     CommonModule,
-    AucButtonModule,
-    AucIconModule
+    W3sButtonModule,
+    W3sIconModule
   ]
 })
-export class AucFaucetModule { }
+export class W3sFaucetModule { }

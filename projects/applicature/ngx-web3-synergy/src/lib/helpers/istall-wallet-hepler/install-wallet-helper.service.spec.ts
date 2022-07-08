@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AucInstallWalletHelperService } from './install-wallet-helper.service';
+import { W3sInstallWalletHelperService } from './install-wallet-helper.service';
 
 
 describe('InstallWalletHelperService', () => {
-  let service: AucInstallWalletHelperService;
+  let service: W3sInstallWalletHelperService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AucInstallWalletHelperService);
+    service = TestBed.inject(W3sInstallWalletHelperService);
   });
 
   it('should be created', () => {

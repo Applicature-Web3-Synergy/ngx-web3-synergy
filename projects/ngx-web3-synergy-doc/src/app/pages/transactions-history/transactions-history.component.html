@@ -1,0 +1,15 @@
+<doc-component-viewer
+  [components]="['W3sTransactionsHistoryComponent', 'W3sTransactionsListComponent', 'W3sTransactionService']"
+>
+  <div class="doc-example-viewer-example-cards-list">
+    <doc-need-wallet-connection>
+      <doc-example-card label="Basic" [tabs]="basicTransactionsTabs">
+        <doc-basic-transaction-history></doc-basic-transaction-history>
+      </doc-example-card>
+
+      <doc-example-card label="Custom" [tabs]="customTransactionTabs">
+        <doc-custom-transaction-history></doc-custom-transaction-history>
+      </doc-example-card>
+    </doc-need-wallet-connection>
+  </div>
+</doc-component-viewer>

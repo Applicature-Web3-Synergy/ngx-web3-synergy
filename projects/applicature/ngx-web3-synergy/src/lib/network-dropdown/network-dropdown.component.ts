@@ -16,21 +16,21 @@ import { takeUntil } from 'rxjs/operators';
 import { Chain } from '@web3-onboard/common/dist/types';
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
-import { AUC_POSITIONS } from '../enums';
-import { AucDropdownConfig } from '../dropdown-menu';
-import { AucWalletConnectService } from '../connect/services';
-import { AucDialogService } from '../dialog';
+import { W3S_POSITIONS } from '../enums';
+import { W3sDropdownConfig } from '../dropdown-menu';
+import { W3sWalletConnectService } from '../connect';
+import { W3sDialogService } from '../dialog';
 import { BaseSubscriber } from '../helpers';
-import { AucSelectedNetwork } from './interfaces';
+import { W3sSelectedNetwork } from './interfaces';
 
 
 @Component({
-  selector: 'auc-network-dropdown',
+  selector: 'w3s-network-dropdown',
   templateUrl: './network-dropdown.component.html',
   styleUrls: [ './network-dropdown.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucNetworkDropdownComponent extends BaseSubscriber implements OnInit, OnChanges {
+export class W3sNetworkDropdownComponent extends BaseSubscriber implements OnInit, OnChanges {
   /**
    * Customize dropdown <br>
    * It's an optional parameter. <br>
@@ -40,19 +40,19 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
    *     transparent: true
    *   },
    *   position: {
-   *     vertical: AUC_POSITIONS.BELOW,
-   *     horizontal: AUC_POSITIONS.AFTER
+   *     vertical: W3S_POSITIONS.BELOW,
+   *     horizontal: W3S_POSITIONS.AFTER
    *   }
    * }
    */
   @Input()
-  public networkDropdownConfig: AucDropdownConfig = {
+  public networkDropdownConfig: W3sDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: AUC_POSITIONS.BELOW,
-      horizontal: AUC_POSITIONS.AFTER
+      vertical: W3S_POSITIONS.BELOW,
+      horizontal: W3S_POSITIONS.AFTER
     }
   };
 
@@ -72,9 +72,9 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
 
   /** Emits when chainChanged. */
   @Output()
-  public networkSelected: EventEmitter<AucSelectedNetwork> = new EventEmitter<AucSelectedNetwork>();
+  public networkSelected: EventEmitter<W3sSelectedNetwork> = new EventEmitter<W3sSelectedNetwork>();
 
-  @HostBinding('class.auc-full-width') private _fullWidth = true;
+  @HostBinding('class.w3s-full-width') private _fullWidth = true;
 
   /** @internal */
   public isWrongNetwork = false;
@@ -93,9 +93,9 @@ export class AucNetworkDropdownComponent extends BaseSubscriber implements OnIni
 
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: AucWalletConnectService,
+    private _walletConnectService: W3sWalletConnectService,
     private _elementRef: ElementRef<HTMLElement>,
-    private _dialogService: AucDialogService
+    private _dialogService: W3sDialogService
   ) {
     super();
 

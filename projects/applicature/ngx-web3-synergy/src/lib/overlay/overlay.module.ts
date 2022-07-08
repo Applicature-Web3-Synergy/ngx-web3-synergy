@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucOverlayComponent } from './overlay.component';
-import { AucDirectivesModule } from '../directives';
+import { W3sOverlayComponent } from './overlay.component';
+import { W3sDirectivesModule } from '../directives';
 
 
 @NgModule({
   declarations: [
-    AucOverlayComponent
+    W3sOverlayComponent
   ],
   exports: [
-    AucOverlayComponent
+    W3sOverlayComponent
   ],
   imports: [
     CommonModule,
-    AucDirectivesModule
+    W3sDirectivesModule
   ]
 })
-export class AucOverlayModule {
+export class W3sOverlayModule {
 }

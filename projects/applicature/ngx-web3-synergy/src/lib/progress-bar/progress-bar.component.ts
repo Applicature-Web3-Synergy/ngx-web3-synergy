@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleCha
 
 
 @Component({
-  selector: 'auc-progress-bar',
+  selector: 'w3s-progress-bar',
   templateUrl: './progress-bar.component.html',
   styleUrls: [ './progress-bar.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucProgressBarComponent implements OnInit, OnChanges {
+export class W3sProgressBarComponent implements OnInit, OnChanges {
   /**
    * Sets progress value. <br>
    * It's required parameter.

@@ -2,35 +2,35 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AucSpinnerModule } from '../spinner';
+import { W3SpinnerModule } from '../spinner';
 import {
-  AucTransactionsHistoryComponent,
-  AucTransactionsHistoryModalComponent,
-  AucTransactionsListComponent
+  W3sTransactionsHistoryComponent,
+  W3sTransactionsHistoryModalComponent,
+  W3sTransactionsListComponent
 } from './components';
-import { AucIconModule } from '../icon';
-import { AucButtonModule } from '../button';
-import { AucTransactionService } from './services';
+import { W3sIconModule } from '../icon';
+import { W3sButtonModule } from '../button';
+import { W3sTransactionService } from './services';
 
 
 @NgModule({
   declarations: [
-    AucTransactionsHistoryComponent,
-    AucTransactionsHistoryModalComponent,
-    AucTransactionsListComponent
+    W3sTransactionsHistoryComponent,
+    W3sTransactionsHistoryModalComponent,
+    W3sTransactionsListComponent
   ],
   exports: [
-    AucTransactionsHistoryComponent,
-    AucTransactionsHistoryModalComponent,
-    AucTransactionsListComponent
+    W3sTransactionsHistoryComponent,
+    W3sTransactionsHistoryModalComponent,
+    W3sTransactionsListComponent
   ],
-  providers: [AucTransactionService],
+  providers: [W3sTransactionService],
   imports: [
     CommonModule,
     HttpClientModule,
-    AucSpinnerModule,
-    AucIconModule,
-    AucButtonModule
+    W3SpinnerModule,
+    W3sIconModule,
+    W3sButtonModule
   ]
 })
-export class AucTransactionsModule { }
+export class W3sTransactionsModule { }

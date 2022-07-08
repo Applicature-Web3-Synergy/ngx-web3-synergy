@@ -4,7 +4,7 @@
   display: inline-flex;
 }
 
-.auc-button {
+.w3s-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,81 +15,81 @@
   cursor: pointer;
   outline: none;
   font-family: c.$as-font-family;
-  color: var(--auc-button-text);
-  border: 2px solid var(--auc-button-border);
-  border-radius: var(--auc-button-radius);
-  background: var(--auc-button-base);
+  color: var(--w3s-button-text);
+  border: 2px solid var(--w3s-button-border);
+  border-radius: var(--w3s-button-radius);
+  background: var(--w3s-button-base);
   @include c.transition(background);
 
   &:hover {
-    background: var(--auc-button-hover);
-    border: 2px solid var(--auc-button-borderHover);
+    background: var(--w3s-button-hover);
+    border: 2px solid var(--w3s-button-borderHover);
   }
 
   &:active:focus {
-    background: var(--auc-button-dark);
-    border: 2px solid var(--auc-button-borderFocus);
+    background: var(--w3s-button-dark);
+    border: 2px solid var(--w3s-button-borderFocus);
   }
 
-  &.auc-button-disabled {
+  &.w3s-button-disabled {
     cursor: default;
     pointer-events: none;
     opacity: 0.7;
   }
 
-  &.auc-button-icon {
+  &.w3s-button-icon {
     padding: 10px 12px;
   }
 
-  &.auc-button-adaptive {
+  &.w3s-button-adaptive {
     width: 100%;
   }
 
-  &.auc-button-transparent {
+  &.w3s-button-transparent {
     border: 2px solid transparent;
     background: transparent;
     transition: none;
 
     &:hover {
       background: transparent;
-      border: 2px solid var(--auc-button-borderHover);
+      border: 2px solid var(--w3s-button-borderHover);
     }
 
     &:active:focus {
       background: transparent;
-      border: 2px solid var(--auc-button-borderFocus);
+      border: 2px solid var(--w3s-button-borderFocus);
     }
   }
 
-  &.auc-button-bordered {
-    border: 2px solid var(--auc-button-borderHover);
+  &.w3s-button-bordered {
+    border: 2px solid var(--w3s-button-borderHover);
     background: transparent;
     transition: none;
 
     &:hover {
       background: transparent;
-      border: 2px solid var(--auc-button-borderHover);
+      border: 2px solid var(--w3s-button-borderHover);
     }
 
     &:active:focus {
       background: transparent;
-      border: 2px solid var(--auc-button-borderFocus);
+      border: 2px solid var(--w3s-button-borderFocus);
     }
   }
 
-  auc-icon {
-    &:not(.auc-button-icon) {
-      &.auc-button-left-icon {
+  w3s-icon {
+    &:not(.w3s-button-icon) {
+      &.w3s-button-left-icon {
         margin-right: 8px;
       }
 
-      &.auc-button-right-icon {
+      &.w3s-button-right-icon {
         margin-left: 8px;
       }
     }
   }
 
-  .auc-button-spinner {
+  .w3s-button-spinner {
     margin-left: 8px;
   }
 }

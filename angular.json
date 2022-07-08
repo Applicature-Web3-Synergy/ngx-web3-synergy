@@ -16,7 +16,7 @@
       },
       "root": "projects/applicature/ngx-web3-synergy",
       "sourceRoot": "projects/applicature/ngx-web3-synergy/src",
-      "prefix": "auc",
+      "prefix": "w3s",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -273,7 +273,7 @@
         }
       }
     },
-    "ngx-components-doc": {
+    "ngx-web3-synergy-doc": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -284,32 +284,32 @@
           "strict": true
         }
       },
-      "root": "projects/ngx-components-doc",
-      "sourceRoot": "projects/ngx-components-doc/src",
+      "root": "projects/ngx-web3-synergy-doc",
+      "sourceRoot": "projects/ngx-web3-synergy-doc/src",
       "prefix": "doc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-components-doc",
-            "index": "projects/ngx-components-doc/src/index.html",
-            "main": "projects/ngx-components-doc/src/main.ts",
-            "polyfills": "projects/ngx-components-doc/src/polyfills.ts",
-            "tsConfig": "projects/ngx-components-doc/tsconfig.app.json",
+            "outputPath": "dist/ngx-web3-synergy-doc",
+            "index": "projects/ngx-web3-synergy-doc/src/index.html",
+            "main": "projects/ngx-web3-synergy-doc/src/main.ts",
+            "polyfills": "projects/ngx-web3-synergy-doc/src/polyfills.ts",
+            "tsConfig": "projects/ngx-web3-synergy-doc/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/ngx-components-doc/src/favicon.ico",
-              "projects/ngx-components-doc/src/assets"
+              "projects/ngx-web3-synergy-doc/src/favicon.ico",
+              "projects/ngx-web3-synergy-doc/src/assets"
             ],
             "styles": [
               "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/code-prettify/styles/desert.css",
-              "projects/ngx-components-doc/src/styles.scss"
+              "projects/ngx-web3-synergy-doc/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/@applicature/styles/src/lib/scss",
-                "projects/ngx-components-doc/src/scss"
+                "projects/ngx-web3-synergy-doc/src/scss"
               ]
             },
             "scripts": [
@@ -381,8 +381,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "projects/ngx-components-doc/src/environments/environment.ts",
-                  "with": "projects/ngx-components-doc/src/environments/environment.prod.ts"
+                  "replace": "projects/ngx-web3-synergy-doc/src/environments/environment.ts",
+                  "with": "projects/ngx-web3-synergy-doc/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -402,10 +402,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngx-components-doc:build:production"
+              "browserTarget": "ngx-web3-synergy-doc:build:production"
             },
             "development": {
-              "browserTarget": "ngx-components-doc:build:development"
+              "browserTarget": "ngx-web3-synergy-doc:build:development"
             }
           },
           "defaultConfiguration": "development",
@@ -416,30 +416,30 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-components-doc:build"
+            "browserTarget": "ngx-web3-synergy-doc:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-components-doc/src/test.ts",
-            "polyfills": "projects/ngx-components-doc/src/polyfills.ts",
-            "tsConfig": "projects/ngx-components-doc/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-components-doc/karma.conf.js",
+            "main": "projects/ngx-web3-synergy-doc/src/test.ts",
+            "polyfills": "projects/ngx-web3-synergy-doc/src/polyfills.ts",
+            "tsConfig": "projects/ngx-web3-synergy-doc/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-web3-synergy-doc/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/ngx-components-doc/src/favicon.ico",
-              "projects/ngx-components-doc/src/assets"
+              "projects/ngx-web3-synergy-doc/src/favicon.ico",
+              "projects/ngx-web3-synergy-doc/src/assets"
             ],
             "styles": [
               "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/code-prettify/styles/desert.css",
-              "projects/ngx-components-doc/src/styles.scss"
+              "projects/ngx-web3-synergy-doc/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/@applicature/styles/src/lib/scss",
-                "projects/ngx-components-doc/src/scss"
+                "projects/ngx-web3-synergy-doc/src/scss"
               ]
             },
             "scripts": [
@@ -451,17 +451,8 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngx-components-doc/**/*.ts",
-              "projects/ngx-components-doc/**/*.html"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "projects/ngx-components-doc/**/*.ts",
-              "projects/ngx-components-doc/**/*.html"
+              "projects/ngx-web3-synergy-doc/**/*.ts",
+              "projects/ngx-web3-synergy-doc/**/*.html"
             ]
           }
         }

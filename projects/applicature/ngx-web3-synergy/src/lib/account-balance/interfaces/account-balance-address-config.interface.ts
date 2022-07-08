@@ -1,8 +1,8 @@
 import { AsColorGroup } from '@applicature/styles';
 
-import { AucIdenticonPosition } from '../../directives';
+import { W3sIdenticonPosition } from '../../directives';
 
-export interface AucAccountBalanceAddressConfig {
+export interface W3sAccountBalanceAddressConfig {
   /**
    * Whether the address button is disabled. <br>
    * It's an optional parameter. The default value is false. <br>
@@ -19,9 +19,9 @@ export interface AucAccountBalanceAddressConfig {
   /**
    * Controls identicon position. <br>
    * It's an optional parameter.  <br>
-   * You can use enum {@link AUC_IDENTICON_POSITION}
+   * You can use enum {@link W3S_IDENTICON_POSITION}
    */
-  identiconPosition?: AucIdenticonPosition;
+  identiconPosition?: W3sIdenticonPosition;
 
   /**
    * {Sets theme of the address button. <br>

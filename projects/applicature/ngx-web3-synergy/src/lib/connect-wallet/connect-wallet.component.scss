@@ -4,21 +4,21 @@
   display: inline-block;
 }
 
-.auc-connect-wallet {
+.w3s-connect-wallet {
   display: flex;
   align-items: center;
   font-family: c.$as-font-family;
 }
 
-.auc-connect-wallet-container {
+.w3s-connect-wallet-container {
   border-radius: 8px;
   display: inline-flex;
   align-items: center;
 }
 
-.auc-connect-wallet-account-balance,
-.auc-connect-wallet-transactions,
-.auc-connect-wallet-container,
-.auc-connect-wallet-networks {
+.w3s-connect-wallet-account-balance,
+.w3s-connect-wallet-transactions,
+.w3s-connect-wallet-container,
+.w3s-connect-wallet-networks {
   margin-right: 12px;
 }

@@ -4,22 +4,22 @@
   display: inline-block;
 }
 
-.auc-avatar {
+.w3s-avatar {
   border-radius: 50%;
   overflow: hidden;
   background: c.getColor(grey, hover);
 
-  .auc-avatar-img {
+  .w3s-avatar-img {
     object-fit: cover;
     width: 100%;
     height: 100%;
   }
 
-  .auc-avatar-icon {
+  .w3s-avatar-icon {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    font-size: var(--auc-avatar-icon-size);
+    font-size: var(--w3s-avatar-icon-size);
   }
 }

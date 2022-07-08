@@ -2,22 +2,22 @@ import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
 
 @Directive({
-  selector: '[aucCustomClass]',
-  exportAs: 'aucCustomClass'
+  selector: '[w3sCustomClass]',
+  exportAs: 'w3sCustomClass'
 })
-export class AucCustomClassDirective implements OnInit {
+export class W3sCustomClassDirective implements OnInit {
   /**
    * Sets class / list of classes to the elements.
    */
   @Input()
-  public aucCustomClass: string | string[];
+  public w3sCustomClass: string | string[];
 
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
   }
 
   /** @internal */
   ngOnInit(): void {
-    this.setClasses([].concat(this.aucCustomClass ?? []));
+    this.setClasses([].concat(this.w3sCustomClass ?? []));
   }
 
   /** Sets classes to the nativeElement */

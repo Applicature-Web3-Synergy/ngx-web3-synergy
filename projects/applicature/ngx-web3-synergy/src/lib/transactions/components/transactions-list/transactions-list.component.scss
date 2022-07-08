@@ -1,13 +1,13 @@
 @use '@applicature/styles/src/lib/scss/as-common' as c;
 
-.auc-transactions-list {
+.w3s-transactions-list {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: auto;
 }
 
-.auc-transactions-list-item {
+.w3s-transactions-list-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,22 +37,22 @@
     }
   }
 
-  .auc-transaction-status {
+  .w3s-transaction-status {
     width: 20px;
     height: 20px;
     font-size: 20px;
 
-    &.auc-transaction-status-fail {
+    &.w3s-transaction-status-fail {
       color: c.getColor(red, base);
     }
 
-    &.auc-transaction-status-success {
+    &.w3s-transaction-status-success {
       color: c.getColor(green, base);
     }
   }
 }
 
-.auc-transaction-empty {
+.w3s-transaction-empty {
   color: c.getColor(grey, base);
   font-weight: 500;
   font-size: 14px;

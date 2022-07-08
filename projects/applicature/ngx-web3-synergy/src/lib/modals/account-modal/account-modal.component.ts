@@ -2,33 +2,33 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { catchError, combineLatest, Observable, of } from 'rxjs';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 
-import { AUC_VALUE_TYPES, aucCheckValueType, aucGenerateJazzicon, BaseSubscriber } from '../../helpers';
-import { AucAccountModalData } from './interfaces';
-import { AucDialogConfig, AucDialogRef } from '../../dialog';
-import { AucWalletConnectService, BlockExplorerUrlsByChainId } from '../../connect/services';
-import { AucTransactionItem, AucTransactionService } from '../../transactions';
+import { W3S_VALUE_TYPES, w3sCheckValueType, w3sGenerateJazzicon, BaseSubscriber } from '../../helpers';
+import { W3sAccountModalData } from './interfaces';
+import { W3sDialogConfig, W3sDialogRef } from '../../dialog';
+import { W3sWalletConnectService, W3sBlockExplorerUrlsByChainId } from '../../connect';
+import { W3sTransactionItem, W3sTransactionService } from '../../transactions';
 
 
 @Component({
-  selector: 'auc-account-modal',
+  selector: 'w3s-account-modal',
   templateUrl: './account-modal.component.html',
   styleUrls: [ './account-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucAccountModalComponent extends BaseSubscriber implements OnInit, OnDestroy {
+export class W3sAccountModalComponent extends BaseSubscriber implements OnInit, OnDestroy {
   public identicon: HTMLDivElement;
   public accountAddress: string;
   public etherscanAddress$: Observable<string>;
-  public transactions: AucTransactionItem[];
-  public data: AucAccountModalData;
+  public transactions: W3sTransactionItem[];
+  public data: W3sAccountModalData;
   public loadingTransactions = true;
 
   constructor(
-    private _config: AucDialogConfig<AucAccountModalData>,
-    private _dialogRef: AucDialogRef,
+    private _config: W3sDialogConfig<W3sAccountModalData>,
+    private _dialogRef: W3sDialogRef,
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: AucWalletConnectService,
-    private _transactionService: AucTransactionService
+    private _walletConnectService: W3sWalletConnectService,
+    private _transactionService: W3sTransactionService
   ) {
     super();
 
@@ -39,7 +39,7 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
         catchError(() => of(null)),
         takeUntil(this.notifier)
       )
-      .subscribe((transactions: AucTransactionItem[]) => {
+      .subscribe((transactions: W3sTransactionItem[]) => {
         this.loadingTransactions = false;
         this.transactions = transactions ?? [];
 
@@ -56,7 +56,7 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
             return null;
           }
 
-          const config: BlockExplorerUrlsByChainId = this._walletConnectService.blockExplorerUrlByChainId;
+          const config: W3sBlockExplorerUrlsByChainId = this._walletConnectService.blockExplorerUrlByChainId;
 
           if (!(config ?? {})[chainId]?.blockExplorerUrl || !addresses.length) {
             return null;
@@ -75,7 +75,7 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
         )
         .subscribe(([ accountAddress ]) => {
           this.accountAddress = accountAddress;
-          this.identicon = aucGenerateJazzicon(this.accountAddress);
+          this.identicon = w3sGenerateJazzicon(this.accountAddress);
 
           this._cdr.detectChanges();
         });
@@ -95,13 +95,13 @@ export class AucAccountModalComponent extends BaseSubscriber implements OnInit, 
   }
 
   public onChangeClick(): void {
-    if (aucCheckValueType(this.data.change, AUC_VALUE_TYPES.FUNCTION)) {
+    if (w3sCheckValueType(this.data.change, W3S_VALUE_TYPES.FUNCTION)) {
       this.data.change();
     }
   }
 
   public disconnectClick(): void {
-    if (aucCheckValueType(this.data.disconnect, AUC_VALUE_TYPES.FUNCTION)) {
+    if (w3sCheckValueType(this.data.disconnect, W3S_VALUE_TYPES.FUNCTION)) {
       this.data.disconnect();
     }
   }

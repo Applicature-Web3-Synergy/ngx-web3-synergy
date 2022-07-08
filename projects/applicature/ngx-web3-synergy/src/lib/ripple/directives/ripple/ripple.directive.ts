@@ -2,10 +2,10 @@ import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/
 
 
 @Directive({
-  selector: '[aucRipple]',
-  exportAs: 'aucRipple'
+  selector: '[w3sRipple]',
+  exportAs: 'w3sRipple'
 })
-export class AucRippleDirective {
+export class W3sRippleDirective {
   /**
    * Sets custom class to the ripple element. <br>
    * It's an optional parameter.
@@ -14,7 +14,7 @@ export class AucRippleDirective {
   public customClass?: string;
 
   /** @internal */
-  private readonly rippleClass = 'auc-ripple';
+  private readonly rippleClass = 'w3s-ripple';
 
   /** @internal */
   @HostListener('mousedown', [ '$event' ]) onMousedown(e: MouseEvent) {

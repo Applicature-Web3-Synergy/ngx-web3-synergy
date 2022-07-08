@@ -16,28 +16,28 @@ import { debounceTime, filter, map, switchMap, takeUntil, tap } from 'rxjs/opera
 
 import { Transaction, TransactionReceipt } from 'web3-core';
 
-import { AUC_SORT_DIRECTION } from '../../../enums';
-import { AucBlockExplorerApiUrl, AucBlockExplorerUrls } from '../../../constants';
-import { AucSortDirection } from '../../../types';
-import { AucWalletConnectService } from '../../../connect';
+import { W3S_SORT_DIRECTION } from '../../../enums';
+import { W3sBlockExplorerApiUrl, W3sBlockExplorerUrls } from '../../../constants';
+import { W3sSortDirection } from '../../../types';
+import { W3sWalletConnectService } from '../../../connect';
 import {
-  AucAddTransaction,
-  AucEtherscanTransaction,
-  AucTransactionItem,
-  AucEtherscanTransactionResponse
+  W3sAddTransaction,
+  W3sEtherscanTransaction,
+  W3sTransactionItem,
+  W3sEtherscanTransactionResponse
 } from '../../interfaces';
-import { AUC_TRANSACTION_STATUS } from '../../enums';
+import { W3S_TRANSACTION_STATUS } from '../../enums';
 import { BaseSubscriber } from '../../../helpers';
 
 
-const AUC_ETHERSCAN_TRANSACTIONS = 'AUC_ETHERSCAN_TRANSACTIONS';
+const W3S_ETHERSCAN_TRANSACTIONS = 'W3S_ETHERSCAN_TRANSACTIONS';
 
 
 @Injectable()
-export class AucTransactionService extends BaseSubscriber {
-  private _transactionsChanged$: BehaviorSubject<AucTransactionItem[]> =
-    new BehaviorSubject<AucTransactionItem[]>([]);
-  private _transactionsMap: Map<string, AucTransactionItem> = new Map();
+export class W3sTransactionService extends BaseSubscriber {
+  private _transactionsChanged$: BehaviorSubject<W3sTransactionItem[]> =
+    new BehaviorSubject<W3sTransactionItem[]>([]);
+  private _transactionsMap: Map<string, W3sTransactionItem> = new Map();
   private chainId: string;
   private address: string;
 
@@ -45,20 +45,20 @@ export class AucTransactionService extends BaseSubscriber {
    * Emits when transactions changed. <br>
    * @returns transactions list as Observable.
    */
-  public get transactionsChanged$(): Observable<AucTransactionItem[]> {
+  public get transactionsChanged$(): Observable<W3sTransactionItem[]> {
     return this._transactionsChanged$
       .asObservable()
       .pipe(debounceTime(300));
   }
 
   /** @internal */
-  private get _transactionsMapAsArr(): AucTransactionItem[] {
+  private get _transactionsMapAsArr(): W3sTransactionItem[] {
     return [ ...(this._transactionsMap.values() || []) ];
   }
 
   constructor(
     private _http: HttpClient,
-    private _walletConnectService: AucWalletConnectService
+    private _walletConnectService: W3sWalletConnectService
   ) {
     super();
 
@@ -108,7 +108,7 @@ export class AucTransactionService extends BaseSubscriber {
     this._refreshTransactionList$()
       .pipe(
         map(() => [ this._transactionsMapAsArr[0], this._transactionsMapAsArr[1] ]),
-        switchMap((transactions: AucTransactionItem[]) => !transactions?.length
+        switchMap((transactions: W3sTransactionItem[]) => !transactions?.length
           ? of(transactions)
           : interval(intervalMs)
             .pipe(
@@ -116,7 +116,7 @@ export class AucTransactionService extends BaseSubscriber {
               map(() => transactions.slice(0, 1))
             )
         ),
-        filter((list: AucTransactionItem[]) => !!list?.length),
+        filter((list: W3sTransactionItem[]) => !!list?.length),
         take(1),
         tap(() => this._refreshTransactions())
       )
@@ -128,7 +128,7 @@ export class AucTransactionService extends BaseSubscriber {
    * @param transaction - transaction to check.
    * @returns transaction with changed status.
    */
-  public pingTransactionStatus(transaction: AucTransactionItem): Observable<AucTransactionItem | null> {
+  public pingTransactionStatus(transaction: W3sTransactionItem): Observable<W3sTransactionItem | null> {
     const eth = this._walletConnectService.web3?.eth;
 
     if (!eth || !transaction?.hash) {
@@ -152,9 +152,9 @@ export class AucTransactionService extends BaseSubscriber {
           ? null
           : {
             ...transaction,
-            status: transactionReceipt.status ? AUC_TRANSACTION_STATUS.SUCCESS : AUC_TRANSACTION_STATUS.FAIL
+            status: transactionReceipt.status ? W3S_TRANSACTION_STATUS.SUCCESS : W3S_TRANSACTION_STATUS.FAIL
           }),
-        switchMap((tx: AucTransactionItem) => {
+        switchMap((tx: W3sTransactionItem) => {
           if (tx) {
             return of(tx);
           }
@@ -177,11 +177,11 @@ export class AucTransactionService extends BaseSubscriber {
   }
 
   /**
-   * Supported networks {@link BlockExplorerApiUrl}`. <br>
+   * Supported networks {@link W3sBlockExplorerApiUrl}`. <br>
    * @returns API url by chainId.
    */
   static getTransactionApiUrl(chainId: string): string {
-    const url: string = AucBlockExplorerApiUrl[chainId];
+    const url: string = W3sBlockExplorerApiUrl[chainId];
 
     if (!url) {
       throw new Error(`Can't find transaction API url. Make sure that you add blockExplorerApiUrl when init library`);
@@ -200,30 +200,30 @@ export class AucTransactionService extends BaseSubscriber {
    * If transaction status is pending, used parameter {@link updateIntervalMs} for getting transaction status from
    * blockchain and emits it into returned observable.
    */
-  public saveTransaction(transactionData: AucAddTransaction,
-                         updateIntervalMs = 30000): Observable<AucTransactionItem> {
+  public saveTransaction(transactionData: W3sAddTransaction,
+                         updateIntervalMs = 30000): Observable<W3sTransactionItem> {
     if (!transactionData?.hash) {
       return EMPTY;
     }
 
-    const transaction: AucTransactionItem = {
+    const transaction: W3sTransactionItem = {
       ...transactionData,
       explorerUrl: transactionData?.explorerUrl
         ? transactionData?.explorerUrl
-        : AucBlockExplorerUrls[transactionData.chainId] && transactionData.hash
-          ? `${AucBlockExplorerUrls[transactionData.chainId]}/tx/${transactionData.hash}`
+        : W3sBlockExplorerUrls[transactionData.chainId] && transactionData.hash
+          ? `${W3sBlockExplorerUrls[transactionData.chainId]}/tx/${transactionData.hash}`
           : null
     };
 
-    const transaction$: BehaviorSubject<AucTransactionItem> =
-      new BehaviorSubject<AucTransactionItem>(transaction);
+    const transaction$: BehaviorSubject<W3sTransactionItem> =
+      new BehaviorSubject<W3sTransactionItem>(transaction);
 
-    if (transaction.status === AUC_TRANSACTION_STATUS.PENDING) {
+    if (transaction.status === W3S_TRANSACTION_STATUS.PENDING) {
       interval(updateIntervalMs).pipe(
         switchMap(() => this.pingTransactionStatus(transaction)),
-        filter((tx: AucTransactionItem) => tx?.status !== AUC_TRANSACTION_STATUS.PENDING),
+        filter((tx: W3sTransactionItem) => tx?.status !== W3S_TRANSACTION_STATUS.PENDING),
         take(1)
-      ).subscribe((tx: AucTransactionItem) => {
+      ).subscribe((tx: W3sTransactionItem) => {
         transaction$.next(tx);
       });
     }
@@ -231,7 +231,7 @@ export class AucTransactionService extends BaseSubscriber {
     return transaction$
       .asObservable()
       .pipe(
-        tap((res: AucTransactionItem) => {
+        tap((res: W3sTransactionItem) => {
           this._setTransactionToMap(res);
           this._refreshTransactions();
         }),
@@ -250,7 +250,7 @@ export class AucTransactionService extends BaseSubscriber {
       return;
     }
 
-    const transaction: AucTransactionItem = this._transactionsMap.get(hash);
+    const transaction: W3sTransactionItem = this._transactionsMap.get(hash);
 
     if (!transaction || transaction.viewed) {
       return;
@@ -268,7 +268,7 @@ export class AucTransactionService extends BaseSubscriber {
 
   /** Marks all transactions as viewed */
   public markAllAsViewed(): void {
-    this._transactionsMap.forEach((transaction: AucTransactionItem) => {
+    this._transactionsMap.forEach((transaction: W3sTransactionItem) => {
       this.markAsViewed(transaction.hash, false);
     });
 
@@ -299,10 +299,10 @@ export class AucTransactionService extends BaseSubscriber {
                                chainId: string,
                                page = 1,
                                offset = 100,
-                               sortDirection: AucSortDirection = AUC_SORT_DIRECTION.ASC
-  ): Observable<AucEtherscanTransactionResponse> {
+                               sortDirection: W3sSortDirection = W3S_SORT_DIRECTION.ASC
+  ): Observable<W3sEtherscanTransactionResponse> {
     try {
-      const apiUrl: string = AucTransactionService.getTransactionApiUrl(chainId);
+      const apiUrl: string = W3sTransactionService.getTransactionApiUrl(chainId);
 
       if (!apiUrl) {
         return of(null);
@@ -318,12 +318,12 @@ export class AucTransactionService extends BaseSubscriber {
       params = params.set('page', page);
       params = params.set('offset', offset);
 
-      return this._http.get<AucEtherscanTransactionResponse>(`${apiUrl}`, { params })
+      return this._http.get<W3sEtherscanTransactionResponse>(`${apiUrl}`, { params })
         .pipe(
-          map((data: AucEtherscanTransactionResponse) => {
+          map((data: W3sEtherscanTransactionResponse) => {
             if (data.result && Array.isArray(data.result)) {
-              data.result.forEach((tx: AucEtherscanTransaction) => {
-                tx.explorerUrl = `${AucBlockExplorerUrls[chainId]}/tx/${tx.hash}`;
+              data.result.forEach((tx: W3sEtherscanTransaction) => {
+                tx.explorerUrl = `${W3sBlockExplorerUrls[chainId]}/tx/${tx.hash}`;
               });
             }
 
@@ -339,17 +339,17 @@ export class AucTransactionService extends BaseSubscriber {
 
   /** @internal */
   private _getTransactionsAndSetToMap(): void {
-    const transactions: AucTransactionItem[] =
+    const transactions: W3sTransactionItem[] =
       JSON.parse(localStorage.getItem(this._getLocalStorageKey())) || [];
 
     this.clearTransactions(false);
     this._emitTransactionChanges();
 
-    transactions.forEach((transaction: AucTransactionItem) => this._setTransactionToMap(transaction));
+    transactions.forEach((transaction: W3sTransactionItem) => this._setTransactionToMap(transaction));
   }
 
   /** @internal */
-  private _setTransactionToMap(transaction: AucTransactionItem): void {
+  private _setTransactionToMap(transaction: W3sTransactionItem): void {
     if (!transaction?.hash) {
       return;
     }
@@ -382,7 +382,7 @@ export class AucTransactionService extends BaseSubscriber {
       return '';
     }
 
-    return `${AUC_ETHERSCAN_TRANSACTIONS}[${this.address}, ${this.chainId}]`.toUpperCase();
+    return `${W3S_ETHERSCAN_TRANSACTIONS}[${this.address}, ${this.chainId}]`.toUpperCase();
   }
 
   /**
@@ -393,15 +393,15 @@ export class AucTransactionService extends BaseSubscriber {
    * By the default all transactions.
    * @returns array of pending transactions.
    */
-  private _refreshTransactionList$(transactionsList: AucTransactionItem[] = this._transactionsMapAsArr): Observable<AucTransactionItem[]> {
+  private _refreshTransactionList$(transactionsList: W3sTransactionItem[] = this._transactionsMapAsArr): Observable<W3sTransactionItem[]> {
     return combineLatest(
-      transactionsList.map((transaction: AucTransactionItem) =>
-        (transaction?.status === AUC_TRANSACTION_STATUS.PENDING
+      transactionsList.map((transaction: W3sTransactionItem) =>
+        (transaction?.status === W3S_TRANSACTION_STATUS.PENDING
             ? this.pingTransactionStatus(transaction)
             : of(transaction)
         )
           .pipe(
-            tap((tx: AucTransactionItem) => {
+            tap((tx: W3sTransactionItem) => {
               if (!tx) {
                 this._removeFromTransactions(transaction?.hash)
                 return;
@@ -416,9 +416,9 @@ export class AucTransactionService extends BaseSubscriber {
     )
       .pipe(
         tap(() => this._refreshTransactions()),
-        map((transactionsList: AucTransactionItem[]) =>
+        map((transactionsList: W3sTransactionItem[]) =>
           (transactionsList ?? [])
-            .filter((tx: AucTransactionItem) => tx?.status === AUC_TRANSACTION_STATUS.PENDING)
+            .filter((tx: W3sTransactionItem) => tx?.status === W3S_TRANSACTION_STATUS.PENDING)
         )
       );
   }

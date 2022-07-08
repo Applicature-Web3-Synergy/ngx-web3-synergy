@@ -1,8 +1,8 @@
-import { AucInsertionDirective } from './insertion.directive';
+import { W3sInsertionDirective } from './insertion.directive';
 
-xdescribe('AucInsertionDirective', () => {
+xdescribe('W3sInsertionDirective', () => {
   it('should create an instance', () => {
-    // const directive = new AucInsertionDirective();
+    // const directive = new W3sInsertionDirective();
     // expect(directive).toBeTruthy();
   });
 });

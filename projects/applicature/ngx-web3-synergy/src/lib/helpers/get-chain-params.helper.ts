@@ -1,5 +1,5 @@
-import { AucEthChainParams } from '../interfaces';
-import { AucBlockExplorerUrls, AucChainName, AucNativeCurrencies, AucRpcUrls } from '../constants';
+import { W3sEthChainParams } from '../interfaces';
+import { W3sBlockExplorerUrls, W3sChainName, W3sNativeCurrencies, W3sRpcUrls } from '../constants';
 
 
 /**
@@ -7,16 +7,16 @@ import { AucBlockExplorerUrls, AucChainName, AucNativeCurrencies, AucRpcUrls } f
  * @param chainId - 0x-prefixed hexadecimal string;
  */
 
-export function aucGetChainParams(chainId = ''): AucEthChainParams {
-  if (!AucChainName[chainId]) {
+export function w3sGetChainParams(chainId = ''): W3sEthChainParams {
+  if (!W3sChainName[chainId]) {
     return null;
   }
 
   return {
     chainId: chainId,
-    chainName: AucChainName[chainId],
-    nativeCurrency: AucNativeCurrencies[chainId],
-    rpcUrls: AucRpcUrls[chainId],
-    blockExplorerUrls: AucBlockExplorerUrls[chainId]
+    chainName: W3sChainName[chainId],
+    nativeCurrency: W3sNativeCurrencies[chainId],
+    rpcUrls: W3sRpcUrls[chainId],
+    blockExplorerUrls: W3sBlockExplorerUrls[chainId]
   }
 }

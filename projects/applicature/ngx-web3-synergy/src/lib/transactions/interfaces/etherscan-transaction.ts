@@ -1,13 +1,13 @@
-import { AUC_TRANSACTION_STATUS } from '../enums';
-import { AUC_CHAIN_ID } from '../../enums';
+import { W3S_TRANSACTION_STATUS } from '../enums';
+import { W3S_CHAIN_ID } from '../../enums';
 
-export interface AucEtherscanTransactionResponse {
+export interface W3sEtherscanTransactionResponse {
   status: '0' | '1'; // Note: status: 0 = Fail, 1 = Pass. Will return null/empty value for pre-byzantium fork
   message: string;
-  result: AucEtherscanTransaction[];
+  result: W3sEtherscanTransaction[];
 }
 
-export interface AucEtherscanTransaction {
+export interface W3sEtherscanTransaction {
   blockNumber: string;
   timeStamp: string;
   hash: string;
@@ -29,17 +29,17 @@ export interface AucEtherscanTransaction {
   explorerUrl?: string;
 }
 
-export interface AucAddTransaction {
-  chainId: AUC_CHAIN_ID | string;
+export interface W3sAddTransaction {
+  chainId: W3S_CHAIN_ID | string;
   name: string;
   hash: string;
-  status: AUC_TRANSACTION_STATUS;
+  status: W3S_TRANSACTION_STATUS;
   explorerUrl?: string;
   viewed: boolean;
   [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export interface AucTransactionItem extends AucAddTransaction {
+export interface W3sTransactionItem extends W3sAddTransaction {
   explorerUrl: string
 }
 

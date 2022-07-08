@@ -7,7 +7,7 @@
   line-height: 0;
 }
 
-.auc-spinner {
+.w3s-spinner {
   position: relative;
   width: 40px;
   height: 40px;
@@ -23,7 +23,7 @@
     border-style: solid;
     border-color: c.getColor(blue, base) transparent transparent transparent;
     border-radius: 50%;
-    animation: auc-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: w3s-spinner-animation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 
     &:nth-child(1) {
       animation-delay: -0.45s;
@@ -39,7 +39,7 @@
   }
 }
 
-@keyframes auc-spinner {
+@keyframes w3s-spinner-animation {
   0% {
     transform: rotate(0deg);
   }

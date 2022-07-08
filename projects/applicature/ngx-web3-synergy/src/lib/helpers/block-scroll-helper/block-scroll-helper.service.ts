@@ -5,7 +5,7 @@ import { DOCUMENT } from '@angular/common';
  * Used for lock / unlock scroll for body.
  */
 @Injectable()
-export class AucBlockScrollHelperService {
+export class W3sBlockScrollHelperService {
 
   constructor(@Inject(DOCUMENT) private _document: Document) {
   }

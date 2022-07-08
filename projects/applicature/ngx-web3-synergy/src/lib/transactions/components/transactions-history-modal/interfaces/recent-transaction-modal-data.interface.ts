@@ -1,3 +1,3 @@
-export interface AucRecentTransactionsModalData {
+export interface W3sRecentTransactionsModalData {
   header: string;
 }

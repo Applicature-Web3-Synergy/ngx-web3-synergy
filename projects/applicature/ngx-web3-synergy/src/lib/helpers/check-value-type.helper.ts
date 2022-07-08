@@ -1,7 +1,7 @@
-import { EnumsTypeTransformer } from '../types';
+import { W3sEnumsTypeTransformer } from '../types';
 
 /** @enum */
-export enum AUC_VALUE_TYPES {
+export enum W3S_VALUE_TYPES {
   ARRAY = 'Array',
   BLOB = 'Blob',
   BOOLEAN = 'Boolean',
@@ -13,14 +13,14 @@ export enum AUC_VALUE_TYPES {
 }
 
 /** @enum */
-export type AucValueType = EnumsTypeTransformer<AUC_VALUE_TYPES.ARRAY
-  | AUC_VALUE_TYPES.BLOB
-  | AUC_VALUE_TYPES.BOOLEAN
-  | AUC_VALUE_TYPES.FILE
-  | AUC_VALUE_TYPES.FUNCTION
-  | AUC_VALUE_TYPES.NUMBER
-  | AUC_VALUE_TYPES.OBJECT
-  | AUC_VALUE_TYPES.STRING>;
+export type W3sValueType = W3sEnumsTypeTransformer<W3S_VALUE_TYPES.ARRAY
+  | W3S_VALUE_TYPES.BLOB
+  | W3S_VALUE_TYPES.BOOLEAN
+  | W3S_VALUE_TYPES.FILE
+  | W3S_VALUE_TYPES.FUNCTION
+  | W3S_VALUE_TYPES.NUMBER
+  | W3S_VALUE_TYPES.OBJECT
+  | W3S_VALUE_TYPES.STRING>;
 
 /**
  * It's better alternative for typeof.
@@ -28,7 +28,7 @@ export type AucValueType = EnumsTypeTransformer<AUC_VALUE_TYPES.ARRAY
  * @param type - expected type of Value;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function aucCheckValueType<T = any>(value: T, type: AucValueType): boolean {
+export function w3sCheckValueType<T = any>(value: T, type: W3sValueType): boolean {
   const valueType = Object.prototype.toString.call(value).slice(8, -1);
 
   return value !== undefined && value !== null && valueType === type;

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucIconComponent } from './icon.component';
+import { W3sIconComponent } from './icon.component';
 
 
 @NgModule({
   declarations: [
-    AucIconComponent
+    W3sIconComponent
   ],
   exports: [
-    AucIconComponent
+    W3sIconComponent
   ],
   imports: [
     CommonModule,
   ]
 })
-export class AucIconModule {
+export class W3sIconModule {
 }

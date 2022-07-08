@@ -12,33 +12,33 @@ import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
-import { AUC_POSITIONS } from '../enums';
-import { AucDropdownConfig } from '../dropdown-menu';
-import { AucWalletConnectService } from '../connect';
-import { AucAccountData, AucAccountOption } from './interfaces';
+import { W3S_POSITIONS } from '../enums';
+import { W3sDropdownConfig } from '../dropdown-menu';
+import { W3sWalletConnectService } from '../connect';
+import { W3sAccountData, W3sAccountOption } from './interfaces';
 import { BaseSubscriber } from '../helpers';
 
 
 @Component({
-  selector: 'auc-account-button',
+  selector: 'w3s-account-button',
   templateUrl: './account-button.component.html',
   styleUrls: ['./account-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucAccountButtonComponent extends BaseSubscriber implements OnInit {
+export class W3sAccountButtonComponent extends BaseSubscriber implements OnInit {
   /**
    * User account related information. <br>
    * Required parameter.
    */
   @Input()
-  public account!: AucAccountData;
+  public account!: W3sAccountData;
 
   /**
    * List of options in popover. <br>
    * It's an optional parameter.
    */
   @Input()
-  public options?: AucAccountOption[] = [];
+  public options?: W3sAccountOption[] = [];
 
   /**
    * Sets size of the avatar. <br>
@@ -58,25 +58,25 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
    *     transparent: true
    *   },
    *   position: {
-   *     vertical: AUC_POSITIONS.BELOW,
-   *     horizontal: AUC_POSITIONS.BEFORE
+   *     vertical: W3S_POSITIONS.BELOW,
+   *     horizontal: W3S_POSITIONS.BEFORE
    *   }
    * }
    */
   @Input()
-  public accountDropdownConfig?: AucDropdownConfig = {
+  public accountDropdownConfig?: W3sDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: AUC_POSITIONS.BELOW,
-      horizontal: AUC_POSITIONS.BEFORE
+      vertical: W3S_POSITIONS.BELOW,
+      horizontal: W3S_POSITIONS.BEFORE
     }
   }
 
   /** Emits selected option from the list. */
   @Output()
-  public optionClicked: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
+  public optionClicked: EventEmitter<W3sAccountOption> = new EventEmitter<W3sAccountOption>();
 
   /** @internal */
   public isOptionsOpen = false;
@@ -89,7 +89,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
 
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: AucWalletConnectService,
+    private _walletConnectService: W3sWalletConnectService,
     private _elementRef: ElementRef<HTMLElement>,
   ) {
     super();
@@ -112,7 +112,7 @@ export class AucAccountButtonComponent extends BaseSubscriber implements OnInit 
   }
 
   /** Emit {@link optionClicked} event. */
-  public optionClick(option: AucAccountOption): void {
+  public optionClick(option: W3sAccountOption): void {
     this._closeOptions();
 
     this.optionClicked.emit(option);

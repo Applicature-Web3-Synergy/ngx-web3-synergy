@@ -1,25 +1,25 @@
 <ng-template [ngIf]="trigger?.opened$ | async">
-  <ng-template #contentBody aucContentBody>
-    <div class="auc-dropdown-menu-container">
-      <auc-overlay [customize]="config?.overlay"
+  <ng-template #contentBody w3sContentBody>
+    <div class="w3s-dropdown-menu-container">
+      <w3s-overlay [customize]="config?.overlay"
                            (overlayClicked)="close()"
       >
-      </auc-overlay>
+      </w3s-overlay>
 
-      <div class="auc-dropdown-menu"
+      <div class="w3s-dropdown-menu"
            #dropdown
-           [aucCustomClass]="config?.class"
+           [w3sCustomClass]="config?.class"
            [ngStyle]="positionStyles"
            [ngClass]="{
               'below-after': isBelow && isAfter,
               'below-before': isBelow && !isAfter,
               'above-after': !isBelow && isAfter,
               'above-before': !isBelow && !isAfter,
-              'auc-dropdown-menu-full-width': config?.fullwidth
+              'w3s-dropdown-menu-full-width': config?.fullwidth
            }"
       >
-        <div class="auc-dropdown-menu-content-container">
-          <div class="auc-dropdown-menu-content">
+        <div class="w3s-dropdown-menu-content-container">
+          <div class="w3s-dropdown-menu-content">
             <ng-content></ng-content>
           </div>
         </div>

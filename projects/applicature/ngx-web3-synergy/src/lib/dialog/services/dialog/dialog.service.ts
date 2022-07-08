@@ -11,15 +11,15 @@ import {
   Type
 } from '@angular/core';
 
-import { AucDialogComponent } from '../../dialog.component';
-import { AucDialogConfig } from '../../dialog-config';
-import { AucDialogInjector } from '../../dialog-injector';
-import { AucDialogRef } from '../../dialog-ref';
+import { W3sDialogComponent } from '../../dialog.component';
+import { W3sDialogConfig } from '../../dialog-config';
+import { W3sDialogInjector } from '../../dialog-injector';
+import { W3sDialogRef } from '../../dialog-ref';
 
 
 @Injectable()
-export class AucDialogService {
-  private _dialogComponentRef: ComponentRef<AucDialogComponent>;
+export class W3sDialogService {
+  private _dialogComponentRef: ComponentRef<W3sDialogComponent>;
 
   private get _appRef(): ApplicationRef {
     return this._injector.get(ApplicationRef);
@@ -34,12 +34,12 @@ export class AucDialogService {
 
   /** @internal */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private appendDialogComponentToBody<R = any>(config: AucDialogConfig): AucDialogRef<R> {
+  private appendDialogComponentToBody<R = any>(config: W3sDialogConfig): W3sDialogRef<R> {
     const map = new WeakMap();
-    map.set(AucDialogConfig, config);
+    map.set(W3sDialogConfig, config);
 
-    const dialogRef = new AucDialogRef<R>();
-    map.set(AucDialogRef, dialogRef);
+    const dialogRef = new W3sDialogRef<R>();
+    map.set(W3sDialogRef, dialogRef);
 
     const afterClosedSub = dialogRef.afterClosed
       .subscribe(() => {
@@ -47,9 +47,9 @@ export class AucDialogService {
         afterClosedSub.unsubscribe();
       });
 
-    const componentFactory: ComponentFactory<AucDialogComponent> =
-      this._componentFactoryResolver.resolveComponentFactory<AucDialogComponent>(AucDialogComponent);
-    const componentRef: ComponentRef<AucDialogComponent> = componentFactory.create(new AucDialogInjector(this._injector, map));
+    const componentFactory: ComponentFactory<W3sDialogComponent> =
+      this._componentFactoryResolver.resolveComponentFactory<W3sDialogComponent>(W3sDialogComponent);
+    const componentRef: ComponentRef<W3sDialogComponent> = componentFactory.create(new W3sDialogInjector(this._injector, map));
 
     this._appRef.attachView(componentRef.hostView);
 
@@ -77,11 +77,11 @@ export class AucDialogService {
   /**
    * Opens dialog window.
    * @param componentType - component which will be shown inside the dialog.
-   * @param config - configuration for the dialog window. More details {@link AucDialogConfig}.
+   * @param config - configuration for the dialog window. More details {@link W3sDialogConfig}.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public open<T = any, D = any, R = any>(componentType: Type<T>, config: AucDialogConfig<D>): AucDialogRef<Type<R>> {
-    const dialogRef: AucDialogRef<Type<R>> = this.appendDialogComponentToBody<Type<R>>(config);
+  public open<T = any, D = any, R = any>(componentType: Type<T>, config: W3sDialogConfig<D>): W3sDialogRef<Type<R>> {
+    const dialogRef: W3sDialogRef<Type<R>> = this.appendDialogComponentToBody<Type<R>>(config);
 
     this._dialogComponentRef.instance.childComponentType = componentType;
 

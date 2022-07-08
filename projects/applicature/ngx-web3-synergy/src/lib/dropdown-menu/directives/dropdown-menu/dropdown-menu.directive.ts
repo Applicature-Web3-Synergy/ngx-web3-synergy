@@ -3,10 +3,10 @@ import { DOCUMENT } from '@angular/common';
 
 
 @Directive({
-  selector: '[aucDropdownMenu]',
-  exportAs: 'aucDropdownMenu'
+  selector: '[w3sDropdownMenu]',
+  exportAs: 'w3sDropdownMenu'
 })
-export class AucDropdownMenuDirective implements AfterViewInit {
+export class W3sDropdownMenuDirective implements AfterViewInit {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(private _templateRef: TemplateRef<any>,

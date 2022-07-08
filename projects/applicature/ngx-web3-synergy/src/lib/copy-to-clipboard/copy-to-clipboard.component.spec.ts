@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucCopyToClipboardComponent } from './copy-to-clipboard.component';
+import { W3sCopyToClipboardComponent } from './copy-to-clipboard.component';
 
 
-describe('AucCopyToClipboardComponent', () => {
-  let component: AucCopyToClipboardComponent;
-  let fixture: ComponentFixture<AucCopyToClipboardComponent>;
+describe('W3sCopyToClipboardComponent', () => {
+  let component: W3sCopyToClipboardComponent;
+  let fixture: ComponentFixture<W3sCopyToClipboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucCopyToClipboardComponent ]
+      declarations: [ W3sCopyToClipboardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucCopyToClipboardComponent);
+    fixture = TestBed.createComponent(W3sCopyToClipboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

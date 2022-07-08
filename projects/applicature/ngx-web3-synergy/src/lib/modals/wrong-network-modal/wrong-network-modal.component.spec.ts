@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AucWrongNetworkModalComponent } from './wrong-network-modal.component';
+import { W3sWrongNetworkModalComponent } from './wrong-network-modal.component';
 
 
-describe('AucWrongNetworkModalComponent', () => {
-  let component: AucWrongNetworkModalComponent;
-  let fixture: ComponentFixture<AucWrongNetworkModalComponent>;
+describe('W3sWrongNetworkModalComponent', () => {
+  let component: W3sWrongNetworkModalComponent;
+  let fixture: ComponentFixture<W3sWrongNetworkModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AucWrongNetworkModalComponent]
+      declarations: [W3sWrongNetworkModalComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucWrongNetworkModalComponent);
+    fixture = TestBed.createComponent(W3sWrongNetworkModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

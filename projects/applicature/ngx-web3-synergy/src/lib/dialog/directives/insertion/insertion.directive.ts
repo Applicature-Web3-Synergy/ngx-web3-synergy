@@ -2,10 +2,10 @@ import { Directive, ViewContainerRef } from '@angular/core';
 
 
 @Directive({
-  selector: '[aucInsertion]',
-  exportAs: 'aucInsertion'
+  selector: '[w3sInsertion]',
+  exportAs: 'w3sInsertion'
 })
-export class AucInsertionDirective {
+export class W3sInsertionDirective {
   get viewContainerRef(): ViewContainerRef {
     return this._viewContainerRef;
   }

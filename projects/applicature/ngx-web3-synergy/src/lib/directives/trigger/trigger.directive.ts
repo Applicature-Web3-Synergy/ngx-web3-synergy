@@ -1,21 +1,21 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { AucCustomClassDirective } from '../custom-class';
+import { W3sCustomClassDirective } from '../custom-class';
 
 
 @Directive({
-  selector: '[aucTrigger]',
-  exportAs: 'aucTrigger'
+  selector: '[w3sTrigger]',
+  exportAs: 'w3sTrigger'
 })
-export class AucTriggerDirective {
+export class W3sTriggerDirective {
   /**
    * You can customize element when opened status. <br>
    * It's an optional parameter. <br>
-   * By default, used auc-trigger-opened.
+   * By default, used w3s-trigger-opened.
    */
   @Input()
-  public triggerClass?: string = 'auc-trigger-opened';
+  public triggerClass?: string = 'w3s-trigger-opened';
 
   /**
    * Emits show/hide state.  <br>
@@ -26,7 +26,7 @@ export class AucTriggerDirective {
   public showHide: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   /** @internal */
-  private _customClass: AucCustomClassDirective;
+  private _customClass: W3sCustomClassDirective;
 
   /** @internal */
   private _isOpened = false;
@@ -63,7 +63,7 @@ export class AucTriggerDirective {
   }
 
   constructor(private _renderer2: Renderer2, private _elementRef: ElementRef) {
-    this._customClass = new AucCustomClassDirective(this._renderer2, this._elementRef);
+    this._customClass = new W3sCustomClassDirective(this._renderer2, this._elementRef);
   }
 
   /**

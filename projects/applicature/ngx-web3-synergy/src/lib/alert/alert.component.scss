@@ -4,37 +4,37 @@
   display: block;
 }
 
-.auc-alert {
+.w3s-alert {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  background: var(--auc-alert-background);
+  background: var(--w3s-alert-background);
 }
 
-.auc-alert-icon-right {
+.w3s-alert-icon-right {
   flex-direction: row-reverse;
 }
 
-.auc-alert-white {
-  .auc-alert-icon {
+.w3s-alert-white {
+  .w3s-alert-icon {
     color: c.getColor(grey, base);
   }
 }
 
-.auc-alert-icon {
+.w3s-alert-icon {
   margin: 0 8px;
   display: inline-block;
   font-size: 20px;
   width: 20px;
   height: 20px;
-  color: var(--auc-alert-text);
+  color: var(--w3s-alert-text);
 }
 
-.auc-alert-text {
+.w3s-alert-text {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
   font-family: c.$as-font-family;
-  color: var(--auc-alert-text);
+  color: var(--w3s-alert-text);
 }

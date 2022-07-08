@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucAvatarComponent } from './avatar.component';
+import { W3sAvatarComponent } from './avatar.component';
 
-describe('AucAvatarComponent', () => {
-  let component: AucAvatarComponent;
-  let fixture: ComponentFixture<AucAvatarComponent>;
+describe('W3sAvatarComponent', () => {
+  let component: W3sAvatarComponent;
+  let fixture: ComponentFixture<W3sAvatarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AucAvatarComponent]
+      declarations: [W3sAvatarComponent]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucAvatarComponent);
+    fixture = TestBed.createComponent(W3sAvatarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

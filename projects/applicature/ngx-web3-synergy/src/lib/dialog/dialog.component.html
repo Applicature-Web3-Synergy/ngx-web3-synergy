@@ -1,17 +1,17 @@
-<div class="auc-dialog-container"
-     aucCustomizeDialog
+<div class="w3s-dialog-container"
+     w3sCustomizeDialog
      [config]="panelConfig"
 >
-  <auc-overlay *ngIf="hasOverlay"
+  <w3s-overlay *ngIf="hasOverlay"
                [customize]="overlayConfig"
                (overlayClicked)="onOverlayClicked()"
   >
-  </auc-overlay>
+  </w3s-overlay>
 
-  <div class="auc-dialog"
-       aucCustomizeDialog
+  <div class="w3s-dialog"
+       w3sCustomizeDialog
        [config]="dialogConfig"
   >
-    <ng-template aucInsertion></ng-template>
+    <ng-template w3sInsertion></ng-template>
   </div>
 </div>

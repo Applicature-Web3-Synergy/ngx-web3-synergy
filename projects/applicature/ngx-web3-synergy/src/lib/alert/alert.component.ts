@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AS_COLOR_GROUP, AsColorGroup, AsColors } from '@applicature/styles';
 
-import { AucSetStyleProp } from '../directives';
-import { AucAlertPosition } from './types';
-import { AUC_ALERT_POSITION } from './enums';
+import { W3sSetStyleProp } from '../directives';
+import { W3sAlertPosition } from './types';
+import { W3S_ALERT_POSITION } from './enums';
 
 
 @Component({
-  selector: 'auc-alert',
+  selector: 'w3s-alert',
   templateUrl: './alert.component.html',
   styleUrls: [ './alert.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucAlertComponent implements OnInit, OnChanges {
+export class W3sAlertComponent implements OnInit, OnChanges {
   /**
    * The message to show in the alert. <br>
    * It's required parameter. <br>
@@ -22,7 +22,7 @@ export class AucAlertComponent implements OnInit, OnChanges {
 
   /**
    * Sets Alert icon. <br>
-   * Supported icons from enum {@link AUC_WLC_ICON} or string. <br>
+   * Supported icons from enum {@link W3S_WLC_ICON} or string. <br>
    * If you want to use custom icon, you need to provide url to the image as a string value. <br>
    * It's an optional parameter.
    */
@@ -31,12 +31,12 @@ export class AucAlertComponent implements OnInit, OnChanges {
 
   /**
    * Controls icon position. <br>
-   * You can use enum {@link AUC_ALERT_POSITION}. <br>
+   * You can use enum {@link W3S_ALERT_POSITION}. <br>
    * It's an optional parameter. <br>
    * The default value left.
    */
   @Input()
-  public iconPosition?: AucAlertPosition = AUC_ALERT_POSITION.LEFT;
+  public iconPosition?: W3sAlertPosition = W3S_ALERT_POSITION.LEFT;
 
   /**
    * Theme color palette for the alert. Sets the alert background color. <br>
@@ -47,14 +47,14 @@ export class AucAlertComponent implements OnInit, OnChanges {
   public color: AsColorGroup = AS_COLOR_GROUP.RED;
 
   /** @internal */
-  public styleProperties: AucSetStyleProp[] = [];
+  public styleProperties: W3sSetStyleProp[] = [];
 
   /** @internal */
   public get classNames(): { [el: string]: boolean } {
     return {
-      ['auc-alert']: true,
-      [`auc-alert-white`]: this.color === 'white',
-      [`auc-alert-icon-${this.iconPosition}`]: true,
+      ['w3s-alert']: true,
+      [`w3s-alert-white`]: this.color === 'white',
+      [`w3s-alert-icon-${this.iconPosition}`]: true,
     };
   }
 
@@ -69,11 +69,11 @@ export class AucAlertComponent implements OnInit, OnChanges {
 
     this.styleProperties = [
       {
-        name: '--auc-alert-text',
+        name: '--w3s-alert-text',
         value: text
       },
       {
-        name: '--auc-alert-background',
+        name: '--w3s-alert-background',
         value: base
       }
     ];

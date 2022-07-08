@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_POSITIONS {
+export enum W3S_POSITIONS {
   ABOVE = 'above',
   BELOW = 'below',
   BEFORE = 'before',

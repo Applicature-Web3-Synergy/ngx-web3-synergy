@@ -1,4 +1,4 @@
-import { AUC_IDENTICON_POSITION } from '../enums';
-import { EnumsTypeTransformer } from '../../../types';
+import { W3S_IDENTICON_POSITION } from '../enums';
+import { W3sEnumsTypeTransformer } from '../../../types';
 
-export type AucIdenticonPosition = EnumsTypeTransformer<AUC_IDENTICON_POSITION.LEFT | AUC_IDENTICON_POSITION.RIGHT>;
+export type W3sIdenticonPosition = W3sEnumsTypeTransformer<W3S_IDENTICON_POSITION.LEFT | W3S_IDENTICON_POSITION.RIGHT>;

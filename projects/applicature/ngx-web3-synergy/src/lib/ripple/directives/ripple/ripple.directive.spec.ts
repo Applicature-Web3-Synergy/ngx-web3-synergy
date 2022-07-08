@@ -1,8 +1,8 @@
-import { AucRippleDirective } from './ripple.directive';
+import { W3sRippleDirective } from './ripple.directive';
 
-xdescribe('AucRippleDirective', () => {
+xdescribe('W3sRippleDirective', () => {
   xit('should create an instance', () => {
-    // const directive = new AucRippleDirective();
+    // const directive = new W3sRippleDirective();
     // expect(directive).toBeTruthy();
   });
 });

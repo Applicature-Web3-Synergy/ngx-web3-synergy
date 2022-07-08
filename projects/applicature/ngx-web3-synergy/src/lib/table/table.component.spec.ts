@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucTableComponent } from './table.component';
+import { W3sTableComponent } from './table.component';
 
-describe('AucTableComponent', () => {
-  let component: AucTableComponent;
-  let fixture: ComponentFixture<AucTableComponent>;
+describe('W3sTableComponent', () => {
+  let component: W3sTableComponent;
+  let fixture: ComponentFixture<W3sTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucTableComponent ]
+      declarations: [ W3sTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucTableComponent);
+    fixture = TestBed.createComponent(W3sTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

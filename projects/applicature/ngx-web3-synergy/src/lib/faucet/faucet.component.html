@@ -1,16 +1,16 @@
-<div class="auc-faucet">
-  <div class="auc-faucet-token-info">
-    <auc-icon *ngIf="iconToken"
+<div class="w3s-faucet">
+  <div class="w3s-faucet-token-info">
+    <w3s-icon *ngIf="iconToken"
               [icon]="iconToken"
-              class="auc-faucet-token-symbol-icon"
+              class="w3s-faucet-token-symbol-icon"
     >
-    </auc-icon>
-    <div class="auc-faucet-token-symbol">{{ tokenSymbol }}</div>
+    </w3s-icon>
+    <div class="w3s-faucet-token-symbol">{{ tokenSymbol }}</div>
   </div>
 
-  <auc-button [label]="!hasPending ? 'Get token' : 'Pending'"
-              class="auc-button-label"
+  <w3s-button [label]="!hasPending ? 'Get token' : 'Pending'"
+              class="w3s-button-label"
               [pending]="hasPending"
               (click)="mint()">
-  </auc-button>
+  </w3s-button>
 </div>

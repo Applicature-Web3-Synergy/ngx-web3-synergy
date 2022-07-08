@@ -4,15 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { DigitOnlyModule } from '@uiowa/digit-only';
 
-import { AucInputComponent } from './input.component';
+import { W3sInputComponent } from './input.component';
 
 
 @NgModule({
   declarations: [
-    AucInputComponent
+    W3sInputComponent
   ],
   exports: [
-    AucInputComponent
+    W3sInputComponent
   ],
   imports: [
     CommonModule,
@@ -20,5 +20,5 @@ import { AucInputComponent } from './input.component';
     DigitOnlyModule
   ]
 })
-export class AucInputModule {
+export class W3sInputModule {
 }

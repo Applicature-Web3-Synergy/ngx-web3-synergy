@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-.auc-account {
+.w3s-account {
   width: 100%;
   height: 100%;
   display: flex;
@@ -14,23 +14,23 @@
   font-family: c.$as-font-family;
   padding-top: 20px;
 
-  & > *:not(.auc-dialog-header) {
+  & > *:not(.w3s-dialog-header) {
     width: 100%;
   }
 }
 
-.auc-dialog-header {
+.w3s-dialog-header {
   margin-left: 20px;
   margin-right: 20px;
   width: calc(100% - 40px);
 }
 
-.auc-account-info {
+.w3s-account-info {
   margin: 0 20px 20px;
   border: 1px solid c.getColor(grey, light);
 }
 
-.auc-info {
+.w3s-info {
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
@@ -38,19 +38,19 @@
   color: c.getColor(grey, base);
 }
 
-.auc-info-header,
-.auc-info-main {
+.w3s-info-header,
+.w3s-info-main {
   margin-bottom: 12px;
 }
 
-.auc-info-header,
-.auc-info-main,
-.auc-info-footer {
+.w3s-info-header,
+.w3s-info-main,
+.w3s-info-footer {
   display: flex;
   align-items: center;
 }
 
-.auc-info-header {
+.w3s-info-header {
   > span {
     font-weight: 500;
     font-size: 13px;
@@ -58,8 +58,8 @@
     margin-right: auto;
   }
 
-  .auc-info-header-change,
-  .auc-info-header-disconnect {
+  .w3s-info-header-change,
+  .w3s-info-header-disconnect {
     font-family: c.$as-font-family;
     font-size: 13px;
     font-weight: 500;
@@ -74,19 +74,19 @@
     }
   }
 
-  .auc-info-header-change {
+  .w3s-info-header-change {
     margin-right: 8px;
     color: c.getColor(blue, base);
     border: 1px solid c.getColor(blue, base);
   }
 
-  .auc-info-header-disconnect {
+  .w3s-info-header-disconnect {
     color: c.getColor(red, base);
     border: 1px solid c.getColor(red, base);
   }
 }
 
-.auc-info-main {
+.w3s-info-main {
   > span {
     display: inline-block;
     margin-left: 8px;
@@ -97,8 +97,8 @@
   }
 }
 
-.auc-info-footer {
-  .auc-info-footer-item {
+.w3s-info-footer {
+  .w3s-info-footer-item {
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -130,17 +130,17 @@
   }
 }
 
-.auc-account-footer {
+.w3s-account-footer {
   padding: 20px 0;
   background-color: c.getColor(gray, background);
 
-  &.auc-with-loading {
+  &.w3s-with-loading {
     padding-top: 15px;
     padding-bottom: 15px;
   }
 }
 
-.auc-account-transactions {
+.w3s-account-transactions {
   display: flex;
   flex-direction: column;
   max-height: 392px;
@@ -148,14 +148,14 @@
   padding: 0 20px;
 }
 
-.auc-account-transactions-header {
+.w3s-account-transactions-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
 
-.auc-account-transactions-header-title {
+.w3s-account-transactions-header-title {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -164,7 +164,7 @@
   padding-right: 15px;
 }
 
-.auc-account-transactions-header-action {
+.w3s-account-transactions-header-action {
   background-color: transparent;
   padding: 0;
   border: none;
@@ -183,7 +183,7 @@
   }
 }
 
-.auc-transactions-loading {
+.w3s-transactions-loading {
   width: 100%;
   display: flex;
   align-items: center;
@@ -191,7 +191,7 @@
 }
 
 @media (max-width: 767px) {
-  .auc-account-transactions {
+  .w3s-account-transactions {
     max-height: calc(100vh - 273px);
   }
 }

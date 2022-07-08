@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucProgressBarComponent } from './progress-bar.component';
+import { W3sProgressBarComponent } from './progress-bar.component';
 
-describe('AucProgressBarComponent', () => {
-  let component: AucProgressBarComponent;
-  let fixture: ComponentFixture<AucProgressBarComponent>;
+describe('W3sProgressBarComponent', () => {
+  let component: W3sProgressBarComponent;
+  let fixture: ComponentFixture<W3sProgressBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucProgressBarComponent ]
+      declarations: [ W3sProgressBarComponent ]
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucProgressBarComponent);
+    fixture = TestBed.createComponent(W3sProgressBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

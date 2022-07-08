@@ -1,7 +1,7 @@
-<div class="auc-icon-container" [style.color]="color ?? 'inherit'">
+<div class="w3s-icon-container" [style.color]="color ?? 'inherit'">
   <ng-container [ngSwitch]="appearance">
-    <img class="auc-icon-img" *ngSwitchCase="ICON_APPEARANCE.URL" [src]="icon" alt="Icon">
-    <span class="auc-icon-font {{ icon }}" *ngSwitchCase="ICON_APPEARANCE.ICON"></span>
-    <span class="auc-icon-svg" *ngSwitchCase="ICON_APPEARANCE.SVG" [innerHTML]="sanitizedSVG"></span>
+    <img class="w3s-icon-img" *ngSwitchCase="ICON_APPEARANCE.URL" [src]="icon" alt="Icon">
+    <span class="w3s-icon-font {{ icon }}" *ngSwitchCase="ICON_APPEARANCE.ICON"></span>
+    <span class="w3s-icon-svg" *ngSwitchCase="ICON_APPEARANCE.SVG" [innerHTML]="sanitizedSVG"></span>
   </ng-container>
 </div>

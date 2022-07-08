@@ -1,9 +1,9 @@
-import { AucOverlayCustomizationConfig } from '../../overlay';
-import { AucPosition } from '../../interfaces';
+import { W3sOverlayCustomizationConfig } from '../../overlay';
+import { W3sPosition } from '../../interfaces';
 
-export interface AucDropdownConfig {
-  overlay?: AucOverlayCustomizationConfig;
-  position?: AucPosition;
+export interface W3sDropdownConfig {
+  overlay?: W3sOverlayCustomizationConfig;
+  position?: W3sPosition;
   class?: string | string[];
   minWidth?: number;
   minHeight?: number;

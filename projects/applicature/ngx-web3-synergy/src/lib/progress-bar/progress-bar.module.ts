@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucProgressBarComponent } from './progress-bar.component';
+import { W3sProgressBarComponent } from './progress-bar.component';
 
 
 @NgModule({
   declarations: [
-    AucProgressBarComponent
+    W3sProgressBarComponent
   ],
   exports: [
-    AucProgressBarComponent
+    W3sProgressBarComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class AucProgressBarModule {
+export class W3sProgressBarModule {
 }

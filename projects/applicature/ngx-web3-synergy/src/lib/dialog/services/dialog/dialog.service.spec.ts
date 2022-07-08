@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AucDialogService } from './dialog.service';
+import { W3sDialogService } from './dialog.service';
 
-describe('AucDialogService', () => {
-  let service: AucDialogService;
+describe('W3sDialogService', () => {
+  let service: W3sDialogService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AucDialogService);
+    service = TestBed.inject(W3sDialogService);
   });
 
   it('should be created', () => {

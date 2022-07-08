@@ -38,10 +38,10 @@ import { KeepKeyIcon } from './icons/keepkey-icon';
 import { LedgerIcon } from './icons/ledger-icon';
 import { TrezorIcon } from './icons/trezor-icon';
 import { KeystoneIcon } from './icons/keystone-icon';
-import { AucWalletLabel } from '../services';
+import { W3sWalletLabel } from '../services';
 
 
-export const AucWalletsIcons: { [key in AucWalletLabel]?: string } = {
+export const W3sWalletsIcons: { [key in W3sWalletLabel]?: string } = {
   WalletConnect: WalletConnectIcon,
   'Magic Wallet': MagicWalletIcon,
   Fortmatic: FormaticIcon,

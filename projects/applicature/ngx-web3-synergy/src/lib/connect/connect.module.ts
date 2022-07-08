@@ -1,39 +1,39 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucWalletConnectService } from './services';
-import { AucConnectModalComponent } from './components/';
-import { AucDialogModule } from '../dialog';
-import { AucBlockScrollHelperService, AucInstallWalletHelperService } from '../helpers';
-import { AucIconModule } from '../icon';
+import { W3sWalletConnectService } from './services';
+import { W3sConnectModalComponent } from './components/';
+import { W3sDialogModule } from '../dialog';
+import { W3sBlockScrollHelperService, W3sInstallWalletHelperService } from '../helpers';
+import { W3sIconModule } from '../icon';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    AucDialogModule,
-    AucIconModule
+    W3sDialogModule,
+    W3sIconModule
   ],
   declarations: [
-    AucConnectModalComponent
+    W3sConnectModalComponent
   ],
   providers: [
-    AucBlockScrollHelperService,
-    AucInstallWalletHelperService
+    W3sBlockScrollHelperService,
+    W3sInstallWalletHelperService
   ]
 })
-export class AucConnectModule {
-  constructor(@Optional() @SkipSelf() parentModule: AucConnectModule) {
+export class W3sConnectModule {
+  constructor(@Optional() @SkipSelf() parentModule: W3sConnectModule) {
     if (parentModule) {
-      throw new Error('AucConnectModule is already loaded. Import it in the AppModule only!');
+      throw new Error('W3sConnectModule is already loaded. Import it in the AppModule only!');
     }
   }
 
-  public static forRoot(): ModuleWithProviders<AucConnectModule> {
+  public static forRoot(): ModuleWithProviders<W3sConnectModule> {
     return {
-      ngModule: AucConnectModule,
+      ngModule: W3sConnectModule,
       providers: [
-        AucWalletConnectService
+        W3sWalletConnectService
       ]
     };
   }

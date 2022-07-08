@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucConnectWalletModule } from '@applicature/ngx-web3-synergy';
+import { W3sConnectWalletModule } from '@applicature/ngx-web3-synergy';
 
 import { ExampleConnectWalletComponent } from './example-connect-wallet.component';
 
@@ -15,7 +15,7 @@ import { ExampleConnectWalletComponent } from './example-connect-wallet.componen
   ],
   imports: [
     CommonModule,
-    AucConnectWalletModule
+    W3sConnectWalletModule
   ]
 })
 export class ExampleConnectWalletModule { }

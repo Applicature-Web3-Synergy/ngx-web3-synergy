@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucTableModule } from '@applicature/ngx-web3-synergy';
+import { W3sTableModule } from '@applicature/ngx-web3-synergy';
 
 import { ExampleTableComponent } from './example-table.component';
 
@@ -15,7 +15,7 @@ import { ExampleTableComponent } from './example-table.component';
   ],
   imports: [
     CommonModule,
-    AucTableModule
+    W3sTableModule
   ]
 })
 export class ExampleTableModule { }

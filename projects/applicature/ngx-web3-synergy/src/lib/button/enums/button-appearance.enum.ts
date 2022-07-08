@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_BUTTON_APPEARANCE {
+export enum W3S_BUTTON_APPEARANCE {
   FLAT = 'flat',
   ICON = 'icon'
 }

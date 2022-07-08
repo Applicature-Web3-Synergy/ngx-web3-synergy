@@ -9,15 +9,15 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { AucBlockScrollHelperService } from '../../helpers';
+import { W3sBlockScrollHelperService } from '../../helpers';
 
 
 @Directive({
-  selector: '[aucContentBody]',
-  exportAs: 'aucContentBody',
-  providers: [ AucBlockScrollHelperService ]
+  selector: '[w3sContentBody]',
+  exportAs: 'w3sContentBody',
+  providers: [ W3sBlockScrollHelperService ]
 })
-export class AucContentBodyDirective implements AfterViewInit, OnDestroy {
+export class W3sContentBodyDirective implements AfterViewInit, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _embeddedViewRef: EmbeddedViewRef<any>;
 
@@ -25,7 +25,7 @@ export class AucContentBodyDirective implements AfterViewInit, OnDestroy {
   constructor(private _templateRef: TemplateRef<any>,
               private _viewContainerRef: ViewContainerRef,
               @Inject(DOCUMENT) private _document: Document,
-              private _blockScrollHelperService: AucBlockScrollHelperService) {
+              private _blockScrollHelperService: W3sBlockScrollHelperService) {
   }
 
   ngAfterViewInit(): void {

@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_DIALOG_POSITIONS {
+export enum W3S_DIALOG_POSITIONS {
   BOTTOM = 'bottom',
   CENTER = 'center',
   LEFT = 'left',

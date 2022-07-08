@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucFaucetComponent } from './faucet.component';
+import { W3sFaucetComponent } from './faucet.component';
 
-describe('AucFaucetComponent', () => {
-  let component: AucFaucetComponent;
-  let fixture: ComponentFixture<AucFaucetComponent>;
+describe('W3sFaucetComponent', () => {
+  let component: W3sFaucetComponent;
+  let fixture: ComponentFixture<W3sFaucetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucFaucetComponent ]
+      declarations: [ W3sFaucetComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucFaucetComponent);
+    fixture = TestBed.createComponent(W3sFaucetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

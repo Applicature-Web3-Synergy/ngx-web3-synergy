@@ -1,22 +1,22 @@
-<div class="auc-transactions-history">
-  <div class="auc-dialog-header">
+<div class="w3s-transactions-history">
+  <div class="w3s-dialog-header">
     <h1>{{ data.header }}</h1>
 
-    <button type="button" class="auc-close-btn">
-      <auc-icon icon="wcl-icon-close"
+    <button type="button" class="w3s-close-btn">
+      <w3s-icon icon="wcl-icon-close"
                 (click)="onCloseClick()"
       >
-      </auc-icon>
+      </w3s-icon>
     </button>
   </div>
 
-  <div class="auc-transactions-history-list">
-    <div class="auc-transactions-loading" *ngIf="loading; else transactionsRef">
-      <auc-spinner [width]="2" [diameter]="30"></auc-spinner>
+  <div class="w3s-transactions-history-list">
+    <div class="w3s-transactions-loading" *ngIf="loading; else transactionsRef">
+      <w3s-spinner [width]="2" [diameter]="30"></w3s-spinner>
     </div>
 
     <ng-template #transactionsRef>
-      <auc-transactions-list [transactions]="transactions"></auc-transactions-list>
+      <w3s-transactions-list [transactions]="transactions"></w3s-transactions-list>
     </ng-template>
   </div>
 </div>

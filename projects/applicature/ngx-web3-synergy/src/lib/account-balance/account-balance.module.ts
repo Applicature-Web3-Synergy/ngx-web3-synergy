@@ -1,27 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucPipesModule } from '../pipes';
-import { AucAccountBalanceComponent } from './account-balance.component';
-import { AucIconModule } from '../icon';
-import { AucButtonModule } from '../button';
-import { AucDirectivesModule } from '../directives';
+import { W3sPipesModule } from '../pipes';
+import { W3sAccountBalanceComponent } from './account-balance.component';
+import { W3sIconModule } from '../icon';
+import { W3sButtonModule } from '../button';
+import { W3sDirectivesModule } from '../directives';
 
 
 @NgModule({
   declarations: [
-    AucAccountBalanceComponent,
+    W3sAccountBalanceComponent,
   ],
   exports: [
-    AucAccountBalanceComponent,
+    W3sAccountBalanceComponent,
   ],
   imports: [
     CommonModule,
-    AucPipesModule,
-    AucIconModule,
-    AucButtonModule,
-    AucDirectivesModule,
+    W3sPipesModule,
+    W3sIconModule,
+    W3sButtonModule,
+    W3sDirectivesModule,
   ]
 })
-export class AucAccountBalanceModule {
+export class W3sAccountBalanceModule {
 }

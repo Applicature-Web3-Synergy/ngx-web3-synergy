@@ -3,26 +3,26 @@ import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP, AsColorGroup } from '@applicature/styles';
 
-import { AucWalletConnectService } from '../../connect/services';
-import { AucWrongNetworkModalData } from './interfaces';
-import { AucDialogConfig, AucDialogRef } from '../../dialog';
+import { W3sWalletConnectService } from '../../connect';
+import { W3sWrongNetworkModalData } from './interfaces';
+import { W3sDialogConfig, W3sDialogRef } from '../../dialog';
 import { BaseSubscriber } from '../../helpers';
 
 
 @Component({
-  selector: 'auc-wrong-network-modal',
+  selector: 'w3s-wrong-network-modal',
   templateUrl: './wrong-network-modal.component.html',
   styleUrls: [ './wrong-network-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucWrongNetworkModalComponent extends BaseSubscriber {
-  public data: AucWrongNetworkModalData;
+export class W3sWrongNetworkModalComponent extends BaseSubscriber {
+  public data: W3sWrongNetworkModalData;
   public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
   constructor(
-    private _config: AucDialogConfig<AucWrongNetworkModalData>,
-    private _dialogRef: AucDialogRef,
-    private _walletConnectService: AucWalletConnectService
+    private _config: W3sDialogConfig<W3sWrongNetworkModalData>,
+    private _dialogRef: W3sDialogRef,
+    private _walletConnectService: W3sWalletConnectService
   ) {
     super();
     this.data = this._config.data;

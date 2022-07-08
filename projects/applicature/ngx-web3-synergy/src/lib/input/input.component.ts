@@ -12,24 +12,24 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { aucToBN } from '../helpers';
+import { w3sToBN } from '../helpers';
 
 
 export const INPUT_FIELD_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => AucInputComponent),
+  useExisting: forwardRef(() => W3sInputComponent),
   multi: true,
 };
 
 // eslint-disable @typescript-eslint/no-explicit-any
 @Component({
-  selector: 'auc-input',
+  selector: 'w3s-input',
   templateUrl: './input.component.html',
   styleUrls: [ './input.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ INPUT_FIELD_VALUE_ACCESSOR ],
 })
-export class AucInputComponent implements ControlValueAccessor, OnChanges, OnInit {
+export class W3sInputComponent implements ControlValueAccessor, OnChanges, OnInit {
   /**
    * Text for the form field label. <br>
    * It's an optional parameter.
@@ -132,12 +132,12 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
   /** @internal*/
   public get classNames(): { [el: string]: boolean } {
     return {
-      ['auc-input-container']: true,
-      ['auc-input-container-prefix']: !!this.prefix,
-      ['auc-input-container-suffix']: !!this.suffix,
-      ['auc-input-container-disabled']: this.disabled,
-      ['auc-input-container-focus']: this.focus,
-      ['auc-input-container-error']: this.errors?.length > 0,
+      ['w3s-input-container']: true,
+      ['w3s-input-container-prefix']: !!this.prefix,
+      ['w3s-input-container-suffix']: !!this.suffix,
+      ['w3s-input-container-disabled']: this.disabled,
+      ['w3s-input-container-focus']: this.focus,
+      ['w3s-input-container-error']: this.errors?.length > 0,
     };
   }
 
@@ -170,7 +170,7 @@ export class AucInputComponent implements ControlValueAccessor, OnChanges, OnIni
 
   /** Change Input value. */
   public onChange(value: string): void {
-    this.value = String(aucToBN(value).gt(this.max) ? this.max : value);
+    this.value = String(w3sToBN(value).gt(this.max) ? this.max : value);
 
     if (this.inputElement?.nativeElement) {
       const inputElement = this.inputElement.nativeElement;

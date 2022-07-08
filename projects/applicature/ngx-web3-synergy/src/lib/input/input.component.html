@@ -1,9 +1,9 @@
-<div class="auc-input">
-  <span *ngIf="label" class="auc-input-label">{{ label }}</span>
+<div class="w3s-input">
+  <span *ngIf="label" class="w3s-input-label">{{ label }}</span>
 
   <div [style.height.px]="height"
-       class="auc-input-wrapper">
-    <div *ngIf="prefix" class="auc-input-prefix">{{ prefix }}</div>
+       class="w3s-input-wrapper">
+    <div *ngIf="prefix" class="w3s-input-prefix">{{ prefix }}</div>
 
     <div [ngClass]="classNames">
       <ng-container *ngIf="type === 'number'; else textInput">
@@ -20,11 +20,11 @@
                [decimal]="decimal"
                digitOnly
                type="text"
-               class="auc-input-field">
+               class="w3s-input-field">
 
         <span *ngIf="max"
               (click)="onMaxClick()"
-              class="auc-input-max"
+              class="w3s-input-max"
         >
           MAX
         </span>
@@ -39,17 +39,17 @@
                (focus)="focus=true"
                (blur)="focus=false"
                type="text"
-               class="auc-input-field">
+               class="w3s-input-field">
       </ng-template>
 
     </div>
 
-    <div *ngIf="suffix" class="auc-input-suffix">{{ suffix }}</div>
+    <div *ngIf="suffix" class="w3s-input-suffix">{{ suffix }}</div>
   </div>
 
   <div *ngIf="hint"
-       class="auc-input-hint">{{ hint }}</div>
+       class="w3s-input-hint">{{ hint }}</div>
 
   <div *ngFor="let error of errors"
-       class="auc-input-error">{{ error }}</div>
+       class="w3s-input-error">{{ error }}</div>
 </div>

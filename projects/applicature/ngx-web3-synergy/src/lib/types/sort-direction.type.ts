@@ -1,4 +1,4 @@
-import { AUC_SORT_DIRECTION } from '../enums';
-import { EnumsTypeTransformer } from './enums-type-transformer.type';
+import { W3S_SORT_DIRECTION } from '../enums';
+import { W3sEnumsTypeTransformer } from './enums-type-transformer.type';
 
-export type AucSortDirection = EnumsTypeTransformer<AUC_SORT_DIRECTION.ASC | AUC_SORT_DIRECTION.DESC>;
+export type W3sSortDirection = W3sEnumsTypeTransformer<W3S_SORT_DIRECTION.ASC | W3S_SORT_DIRECTION.DESC>;

@@ -1,4 +1,4 @@
-import { AUC_ALERT_POSITION } from '../enums';
-import { EnumsTypeTransformer } from '../../types';
+import { W3S_ALERT_POSITION } from '../enums';
+import { W3sEnumsTypeTransformer } from '../../types';
 
-export type AucAlertPosition = EnumsTypeTransformer<AUC_ALERT_POSITION.LEFT | AUC_ALERT_POSITION.RIGHT>;
+export type W3sAlertPosition = W3sEnumsTypeTransformer<W3S_ALERT_POSITION.LEFT | W3S_ALERT_POSITION.RIGHT>;

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucAccountBalanceModule } from '@applicature/ngx-web3-synergy';
+import { W3sAccountBalanceModule } from '@applicature/ngx-web3-synergy';
 
 import { ExampleAccountBalanceComponent } from './example-account-balance.component';
 
@@ -16,7 +16,7 @@ import { ExampleAccountBalanceComponent } from './example-account-balance.compon
   ],
   imports: [
     CommonModule,
-    AucAccountBalanceModule
+    W3sAccountBalanceModule
   ]
 })
 export class ExampleAccountBalanceModule { }

@@ -1,8 +1,8 @@
-import { AucIdenticonDirective } from './identicon.directive';
+import { W3sIdenticonDirective } from './identicon.directive';
 
-describe('AucIdenticonDirective', () => {
+describe('W3sIdenticonDirective', () => {
   it('should create an instance', () => {
-    // const directive = new AucIdenticonDirective();
+    // const directive = new W3sIdenticonDirective();
     // expect(directive).toBeTruthy();
   });
 });

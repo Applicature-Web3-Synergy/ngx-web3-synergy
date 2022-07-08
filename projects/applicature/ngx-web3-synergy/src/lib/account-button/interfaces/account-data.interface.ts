@@ -1,4 +1,4 @@
-export interface AucAccountData {
+export interface W3sAccountData {
   image?: string;
   name: string;
 }

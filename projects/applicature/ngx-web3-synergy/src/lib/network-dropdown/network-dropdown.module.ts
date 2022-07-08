@@ -1,29 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucButtonModule } from '../button';
-import { AucPipesModule } from '../pipes';
-import { AucNetworkDropdownComponent } from './network-dropdown.component';
-import { AucDropdownMenuModule } from '../dropdown-menu';
-import { AucDirectivesModule } from '../directives';
-import { AucIconModule } from '../icon';
+import { W3sButtonModule } from '../button';
+import { W3sPipesModule } from '../pipes';
+import { W3sNetworkDropdownComponent } from './network-dropdown.component';
+import { W3sDropdownMenuModule } from '../dropdown-menu';
+import { W3sDirectivesModule } from '../directives';
+import { W3sIconModule } from '../icon';
 
 
 @NgModule({
   declarations: [
-    AucNetworkDropdownComponent
+    W3sNetworkDropdownComponent
   ],
   exports: [
-    AucNetworkDropdownComponent
+    W3sNetworkDropdownComponent
   ],
   imports: [
     CommonModule,
-    AucButtonModule,
-    AucPipesModule,
-    AucDropdownMenuModule,
-    AucDirectivesModule,
-    AucIconModule,
+    W3sButtonModule,
+    W3sPipesModule,
+    W3sDropdownMenuModule,
+    W3sDirectivesModule,
+    W3sIconModule,
   ]
 })
-export class AucNetworkDropdownModule {
+export class W3sNetworkDropdownModule {
 }

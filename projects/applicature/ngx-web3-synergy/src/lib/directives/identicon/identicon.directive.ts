@@ -1,29 +1,29 @@
 import { Directive, ElementRef, Input, OnChanges, Renderer2 } from '@angular/core';
 
-import { AucIdenticonPosition } from './types';
-import { AUC_IDENTICON_POSITION } from './enums';
+import { W3sIdenticonPosition } from './types';
+import { W3S_IDENTICON_POSITION } from './enums';
 
 
 @Directive({
-  selector: '[aucIdenticon]',
-  exportAs: 'aucIdenticon'
+  selector: '[w3sIdenticon]',
+  exportAs: 'w3sIdenticon'
 })
-export class AucIdenticonDirective implements OnChanges {
+export class W3sIdenticonDirective implements OnChanges {
   /**
    * Shows identicon if provided. <br>
    * It's an optional parameter.
    */
   @Input()
-  public aucIdenticon?: HTMLDivElement;
+  public w3sIdenticon?: HTMLDivElement;
 
   /**
    * Controls identicon position. <br>
-   * You can use enum {@link AUC_IDENTICON_POSITION} <br>
+   * You can use enum {@link W3S_IDENTICON_POSITION} <br>
    * It's an optional parameter. <br>
    * The default value is right;
    */
   @Input()
-  public position?: AucIdenticonPosition = AUC_IDENTICON_POSITION.RIGHT;
+  public position?: W3sIdenticonPosition = W3S_IDENTICON_POSITION.RIGHT;
 
   /** @internal */
   private identicon: HTMLDivElement;
@@ -36,24 +36,24 @@ export class AucIdenticonDirective implements OnChanges {
     this.setIdenticon();
   }
 
-  /** Sets {@link aucIdenticon}. */
+  /** Sets {@link w3sIdenticon}. */
   public setIdenticon(): void {
     if (this.identicon) {
       this._renderer2.removeChild(this._elementRef.nativeElement, this.identicon);
     }
 
-    if (!this.aucIdenticon) {
+    if (!this.w3sIdenticon) {
       return;
     }
 
-    this.identicon = this.aucIdenticon.cloneNode(true) as HTMLDivElement;
-    this._renderer2.addClass(this.identicon, 'auc-identicon');
+    this.identicon = this.w3sIdenticon.cloneNode(true) as HTMLDivElement;
+    this._renderer2.addClass(this.identicon, 'w3s-identicon');
 
     if (!this.position) {
-      this.position = AUC_IDENTICON_POSITION.RIGHT;
+      this.position = W3S_IDENTICON_POSITION.RIGHT;
     }
 
-    if (this.position !== AUC_IDENTICON_POSITION.RIGHT) {
+    if (this.position !== W3S_IDENTICON_POSITION.RIGHT) {
       this._renderer2.setStyle(this.identicon, 'margin-right', '8px');
       this._renderer2.insertBefore(
         this._elementRef.nativeElement,

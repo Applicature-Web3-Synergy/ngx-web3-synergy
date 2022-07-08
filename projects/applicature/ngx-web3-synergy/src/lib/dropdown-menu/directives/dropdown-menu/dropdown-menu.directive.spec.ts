@@ -1,8 +1,8 @@
-import { AucDropdownMenuDirective } from './dropdown-menu.directive';
+import { W3sDropdownMenuDirective } from './dropdown-menu.directive';
 
-describe('AucDropdownMenuDirective', () => {
+describe('W3sDropdownMenuDirective', () => {
   it('should create an instance', () => {
-    // const directive = new AucDropdownMenuDirective();
+    // const directive = new W3sDropdownMenuDirective();
     // expect(directive).toBeTruthy();
   });
 });

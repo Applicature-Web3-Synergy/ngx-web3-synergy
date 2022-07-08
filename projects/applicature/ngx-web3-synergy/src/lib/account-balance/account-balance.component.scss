@@ -4,7 +4,7 @@
   display: inline-block;
 }
 
-.auc-balance {
+.w3s-balance {
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -20,17 +20,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--auc-account-balance-base);
+    background: var(--w3s-account-balance-base);
     z-index: -1;
   }
 
-  &.auc-balance-translucent {
+  &.w3s-balance-translucent {
     &:before {
       opacity: 0.5;
     }
   }
 
-  &.auc-balance-transparent {
+  &.w3s-balance-transparent {
     &:before {
       background: transparent;
       opacity: 0;
@@ -38,17 +38,17 @@
   }
 }
 
-.auc-balance-info {
+.w3s-balance-info {
   display: flex;
   align-items: center;
-  color: var(--auc-account-balance-text);
+  color: var(--w3s-account-balance-text);
   padding: 8px 12px;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
 }
 
-auc-icon {
+w3s-icon {
   width: 20px;
   height: 20px;
   font-size: 20px;

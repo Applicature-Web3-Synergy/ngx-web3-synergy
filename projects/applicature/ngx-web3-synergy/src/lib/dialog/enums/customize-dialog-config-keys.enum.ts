@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_CUSTOMIZE_DIALOG_CONFIG_KEYS {
+export enum W3S_CUSTOMIZE_DIALOG_CONFIG_KEYS {
   WIDTH = 'width',
   HEIGHT = 'height',
   MIN_WIDTH = 'minWidth',

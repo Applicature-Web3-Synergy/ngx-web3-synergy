@@ -1,4 +1,4 @@
-export interface AucDropdownPositionStyles {
+export interface W3sDropdownPositionStyles {
   top: string;
   left: string;
   maxWidth?: string;

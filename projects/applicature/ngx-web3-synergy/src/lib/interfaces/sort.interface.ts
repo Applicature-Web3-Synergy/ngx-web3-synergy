@@ -1,6 +1,6 @@
-import { AucSortDirection } from '../types';
+import { W3sSortDirection } from '../types';
 
-export interface AucSort {
+export interface W3sSort {
   sortBy: string; // sort by value
-  sortDirection: AucSortDirection; // sort by direction
+  sortDirection: W3sSortDirection; // sort by direction
 }

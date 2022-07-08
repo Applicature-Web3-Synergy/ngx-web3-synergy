@@ -1,6 +1,6 @@
-import { AucOverlayCustomizationConfig } from '../../overlay';
+import { W3sOverlayCustomizationConfig } from '../../overlay';
 
-export interface AucCustomizeDialogOverlayConfigInterface extends AucOverlayCustomizationConfig {
+export interface W3sCustomizeDialogOverlayConfigInterface extends W3sOverlayCustomizationConfig {
   hasOverlay?: boolean;
   closeByClick?: boolean;
   overlayClass?: string | string[];

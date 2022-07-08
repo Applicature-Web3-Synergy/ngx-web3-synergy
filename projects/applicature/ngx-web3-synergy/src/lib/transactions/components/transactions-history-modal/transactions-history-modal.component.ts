@@ -2,29 +2,29 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from
 import { catchError, of } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
-import { AucDialogConfig, AucDialogRef } from '../../../dialog';
-import { AucRecentTransactionsModalData } from './interfaces';
-import { AucTransactionService } from '../../services';
-import { AucTransactionItem } from '../../interfaces';
+import { W3sDialogConfig, W3sDialogRef } from '../../../dialog';
+import { W3sRecentTransactionsModalData } from './interfaces';
+import { W3sTransactionService } from '../../services';
+import { W3sTransactionItem } from '../../interfaces';
 import { BaseSubscriber } from '../../../helpers';
 
 
 @Component({
-  selector: 'auc-transactions-history-modal',
+  selector: 'w3s-transactions-history-modal',
   templateUrl: './transactions-history-modal.component.html',
   styleUrls: [ './transactions-history-modal.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AucTransactionsHistoryModalComponent extends BaseSubscriber implements OnDestroy {
-  public transactions: AucTransactionItem[];
-  public data: AucRecentTransactionsModalData;
+export class W3sTransactionsHistoryModalComponent extends BaseSubscriber implements OnDestroy {
+  public transactions: W3sTransactionItem[];
+  public data: W3sRecentTransactionsModalData;
   public loading = true;
 
   constructor(
     public _cdr: ChangeDetectorRef,
-    private _config: AucDialogConfig<AucRecentTransactionsModalData>,
-    private _dialogRef: AucDialogRef,
-    private _transactionService: AucTransactionService
+    private _config: W3sDialogConfig<W3sRecentTransactionsModalData>,
+    private _dialogRef: W3sDialogRef,
+    private _transactionService: W3sTransactionService
   ) {
     super();
 
@@ -36,7 +36,7 @@ export class AucTransactionsHistoryModalComponent extends BaseSubscriber impleme
         catchError(() => of(null)),
         takeUntil(this.notifier)
       )
-      .subscribe((transactions: AucTransactionItem[]) => {
+      .subscribe((transactions: W3sTransactionItem[]) => {
         this.loading = false;
         this.transactions = transactions ?? [];
         this._cdr.detectChanges();

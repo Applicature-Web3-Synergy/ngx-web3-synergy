@@ -1,9 +1,9 @@
-import { AucWalletConnectService } from '../../../services';
+import { W3sWalletConnectService } from '../../../services';
 
-export interface AucConnectDialogConfig {
+export interface W3sConnectDialogConfig {
   title?: string;
 }
 
-export interface AucConnectDialogData extends AucConnectDialogConfig {
-  service: AucWalletConnectService
+export interface W3sConnectDialogData extends W3sConnectDialogConfig {
+  service: W3sWalletConnectService
 }

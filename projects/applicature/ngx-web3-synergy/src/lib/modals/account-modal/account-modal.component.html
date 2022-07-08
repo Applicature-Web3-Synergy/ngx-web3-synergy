@@ -1,69 +1,69 @@
-<div class="auc-account">
-  <div class="auc-dialog-header">
+<div class="w3s-account">
+  <div class="w3s-dialog-header">
     <h1>{{ data.header }}</h1>
 
-    <button type="button" class="auc-close-btn">
-      <auc-icon icon="wcl-icon-close"
+    <button type="button" class="w3s-close-btn">
+      <w3s-icon icon="wcl-icon-close"
                 (click)="onCloseClick()"
       >
-      </auc-icon>
+      </w3s-icon>
     </button>
   </div>
 
-  <div class="auc-account-info auc-info">
-    <div class="auc-info-header">
+  <div class="w3s-account-info w3s-info">
+    <div class="w3s-info-header">
       <span>Connected with Metamask</span>
 
       <button (click)="onChangeClick()"
-              aucRipple
-              class="auc-info-header-change"
+              w3sRipple
+              class="w3s-info-header-change"
       >
         Change
       </button>
 
       <button (click)="disconnectClick()"
-              aucRipple
-              class="auc-info-header-disconnect"
+              w3sRipple
+              class="w3s-info-header-disconnect"
       >
         Disconnect
       </button>
     </div>
 
-    <div class="auc-info-main" [aucIdenticon]="identicon">
-      <span>{{ accountAddress | aucShortAddress }}</span>
+    <div class="w3s-info-main" [w3sIdenticon]="identicon">
+      <span>{{ accountAddress | w3sShortAddress }}</span>
     </div>
-    <div class="auc-info-footer">
-      <span aucCopyToClipboard
+    <div class="w3s-info-footer">
+      <span w3sCopyToClipboard
             [textToCopy]="accountAddress"
-            class="auc-info-footer-item">
+            class="w3s-info-footer-item">
         <i class="wcl-icon-copy"></i>
         <span>Copy Address</span>
       </span>
 
-      <a class="auc-info-footer-item" *ngIf="(etherscanAddress$ | async) as ethAddress" [href]="ethAddress"
+      <a class="w3s-info-footer-item" *ngIf="(etherscanAddress$ | async) as ethAddress" [href]="ethAddress"
          target="_blank"><i class="wcl-icon-external-link"></i><span>View on Explorer</span></a>
     </div>
   </div>
 
-  <div class="auc-account-footer" [class.auc-with-loading]="loadingTransactions">
-    <div class="auc-account-transactions">
+  <div class="w3s-account-footer" [class.w3s-with-loading]="loadingTransactions">
+    <div class="w3s-account-transactions">
       <ng-container *ngIf="!loadingTransactions; else loadingRef">
-        <div class="auc-account-transactions-header" *ngIf="transactions.length">
-          <div class="auc-account-transactions-header-title">Recent transactions</div>
+        <div class="w3s-account-transactions-header" *ngIf="transactions.length">
+          <div class="w3s-account-transactions-header-title">Recent transactions</div>
           <button type="button"
-                  class="auc-account-transactions-header-action"
+                  class="w3s-account-transactions-header-action"
                   (click)="onClearTransactionsClick()"
           >
             (clear all)
           </button>
         </div>
 
-        <auc-transactions-list [transactions]="transactions"></auc-transactions-list>
+        <w3s-transactions-list [transactions]="transactions"></w3s-transactions-list>
       </ng-container>
 
       <ng-template #loadingRef>
-        <div class="auc-transactions-loading">
-          <auc-spinner [width]="2" [diameter]="30"></auc-spinner>
+        <div class="w3s-transactions-loading">
+          <w3s-spinner [width]="2" [diameter]="30"></w3s-spinner>
         </div>
       </ng-template>
     </div>

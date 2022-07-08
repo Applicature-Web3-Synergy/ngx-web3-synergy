@@ -2,7 +2,7 @@
  * Supported font icons
  * @enum
  */
-export enum AUC_WLC_ICON {
+export enum W3S_WLC_ICON {
   ACTIVE = 'wcl-icon-active',
   ARROW_DOWN = 'wcl-icon-arrow-down',
   ARROW_UP = 'wcl-icon-arrow-up',

@@ -1,11 +1,11 @@
 @use '@applicature/styles/src/lib/scss/as-common' as c;
 
-.auc-connect-dialog-wallets-list {
+.w3s-connect-dialog-wallets-list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.auc-connect-dialog-wallet-item {
+.w3s-connect-dialog-wallet-item {
   width: 100%;
   padding: 12px 55px 12px 60px;
   position: relative;
@@ -14,7 +14,7 @@
   min-height: 56px;
   cursor: pointer;
 
-  &.auc-active-wallet {
+  &.w3s-active-wallet {
     &:before {
       background-color: c.getColor(white, borderHover);
     }
@@ -34,7 +34,7 @@
     overflow: hidden;
   }
 
-  &:not(.auc-active-wallet) {
+  &:not(.w3s-active-wallet) {
     &:hover {
       &:before {
         border-width: 2px;
@@ -47,7 +47,7 @@
   }
 }
 
-.auc-connect-dialog-wallet-item-icon {
+.w3s-connect-dialog-wallet-item-icon {
   position: absolute;
   left: 15px;
   top: 50%;
@@ -57,14 +57,14 @@
   margin-right: 12px;
 }
 
-.auc-connect-dialog-wallet-item-label {
+.w3s-connect-dialog-wallet-item-label {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   color: c.getColor(white, text);
 }
 
-.auc-active-wallet-icon {
+.w3s-active-wallet-icon {
   width: 24px;
   height: 24px;
   position: absolute;

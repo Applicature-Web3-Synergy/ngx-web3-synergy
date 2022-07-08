@@ -6,7 +6,7 @@ import { BaseSubscriber } from '../base-subscriber';
 
 
 @Injectable()
-export class AucInstallWalletHelperService extends BaseSubscriber {
+export class W3sInstallWalletHelperService extends BaseSubscriber {
   /** Emits URL which uses for redirection to wallet website */
   public redirectTo$: Subject<string> = new Subject<string>();
 

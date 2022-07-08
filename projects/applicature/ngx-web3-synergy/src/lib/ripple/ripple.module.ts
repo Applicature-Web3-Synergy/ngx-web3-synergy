@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { AucRippleDirective } from './directives';
+import { W3sRippleDirective } from './directives';
 
 
 @NgModule({
   declarations: [
-    AucRippleDirective
+    W3sRippleDirective
   ],
   exports: [
-    AucRippleDirective
+    W3sRippleDirective
   ],
   imports: [
     CommonModule
   ]
 })
-export class AucRippleModule {
+export class W3RippleModule {
 }

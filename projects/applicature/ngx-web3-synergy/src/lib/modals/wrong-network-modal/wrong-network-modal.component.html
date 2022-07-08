@@ -1,42 +1,42 @@
-<div class="auc-wrong-network">
-  <div class="auc-dialog-header auc-wrong-network-header">
-    <button type="button" class="auc-close-btn">
-      <auc-icon icon="wcl-icon-close"
+<div class="w3s-wrong-network">
+  <div class="w3s-dialog-header w3s-wrong-network-header">
+    <button type="button" class="w3s-close-btn">
+      <w3s-icon icon="wcl-icon-close"
                 (click)="onCloseClick()"
       >
-      </auc-icon>
+      </w3s-icon>
     </button>
   </div>
 
 
-  <auc-icon icon="wcl-icon-fail"
-            class="auc-wrong-network-fail"
+  <w3s-icon icon="wcl-icon-fail"
+            class="w3s-wrong-network-fail"
             (click)="onCloseClick()"
   >
-  </auc-icon>
+  </w3s-icon>
 
-  <h1 class="auc-wrong-network-title">{{ data.header }}</h1>
+  <h1 class="w3s-wrong-network-title">{{ data.header }}</h1>
 
-  <div class="auc-wrong-network-message">{{ data.message }}</div>
+  <div class="w3s-wrong-network-message">{{ data.message }}</div>
 
   <ng-container [ngSwitch]="data.appearance">
     <ng-container *ngSwitchCase="'switch'">
-      <auc-button [label]="data.switchLabel"
+      <w3s-button [label]="data.switchLabel"
                   (buttonClicked)="onSwitchNetworkClick()"
                   [adaptive]="true"
-                  class="auc-wrong-network-action auc-switch-network-btn"
+                  class="w3s-wrong-network-action w3s-switch-network-btn"
       >
-      </auc-button>
+      </w3s-button>
     </ng-container>
 
     <ng-container *ngSwitchCase="'disconnect'">
-      <auc-button label="Disconnect"
+      <w3s-button label="Disconnect"
                           [color]="disconnectBtnColor"
                           [adaptive]="true"
                           (buttonClicked)="disconnectClick()"
-                          class="auc-wrong-network-action auc-disconnect-btn"
+                          class="w3s-wrong-network-action w3s-disconnect-btn"
       >
-      </auc-button>
+      </w3s-button>
     </ng-container>
   </ng-container>
 </div>

@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_CHAIN_ID_NUM {
+export enum W3S_CHAIN_ID_NUM {
   ARBITRUM_MAINNET = 42161,
   ARBITRUM_TESTNET = 421611,
   ASTAR_MAINNET = 592,
@@ -26,7 +26,7 @@ export enum AUC_CHAIN_ID_NUM {
 }
 
 /** @enum */
-export enum AUC_CHAIN_ID {
+export enum W3S_CHAIN_ID {
   ARBITRUM_MAINNET = '0xa4b1',
   ARBITRUM_TESTNET = '0x66eeb',
   ASTAR_MAINNET = '0x250',

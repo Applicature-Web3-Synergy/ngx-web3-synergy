@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucButtonModule, AucDialogModule } from '@applicature/ngx-web3-synergy';
+import { W3sButtonModule, W3sDialogModule } from '@applicature/ngx-web3-synergy';
 
 import { ExampleDialogsComponent } from './example-dialogs.component';
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
@@ -17,8 +17,8 @@ import { DialogTestComponent } from './components/dialog-test/dialog-test.compon
   ],
   imports: [
     CommonModule,
-    AucDialogModule,
-    AucButtonModule
+    W3sDialogModule,
+    W3sButtonModule
   ],
   entryComponents: [
     DialogTestComponent

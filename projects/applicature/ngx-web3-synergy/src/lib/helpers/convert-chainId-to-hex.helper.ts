@@ -1,11 +1,11 @@
 /**
  * This method uses for converting chainId as a number to 0x-prefixed hexadecimal string. <br>
- * {@link AUC_CHAIN_ID} - Already converted Chains. <br>
+ * {@link W3S_CHAIN_ID} - Already converted Chains. <br>
  * @param chainId - chainId as number. <br>
- * You can use {@link AUC_CHAIN_ID_NUM} or your specific value.
+ * You can use {@link W3S_CHAIN_ID_NUM} or your specific value.
  */
 
-export function aucConvertChainIdToHex(chainId: number | string): string {
+export function w3sConvertChainIdToHex(chainId: number | string): string {
   if (!chainId && chainId !== 0 && chainId !== '0') {
     return null;
   }

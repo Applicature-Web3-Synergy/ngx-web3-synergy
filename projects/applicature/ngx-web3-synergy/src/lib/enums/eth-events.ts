@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_ETH_EVENTS {
+export enum W3S_ETH_EVENTS {
   ACCOUNT_CHANGED = 'accountsChanged',
   CHAIN_CHANGED = 'chainChanged',
   CONNECT = 'connect',

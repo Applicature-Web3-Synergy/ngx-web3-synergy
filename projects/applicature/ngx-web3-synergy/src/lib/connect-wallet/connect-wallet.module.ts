@@ -1,32 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AucAccountBalanceModule } from '../account-balance';
-import { AucAccountButtonModule } from '../account-button';
-import { AucButtonModule } from '../button';
-import { AucNetworkDropdownModule } from '../network-dropdown';
-import { AucPipesModule } from '../pipes';
-import { AucConnectWalletComponent } from './connect-wallet.component';
-import { AucDialogModule } from '../dialog';
-import { AucTransactionsModule } from '../transactions';
+import { W3sAccountBalanceModule } from '../account-balance';
+import { W3sAccountButtonModule } from '../account-button';
+import { W3sButtonModule } from '../button';
+import { W3sNetworkDropdownModule } from '../network-dropdown';
+import { W3sPipesModule } from '../pipes';
+import { W3sConnectWalletComponent } from './connect-wallet.component';
+import { W3sDialogModule } from '../dialog';
+import { W3sTransactionsModule } from '../transactions';
 
 @NgModule({
   declarations: [
-    AucConnectWalletComponent
+    W3sConnectWalletComponent
   ],
   exports: [
-    AucConnectWalletComponent
+    W3sConnectWalletComponent
   ],
   imports: [
     CommonModule,
-    AucButtonModule,
-    AucPipesModule,
-    AucNetworkDropdownModule,
-    AucAccountButtonModule,
-    AucAccountBalanceModule,
-    AucDialogModule,
-    AucTransactionsModule
+    W3sButtonModule,
+    W3sPipesModule,
+    W3sNetworkDropdownModule,
+    W3sAccountButtonModule,
+    W3sAccountBalanceModule,
+    W3sDialogModule,
+    W3sTransactionsModule
   ],
 })
-export class AucConnectWalletModule {
+export class W3sConnectWalletModule {
 }

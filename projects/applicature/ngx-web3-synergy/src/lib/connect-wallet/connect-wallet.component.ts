@@ -12,34 +12,34 @@ import { takeUntil } from 'rxjs/operators';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 
-import { AucAccountData, AucAccountOption } from '../account-button';
-import { AUC_POSITIONS } from '../enums';
-import { aucGenerateJazzicon, BaseSubscriber } from '../helpers';
-import { AucAccountModalComponent, AucAccountModalData } from '../modals';
-import { AucConnectionState, AucWalletConnectService } from '../connect';
-import { AucDialogService } from '../dialog';
-import { AucDropdownConfig } from '../dropdown-menu';
-import { AUC_BALANCE_APPEARANCE } from '../account-balance';
-import { ConnectWalletAppearance } from './types';
-import { AUC_CONNECT_WALLET_APPEARANCE } from './enums';
-import { AUC_TRANSACTION_STATUS, AucTransactionService } from '../transactions';
+import { W3sAccountData, W3sAccountOption } from '../account-button';
+import { W3S_POSITIONS } from '../enums';
+import { w3sGenerateJazzicon, BaseSubscriber } from '../helpers';
+import { W3sAccountModalComponent, W3sAccountModalData } from '../modals';
+import { W3sConnectionState, W3sWalletConnectService } from '../connect';
+import { W3sDialogService } from '../dialog';
+import { W3sDropdownConfig } from '../dropdown-menu';
+import { W3S_BALANCE_APPEARANCE } from '../account-balance';
+import { W3sConnectWalletAppearance } from './types';
+import { W3S_CONNECT_WALLET_APPEARANCE } from './enums';
+import { W3S_TRANSACTION_STATUS, W3sTransactionService } from '../transactions';
 
 
 @Component({
-  selector: 'auc-connect-wallet',
+  selector: 'w3s-connect-wallet',
   templateUrl: './connect-wallet.component.html',
   styleUrls: [ './connect-wallet.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AucConnectWalletComponent extends BaseSubscriber implements OnInit {
+export class W3sConnectWalletComponent extends BaseSubscriber implements OnInit {
   /**
    * Allows to control appearance components. Default is the button. <br>
-   * You can use enum {@link AUC_CONNECT_WALLET_APPEARANCE}. <br>
+   * You can use enum {@link W3S_CONNECT_WALLET_APPEARANCE}. <br>
    * It's an optional parameter. <br>
-   * The default value is {@link AUC_CONNECT_WALLET_APPEARANCE.BUTTON}.
+   * The default value is {@link W3S_CONNECT_WALLET_APPEARANCE.BUTTON}.
    */
   @Input()
-  public appearance?: ConnectWalletAppearance = AUC_CONNECT_WALLET_APPEARANCE.BUTTON;
+  public appearance?: W3sConnectWalletAppearance = W3S_CONNECT_WALLET_APPEARANCE.BUTTON;
 
   /**
    * Whether the button is disabled. <br>
@@ -75,19 +75,19 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
 
   /**
    * User account related information. <br>
-   * Needs for {@link AucAccountButtonComponent}. <br>
-   * It's an optional parameter, required when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   * Needs for {@link W3sAccountButtonComponent}. <br>
+   * It's an optional parameter, required when appearance equals to {@link W3S_CONNECT_WALLET_APPEARANCE.ICON}
    */
   @Input()
-  public account: AucAccountData;
+  public account: W3sAccountData;
 
   /**
    * List of options in popover. <br>
-   * Needs for {@link AucAccountButtonComponent}. <br>
-   * It's an optional parameter, uses only when appearance equals to {@link AUC_CONNECT_WALLET_APPEARANCE.ICON}
+   * Needs for {@link W3sAccountButtonComponent}. <br>
+   * It's an optional parameter, uses only when appearance equals to {@link W3S_CONNECT_WALLET_APPEARANCE.ICON}
    */
   @Input()
-  public accountOptions?: AucAccountOption[];
+  public accountOptions?: W3sAccountOption[];
 
   /**
    * Customize account dropdown <br>
@@ -98,19 +98,19 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
    *     transparent: true
    *   },
    *   position: {
-   *     vertical: AUC_POSITIONS.BELOW,
-   *     horizontal: AUC_POSITIONS.BEFORE
+   *     vertical: W3S_POSITIONS.BELOW,
+   *     horizontal: W3S_POSITIONS.BEFORE
    *   }
    * }
    */
   @Input()
-  public accountDropdownConfig?: AucDropdownConfig = {
+  public accountDropdownConfig?: W3sDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: AUC_POSITIONS.BELOW,
-      horizontal: AUC_POSITIONS.BEFORE
+      vertical: W3S_POSITIONS.BELOW,
+      horizontal: W3S_POSITIONS.BEFORE
     }
   }
 
@@ -123,25 +123,25 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
    *     transparent: true
    *   },
    *   position: {
-   *     vertical: AUC_POSITIONS.BELOW,
-   *     horizontal: AUC_POSITIONS.AFTER
+   *     vertical: W3S_POSITIONS.BELOW,
+   *     horizontal: W3S_POSITIONS.AFTER
    *   }
    * }
    */
   @Input()
-  public networkDropdownConfig?: AucDropdownConfig = {
+  public networkDropdownConfig?: W3sDropdownConfig = {
     overlay: {
       transparent: true
     },
     position: {
-      vertical: AUC_POSITIONS.BELOW,
-      horizontal: AUC_POSITIONS.AFTER
+      vertical: W3S_POSITIONS.BELOW,
+      horizontal: W3S_POSITIONS.AFTER
     }
   }
 
   /** Emits an action when wallet was connected. */
   @Output()
-  public connected: EventEmitter<AucConnectionState> = new EventEmitter<AucConnectionState>();
+  public connected: EventEmitter<W3sConnectionState> = new EventEmitter<W3sConnectionState>();
 
   /** Emits an action when wallet was disconnected. */
   @Output()
@@ -149,7 +149,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
 
   /** Emits selected option from the list. */
   @Output()
-  public optionClicked: EventEmitter<AucAccountOption> = new EventEmitter<AucAccountOption>();
+  public optionClicked: EventEmitter<W3sAccountOption> = new EventEmitter<W3sAccountOption>();
 
   /** @internal */
   public accountAddress: string;
@@ -173,17 +173,17 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
   public COLORS = AS_COLOR_GROUP;
 
   /** @internal */
-  public BALANCE_APPEARANCE = AUC_BALANCE_APPEARANCE;
+  public BALANCE_APPEARANCE = W3S_BALANCE_APPEARANCE;
 
   /** @internal */
-  public CONNECT_WALLET_APPEARANCE = AUC_CONNECT_WALLET_APPEARANCE;
+  public CONNECT_WALLET_APPEARANCE = W3S_CONNECT_WALLET_APPEARANCE;
 
   constructor(
-    private _dialogService: AucDialogService,
+    private _dialogService: W3sDialogService,
     private _cdr: ChangeDetectorRef,
     private _elementRef: ElementRef<HTMLElement>,
-    private _transactionService: AucTransactionService,
-    private _walletConnectService: AucWalletConnectService,
+    private _transactionService: W3sTransactionService,
+    private _walletConnectService: W3sWalletConnectService,
   ) {
     super();
 
@@ -194,7 +194,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
           this.isConnected = Boolean(this.accountAddress);
 
           if (this.isConnected) {
-            this.identicon = aucGenerateJazzicon(this.accountAddress);
+            this.identicon = w3sGenerateJazzicon(this.accountAddress);
           }
 
           this._cdr.markForCheck();
@@ -207,14 +207,14 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
         .pipe(takeUntil(this.notifier))
         .subscribe((transactions) => {
           this.txCount = transactions.filter((tx) => {
-            return tx.status === AUC_TRANSACTION_STATUS.FAIL && !tx.viewed;
+            return tx.status === W3S_TRANSACTION_STATUS.FAIL && !tx.viewed;
           }).length;
 
           this.hasFailedTx = this.txCount > 0;
 
           if (!this.hasFailedTx) {
             this.txCount = transactions.filter((tx) => {
-              return tx.status === AUC_TRANSACTION_STATUS.PENDING;
+              return tx.status === W3S_TRANSACTION_STATUS.PENDING;
             }).length;
 
             this.hasPendingTx = this.txCount > 0;
@@ -230,7 +230,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
       return;
     }
 
-    const data: AucAccountModalData = {
+    const data: W3sAccountModalData = {
       header: 'Account',
       change: () => {
         modal.close();
@@ -244,9 +244,9 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
       },
     };
 
-    const modal = this._dialogService.open<AucAccountModalComponent, AucAccountModalData>(AucAccountModalComponent, {
+    const modal = this._dialogService.open<W3sAccountModalComponent, W3sAccountModalData>(W3sAccountModalComponent, {
       data,
-      dialogClass: 'auc-account-dialog',
+      dialogClass: 'w3s-account-dialog',
       width: '420px',
       maxWidth: '420px',
       overlay: {
@@ -263,7 +263,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
 
     this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
-      .subscribe((connectionState: AucConnectionState) => {
+      .subscribe((connectionState: W3sConnectionState) => {
         this.connected.emit(connectionState);
       })
   }
@@ -282,7 +282,7 @@ export class AucConnectWalletComponent extends BaseSubscriber implements OnInit 
   }
 
   /** Emit {@link optionClicked} event. */
-  public optionAction(evt: AucAccountOption): void {
+  public optionAction(evt: W3sAccountOption): void {
     this.optionClicked.emit(evt);
   }
 

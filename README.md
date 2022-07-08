@@ -39,7 +39,7 @@
 
     npm run build && npm run start
 
-  ### ngx-components-doc
+  ### ngx-web3-synergy-doc
   This is documentation project for **@applicature/ngx-web3-synergy package**
 
   Keep in mind that before run, you will need to have build of **@applicature/styles** and **@applicature/ngx-web3-synergy**
@@ -65,5 +65,5 @@
   ### applicature/ngx-web3-synergy package
     npm build-package:web3-synergy
 
-  ### ngx-components-doc
+  ### ngx-web3-synergy-doc
      npm run build-doc

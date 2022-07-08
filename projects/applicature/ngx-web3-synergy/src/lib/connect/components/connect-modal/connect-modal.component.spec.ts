@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucConnectModalComponent } from './connect-modal.component';
+import { W3sConnectModalComponent } from './connect-modal.component';
 
-describe('AucConnectModalComponent', () => {
-  let component: AucConnectModalComponent;
-  let fixture: ComponentFixture<AucConnectModalComponent>;
+describe('W3sConnectModalComponent', () => {
+  let component: W3sConnectModalComponent;
+  let fixture: ComponentFixture<W3sConnectModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucConnectModalComponent ]
+      declarations: [ W3sConnectModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucConnectModalComponent);
+    fixture = TestBed.createComponent(W3sConnectModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

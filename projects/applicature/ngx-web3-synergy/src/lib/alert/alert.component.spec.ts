@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AucAlertComponent } from './alert.component';
+import { W3sAlertComponent } from './alert.component';
 
-describe('AucAlertComponent', () => {
-  let component: AucAlertComponent;
-  let fixture: ComponentFixture<AucAlertComponent>;
+describe('W3sAlertComponent', () => {
+  let component: W3sAlertComponent;
+  let fixture: ComponentFixture<W3sAlertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AucAlertComponent ]
+      declarations: [ W3sAlertComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AucAlertComponent);
+    fixture = TestBed.createComponent(W3sAlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

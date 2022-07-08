@@ -1,8 +1,8 @@
 import { ProviderLabel } from '@web3-onboard/injected-wallets';
 
-import { EnumsTypeTransformer } from '../../../../types';
+import { W3sEnumsTypeTransformer } from '../../../../types';
 
-export type InjectedWalletsLabels = EnumsTypeTransformer<ProviderLabel.AlphaWallet
+export type W3sInjectedWalletsLabels = W3sEnumsTypeTransformer<ProviderLabel.AlphaWallet
   | ProviderLabel.AToken
   | ProviderLabel.Binance
   | ProviderLabel.Bitpie
@@ -33,7 +33,7 @@ export type InjectedWalletsLabels = EnumsTypeTransformer<ProviderLabel.AlphaWall
   | ProviderLabel.Tally
   >;
 
-export type AucWalletLabel = 'WalletConnect'
+export type W3sWalletLabel = 'WalletConnect'
   | 'Magic Wallet'
   | 'Fortmatic'
   | 'Gnosis Safe'
@@ -46,4 +46,4 @@ export type AucWalletLabel = 'WalletConnect'
   | 'Trezor'
   | 'Keystone'
   | `D'CENT`
-  | InjectedWalletsLabels;
+  | W3sInjectedWalletsLabels;

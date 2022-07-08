@@ -1,5 +1,5 @@
 /** @enum */
-export enum AUC_TRANSFER_STEPS {
+export enum W3S_TRANSFER_STEPS {
   APPROVE = 1,
   CONFIRM = 2,
 }
