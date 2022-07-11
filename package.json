@@ -17,8 +17,9 @@
     "build-package:web3-synergy": "npm run build:web3-synergy && cd dist/@applicature/ngx-web3-synergy && npm pack .",
     "build-packages": "npm run build-package:styles && npm run build-package:web3-synergy",
     "test:ngx-web3-synergy": "ng test @applicature/ngx-web3-synergy",
-    "test": "ng test",
+    "test": "ng test @applicature/ngx-web3-synergy",
     "prepare": "husky install",
+    "postinstall": "npm run build",
     "lint": "ng lint",
     "lint-scss": "stylelint projects/**/*.scss"
   },
