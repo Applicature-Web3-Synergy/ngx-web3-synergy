@@ -47,10 +47,10 @@ Add `node_modules/@applicature/styles/src/lib/scss/as-styles` to **angular.json*
 import { Buffer } from 'buffer';
 import process from 'process';
 
-import { WindowEth } from '@applicature/ngx-web3-synergy';
+import { W3sWindowEth } from '@applicature/ngx-web3-synergy';
 
 declare global {
-  interface Window extends WindowEth {}
+  interface Window extends W3sWindowEth {}
 }
 
 window.process = process;
