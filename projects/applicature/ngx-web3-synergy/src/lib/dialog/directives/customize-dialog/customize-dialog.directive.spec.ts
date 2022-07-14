@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sCustomizeDialogDirective } from './customize-dialog.directive';
 
 xdescribe('W3sCustomizeDialogDirective', () => {

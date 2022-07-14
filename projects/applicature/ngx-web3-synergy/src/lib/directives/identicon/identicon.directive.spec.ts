@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sIdenticonDirective } from './identicon.directive';
 
 describe('W3sIdenticonDirective', () => {

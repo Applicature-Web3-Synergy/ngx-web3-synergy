@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sDropdownMenuDirective } from './dropdown-menu.directive';
 
 describe('W3sDropdownMenuDirective', () => {

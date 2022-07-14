@@ -12,9 +12,10 @@
       ],
       "parserOptions": {
         "project": [
-          "projects/applicature/ngx-web3-synergy/tsconfig.lib.json",
-          "projects/applicature/ngx-web3-synergy/tsconfig.spec.json"
+          "tsconfig.lib.json",
+          "tsconfig.spec.json"
         ],
+        "tsconfigRootDir": "./projects/applicature/ngx-web3-synergy",
         "createDefaultProgram": true
       },
       "rules": {
