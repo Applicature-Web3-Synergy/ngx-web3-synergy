@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { W3sDialogComponent } from './dialog.component';
 
-describe('W3sDialogComponent', () => {
+xdescribe('W3sDialogComponent', () => {
   let component: W3sDialogComponent;
   let fixture: ComponentFixture<W3sDialogComponent>;
 

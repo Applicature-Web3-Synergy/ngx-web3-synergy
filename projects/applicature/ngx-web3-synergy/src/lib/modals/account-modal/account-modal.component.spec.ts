@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { W3sAccountModalComponent } from './account-modal.component';
 
 
-describe('W3sAccountModalComponent', () => {
+xdescribe('W3sAccountModalComponent', () => {
   let component: W3sAccountModalComponent;
   let fixture: ComponentFixture<W3sAccountModalComponent>;
 

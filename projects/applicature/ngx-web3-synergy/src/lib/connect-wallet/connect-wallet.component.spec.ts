@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { W3sConnectWalletComponent } from './connect-wallet.component';
 
-describe('W3sConnectWalletComponent', () => {
+xdescribe('W3sConnectWalletComponent', () => {
   let component: W3sConnectWalletComponent;
   let fixture: ComponentFixture<W3sConnectWalletComponent>;
 
