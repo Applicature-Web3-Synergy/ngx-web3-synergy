@@ -33,7 +33,9 @@ import { BaseSubscriber } from '../../../helpers';
 const W3S_ETHERSCAN_TRANSACTIONS = 'W3S_ETHERSCAN_TRANSACTIONS';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class W3sTransactionService extends BaseSubscriber {
   private _transactionsChanged$: BehaviorSubject<W3sTransactionItem[]> =
     new BehaviorSubject<W3sTransactionItem[]>([]);

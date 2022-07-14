@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { CodePrettyDirective } from './code-pretty.directive';
 
 describe('CodePrettyDirective', () => {

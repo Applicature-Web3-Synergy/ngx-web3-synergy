@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sCustomClassDirective } from './custom-class.directive';
 
 describe('W3sCustomClassDirective', () => {

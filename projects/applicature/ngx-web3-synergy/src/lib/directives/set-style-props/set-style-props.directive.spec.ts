@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sSetStylePropsDirective } from './set-style-props.directive';
 
 describe('SetStylePropsDirective', () => {

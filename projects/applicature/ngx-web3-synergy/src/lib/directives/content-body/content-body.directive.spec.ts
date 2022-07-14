@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sContentBodyDirective } from './content-body.directive';
 
 describe('W3sContentBodyDirective', () => {

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sTriggerDirective } from './trigger.directive';
 
 describe('W3sTriggerDirective', () => {
