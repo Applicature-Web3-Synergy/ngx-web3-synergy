@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { BaseSubscriber } from './base-subscriber.service';
 
-describe('BaseSubscriber', () => {
+xdescribe('BaseSubscriber', () => {
   let service: BaseSubscriber;
 
   beforeEach(() => {

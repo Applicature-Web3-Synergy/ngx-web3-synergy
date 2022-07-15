@@ -29,7 +29,7 @@ import { W3sWalletLabel } from './types';
 import { W3sConnectDialogConfig, W3sConnectDialogData, W3sConnectModalComponent } from '../../components';
 
 
-const W3S_CONNECTED_WALLET_NAME = 'W3S_CONNECTED_WALLET_NAME';
+export const W3S_CONNECTED_WALLET_NAME = 'W3S_CONNECTED_WALLET_NAME';
 
 
 @Injectable()
@@ -64,17 +64,17 @@ export class W3sWalletConnectService extends BaseSubscriber {
   }
 
   /** @returns Blockchain explorer urls config. */
-  get blockExplorerUrlByChainId(): W3sBlockExplorerUrlsByChainId {
+  public get blockExplorerUrlByChainId(): W3sBlockExplorerUrlsByChainId {
     return this._blockExplorerUrlByChainId;
   }
 
   /** @returns current connection state. */
   public get connectionState(): W3sConnectionState {
-    if (!this._onboard) {
+    if (!this.onboard) {
       return { connected: false };
     }
 
-    const state = this._onboard.state.get();
+    const state = this.onboard.state.get();
 
     return {
       connected: !!state.wallets?.length,
@@ -84,9 +84,9 @@ export class W3sWalletConnectService extends BaseSubscriber {
 
   /** @returns current connection state as Observable */
   public get connectionState$(): Observable<W3sConnectionState> {
-    return (!this._onboard
+    return (!this.onboard
         ? of(null)
-        : this._onboard.state.select()
+        : this.onboard.state.select()
     )
       .pipe(
         map((state: AppState | null) => {
@@ -178,7 +178,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
    * @param config - Initialization Config for wallet connection.
    */
   public initialize(config: W3sInitOptions): Observable<void> {
-    if (this._onboard) {
+    if (this.onboard) {
       console.error('web3-onboard already initialized');
 
       return of(null);
@@ -266,7 +266,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
   }
 
   public connect(dialogConfig?: W3sDialogConfig<W3sConnectDialogConfig>): Observable<W3sConnectionState> {
-    if (!this._onboard) {
+    if (!this.onboard) {
       return of({ connected: false })
         .pipe(
           tap(() => new Error('initialize method must be called'))
@@ -317,7 +317,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
    * @return Current connection state.
    */
   public connectWallet(label: W3sWalletLabel): Observable<W3sConnectionState> {
-    if (!this._onboard) {
+    if (!this.onboard) {
       return of({ connected: false })
         .pipe(
           tap(() => new Error('initialize method must be called'))
@@ -328,7 +328,6 @@ export class W3sWalletConnectService extends BaseSubscriber {
       return of(this.connectionState)
         .pipe(tap(() => new Error('label is required parameter')));
     }
-
 
     return new Observable<WalletState[]>(observer => {
       this.onboard.connectWallet({ autoSelect: { label, disableModals: true } })
@@ -362,11 +361,11 @@ export class W3sWalletConnectService extends BaseSubscriber {
 
   /** Disconnect wallet. */
   public disconnectWallet(label?: W3sWalletLabel): Observable<void> {
-    const [ primaryWallet ] = this._onboard?.state?.get()?.wallets;
+    const [ primaryWallet ] = this.onboard?.state?.get()?.wallets;
 
     return of(
       primaryWallet || label
-        ? this._onboard.disconnectWallet({ label: label ? label : primaryWallet.label })
+        ? this.onboard.disconnectWallet({ label: label ? label : primaryWallet.label })
         : null
     )
       .pipe(
@@ -385,7 +384,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
         const previouslyConnectedWallet = localStorage.getItem(W3S_CONNECTED_WALLET_NAME);
 
         if (previouslyConnectedWallet !== null) {
-          this._onboard.connectWallet({
+          this.onboard.connectWallet({
             autoSelect: {
               label: previouslyConnectedWallet, disableModals: true
             }
