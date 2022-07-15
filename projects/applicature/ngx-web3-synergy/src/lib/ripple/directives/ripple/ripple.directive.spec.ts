@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sRippleDirective } from './ripple.directive';
 
 xdescribe('W3sRippleDirective', () => {

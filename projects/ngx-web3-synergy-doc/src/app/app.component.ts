@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostListener, Inject, ViewChild } from '@angular/core';
-import { Event, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 
@@ -12,7 +12,7 @@ import { RouterHelperService } from './services/router-helper';
 @Component({
   selector: 'doc-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: [ './app.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent extends BaseSubscriber {
@@ -22,7 +22,8 @@ export class AppComponent extends BaseSubscriber {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
 
-  @HostListener('window:resize') public onResize(): void {
+  @HostListener('window:resize')
+  public onResize(): void {
     this.resize$.next();
   }
 
@@ -42,7 +43,7 @@ export class AppComponent extends BaseSubscriber {
       .subscribe((e: NavigationEnd) => {
         this.routerHelperService.activeUrl = e.url;
 
-        if (this.isMobile) {
+        if ( this.isMobile ) {
           this.sidenav.opened = false;
         }
       });
@@ -51,10 +52,10 @@ export class AppComponent extends BaseSubscriber {
       .pipe(takeUntil(this.notifier))
       .subscribe(() => {
         this.checkIsMobile();
-      })
+      });
   }
 
   checkIsMobile(startMobileWidth = 959): void {
-   this.isMobile = (document?.body?.offsetWidth || 0) <= startMobileWidth;
+    this.isMobile = (document?.body?.offsetWidth || 0) <= startMobileWidth;
   }
 }

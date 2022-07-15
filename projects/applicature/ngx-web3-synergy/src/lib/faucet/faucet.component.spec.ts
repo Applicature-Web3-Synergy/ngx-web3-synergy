@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { W3sFaucetComponent } from './faucet.component';
 
-describe('W3sFaucetComponent', () => {
+xdescribe('W3sFaucetComponent', () => {
   let component: W3sFaucetComponent;
   let fixture: ComponentFixture<W3sFaucetComponent>;
 

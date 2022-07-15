@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { W3sInstallWalletHelperService } from './install-wallet-helper.service';
 
 
-describe('InstallWalletHelperService', () => {
+xdescribe('InstallWalletHelperService', () => {
   let service: W3sInstallWalletHelperService;
 
   beforeEach(() => {

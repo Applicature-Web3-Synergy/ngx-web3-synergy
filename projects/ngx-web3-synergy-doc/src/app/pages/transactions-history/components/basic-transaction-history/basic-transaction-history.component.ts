@@ -35,11 +35,13 @@ export class BasicTransactionHistoryComponent extends BaseSubscriber {
   }
 
   addTransaction(status: W3S_TRANSACTION_STATUS = W3S_TRANSACTION_STATUS.SUCCESS): void {
+    const randomHash = '0x...' + Math.random();
+
     this.transactionService.saveTransaction(
       {
         chainId: this.currentChainId,
-        name: 'Transfer ' + this.currentChainId, // Transaction name,
-        hash: '0x...' + Math.random(), // transaction hash, will disappear is status pending.
+        name: 'Transfer ' + randomHash, // Transaction name,
+        hash: randomHash, // transaction hash, will disappear is status pending.
         status,
         viewed: false
       }

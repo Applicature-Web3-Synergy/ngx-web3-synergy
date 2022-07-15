@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sInsertionDirective } from './insertion.directive';
 
 xdescribe('W3sInsertionDirective', () => {

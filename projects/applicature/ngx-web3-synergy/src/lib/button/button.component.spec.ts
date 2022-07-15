@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { W3sButtonComponent } from './button.component';
 
-describe('W3sIdenticonDirective', () => {
+xdescribe('W3sIdenticonDirective', () => {
   let component: W3sButtonComponent;
   let fixture: ComponentFixture<W3sButtonComponent>;
 

@@ -10,7 +10,6 @@ import {
 } from './components';
 import { W3sIconModule } from '../icon';
 import { W3sButtonModule } from '../button';
-import { W3sTransactionService } from './services';
 
 
 @NgModule({
@@ -24,7 +23,7 @@ import { W3sTransactionService } from './services';
     W3sTransactionsHistoryModalComponent,
     W3sTransactionsListComponent
   ],
-  providers: [W3sTransactionService],
+  providers: [],
   imports: [
     CommonModule,
     HttpClientModule,
