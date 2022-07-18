@@ -1,0 +1,83 @@
+@use '@applicature/styles/src/lib/scss/as-common' as c;
+
+.w3s-transaction-item-container {
+  position: relative;
+  padding-right: 30px;
+}
+
+a.w3s-transaction-item-link {
+  color: c.getColor(blue, base);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+  max-width: calc(100% - 25px);
+
+  @include c.transition;
+  @include c.text-overflow;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &.fail {
+    color: c.getColor(red, base);
+  }
+}
+
+.w3s-transaction-status {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &.w3s-transaction-status-fail {
+    color: c.getColor(red, base);
+  }
+
+  &.w3s-transaction-status-success {
+    color: c.getColor(green, base);
+  }
+}
+
+.w3s-additional-links {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.w3s-additional-link-container {
+  &:not(:last-child) {
+    position: relative;
+    padding-right: 20px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: c.getColor(grey, base);
+    }
+  }
+}
+
+.w3s-additional-link {
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 16px;
+  color: c.getColor(grey, base);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

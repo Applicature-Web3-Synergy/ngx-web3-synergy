@@ -178,6 +178,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
    * @param config - Initialization Config for wallet connection.
    */
   public initialize(config: W3sInitOptions): Observable<void> {
+    // debugger;
     if (this.onboard) {
       console.error('web3-onboard already initialized');
 
@@ -252,7 +253,6 @@ export class W3sWalletConnectService extends BaseSubscriber {
     return new Observable<void>((observer: Subscriber<void>) => {
       try {
         this._onboard = Onboard(initOptions);
-
         this._subscriptions();
         this.initWeb3();
         this._onboardInitialized$.next();
@@ -386,7 +386,8 @@ export class W3sWalletConnectService extends BaseSubscriber {
         if (previouslyConnectedWallet !== null) {
           this.onboard.connectWallet({
             autoSelect: {
-              label: previouslyConnectedWallet, disableModals: true
+              label: previouslyConnectedWallet,
+              disableModals: true
             }
           }).then();
         }
@@ -403,7 +404,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
         if (wallet) {
           const connectedWallet = wallet.label;
 
-          window.localStorage.setItem(
+          localStorage.setItem(
             W3S_CONNECTED_WALLET_NAME,
             connectedWallet
           );

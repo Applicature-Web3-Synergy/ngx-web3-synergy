@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { W3sButtonModule, W3sTransactionsModule } from '@applicature/ngx-web3-synergy';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { TransactionsHistoryRoutingModule } from './transactions-history-routing.module';
 import { TransactionsHistoryComponent } from './transactions-history.component';
@@ -9,6 +11,7 @@ import { BasicTransactionHistoryComponent, CustomTransactionHistoryComponent } f
 import { ComponentViewerModule } from '../../modules/component-viewer/component-viewer.module';
 import { NeedWalletConnectionModule } from '../../modules/need-wallet-connection';
 import { ExampleCardModule } from '../../modules/example-card/example-card.module';
+
 
 
 @NgModule({
@@ -24,7 +27,9 @@ import { ExampleCardModule } from '../../modules/example-card/example-card.modul
     NeedWalletConnectionModule,
     ExampleCardModule,
     W3sTransactionsModule,
-    W3sButtonModule
+    W3sButtonModule,
+    MatCheckboxModule,
+    FormsModule
   ]
 })
 export class TransactionsHistoryModule {
