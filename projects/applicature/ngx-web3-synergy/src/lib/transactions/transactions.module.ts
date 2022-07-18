@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { W3SpinnerModule } from '../spinner';
 import {
+  W3sTransactionItemComponent,
   W3sTransactionsHistoryComponent,
   W3sTransactionsHistoryModalComponent,
   W3sTransactionsListComponent
@@ -14,6 +15,7 @@ import { W3sButtonModule } from '../button';
 
 @NgModule({
   declarations: [
+    W3sTransactionItemComponent,
     W3sTransactionsHistoryComponent,
     W3sTransactionsHistoryModalComponent,
     W3sTransactionsListComponent
