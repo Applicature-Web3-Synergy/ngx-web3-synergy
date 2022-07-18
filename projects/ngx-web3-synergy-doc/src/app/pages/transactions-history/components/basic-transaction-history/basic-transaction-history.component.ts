@@ -60,7 +60,6 @@ export class BasicTransactionHistoryComponent extends BaseSubscriber {
       ];
     }
 
-
     this.transactionService.saveTransaction(transactionToSave)
       .pipe(
         takeWhile((res) => res.status !== W3S_TRANSACTION_STATUS.PENDING),
