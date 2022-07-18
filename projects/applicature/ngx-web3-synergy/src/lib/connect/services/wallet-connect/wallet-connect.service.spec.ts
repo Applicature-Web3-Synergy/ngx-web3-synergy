@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, prefer-const */
 
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { catchError, firstValueFrom, Observable, of, take } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { catchError, firstValueFrom, Observable, of, Subject, take } from 'rxjs';
+import { debounceTime, switchMap, tap } from 'rxjs/operators';
 
 import injectedModule from '@web3-onboard/injected-wallets';
-import { AppState } from '@web3-onboard/core/dist/types';
+import { AppState, WalletState } from '@web3-onboard/core/dist/types';
 import Web3 from 'web3';
 
 import { W3S_CONNECTED_WALLET_NAME, W3sWalletConnectService } from './wallet-connect.service';
@@ -53,6 +53,16 @@ const InitializationConfigMock: W3sInitOptions = {
 };
 
 const stateMock: AppState = { wallets: [ { label: 'Metamask' } ] } as AppState;
+
+const web3Provider = new Web3.providers.WebsocketProvider('ws://remotenode.com:8546');
+
+const WalletStateMock: WalletState = {
+  label: 'Metamask',
+  provider: (web3Provider as any),
+  icon: 'icon url',
+  accounts: [],
+  chains: []
+};
 
 describe('W3sWalletConnectService.', () => {
   let service: W3sWalletConnectService;
@@ -174,6 +184,162 @@ describe('W3sWalletConnectService.', () => {
 
       expect(actualResult).toEqual(expectedResult);
     }));
+  });
+
+  describe('After App initialized.', () => {
+    let connectWalletSpy: jasmine.Spy<any>;
+    let lsGetSpy: jasmine.Spy<any>;
+
+    beforeEach(() => {
+      lsGetSpy = spyOn(localStorage, 'getItem');
+      connectWalletSpy = spyOn(service?.onboard, 'connectWallet')
+        .and.returnValue(Promise.resolve(null));
+
+      service['_onboard'] = null;
+    });
+
+    it('should autoSelect wallet after app initialization.', () => {
+      const walletLabel = 'MetaMask';
+      const expectedResult = {
+        autoSelect: {
+          label: walletLabel,
+          disableModals: true
+        }
+      };
+      lsGetSpy.and.returnValue(walletLabel);
+
+      service.initialize(InitializationConfigMock)
+        .pipe(take(1))
+        .subscribe(() => {
+          expect(connectWalletSpy).toHaveBeenCalledWith(expectedResult);
+        });
+    });
+
+    it(`shouldn't autoSelect wallet after app initialization.`, () => {
+      lsGetSpy.and.returnValue(null);
+
+      service.initialize(InitializationConfigMock)
+        .pipe(take(1))
+        .subscribe(() => {
+          expect(connectWalletSpy).not.toHaveBeenCalled();
+        });
+    });
+  });
+
+  describe('After wallet connects.', () => {
+    const wallet: WalletState = { ...WalletStateMock };
+    let walletsState$: Subject<WalletState[]>;
+    let stateChanged$: Subject<void>;
+    let initWeb3Spy: jasmine.Spy<any>;
+
+    beforeEach(() => {
+      stateChanged$ = new Subject<void>();
+      walletsState$ = new Subject<WalletState[]>();
+
+      walletsState$
+        .pipe(
+          debounceTime(1000),
+          take(1)
+        )
+        .subscribe(() => {
+          stateChanged$.next();
+        });
+
+      spyOn(service.onboard.state, 'select').and.returnValue(walletsState$.asObservable());
+      initWeb3Spy = spyOn(service, 'initWeb3');
+      service['_subscriptions']();
+    });
+
+    afterEach(() => {
+      walletsState$.complete();
+      stateChanged$.complete();
+      walletsState$ = null;
+      stateChanged$ = null;
+    });
+
+    it('should remove connected wallet label from localStorage.', () => {
+      const lsSetItemSpy = spyOn(localStorage, 'setItem').and.returnValue(null);
+      const lsRemoveItemSpy = spyOn(localStorage, 'removeItem').and.returnValue(null);
+
+      walletsState$.next([]);
+
+      stateChanged$
+        .pipe(
+          take(1)
+        )
+        .subscribe(() => {
+          expect(initWeb3Spy).toHaveBeenCalledWith(undefined);
+          expect(lsSetItemSpy).not.toHaveBeenCalled();
+          expect(lsRemoveItemSpy).toHaveBeenCalledWith(W3S_CONNECTED_WALLET_NAME);
+        });
+    });
+
+    it('should set connected wallet label to localStorage.', () => {
+      const lsSetItemSpy = spyOn(localStorage, 'setItem').and.returnValue(null);
+
+      walletsState$.next([ wallet ]);
+
+      stateChanged$
+        .pipe(take(1))
+        .subscribe(() => {
+          expect(initWeb3Spy).toHaveBeenCalledWith(wallet.provider);
+          expect(lsSetItemSpy).toHaveBeenCalledWith(W3S_CONNECTED_WALLET_NAME, wallet.label);
+        });
+    });
+
+    it('should emit accounts as [], balance as null and set chainId as null if no connected account.',
+      () => {
+        spyOn(localStorage, 'setItem').and.returnValue(null);
+        spyOn(localStorage, 'removeItem').and.returnValue(null);
+        const accountsSpy = spyOn(service['_accounts$'], 'next');
+        const balanceSpy = spyOn(service['_balance$'], 'next');
+
+        walletsState$.next([]);
+
+        stateChanged$
+          .pipe(
+            take(1)
+          )
+          .subscribe(() => {
+            expect(initWeb3Spy).toHaveBeenCalledWith(undefined);
+            expect(accountsSpy).toHaveBeenCalledWith([]);
+            expect(balanceSpy).toHaveBeenCalledWith(null);
+            expect(service['_chain$'].value).toEqual(null);
+          });
+      });
+
+    it('should emit accounts, balance and set chainId if connected wallet.', () => {
+      spyOn(localStorage, 'setItem').and.returnValue(null);
+      spyOn(localStorage, 'removeItem').and.returnValue(null);
+      const accountsSpy = spyOn(service['_accounts$'], 'next');
+      const balanceSpy = spyOn(service['_balance$'], 'next');
+      const expectedWalletState: WalletState = {
+        ...wallet,
+        accounts: [{
+          address: '091x...33',
+          ens: null,
+          balance: {
+            MATIC: '123'
+          }
+        }],
+        chains: [ {
+          id: W3S_CHAIN_ID.POLYGON_TESTNET,
+          namespace: 'evm'
+        } ]
+      }
+      walletsState$.next([expectedWalletState]);
+
+      stateChanged$
+        .pipe(
+          take(1)
+        )
+        .subscribe(() => {
+          expect(initWeb3Spy).toHaveBeenCalledWith(wallet.provider);
+          expect(accountsSpy).toHaveBeenCalledWith([expectedWalletState.accounts[0].address]);
+          expect(balanceSpy).toHaveBeenCalledWith(expectedWalletState.accounts[0].balance);
+          expect(service['_chain$'].value).toEqual(expectedWalletState.chains[0]?.id);
+        });
+    });
   });
 
   describe('Connect.', () => {
@@ -482,7 +648,7 @@ describe('W3sWalletConnectService.', () => {
   });
 
   it('should init web3 with custom provider.', () => {
-    const expectedResult = new Web3.providers.WebsocketProvider('ws://remotenode.com:8546');
+    const expectedResult = web3Provider;
     const actualResult = service.initWeb3(expectedResult);
 
     expect(actualResult instanceof Web3).toBeTruthy();
@@ -609,8 +775,8 @@ describe('W3sWalletConnectService.', () => {
   });
 
   it('should return connectionState$ if no connected wallets', () => {
-    const state: AppState = { wallets: []} as AppState;
-    const expectedResult = { connected: false, state};
+    const state: AppState = { wallets: [] } as AppState;
+    const expectedResult = { connected: false, state };
     const removeFromLsSpy = spyOn(localStorage, 'removeItem');
     spyOn(service.onboard.state, 'select')
       .and.returnValue(of(state as any));
@@ -625,7 +791,7 @@ describe('W3sWalletConnectService.', () => {
   });
 
   it('should return connectionState$ if wallet connected.', () => {
-    const expectedResult = { connected: true, state: stateMock};
+    const expectedResult = { connected: true, state: stateMock };
     const removeFromLsSpy = spyOn(localStorage, 'removeItem');
     spyOn(service.onboard.state, 'select')
       .and.returnValue(of(stateMock as any));
