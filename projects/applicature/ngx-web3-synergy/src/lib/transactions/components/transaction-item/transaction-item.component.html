@@ -1,0 +1,45 @@
+<div class="w3s-transaction-item-container">
+  <div class="w3s-transaction-item">
+    <a class="w3s-transaction-item-link"
+       [href]="transaction.explorerUrl"
+       [class.fail]="transaction.status==='fail'"
+       target="_blank"
+       rel="noopener noreferrer"
+    >
+      <span class="w3s-transaction-item-text">{{ transaction.name }} ↗</span>
+    </a>
+
+    <div class="w3s-additional-links" *ngIf="transaction.additionalLinks?.length">
+      <div class="w3s-additional-link-container" *ngFor="let additionalLink of transaction.additionalLinks">
+        <a class="w3s-additional-link"
+           [href]="additionalLink.href"
+           [target]="!additionalLink.ignoreTargetBlank ? '_blank' : '_self'"
+           rel="noopener noreferrer"
+        >
+          {{additionalLink.title}}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <ng-container [ngSwitch]="transaction.status">
+    <w3s-icon *ngSwitchCase="'fail'"
+              icon="wcl-icon-fail"
+              class="w3s-transaction-status w3s-transaction-status-fail"
+    >
+    </w3s-icon>
+
+    <w3s-icon *ngSwitchCase="'success'"
+              icon="wcl-icon-check"
+              class="w3s-transaction-status w3s-transaction-status-success"
+    >
+    </w3s-icon>
+
+    <w3s-spinner *ngSwitchCase="'pending'"
+                 [diameter]="14"
+                 [width]="2"
+                 class="w3s-transaction-status w3s-transaction-status-pending"
+    >
+    </w3s-spinner>
+  </ng-container>
+</div>
