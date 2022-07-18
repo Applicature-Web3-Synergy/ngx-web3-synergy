@@ -29,6 +29,12 @@ export interface W3sEtherscanTransaction {
   explorerUrl?: string;
 }
 
+export interface W3sAdditionalLink {
+  title: string;
+  href: string;
+  ignoreTargetBlank?: boolean;
+}
+
 export interface W3sAddTransaction {
   chainId: W3S_CHAIN_ID | string;
   name: string;
@@ -36,6 +42,7 @@ export interface W3sAddTransaction {
   status: W3S_TRANSACTION_STATUS;
   explorerUrl?: string;
   viewed: boolean;
+  additionalLinks?: W3sAdditionalLink[];
   [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 

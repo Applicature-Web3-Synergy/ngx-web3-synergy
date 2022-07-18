@@ -66,7 +66,7 @@ const WalletStateMock: WalletState = {
 
 describe('W3sWalletConnectService.', () => {
   let service: W3sWalletConnectService;
-  let initializeRes: Observable<void>;
+  let initializeRes$: Observable<void>;
 
   beforeEach(() => {
     TestBed.configureTestingModule(TestW3sConnectModuleMetadata);
@@ -74,8 +74,14 @@ describe('W3sWalletConnectService.', () => {
   });
 
   beforeEach(async () => {
-    initializeRes = service.initialize(InitializationConfigMock);
-    await firstValueFrom(initializeRes);
+    initializeRes$ = service.initialize(InitializationConfigMock);
+    await firstValueFrom(initializeRes$);
+  });
+
+  afterAll(() => {
+    initializeRes$
+      .subscribe()
+      .unsubscribe();
   });
 
   it('should be created.', () => {
@@ -86,9 +92,10 @@ describe('W3sWalletConnectService.', () => {
     let actualResult = null;
     const expectedResult = undefined;
 
-    initializeRes
+    initializeRes$
       .pipe(take(1))
-      .subscribe(res => actualResult = res);
+      .subscribe(res => actualResult = res)
+      .unsubscribe();
 
     expect(actualResult).toEqual(expectedResult);
   }));
@@ -103,12 +110,13 @@ describe('W3sWalletConnectService.', () => {
     it('should return null if app already initialized.', waitForAsync(() => {
       let actualResult;
       const expectedResult = null;
-      const result = initializeRes
+      const result = initializeRes$
         .pipe(switchMap(() => service.initialize(InitializationConfigMock)));
 
       result
         .pipe(take(1))
-        .subscribe(res => actualResult = res);
+        .subscribe(res => actualResult = res)
+        .unsubscribe();
 
       expect(consoleErrorsSpy).toHaveBeenCalledWith('web3-onboard already initialized');
       expect(actualResult).toEqual(expectedResult);
