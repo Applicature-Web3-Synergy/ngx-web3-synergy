@@ -47,7 +47,6 @@ export class BasicTransactionHistoryComponent extends BaseSubscriber {
       viewed: false
     }
 
-    debugger
     if (this.includesAdditionalLinks) {
       transactionToSave.additionalLinks = [
         {

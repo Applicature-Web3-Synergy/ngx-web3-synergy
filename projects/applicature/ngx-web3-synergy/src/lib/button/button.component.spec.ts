@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { AsColors, AS_COLOR_GROUP } from '@applicature/styles';
 
 import { W3sButtonComponent } from './button.component';
-import { ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { W3sIconModule } from '../icon';
 import { W3sDirectivesModule, W3sSetStyleProp } from '../directives';
 import { W3SpinnerModule } from '../spinner';

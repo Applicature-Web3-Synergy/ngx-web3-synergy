@@ -178,7 +178,6 @@ export class W3sWalletConnectService extends BaseSubscriber {
    * @param config - Initialization Config for wallet connection.
    */
   public initialize(config: W3sInitOptions): Observable<void> {
-    // debugger;
     if (this.onboard) {
       console.error('web3-onboard already initialized');
 

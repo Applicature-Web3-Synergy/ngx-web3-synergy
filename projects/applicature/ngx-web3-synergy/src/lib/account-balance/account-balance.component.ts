@@ -17,7 +17,7 @@ import { Chain } from '@web3-onboard/common/dist/types';
 import BigNumber from 'bignumber.js';
 import { AS_COLOR_GROUP, AsColorGroup, AsColorProperties, AsColors } from '@applicature/styles';
 
-import { w3sGenerateJazzicon, w3sToBN, BaseSubscriber } from '../helpers';
+import { BaseSubscriber, w3sGenerateJazzicon, w3sToBN } from '../helpers';
 import { W3sWalletConnectService } from '../connect';
 import { W3sBalanceAppearance } from './types';
 import { W3sSetStyleProp } from '../directives';
@@ -122,20 +122,20 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
     private _walletConnectService: W3sWalletConnectService,
   ) {
     super();
+  }
 
+  /** @internal */
+  public ngOnInit(): void {
     const connectionState = this._walletConnectService.connectionState;
 
-    if (!connectionState.connected) {
+    if ( !connectionState.connected ) {
       this.chainsList = [];
 
       return;
     }
 
     this.chainsList = connectionState.state.chains;
-  }
 
-  /** @internal */
-  public ngOnInit(): void {
     this._walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
@@ -146,13 +146,13 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
     this._walletConnectService.balance$
       .pipe(
         map((balance: Balances | null) => {
-          if (!balance) {
+          if ( !balance ) {
             return null;
           }
 
           const balanceSymbol = Object.keys(balance)[0];
 
-          if (!balanceSymbol) {
+          if ( !balanceSymbol ) {
             return null;
           }
 
@@ -167,7 +167,7 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
         }),
         takeUntil(this.notifier)
       ).subscribe((balance: string | null) => {
-      if (this.balance !== balance) {
+      if ( this.balance !== balance ) {
         this.balance = balance;
         this._cdr.detectChanges();
       }
@@ -178,7 +178,7 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
         map((accounts: string[]) => {
           const account = (accounts ?? [])[0] || null;
 
-          if (account && this.showAddress && this.addressConfig?.showIdenticon) {
+          if ( account && this.showAddress && this.addressConfig?.showIdenticon ) {
             this.identicon = w3sGenerateJazzicon(account);
           }
 
@@ -201,7 +201,7 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
         return {
           name: `--w3s-account-balance-${prop}`,
           value: colorProperties[prop]
-        }
+        };
       });
 
     this._cdr.markForCheck();
@@ -209,7 +209,7 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
 
   /** Emit {@link accountClicked} event. */
   public accountButtonClick(evt): void {
-    this.accountClicked.next(evt);
+    this.accountClicked.emit(evt);
   }
 
 }
