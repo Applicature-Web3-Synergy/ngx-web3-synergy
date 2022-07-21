@@ -148,17 +148,25 @@ Solution:
 
 ## How to use
  This Library uses **@web3-onboard/core** for the connection wallet. So you can visit their [documentation](https://docs.blocknative.com/onboard/core) for more details.
- 
+ - install wallets. Like example `npm i @web3-onboard/walletconnect`
  - **app.module.ts**
 
 <pre><code>
-import injectedModule from '@web3-onboard/injected-wallets'
+import injectedModule from '@web3-onboard/injected-wallets';
+import walletConnectModule from '@web3-onboard/walletconnect';
 
 /** Read more about Infura https://infura.io */
 const INFURA_KEY = environment.infuraKey;
 
 /** More info https://docs.blocknative.com/onboard/injected-wallets */
 const injected = injectedModule();
+
+/** More info https://docs.blocknative.com/onboard/wallet-connect */
+const walletConnect = walletConnectModule({
+  qrcodeModalOptions: {
+    mobileLinks: ['rainbow', 'metamask', 'argent', 'trust', 'imtoken', 'pillar']
+  }
+});
 
 /** More supported wallets https://docs.blocknative.com/onboard */
 
