@@ -3,74 +3,35 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { catchError, firstValueFrom, Observable, of, Subject, take } from 'rxjs';
 import { debounceTime, switchMap, tap } from 'rxjs/operators';
-
-import injectedModule from '@web3-onboard/injected-wallets';
 import { AppState, WalletState } from '@web3-onboard/core/dist/types';
 import Web3 from 'web3';
 
 import { W3S_CONNECTED_WALLET_NAME, W3sWalletConnectService } from './wallet-connect.service';
 import { TestW3sConnectModuleMetadata } from '../../connect.module.spec';
-import { W3sConnectionState, W3sInitOptions } from './interfaces';
-import { W3S_CHAIN_ID } from '../../../enums';
-import { W3sBlockExplorerUrls, W3sNativeCurrencies, W3sRpcUrls } from '../../../constants';
+import { W3sConnectionState } from './interfaces';
 import { W3sBlockScrollHelperService } from '../../../helpers';
 import { W3sDialogConfig, W3sDialogRef, W3sDialogService } from '../../../dialog';
 import { W3sConnectDialogConfig, W3sConnectDialogData, W3sConnectModalComponent } from '../../components';
 import { W3sWalletLabel } from './types';
+import {
+  AccountMock,
+  AppStateMock,
+  connectedChainMock,
+  InitializationConfigMock,
+  WalletStateMock,
+  web3ProviderMock
+} from './mocks';
 
-const InitializationConfigMock: W3sInitOptions = {
-  wallets: [
-    /** Will show all installed injected wallets */
-    {
-      label: 'injected',
-      module: injectedModule()
-    }
-  ],
-  chains: [
-    {
-      id: W3S_CHAIN_ID.BSC_TESTNET,
-      token: 'BNB',
-      label: 'BNB Chain',
-      rpcUrl: 'https://data-seed-prebsc-1-s1.binance.org:8545',
-      icon: 'assets/svg/network/bsc.svg',
-      blockExplorerUrl: 'https://testnet.bscscan.com',
-      blockExplorerApiUrl: 'https://api-testnet.bscscan.com/api',
-      namespace: 'evm',
-      color: '#000',
-      providerConnectionInfo: {
-        url: 'https://data-seed-prebsc-1-s1.binance.org:8545'
-      }
-    },
-    {
-      id: W3S_CHAIN_ID.POLYGON_TESTNET,
-      token: W3sNativeCurrencies[W3S_CHAIN_ID.POLYGON_TESTNET].name,
-      label: 'Matic',
-      rpcUrl: W3sRpcUrls[W3S_CHAIN_ID.POLYGON_TESTNET][0],
-      icon: 'assets/svg/network/polygon.svg',
-      blockExplorerUrl: W3sBlockExplorerUrls[W3S_CHAIN_ID.POLYGON_TESTNET][0],
-    }
-  ]
-};
-
-const stateMock: AppState = { wallets: [ { label: 'Metamask' } ] } as AppState;
-
-const web3Provider = new Web3.providers.WebsocketProvider('ws://remotenode.com:8546');
-
-const WalletStateMock: WalletState = {
-  label: 'Metamask',
-  provider: (web3Provider as any),
-  icon: 'icon url',
-  accounts: [],
-  chains: []
-};
 
 describe('W3sWalletConnectService.', () => {
   let service: W3sWalletConnectService;
   let initializeRes$: Observable<void>;
+  let stateMock: AppState;
 
   beforeEach(() => {
     TestBed.configureTestingModule(TestW3sConnectModuleMetadata);
     service = TestBed.inject(W3sWalletConnectService);
+    stateMock = { ...AppStateMock };
   });
 
   beforeEach(async () => {
@@ -323,17 +284,8 @@ describe('W3sWalletConnectService.', () => {
       const balanceSpy = spyOn(service['_balance$'], 'next');
       const expectedWalletState: WalletState = {
         ...wallet,
-        accounts: [{
-          address: '091x...33',
-          ens: null,
-          balance: {
-            MATIC: '123'
-          }
-        }],
-        chains: [ {
-          id: W3S_CHAIN_ID.POLYGON_TESTNET,
-          namespace: 'evm'
-        } ]
+        accounts: [{ ...AccountMock }],
+        chains: connectedChainMock()
       }
       walletsState$.next([expectedWalletState]);
 
@@ -656,7 +608,7 @@ describe('W3sWalletConnectService.', () => {
   });
 
   it('should init web3 with custom provider.', () => {
-    const expectedResult = web3Provider;
+    const expectedResult = web3ProviderMock;
     const actualResult = service.initWeb3(expectedResult);
 
     expect(actualResult instanceof Web3).toBeTruthy();
@@ -713,7 +665,6 @@ describe('W3sWalletConnectService.', () => {
   });
 
   it('should return connection state.', () => {
-    // const stateMock: AppState = { wallets: [ { label: 'Metamask' } ] } as AppState;
     const expectedResult = {
       connected: true,
       state: stateMock
