@@ -50,6 +50,14 @@ export class W3sConnectWalletComponent extends BaseSubscriber implements OnInit 
   public disabled?: boolean = false;
 
   /**
+   * Show/hide wallet icon. <br>
+   * It's an optional parameter. <br>
+   * The default value is true.
+   */
+  @Input()
+  public showWalletIcon?: boolean = true;
+
+  /**
    * Show/hide account balance. <br>
    * It's an optional parameter. <br>
    * The default value is false.
