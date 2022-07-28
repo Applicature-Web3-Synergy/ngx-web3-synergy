@@ -179,7 +179,7 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
           const account = (accounts ?? [])[0] || null;
 
           if ( account && this.showAddress && this.addressConfig?.showIdenticon ) {
-            this.identicon = w3sGenerateJazzicon(account);
+            this.identicon = w3sGenerateJazzicon(account, 20);
           }
 
           return account;
