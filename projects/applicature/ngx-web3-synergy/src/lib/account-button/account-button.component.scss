@@ -13,8 +13,8 @@
   flex-direction: column;
   margin: 0;
   font-family: c.$as-font-family;
-  min-width: 250px;
-  padding: 8px 0;
+  min-width: 260px;
+  padding: 16px 0;
   background: c.getColor(white, base);
   border-radius: map-get(c.$as-border-radius, sm);
   box-shadow: 0 0 10px rgba(56, 64, 75, 0.1);
@@ -23,9 +23,8 @@
 
 .w3s-account-button-header {
   display: inline-block;
-  padding: 0 12px;
-  margin-top: 4px;
-  margin-bottom: 8px;
+  padding: 0 16px;
+  margin-bottom: 12px;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
@@ -69,7 +68,6 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  margin-left: 12px;
   cursor: pointer;
   border-radius: 50%;
   @include c.transition;
@@ -92,7 +90,7 @@
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 8px 12px;
+  padding: 8px 16px;
   @include c.transition;
 
   &:hover {
@@ -117,7 +115,7 @@
 .w3s-account-button-options-footer {
   display: flex;
   flex-direction: column;
-  padding: 8px 12px;
+  padding: 12px 16px 0;
 }
 
 .w3s-account-button-options-button {

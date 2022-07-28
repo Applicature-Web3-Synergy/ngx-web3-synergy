@@ -86,7 +86,7 @@ export class W3sTransactionsHistoryComponent extends BaseSubscriber implements O
       },
       dialogClass: 'w3s-recent-transactions-dialog',
       width: '100%',
-      maxWidth: '372px',
+      maxWidth: '420px',
       overlay: {
         closeByClick: true
       }
