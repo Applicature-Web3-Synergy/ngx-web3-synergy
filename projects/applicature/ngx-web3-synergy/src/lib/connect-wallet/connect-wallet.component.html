@@ -73,11 +73,10 @@
     </ng-container>
   </ng-container>
 
-
   <ng-template #connectWallet>
     <w3s-button (buttonClicked)="connect()"
                 [disabled]="disabled"
-                leftIcon="wcl-icon-wallet"
+                [leftIcon]="showWalletIcon ? 'wcl-icon-wallet' : null"
                 label="Connect Wallet"
                 class="w3s-connect-wallet-btn"
     >
