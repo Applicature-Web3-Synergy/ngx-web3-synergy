@@ -29,19 +29,22 @@
       </button>
     </div>
 
-    <div class="w3s-info-main" [w3sIdenticon]="identicon">
+    <div class="w3s-info-main" [w3sIdenticon]="identicon" position="left">
       <span>{{ accountAddress | w3sShortAddress }}</span>
     </div>
     <div class="w3s-info-footer">
       <span w3sCopyToClipboard
             [textToCopy]="accountAddress"
             class="w3s-info-footer-item">
-        <i class="wcl-icon-copy"></i>
+        <w3s-icon icon="wcl-icon-copy"></w3s-icon>
         <span>Copy Address</span>
       </span>
 
       <a class="w3s-info-footer-item" *ngIf="(etherscanAddress$ | async) as ethAddress" [href]="ethAddress"
-         target="_blank"><i class="wcl-icon-external-link"></i><span>View on Explorer</span></a>
+         target="_blank">
+        <w3s-icon icon="wcl-icon-external-link"></w3s-icon>
+        <span>View on Explorer</span>
+      </a>
     </div>
   </div>
 

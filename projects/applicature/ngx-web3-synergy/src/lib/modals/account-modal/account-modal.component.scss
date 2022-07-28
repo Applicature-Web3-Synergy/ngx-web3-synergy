@@ -31,16 +31,11 @@
 }
 
 .w3s-info {
-  padding: 20px 16px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
   color: c.getColor(grey, base);
-}
-
-.w3s-info-header,
-.w3s-info-main {
-  margin-bottom: 12px;
 }
 
 .w3s-info-header,
@@ -51,6 +46,8 @@
 }
 
 .w3s-info-header {
+  margin-bottom: 8px;
+
   > span {
     font-weight: 500;
     font-size: 13px;
@@ -63,7 +60,7 @@
     font-family: c.$as-font-family;
     font-size: 13px;
     font-weight: 500;
-    padding: 4px 8px;
+    padding: 3px 7px;
     border-radius: 8px;
     background-color: transparent;
 
@@ -87,9 +84,10 @@
 }
 
 .w3s-info-main {
+  margin-bottom: 11px;
+
   > span {
     display: inline-block;
-    margin-left: 8px;
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
@@ -104,6 +102,7 @@
     text-decoration: none;
     color: c.getColor(grey, base);
     font-size: 13px;
+    line-height: 16px;
     font-weight: 500;
     margin-right: 16px;
 
@@ -113,14 +112,12 @@
       margin-right: 0;
     }
 
-    i {
-      display: inline-block;
-      margin-right: 8px;
-
-      &:before {
-        font-size: 20px;
-        color: c.getColor(grey, base);
-      }
+    w3s-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      margin-right: 4px;
+      color: c.getColor(grey, base);
     }
 
     &:hover span {
@@ -188,6 +185,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+w3s-transactions-list {
+  ::ng-deep {
+    .w3s-transaction-empty {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: c.getColor(white, text);
+      text-align: left;
+    }
+  }
 }
 
 @media (max-width: 767px) {

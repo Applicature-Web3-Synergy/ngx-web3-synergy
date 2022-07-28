@@ -75,7 +75,7 @@ export class W3sAccountModalComponent extends BaseSubscriber implements OnInit, 
         )
         .subscribe(([ accountAddress ]) => {
           this.accountAddress = accountAddress;
-          this.identicon = w3sGenerateJazzicon(this.accountAddress);
+          this.identicon = w3sGenerateJazzicon(this.accountAddress, 24);
 
           this._cdr.detectChanges();
         });
