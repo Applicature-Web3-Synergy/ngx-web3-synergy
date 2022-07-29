@@ -22,7 +22,7 @@
         </w3s-avatar>
 
         <div class="w3s-account-button-user-info-name">
-          <h1>{{ account?.name || (accountAddress | w3sShortAddress) }}</h1>
+          <h6>{{ account?.name || (accountAddress | w3sShortAddress) }}</h6>
           <span *ngIf="account?.name">{{ accountAddress | w3sShortAddress }}</span>
         </div>
 

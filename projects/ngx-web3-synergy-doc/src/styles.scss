@@ -15,7 +15,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  background-color: map-get(c.$gray, 5);
+  background-color: map-get(c.$gray, 1);
   border-radius: c.$border-radius c.$border-radius 0 c.$border-radius;
   padding: 10px;
 }

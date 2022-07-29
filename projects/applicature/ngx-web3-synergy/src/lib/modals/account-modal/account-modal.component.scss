@@ -91,7 +91,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: c.$black;
+    color: c.getColor(white, text);
   }
 }
 
@@ -157,7 +157,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: c.$black;
+  color: c.getColor(white, text);
   padding-right: 15px;
 }
 

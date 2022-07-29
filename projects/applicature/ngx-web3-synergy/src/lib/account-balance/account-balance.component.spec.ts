@@ -9,8 +9,8 @@ import { AS_COLOR_GROUP } from '@applicature/styles';
 
 import { W3sAccountBalanceComponent } from './account-balance.component';
 import { W3sPipesModule } from '../pipes';
-import { W3sIconModule } from '../icon';
 import { W3sButtonModule } from '../button';
+import { W3sIconModule } from '../icon';
 import { W3sDirectivesModule, W3sSetStyleProp } from '../directives';
 import {
   chainsMock,
@@ -141,35 +141,35 @@ describe('W3sAccountBalanceComponent', () => {
     const expectedResult: W3sSetStyleProp[] = [
       {
         name: '--w3s-account-balance-base',
-        value: '#E84142'
+        value: '#E31B89'
       },
       {
         name: '--w3s-account-balance-hover',
-        value: '#EA5C5E'
+        value: '#E73D9B'
       },
       {
         name: '--w3s-account-balance-light',
-        value: '#F0898B'
+        value: '#EE72B6'
       },
       {
         name: '--w3s-account-balance-dark',
-        value: '#C03B3C'
+        value: '#BC1C74'
       },
       {
         name: '--w3s-account-balance-text',
-        value: '#FFFFFF'
+        value: '#FFF'
       },
       {
         name: '--w3s-account-balance-border',
-        value: '#E84142'
+        value: '#E31B89'
       },
       {
         name: '--w3s-account-balance-borderHover',
-        value: '#EA5C5E'
+        value: '#E73D9B'
       },
       {
         name: '--w3s-account-balance-borderFocus',
-        value: '#C03B3C'
+        value: '#BC1C74'
       }
     ];
     component.color = AS_COLOR_GROUP.RED;
@@ -184,35 +184,35 @@ describe('W3sAccountBalanceComponent', () => {
     const expectedResult: W3sSetStyleProp[] = [
       {
         name: '--w3s-account-balance-base',
-        value: '#FFFFFF'
+        value: '#FFF'
       },
       {
         name: '--w3s-account-balance-hover',
-        value: '#FFFFFF'
+        value: '#FFF'
       },
       {
         name: '--w3s-account-balance-light',
-        value: '#FFFFFF'
+        value: '#FFF'
       },
       {
         name: '--w3s-account-balance-dark',
-        value: '#FFFFFF'
+        value: '#FFF'
       },
       {
         name: '--w3s-account-balance-text',
-        value: '#222222'
+        value: '#072F3F'
       },
       {
         name: '--w3s-account-balance-border',
-        value: '#FFFFFF'
+        value: '#FFF'
       },
       {
         name: '--w3s-account-balance-borderHover',
-        value: '#DDE3EC'
+        value: '#F3F6F8'
       },
       {
         name: '--w3s-account-balance-borderFocus',
-        value: '#608BF2'
+        value: '#3EA9D4'
       }
     ];
     component.color = null;

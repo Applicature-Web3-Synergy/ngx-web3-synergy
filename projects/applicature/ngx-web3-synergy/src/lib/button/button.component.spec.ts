@@ -262,35 +262,35 @@ describe('W3sButtonComponent', () => {
         },
         {
           name: '--w3s-button-base',
-          value: '#E84142'
+          value: '#E31B89'
         },
         {
           name: '--w3s-button-hover',
-          value: '#EA5C5E'
+          value: '#E73D9B'
         },
         {
           name: '--w3s-button-light',
-          value: '#F0898B'
+          value: '#EE72B6'
         },
         {
           name: '--w3s-button-dark',
-          value: '#C03B3C'
+          value: '#BC1C74'
         },
         {
           name: '--w3s-button-text',
-          value: '#FFFFFF'
+          value: '#FFF'
         },
         {
           name: '--w3s-button-border',
-          value: '#E84142'
+          value: '#E31B89'
         },
         {
           name: '--w3s-button-borderHover',
-          value: '#EA5C5E'
+          value: '#E73D9B'
         },
         {
           name: '--w3s-button-borderFocus',
-          value: '#C03B3C'
+          value: '#BC1C74'
         }
       ];
 
@@ -309,35 +309,35 @@ describe('W3sButtonComponent', () => {
         },
         {
           name: '--w3s-button-base',
-          value: '#4678F0'
+          value: '#1C9ACC'
         },
         {
           name: '--w3s-button-hover',
-          value: '#608BF2'
+          value: '#3EA9D4'
         },
         {
           name: '--w3s-button-light',
-          value: '#8CABF6'
+          value: '#72C0DF'
         },
         {
           name: '--w3s-button-dark',
-          value: '#3F67C7'
+          value: '#1D82AA'
         },
         {
           name: '--w3s-button-text',
-          value: '#FFFFFF'
+          value: '#FFF'
         },
         {
           name: '--w3s-button-border',
-          value: '#4678F0'
+          value: '#1C9ACC'
         },
         {
           name: '--w3s-button-borderHover',
-          value: '#608BF2'
+          value: '#3EA9D4'
         },
         {
           name: '--w3s-button-borderFocus',
-          value: '#3F67C7'
+          value: '#1D82AA'
         }
       ];
 
