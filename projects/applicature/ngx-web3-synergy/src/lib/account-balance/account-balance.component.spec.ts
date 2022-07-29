@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { Chain } from '@web3-onboard/common/dist/types';
 import { Balances } from '@web3-onboard/core/dist/types';
-import { AS_COLOR_GROUP } from '@applicature/styles';
+import { AsColorGroup, AsColors, AS_COLOR_GROUP } from '@applicature/styles';
 
 import { W3sAccountBalanceComponent } from './account-balance.component';
 import { W3sPipesModule } from '../pipes';
@@ -22,6 +22,52 @@ import { W3sWalletConnectService } from '../connect';
 import { W3sBlockScrollHelperService } from '../helpers';
 import { W3sDialogService } from '../dialog';
 
+function getStylesPropsByColorMock(color: AsColorGroup): W3sSetStyleProp[] {
+  const {
+    base,
+    hover,
+    light,
+    dark,
+    text,
+    border,
+    borderHover,
+    borderFocus
+  } = AsColors[color];
+  return [
+    {
+      name: '--w3s-account-balance-base',
+      value: base
+    },
+    {
+      name: '--w3s-account-balance-hover',
+      value: hover
+    },
+    {
+      name: '--w3s-account-balance-light',
+      value: light
+    },
+    {
+      name: '--w3s-account-balance-dark',
+      value: dark
+    },
+    {
+      name: '--w3s-account-balance-text',
+      value: text
+    },
+    {
+      name: '--w3s-account-balance-border',
+      value: border
+    },
+    {
+      name: '--w3s-account-balance-borderHover',
+      value: borderHover
+    },
+    {
+      name: '--w3s-account-balance-borderFocus',
+      value: borderFocus
+    }
+  ];
+}
 
 describe('W3sAccountBalanceComponent', () => {
   let component: W3sAccountBalanceComponent;
@@ -138,41 +184,9 @@ describe('W3sAccountBalanceComponent', () => {
   });
 
   it('should set styleProperties when ngOnChanges.', () => {
-    const expectedResult: W3sSetStyleProp[] = [
-      {
-        name: '--w3s-account-balance-base',
-        value: '#E31B89'
-      },
-      {
-        name: '--w3s-account-balance-hover',
-        value: '#E73D9B'
-      },
-      {
-        name: '--w3s-account-balance-light',
-        value: '#EE72B6'
-      },
-      {
-        name: '--w3s-account-balance-dark',
-        value: '#BC1C74'
-      },
-      {
-        name: '--w3s-account-balance-text',
-        value: '#FFF'
-      },
-      {
-        name: '--w3s-account-balance-border',
-        value: '#E31B89'
-      },
-      {
-        name: '--w3s-account-balance-borderHover',
-        value: '#E73D9B'
-      },
-      {
-        name: '--w3s-account-balance-borderFocus',
-        value: '#BC1C74'
-      }
-    ];
-    component.color = AS_COLOR_GROUP.RED;
+    const colorToSet = AS_COLOR_GROUP.RED;
+    const expectedResult: W3sSetStyleProp[] = getStylesPropsByColorMock(colorToSet);
+    component.color = colorToSet;
     component.styleProperties = [];
 
     component.ngOnChanges();
@@ -181,40 +195,7 @@ describe('W3sAccountBalanceComponent', () => {
   });
 
   it('should set styleProperties when ngOnChanges if no color.', () => {
-    const expectedResult: W3sSetStyleProp[] = [
-      {
-        name: '--w3s-account-balance-base',
-        value: '#FFF'
-      },
-      {
-        name: '--w3s-account-balance-hover',
-        value: '#FFF'
-      },
-      {
-        name: '--w3s-account-balance-light',
-        value: '#FFF'
-      },
-      {
-        name: '--w3s-account-balance-dark',
-        value: '#FFF'
-      },
-      {
-        name: '--w3s-account-balance-text',
-        value: '#072F3F'
-      },
-      {
-        name: '--w3s-account-balance-border',
-        value: '#FFF'
-      },
-      {
-        name: '--w3s-account-balance-borderHover',
-        value: '#F3F6F8'
-      },
-      {
-        name: '--w3s-account-balance-borderFocus',
-        value: '#3EA9D4'
-      }
-    ];
+    const expectedResult: W3sSetStyleProp[] = getStylesPropsByColorMock(AS_COLOR_GROUP.WHITE);
     component.color = null;
     component.styleProperties = [];
 
