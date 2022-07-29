@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 564px;
   padding: 28px 20px;
-  background: c.$white;
+  background: c.getColor(white, base);
   border-radius: 12px;
   display: flex;
   justify-content: space-between;

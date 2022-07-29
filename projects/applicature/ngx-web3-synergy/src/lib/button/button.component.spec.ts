@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AsColors, AS_COLOR_GROUP } from '@applicature/styles';
+import { AsColorGroup, AsColors, AS_COLOR_GROUP } from '@applicature/styles';
 
 import { W3sButtonComponent } from './button.component';
 import { W3sIconModule } from '../icon';
@@ -18,6 +18,57 @@ const mockElementRef: any = {
     }
   }
 };
+
+function getStylesPropsByColorMock(color: AsColorGroup, borderRadius = 8): W3sSetStyleProp[] {
+  const {
+    base,
+    hover,
+    light,
+    dark,
+    text,
+    border,
+    borderHover,
+    borderFocus
+  } = AsColors[color];
+  return [
+    {
+      name: '--w3s-button-radius',
+      value: `${borderRadius}px`
+    },
+    {
+      name: '--w3s-button-base',
+      value: base
+    },
+    {
+      name: '--w3s-button-hover',
+      value: hover
+    },
+    {
+      name: '--w3s-button-light',
+      value: light
+    },
+    {
+      name: '--w3s-button-dark',
+      value: dark
+    },
+    {
+      name: '--w3s-button-text',
+      value: text
+    },
+    {
+      name: '--w3s-button-border',
+      value: border
+    },
+    {
+      name: '--w3s-button-borderHover',
+      value: borderHover
+    },
+    {
+      name: '--w3s-button-borderFocus',
+      value: borderFocus
+    }
+  ];
+}
 
 describe('W3sButtonComponent', () => {
   let component: W3sButtonComponent;
@@ -255,44 +306,7 @@ describe('W3sButtonComponent', () => {
 
     it(`should set styleProperties`, () => {
       component.color = AS_COLOR_GROUP.RED;
-      const expectedResult: W3sSetStyleProp[] = [
-        {
-          name: '--w3s-button-radius',
-          value: '8px'
-        },
-        {
-          name: '--w3s-button-base',
-          value: '#E84142'
-        },
-        {
-          name: '--w3s-button-hover',
-          value: '#EA5C5E'
-        },
-        {
-          name: '--w3s-button-light',
-          value: '#F0898B'
-        },
-        {
-          name: '--w3s-button-dark',
-          value: '#C03B3C'
-        },
-        {
-          name: '--w3s-button-text',
-          value: '#FFFFFF'
-        },
-        {
-          name: '--w3s-button-border',
-          value: '#E84142'
-        },
-        {
-          name: '--w3s-button-borderHover',
-          value: '#EA5C5E'
-        },
-        {
-          name: '--w3s-button-borderFocus',
-          value: '#C03B3C'
-        }
-      ];
+      const expectedResult: W3sSetStyleProp[] = getStylesPropsByColorMock(component.color);
 
       component.ngOnInit();
 
@@ -302,44 +316,7 @@ describe('W3sButtonComponent', () => {
     it(`should set styleProperties if no color.`, () => {
       component.color = null;
       component.borderRadius = 12;
-      const expectedResult: W3sSetStyleProp[] = [
-        {
-          name: '--w3s-button-radius',
-          value: '12px'
-        },
-        {
-          name: '--w3s-button-base',
-          value: '#4678F0'
-        },
-        {
-          name: '--w3s-button-hover',
-          value: '#608BF2'
-        },
-        {
-          name: '--w3s-button-light',
-          value: '#8CABF6'
-        },
-        {
-          name: '--w3s-button-dark',
-          value: '#3F67C7'
-        },
-        {
-          name: '--w3s-button-text',
-          value: '#FFFFFF'
-        },
-        {
-          name: '--w3s-button-border',
-          value: '#4678F0'
-        },
-        {
-          name: '--w3s-button-borderHover',
-          value: '#608BF2'
-        },
-        {
-          name: '--w3s-button-borderFocus',
-          value: '#3F67C7'
-        }
-      ];
+      const expectedResult: W3sSetStyleProp[] = getStylesPropsByColorMock(AS_COLOR_GROUP.BLUE, component.borderRadius)
 
       component.ngOnInit();
 

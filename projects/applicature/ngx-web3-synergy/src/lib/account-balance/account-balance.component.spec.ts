@@ -5,12 +5,12 @@ import { CommonModule } from '@angular/common';
 
 import { Chain } from '@web3-onboard/common/dist/types';
 import { Balances } from '@web3-onboard/core/dist/types';
-import { AS_COLOR_GROUP } from '@applicature/styles';
+import { AsColorGroup, AsColors, AS_COLOR_GROUP } from '@applicature/styles';
 
 import { W3sAccountBalanceComponent } from './account-balance.component';
 import { W3sPipesModule } from '../pipes';
-import { W3sIconModule } from '../icon';
 import { W3sButtonModule } from '../button';
+import { W3sIconModule } from '../icon';
 import { W3sDirectivesModule, W3sSetStyleProp } from '../directives';
 import {
   chainsMock,
@@ -22,6 +22,52 @@ import { W3sWalletConnectService } from '../connect';
 import { W3sBlockScrollHelperService } from '../helpers';
 import { W3sDialogService } from '../dialog';
 
+function getStylesPropsByColorMock(color: AsColorGroup): W3sSetStyleProp[] {
+  const {
+    base,
+    hover,
+    light,
+    dark,
+    text,
+    border,
+    borderHover,
+    borderFocus
+  } = AsColors[color];
+  return [
+    {
+      name: '--w3s-account-balance-base',
+      value: base
+    },
+    {
+      name: '--w3s-account-balance-hover',
+      value: hover
+    },
+    {
+      name: '--w3s-account-balance-light',
+      value: light
+    },
+    {
+      name: '--w3s-account-balance-dark',
+      value: dark
+    },
+    {
+      name: '--w3s-account-balance-text',
+      value: text
+    },
+    {
+      name: '--w3s-account-balance-border',
+      value: border
+    },
+    {
+      name: '--w3s-account-balance-borderHover',
+      value: borderHover
+    },
+    {
+      name: '--w3s-account-balance-borderFocus',
+      value: borderFocus
+    }
+  ];
+}
 
 describe('W3sAccountBalanceComponent', () => {
   let component: W3sAccountBalanceComponent;
@@ -138,41 +184,9 @@ describe('W3sAccountBalanceComponent', () => {
   });
 
   it('should set styleProperties when ngOnChanges.', () => {
-    const expectedResult: W3sSetStyleProp[] = [
-      {
-        name: '--w3s-account-balance-base',
-        value: '#E84142'
-      },
-      {
-        name: '--w3s-account-balance-hover',
-        value: '#EA5C5E'
-      },
-      {
-        name: '--w3s-account-balance-light',
-        value: '#F0898B'
-      },
-      {
-        name: '--w3s-account-balance-dark',
-        value: '#C03B3C'
-      },
-      {
-        name: '--w3s-account-balance-text',
-        value: '#FFFFFF'
-      },
-      {
-        name: '--w3s-account-balance-border',
-        value: '#E84142'
-      },
-      {
-        name: '--w3s-account-balance-borderHover',
-        value: '#EA5C5E'
-      },
-      {
-        name: '--w3s-account-balance-borderFocus',
-        value: '#C03B3C'
-      }
-    ];
-    component.color = AS_COLOR_GROUP.RED;
+    const colorToSet = AS_COLOR_GROUP.RED;
+    const expectedResult: W3sSetStyleProp[] = getStylesPropsByColorMock(colorToSet);
+    component.color = colorToSet;
     component.styleProperties = [];
 
     component.ngOnChanges();
@@ -181,40 +195,7 @@ describe('W3sAccountBalanceComponent', () => {
   });
 
   it('should set styleProperties when ngOnChanges if no color.', () => {
-    const expectedResult: W3sSetStyleProp[] = [
-      {
-        name: '--w3s-account-balance-base',
-        value: '#FFFFFF'
-      },
-      {
-        name: '--w3s-account-balance-hover',
-        value: '#FFFFFF'
-      },
-      {
-        name: '--w3s-account-balance-light',
-        value: '#FFFFFF'
-      },
-      {
-        name: '--w3s-account-balance-dark',
-        value: '#FFFFFF'
-      },
-      {
-        name: '--w3s-account-balance-text',
-        value: '#222222'
-      },
-      {
-        name: '--w3s-account-balance-border',
-        value: '#FFFFFF'
-      },
-      {
-        name: '--w3s-account-balance-borderHover',
-        value: '#DDE3EC'
-      },
-      {
-        name: '--w3s-account-balance-borderFocus',
-        value: '#608BF2'
-      }
-    ];
+    const expectedResult: W3sSetStyleProp[] = getStylesPropsByColorMock(AS_COLOR_GROUP.WHITE);
     component.color = null;
     component.styleProperties = [];
 

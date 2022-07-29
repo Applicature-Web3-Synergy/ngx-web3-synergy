@@ -1,3 +1,5 @@
+@use "as-common" as c;
+
 @font-face {
   font-family: 'wcl-icons';
   src:
@@ -23,21 +25,26 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #6d87ac;
+  color: c.getColor(grey, base);
 
   &:before {
     color: inherit;
   }
 }
 
+.wcl-icon-active,
+.wcl-icon-active-big {
+  &:before {
+    color: c.getColor(green, base);
+  }
+}
+
 .wcl-icon-active:before {
   content: "\e900";
-  color: #37ca34;
 }
 
 .wcl-icon-active-big:before {
   content: "\e901";
-  color: #37ca34;
 }
 
 .wcl-icon-chevron-down:before {
@@ -98,7 +105,7 @@
 
 .wcl-icon-wallet-connect:before {
   content: "\e968";
-  color: #3b99fc;
+  color: #3B99FC;
 }
 
 .wcl-icon-wallet:before {
