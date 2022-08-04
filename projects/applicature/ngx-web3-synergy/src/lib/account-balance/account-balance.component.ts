@@ -10,7 +10,8 @@ import {
   Output,
   ViewChild
 } from '@angular/core';
-import { map, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 
 import { Balances } from '@web3-onboard/core/dist/types';
 import { Chain } from '@web3-onboard/common/dist/types';
@@ -94,7 +95,7 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
   public address: string;
 
   /** Current connected wallet balance. */
-  public balance: string | null = null;
+  public balance: { value: string, currency: string } = null;
 
   /** Current network */
   public activeNetwork: Chain;
@@ -109,19 +110,46 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
   public COLOR_GROUP = AS_COLOR_GROUP;
 
   /** @internal */
+  public smallBalanceWidth = false;
+
+  /** @internal */
   public get classNames(): { [el: string]: boolean } {
     return {
       ['w3s-balance']: true,
       [`w3s-balance-${this.appearance}`]: true,
+      ['w3s-balance-with-icon']: !!(this.isCurrency && this.activeNetwork?.icon),
       ['w3s-balance-with-address']: this.showAddress,
+      ['w3s-balance-with-address-identicon']: this.showAddress && this.addressConfig?.showIdenticon,
     };
   }
+
+  /** @internal */
+  private _balanceContainerWidth: number;
+
+  /** @internal */
+  private _balanceValWidth: number;
+
+  /** @internal */
+  private _balanceCurrencyWidth: number;
+
+  /** @internal */
+  private _balanceWidthChanged$: Subject<void> = new Subject<void>();
 
   constructor(
     private _cdr: ChangeDetectorRef,
     private _walletConnectService: W3sWalletConnectService,
   ) {
     super();
+
+    this._balanceWidthChanged$
+      .pipe(
+        debounceTime(100),
+        filter(() => !!(this._balanceContainerWidth || this._balanceValWidth || this._balanceCurrencyWidth)),
+        takeUntil(this.notifier)
+      )
+      .subscribe(() => {
+        this.calculateBalanceWidth();
+      });
   }
 
   /** @internal */
@@ -163,15 +191,19 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
             ? 4
             : balanceVal.startsWith('0.00') ? 3 : 2;
 
-          return `${w3sToBN(balanceBn.toFixed(fixedVal, 1)).toFixed()} ${balanceSymbol}`;
+          return {
+            value: w3sToBN(balanceBn.toFixed(fixedVal, 1)).toFixed(),
+            currency: balanceSymbol
+          };
         }),
         takeUntil(this.notifier)
-      ).subscribe((balance: string | null) => {
-      if ( this.balance !== balance ) {
-        this.balance = balance;
-        this._cdr.detectChanges();
-      }
-    });
+      )
+      .subscribe(balance => {
+        if ( this.balance?.value !== balance?.value && this.balance?.currency !== balance?.currency ) {
+          this.balance = balance;
+          this._cdr.detectChanges();
+        }
+      });
 
     this._walletConnectService.accounts$
       .pipe(
@@ -210,6 +242,35 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
   /** Emit {@link accountClicked} event. */
   public accountButtonClick(evt): void {
     this.accountClicked.emit(evt);
+  }
+
+  /** @internal */
+  public balanceContainerWidthChanged(width: number): void {
+    this._balanceContainerWidth = width;
+    this._balanceWidthChanged$.next();
+  }
+
+  /** @internal */
+  public balanceValWidthChanged(width: number): void {
+    this._balanceValWidth = width;
+    this._balanceWidthChanged$.next();
+  }
+
+  /** @internal */
+  public balanceCurrencyWidthChanged(width: number): void {
+    this._balanceCurrencyWidth = width;
+    this._balanceWidthChanged$.next();
+  }
+
+  /** @internal */
+  private calculateBalanceWidth(): void {
+    if ( !this._balanceContainerWidth || !this._balanceValWidth || !this._balanceCurrencyWidth ) {
+      return;
+    }
+
+    this.smallBalanceWidth = this._balanceContainerWidth <= (this._balanceValWidth + this._balanceCurrencyWidth);
+
+    this._cdr.detectChanges();
   }
 
 }

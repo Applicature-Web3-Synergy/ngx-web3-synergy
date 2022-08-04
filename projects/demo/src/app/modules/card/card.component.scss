@@ -50,3 +50,10 @@ $card-padding: 15px;
     }
   }
 }
+
+@media (max-width: 767px) {
+  .example-card-header {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}

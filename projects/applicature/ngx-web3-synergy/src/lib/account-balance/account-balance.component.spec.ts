@@ -133,7 +133,10 @@ describe('W3sAccountBalanceComponent', () => {
 
   it('should set balance value if balance changed.', () => {
     const balance: Balances = { ETH: '107' };
-    const expectedResult = `${Object.values(balance)[0]} ${Object.keys(balance)[0]}`;
+    const expectedResult = {
+      value: Object.values(balance)[0],
+      currency: Object.keys(balance)[0]
+    }
     component.balance = null;
 
     walletConnectService.balanceVal = balance;
@@ -144,7 +147,10 @@ describe('W3sAccountBalanceComponent', () => {
   it('should set balance to null value if balance changed.', () => {
     const balance: Balances = {};
     const expectedResult = null;
-    component.balance = '1 ETH';
+    component.balance = {
+      value: '1',
+      currency: 'ETH'
+    };
 
     walletConnectService.balanceVal = balance;
 
