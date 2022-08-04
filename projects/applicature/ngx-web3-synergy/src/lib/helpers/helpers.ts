@@ -6,7 +6,7 @@ export function w3sIsTxHash(address: string): boolean {
 }
 
 export function w3sShortTxHash(address: string): string {
-  return [ address.slice(0, 5), address.slice(-4) ].join('...')
+  return [ address.slice(0, 5), address.slice(-4) ].join('...');
 }
 
 export function w3sIsAddress(value: string): string | false {
@@ -20,17 +20,17 @@ export function w3sIsAddress(value: string): string | false {
 export function w3sShortAddress(address: string, chars = 4): string | null {
   const parsed = w3sIsAddress(address);
 
-  if (!parsed) {
+  if ( !parsed ) {
     return null;
   }
 
-  return `${parsed.substring(0, chars + 2)}...${parsed.substring(42 - chars)}`;
+  return `${parsed.substring(0, chars + 1)}...${parsed.substring(42 - chars)}`;
 }
 
 export function w3sGenerateJazzicon(address: string, diameter = 20): HTMLDivElement | null {
   const parsed = w3sIsAddress(address);
 
-  if (!parsed) {
+  if ( !parsed ) {
     return null;
   }
 

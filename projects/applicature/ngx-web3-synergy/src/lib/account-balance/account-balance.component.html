@@ -1,12 +1,19 @@
 <div [ngClass]="classNames" [w3sSetStyleProps]="styleProperties">
   <div class="w3s-balance-info" *ngIf="balance">
     <w3s-icon *ngIf="isCurrency && activeNetwork?.icon"
-              class="w3s-balance-currency"
+              class="w3s-balance-currency-icon"
               [icon]="activeNetwork.icon"
     >
     </w3s-icon>
 
-    <span>{{ balance }}</span>
+    <span class="w3s-balance-container"
+          [class.w3s-balance-small]="smallBalanceWidth"
+          w3sCheckElWidth
+          (elWidth)="balanceContainerWidthChanged($event)"
+    >
+      <span class="w3s-balance-val" w3sCheckElWidth (elWidth)="balanceValWidthChanged($event)">{{ balance.value }} &nbsp;</span>
+      <span class="w3s-balance-currency" w3sCheckElWidth (elWidth)="balanceCurrencyWidthChanged($event)">{{balance.currency}}</span>
+    </span>
   </div>
 
   <w3s-button *ngIf="showAddress"
@@ -15,6 +22,7 @@
               [label]="(address | w3sShortAddress)"
               [identicon]="addressConfig?.showIdenticon ? identicon : null"
               [identiconPosition]="addressConfig?.identiconPosition"
-              [color]="addressConfig?.color ?? COLOR_GROUP.WHITE">
+              [color]="addressConfig?.color ?? COLOR_GROUP.WHITE"
+  >
   </w3s-button>
 </div>
