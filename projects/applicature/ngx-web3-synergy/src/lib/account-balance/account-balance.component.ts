@@ -268,7 +268,7 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
       return;
     }
 
-    this.smallBalanceWidth = this._balanceContainerWidth <= (this._balanceValWidth + this._balanceCurrencyWidth);
+    this.smallBalanceWidth = this._balanceContainerWidth < (this._balanceValWidth + this._balanceCurrencyWidth);
 
     this._cdr.detectChanges();
   }
