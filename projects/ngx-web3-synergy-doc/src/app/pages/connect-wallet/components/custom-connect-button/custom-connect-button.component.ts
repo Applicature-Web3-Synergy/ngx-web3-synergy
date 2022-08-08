@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { takeUntil } from 'rxjs';
 
 import Web3 from 'web3';
-import { Balances, OnboardAPI } from '@web3-onboard/core/dist/types';
+import { OnboardAPI } from '@web3-onboard/core';
+import { Balances } from '@web3-onboard/core/dist/types';
 import { W3sConnectionState, W3sWalletConnectService, BaseSubscriber } from '@applicature/ngx-web3-synergy';
 
 

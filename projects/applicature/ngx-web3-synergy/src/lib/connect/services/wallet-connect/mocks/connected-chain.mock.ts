@@ -1,4 +1,4 @@
-import { ConnectedChain } from '@web3-onboard/core/dist/types';
+import { ConnectedChain } from '@web3-onboard/core';
 
 import { InitializationConfigMock } from './initialization-config.mock';
 

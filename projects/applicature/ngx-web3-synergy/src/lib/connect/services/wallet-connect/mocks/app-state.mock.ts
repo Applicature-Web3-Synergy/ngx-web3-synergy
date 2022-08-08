@@ -1,4 +1,4 @@
-import { AppState } from '@web3-onboard/core/dist/types';
+import { AppState } from '@web3-onboard/core';
 
 import { WalletStateMock } from './wallet-state.mock';
 import { chainsMock } from './initialization-config.mock';

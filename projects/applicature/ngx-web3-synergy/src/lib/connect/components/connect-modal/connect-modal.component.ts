@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
 import { takeUntil } from 'rxjs/operators';
 
 import { WalletModule } from '@web3-onboard/common/dist/types';
-import { WalletState } from '@web3-onboard/core/dist/types';
+import { WalletState } from '@web3-onboard/core';
 
 import { W3sDialogConfig, W3sDialogRef } from '../../../dialog';
 import {
