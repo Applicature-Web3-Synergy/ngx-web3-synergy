@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { W3sCheckElWidthDirective } from './check-el-width.directive';
 
 xdescribe('W3sCheckElWidthDirective', () => {

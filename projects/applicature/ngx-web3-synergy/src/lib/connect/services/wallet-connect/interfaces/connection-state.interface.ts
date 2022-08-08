@@ -1,4 +1,4 @@
-import { AppState } from '@web3-onboard/core/dist/types';
+import { AppState } from '@web3-onboard/core';
 
 export interface W3sConnectionState {
   connected: boolean;

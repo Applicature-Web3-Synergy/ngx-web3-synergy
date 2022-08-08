@@ -3,16 +3,9 @@ import { BehaviorSubject, combineLatest, Observable, of, Subject, Subscriber, ta
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
-import Onboard from '@web3-onboard/core';
+import Onboard, { OnboardAPI, InitOptions, WalletState, AppState } from '@web3-onboard/core';
 import { Chain } from '@web3-onboard/common/dist/types';
-import {
-  Account,
-  AppState,
-  Balances,
-  InitOptions,
-  OnboardAPI,
-  WalletState
-} from '@web3-onboard/core/dist/types';
+import { Account, Balances } from '@web3-onboard/core/dist/types';
 
 import {
   W3sChain,

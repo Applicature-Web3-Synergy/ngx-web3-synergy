@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Balances, OnboardAPI } from '@web3-onboard/core/dist/types';
+import { OnboardAPI } from '@web3-onboard/core';
+import { Balances } from '@web3-onboard/core/dist/types';
 
 import { W3sChain, W3sInitOptions, W3sWalletConfig } from '../interfaces';
 import { W3sWalletConnectService } from '../wallet-connect.service';

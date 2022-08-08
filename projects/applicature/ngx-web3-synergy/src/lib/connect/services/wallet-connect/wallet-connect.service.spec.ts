@@ -3,7 +3,8 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { catchError, firstValueFrom, Observable, of, Subject, take } from 'rxjs';
 import { debounceTime, switchMap, tap } from 'rxjs/operators';
-import { AppState, WalletState } from '@web3-onboard/core/dist/types';
+
+import { AppState, WalletState } from '@web3-onboard/core';
 import Web3 from 'web3';
 
 import { W3S_CONNECTED_WALLET_NAME, W3sWalletConnectService } from './wallet-connect.service';
