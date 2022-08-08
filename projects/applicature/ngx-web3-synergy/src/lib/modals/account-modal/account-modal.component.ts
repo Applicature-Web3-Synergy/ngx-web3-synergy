@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 import { catchError, combineLatest, Observable, of } from 'rxjs';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 
-import { W3S_VALUE_TYPES, w3sCheckValueType, w3sGenerateJazzicon, BaseSubscriber } from '../../helpers';
+import { BaseSubscriber, W3S_VALUE_TYPES, w3sCheckValueType, w3sGenerateJazzicon } from '../../helpers';
 import { W3sAccountModalData } from './interfaces';
 import { W3sDialogConfig, W3sDialogRef } from '../../dialog';
-import { W3sWalletConnectService, W3sBlockExplorerUrlsByChainId } from '../../connect';
+import { W3sBlockExplorerUrlsByChainId, W3sWalletConnectService } from '../../connect';
 import { W3sTransactionItem, W3sTransactionService } from '../../transactions';
 
 
@@ -22,6 +22,9 @@ export class W3sAccountModalComponent extends BaseSubscriber implements OnInit, 
   public transactions: W3sTransactionItem[];
   public data: W3sAccountModalData;
   public loadingTransactions = true;
+
+  /** @internal */
+  public isSmallSize = false;
 
   constructor(
     private _config: W3sDialogConfig<W3sAccountModalData>,
@@ -51,34 +54,34 @@ export class W3sAccountModalComponent extends BaseSubscriber implements OnInit, 
       this._walletConnectService.accounts$
     ])
       .pipe(
-        map(([chainId, addresses]: [string, string[]]) => {
-          if (!chainId) {
+        map(([ chainId, addresses ]: [ string, string[] ]) => {
+          if ( !chainId ) {
             return null;
           }
 
           const config: W3sBlockExplorerUrlsByChainId = this._walletConnectService.blockExplorerUrlByChainId;
 
-          if (!(config ?? {})[chainId]?.blockExplorerUrl || !addresses.length) {
+          if ( !(config ?? {})[chainId]?.blockExplorerUrl || !addresses.length ) {
             return null;
           }
 
-          return `${config[chainId].blockExplorerUrl}/address/${addresses[0]}`
+          return `${config[chainId].blockExplorerUrl}/address/${addresses[0]}`;
         })
       );
   }
 
   public ngOnInit(): void {
-      this._walletConnectService.accounts$
-        .pipe(
-          filter((accounts) => accounts?.length > 0),
-          takeUntil(this.notifier)
-        )
-        .subscribe(([ accountAddress ]) => {
-          this.accountAddress = accountAddress;
-          this.identicon = w3sGenerateJazzicon(this.accountAddress);
+    this._walletConnectService.accounts$
+      .pipe(
+        filter((accounts) => accounts?.length > 0),
+        takeUntil(this.notifier)
+      )
+      .subscribe(([ accountAddress ]) => {
+        this.accountAddress = accountAddress;
+        this.identicon = w3sGenerateJazzicon(this.accountAddress, 24);
 
-          this._cdr.detectChanges();
-        });
+        this._cdr.detectChanges();
+      });
   }
 
   override ngOnDestroy() {
@@ -95,14 +98,20 @@ export class W3sAccountModalComponent extends BaseSubscriber implements OnInit, 
   }
 
   public onChangeClick(): void {
-    if (w3sCheckValueType(this.data.change, W3S_VALUE_TYPES.FUNCTION)) {
+    if ( w3sCheckValueType(this.data.change, W3S_VALUE_TYPES.FUNCTION) ) {
       this.data.change();
     }
   }
 
   public disconnectClick(): void {
-    if (w3sCheckValueType(this.data.disconnect, W3S_VALUE_TYPES.FUNCTION)) {
+    if ( w3sCheckValueType(this.data.disconnect, W3S_VALUE_TYPES.FUNCTION) ) {
       this.data.disconnect();
     }
+  }
+
+  /** @internal */
+  public changedWidth(width: number): void {
+    this.isSmallSize = width < 320;
+    this._cdr.detectChanges();
   }
 }

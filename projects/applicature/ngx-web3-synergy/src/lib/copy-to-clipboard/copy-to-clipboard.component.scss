@@ -20,6 +20,7 @@
     cursor: pointer;
     border: none;
     border-radius: inherit;
+    background-color: transparent;
 
     w3s-icon {
       width: 20px;
@@ -30,5 +31,6 @@
 
   &:hover {
     color: c.getColor(grey, base);
+    background-color: c.getColor(grey, background);
   }
 }

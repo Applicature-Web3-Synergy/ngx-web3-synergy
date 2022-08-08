@@ -1,21 +1,26 @@
+@use 'common' as c;
+
+$card-padding: 15px;
+
 .example-card-container {
   display: block;
   border-radius: 12px;
-  background-color: rgba(#fff, 0.6);
-  padding: 15px;
+  overflow: hidden;
+  background-color: c.$main-bg-color;
 }
 
 .example-card-header {
   position: relative;
-  padding-right: 54px;
   cursor: pointer;
+  padding: $card-padding 70px;
+  background-color: #DCE4EB;
 
   w3s-icon {
     width: 24px;
     height: 24px;
     position: absolute;
     top: 50%;
-    right: 15px;
+    right: 30px;
     transform: translateY(-50%);
   }
 }
@@ -31,8 +36,7 @@
 
   &.example-card-expanded {
     height: auto;
-    margin-top: 15px;
-    padding-top: 16px;
+    padding: $card-padding;
     position: relative;
 
     &:before {
@@ -44,5 +48,12 @@
       left: 0;
       width: 100%;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .example-card-header {
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }

@@ -1,8 +1,10 @@
 <ng-template [ngIf]="trigger?.opened$ | async">
   <ng-template #contentBody w3sContentBody>
     <div class="w3s-dropdown-menu-container">
-      <w3s-overlay [customize]="config?.overlay"
-                           (overlayClicked)="close()"
+      <w3s-overlay
+        [w3sCustomClass]="config?.overlay.overlayContainerClass"
+        [customize]="config?.overlay"
+        (overlayClicked)="close()"
       >
       </w3s-overlay>
 

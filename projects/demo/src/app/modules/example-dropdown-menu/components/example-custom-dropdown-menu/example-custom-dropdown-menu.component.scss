@@ -12,6 +12,6 @@
   @include c.transition(background-color, 0.3s);
 
   &:hover {
-    background-color: #F3F5FB;
+    background-color: c.getColor(grey, background);
   }
 }

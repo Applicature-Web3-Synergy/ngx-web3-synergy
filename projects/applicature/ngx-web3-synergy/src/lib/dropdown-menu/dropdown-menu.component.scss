@@ -44,9 +44,10 @@ w3s-overlay,
 .w3s-dropdown-menu-content-container {
   background-color: c.getColor(white, base);
   box-shadow: 0 0 10px c.getColor(white, boxShadow);
-  border-radius: 8px;
   width: 100%;
   height: auto;
+  overflow: hidden;
+  border-radius: map-get(c.$as-border-radius, sm);
 }
 
 .w3s-dropdown-menu-content {
