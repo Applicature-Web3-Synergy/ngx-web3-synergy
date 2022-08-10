@@ -161,19 +161,22 @@ export class W3sButtonComponent implements OnInit, OnChanges {
 
   /** @internal */
   public get iconColor(): string {
-    return this.color === AS_COLOR_GROUP.WHITE
-      ? AsColors[AS_COLOR_GROUP.GRAY].base
-      : AsColors[AS_COLOR_GROUP.WHITE].base
+    return this.disabled
+      ? 'inherit'
+      : this.color === AS_COLOR_GROUP.WHITE
+        ? AsColors[AS_COLOR_GROUP.GRAY].base
+        : AsColors[AS_COLOR_GROUP.WHITE].base;
   }
 
   /** @internal */
   public get spinnerColor(): string {
     return this.color === AS_COLOR_GROUP.WHITE
       ? AsColors[AS_COLOR_GROUP.BLUE].base
-      : AsColors[AS_COLOR_GROUP.WHITE].base
+      : AsColors[AS_COLOR_GROUP.WHITE].base;
   }
 
-  constructor(private _elRef: ElementRef) {}
+  constructor(private _elRef: ElementRef) {
+  }
 
   /** @internal */
   public get classNames(): { [el: string]: boolean } {
@@ -200,7 +203,7 @@ export class W3sButtonComponent implements OnInit, OnChanges {
 
   /** Emit {@link buttonClicked} event. */
   public clicked(event: any): void {  // eslint-disable-line @typescript-eslint/no-explicit-any
-    if (this.disabled) {
+    if ( this.disabled ) {
       return;
     }
 
@@ -209,11 +212,11 @@ export class W3sButtonComponent implements OnInit, OnChanges {
 
   /** @internal */
   private setProperties(): void {
-    if (this.adaptive) {
+    if ( this.adaptive ) {
       this._elRef.nativeElement.style.width = '100%';  // eslint-disable-line @typescript-eslint/no-unsafe-member-access
     }
 
-    if (this.transparent && this.color !== AS_COLOR_GROUP.WHITE) {
+    if ( this.transparent && this.color !== AS_COLOR_GROUP.WHITE ) {
       this.color = AS_COLOR_GROUP.WHITE;
     }
 
@@ -224,7 +227,7 @@ export class W3sButtonComponent implements OnInit, OnChanges {
         return {
           name: `--w3s-button-${prop}`,
           value: colorProperties[prop]
-        }
+        };
       });
 
     this.styleProperties = [

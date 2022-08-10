@@ -25,6 +25,7 @@ export interface AsColorProperties {
   border: string;
   borderHover: string;
   borderFocus: string;
+  disabled: string;
 }
 
 export const AsColors: { [key in AsColorGroup]: AsColorProperties } = {
@@ -36,7 +37,8 @@ export const AsColors: { [key in AsColorGroup]: AsColorProperties } = {
     text: '#FFF',
     border: '#1C9ACC',
     borderHover: '#3EA9D4',
-    borderFocus: '#1D82AA'
+    borderFocus: '#1D82AA',
+    disabled: '#F3F6F8'
   },
   [AS_COLOR_GROUP.RED]: {
     base: '#E31B89',
@@ -46,7 +48,8 @@ export const AsColors: { [key in AsColorGroup]: AsColorProperties } = {
     text: '#FFF',
     border: '#E31B89',
     borderHover: '#E73D9B',
-    borderFocus: '#BC1C74'
+    borderFocus: '#BC1C74',
+    disabled: '#F3F6F8'
   },
   [AS_COLOR_GROUP.GREEN]: {
     base: '#14D9A5',
@@ -56,7 +59,8 @@ export const AsColors: { [key in AsColorGroup]: AsColorProperties } = {
     text: '#FFF',
     border: '#14D9A5',
     borderHover: '#37DFB3',
-    borderFocus: '#17B48B'
+    borderFocus: '#17B48B',
+    disabled: '#F3F6F8'
   },
   [AS_COLOR_GROUP.ORANGE]: {
     base: '#F09643',
@@ -66,7 +70,8 @@ export const AsColors: { [key in AsColorGroup]: AsColorProperties } = {
     text: '#FFF',
     border: '#F09643',
     borderHover: '#F2A45B',
-    borderFocus: '#C77F3C'
+    borderFocus: '#C77F3C',
+    disabled: '#F3F6F8'
   },
   [AS_COLOR_GROUP.GRAY]: {
     base: '#6D8EAC',
@@ -76,7 +81,8 @@ export const AsColors: { [key in AsColorGroup]: AsColorProperties } = {
     text: '#FFF',
     border: '#6D8EAC',
     borderHover: '#BACAD8',
-    borderFocus: '#5E7890'
+    borderFocus: '#5E7890',
+    disabled: '#F3F6F8'
   },
   [AS_COLOR_GROUP.WHITE]: {
     base: '#FFF',
@@ -86,6 +92,7 @@ export const AsColors: { [key in AsColorGroup]: AsColorProperties } = {
     text: '#072F3F',
     border: '#FFF',
     borderHover: '#F3F6F8',
-    borderFocus: '#3EA9D4'
+    borderFocus: '#3EA9D4',
+    disabled: '#F3F6F8'
   },
 }

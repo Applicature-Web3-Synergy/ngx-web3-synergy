@@ -28,7 +28,8 @@ function getStylesPropsByColorMock(color: AsColorGroup, borderRadius = 8): W3sSe
     text,
     border,
     borderHover,
-    borderFocus
+    borderFocus,
+    disabled
   } = AsColors[color];
   return [
     {
@@ -66,6 +67,10 @@ function getStylesPropsByColorMock(color: AsColorGroup, borderRadius = 8): W3sSe
     {
       name: '--w3s-button-borderFocus',
       value: borderFocus
+    },
+    {
+      name: '--w3s-button-disabled',
+      value: disabled
     }
   ];
 }
