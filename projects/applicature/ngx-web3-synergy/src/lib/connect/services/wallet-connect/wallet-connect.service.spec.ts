@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, prefer-const */
 
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { catchError, firstValueFrom, Observable, of, Subject, take } from 'rxjs';
+import { catchError, Observable, of, Subject, take } from 'rxjs';
 import { debounceTime, switchMap, tap } from 'rxjs/operators';
 
 import { AppState, WalletState } from '@web3-onboard/core';
@@ -29,22 +29,13 @@ describe('W3sWalletConnectService.', () => {
   let initializeRes$: Observable<void>;
   let stateMock: AppState;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule(TestW3sConnectModuleMetadata);
     service = TestBed.inject(W3sWalletConnectService);
     stateMock = { ...AppStateMock };
-  });
-
-  beforeEach(async () => {
     initializeRes$ = service.initialize(InitializationConfigMock);
-    await firstValueFrom(initializeRes$);
-  });
-
-  afterAll(() => {
-    initializeRes$
-      .subscribe()
-      .unsubscribe();
-  });
+    initializeRes$.pipe(take(1)).subscribe();
+  }));
 
   it('should be created.', () => {
     expect(service).toBeTruthy();
