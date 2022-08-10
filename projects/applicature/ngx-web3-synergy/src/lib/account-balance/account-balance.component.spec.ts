@@ -31,7 +31,8 @@ function getStylesPropsByColorMock(color: AsColorGroup): W3sSetStyleProp[] {
     text,
     border,
     borderHover,
-    borderFocus
+    borderFocus,
+    disabled
   } = AsColors[color];
   return [
     {
@@ -65,6 +66,10 @@ function getStylesPropsByColorMock(color: AsColorGroup): W3sSetStyleProp[] {
     {
       name: '--w3s-account-balance-borderFocus',
       value: borderFocus
+    },
+    {
+      name: '--w3s-account-balance-disabled',
+      value: disabled
     }
   ];
 }
