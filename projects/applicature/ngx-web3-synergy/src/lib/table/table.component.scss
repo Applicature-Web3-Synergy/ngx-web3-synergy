@@ -7,7 +7,7 @@
   font-style: normal;
   font-size: 14px;
   line-height: 20px;
-  border-radius: 8px;
+  border-radius: map-get(c.$as-border-radius, sm);
   background-color: c.getColor(white, base);
   overflow: hidden;
 }
