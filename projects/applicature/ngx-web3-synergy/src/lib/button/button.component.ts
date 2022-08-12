@@ -187,6 +187,12 @@ export class W3sButtonComponent implements OnInit, OnChanges {
       ['w3s-button-adaptive']: this.adaptive,
       ['w3s-button-transparent']: this.transparent && !this.bordered,
       ['w3s-button-bordered']: this.bordered,
+      ['w3s-button-with-left-icon']: !!(this.leftIcon && this.appearance !== W3S_BUTTON_APPEARANCE.ICON),
+      ['w3s-button-with-right-icon']: !!(this.rightIcon && !this.pending
+        && this.appearance !== W3S_BUTTON_APPEARANCE.ICON),
+      ['w3s-button-with-spinner']: this.pending,
+      ['w3s-button-with-left-identicon']: !!(this.identicon && this.identiconPosition === W3S_IDENTICON_POSITION.LEFT),
+      ['w3s-button-with-right-identicon']: !!(this.identicon && this.identiconPosition !== W3S_IDENTICON_POSITION.LEFT),
       [`w3s-button-${this.appearance}`]: true,
     };
   }

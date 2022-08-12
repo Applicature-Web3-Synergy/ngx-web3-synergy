@@ -1,13 +1,17 @@
 <w3s-button class="w3s-network-dropdown-btn"
             w3sTrigger
+            w3sCheckElWidth
             #networkOptionsTrigger="w3sTrigger"
-            [label]="isWrongNetwork ? 'Wrong Network' : currentNetwork?.label"
+            [ignoreSameWidth]="false"
+            [label]="showLabel ? (isWrongNetwork ? 'Wrong Network' : currentNetwork?.label) : ''"
             [color]="isWrongNetwork ? COLORS.RED : btnStyle"
             [bordered]="isWrongNetwork ? false : bordered"
             [leftIcon]="isWrongNetwork ? 'wcl-icon-wrong' : currentNetwork?.icon"
             [rightIcon]="isOptionsOpen ? 'wcl-icon-chevron-up' : 'wcl-icon-chevron-down'"
             [adaptive]="networkDropdownConfig?.fullwidth"
-            (showHide)="setOpened($event)">
+            (showHide)="setOpened($event)"
+            (elWidth)="setWidth($event)"
+>
 </w3s-button>
 
 <w3s-dropdown-menu *ngIf="isOptionsOpen"

@@ -2,6 +2,7 @@
 
 :host {
   display: inline-block;
+  max-width: 100%;
 }
 
 .w3s-connect-wallet {
@@ -20,5 +21,7 @@
 .w3s-connect-wallet-transactions,
 .w3s-connect-wallet-container,
 .w3s-connect-wallet-networks {
-  margin-right: 12px;
+  &:not(:last-child) {
+    margin-right: 12px;
+  }
 }

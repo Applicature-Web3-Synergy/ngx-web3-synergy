@@ -3,7 +3,7 @@ This library was created and maintained by [**Applicature**](https://applicature
 This library supports Angular from version 13 and higher.
 
 ## Documentation
-For more information visit the [**documentation**](https://docs.web3synergy.net).
+For more information visit the [**documentation**](https://master.d1hcqsz7ds742s.amplifyapp.com).
 
 ## Library installation
     npm i @applicature/styles @applicature/ngx-web3-synergy
