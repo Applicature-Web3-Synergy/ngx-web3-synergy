@@ -2,10 +2,15 @@
 
 :host {
   display: inline-block;
+  min-width: 78px;
 }
 
 :host(.w3s-full-width) {
   display: block;
+  width: 100%;
+}
+
+.w3s-network-dropdown-btn {
   width: 100%;
 }
 

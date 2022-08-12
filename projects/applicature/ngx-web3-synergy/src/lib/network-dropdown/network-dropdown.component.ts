@@ -86,6 +86,12 @@ export class W3sNetworkDropdownComponent extends BaseSubscriber implements OnIni
   public chainsList: Chain[] = [];
 
   /** @internal */
+  public showLabel = true;
+
+  /** @internal */
+  public _showLabel = true;
+
+  /** @internal */
   public isOptionsOpen = false;
 
   /** @internal */
@@ -131,6 +137,19 @@ export class W3sNetworkDropdownComponent extends BaseSubscriber implements OnIni
     if (changes.networkDropdownConfig.firstChange) {
       this._fullWidth = !!this.networkDropdownConfig?.fullwidth;
     }
+  }
+
+  /** @internal */
+  public setWidth(width: number): void {
+    if (!this.showLabel && !this._showLabel) {
+      this.showLabel = true;
+      this._showLabel = false;
+    } else {
+      this.showLabel = width >= 130;
+      this._showLabel = this.showLabel;
+    }
+
+    this._cdr.detectChanges();
   }
 
   /** Open networks dropdown menu. */

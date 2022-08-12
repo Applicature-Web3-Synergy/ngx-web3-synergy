@@ -81,19 +81,102 @@
     }
   }
 
-  w3s-icon {
-    &:not(.w3s-button-icon) {
-      &.w3s-button-left-icon {
-        margin-right: 8px;
+  &:not(.w3s-button-icon) {
+    &.w3s-button-with-left-icon {
+      position: relative;
+      padding-left: 36px;
+
+      .w3s-button-label {
+        padding-left: 8px;
       }
 
-      &.w3s-button-right-icon {
-        margin-left: 8px;
+      .w3s-button-left-icon {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+        background: inherit;
+      }
+    }
+
+    &.w3s-button-with-right-icon {
+      position: relative;
+      padding-right: 36px;
+
+      .w3s-button-right-icon {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        background: inherit;
+      }
+    }
+
+    &.w3s-button-with-spinner {
+      position: relative;
+      padding-right: 32px;
+
+      .w3s-button-spinner {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        background: inherit;
+      }
+    }
+
+    &.w3s-button-with-right-identicon {
+      padding-right: 32px;
+
+      ::ng-deep {
+        .w3s-identicon {
+          right: 12px;
+        }
+      }
+    }
+
+    &.w3s-button-with-left-identicon {
+      padding-left: 32px;
+
+      ::ng-deep {
+        .w3s-identicon {
+          left: 12px;
+        }
+      }
+    }
+
+    &.w3s-button-with-left-icon,
+    &.w3s-button-with-left-identicon {
+      .w3s-button-label {
+        padding-left: 8px;
+      }
+    }
+
+    &.w3s-button-with-right-icon,
+    &.w3s-button-with-right-identicon,
+    &.w3s-button-with-spinner {
+      .w3s-button-label {
+        padding-right: 8px;
       }
     }
   }
 
+  .w3s-button-label {
+    width: 100%;
+
+    @include c.text-overflow;
+  }
+
   .w3s-button-spinner {
     margin-left: 8px;
+  }
+
+  ::ng-deep {
+    .w3s-identicon {
+      margin: 0 !important;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
