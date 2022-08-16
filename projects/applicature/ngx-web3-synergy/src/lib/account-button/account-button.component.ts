@@ -87,6 +87,10 @@ export class W3sAccountButtonComponent extends BaseSubscriber implements OnInit 
   /** @internal */
   public disconnectBtnColor: AsColorGroup = AS_COLOR_GROUP.RED;
 
+  public get connectedWalletLabel(): string {
+    return this._walletConnectService.connectionState?.state?.wallets[0]?.label || '';
+  }
+
   /** @internal */
   public get dropdownConfig(): W3sDropdownConfig {
     return {
