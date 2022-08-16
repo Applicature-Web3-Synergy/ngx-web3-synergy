@@ -16,7 +16,7 @@
 
     <div class="w3s-account-info w3s-info">
       <div class="w3s-info-header">
-        <span>Connected with Metamask</span>
+        <span *ngIf="connectedWalletLabel">Connected with {{connectedWalletLabel}}</span>
 
         <div class="w3s-account-actions-container">
           <button (click)="onChangeClick()"

@@ -7,15 +7,17 @@ import { AbiItem } from 'web3-utils';
 import { ContractOptions, Contract } from 'web3-eth-contract';
 
 import { W3S_BUTTON_APPEARANCE } from '../button';
-import { BaseSubscriber } from '../helpers';
-import { W3sWalletConnectService } from '../connect';
-import ERC20 from '../smart-contracts/ERC20.json'
+import { BaseSubscriber, w3sToWei } from '../helpers';
+import { W3sConnectionState, W3sWalletConnectService } from '../connect';
+import ERC20 from '../smart-contracts/ERC20.json';
+import { MetamaskIcon } from '../connect/constants/icons/metamask';
+import { W3sFaucetConfig } from './interfaces';
 
 // eslint-disable @typescript-eslint/no-unsafe-call
 @Component({
   selector: 'w3s-faucet',
   templateUrl: './faucet.component.html',
-  styleUrls: ['./faucet.component.scss'],
+  styleUrls: [ './faucet.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
@@ -33,33 +35,40 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
   /** @internal */
   public hasPending = false;
 
-  /**
-   * Sets icon of the token. <br>
-   * Required parameter.
-   */
-  @Input()
-  public iconToken!: string;
+  /** @internal */
+  public metamaskIcon = MetamaskIcon;
+
+  /** @internal */
+  public showAddTokenBtn = false;
 
   /**
-   * Sets name of the token. <br>
+   * Amount of tokens to faucet.<br>
    * Required parameter.
    */
   @Input()
-  public tokenSymbol!: string;
+  public amount!: number;
 
   /**
-   * Sets token smart contract address of the faucet. <br>
-   * Required parameter.
+   * Sets appearance. <br>
+   * Optional parameter. <br>
+   * Default value row.
    */
   @Input()
-  public contract!: string;
+  public appearance: 'row' | 'column' = 'row';
 
   /**
-   * Sets token smart contract address of the faucet. <br>
-   * Required parameter.
+   * Show add token to wallet icon. <br>
+   * Optional parameter. <br>
+   * Default value true.
    */
   @Input()
-  public amount!: string;
+  public showAddTokenToWallet = true;
+
+  /**
+   * Sets faucet configuration. <br>
+   * Required parameter.
+   */
+  @Input() config!: W3sFaucetConfig;
 
   constructor(
     private _cdr: ChangeDetectorRef,
@@ -76,6 +85,11 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
         this.account = (accounts || [])[0];
         this._cdr.markForCheck();
       });
+
+    this._walletConnectService.connectionState$
+      .subscribe((connectionState: W3sConnectionState) => {
+        this.showAddTokenBtn = connectionState.state?.wallets[0]?.label === "MetaMask";
+      });
   }
 
   /** @internal */
@@ -89,7 +103,7 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
   public mint(): void {
     const connectionState = this._walletConnectService.connectionState;
 
-    if (!connectionState.connected) {
+    if ( !connectionState.connected ) {
       this.connectWallet();
 
       return;
@@ -99,16 +113,18 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
     this._cdr.markForCheck();
 
     new Observable<void>((observer) => {
-      if (!this.contract || !this.account) {
+      const contractAddress = this.config?.address;
+
+      if ( !contractAddress || !this.account ) {
         observer.next(null);
         observer.complete();
 
         return;
       }
 
-      const contract: Contract = this.getContract(this.ERC20Json, this.contract);
-      contract.methods.mint(this.account, this.amount)
-        .send({from: this.account})
+      const contract: Contract = this.getContract(this.ERC20Json, contractAddress);
+      contract.methods.mint(this.account, w3sToWei(this.amount, this.config.decimals))
+        .send({ from: this.account })
         .then(() => {
           observer.next(null);
           observer.complete();
@@ -130,5 +146,20 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
     this._walletConnectService.connect()
       .pipe(takeUntil(this.notifier))
       .subscribe();
+  }
+
+  public async addTokenToWallet(): Promise<void> {
+    try {
+      // wasAdded is a boolean. Like any RPC method, an error may be thrown.
+      await this._walletConnectService.web3.givenProvider.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20', // Initially only supports ERC20, but eventually more!
+          options: this.config,
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

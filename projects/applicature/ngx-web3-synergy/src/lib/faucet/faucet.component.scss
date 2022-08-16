@@ -11,16 +11,36 @@
 
 .w3s-faucet {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
   margin: -8px 0;
+
+  &:not(.w3s-faucet-column) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .w3s-faucet-token-info {
+      margin-right: 16px;
+    }
+
+    .w3s-add-token-to-wallet {
+      margin-right: 16px;
+    }
+  }
+
+  &.w3s-faucet-column {
+    .w3s-faucet-token {
+      justify-content: space-between;
+    }
+
+    .w3s-add-token-to-wallet {
+      margin-left: 16px;
+    }
+  }
 
   .w3s-faucet-token-info {
     display: flex;
     align-items: center;
-    margin-right: 16px;
 
     .w3s-faucet-token-symbol-icon {
       width: 24px;
@@ -30,11 +50,20 @@
   }
 }
 
-.w3s-faucet-token-info,
+.w3s-faucet-token {
+  display: flex;
+  align-items: center;
+}
+
+.w3s-add-token-to-wallet {
+  cursor: pointer;
+}
+
+.w3s-faucet-token,
 .w3s-faucet-button {
   margin: 8px 0;
 }
 
 .w3s-faucet-button {
-  width: 162px;
+  width: 158px;
 }
