@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Balances, OnboardAPI } from '@web3-onboard/core/dist/types';
+import { OnboardAPI } from '@web3-onboard/core';
+import { Balances } from '@web3-onboard/core/dist/types';
 
 import { W3sChain, W3sInitOptions, W3sWalletConfig } from '../interfaces';
 import { W3sWalletConnectService } from '../wallet-connect.service';
@@ -9,6 +10,7 @@ import { OnboardAPIMock } from './onboard-api.mock';
 import { W3sBlockScrollHelperService } from '../../../../helpers';
 import { W3sDialogService } from '../../../../dialog';
 import { InitializationConfigMock } from './initialization-config.mock';
+import { W3sLocalStorageService } from '../../../../services';
 
 
 @Injectable()
@@ -29,8 +31,12 @@ export class W3sWalletConnectServiceMock extends W3sWalletConnectService {
     this['_onboard'] = val;
   }
 
-  constructor(private blockScrollHelperService: W3sBlockScrollHelperService, private dialogService: W3sDialogService) {
-    super(blockScrollHelperService, dialogService);
+  constructor(
+    private blockScrollHelperService: W3sBlockScrollHelperService,
+    private dialogService: W3sDialogService,
+    private localStorageService: W3sLocalStorageService
+    ) {
+    super(blockScrollHelperService, dialogService, localStorageService);
 
     this.initialize(InitializationConfigMock)
       .subscribe()

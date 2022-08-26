@@ -28,7 +28,8 @@ function getStylesPropsByColorMock(color: AsColorGroup, borderRadius = 8): W3sSe
     text,
     border,
     borderHover,
-    borderFocus
+    borderFocus,
+    disabled
   } = AsColors[color];
   return [
     {
@@ -66,6 +67,10 @@ function getStylesPropsByColorMock(color: AsColorGroup, borderRadius = 8): W3sSe
     {
       name: '--w3s-button-borderFocus',
       value: borderFocus
+    },
+    {
+      name: '--w3s-button-disabled',
+      value: disabled
     }
   ];
 }
@@ -138,6 +143,9 @@ describe('W3sButtonComponent', () => {
 
   describe('Class names.', () => {
     it('should return default class names object.', () => {
+      component.leftIcon = null;
+      component.rightIcon = null;
+      component.identicon = null;
       const expectedResult = {
         'w3s-button': true,
         'w3s-button-white': false,
@@ -145,6 +153,11 @@ describe('W3sButtonComponent', () => {
         'w3s-button-adaptive': component.adaptive,
         'w3s-button-transparent': false,
         'w3s-button-bordered': component.bordered,
+        'w3s-button-with-spinner': false,
+        'w3s-button-with-left-icon': false,
+        'w3s-button-with-right-icon':  false,
+        'w3s-button-with-left-identicon': false,
+        'w3s-button-with-right-identicon': false,
         [`w3s-button-${component.appearance}`]: true,
       };
 
@@ -156,6 +169,9 @@ describe('W3sButtonComponent', () => {
     it('should return class names object if transparent and bordered.', () => {
       component.transparent = true;
       component.bordered = true;
+      component.leftIcon = null;
+      component.rightIcon = null;
+      component.identicon = null;
       const expectedResult = {
         'w3s-button': true,
         'w3s-button-white': false,
@@ -163,6 +179,11 @@ describe('W3sButtonComponent', () => {
         'w3s-button-adaptive': component.adaptive,
         'w3s-button-transparent': false,
         'w3s-button-bordered': component.bordered,
+        'w3s-button-with-spinner': false,
+        'w3s-button-with-left-icon': false,
+        'w3s-button-with-right-icon':  false,
+        'w3s-button-with-left-identicon': false,
+        'w3s-button-with-right-identicon': false,
         [`w3s-button-${component.appearance}`]: true,
       };
 
@@ -174,6 +195,9 @@ describe('W3sButtonComponent', () => {
     it('should return class names object if transparent and not bordered.', () => {
       component.transparent = true;
       component.bordered = false;
+      component.leftIcon = null;
+      component.rightIcon = null;
+      component.identicon = null;
       const expectedResult = {
         'w3s-button': true,
         'w3s-button-white': false,
@@ -181,6 +205,11 @@ describe('W3sButtonComponent', () => {
         'w3s-button-adaptive': component.adaptive,
         'w3s-button-transparent': true,
         'w3s-button-bordered': component.bordered,
+        'w3s-button-with-spinner': false,
+        'w3s-button-with-left-icon': false,
+        'w3s-button-with-right-icon':  false,
+        'w3s-button-with-left-identicon': false,
+        'w3s-button-with-right-identicon': false,
         [`w3s-button-${component.appearance}`]: true,
       };
 
@@ -193,6 +222,9 @@ describe('W3sButtonComponent', () => {
       component.transparent = false;
       component.bordered = false;
       component.color = AS_COLOR_GROUP.WHITE;
+      component.leftIcon = null;
+      component.rightIcon = null;
+      component.identicon = null;
       const expectedResult = {
         'w3s-button': true,
         'w3s-button-white': true,
@@ -200,6 +232,11 @@ describe('W3sButtonComponent', () => {
         'w3s-button-adaptive': component.adaptive,
         'w3s-button-transparent': false,
         'w3s-button-bordered': component.bordered,
+        'w3s-button-with-spinner': false,
+        'w3s-button-with-left-icon': false,
+        'w3s-button-with-right-icon':  false,
+        'w3s-button-with-left-identicon': false,
+        'w3s-button-with-right-identicon': false,
         [`w3s-button-${component.appearance}`]: true,
       };
 

@@ -4,9 +4,15 @@ $address-btn-width: (
   withIdenticon: 162px,
   withoutIdenticon: 134px,
 );
+$balance-max-width: (
+  withIcon: 144px,
+  withoutIcon: 116px
+);
 
 :host {
   display: inline-block;
+  width: auto;
+  max-width: 306px;
 }
 
 .w3s-balance {
@@ -46,6 +52,7 @@ $address-btn-width: (
     .w3s-balance-info {
       padding-left: 40px;
       position: relative;
+      max-width: map-get($balance-max-width, withIcon);
     }
 
     .w3s-balance-currency-icon {
@@ -53,12 +60,6 @@ $address-btn-width: (
       top: 50%;
       left: 12px;
       transform: translateY(-50%);
-    }
-  }
-
-  &.w3s-balance-with-address {
-    .w3s-balance-info {
-      max-width: 116px;
     }
   }
 
@@ -82,6 +83,7 @@ $address-btn-width: (
   font-size: 16px;
   line-height: 24px;
   width: auto;
+  max-width: map-get($balance-max-width, withoutIcon);
 }
 
 .w3s-balance-currency-icon {
@@ -96,6 +98,14 @@ $address-btn-width: (
   justify-content: flex-start;
   flex-wrap: wrap;
   width: auto;
+  max-width: 100%;
+
+  .w3s-balance-val {
+    padding-right: 3px;
+    max-width: 100%;
+
+    @include c.text-overflow;
+  }
 
   &.w3s-balance-small {
     font-size: 13px;

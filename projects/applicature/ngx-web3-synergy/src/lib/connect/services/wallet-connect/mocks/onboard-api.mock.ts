@@ -1,21 +1,25 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { BehaviorSubject, lastValueFrom } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import {
-  Account,
-  AppState, ConnectedChain,
+  AppState,
+  ConnectedChain,
   ConnectOptions,
-  ConnectOptionsString,
   DisconnectOptions,
   OnboardAPI,
   WalletState
+} from '@web3-onboard/core';
+
+import {
+  Account,
+  ConnectOptionsString,
 } from '@web3-onboard/core/dist/types';
+
 
 import { WalletStateDisconnectedMock, WalletStateMock } from './wallet-state.mock';
 import { AppStateDisconnectedMock, AppStateMock } from './app-state.mock';
 import { map } from 'rxjs/operators';
-import { W3sNativeCurrencies } from '../../../../constants';
 
 
 export class OnboardAPIMock implements OnboardAPI {

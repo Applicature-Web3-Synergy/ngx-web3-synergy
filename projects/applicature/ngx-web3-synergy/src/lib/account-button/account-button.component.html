@@ -12,7 +12,7 @@
                    [trigger]="networkOptionsTrigger"
 >
   <ul class="w3s-account-button-options">
-    <li class="w3s-account-button-header">Connected with Metamask</li>
+    <li class="w3s-account-button-header" *ngIf="connectedWalletLabel">Connected with {{connectedWalletLabel}}</li>
 
     <li class="w3s-account-button-header">
       <div class="w3s-account-button-user-info">

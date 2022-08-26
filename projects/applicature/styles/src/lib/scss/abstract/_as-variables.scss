@@ -32,7 +32,8 @@ $as-colors: (
     text: #FFF,
     border: #E31B89,
     borderHover: #E73D9B,
-    borderFocus: #BC1C74
+    borderFocus: #BC1C74,
+    disabled: #F3F6F8
   ),
   green: (
     base: #14D9A5,
@@ -42,7 +43,8 @@ $as-colors: (
     text: #FFF,
     border: #14D9A5,
     borderHover: #37DFB3,
-    borderFocus: #17B48B
+    borderFocus: #17B48B,
+    disabled: #F3F6F8
   ),
   orange: (
     base: #F09643,
@@ -53,6 +55,7 @@ $as-colors: (
     border: #F09643,
     borderHover: #F2A45B,
     borderFocus: #C77F3C,
+    disabled: #F3F6F8
   ),
   grey: (
     base: #6D8EAC,
@@ -63,7 +66,8 @@ $as-colors: (
     border: #6D8EAC,
     borderHover: #BACAD8,
     borderFocus: #5E7890,
-    background: #F3F6F8
+    background: #F3F6F8,
+    disabled: #F3F6F8
   ),
   white: (
     base: #FFF,
@@ -74,6 +78,7 @@ $as-colors: (
     border: #FFF,
     borderHover: #F3F6F8,
     borderFocus: #3EA9D4,
-    boxShadow: rgba(56, 64, 75, 0.1)
+    boxShadow: rgba(56, 64, 75, 0.1),
+    disabled: #F3F6F8
   ),
 );

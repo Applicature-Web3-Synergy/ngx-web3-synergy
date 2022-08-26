@@ -161,19 +161,22 @@ export class W3sButtonComponent implements OnInit, OnChanges {
 
   /** @internal */
   public get iconColor(): string {
-    return this.color === AS_COLOR_GROUP.WHITE
-      ? AsColors[AS_COLOR_GROUP.GRAY].base
-      : AsColors[AS_COLOR_GROUP.WHITE].base
+    return this.disabled
+      ? 'inherit'
+      : this.color === AS_COLOR_GROUP.WHITE
+        ? AsColors[AS_COLOR_GROUP.GRAY].base
+        : AsColors[AS_COLOR_GROUP.WHITE].base;
   }
 
   /** @internal */
   public get spinnerColor(): string {
     return this.color === AS_COLOR_GROUP.WHITE
       ? AsColors[AS_COLOR_GROUP.BLUE].base
-      : AsColors[AS_COLOR_GROUP.WHITE].base
+      : AsColors[AS_COLOR_GROUP.WHITE].base;
   }
 
-  constructor(private _elRef: ElementRef) {}
+  constructor(private _elRef: ElementRef) {
+  }
 
   /** @internal */
   public get classNames(): { [el: string]: boolean } {
@@ -184,6 +187,12 @@ export class W3sButtonComponent implements OnInit, OnChanges {
       ['w3s-button-adaptive']: this.adaptive,
       ['w3s-button-transparent']: this.transparent && !this.bordered,
       ['w3s-button-bordered']: this.bordered,
+      ['w3s-button-with-left-icon']: !!(this.leftIcon && this.appearance !== W3S_BUTTON_APPEARANCE.ICON),
+      ['w3s-button-with-right-icon']: !!(this.rightIcon && !this.pending
+        && this.appearance !== W3S_BUTTON_APPEARANCE.ICON),
+      ['w3s-button-with-spinner']: this.pending,
+      ['w3s-button-with-left-identicon']: !!(this.identicon && this.identiconPosition === W3S_IDENTICON_POSITION.LEFT),
+      ['w3s-button-with-right-identicon']: !!(this.identicon && this.identiconPosition !== W3S_IDENTICON_POSITION.LEFT),
       [`w3s-button-${this.appearance}`]: true,
     };
   }
@@ -200,7 +209,7 @@ export class W3sButtonComponent implements OnInit, OnChanges {
 
   /** Emit {@link buttonClicked} event. */
   public clicked(event: any): void {  // eslint-disable-line @typescript-eslint/no-explicit-any
-    if (this.disabled) {
+    if ( this.disabled ) {
       return;
     }
 
@@ -209,11 +218,11 @@ export class W3sButtonComponent implements OnInit, OnChanges {
 
   /** @internal */
   private setProperties(): void {
-    if (this.adaptive) {
+    if ( this.adaptive ) {
       this._elRef.nativeElement.style.width = '100%';  // eslint-disable-line @typescript-eslint/no-unsafe-member-access
     }
 
-    if (this.transparent && this.color !== AS_COLOR_GROUP.WHITE) {
+    if ( this.transparent && this.color !== AS_COLOR_GROUP.WHITE ) {
       this.color = AS_COLOR_GROUP.WHITE;
     }
 
@@ -224,7 +233,7 @@ export class W3sButtonComponent implements OnInit, OnChanges {
         return {
           name: `--w3s-button-${prop}`,
           value: colorProperties[prop]
-        }
+        };
       });
 
     this.styleProperties = [

@@ -26,6 +26,10 @@ export class W3sAccountModalComponent extends BaseSubscriber implements OnInit, 
   /** @internal */
   public isSmallSize = false;
 
+  public get connectedWalletLabel(): string {
+    return this._walletConnectService.connectionState?.state?.wallets[0]?.label || '';
+  }
+
   constructor(
     private _config: W3sDialogConfig<W3sAccountModalData>,
     private _dialogRef: W3sDialogRef,

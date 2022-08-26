@@ -1,16 +1,26 @@
-<div class="w3s-faucet">
-  <div class="w3s-faucet-token-info">
-    <w3s-icon *ngIf="iconToken"
-              [icon]="iconToken"
-              class="w3s-faucet-token-symbol-icon"
+<div class="w3s-faucet" [class.w3s-faucet-column]="appearance === 'column'" *ngIf="config">
+  <div class="w3s-faucet-token">
+    <div class="w3s-faucet-token-info">
+      <w3s-icon *ngIf="config.image"
+                [icon]="config.image"
+                class="w3s-faucet-token-symbol-icon"
+      >
+      </w3s-icon>
+      <div class="w3s-faucet-token-symbol">{{ config.symbol }}</div>
+    </div>
+
+    <w3s-icon class="w3s-add-token-to-wallet"
+              *ngIf="showAddTokenToWallet && showAddTokenBtn"
+              [icon]="metamaskIcon"
+              (click)="addTokenToWallet()"
     >
     </w3s-icon>
-    <div class="w3s-faucet-token-symbol">{{ tokenSymbol }}</div>
   </div>
 
   <w3s-button [label]="!hasPending ? 'Get token' : 'Pending'"
-              class="w3s-button-label"
+              class="w3s-faucet-button"
               [pending]="hasPending"
-              (click)="mint()">
+              (click)="mint()"
+  >
   </w3s-button>
 </div>

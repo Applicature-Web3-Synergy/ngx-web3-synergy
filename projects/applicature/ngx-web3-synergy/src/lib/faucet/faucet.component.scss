@@ -1,14 +1,42 @@
 @use '@applicature/styles/src/lib/scss/as-common' as c;
 
-.w3s-faucet {
+:host {
   width: 100%;
   max-width: 564px;
-  padding: 28px 20px;
+  padding: 20px;
   background: c.getColor(white, base);
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border-radius: map-get(c.$as-border-radius, lg);
+  display: block;
+}
+
+.w3s-faucet {
+  width: 100%;
+  margin: -8px 0;
+
+  &:not(.w3s-faucet-column) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .w3s-faucet-token-info {
+      margin-right: 16px;
+    }
+
+    .w3s-add-token-to-wallet {
+      margin-right: 16px;
+    }
+  }
+
+  &.w3s-faucet-column {
+    .w3s-faucet-token {
+      justify-content: space-between;
+    }
+
+    .w3s-add-token-to-wallet {
+      margin-left: 16px;
+    }
+  }
 
   .w3s-faucet-token-info {
     display: flex;
@@ -20,4 +48,22 @@
       margin-right: 8px;
     }
   }
+}
+
+.w3s-faucet-token {
+  display: flex;
+  align-items: center;
+}
+
+.w3s-add-token-to-wallet {
+  cursor: pointer;
+}
+
+.w3s-faucet-token,
+.w3s-faucet-button {
+  margin: 8px 0;
+}
+
+.w3s-faucet-button {
+  width: 158px;
 }

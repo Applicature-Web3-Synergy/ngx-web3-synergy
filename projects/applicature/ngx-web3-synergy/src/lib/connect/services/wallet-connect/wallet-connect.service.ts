@@ -3,16 +3,9 @@ import { BehaviorSubject, combineLatest, Observable, of, Subject, Subscriber, ta
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import Web3 from 'web3';
-import Onboard from '@web3-onboard/core';
+import Onboard, { OnboardAPI, InitOptions, WalletState, AppState } from '@web3-onboard/core';
 import { Chain } from '@web3-onboard/common/dist/types';
-import {
-  Account,
-  AppState,
-  Balances,
-  InitOptions,
-  OnboardAPI,
-  WalletState
-} from '@web3-onboard/core/dist/types';
+import { Account, Balances } from '@web3-onboard/core/dist/types';
 
 import {
   W3sChain,
@@ -27,6 +20,7 @@ import { W3sBlockScrollHelperService, BaseSubscriber } from '../../../helpers';
 import { W3sDialogConfig, W3sDialogService } from '../../../dialog';
 import { W3sWalletLabel } from './types';
 import { W3sConnectDialogConfig, W3sConnectDialogData, W3sConnectModalComponent } from '../../components';
+import { W3sLocalStorageService } from '../../../services';
 
 
 export const W3S_CONNECTED_WALLET_NAME = 'W3S_CONNECTED_WALLET_NAME';
@@ -97,7 +91,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
           const connected = !!state?.wallets?.length;
 
           if (!connected) {
-            localStorage.removeItem(W3S_CONNECTED_WALLET_NAME);
+            this._localStorageService.removeItem(W3S_CONNECTED_WALLET_NAME);
           }
 
           return {
@@ -167,8 +161,11 @@ export class W3sWalletConnectService extends BaseSubscriber {
   /** @internal */
   private _blockExplorerUrlByChainId: W3sBlockExplorerUrlsByChainId = {};
 
-  constructor(private _blockScrollHelperService: W3sBlockScrollHelperService,
-              private _dialogService: W3sDialogService) {
+  constructor(
+    private _blockScrollHelperService: W3sBlockScrollHelperService,
+    private _dialogService: W3sDialogService,
+    private _localStorageService: W3sLocalStorageService
+  ) {
     super();
   }
 
@@ -369,7 +366,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
     )
       .pipe(
         tap(() => {
-          localStorage.removeItem(W3S_CONNECTED_WALLET_NAME);
+          this._localStorageService.removeItem(W3S_CONNECTED_WALLET_NAME);
         }),
         map(() => null),
       );
@@ -380,7 +377,7 @@ export class W3sWalletConnectService extends BaseSubscriber {
     this._onboardInitialized$
       .pipe(take(1))
       .subscribe(() => {
-        const previouslyConnectedWallet = localStorage.getItem(W3S_CONNECTED_WALLET_NAME);
+        const previouslyConnectedWallet = this._localStorageService.getItem(W3S_CONNECTED_WALLET_NAME);
 
         if (previouslyConnectedWallet !== null) {
           this.onboard.connectWallet({
@@ -403,12 +400,12 @@ export class W3sWalletConnectService extends BaseSubscriber {
         if (wallet) {
           const connectedWallet = wallet.label;
 
-          localStorage.setItem(
+          this._localStorageService.setItem(
             W3S_CONNECTED_WALLET_NAME,
             connectedWallet
           );
         } else {
-          localStorage.removeItem(W3S_CONNECTED_WALLET_NAME);
+          this._localStorageService.removeItem(W3S_CONNECTED_WALLET_NAME);
         }
 
         const account: Account = (wallet?.accounts ?? [])[0];

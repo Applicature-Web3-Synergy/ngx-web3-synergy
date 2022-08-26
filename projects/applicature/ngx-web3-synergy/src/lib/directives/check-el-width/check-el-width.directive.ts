@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';
 
@@ -10,6 +10,7 @@ import { BaseSubscriber } from '../../helpers';
   exportAs: 'w3sCheckElWidth'
 })
 export class W3sCheckElWidthDirective extends BaseSubscriber implements AfterViewInit {
+  @Input() ignoreSameWidth = true;
   @Output() elWidth: EventEmitter<number> = new EventEmitter<number>();
   private _resize$: Subject<number> = new Subject();
   private _curElWidth = 0;
@@ -29,7 +30,7 @@ export class W3sCheckElWidthDirective extends BaseSubscriber implements AfterVie
     this._resize$
       .pipe(
         debounceTime(50),
-        filter((width: number) => width !== this._curElWidth),
+        filter((width: number) => this.ignoreSameWidth ? width !== this._curElWidth : true),
         takeUntil(this.notifier)
       )
       .subscribe(() => {

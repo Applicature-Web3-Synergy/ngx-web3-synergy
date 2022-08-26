@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { WalletState } from '@web3-onboard/core/dist/types';
+import { WalletState } from '@web3-onboard/core';
 
 import { MetamaskIcon } from '../../../constants/icons/metamask';
 import { web3ProviderMock } from './web3-provider.mock';
