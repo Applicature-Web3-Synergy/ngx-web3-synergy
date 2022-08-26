@@ -28,6 +28,7 @@ import {
 } from '../../interfaces';
 import { W3S_TRANSACTION_STATUS } from '../../enums';
 import { BaseSubscriber } from '../../../helpers';
+import { W3sLocalStorageService } from '../../../services';
 
 
 const W3S_ETHERSCAN_TRANSACTIONS = 'W3S_ETHERSCAN_TRANSACTIONS';
@@ -60,7 +61,8 @@ export class W3sTransactionService extends BaseSubscriber {
 
   constructor(
     private _http: HttpClient,
-    private _walletConnectService: W3sWalletConnectService
+    private _walletConnectService: W3sWalletConnectService,
+    private _localStorageService: W3sLocalStorageService
   ) {
     super();
 
@@ -342,7 +344,7 @@ export class W3sTransactionService extends BaseSubscriber {
   /** @internal */
   private _getTransactionsAndSetToMap(): void {
     const transactions: W3sTransactionItem[] =
-      JSON.parse(localStorage.getItem(this._getLocalStorageKey())) || [];
+      JSON.parse(this._localStorageService.getItem(this._getLocalStorageKey())) || [];
 
     this.clearTransactions(false);
     this._emitTransactionChanges();
@@ -368,7 +370,7 @@ export class W3sTransactionService extends BaseSubscriber {
 
   /** @internal */
   private _refreshTransactions(): void {
-    localStorage.setItem(this._getLocalStorageKey(), JSON.stringify(this._transactionsMapAsArr));
+    this._localStorageService.setItem(this._getLocalStorageKey(), JSON.stringify(this._transactionsMapAsArr));
 
     this._emitTransactionChanges();
   }
