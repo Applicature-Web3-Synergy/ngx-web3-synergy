@@ -1,19 +1,21 @@
-<div class="doc-grid-container">
-  <div class="doc-grid-item">
-    <div class="doc-list-wallets">
-      <button type="button"
-              class="doc-custom-btn"
-              (click)="connect('MetaMask')"
-      >
-        {{connectedWalletLabel === 'MetaMask' ? 'Disconnect' : 'Connect'}} Metamask
-      </button>
+<div class="doc-example-card">
+  <mat-tab-group>
+    <mat-tab label="Default">
+      <div class="doc-list-wallets">
+        <button type="button"
+                class="doc-custom-btn"
+                (click)="connect('MetaMask')"
+        >
+          {{connectedWalletLabel === 'MetaMask' ? 'Disconnect' : 'Connect'}} Metamask
+        </button>
 
-      <button type="button"
-              class="doc-custom-btn"
-              (click)="connect('WalletConnect')"
-      >
-        {{connectedWalletLabel === 'WalletConnect' ? 'Disconnect' : 'Connect'}} WalletConnect
-      </button>
-    </div>
-  </div>
+        <button type="button"
+                class="doc-custom-btn"
+                (click)="connect('WalletConnect')"
+        >
+          {{connectedWalletLabel === 'WalletConnect' ? 'Disconnect' : 'Connect'}} WalletConnect
+        </button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>

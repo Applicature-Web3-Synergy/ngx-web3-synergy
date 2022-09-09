@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { W3sConnectWalletModule } from '@applicature/ngx-web3-synergy';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { ConnectWalletRoutingModule } from './connect-wallet-routing.module';
 import { ConnectWalletComponent } from './connect-wallet.component';
@@ -30,7 +31,8 @@ import {
     ConnectWalletRoutingModule,
     ComponentViewerModule,
     ExampleCardModule,
-    W3sConnectWalletModule
+    W3sConnectWalletModule,
+    MatTabsModule
   ]
 })
 export class ConnectWalletModule {

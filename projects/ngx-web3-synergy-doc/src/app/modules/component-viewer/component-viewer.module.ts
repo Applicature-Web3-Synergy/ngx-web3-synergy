@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatTabsModule } from '@angular/material/tabs';
-
 import { ComponentViewerComponent } from './component-viewer.component';
 import { ApiContainerComponent } from './components/api-container/api-container.component';
 import { CodeExampleModule } from '../code-example/code-example.module';
@@ -22,7 +20,6 @@ import { ExampleCardModule } from '../example-card/example-card.module';
   imports: [
     CommonModule,
     CodeExampleModule,
-    MatTabsModule,
     ExampleCardModule
   ]
 })
