@@ -238,6 +238,7 @@ mat-select {
 
 .mat-drawer-container {
   background-color: transparent;
+  color: map-get(c.$white, 1);
 }
 
 // End Getting started page styles
