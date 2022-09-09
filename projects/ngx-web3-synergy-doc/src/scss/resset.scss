@@ -36,6 +36,10 @@ body {
   background-color: c.$main-bg-color;
 }
 
+a {
+  text-decoration: none;
+}
+
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
