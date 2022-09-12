@@ -32,7 +32,7 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.5;
-  color: c.$text-color;
+  color: map-get(c.$white, 1);
   background-color: c.$main-bg-color;
 }
 

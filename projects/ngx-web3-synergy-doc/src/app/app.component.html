@@ -22,14 +22,11 @@
     </mat-sidenav>
 
     <mat-sidenav-content class="doc-sidenav-content">
-      <div class="doc-sidenav-title-container">
-        <h2 class="doc-sidenav-title">{{currentPageTitle$ | async}}</h2>
-      </div>
-
       <main class="doc-main-container" [class.doc-desktop]="!isMobile">
         <doc-main-menu class="doc-sidenav doc-desktop-menu" *ngIf="!isMobile"></doc-main-menu>
 
         <div class="main-page-container">
+          <h2 class="doc-sidenav-title">{{currentPageTitle$ | async}}</h2>
           <router-outlet></router-outlet>
         </div>
       </main>

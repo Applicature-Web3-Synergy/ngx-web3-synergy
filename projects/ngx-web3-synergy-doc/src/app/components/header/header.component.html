@@ -1,21 +1,40 @@
-<header class="main-header-container">
-  <div class="doc-main-header-left">
-    <div class="main-header-content-container">
-      <ng-content></ng-content>
+<header id="header">
+  <div class="header" [class.mobile]="isMobile">
+    <div class="header-container">
+      <a routerLink="/" [fragment]="URL_FRAGMENTS.API" class="logo">
+        <img src="assets/img/logo.svg" alt="Web3 synergy logotype">
+      </a>
+
+      <button type="button"
+              class="menu-trigger"
+              *ngIf="isMobile"
+              [class.active]="isOpenedMenu"
+              (click)="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="main-menu-container" [class.opened]="isOpenedMenu && isMobile">
+        <nav class="main-nav">
+          <a *ngFor="let item of navigationMenu; let i=index"
+             routerLink="/"
+             [fragment]="item.fragment"
+             [class.active]="item.activeClass"
+             class="main-nav-item"
+          >
+            {{item.title}}
+          </a>
+        </nav>
+
+        <button type="button"
+                class="menu-action-btn app-button purple sm"
+                (click)="menuBtnAction()"
+        >
+          Go to Library
+        </button>
+      </div>
     </div>
-
-    <div class="main-header">
-      <a routerLink="/" *ngIf="(isStartPage$ | async) === false; else startRef" class="header-logo">{{name}}</a>
-
-      <ng-template #startRef>
-        <span class="header-logo">{{name}}</span>
-      </ng-template>
-    </div>
-  </div>
-
-  <div class="doc-main-header-right">
-    <a href="https://github.com/Applicature-Web3-Synergy/ngx-web3-synergy" target="_blank" class="doc-header-git">
-      <img src="assets/img/icons/github.svg" alt="Github logo"/>
-    </a>
   </div>
 </header>

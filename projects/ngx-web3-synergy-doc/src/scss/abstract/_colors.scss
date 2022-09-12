@@ -1,15 +1,28 @@
+$black: (
+  1: #0B0916
+);
+$white: (
+  1: #F0F0F0,
+  2: #ABABAF
+);
+$blue: (
+  base: #47B7E9,
+  hover: #67B4D0,
+  disable: #193248
+);
+$gradient: (
+  'purple-text': linear-gradient(253.38deg, #4DC7EE 29.55%, #E8208E 105.1%),
+  'purple-card': linear-gradient(270.1deg, #E8208E 3.9%, #86226A 72.82%),
+  'blue-card': linear-gradient(280.5deg, #47B7E9 17.65%, #005D7D 72.41%),
+  'purple-btn': linear-gradient(241.45deg, #3891B9 28.96%, #8B5CA5 65.26%, #E8208E 106.38%),
+  'blue-btn': linear-gradient(267.21deg, #207D9F 1.46%, #47B7E9 89.37%)
+);
+
+// TODO: Remove old property after redesign
 $gray: (
   1: #E5E5E5,
   2: #DDE3EC,
   3: #6D87AC,
   4: #8796A6,
   5: #F8F9FA
-);
-$blue: (
-  1: #3F67C7,
-  2: #4678F0
-);
-$black: (
-  1: #000,
-  2: #222
 );
