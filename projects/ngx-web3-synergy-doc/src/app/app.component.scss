@@ -3,6 +3,10 @@
 $sidenav-title-height: 60px;
 $desktop-menu-width: 200px;
 
+.main-page-container {
+  overflow: auto;
+}
+
 .doc-sidenav-container {
   margin-top: 162px;
 }

@@ -2,6 +2,8 @@
 
 $main-font: 'Inter', sans-serif;
 $max-page-width: 1440px;
+$border-radius: 16px;
+$border-radius-small: 8px;
 $page-horizontal-padding: (
   lg: 48px,
   sm: 15px
@@ -12,7 +14,6 @@ $header-height: (
 );
 
 // TODO: Remove old property after redesign
-$border-radius: 8px;
 $main-horizontal-padding: 64px;
 $main-vertical-padding: 20px;
 $main-horizontal-mobile-padding: 15px;
