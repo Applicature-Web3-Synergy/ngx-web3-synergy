@@ -16,6 +16,13 @@
   padding: 0 c.$main-horizontal-padding;
 }
 
+.doc-section-title {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 24px;
+}
+
 .doc-example-viewer-example-cards-list,
 doc-need-wallet-connection {
   & > *:not(:last-child) {

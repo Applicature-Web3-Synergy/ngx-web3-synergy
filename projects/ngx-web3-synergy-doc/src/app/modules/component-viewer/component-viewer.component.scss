@@ -1,0 +1,6 @@
+@use 'common' as c;
+
+doc-api-container {
+  display: block;
+  margin-top: map-get(c.$page-indent, lg);
+}

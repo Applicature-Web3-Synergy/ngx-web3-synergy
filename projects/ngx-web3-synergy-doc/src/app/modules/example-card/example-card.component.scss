@@ -14,13 +14,6 @@ $card-padding: 16px 16px 48px;
   padding: $card-padding;
 }
 
-.doc-example-card-title {
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 36px;
-  margin-bottom: 24px;
-}
-
 .doc-example-card-content {
   & > *:not(:first-child) {
     background: map-get(c.$gradient, purple-dark-card);
