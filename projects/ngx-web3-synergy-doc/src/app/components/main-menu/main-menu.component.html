@@ -1,9 +1,11 @@
 <nav class="main-navigation-container">
-  <a *ngFor="let item of menuItems"
-     [routerLink]="item.routerLink"
-     class="main-navigation-item"
-     routerLinkActive="main-navigation-item-active"
-  >
-    {{item.title}}
-  </a>
+  <ng-container *ngFor="let item of menuItems">
+    <a *ngIf="!item.disabled"
+       [routerLink]="item.routerLink"
+       class="main-navigation-item"
+       routerLinkActive="main-navigation-item-active"
+    >
+      <img src="{{item.icon}}" alt=""> {{item.title}}
+    </a>
+  </ng-container>
 </nav>
