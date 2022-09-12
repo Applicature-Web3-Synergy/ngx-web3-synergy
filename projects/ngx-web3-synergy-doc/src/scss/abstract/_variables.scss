@@ -23,6 +23,7 @@ $card-mobile-padding: 15px;
 
 // Colors
 $main-bg: #0B0916;
+$border-color: #331B3C;
 
 // TODO: Remove old color after redesign
 $card-bg: #fff;
@@ -32,7 +33,6 @@ $title-color: map-get(c.$white, 1);
 $title-gray: map-get(c.$gray, 4);
 $side-nav-bg: #fff;
 $side-nav-active-bg: map-get(c.$gray, 2);
-$border-color: map-get(c.$gray, 2);
 $main-bg-color: map-get(c.$black, 1);
 
 // Breakpoints
