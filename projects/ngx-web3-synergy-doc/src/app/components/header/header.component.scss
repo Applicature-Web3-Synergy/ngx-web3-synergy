@@ -17,7 +17,7 @@ $logo-width: 184px;
   height: 100%;
   width: 100%;
   max-width: c.$max-page-width;
-  padding: 0 map-get(c.$page-horizontal-padding, lg);
+  padding: 0 map-get(c.$page-indent, lg);
   margin: 0 auto;
 }
 
@@ -171,7 +171,7 @@ $logo-width: 184px;
     width: 100%;
     height: auto;
     display: block;
-    padding: 24px map-get(c.$page-horizontal-padding, sm);
+    padding: 24px map-get(c.$page-indent, sm);
     background: c.$main-bg;
     z-index: -1;
     opacity: 0;
@@ -189,6 +189,6 @@ $logo-width: 184px;
 
 @media (max-width: map-get(c.$grid-breakpoints, sm)) {
   .header {
-    padding: 0 map-get(c.$page-horizontal-padding, sm);
+    padding: 0 map-get(c.$page-indent, sm);
   }
 }

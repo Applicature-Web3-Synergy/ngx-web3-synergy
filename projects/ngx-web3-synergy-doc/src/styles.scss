@@ -20,7 +20,7 @@
 doc-need-wallet-connection {
   & > *:not(:last-child) {
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: map-get(c.$page-indent, lg);
   }
 }
 

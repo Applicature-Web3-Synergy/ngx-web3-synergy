@@ -15,10 +15,17 @@ $desktop-menu-width: 200px;
   width: 100%;
   max-width: c.$max-page-width;
   margin: 0 auto;
-  padding: 0 map-get(c.$page-horizontal-padding, lg);
+  padding: 0 map-get(c.$page-indent, lg);
   display: grid;
   grid-template-columns: $desktop-menu-width 1fr;
   grid-gap: 64px;
+}
+
+.doc-sidenav-title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  margin-bottom: map-get(c.$page-indent, lg);
 }
 
 .main-menu-toggle {

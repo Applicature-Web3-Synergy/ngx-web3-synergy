@@ -6,6 +6,7 @@ $card-padding: 16px 16px 48px;
 .doc-example-card-container {
   background: map-get(c.$gradient, purple-card);
   border-radius: c.$border-radius;
+  overflow: hidden;
 }
 
 .doc-example-card-header,
@@ -22,7 +23,55 @@ $card-padding: 16px 16px 48px;
 
 .doc-example-card-content {
   & > *:not(:first-child) {
-    margin-top: 20px;
+    background: map-get(c.$gradient, purple-dark-card);
+    margin: 48px -16px -48px;
+    max-width: inherit;
+  }
+}
+
+::ng-deep {
+  .mat-tab-group {
+    &.doc-example-card-tabs {
+      .mat-tab-header {
+        border-bottom: 1px solid rgba(232, 32, 142, 0.1);
+      }
+
+      .mat-tab-label {
+        color: map-get(c.$white, 2);
+        opacity: 1;
+        padding: 0 16px;
+        height: 54px;
+        min-width: inherit;
+
+        &.mat-tab-label-active {
+          color: c.$pink;
+          font-weight: 400;
+        }
+      }
+
+      &.doc-example-card-tabs {
+        .mat-tab-body-content {
+          padding: 0;
+          overflow: visible;
+        }
+      }
+
+      &.mat-tab-group-dynamic-height {
+        .mat-tab-body {
+          &.mat-tab-body-active {
+            overflow: visible !important;
+          }
+        }
+      }
+
+      .mat-ink-bar {
+        background-color: c.$pink !important;
+      }
+    }
+  }
+
+  .mat-tab-body-wrapper {
+    overflow: visible !important;
   }
 }
 
