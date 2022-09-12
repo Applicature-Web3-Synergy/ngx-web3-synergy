@@ -2,6 +2,7 @@ $black: (
   1: #0B0916,
   2: #15112B
 );
+$pink: #E8208E;
 $white: (
   1: #F0F0F0,
   2: #ABABAF,
@@ -14,6 +15,7 @@ $blue: (
 );
 $gradient: (
   purple-card: linear-gradient(270.1deg, #E8208E 3.9%, #86226A 72.82%),
+  purple-dark-card: linear-gradient(270.1deg, #420F33 3.9%, #130B1B 72.82%),
   blue-card: linear-gradient(280.5deg, #47B7E9 17.65%, #005D7D 72.41%),
   purple-btn: linear-gradient(241.45deg, #3891B9 28.96%, #8B5CA5 65.26%, #E8208E 106.38%),
   blue-btn: linear-gradient(267.21deg, #207D9F 1.46%, #47B7E9 89.37%)

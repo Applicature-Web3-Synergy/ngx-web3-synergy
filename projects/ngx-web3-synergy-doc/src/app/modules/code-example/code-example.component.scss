@@ -1,24 +1,35 @@
 @use 'common' as c;
 
-.code-example-container {
+.code-example-container,
+.code-example {
   position: relative;
 }
 
 .copy-code {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: -37px;
+  right: 16px;
+  width: 64px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
 }
 
 pre.prettyprint {
-  border: 1px solid c.$border-color;
-  border-radius: c.$border-radius;
-  overflow: auto;
-  padding: 15px;
-
-  &.white-theme {
-    background-color: c.$card-bg;
-  }
+  border: none;
+  white-space: break-spaces;
+  overflow-x: auto;
+  max-height: 295px;
+  padding: 16px;
+  margin: 0;
+  background-color: transparent;
 
   & > .pln {
     display: none;
