@@ -266,4 +266,14 @@ mat-select {
   color: map-get(c.$white, 1);
 }
 
+.main-content-container {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  grid-gap: 64px;
+
+  doc-component-viewer {
+    overflow: auto;
+  }
+}
+
 // End Getting started page styles

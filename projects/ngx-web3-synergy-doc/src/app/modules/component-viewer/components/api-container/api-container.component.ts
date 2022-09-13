@@ -10,6 +10,7 @@ import {
   DocType,
   DocumentationParserService
 } from '../../../../services/documentation-parser';
+import { TableOfContentName } from 'projects/ngx-web3-synergy-doc/src/app/constants/table-of-content.constant';
 
 
 @Component({
@@ -28,6 +29,8 @@ export class ApiContainerComponent implements AfterContentInit {
 
   /** Flag to indicate if some data could be loaded - otherwise the message to run "yarn doc" first will occur */
   public wasLoaded = false;
+
+  public sectionId = TableOfContentName;
 
   constructor(
     public documentationParserService: DocumentationParserService,

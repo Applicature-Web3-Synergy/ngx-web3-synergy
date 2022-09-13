@@ -15,6 +15,7 @@ import {
   CustomConnectButtonComponent,
   CustomConnectWalletComponent
 } from './components';
+import { TableOfContentComponent } from '../../components/table-of-contents/table-of-contents.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {
     ConnectWalletAsIconComponent,
     ConnectWalletWithNetworkComponent,
     CustomConnectWalletComponent,
-    CustomConnectButtonComponent
+    CustomConnectButtonComponent,
+    TableOfContentComponent
   ],
   imports: [
     CommonModule,

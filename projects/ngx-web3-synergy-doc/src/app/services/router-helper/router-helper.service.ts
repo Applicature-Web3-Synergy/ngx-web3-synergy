@@ -26,7 +26,7 @@ export class RouterHelperService {
   }
 
   public setPageTitleByUrl(url: string): void {
-    const title: string = PageTitlesByUrl[(url ?? '').replace('/', '')];
+    const title: string = PageTitlesByUrl[(url ?? '').split('#')[0].replace('/', '')];
 
     this.activePageTitle$.next(title);
   }
