@@ -10,7 +10,7 @@ import {
   DocType,
   DocumentationParserService
 } from '../../../../services/documentation-parser';
-import { TableOfContentName } from 'projects/ngx-web3-synergy-doc/src/app/constants/table-of-content.constant';
+import { TableOfContentName } from '../../../../constants/table-of-content.constant';
 
 
 @Component({
