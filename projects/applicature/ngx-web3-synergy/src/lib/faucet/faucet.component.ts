@@ -9,7 +9,6 @@ import { ContractOptions, Contract } from 'web3-eth-contract';
 import { W3S_BUTTON_APPEARANCE } from '../button';
 import { BaseSubscriber, w3sToWei } from '../helpers';
 import { W3sConnectionState, W3sWalletConnectService } from '../connect';
-import ERC20 from '../smart-contracts/ERC20.json';
 import { MetamaskIcon } from '../connect/constants/icons/metamask';
 import { W3sFaucetConfig } from './interfaces';
 
@@ -25,9 +24,6 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
   /** Color Scheme button */
   public COLORS = AS_COLOR_GROUP;
   public BUTTON_APPEARANCE = W3S_BUTTON_APPEARANCE;
-
-  /** @internal */
-  private ERC20Json: AbiItem[] = ERC20 as AbiItem[];
 
   /** @internal */
   public account: string;
@@ -122,8 +118,8 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
         return;
       }
 
-      const contract: Contract = this.getContract(this.ERC20Json, contractAddress);
-      contract.methods.mint(this.account, w3sToWei(this.amount, this.config.decimals))
+      const contract: Contract = this.getContract(this.config.abi, contractAddress);
+      contract.methods.mintFor(this.account, w3sToWei(this.amount, this.config.decimals))
         .send({ from: this.account })
         .then(() => {
           observer.next(null);
