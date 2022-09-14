@@ -16,7 +16,8 @@ import {
   CustomConnectWalletCodeTs
 } from './components';
 import { AppModuleTab } from '../../constants';
-
+import { TableOfContents } from '../../components/table-of-contents/interfaces';
+import { TableOfContentName } from '../../constants/table-of-content.constant';
 
 @Component({
   selector: 'doc-connect-wallet',
@@ -122,4 +123,48 @@ export class ConnectWalletComponent {
     }
   ];
 
+  sectionId = TableOfContentName;
+  configContent: TableOfContents[] = [
+    {
+      title: 'Basic',
+      url: TableOfContentName.Basic,
+      subnav: false,
+    },
+    {
+      title: 'As Icon',
+      url: TableOfContentName.AsIcon,
+      subnav: false,
+    },
+    {
+      title: 'With Networks List',
+      url: TableOfContentName.WithNetworksList,
+      subnav: false,
+    },
+
+    {
+      title: 'Custom connect button',
+      url: TableOfContentName.CustomConnectButton,
+      subnav: false,
+    },
+    {
+      title: 'Custom connect',
+      url: TableOfContentName.CustomConnect,
+      subnav: false,
+    },
+    {
+      title: 'API',
+      url: TableOfContentName.API,
+      subnav: false,
+    },
+    {
+      title: 'W3sConnectWalletComponent',
+      url: TableOfContentName.W3sConnectWalletComponent,
+      subnav: true,
+    },
+    {
+      title: 'W3sWalletConnectService',
+      url: TableOfContentName.W3sWalletConnectService,
+      subnav: true,
+    },
+  ];
 }

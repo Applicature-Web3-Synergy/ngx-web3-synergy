@@ -3,8 +3,9 @@
 $sidenav-title-height: 60px;
 $desktop-menu-width: 200px;
 
-.main-page-container {
-  overflow: auto;
+.mat-drawer-container,
+.mat-drawer-content {
+  overflow: initial;
 }
 
 .doc-sidenav-container {

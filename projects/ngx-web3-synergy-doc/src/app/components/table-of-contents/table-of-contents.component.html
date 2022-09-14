@@ -1,0 +1,10 @@
+<div class="doc-anchor-box">
+  <div class="box-title">ON THIS PAGE</div>
+  <ul class="doc-anchor-nav">
+    <li *ngFor="let item of configContent; let i = index">
+      <a (click)="scrollToElement(item.url)" [class.subnav]="item.subnav" [class.active]="fragment === item.url">
+        {{ item.title }}
+      </a>
+    </li>
+  </ul>
+</div>

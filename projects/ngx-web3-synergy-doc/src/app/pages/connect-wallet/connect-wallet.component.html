@@ -1,25 +1,31 @@
-<doc-component-viewer
-  [components]="['W3sConnectWalletComponent', 'W3sWalletConnectService']"
->
-  <div class="doc-example-viewer-example-cards-list">
-    <doc-example-card label="Basic" [tabs]="basicCWTabs">
-      <doc-basic-connect-wallet></doc-basic-connect-wallet>
-    </doc-example-card>
+<div class="main-content-container">
+  <doc-component-viewer
+    [components]="['W3sConnectWalletComponent', 'W3sWalletConnectService']"
+  >
+    <div class="doc-example-viewer-example-cards-list">
+      <doc-example-card [attr.id]="sectionId.Basic" label="Basic" [tabs]="basicCWTabs">
+        <doc-basic-connect-wallet></doc-basic-connect-wallet>
+      </doc-example-card>
 
-    <doc-example-card label="As Icon" [tabs]="cwAsIconTabs">
-      <doc-connect-wallet-as-icon></doc-connect-wallet-as-icon>
-    </doc-example-card>
+      <doc-example-card [attr.id]="sectionId.AsIcon" label="As Icon" [tabs]="cwAsIconTabs">
+        <doc-connect-wallet-as-icon></doc-connect-wallet-as-icon>
+      </doc-example-card>
 
-    <doc-example-card label="With Networks List" [tabs]="cwWithNetworkTabs">
-      <doc-connect-wallet-with-network></doc-connect-wallet-with-network>
-    </doc-example-card>
+      <doc-example-card [attr.id]="sectionId.WithNetworksList" label="With Networks List" [tabs]="cwWithNetworkTabs">
+        <doc-connect-wallet-with-network></doc-connect-wallet-with-network>
+      </doc-example-card>
 
-    <doc-example-card label="Custom connect button" [tabs]="customBtnCwTabs">
-      <doc-custom-connect-button></doc-custom-connect-button>
-    </doc-example-card>
+      <doc-example-card [attr.id]="sectionId.CustomConnectButton" label="Custom connect button" [tabs]="customBtnCwTabs">
+        <doc-custom-connect-button></doc-custom-connect-button>
+      </doc-example-card>
 
-    <doc-example-card label="Custom connect" [tabs]="customCwTabs">
-      <doc-custom-connect-wallet></doc-custom-connect-wallet>
-    </doc-example-card>
+      <doc-example-card [attr.id]="sectionId.CustomConnect" label="Custom connect" [tabs]="customCwTabs">
+        <doc-custom-connect-wallet></doc-custom-connect-wallet>
+      </doc-example-card>
+    </div>
+  </doc-component-viewer>
+
+  <div class="anchors-container">
+    <doc-table-of-contents [configContent]="configContent"></doc-table-of-contents>
   </div>
-</doc-component-viewer>
+</div>
