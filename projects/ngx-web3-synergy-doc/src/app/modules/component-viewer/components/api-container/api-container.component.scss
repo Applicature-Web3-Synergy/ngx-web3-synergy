@@ -3,7 +3,7 @@
 $code-section-width: 380px;
 
 .component-title {
-  margin-bottom: 30px;
+  margin-bottom: 8px;
 }
 
 doc-example-card {
@@ -15,6 +15,12 @@ doc-example-card {
 }
 
 .code-component-container {
+  margin-bottom: 48px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   ::ng-deep {
     .doc-example-card-container {
       background: transparent;

@@ -15,8 +15,7 @@ import {
   CustomConnectButtonComponent,
   CustomConnectWalletComponent
 } from './components';
-import { TableOfContentComponent } from '../../components/table-of-contents/table-of-contents.component';
-
+import { TableOfContentsModule } from '../../components/table-of-contents/table-of-contents.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { TableOfContentComponent } from '../../components/table-of-contents/tabl
     ConnectWalletAsIconComponent,
     ConnectWalletWithNetworkComponent,
     CustomConnectWalletComponent,
-    CustomConnectButtonComponent,
-    TableOfContentComponent
+    CustomConnectButtonComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +32,8 @@ import { TableOfContentComponent } from '../../components/table-of-contents/tabl
     ComponentViewerModule,
     ExampleCardModule,
     W3sConnectWalletModule,
-    MatTabsModule
+    MatTabsModule,
+    TableOfContentsModule
   ]
 })
 export class ConnectWalletModule {

@@ -1,9 +1,15 @@
-<doc-component-viewer [components]="['W3sAccountButtonComponent']">
-  <div class="doc-example-viewer-example-cards-list">
-    <doc-need-wallet-connection>
-      <doc-example-card label="Account Button" [tabs]="accountButtonTabs">
-        <doc-basic-account-button></doc-basic-account-button>
-      </doc-example-card>
-    </doc-need-wallet-connection>
+<div class="main-content-container">
+  <doc-component-viewer [components]="['W3sAccountButtonComponent']">
+    <div class="doc-example-viewer-example-cards-list">
+      <doc-need-wallet-connection>
+        <doc-example-card [attr.id]="sectionId.Basic" label="Account Button" [tabs]="accountButtonTabs">
+          <doc-basic-account-button></doc-basic-account-button>
+        </doc-example-card>
+      </doc-need-wallet-connection>
+    </div>
+  </doc-component-viewer>
+
+  <div class="anchors-container">
+    <doc-table-of-contents [configContent]="configContent"></doc-table-of-contents>
   </div>
-</doc-component-viewer>
+</div>

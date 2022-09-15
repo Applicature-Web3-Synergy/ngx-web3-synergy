@@ -1,21 +1,28 @@
 @use 'as-common' as asc;
 @use 'common' as c;
 
-.main-navigation-container {
-  .main-navigation-item {
-    display: flex;
-    align-items: center;
-    color: map-get(c.$white, 2);
-    margin-bottom: 16px;
-    @include asc.transition;
+.sidebar-box {
+  position: sticky;
+  top: 100px;
+  height: calc(100vh - 130px);
 
-    &.main-navigation-item-active,
-    &:hover {
-      color: map-get(c.$white, 1);
-    }
+  .main-navigation-container {
 
-    img {
-      margin-right: 8px;
+    .main-navigation-item {
+      display: flex;
+      align-items: center;
+      color: map-get(c.$white, 2);
+      margin-bottom: 16px;
+      @include asc.transition;
+
+      &.main-navigation-item-active,
+      &:hover {
+        color: map-get(c.$white, 1);
+      }
+
+      img {
+        margin-right: 8px;
+      }
     }
   }
 }

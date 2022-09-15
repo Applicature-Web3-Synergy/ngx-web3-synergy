@@ -1,13 +1,19 @@
-<doc-component-viewer [components]="['W3sNetworkDropdownComponent']">
-  <div class="doc-example-viewer-example-cards-list">
-    <doc-need-wallet-connection>
-      <doc-example-card label="Default Network Dropdown" [tabs]="basicNetworkDropdownTabs">
-        <doc-basic-network-dropdown></doc-basic-network-dropdown>
-      </doc-example-card>
+<div class="main-content-container">
+  <doc-component-viewer [components]="['W3sNetworkDropdownComponent']">
+    <div class="doc-example-viewer-example-cards-list">
+      <doc-need-wallet-connection>
+        <doc-example-card [attr.id]="sectionId.Basic" label="Default Network Dropdown" [tabs]="basicNetworkDropdownTabs">
+          <doc-basic-network-dropdown></doc-basic-network-dropdown>
+        </doc-example-card>
 
-      <doc-example-card label="Customized Network Dropdown" [tabs]="customizedNetworkDropdownTabs">
-        <doc-customized-network-dropdown></doc-customized-network-dropdown>
-      </doc-example-card>
-    </doc-need-wallet-connection>
+        <doc-example-card [attr.id]="sectionId.Customized" label="Customized Network Dropdown" [tabs]="customizedNetworkDropdownTabs">
+          <doc-customized-network-dropdown></doc-customized-network-dropdown>
+        </doc-example-card>
+      </doc-need-wallet-connection>
+    </div>
+  </doc-component-viewer>
+
+  <div class="anchors-container">
+    <doc-table-of-contents [configContent]="configContent"></doc-table-of-contents>
   </div>
-</doc-component-viewer>
+</div>
