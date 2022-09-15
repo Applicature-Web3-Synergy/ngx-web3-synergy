@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableOfContentComponent } from './table-of-contents.component';
 
+import { TableOfContentComponent } from './table-of-contents.component';
 
 
 @NgModule({
