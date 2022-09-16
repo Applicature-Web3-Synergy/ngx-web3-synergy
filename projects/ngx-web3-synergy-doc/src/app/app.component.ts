@@ -17,6 +17,7 @@ import { RouterHelperService } from './services/router-helper';
 })
 export class AppComponent extends BaseSubscriber {
   public currentPageTitle$: Observable<string> = this.routerHelperService.currentPageTitle$;
+  public isShowSidebar = false;
   public isMobile = false;
   private resize$: Subject<void> = new Subject();
 
@@ -42,10 +43,6 @@ export class AppComponent extends BaseSubscriber {
       )
       .subscribe((e: NavigationEnd) => {
         this.routerHelperService.activeUrl = e.url;
-
-        if ( this.isMobile ) {
-          this.sidenav.opened = false;
-        }
       });
 
     this.resize$
@@ -57,5 +54,12 @@ export class AppComponent extends BaseSubscriber {
 
   checkIsMobile(startMobileWidth = 959): void {
     this.isMobile = (document?.body?.offsetWidth || 0) <= startMobileWidth;
+  }
+
+  onShowSidebar() {
+    this.isShowSidebar = !this.isShowSidebar;
+    if (this.isShowSidebar) {
+      this.document.querySelector('body').classList.add('overlay')
+    }
   }
 }

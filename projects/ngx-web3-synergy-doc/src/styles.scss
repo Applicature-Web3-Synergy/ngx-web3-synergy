@@ -59,12 +59,6 @@ doc-need-wallet-connection {
     box-shadow: none;
   }
 
-  .mat-tab-header-pagination-chevron {
-    border-color: #fff;
-    height: 10px;
-    width: 10px;
-  }
-
   .mat-tab-body-content {
     display: flex;
     justify-content: center;
@@ -88,6 +82,20 @@ doc-need-wallet-connection {
 
   &:hover {
     background: rgba(map-get(c.$blue, hover), 0.9);
+  }
+}
+
+.doc-example-card-container {
+  .mat-tab-header-pagination-chevron {
+    border-color: #fff;
+    height: 12px;
+    width: 12px;
+  }
+
+  .mat-tab-header-pagination-disabled {
+    .mat-tab-header-pagination-chevron {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
   }
 }
 
@@ -137,6 +145,8 @@ mat-select {
 
   &.with-code {
     line-height: 24px;
+    white-space: break-spaces;
+    word-break: break-all;
 
     .getting-started-code {
       padding: 2px;
@@ -286,6 +296,16 @@ mat-select {
 
 .mat-checkbox-frame {
   border-color: #fff;
+}
+
+@media (max-width: map-get(c.$grid-breakpoints, xl)) {
+  .anchors-container {
+    display: none;
+  }
+
+  .main-content-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 // End Getting started page styles

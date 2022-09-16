@@ -57,7 +57,7 @@ export class HeaderComponent {
 
   checkIsMobile(): void {
     const width = window.innerWidth;
-    const mobileWidth = 1100;
+    const mobileWidth = 960;
 
     if (width > mobileWidth ) {
       this.isMobile = false;

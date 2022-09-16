@@ -30,6 +30,7 @@ pre.prettyprint {
   padding: 16px;
   margin: 0;
   background-color: transparent;
+  word-break: break-all;
 
   & > .pln {
     display: none;

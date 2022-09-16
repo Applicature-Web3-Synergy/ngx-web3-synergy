@@ -20,10 +20,13 @@
       max-width: inherit;
       border-radius: 0;
       border: none;
+      white-space: break-spaces;
+      word-break: break-all;
     }
 
     .getting-started-code {
       background: map-get(c.$gradient, purple-dark-card);
+      word-break: break-all;
     }
 
     ul {
