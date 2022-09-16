@@ -9,6 +9,8 @@ import {
   CustomTransactionHistoryCodeHtml,
   CustomTransactionHistoryCodeTs
 } from './components';
+import { TableOfContentName } from '../../constants/table-of-content.constant';
+import { TableOfContents } from '../../components/table-of-contents/interfaces';
 
 
 @Component({
@@ -54,4 +56,37 @@ export class TransactionsHistoryComponent {
     }
   ];
 
+  sectionId = TableOfContentName;
+  configContent: TableOfContents[] = [
+    {
+      title: 'Basic',
+      url: TableOfContentName.Basic,
+      subnav: false,
+    },
+    {
+      title: 'Custom',
+      url: TableOfContentName.Customized,
+      subnav: false,
+    },
+    {
+      title: 'API',
+      url: TableOfContentName.API,
+      subnav: false,
+    },
+    {
+      title: 'W3sTransactionsHistory Component',
+      url: TableOfContentName.W3sTransactionsHistoryComponent,
+      subnav: true,
+    },
+    {
+      title: 'W3sTransactionsList Component',
+      url: TableOfContentName.W3sTransactionsListComponent,
+      subnav: true,
+    },
+    {
+      title: 'W3sTransaction Service',
+      url: TableOfContentName.W3sTransactionService,
+      subnav: true,
+    }
+  ];
 }

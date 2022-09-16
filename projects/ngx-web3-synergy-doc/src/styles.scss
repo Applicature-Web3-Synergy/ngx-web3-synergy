@@ -69,6 +69,7 @@ doc-need-wallet-connection {
     display: flex;
     justify-content: center;
     padding-top: 48px;
+    overflow: hidden;
   }
 
   .mat-ink-bar {
@@ -274,6 +275,17 @@ mat-select {
   doc-component-viewer {
     overflow: auto;
   }
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline,
+.mat-select-value,
+.mat-select-arrow,
+.mat-form-field-label {
+  color: #fff;
+}
+
+.mat-checkbox-frame {
+  border-color: #fff;
 }
 
 // End Getting started page styles

@@ -35,6 +35,10 @@ $desktop-menu-width: 200px;
   color: c.$white-text-color;
 }
 
+.main-page-container {
+  margin-bottom: 80px;
+}
+
 @media (max-width: map-get(c.$grid-breakpoints, lg)) {
   .main-page-container {
     padding: c.$main-horizontal-mobile-padding;

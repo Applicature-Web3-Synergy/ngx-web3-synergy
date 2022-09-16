@@ -1,7 +1,18 @@
 @use 'common' as c;
 
 .doc-footer {
-  background: map-get(c.$black, 2);
-  padding: 30px 0;
-  text-align: center;
+  position: fixed;
+  bottom: 30px;
+
+  a {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 13px;
+    color: map-get(c.$white, 2);
+
+    img {
+      margin-left: 4px;
+    }
+  }
 }

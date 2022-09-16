@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 import { W3sAccountBalanceModule, W3sConnectWalletModule } from '@applicature/ngx-web3-synergy';
 
 import { AccountBalanceRoutingModule } from './account-balance-routing.module';
@@ -12,6 +13,7 @@ import { ComponentViewerModule } from '../../modules/component-viewer/component-
 import { ExampleCardModule } from '../../modules/example-card/example-card.module';
 import { NeedWalletConnectionModule } from '../../modules/need-wallet-connection';
 import { BasicAccountBalanceComponent, CustomizedAccountBalanceComponent } from './components';
+import { TableOfContentsModule } from '../../components/table-of-contents/table-of-contents.module';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { BasicAccountBalanceComponent, CustomizedAccountBalanceComponent } from 
     W3sAccountBalanceModule,
     MatCheckboxModule,
     MatSelectModule,
-    NeedWalletConnectionModule
+    NeedWalletConnectionModule,
+    MatTabsModule,
+    TableOfContentsModule
   ]
 })
 export class AccountBalanceModule { }

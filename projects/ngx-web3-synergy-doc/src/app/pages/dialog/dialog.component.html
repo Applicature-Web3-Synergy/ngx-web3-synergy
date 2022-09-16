@@ -1,11 +1,17 @@
-<doc-component-viewer [components]="['W3sDialogService']">
-  <div class="doc-example-viewer-example-cards-list">
-    <doc-example-card label="Basic dialog" [tabs]="basicDialogTabs">
-      <doc-basic-dialog></doc-basic-dialog>
-    </doc-example-card>
+<div class="main-content-container">
+  <doc-component-viewer [components]="['W3sDialogService']">
+    <div class="doc-example-viewer-example-cards-list">
+      <doc-example-card [attr.id]="sectionId.Basic" label="Basic dialog" [tabs]="basicDialogTabs">
+        <doc-basic-dialog></doc-basic-dialog>
+      </doc-example-card>
 
-    <doc-example-card label="Custom dialog" [tabs]="customDialogTabs">
-      <doc-custom-dialog></doc-custom-dialog>
-    </doc-example-card>
+      <doc-example-card [attr.id]="sectionId.CustomDialog" label="Custom dialog" [tabs]="customDialogTabs">
+        <doc-custom-dialog></doc-custom-dialog>
+      </doc-example-card>
+    </div>
+  </doc-component-viewer>
+
+  <div class="anchors-container">
+    <doc-table-of-contents [configContent]="configContent"></doc-table-of-contents>
   </div>
-</doc-component-viewer>
+</div>

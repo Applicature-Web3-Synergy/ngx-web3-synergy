@@ -9,6 +9,8 @@ import {
   CustomizedAccountBalanceCodeTs
 } from './components';
 import { AppModuleTab } from '../../constants';
+import { TableOfContentName } from '../../constants/table-of-content.constant';
+import { TableOfContents } from '../../components/table-of-contents/interfaces';
 
 
 @Component({
@@ -54,4 +56,27 @@ export class AccountBalanceComponent {
     }
   ];
 
+  sectionId = TableOfContentName;
+  configContent: TableOfContents[] = [
+    {
+      title: 'Basic',
+      url: TableOfContentName.Basic,
+      subnav: false,
+    },
+    {
+      title: 'Customized',
+      url: TableOfContentName.Customized,
+      subnav: false,
+    },
+    {
+      title: 'API',
+      url: TableOfContentName.API,
+      subnav: false,
+    },
+    {
+      title: 'W3sAccountBalanceComponent',
+      url: TableOfContentName.W3sAccountBalanceComponent,
+      subnav: true,
+    }
+  ];
 }

@@ -9,6 +9,8 @@ import {
   CustomizedNetworkDropdownCodeTs,
   CustomizedNetworkDropdownCodeHtml
 } from './components';
+import { TableOfContents } from '../../components/table-of-contents/interfaces';
+import { TableOfContentName } from '../../constants/table-of-content.constant';
 
 
 @Component({
@@ -54,4 +56,27 @@ export class NetworkDropdownComponent {
     }
   ];
 
+  sectionId = TableOfContentName;
+  configContent: TableOfContents[] = [
+    {
+      title: 'Basic',
+      url: TableOfContentName.Basic,
+      subnav: false,
+    },
+    {
+      title: 'Customized',
+      url: TableOfContentName.Customized,
+      subnav: false,
+    },
+    {
+      title: 'API',
+      url: TableOfContentName.API,
+      subnav: false,
+    },
+    {
+      title: 'W3sFaucetComponent',
+      url: TableOfContentName.W3sFaucetComponent,
+      subnav: true,
+    }
+  ];
 }
