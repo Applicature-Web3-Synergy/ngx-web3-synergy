@@ -10,27 +10,16 @@
 </doc-header>
 
 
-<mat-sidenav-container class="doc-sidenav-container">
-  <mat-sidenav #sidenav
-               *ngIf="isMobile"
-               [mode]="isMobile ? 'over' : 'side'"
-               [opened]="!isMobile"
-               class="doc-sidenav"
-               [fixedInViewport]="isMobile" [fixedTopGap]="isMobile ? 55 : 0"
-               [fixedBottomGap]="0">
-    <doc-main-menu></doc-main-menu>
-  </mat-sidenav>
+<div class="doc-sidenav-container">
+  <main class="doc-main-container">
+    <doc-main-menu [class.active]="isShowSidebar"></doc-main-menu>
 
-  <mat-sidenav-content class="doc-sidenav-content">
-    <main class="doc-main-container">
-      <doc-main-menu class="doc-sidenav doc-desktop-menu" *ngIf="!isMobile"></doc-main-menu>
+    <div class="main-page-container">
+      <h2 class="doc-sidenav-title">{{currentPageTitle$ | async}}</h2>
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 
-      <div class="main-page-container">
-        <h2 class="doc-sidenav-title">{{currentPageTitle$ | async}}</h2>
-        <router-outlet></router-outlet>
-      </div>
-    </main>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <div class="mobile-menu-btn" [class.active]="isShowSidebar" (click)="onShowSidebar()"></div>
+</div>
 

@@ -29,6 +29,25 @@ $desktop-menu-width: 200px;
   margin-bottom: map-get(c.$page-indent, lg);
 }
 
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(240, 240, 240, 0.5);
+  border-radius: 50%;
+  background: rgba(240, 240, 240, 0.25) url('../assets/svg/sidebar-burger.svg') no-repeat center;
+  cursor: pointer;
+  transition: 0.25s;
+  z-index: 200;
+
+  &.active {
+    background: rgba(240, 240, 240, 0.25) url('../assets/svg/sidebar-close.svg') no-repeat center;
+  }
+}
+
 .main-menu-toggle {
   background-color: transparent;
   box-shadow: none;
@@ -40,13 +59,42 @@ $desktop-menu-width: 200px;
 }
 
 @media (max-width: map-get(c.$grid-breakpoints, lg)) {
-  .main-page-container {
-    padding: c.$main-horizontal-mobile-padding;
+  .doc-main-container {
+    grid-template-columns: 1fr;
+  }
+
+  doc-main-menu {
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    left: -100vw;
+    top: 0;
+    background: rgba(11, 9, 22, 0.25);
+    backdrop-filter: blur(6px);
+    transition: 0.15s;
+    z-index: 199;
+
+    &.active {
+      left: 0;
+    }
+  }
+
+  .doc-sidenav-container {
+    margin-top: 92px;
+  }
+
+  .doc-sidenav-title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .mobile-menu-btn {
+    display: block;
   }
 }
 
 @media (max-width: map-get(c.$grid-breakpoints, sm)) {
-  .main-page-container {
-    padding: 0;
+  .doc-main-container {
+    padding: 0 16px;
   }
 }
