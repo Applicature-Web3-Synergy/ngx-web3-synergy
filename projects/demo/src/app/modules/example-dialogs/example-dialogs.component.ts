@@ -11,6 +11,7 @@ import {
 } from '@applicature/ngx-web3-synergy';
 
 import { DialogTestComponent } from './components/dialog-test/dialog-test.component';
+import BigNumber from 'bignumber.js';
 
 
 @Component({
@@ -61,15 +62,16 @@ export class ExampleDialogsComponent {
     const data: W3sTransferModalData = {
       header: 'Transfer',
       symbol: 'USDT',
+      stepAction: true,
       allowance: '1000000000000000000',
       max: '10000000000000000000',
       approveButton: 'Approve',
       approvingButton: 'Approving...',
       confirmButton: 'Transfer',
-      approve: () => {
+      approve: (val: BigNumber) => {
         return Promise.resolve();
       },
-      confirm: () => {
+      confirm: (val: BigNumber) => {
         return Promise.resolve();
       }
     };

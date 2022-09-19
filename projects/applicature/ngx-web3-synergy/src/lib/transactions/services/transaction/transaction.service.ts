@@ -229,6 +229,8 @@ export class W3sTransactionService extends BaseSubscriber {
         take(1)
       ).subscribe((tx: W3sTransactionItem) => {
         transaction$.next(tx);
+        this._setTransactionToMap(tx);
+        this._refreshTransactions();
       });
     }
 

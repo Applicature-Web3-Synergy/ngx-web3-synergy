@@ -23,6 +23,8 @@ export class W3sTransferModalComponent extends BaseSubscriber implements OnInit 
   public data: W3sTransferModalData;
   /** @internal */
   public STEPS = W3S_TRANSFER_STEPS;
+  public isPendingApproval = false;
+  public isPendingConfirm = false;
 
   public get currentStep(): W3sTransactionStep {
     return this._currentStep;
@@ -74,8 +76,11 @@ export class W3sTransferModalComponent extends BaseSubscriber implements OnInit 
   }
 
   public onApproveClick(): void {
-    this.data.approve().then(() => {
+    this.isPendingApproval = true;
+
+    this.data.approve(w3sToBN(this.amountControl.value)).then(() => {
       this.currentAllowance = this.amountControl.value;
+      this.isPendingApproval = false;
 
       this._currentStep = W3S_TRANSFER_STEPS.CONFIRM;
 
@@ -84,7 +89,10 @@ export class W3sTransferModalComponent extends BaseSubscriber implements OnInit 
   }
 
   public onConfirmClick(): void {
-    this.data.confirm().then(() => {
+    this.isPendingConfirm = true;
+
+    this.data.confirm(w3sToBN(this.amountControl.value)).then(() => {
+      this.isPendingConfirm = false;
       this._dialogRef.close();
     });
   }
