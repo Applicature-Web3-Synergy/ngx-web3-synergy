@@ -16,6 +16,7 @@ describe('BasicFaucetComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BasicFaucetComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 
