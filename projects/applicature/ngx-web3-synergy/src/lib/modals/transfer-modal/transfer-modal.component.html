@@ -12,7 +12,7 @@
 
   <w3s-input [max]="data.max"
              [suffix]="data.symbol"
-             [hint]="'Current allowance: ' + currentAllowance + ' ' + data.symbol"
+             [hint]="data.stepAction ? 'Current allowance: ' + currentAllowance + ' ' + data.symbol : ''"
              [adaptive]="true"
              [decimal]="true"
              [formControl]="amountControl"
@@ -22,7 +22,7 @@
              class="w3s-transfer-input">
   </w3s-input>
 
-  <div class="w3s-progress-steps-container">
+  <div *ngIf="data.stepAction" class="w3s-progress-steps-container">
     <h3 class="w3s-progress-step">Step {{ currentStep }} of 2</h3>
 
     <ng-container [ngSwitch]="currentStep">
@@ -40,10 +40,11 @@
     <w3s-progress-bar [progress]="50 * currentStep"></w3s-progress-bar>
   </div>
 
-  <ng-container *ngIf="currentStep === STEPS.APPROVE else transferButton">
+  <ng-container *ngIf="data.stepAction && currentStep === STEPS.APPROVE else transferButton">
     <w3s-button [label]="data.approveButton"
                 [adaptive]="true"
                 [height]="48"
+                [disabled]="isPendingApproval"
                 (buttonClicked)="onApproveClick()"></w3s-button>
   </ng-container>
 
@@ -51,6 +52,7 @@
     <w3s-button [label]="data.confirmButton"
                 [adaptive]="true"
                 [height]="48"
+                [disabled]="isPendingConfirm"
                 (buttonClicked)="onConfirmClick()"
     >
     </w3s-button>

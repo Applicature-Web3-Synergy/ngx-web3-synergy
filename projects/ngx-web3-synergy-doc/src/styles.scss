@@ -298,6 +298,10 @@ mat-select {
   border-color: #fff;
 }
 
+.w3s-progress-step {
+  color: #000;
+}
+
 @media (max-width: map-get(c.$grid-breakpoints, xl)) {
   .anchors-container {
     display: none;
