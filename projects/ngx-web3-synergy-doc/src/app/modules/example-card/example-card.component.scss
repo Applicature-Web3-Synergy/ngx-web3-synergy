@@ -1,12 +1,12 @@
 @use 'common' as c;
 @use 'as-common' as as;
 
-$card-padding: 20px;
+$card-padding: 16px 16px 48px;
 
 .doc-example-card-container {
-  background-color: c.$card-bg;
+  background: map-get(c.$gradient, purple-card);
   border-radius: c.$border-radius;
-  border: 1px solid c.$border-color;
+  overflow: hidden;
 }
 
 .doc-example-card-header,
@@ -14,32 +14,75 @@ $card-padding: 20px;
   padding: $card-padding;
 }
 
-.doc-example-card-header {
-  border-bottom: 1px solid c.$border-color;
-}
-
-.doc-example-card-title {
-  color: c.$title-gray;
-}
-
 .doc-example-card-content {
   & > *:not(:first-child) {
-    margin-top: 20px;
+    background: map-get(c.$gradient, purple-dark-card);
+    margin: 48px -16px -48px;
+    max-width: inherit;
+  }
+}
+
+::ng-deep {
+  .mat-tab-group {
+    &.doc-example-card-tabs {
+      .mat-tab-header {
+        border-bottom: 1px solid rgba(232, 32, 142, 0.1);
+        margin-right: 137px;
+      }
+
+      .mat-tab-label {
+        color: map-get(c.$white, 2);
+        opacity: 1;
+        padding: 0 16px;
+        height: 54px;
+        min-width: inherit;
+
+        &.mat-tab-label-active {
+          color: c.$pink;
+          font-weight: 400;
+        }
+      }
+
+      &.doc-example-card-tabs {
+        .mat-tab-body-content {
+          padding: 0;
+          overflow: visible;
+        }
+      }
+
+      &.mat-tab-group-dynamic-height {
+        .mat-tab-body {
+          &.mat-tab-body-active {
+            overflow: visible !important;
+          }
+        }
+      }
+
+      .mat-ink-bar {
+        background-color: c.$pink !important;
+      }
+    }
+  }
+
+  .mat-tab-body-wrapper {
+    overflow: visible !important;
   }
 }
 
 .doc-show-code-bth {
+  position: absolute;
   border: none;
-  border-radius: 0 0 c.$border-radius c.$border-radius;
-  padding: 10px;
-  width: 120px;
-  background-color: map-get(c.$gray, 1);
+  font-size: 16px;
+  border-radius: c.$border-radius-small;
+  background: transparent;
+  color: map-get(c.$white, 1);
+  padding: 8px 16px;
   align-self: flex-end;
-
   @include as.transition;
 
-  &:hover {
-    background-color: map-get(c.$gray, 2);
+  &:hover,
+  &.active {
+    background: rgba(map-get(c.$white, 3), 0.2);
   }
 }
 

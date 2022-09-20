@@ -1,10 +1,20 @@
 @use "colors" as c;
 
-$main-font: 'Inter', 'Helvetica Neue', sans-serif;
-$border-radius: 8px;
-$header-height: 55px;
-$footer-height: 61px;
-$main-horizontal-padding: 30px;
+$main-font: 'Inter', sans-serif;
+$max-page-width: 1440px;
+$border-radius: 16px;
+$border-radius-small: 8px;
+$page-indent: (
+  lg: 48px,
+  sm: 24px
+);
+$header-height: (
+  xl: 80px,
+  lg: 60px,
+);
+
+// TODO: Remove old property after redesign
+$main-horizontal-padding: 64px;
 $main-vertical-padding: 20px;
 $main-horizontal-mobile-padding: 15px;
 $main-vertical-mobile-padding: 20px;
@@ -12,21 +22,23 @@ $card-padding: 20px;
 $card-mobile-padding: 15px;
 
 // Colors
+$main-bg: #0B0916;
+$border-color: #331B3C;
+
+// TODO: Remove old color after redesign
 $card-bg: #fff;
 $white-text-color: #fff;
 $text-color: map-get(c.$black, 2);
-$title-color: map-get(c.$black, 1);
+$title-color: map-get(c.$white, 1);
 $title-gray: map-get(c.$gray, 4);
-$header-bg: map-get(c.$blue, 1);
 $side-nav-bg: #fff;
 $side-nav-active-bg: map-get(c.$gray, 2);
-$border-color: map-get(c.$gray, 2);
-$main-bg-color: map-get(c.$gray, 1);
+$main-bg-color: map-get(c.$black, 1);
 
 // Breakpoints
 $grid-breakpoints: (
   xs: 374px,
-  sm: 576px,
+  sm: 600px,
   md: 767px,
   lg: 959px,
   xl: 1200px,

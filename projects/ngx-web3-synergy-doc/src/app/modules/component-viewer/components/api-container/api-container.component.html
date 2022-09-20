@@ -1,5 +1,7 @@
+<div class="doc-section-title" [attr.id]="sectionId.API">API</div>
+
 <div *ngFor="let componentDoc of componentsDocs" class="code-component-container">
-  <h2 class="component-title">
+  <h2 class="component-title" [attr.id]="componentDoc.component">
     {{componentDoc.component}}
   </h2>
 

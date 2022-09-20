@@ -1,17 +1,16 @@
-<div class="doc-example-card-container">
-  <div class="doc-example-card-header" *ngIf="label">
-    <h4 class="doc-example-card-title">{{label}}</h4>
-  </div>
+<h4 *ngIf="label" class="doc-section-title">{{label}}</h4>
 
+<div class="doc-example-card-container">
   <div class="doc-example-card-content">
     <div class="doc-example-box">
       <ng-content></ng-content>
 
       <button class="doc-show-code-bth"
+              [class.active]="showCode"
               (click)="toggleShow()"
               *ngIf="tabs"
       >
-        {{showCode ? 'Hide' : 'Show'}} Code
+        Code
       </button>
     </div>
 

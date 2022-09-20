@@ -1,63 +1,194 @@
 @use 'common' as c;
 
-.main-header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+$logo-width: 184px;
+
+#header {
   width: 100%;
-  height: c.$header-height;
-  background: c.$header-bg;
-  padding: c.$main-vertical-padding c.$main-horizontal-padding;
+  height: map-get(c.$header-height, xl);
+  background: rgba(11, 9, 22, 0.5);
+  backdrop-filter: blur(100px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
 }
 
-.doc-main-header-left {
+.header {
+  height: 100%;
+  width: 100%;
+  max-width: c.$max-page-width;
+  padding: 0 map-get(c.$page-indent, lg);
+  margin: 0 auto;
+}
+
+.header-container {
+  width: 100%;
+  max-width: c.$max-page-width;
+  margin: 0 auto;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: calc(100% - 45px);
+  justify-content: space-between;
 }
 
-.doc-main-header-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 45px;
+.logo,
+.menu-action-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.main-header-content-container {
-  display: none;
-}
-
-.header-logo {
-  color: c.$white-text-color;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.doc-header-git {
+.logo {
+  width: $logo-width;
   display: block;
-  width: 40px;
-  height: 40px;
+  left: -16px;
+  margin-top: 3px;
 
   img {
     width: 100%;
   }
 }
 
-@media (max-width: map-get(c.$grid-breakpoints, lg)) {
-  .main-header-container {
-    padding: c.$main-vertical-mobile-padding c.$main-horizontal-mobile-padding;
+.main-menu-container {
+  width: 100%;
+  padding: 22px $logo-width;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-action-btn {
+  padding: 9px 24px;
+  right: 0;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-nav-item {
+  display: block;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: c.$title-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &.active {
+    color: map-get(c.$blue, base);
   }
 
-  .main-header-content-container {
+  &:not(.active):hover {
+    color: map-get(c.$blue, hover);
+  }
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.menu-trigger {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease-out;
+
+  span {
     display: block;
-    width: 45px;
+    width: 100%;
+    height: 3px;
+    border-radius: 1.5px;
+    background-color: c.$title-color;
+    overflow: hidden;
+    transition: transform 0.3s ease-out;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
   }
 
-  .main-header {
-    width: calc(100% - 45px);
-    text-align: center;
+  &.active {
+    transform: rotate(180deg);
+
+    span {
+      &:first-child {
+        transform: rotate(-45deg);
+        top: 6px;
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        bottom: 8px;
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+@media (max-width: map-get(c.$grid-breakpoints, lg)) {
+  #header {
+    height: map-get(c.$header-height, lg);
+  }
+
+  .logo {
+    width: 143px;
+    left: -13px;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 100%;
+  }
+
+  .menu-action-btn {
+    position: relative;
+    top: 0;
+    transform: translateY(0);
+    margin-top: 16px;
+  }
+
+  .main-menu-container {
+    transition: all 0.2s;
+    transform: translateY(calc((100% + map-get(c.$header-height, lg)) * -1));
+    position: fixed;
+    top: map-get(c.$header-height, lg);
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    padding: 24px map-get(c.$page-indent, sm);
+    background: c.$main-bg;
+    z-index: -1;
+    opacity: 0;
+
+    &.opened {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .main-nav {
+    display: block;
+  }
+}
+
+@media (max-width: map-get(c.$grid-breakpoints, sm)) {
+  .header {
+    padding: 0 map-get(c.$page-indent, sm);
   }
 }

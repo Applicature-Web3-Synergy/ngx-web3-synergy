@@ -56,7 +56,7 @@
 .mat-checkbox-checked {
   &.mat-accent {
     .mat-checkbox-background {
-      background-color: map-get(c.$blue, 2);
+      background-color: map-get(c.$blue, base);
     }
   }
 }

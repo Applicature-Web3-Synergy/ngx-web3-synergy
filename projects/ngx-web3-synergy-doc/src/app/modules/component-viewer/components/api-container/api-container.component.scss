@@ -1,28 +1,36 @@
 @use 'common' as c;
 
-$code-section-width: 400px;
-
-.code-component-container {
-  &:not(:last-child) {
-    margin-bottom: 40px;
-  }
-}
+$code-section-width: 300px;
 
 .component-title {
-  margin-bottom: 30px;
+  margin-bottom: 8px;
 }
 
 doc-example-card {
   display: block;
-
-  &:not(:last-child) {
-    margin-bottom: 30px;
-  }
 }
 
 .doc-api-table-section {
   display: block;
-  border: 1px solid c.$border-color;
+}
+
+.code-component-container {
+  margin-bottom: 48px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  ::ng-deep {
+    .doc-example-card-container {
+      background: transparent;
+      border-radius: 0;
+    }
+
+    .doc-example-card-content {
+      padding: 0;
+    }
+  }
 }
 
 .doc-api-section-item {
@@ -31,6 +39,7 @@ doc-example-card {
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
+  padding: 16px 0;
 
   &.full-width {
     flex-wrap: wrap;
@@ -38,10 +47,6 @@ doc-example-card {
 
   &:not(:last-child) {
     border-bottom: 1px solid c.$border-color;
-  }
-
-  & > * {
-    padding: 15px;
   }
 }
 
@@ -51,7 +56,7 @@ doc-example-card {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  border-right: 1px solid c.$border-color;
+  padding-right: 31px;
 
   &.full-width {
     width: 100%;
@@ -66,6 +71,7 @@ doc-example-card {
 
 .doc-api-description {
   width: calc(100% - #{$code-section-width});
+  color: map-get(c.$white, 2);
 
   &.full-width {
     width: 100%;

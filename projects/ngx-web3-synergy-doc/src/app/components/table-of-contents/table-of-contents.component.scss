@@ -1,0 +1,31 @@
+@use 'common' as c;
+
+.doc-anchor-box {
+  position: sticky;
+  top: 100px;
+  margin-top: -80px;
+
+  .box-title {
+    text-transform: uppercase;
+  }
+
+  .doc-anchor-nav {
+    li {
+      margin-top: 16px;
+
+      a {
+        cursor: pointer;
+        color: map-get(c.$white, 2);
+
+        &.subnav {
+          position: relative;
+          left: 16px;
+        }
+
+        &.active {
+          color: map-get(c.$white, 1);
+        }
+      }
+    }
+  }
+}

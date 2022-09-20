@@ -2,9 +2,39 @@
 
 :host {
   display: block;
-  background-color: c.$card-bg;
+  background: map-get(c.$gradient, purple-card);
   border-radius: c.$border-radius;
   padding: c.$card-padding;
+}
+
+.markdown {
+  ::ng-deep {
+    a {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    .doc.prettyprint {
+      background: map-get(c.$gradient, purple-dark-card);
+      margin: 0 -20px;
+      max-width: inherit;
+      border-radius: 0;
+      border: none;
+      white-space: break-spaces;
+      word-break: break-all;
+    }
+
+    .getting-started-code {
+      background: map-get(c.$gradient, purple-dark-card);
+      word-break: break-all;
+    }
+
+    ul {
+      .doc.prettyprint {
+        margin: 0 -20px 0 -60px;
+      }
+    }
+  }
 }
 
 @media (max-width: map-get(c.$grid-breakpoints, sm)) {

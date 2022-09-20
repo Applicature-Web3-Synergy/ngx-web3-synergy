@@ -1,8 +1,15 @@
-<div class="code-example-container" *ngIf="codeConfig">
-  <pre class="prettyprint"
-       [ngClass]="classes"
-       docCodePretty
-  >{{codeConfig.code ?? ''.trim()}}</pre>
+<div class="code-example" *ngIf="codeConfig">
+  <div class="code-example-container">
+    <pre class="prettyprint"
+        [ngClass]="classes"
+        docCodePretty
+    >{{codeConfig.code ?? ''.trim()}}</pre>
+  </div>
 
-  <w3s-copy-to-clipboard class="copy-code" [value]="codeConfig.code"></w3s-copy-to-clipboard>
+  <div class="copy-code"
+         w3sCopyToClipboard
+         textToCopy="{{codeConfig.code}}"
+    >
+    <img src="assets/svg/copy.svg" alt="Copy"> Copy
+    </div>
 </div>

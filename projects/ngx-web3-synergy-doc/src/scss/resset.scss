@@ -32,8 +32,12 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.5;
-  color: c.$text-color;
-  background-color: c.$main-bg-color;
+  color: map-get(c.$white, 1);
+  background: c.$main-bg-color url("../assets/img/bg.jpg") center;
+}
+
+a {
+  text-decoration: none;
 }
 
 a:not([class]) {
@@ -68,6 +72,7 @@ button:not(:disabled) {
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body,

@@ -1,25 +1,18 @@
 @use 'common' as c;
 
 .doc-footer {
-  display: block;
-  height: c.$footer-height;
-  background: c.$header-bg;
-  padding: c.$main-vertical-padding c.$main-horizontal-padding;
-  color: c.$white-text-color;
-}
-
-.doc-developed-by {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  bottom: 30px;
 
   a {
-    display: block;
-    margin-left: 5px;
-    line-height: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 13px;
+    color: map-get(c.$white, 2);
 
     img {
-      height: 21px;
+      margin-left: 4px;
     }
   }
 }

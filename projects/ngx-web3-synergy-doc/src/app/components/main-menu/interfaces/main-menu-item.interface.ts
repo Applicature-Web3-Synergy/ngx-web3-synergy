@@ -1,4 +1,6 @@
 export interface MainMenuItem {
   routerLink: string,
-  title: string
+  title: string,
+  icon?: string,
+  disabled: boolean
 }

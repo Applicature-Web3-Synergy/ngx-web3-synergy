@@ -1,7 +1,13 @@
-<doc-component-viewer [components]="['W3sTableComponent']">
-  <div class="doc-example-viewer-example-cards-list">
-    <doc-example-card label="Recent pool transactions" [tabs]="basicTableTabs">
-      <doc-basic-table></doc-basic-table>
-    </doc-example-card>
+<div class="main-content-container">
+  <doc-component-viewer [components]="['W3sTableComponent']">
+    <div class="doc-example-viewer-example-cards-list">
+      <doc-example-card [attr.id]="sectionId.Basic" label="Recent pool transactions" [tabs]="basicTableTabs">
+        <doc-basic-table></doc-basic-table>
+      </doc-example-card>
+    </div>
+  </doc-component-viewer>
+
+  <div class="anchors-container">
+    <doc-table-of-contents [configContent]="configContent"></doc-table-of-contents>
   </div>
-</doc-component-viewer>
+</div>

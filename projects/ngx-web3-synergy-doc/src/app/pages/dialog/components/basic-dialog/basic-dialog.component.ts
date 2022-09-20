@@ -10,6 +10,7 @@ import {
   W3sWrongNetworkModalComponent,
   W3sWrongNetworkModalData
 } from '@applicature/ngx-web3-synergy';
+import BigNumber from 'bignumber.js';
 
 
 @Component({
@@ -27,15 +28,16 @@ export class BasicDialogComponent {
     const data: W3sTransferModalData = {
       header: 'Transfer',
       symbol: 'USDT',
+      stepAction: true,
       allowance: '1000000000000000000',
       max: '10000000000000000000',
       approveButton: 'Approve',
       approvingButton: 'Approving...',
       confirmButton: 'Transfer',
-      approve: () => {
+      approve: (val: BigNumber) => {
         return Promise.resolve();
       },
-      confirm: () => {
+      confirm: (val: BigNumber) => {
         return Promise.resolve();
       }
     };
