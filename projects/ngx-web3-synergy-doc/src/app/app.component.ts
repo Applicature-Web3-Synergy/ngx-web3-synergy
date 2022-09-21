@@ -43,6 +43,8 @@ export class AppComponent extends BaseSubscriber {
       )
       .subscribe((e: NavigationEnd) => {
         this.routerHelperService.activeUrl = e.url;
+
+        window.scrollTo(0, 0);
       });
 
     this.resize$
