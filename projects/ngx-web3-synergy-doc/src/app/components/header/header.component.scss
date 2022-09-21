@@ -32,7 +32,7 @@ $logo-width: 184px;
 }
 
 .logo,
-.menu-action-btn {
+.other-info {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -56,9 +56,23 @@ $logo-width: 184px;
   justify-content: center;
 }
 
-.menu-action-btn {
-  padding: 9px 24px;
+.other-info {
+  display: flex;
   right: 0;
+  margin-top: 3px;
+
+  .social-link {
+    display: block;
+    margin-right: 24px;
+
+    &:hover {
+      svg {
+        path {
+          fill: map-get(c.$blue, base);
+        }
+      }
+    }
+  }
 }
 
 .main-nav {
@@ -159,7 +173,6 @@ $logo-width: 184px;
     position: relative;
     top: 0;
     transform: translateY(0);
-    margin-top: 16px;
   }
 
   .main-menu-container {
@@ -184,6 +197,13 @@ $logo-width: 184px;
 
   .main-nav {
     display: block;
+  }
+
+  .other-info {
+    position: relative;
+    top: 0;
+    transform: none;
+    margin-top: 16px;
   }
 }
 

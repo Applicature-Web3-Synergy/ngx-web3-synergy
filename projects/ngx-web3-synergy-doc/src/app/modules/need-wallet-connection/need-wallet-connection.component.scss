@@ -1,3 +1,12 @@
+@use 'common' as c;
+
+.doc-not-connected {
+  background: map-get(c.$gradient, purple-card);
+  border-radius: c.$border-radius;
+  padding: 48px 34px;
+  text-align: center;
+}
+
 .doc-not-connected-text {
   font-size: 18px;
   margin: 0 0 15px;

@@ -74,8 +74,8 @@ export class NetworkDropdownComponent {
       subnav: false,
     },
     {
-      title: 'W3sFaucetComponent',
-      url: TableOfContentName.W3sFaucetComponent,
+      title: 'W3sNetworkDropdown Component',
+      url: TableOfContentName.W3sNetworkDropdownComponent,
       subnav: true,
     }
   ];
