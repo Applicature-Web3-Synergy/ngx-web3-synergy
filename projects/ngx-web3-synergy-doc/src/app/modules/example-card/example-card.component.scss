@@ -26,8 +26,21 @@ $card-padding: 16px 16px 48px;
   .mat-tab-group {
     &.doc-example-card-tabs {
       .mat-tab-header {
-        border-bottom: 1px solid rgba(232, 32, 142, 0.1);
+        border-bottom: none;
         margin-right: 137px;
+      }
+
+      .mat-tab-body-wrapper {
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          height: 1px;
+          width: 100%;
+          background: rgba(232, 32, 142, 0.1);
+          top: -1px;
+        }
       }
 
       .mat-tab-label {
