@@ -15,6 +15,7 @@ import ERC20 from '../../smart-contracts/ERC20.json';
 export class ExampleFaucetComponent {
   amount = 1;
   ERC20Json: AbiItem[] = ERC20 as AbiItem[];
+  
   config: W3sFaucetConfig = {
     address: '0x9c77Cc2C6F2C2844D7F54c6aBeC14afbc928D0ED', // The address that the token is at.
     symbol: 'OCDR', // A ticker symbol or shorthand, up to 5 chars.
