@@ -1,7 +1,7 @@
 @use '@applicature/styles/src/lib/scss/as-common' as c;
 
 :host {
-  display: inline-block;
+  display: inline-flex;
 }
 
 .w3s-account-button {

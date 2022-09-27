@@ -45,12 +45,17 @@ doc-need-wallet-connection {
       opacity: 1;
       border-radius: c.$border-radius-small;
       line-height: 20px;
-      color: map-get(c.$white, 2);
+      color: map-get(c.$white, 1);
+      margin-right: 4px;
 
       &.mat-tab-label-active {
         color: map-get(c.$white, 1);
         font-weight: 400;
         background: rgba(map-get(c.$white, 3), 0.2);
+      }
+
+      &:hover:not(.mat-tab-label-active) {
+        background: rgba(map-get(c.$white, 3), 0.1);
       }
     }
   }

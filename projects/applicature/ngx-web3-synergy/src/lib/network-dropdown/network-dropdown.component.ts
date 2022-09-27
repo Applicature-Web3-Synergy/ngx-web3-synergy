@@ -104,16 +104,6 @@ export class W3sNetworkDropdownComponent extends BaseSubscriber implements OnIni
     private _dialogService: W3sDialogService
   ) {
     super();
-
-    const connectionState = this._walletConnectService.connectionState;
-
-    if (!connectionState.connected) {
-      this.chainsList = [];
-
-      return;
-    }
-
-    this.chainsList = connectionState.state.chains;
   }
 
   /** @internal */
@@ -121,6 +111,15 @@ export class W3sNetworkDropdownComponent extends BaseSubscriber implements OnIni
     this._walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
+        const connectionState = this._walletConnectService.connectionState;
+
+        if (!connectionState.connected) {
+          this.chainsList = [];
+
+          return;
+        }
+
+        this.chainsList = connectionState.state.chains;
         this.currentNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;
         this.isWrongNetwork = !this.currentNetwork;
         this.networkSelected.emit({

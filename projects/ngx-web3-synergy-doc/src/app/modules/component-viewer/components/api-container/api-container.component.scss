@@ -1,7 +1,5 @@
 @use 'common' as c;
 
-$code-section-width: 300px;
-
 .component-title {
   margin-bottom: 8px;
 }
@@ -51,7 +49,7 @@ doc-example-card {
 }
 
 .doc-api-code {
-  width: $code-section-width;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -70,7 +68,7 @@ doc-example-card {
 }
 
 .doc-api-description {
-  width: calc(100% - #{$code-section-width});
+  width: 50%;
   color: map-get(c.$white, 2);
 
   &.full-width {

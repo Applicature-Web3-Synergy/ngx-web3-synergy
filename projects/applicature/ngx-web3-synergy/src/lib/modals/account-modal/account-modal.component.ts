@@ -22,6 +22,7 @@ export class W3sAccountModalComponent extends BaseSubscriber implements OnInit, 
   public transactions: W3sTransactionItem[];
   public data: W3sAccountModalData;
   public loadingTransactions = true;
+  public copyAction = false;
 
   /** @internal */
   public isSmallSize = false;
@@ -117,5 +118,18 @@ export class W3sAccountModalComponent extends BaseSubscriber implements OnInit, 
   public changedWidth(width: number): void {
     this.isSmallSize = width < 320;
     this._cdr.detectChanges();
+  }
+
+  public onCopyAddress() {
+    if (this.copyAction) {
+      return;
+    }
+
+    this.copyAction = true;
+
+    setTimeout(() => {
+      this.copyAction = false;
+      this._cdr.markForCheck();
+    }, 5000);
   }
 }
