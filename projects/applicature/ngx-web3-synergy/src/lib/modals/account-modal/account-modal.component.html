@@ -41,15 +41,16 @@
       <div class="w3s-info-footer">
       <span w3sCopyToClipboard
             [textToCopy]="accountAddress"
+            (click)="onCopyAddress()"
             class="w3s-info-footer-item">
-        <w3s-icon icon="wcl-icon-copy"></w3s-icon>
-        <span>Copy Address</span>
+        <w3s-icon [icon]="!copyAction ? 'wcl-icon-copy' : 'wcl-icon-check'"></w3s-icon>
+        <span>{{!copyAction ? 'Copy Address' : 'Copied'}}</span>
       </span>
 
         <a class="w3s-info-footer-item" *ngIf="(etherscanAddress$ | async) as ethAddress" [href]="ethAddress"
            target="_blank">
           <w3s-icon icon="wcl-icon-external-link"></w3s-icon>
-          <span>View on Explorer</span>
+          <span class="w3s-info-footer-link">View on Explorer</span>
         </a>
       </div>
     </div>

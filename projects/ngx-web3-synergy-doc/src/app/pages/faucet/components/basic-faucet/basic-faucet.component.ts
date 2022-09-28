@@ -16,7 +16,7 @@ export class BasicFaucetComponent{
   amount = 1;
   ERC20Json: AbiItem[] = ERC20 as AbiItem[];
   config: W3sFaucetConfig = {
-    address: '0xd274A608456c79D8129B5187Fb2bD6ae118D83CF', // The address that the token is at.
+    address: '0x9d96A96a4dB1970C10D021af7A38A2EA28aaaBb5', // The address that the token is at.
     symbol: 'USDT', // A ticker symbol or shorthand, up to 5 chars.
     decimals: 18, // The number of decimals in the token
     image: 'https://testnet.bscscan.com/images/main/empty-token.png', // A string url of the token logo

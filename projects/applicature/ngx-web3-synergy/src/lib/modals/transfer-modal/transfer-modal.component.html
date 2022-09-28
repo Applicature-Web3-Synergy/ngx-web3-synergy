@@ -16,6 +16,7 @@
              [adaptive]="true"
              [decimal]="true"
              [formControl]="amountControl"
+             [disabled]="isPendingApproval"
              type="number"
              label="Amount"
              placeholder="Enter amount"
@@ -41,10 +42,11 @@
   </div>
 
   <ng-container *ngIf="data.stepAction && currentStep === STEPS.APPROVE else transferButton">
-    <w3s-button [label]="data.approveButton"
+    <w3s-button [label]="!isPendingApproval ? data.approveButton : data.approvingButton"
                 [adaptive]="true"
                 [height]="48"
                 [disabled]="isPendingApproval"
+                [pending]="isPendingApproval"
                 (buttonClicked)="onApproveClick()"></w3s-button>
   </ng-container>
 

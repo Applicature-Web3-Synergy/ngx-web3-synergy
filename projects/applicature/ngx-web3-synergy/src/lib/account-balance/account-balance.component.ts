@@ -154,19 +154,22 @@ export class W3sAccountBalanceComponent extends BaseSubscriber implements OnInit
 
   /** @internal */
   public ngOnInit(): void {
-    const connectionState = this._walletConnectService.connectionState;
+    this.balanceSubscriptions();
+  }
 
-    if ( !connectionState.connected ) {
-      this.chainsList = [];
-
-      return;
-    }
-
-    this.chainsList = connectionState.state.chains;
-
+  private balanceSubscriptions(): void {
     this._walletConnectService.chain$
       .pipe(takeUntil(this.notifier))
       .subscribe((chainId: string) => {
+        const connectionState = this._walletConnectService.connectionState;
+
+        if ( !connectionState.connected ) {
+          this.chainsList = [];
+
+          return;
+        }
+
+        this.chainsList = connectionState.state.chains;
         this.activeNetwork = this.chainsList.find((chain: Chain) => chain.id === chainId) || null;
         this._cdr.markForCheck();
       });

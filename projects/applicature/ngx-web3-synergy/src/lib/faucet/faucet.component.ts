@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of, takeWhile } from 'rxjs';
 
 import { AS_COLOR_GROUP } from '@applicature/styles';
 import { AbiItem } from 'web3-utils';
@@ -8,9 +8,10 @@ import { ContractOptions, Contract } from 'web3-eth-contract';
 
 import { W3S_BUTTON_APPEARANCE } from '../button';
 import { BaseSubscriber, w3sToWei } from '../helpers';
-import { W3sConnectionState, W3sWalletConnectService } from '../connect';
+import { W3sWalletConnectService } from '../connect';
 import { MetamaskIcon } from '../connect/constants/icons/metamask';
 import { W3sFaucetConfig } from './interfaces';
+import { W3S_TRANSACTION_STATUS, W3sAddTransaction, W3sTransactionService } from '../transactions';
 
 // eslint-disable @typescript-eslint/no-unsafe-call
 @Component({
@@ -66,9 +67,12 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
    */
   @Input() config!: W3sFaucetConfig;
 
+  private currentChainId: string;
+
   constructor(
     private _cdr: ChangeDetectorRef,
-    private _walletConnectService: W3sWalletConnectService
+    private _walletConnectService: W3sWalletConnectService,
+    private _transactionService: W3sTransactionService
   ) {
     super();
   }
@@ -80,11 +84,12 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
       .subscribe((accounts: string[]) => {
         this.account = (accounts || [])[0];
         this._cdr.markForCheck();
-      });
 
-    this._walletConnectService.connectionState$
-      .subscribe((connectionState: W3sConnectionState) => {
-        this.showAddTokenBtn = connectionState.state?.wallets[0]?.label === "MetaMask";
+        const connectionState = this._walletConnectService.connectionState
+
+        if (connectionState.connected) {
+          this.showAddTokenBtn = connectionState.state?.wallets[0]?.label === "MetaMask";
+        }
       });
   }
 
@@ -105,6 +110,12 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
       return;
     }
 
+    this._walletConnectService.chain$
+      .pipe(takeUntil(this.notifier))
+      .subscribe((id: string) => {
+        this.currentChainId = id;
+      })
+
     this.hasPending = true;
     this._cdr.markForCheck();
 
@@ -120,7 +131,11 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
 
       const contract: Contract = this.getContract(this.config.abi, contractAddress);
       contract.methods.mintFor(this.account, w3sToWei(this.amount, this.config.decimals))
-        .send({ from: this.account })
+        .send({ from: this.account }, (err, hash) => {
+          if(!err && hash) {
+            this.saveTransaction(`Faucet ${this.amount}${this.config.symbol}`, hash);
+          }
+        })
         .then(() => {
           observer.next(null);
           observer.complete();
@@ -135,6 +150,23 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
         this.hasPending = false;
         this._cdr.markForCheck();
       });
+  }
+
+  /** Save transaction history */
+  private saveTransaction(name, hash) {
+    const transactionToSave: W3sAddTransaction = {
+      chainId: this.currentChainId,
+      name, // Transaction name,
+      hash, // transaction hash, will disappear is status pending.
+      status: W3S_TRANSACTION_STATUS.PENDING,
+      viewed: false
+    }
+
+    return this._transactionService.saveTransaction(transactionToSave)
+      .pipe(
+        takeWhile((res) => res.status !== W3S_TRANSACTION_STATUS.PENDING),
+      )
+      .subscribe();
   }
 
   /** Show modal for connecting to wallets */

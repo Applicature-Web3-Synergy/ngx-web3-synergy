@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
 
 import { CodeConfig } from './interfaces';
 
@@ -13,10 +13,30 @@ export class CodeExampleComponent {
   @Input() public codeConfig!: CodeConfig;
   @Input() public isWhiteTheme = false;
 
-  public get classes(): {[key: string]: boolean} {
+  public get classes(): { [key: string]: boolean } {
     return {
-      'white-theme' : this.isWhiteTheme,
+      'white-theme': this.isWhiteTheme,
       [`lang-${this.codeConfig.lang}`]: !!this.codeConfig.lang
     };
+  }
+
+  public copyAction = false;
+
+  constructor(
+    private _cdr: ChangeDetectorRef,
+  ) {
+  }
+
+  public onCopyCode() {
+    if (this.copyAction) {
+      return;
+    }
+
+    this.copyAction = true;
+
+    setTimeout(() => {
+      this.copyAction = false;
+      this._cdr.markForCheck();
+    }, 5000);
   }
 }

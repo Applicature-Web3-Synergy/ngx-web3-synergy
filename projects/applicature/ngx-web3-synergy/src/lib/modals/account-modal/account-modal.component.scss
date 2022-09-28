@@ -126,6 +126,7 @@
     line-height: 16px;
     font-weight: 500;
     margin-right: 16px;
+    cursor: pointer;
 
     @include c.transition;
 
@@ -141,7 +142,7 @@
       color: c.getColor(grey, base);
     }
 
-    &:hover span {
+    &:hover .w3s-info-footer-link {
       cursor: pointer;
       text-decoration: underline;
     }

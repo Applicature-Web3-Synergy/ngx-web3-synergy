@@ -9,6 +9,26 @@
   display: flex;
   flex-direction: column;
   font-family: c.$as-font-family;
+
+  ::ng-deep {
+    .w3s-button.w3s-button-disabled {
+      background-color: c.getColor(blue, dark);
+      border-color: c.getColor(blue, dark);
+      color: inherit;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+
+    .w3s-button:not(.w3s-button-icon).w3s-button-with-spinner .w3s-button-spinner {
+      position: static;
+      transform: none;
+      margin-right: 11px;
+    }
+
+    .w3s-button .w3s-button-label {
+      width: auto;
+    }
+  }
 }
 
 .w3s-transfer-input {
