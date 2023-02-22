@@ -3,5 +3,5 @@
 
 npm run lint-scss
 npm run lint
-#npm run test
+npm run test
 npm run build-doc
