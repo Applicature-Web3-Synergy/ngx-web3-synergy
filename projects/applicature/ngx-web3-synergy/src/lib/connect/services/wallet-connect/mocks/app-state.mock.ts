@@ -6,11 +6,12 @@ import { chainsMock } from './initialization-config.mock';
 export const AppStateMock: AppState = {
   chains: chainsMock(),
   walletModules: [],
-  wallets: [ { ...WalletStateMock }],
+  wallets: [{ ...WalletStateMock }],
   accountCenter: null,
   locale: 'en',
   notify: null,
-  notifications: []
+  notifications: [],
+  connect: {}
 };
 
 export const AppStateDisconnectedMock: AppState = {

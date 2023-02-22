@@ -19,7 +19,7 @@ export class BasicFaucetComponent{
     address: '0x9d96A96a4dB1970C10D021af7A38A2EA28aaaBb5', // The address that the token is at.
     symbol: 'USDT', // A ticker symbol or shorthand, up to 5 chars.
     decimals: 18, // The number of decimals in the token
-    image: 'https://testnet.bscscan.com/images/main/empty-token.png', // A string url of the token logo
+    image: 'assets/img/icons/usdt.svg', // A string url of the token logo
     abi: this.ERC20Json  // Smart contract ABI
   }
 }

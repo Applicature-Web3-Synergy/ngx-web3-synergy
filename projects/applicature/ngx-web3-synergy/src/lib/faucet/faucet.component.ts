@@ -162,7 +162,7 @@ export class W3sFaucetComponent extends BaseSubscriber implements OnInit {
       viewed: false
     }
 
-    return this._transactionService.saveTransaction(transactionToSave)
+    return this._transactionService.saveTransaction(transactionToSave, 5000)
       .pipe(
         takeWhile((res) => res.status !== W3S_TRANSACTION_STATUS.PENDING),
       )

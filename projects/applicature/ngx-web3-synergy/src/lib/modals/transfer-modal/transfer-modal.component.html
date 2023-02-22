@@ -45,7 +45,7 @@
     <w3s-button [label]="!isPendingApproval ? data.approveButton : data.approvingButton"
                 [adaptive]="true"
                 [height]="48"
-                [disabled]="isPendingApproval"
+                [disabled]="isPendingApproval  || disabledApprove"
                 [pending]="isPendingApproval"
                 (buttonClicked)="onApproveClick()"></w3s-button>
   </ng-container>

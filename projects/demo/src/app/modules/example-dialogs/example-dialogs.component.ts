@@ -17,7 +17,7 @@ import BigNumber from 'bignumber.js';
 @Component({
   selector: 'app-example-dialogs',
   templateUrl: './example-dialogs.component.html',
-  styleUrls: [ './example-dialogs.component.scss' ],
+  styleUrls: ['./example-dialogs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExampleDialogsComponent {
@@ -29,7 +29,7 @@ export class ExampleDialogsComponent {
     const ref = this._dialogService.open<DialogTestComponent, { message: string }, number>(
       DialogTestComponent,
       {
-        data: {message: 'I am a dynamic component!'},
+        data: { message: 'I am a dynamic component!' },
         width: '400px',
         height: '500px',
         minWidth: '320px',
@@ -44,7 +44,7 @@ export class ExampleDialogsComponent {
         overlay: {
           hasOverlay: true,
           closeByClick: true,
-          overlayClass: [ 'test-overlay-class1', 'test-overlay-class2' ],
+          overlayClass: ['test-overlay-class1', 'test-overlay-class2'],
           transparent: true
         }
       });
@@ -68,9 +68,11 @@ export class ExampleDialogsComponent {
       approveButton: 'Approve',
       approvingButton: 'Approving...',
       confirmButton: 'Transfer',
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       approve: (val: BigNumber) => {
         return Promise.resolve();
       },
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       confirm: (val: BigNumber) => {
         return Promise.resolve();
       }
@@ -100,7 +102,7 @@ export class ExampleDialogsComponent {
       {
         data,
         width: '100%',
-        maxWidth: "420px",
+        maxWidth: '420px',
         dialogClass: 'wrong-network-dialog',
       }
     );

@@ -3,6 +3,7 @@ import { map, Observable } from 'rxjs';
 
 import { RouterHelperService } from '../../services/router-helper';
 import { ROUTER_LINKS, URL_FRAGMENTS } from '../../enums';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -20,22 +21,22 @@ export class HeaderComponent {
 
   URL_FRAGMENTS = URL_FRAGMENTS;
 
-  navigationMenu: { title: string, fragment: URL_FRAGMENTS, activeClass?: boolean }[] = [
+  navigationMenu: { title: string, link: string, activeClass?: boolean }[] = [
     {
       title: 'About',
-      fragment: URL_FRAGMENTS.ABOUT
+      link: environment.landingURL + '#' + URL_FRAGMENTS.ABOUT,
     },
     {
       title: 'Components',
-      fragment: URL_FRAGMENTS.COMPONENTS
+      link: environment.landingURL + '#' + URL_FRAGMENTS.COMPONENTS,
     },
     {
       title: 'Play',
-      fragment: URL_FRAGMENTS.PLAY
+      link: environment.landingURL + '#' + URL_FRAGMENTS.PLAY,
     },
     {
       title: 'API Library',
-      fragment: URL_FRAGMENTS.API,
+      link: '/',
       activeClass: true
     }
   ];

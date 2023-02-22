@@ -14,7 +14,7 @@ import { W3sTransactionService } from '../../transactions';
 @Component({
   selector: 'w3s-transfer-modal',
   templateUrl: './transfer-modal.component.html',
-  styleUrls: [ './transfer-modal.component.scss' ],
+  styleUrls: ['./transfer-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class W3sTransferModalComponent extends BaseSubscriber implements OnInit {
@@ -25,6 +25,7 @@ export class W3sTransferModalComponent extends BaseSubscriber implements OnInit 
   public STEPS = W3S_TRANSFER_STEPS;
   public isPendingApproval = false;
   public isPendingConfirm = false;
+  public disabledApprove = false;
 
   public get currentStep(): W3sTransactionStep {
     return this._currentStep;
@@ -58,9 +59,15 @@ export class W3sTransferModalComponent extends BaseSubscriber implements OnInit 
         this.currentAllowance = w3sNormalizeBalance(+chainId, this.data.allowance);
       });
 
+    if (this.amountControl.value === null) {
+      this.disabledApprove = true;
+    }
+
     this.amountControl.valueChanges
       .pipe(takeUntil(this.notifier))
       .subscribe((value) => {
+        value === '0' || !value.length ? this.disabledApprove = true : this.disabledApprove = false;
+
         if (w3sToBN(value).gt(0) && w3sToBN(value).lte(this.currentAllowance)) {
           this._currentStep = W3S_TRANSFER_STEPS.CONFIRM;
         } else {
@@ -83,8 +90,11 @@ export class W3sTransferModalComponent extends BaseSubscriber implements OnInit 
       this.isPendingApproval = false;
 
       this._currentStep = W3S_TRANSFER_STEPS.CONFIRM;
-
       this._cdr.markForCheck();
+    }).catch(error => {
+      console.error(`Approve ${error}`);
+
+      this.isPendingConfirm = false;
     });
   }
 

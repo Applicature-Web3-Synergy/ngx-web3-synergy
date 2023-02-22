@@ -14,7 +14,7 @@
     .w3s-button.w3s-button-disabled {
       background-color: c.getColor(blue, dark);
       border-color: c.getColor(blue, dark);
-      color: inherit;
+      color: #fff;
       display: flex;
       flex-direction: row-reverse;
     }
