@@ -1,6 +1,6 @@
 {
   "name": "@applicature/ngx-web3-synergy",
-  "version": "1.0.5",
+  "version": "1.0.51",
   "repository": {
     "type": "git",
     "url": "git@github.com:Applicature-Web3-Synergy/ngx-web3-synergy.git"
@@ -34,8 +34,9 @@
     "@shapeshiftoss/proto-tx-builder": ">=0.2.1",
     "@uiowa/digit-only": ">=3.2.0",
     "@uniswap/sdk-core": ">=3.0.1",
-    "@web3-onboard/core": "2.3.2",
-    "@web3-onboard/injected-wallets": "2.0.15",
+    "@web3-onboard/core": "2.10.0",
+    "@web3-onboard/injected-wallets": "2.3.0",
+    "@web3-onboard/walletconnect": "2.1.3",
     "bignumber.js": ">=7.0.2",
     "tslib": ">=2.0.0",
     "web3": ">=1.3.6",

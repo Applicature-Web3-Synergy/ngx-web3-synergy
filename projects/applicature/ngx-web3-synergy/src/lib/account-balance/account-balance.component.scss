@@ -65,12 +65,12 @@ $balance-max-width: (
 
   &.w3s-balance-with-address-identicon {
     w3s-button {
-      width: map-get($address-btn-width, withIdenticon);
+      width: auto;
     }
   }
 
   w3s-button {
-    width: map-get($address-btn-width, withoutIdenticon);
+    width: auto;
   }
 }
 

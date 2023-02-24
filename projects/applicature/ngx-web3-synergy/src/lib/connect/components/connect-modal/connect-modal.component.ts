@@ -12,13 +12,13 @@ import {
 } from '../../services';
 import { W3sConnectDialogData, W3sConnectWalletItem } from './interfaces';
 import { W3sInstallWalletHelperService, BaseSubscriber } from '../../../helpers';
-import { W3sWalletsIcons, W3sWalletsLinks } from '../../constants';
+import { W3sWalletsIcons } from '../../constants';
 
 
 @Component({
   selector: 'w3s-connect-modal',
   templateUrl: './connect-modal.component.html',
-  styleUrls: [ './connect-modal.component.scss' ],
+  styleUrls: ['./connect-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class W3sConnectModalComponent extends BaseSubscriber {
@@ -29,7 +29,7 @@ export class W3sConnectModalComponent extends BaseSubscriber {
 
   /** @internal */
   public get wallets(): W3sConnectWalletItem[] {
-    return [ ...(this._walletsMap.values() || []) ]
+    return [...(this._walletsMap.values() || [])]
       .sort((a: W3sConnectWalletItem, b: W3sConnectWalletItem) => a.position - b.position);
   }
 
@@ -54,7 +54,6 @@ export class W3sConnectModalComponent extends BaseSubscriber {
             label,
             icon: initWallets.get(label)?.icon ?? W3sWalletsIcons[label] ?? '',
             active: (state.wallets ?? []).findIndex((el: WalletState) => el.label === wallet.label) !== -1,
-            needToInstall: false,
             position: walletConfig?.position ?? initWallets.get('injected')?.position ?? initWallets.size + 1
           });
       }
@@ -70,7 +69,6 @@ export class W3sConnectModalComponent extends BaseSubscriber {
             label,
             icon: wallet.icon ?? W3sWalletsIcons[label] ?? '',
             active: false,
-            needToInstall: true,
             position: wallet.position
           }
         );
@@ -121,21 +119,6 @@ export class W3sConnectModalComponent extends BaseSubscriber {
   public connect(wallet: W3sConnectWalletItem): void {
     if (!wallet?.label) {
       console.error(`Can't find selected wallet`);
-    }
-
-    if (wallet.needToInstall) {
-      const url: string = this.data.service.initializedWalletsMap.get(wallet.label)?.walletUrl
-        ?? W3sWalletsLinks[wallet.label] ?? null;
-
-      if (url) {
-        this._installWalletHelperService.redirectTo$.next(url);
-      } else {
-        console.error(`Can't find the wallet ${wallet.label}`);
-      }
-
-      this.close(null);
-
-      return;
     }
 
     this.close(wallet.active ? null : wallet.label);

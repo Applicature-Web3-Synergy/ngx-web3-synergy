@@ -2,21 +2,17 @@
 
 :host {
   display: block;
-  background: map-get(c.$gradient, purple-card);
-  border-radius: c.$border-radius;
-  padding: c.$card-padding;
 }
 
 .markdown {
   ::ng-deep {
     a {
       text-decoration: underline;
-      color: #fff;
+      color: map-get(c.$blue, base);
     }
 
     .doc.prettyprint {
       background: map-get(c.$gradient, purple-dark-card);
-      margin: 0 -20px;
       max-width: inherit;
       border-radius: 0;
       border: none;
@@ -25,14 +21,18 @@
     }
 
     .getting-started-code {
-      background: map-get(c.$gradient, purple-dark-card);
+      background: transparent;
       word-break: break-all;
     }
 
     ul {
       .doc.prettyprint {
-        margin: 0 -20px 0 -60px;
+        margin: 0 0 0 -40px;
       }
+    }
+
+    ::marker {
+      color: c.$pink;
     }
   }
 }

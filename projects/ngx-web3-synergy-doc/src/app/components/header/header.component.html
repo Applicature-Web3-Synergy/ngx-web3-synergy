@@ -1,7 +1,7 @@
 <header id="header">
   <div class="header" [class.mobile]="isMobile">
     <div class="header-container">
-      <a routerLink="/" [fragment]="URL_FRAGMENTS.API" class="logo">
+      <a href="/" class="logo">
         <img src="assets/img/logo.svg" alt="Web3 synergy logotype">
       </a>
 
@@ -18,9 +18,8 @@
 
       <div class="main-menu-container" [class.opened]="isOpenedMenu && isMobile">
         <nav class="main-nav">
-          <a *ngFor="let item of navigationMenu; let i=index"
-             routerLink="/"
-             [fragment]="item.fragment"
+          <a *ngFor="let item of navigationMenu;"
+             [href]="item.link"
              [class.active]="item.activeClass"
              class="main-nav-item"
           >

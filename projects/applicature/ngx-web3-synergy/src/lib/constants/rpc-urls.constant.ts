@@ -20,5 +20,6 @@ export const W3sRpcUrls: { [key: string]: string[] } = {
   [W3S_CHAIN_ID.THETA_MAINNET]: [ 'https://eth-rpc-api.thetatoken.org/rpc' ],
   [W3S_CHAIN_ID.THETA_TESTNET]: [ 'https://eth-rpc-api-testnet.thetatoken.org/rpc' ],
   [W3S_CHAIN_ID.RINKEBY_TESTNET]: [ 'https://rinkeby.infura.io/v3' ],
-  [W3S_CHAIN_ID.ETHEREUM_MAINNET]: [ 'https://mainnet.infura.io/v3' ]
+  [W3S_CHAIN_ID.ETHEREUM_MAINNET]: [ 'https://mainnet.infura.io/v3' ],
+  [W3S_CHAIN_ID.GOERLI_TESTNET]: [ 'https://goerli.infura.io/v3' ]
 };

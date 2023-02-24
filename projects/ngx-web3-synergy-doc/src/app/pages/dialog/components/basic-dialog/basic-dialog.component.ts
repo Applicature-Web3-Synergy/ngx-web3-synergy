@@ -34,9 +34,11 @@ export class BasicDialogComponent {
       approveButton: 'Approve',
       approvingButton: 'Approving...',
       confirmButton: 'Transfer',
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       approve: (val: BigNumber) => {
         return Promise.resolve();
       },
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       confirm: (val: BigNumber) => {
         return Promise.resolve();
       }

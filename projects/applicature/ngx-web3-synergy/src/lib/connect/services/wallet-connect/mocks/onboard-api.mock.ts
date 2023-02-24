@@ -47,7 +47,7 @@ export class OnboardAPIMock implements OnboardAPI {
   }
 
   public setChain(options: {
-    chainId: string;
+    chainId: string | number;
     chainNamespace?: string;
     wallet?: WalletState['label'];
   }): Promise<boolean> {
