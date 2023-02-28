@@ -1,9 +1,9 @@
 # Web3 Synergy
-This library was created and maintained by [**Applicature**](https://applicature.com/) to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
+This library was created and maintained by <a href="https://applicature.com/" target="_blank">Applicature</a> to help create a front-end on any blockchain projects for ourselves, our partners or any blockchain developer.
 This library supports Angular from version 13 and higher.
 
 ## Documentation
-For more information visit the [**documentation**](https://master.d1hcqsz7ds742s.amplifyapp.com).
+For more information visit the <a href="https://master.d1hcqsz7ds742s.amplifyapp.com" target="_blank">documentation</a>.
 
 ## Library installation
     npm i @applicature/styles @applicature/ngx-web3-synergy
@@ -57,9 +57,9 @@ window.process = process;
 window.global = window;
 window.global.Buffer = global.Buffer || Buffer;
 </code></pre>
-  - Install <strong>process</strong> if it needs `npm i process`
+- Install <strong>process</strong> if it needs `npm i process`
 
-  
+
 ### Fixing Build errors
 - add next option to **tsconfig.json**:
 
@@ -77,79 +77,79 @@ window.global.Buffer = global.Buffer || Buffer;
 for Angular 13+. Verify if you need this module and configure a polyfill for it.
 
 Solution:
-   - `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify buffer process util url`
-   - **tsconfig.json**
+- `npm i -D crypto-browserify stream-browserify assert stream-http https-browserify os-browserify buffer process util url`
+- **tsconfig.json**
 
-      <pre><code>
-      {
-        ...,
-        "compilerOptions": {
-          ...,
-          "paths": {
-            "crypto": [
-              "./node_modules/crypto-browserify"
-            ],
-            "stream": [
-              "./node_modules/stream-browserify"
-            ],
-            "assert": [
-              "./node_modules/assert"
-            ],
-            "http": [
-              "./node_modules/stream-http"
-            ],
-            "https": [
-              "./node_modules/https-browserify"
-            ],
-            "os": [
-              "./node_modules/os-browserify/browser"
-            ],
-            "path": [
-              "./node_modules/path-browserify"
-            ],
-            "buffer": [
-               "./node_modules/buffer"
-             ],
-             "process": [
-               "./node_modules/process/browser"
-             ],
-             "util": [
-               "./node_modules/util"
-             ],
-             "url": [
-                "./node_modules/url"
-              ]
-          }
-        }
-      }
-      </code></pre>
-
-   - or add the next to the **package.json**
-
-     <pre><code>
-     {
-        ...,
-        "browser": {
-          "crypto": false,
-          "stream": false,
-          "assert": false,
-          "http": false,
-          "https": false,
-          "os": false,
-          "path": false,
-          "buffer": false,
-          "process": false,
-          "util": false,
-          "url": false
-        }
+   <pre><code>
+   {
+     ...,
+     "compilerOptions": {
+       ...,
+       "paths": {
+         "crypto": [
+           "./node_modules/crypto-browserify"
+         ],
+         "stream": [
+           "./node_modules/stream-browserify"
+         ],
+         "assert": [
+           "./node_modules/assert"
+         ],
+         "http": [
+           "./node_modules/stream-http"
+         ],
+         "https": [
+           "./node_modules/https-browserify"
+         ],
+         "os": [
+           "./node_modules/os-browserify/browser"
+         ],
+         "path": [
+           "./node_modules/path-browserify"
+         ],
+         "buffer": [
+            "./node_modules/buffer"
+          ],
+          "process": [
+            "./node_modules/process/browser"
+          ],
+          "util": [
+            "./node_modules/util"
+          ],
+          "url": [
+             "./node_modules/url"
+           ]
+       }
      }
-     </code></pre>
+   }
+   </code></pre>
+
+- or add the next to the **package.json**
+
+  <pre><code>
+  {
+     ...,
+     "browser": {
+       "crypto": false,
+       "stream": false,
+       "assert": false,
+       "http": false,
+       "https": false,
+       "os": false,
+       "path": false,
+       "buffer": false,
+       "process": false,
+       "util": false,
+       "url": false
+     }
+  }
+  </code></pre>
 
 
 ## How to use
- This Library uses **@web3-onboard/core** for the connection wallet. So you can visit their [documentation](https://docs.blocknative.com/onboard/core) for more details.
- - install wallets. Like example `npm i @web3-onboard/walletconnect`
- - **app.module.ts**
+This Library uses **@web3-onboard/core** for the connection wallet. So you can visit their [documentation](https://docs.blocknative.com/onboard/core) for more details.
+- install wallets. Like example `npm i @web3-onboard/walletconnect`
+- **app.module.ts**
 
 <pre><code>
 import injectedModule from '@web3-onboard/injected-wallets';
@@ -312,5 +312,5 @@ You might need to add `allowedCommonJsDependencies` to `angular.json` file:
 
 ## Contributing
 This project is maintained by a community of developers. Contributions are welcome and appreciated.
-You can find Web3 Synergy on [**GitHub**](https://github.com/Applicature-Web3-Synergy/ngx-web3-synergy); feel free to open an issue or create a pull request:
+You can find Web3 Synergy on <a href="https://github.com/Applicature-Web3-Synergy/ngx-web3-synergy" target="_blank">GitHub</a>; feel free to open an issue or create a pull request:
 
