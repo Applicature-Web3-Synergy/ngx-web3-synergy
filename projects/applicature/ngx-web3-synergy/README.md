@@ -3,7 +3,7 @@ This library was created and maintained by <a href="https://applicature.com/" ta
 This library supports Angular from version 13 and higher.
 
 ## Documentation
-For more information visit the <a href="https://master.d1hcqsz7ds742s.amplifyapp.com" target="_blank">documentation</a>.
+For more information visit the <a href="https://onboard.blocknative.com/docs/overview/introduction" target="_blank">documentation</a>.
 
 ## Library installation
     npm i @applicature/styles @applicature/ngx-web3-synergy
